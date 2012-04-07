@@ -4,12 +4,72 @@ html {
     background: #404040 url('/images/stripes_3-6-333333-404040.png');
 }
 
-body > div {
-    background-image: none;
+body > div { background-image: none; }
+body > div > div { background-image: none; }
+
+//
+// Header
+//
+
+body > header {
+    background: none;
+    padding: 1.6em 0 .5em 0;
 }
-body > div > div {
-    background-image: none;
+
+body > header h1 {
+    font-size: 2.8em;
+    text-shadow: rgba(0, 0, 0, 0.9) 0 0 8px;
 }
+/*
+body > header h1 a {
+    color: #aaaaaa;
+}
+body > header h1 a:hover {
+    color: #aaaaaa;
+}
+body > header h1 a:visited {
+    color: #aaaaaa;
+}
+*/
+
+//
+// Navigation
+//
+
+body > nav {
+    margin-bottom: 1em;
+
+    padding-left: 1.4em;
+    padding-right: 1.4em;
+    padding-top: .15em;
+    padding-bottom: .15em;
+    border-radius: .5em;
+}
+
+body > nav a {
+    font-size: 1em;
+    line-height: 1.4em;
+}
+
+body > nav form .search {
+    padding: .2em .3em;
+}
+
+//
+// Content
+//
+
+#main {
+    border-radius: .5em .5em 0 0;
+}
+
+#content {
+    border-radius: 0.5em 0 0 0;
+}
+
+//
+// Miscellaneous
+//
 
 aside.sidebar ul.nobox {
     li {
