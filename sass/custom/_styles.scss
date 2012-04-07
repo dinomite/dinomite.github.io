@@ -1,2 +1,13 @@
-// This File is imported last, and will override other styles in the cascade
-// Add styles here to make changes without digging in too much
+aside.sidebar ul.nobox {
+    li {
+        list-style: disc;
+        margin-left: 1em;
+
+        // Don't show the separator
+        border-bottom: none;
+        box-shadow: none;
+
+        // Cuddle together
+        padding-bottom: 0em;
+    }
+}
