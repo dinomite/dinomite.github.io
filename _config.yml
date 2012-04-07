@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://dinomite.github.com
-title: My Octopress Blog
+title: Drew Stephens
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: Drew Stephens
 simple_search: http://google.com/search
 description:
 
@@ -27,7 +27,7 @@ email:
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
 root: /
-permalink: /blog/:year/:month/:day/:title/
+permalink: /blog/:year/:title/
 source: source
 destination: public
 plugins: plugins
@@ -58,13 +58,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user:
-github_repo_count: 0
+github_user: dinomite
+github_repo_count: 4
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: dinomite
 twitter_tweet_count: 4
 twitter_show_replies: false
 twitter_follow_button: true
@@ -81,7 +81,7 @@ googleplus_user:
 googleplus_hidden: false
 
 # Pinboard
-pinboard_user:
+pinboard_user: dinomite
 pinboard_count: 3
 
 # Delicious
@@ -93,7 +93,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-2474105-4
 
 # Facebook Like
 facebook_like: false
