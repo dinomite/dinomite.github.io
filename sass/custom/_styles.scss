@@ -1,3 +1,16 @@
+// See: http://melandri.net/2012/02/14/octopress-theme-customization/
+
+html {
+    background: #404040 url('/images/stripes_3-6-333333-404040.png');
+}
+
+body > div {
+    background-image: none;
+}
+body > div > div {
+    background-image: none;
+}
+
 aside.sidebar ul.nobox {
     li {
         list-style: disc;
