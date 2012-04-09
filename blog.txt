@@ -1201,42 +1201,6 @@ KEYWORDS:
 
 --------
 AUTHOR: dinomite
-TITLE: About Me
-BASENAME: about-me
-STATUS: Publish
-ALLOW COMMENTS: 1
-CONVERT BREAKS: markdown
-ALLOW PINGS: 1
-PRIMARY CATEGORY: Uncategorized
-CATEGORY: Uncategorized
-DATE: 12/28/2005 06:14:07 AM
------
-BODY:
-Who?
--------
-I'm Drew Stephens and I live in [Arlington, Virginia](http://en.wikipedia.org/wiki/Arlington,_Virginia), where I have spent the majority of my life.  I went to school at [The Rochester Institute of Technology](http://www.rit.edu) where I was a member of [Computer Science House](http://www.csh.rit.edu).  Currently, I'm a computer programmer with interests in cars, biking, rock climbing and hackish engineering.
-
-Why?
--------
-I like to write, that's why this blog exists.  Additionally, it serves as a diary for things I do and problems I solve so that myself and others can find solutions.
-
-How?
--------
-Can you contact me?  Sure.  My name at this domain name works.
------
-EXTENDED BODY:
-
------
-EXCERPT:
-
------
-KEYWORDS:
-
------
-
-
---------
-AUTHOR: dinomite
 TITLE: Wikipedia
 BASENAME: wikipedia
 STATUS: Publish
