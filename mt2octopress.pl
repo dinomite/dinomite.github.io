@@ -41,6 +41,9 @@ use warnings;
 my $POST_END_SENTINEL = "--------";
 my $BODY_END_SENTINEL = "-----";
 
+# HACK
+my $today = '2012-04-08';
+
 my $infile = shift @ARGV;
 open my $fh, "<", $infile;
 
@@ -71,6 +74,40 @@ for (<$fh>) {
 
     if (defined $post{body}) {
         # We have title, category, date, and body
+
+        # Let the rake task generate an appropriate title for us
+        my $rakeTask = 'rake new_post["'. $post{title} .'"]';
+        my $postFile = `$rakeTask`;
+        $postFile =~ s/Creating new post: //;
+        chomp $postFile;
+
+        # I should probably learn the standard Date module
+        $post{date} =~ m!(\d\d)/(\d\d)/(\d{4}) (\d\d):(\d\d):(\d\d) (\w\w)!;
+        my $postDate = "$3-$1-$2";
+        my $hour = $4;
+        $hour += 12 if ($7 eq "PM");
+        my $postTime = "$hour:$5";
+
+        # Update the postfile
+        my $newPost = '';
+        open my $POST, "<", "$postFile";
+        for (<$POST>) {
+            if (/^date: /) { $_ =~ s/^date: .*/date: $postDate $postTime/; }
+            elsif (/^categories: /) { $_ =~ s/^categories: /categories: [$post{category}]/; }
+
+            $newPost .= $_;
+        }
+        close $POST;
+        # Remove the rake-generated postfile
+        unlink $postFile;
+
+        # TODO change date on postfile path
+        my $newPostFile = $postFile;
+        $newPostFile =~ s/$today/$postDate/;
+        open $POST, ">", "$newPostFile";
+        print $POST $newPost;
+        print $POST $post{body};
+        close $POST;
 
         %post = ();
     }
