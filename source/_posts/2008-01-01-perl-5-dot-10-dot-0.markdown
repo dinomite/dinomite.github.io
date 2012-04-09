@@ -1,0 +1,21 @@
+---
+layout: post
+title: "Perl 5.10.0"
+date: 2008-01-01 18:41
+comments: true
+categories: [Programming]
+---
+Sure, it's already slathered across every news site known to man but just like everyone else I have different reasons for being excited about Perl 5.10.0.
+
+Like many others, I often choose Perl for its seamless regex support so the faster regex engine in this new release is definitely welcome.  This version also fixes an erroneous piece of missing syntax for subscript slices. I was always confused why the interpreter forced me to use `->` instead of the non-arrowed form.  The big one, not because it was hugely lacking but simply a seemingly odd oversight, is the switch statement, which is called `given/when` in Perl:
+
+<pre class="brush: perl;">
+given ($foo) {
+    when (/^abc/) { $abc = 1; }
+    when (/^def/) { $def = 1; }
+    when (/^xyz/) { $xyz = 1; }
+    default { $nothing = 1; }
+}
+</pre>
+
+Sure, switch statements don't really do anything special, but they are often quite a bit cleaner than if/elif chains and the fact that Perl's implementation can handle regex is awesome.

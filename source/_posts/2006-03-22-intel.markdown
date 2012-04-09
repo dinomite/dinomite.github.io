@@ -1,0 +1,10 @@
+---
+layout: post
+title: "Intel"
+date: 2006-03-22 13:05
+comments: true
+categories: [Computers]
+---
+Intel's latest big chip, the Pentium Extreme Edition 965, costs just over a thousand dollars and yet it still [looses out](http://www.techreport.com/reviews/2006q1/pentium-xe-965/index.x?pg=4) to the AMD's not-quite-top-of-their-line Athlon 64 X2 4800+ which can be had for around $650 (the Athlon 64 FX-60 is their range-topper).  The biggest discrepencies are seen in gaming benchmarks, which is particularly sad because gamers are the biggest market for such hugely expensive chips.
+
+In short, Intel's [NetBurst](http://en.wikipedia.org/wiki/NetBurst) architecture still sucks; for their sake, I hope [Core](http://en.wikipedia.org/wiki/Intel_Core_Microarchitecture) is as fast as they purport.  Until then, as the state has been for the past few years, buy AMD.

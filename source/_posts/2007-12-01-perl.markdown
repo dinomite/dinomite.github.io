@@ -1,0 +1,104 @@
+---
+layout: post
+title: "Perl"
+date: 2007-12-01 07:31
+comments: true
+categories: [Programming]
+---
+After reading [this article](http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/) comparing the new Ruby 1.9 to it's older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:
+
+<pre>
+Python:
+real    0m43.415s
+user    0m41.455s
+sys     0m0.132s
+
+Ruby:
+real    0m35.379s
+user    0m33.722s
+sys     0m0.112s
+</pre>
+
+I threw together some quick Perl:
+
+<pre class="brush: ruby;">
+sub fib {
+    my $n = shift;
+
+    if ( $n == 0 or $n == 1 ) {
+        return $n;
+    } else {
+        return fib($n - 1) + fib($n - 2);
+    }
+}
+
+for (0..35) {
+    print "n=$_ => " . fib($_) . "\n";
+}
+</pre>
+
+and ran it:
+
+<pre>
+Perl:
+real    1m15.329s
+user    1m9.188s
+sys     0m0.364s
+</pre>
+
+That's impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:
+
+C code:
+<pre class="brush: cpp;">
+#include <stdio.h>
+
+int fib(int n) {
+    if ( (n == 0) || (n == 1) )
+        return n;
+    else
+        return (fib(n-1) + fib(n-2));
+} //fib
+
+int main() {
+    int x;
+    for (x = 0; x < 36; x++) {
+        printf( "n = %d => %d\n", x, fib(x) );
+    } //for
+
+    return 0;
+}
+</pre>
+
+C timing:
+<pre>
+real    0m0.605s
+user    0m0.564s
+sys     0m0.000s
+</pre>
+
+Java code:
+<pre class="brush: java;">
+class Fib {
+    static int fib(int n) {
+        if ( (n == 0) || (n == 1) )
+            return n;
+        else
+            return (fib(n-1) + fib(n-2));
+    } //fib
+
+    public static void main(String args[]) {
+        for (int x = 0; x < 36; x++) {
+            System.out.println( "n = " + x + " => " + fib(x) );
+        } //for
+    } //main
+} //Fib
+</pre>
+
+Java timing:
+<pre>
+real    0m0.455s
+user    0m0.412s
+sys     0m0.012s
+</pre>
+
+It's very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don't take these benchmarks as having any significant meaning.  Really, don't take them to mean much of anything, unless all you do is write lots of simple recursive code.

@@ -1,0 +1,47 @@
+---
+layout: post
+title: "BVD Skidmark's First 24 Hours of LeMons"
+date: 2010-05-11 21:01
+comments: true
+categories: [Cars]
+---
+This past weekend, [Team BVD Skidmark](http://twitter.com/bvdskidmark) participated in its first 24 Hours of LeMons, the 2010 [Goin' For Broken](http://www.24hoursoflemons.com/reno10/) at [Thunderhill Raceway](http://www.trackpedia.com/wiki/Thunderhill_Park_Raceway) outside Willows, CA.  The team consisted of myself, two folks from [Genius.com](http://genius.com), and three guys that were part of [CSH](http://www.csh.rit.edu).  In the end, only 5 of us drove the car at the race, because one of our team was quite sick in the lead up to the race.
+
+Getting There
+===========
+<a href="http://www.flickr.com/photos/dinomite/4585093337/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4027/4585093337_820fe9ec11.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
+We loaded up Cheesy Gordita Crunch, named after a shopping list found in the glove box, on Thursday night before the race, along with all of our tools in the van.  Matt & his wife Lynn drove the van, Bill, Tristan, Quynh, and I were in the RV that we had rented, along with a weekend's worth of food from Costco.  The drive up to WIllows is pretty boring, and not much fun when you're driving an RV and a van with a trailer.  All was going well until about 10 that night when one of the inside rear tires on the RV [de-laminated](http://www.flickr.com/photos/dinomite/4586161585/) with a loud thud, followed by a thumping from the flail that was left on the tire.  The latter sound was reminiscent of the sound that Cheesy's original tires made when we bought the car.
+
+Luckily, we were only a mile from a gas station, and only a few miles from Willows itself.  We pulled into the gas station for the night, parking behind it.  At 6 the next morning, I got up and called the RV rental roadside assistance line; they said that a tow truck could be there to swap the wheel within an hour.  We sent the van & car ahead to claim a good pit spot while the rest of us waited for the RV to get fixed.  The wheel replacement didn't take long and the team was reunited in the paddock by 8 AM.  We unloaded the tools, pulled the car off the trailer, and signed up for the Friday practice session ($200 + $50 per driver).
+
+Friday
+=====
+<a href="http://www.flickr.com/photos/dinomite/4597256843/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4067/4597256843_ccbb7f1520.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
+The pre-race practice session was supremely useful—all of our drivers got a chance to hot lap on the track and get a feel for the car that hadn't been driven since we brought it across The Bay months before.  Everything felt good and Cheesy did great all of Friday.  I had been on the fence about doing the track day because I thought we might be using up what little life the car had.  Getting out on Friday turned out to be a perfectly good thing, however, because it bolstered everyone's confidence in their own abilities, and our confidence in the car.
+
+We did tech inspection with a few issues: tape the rear lights, tape the positive battery breakout in the engine compartment, and wire the clips for the harness.  Bullshit inspection was pretty easy for us, given that we had a bone stock car and are pretty clueless.  Having an [e30](http://en.wikipedia.org/wiki/BMW_3_Series_%28E30%29) brings immediate scorn from the judges, but the fact that ours is the efficiency model and has an automatic helps.  The Starbucks cards that Matt bribed the judges with helped, too; it also didn't hurt that our engine's intake is green from moss that was growing on it.  In the end, they only gave us 5 penalty laps, mostly for having a crappy theme—really, we just had a car seat bolted to the roof and some huge Firefox stickers on the car.
+
+At the end of the day, we swapped tires from the hard as anything, 55 series on 14" e30 wheels to the set of fairly low-profile tires on 16" wheels that had come with Cheesy.  We cooked some burgers and headed out for a track walk at the end of the day.
+
+Saturday
+=======
+<a href="http://www.flickr.com/photos/dinomite/4597885916/"><img alt="Cheesy Gordita Crunch" src="http://farm4.static.flickr.com/3361/4597885916_fd5c7d86a9.jpg" width="379" height="500" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
+I got up at 6:30, grabbed a shower (luxurious Thunderhill!) and roused the team.  I made some eggs, we gave the car a quick check, and headed off to the driver's meeting at 8.  The meeting was as expected—a rundown on flags, an admonition to not drive crappily, and some quick words about logistics for the day.  With that, we headed back to the paddock and I suited up for the first stint.
+
+I got out just before 9 and circulated a couple of laps with the handful of cars out there, until the green flag dropped.  On the third lap, I managed to [spin in turn 9](http://www.youtube.com/watch?v=7XCAIb8AP0U).  I could blame the different tires on the car, but that really just adds to the fact that should have been taking things more slowly 3 laps in at the beginning of my stint.  I had gotten overzealous.  We were penalized to re-theme the car, and we quickly applied spray paint to implement the original "skidmark" theme that we had originally thrown around months ago.  I headed back out for a little more driving, and set the fast lap for the team that stood for the day.
+
+After my stint, Tristan went out and spun in 11.  Back into the penalty box, we made an abbreviated walk of shame thanks to the Judgemobile's music dying.  Bill took Tristan's place and was out for a while before also spinning in 11.  We saw the judges again and were ordered to get the very first Cone of Shame in the race.  Since they were pretty unimpressed with a team getting 3 black flags before Noon, we found the biggest cone in the entire paddock, and returned to attach it to our car.  With a tow strap and some zip ties, we had the cone on and the car was back out there.  Matt did a stint and then Josh got in the car.
+
+<a href="http://www.flickr.com/photos/dinomite/4591665777/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4011/4591665777_26b946ea7b.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
+Josh came in after about half an hour, and one of the cooking thermometers was wailing: it had hit the target temperature of 200 degrees fahrenheit.  The roast wasn't done—the engine was hot.  He shut it down and upon opening the hood and the missing water pump belt was pretty obvious.  As the chief mechanic, I proceeded to bark some orders to the team and jumped under the car to fix the problem.  After a brief struggle getting the forward-opening hood off, and dealing with the alternator with a broken belt-tensioning belt, the engine was back the way it should be.  With the hood reattached, I went out for a stint.
+
+We had a bunch more uneventful, but terribly fun driving the rest of Saturday and that evening, talked with a bunch of the other competitors.  We ended up selling our extra rear brake pads to the Ninja team (all black e30 with a HUGE sprint car wing) and got tons of advice out of the trade.  We talked with a bunch of judges and learned about the [Bob Ross](http://jalopnik.com/5165999/the-penalties-of-the-gator+o+rama-24-hours-of-lemons) penalty that they applied to any car with a good expanse of paintable sheet metal.
+
+Sunday
+======
+<a href="http://www.flickr.com/photos/dinomite/4597929298/"><img alt="Cheesy Gordita Crunch" src="http://farm4.static.flickr.com/3388/4597929298_c58a8f3f6e.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
+The second day of the race started with unintended excitement.  Matt started the car just before the driver's meeting and it spewed automatic transmission fluid—the adapters of our hacked-in ATF cooler had failed.  Thankfully, we had thought ahead a bit and left all of the stock hookups unmolested.  With some quick Vice-grip work, we managed to hook the ATF lines back up to the stock cooler and get out onto the track from the beginning of the day.  Josh & Matt did morning stints and then I headed out.  At Matt's suggestion, I started shifting the car, rather than just leaving it in drive the whole time; this lead to a [new fast lap for the team of 2:37](http://www.youtube.com/watch?v=ziyXtDNlr0E).  Much better than Saturday's 2:46, but a far cry from the leaders who were running [better than 2:20](http://forums.24hoursoflemons.com/viewtopic.php?pid=46151#p46151).  Even though we weren't super fast, the added power out of turns allowed us to [pass a number of other cars](http://www.youtube.com/watch?v=XNdPKLJOjU8).
+
+At the end of the day, we were in 65th place out of 108 runners—pretty damn good for a completely new team with a stock, automatic racecar.  After this experience, the entire team is pumped to do more LeMons races.  While track days and HPDEs are awesome, those can't hold a candle to wheel to wheel racing, especially when you're in a car that is cheap and you're OK with driving like you stole it.
+
+24 Hours of LeMons: highly recommended.

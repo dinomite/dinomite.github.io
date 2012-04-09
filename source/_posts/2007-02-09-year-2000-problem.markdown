@@ -1,0 +1,8 @@
+---
+layout: post
+title: "Year 2000 Problem"
+date: 2007-02-09 21:34
+comments: true
+categories: [Web]
+---
+It's been a while since I've seen evidence of a [Year 2000 problem](http://en.wikipedia.org/wiki/Y2K), but Amazon insists on [this search page](http://amazon.com/s/ref=nb_ss_gw/104-9106441-1564711?url=search-alias%3Daps&field-keywords=professional+xml&Go.x=0&Go.y=0&Go=Go) that an XML book was published in 1901.<img id="image100" src="http://dinomite.net/wp-content/uploads/2007/02/1901.jpg" alt="XML book published in 1901" />

@@ -1,0 +1,10 @@
+---
+layout: post
+title: "Dictatorial Leadership is Sometimes the Best"
+date: 2008-01-03 18:46
+comments: true
+categories: [Programming]
+---
+While writing some Python code today I came to a point where a [switch](http://en.wikipedia.org/wiki/Switch_statement) might have been appropriate.  Knowing that switch statements, like any control structure, differ amongst languages I ran a quick search and came up with this  [Python Enhancement Proposal](http://www.python.org/dev/peps/pep-3103/).  The first paragraph of that page is a rejection notice which states, quite simply, "A quick poll during my keynote presentation at PyCon 2007 shows this proposal has no popular support. I therefore reject it."  Wow, that's quite a unilateral decision; I looked at the author, '''guido at python.org''' and thought, "that's certainly his prerogative," for, if you recall analogies from the SAT, Guido van Rossum : Python :: Linus Torvalds : the Linux kernel.
+
+As I pondered Python's lack of this control statement I began to think, well, this probably is the best way for something like Python to be run.  Python is a language that has many passionate follows, many of whom would jump at the chance to make their mark by extending the language.  If the development model allowed anyone to add to it without due process, the language would quickly become cluttered and useless.  No project would ever be run this way, but there are many that employ a loose committee to make such decisions.  Even in that case, however, the committee would certainly waste much time hemming and hawing over the best way to implement the switch and other minutia.  Having a single person in charge makes such project control simple.  Guido, who we can assume is an experience programmer with a good handle on the craft, hence the fact that he created Python and is affectionately known as the [Benevolent Dictator for Life](http://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life).  He simply explored the possible options, asked around to see whether this really was a lacking feature of Python and then decided.  End of story.

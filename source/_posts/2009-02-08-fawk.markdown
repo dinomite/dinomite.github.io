@@ -1,0 +1,24 @@
+---
+layout: post
+title: "fawk"
+date: 2009-02-08 24:26
+comments: true
+categories: [Linux]
+---
+There are a lot of old-school Unix commands that can be strung together to form miniatures programs a solution where one doesn't already exist.  Often times, they're great for nothing more than trimming the output from command line programs to make ocular searching easier.  `awk` is one of these great little text processing utilities, though I usually find myself using it in only it's simplest fashion: to print a specific record from a line of input.
+<pre class="brush: bash;">Caligula:~$ df -h|awk '{print $2}'
+698Gi
+298Gi
+190Gi</pre>
+That `awk` command, `'{print $2}'`, is more than a bit cumbersome to type, so I keyed up a quick function in my `.bashrc` to make performing this quick operation easier:
+<pre class="brush: bash;">Caligula:~$ df -h|fawk 2
+698Gi
+298Gi
+190Gi</pre>
+And the function:
+<pre class="brush: bash;">function fawk {
+    first="awk '{print "
+    last="}'"
+    cmd="${first}$${1}${last}"
+    eval $cmd
+}</pre>

@@ -1,0 +1,80 @@
+---
+layout: post
+title: "Code Golf"
+date: 2007-10-26 07:46
+comments: true
+categories: [Programming]
+---
+I stumbled across a [code golf](http://golf.shinh.org) earlier this week that offers numerous problems.  The specific challenge I came across was the [fizz buzz](http://en.wikipedia.org/wiki/Bizz_buzz) problem that I had been introduced to a few weeks ago.
+
+My initial attempt in Perl was this:
+<pre>
+for (1..100) {
+    $a = "";
+    $a = "Fizz" if !($_ % 3);
+
+    if (!($_ % 5)) {
+        $a .= "Buzz"
+    } elsif ($_ % 3) {
+        $a = $_
+    }
+
+    print "$a\n"
+}
+</pre>
+
+Nothing special at all, just some fairly tight, clean code.  Aside from the broken apart `if` block and the use of bad variable names (`$a`, `$_`) it wouldn't look out of place in a normal program.  After exhausting my knowledge of esoteric Perl, I whittled it down to this:
+<pre>
+for (1..100) {
+    $a = ($_ % 3) ? "" : "Fizz";
+    $a .= "Buzz" if !($_ % 5);
+
+    $a ||= $_;
+
+    print "$a\n"
+}
+</pre>
+
+With a bit of digging, I found that I could use the `+` and `,` operators as part of `print` to get rid of that `$a` assignment:
+<pre>
+for (1..100) {
+    $a = ($_ % 3) ? "" : "Fizz";
+    $a .= "Buzz" if !($_ % 5);
+
+    print + $a || $_, "\n"
+}
+</pre>
+
+But you certainly don't need most of the parenthesis, and Perl deals with barewords just fine:
+<pre>
+for (1..100) {
+    $a = $_ % 3 ? "" : Fizz;
+    $a .= Buzz if !($_ % 5);
+
+    print + $a || $_, "\n"
+}
+</pre>
+
+Finally, after reading through [`perlvar`](http://perldoc.perl.org/perlvar.html) I found that the input record separator, which defaults to "\n", can take the place of that four-character newline:
+<pre>
+for (1..100) {
+    $a = $_ % 3 ? "" : Fizz;
+    $a .= Buzz if !($_ % 5);
+
+    print + $a || $_, $/
+}
+</pre>
+
+101 characters, but you can go a step further, drop the $a assignment and condense those statements down below:
+<pre>
+for (1..100) {
+    print + ($_ % 3 ? "" : Fizz) . ($_ % 5 ? "" : Buzz) || $_, $/
+}
+</pre>
+
+Finally, since this is now a single Perl statement, the curly braces can be eliminated by placing the loop control at the end (thanks to Fotios for that tip).  After you beat the whitespace out, you end up with 56 characters:
+<pre>
+print+($_%3?"":Fizz).($_%5?"":Buzz)||$_,$/for(1..100)
+</pre>
+
+[Q.E.D.](http://en.wikipedia.org/wiki/Q.E.D.)

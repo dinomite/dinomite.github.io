@@ -1,0 +1,27 @@
+---
+layout: post
+title: "More sed"
+date: 2007-08-16 18:30
+comments: true
+categories: [Programming]
+---
+So, if you come from the world of Perl, like I do, you're probably very familiar with the usage of regular expressions to match (m/(foo)bar(baz)/) and replace (s/foo(bar)/baz$1/) strings.  `sed` acts upon lines and often you want to delete a range of lines.  For the following regex, I had a document something like this:
+
+<code> </code>
+<pre>&lt;Recording modeType="foo"&gt;
+    &lt;foo&gt;bar&lt;/foo&gt;
+    &lt;baz&gt;qux&lt;/baz&gt;
+&lt;/Recording&gt;
+&lt;Recording modeType="fp"&gt;
+    &lt;foo&gt;bar&lt;/foo&gt;
+    &lt;baz&gt;qux&lt;/baz&gt;
+&lt;/Recording&gt;
+&lt;Recording modeType="bar"&gt;
+    &lt;foo&gt;bar&lt;/foo&gt;
+    &lt;baz&gt;qux&lt;/baz&gt;
+&lt;/Recording&gt;</pre>
+...and I wanted to remove any of the blocks of `modeType` 'fp'.  To do so, I tell `sed` to find lines with the `modeType` of 'fp', and a subsequent line with a closing 'Recording' tag and then 'd'elete them all:
+
+`sed -i -e '/modeType="fp"/,/Recording&gt;/d'`
+
+Simple.  The more you get to know it, the more awesome `sed` is.

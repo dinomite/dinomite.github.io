@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Cars"
+date: 2006-01-14 24:48
+comments: true
+categories: [Cars]
+---
+Aside from computers, working on and driving cars is my favorite pastime.  I have a [1997 BMW M3](http://gallery.dinomite.net/gallery/v/Cars/BMW_M3/) which I do all of the maintenance work for and drive in BMW CCA track events, my preferred summer activity.
+
+* [X-brace install](http://dinomite.net/cars/x-brace-install/) - A quick overview of installing an X-brace on an E36.
+* [Transmission mount install](http://dinomite.net/cars/transmission-mount-install) - A tutorial for swapping transmission mounts on an E36

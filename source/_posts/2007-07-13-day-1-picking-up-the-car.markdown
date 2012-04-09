@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Day 1: Picking Up the Car"
+date: 2007-07-13 08:34
+comments: true
+categories: []
+---
+After my mom had decided that her new car would be a BMW 535i, I proposed to my parents that they might like to check out BMW's European Delivery program.  Through ED, you work with a US dealer to buy the car and get a 7% price break having to do with taxes and legal mumbo jumbo; it works out to be a good way to subsidize a vacation to Europe.  My parents asked if I'd be interested in coming along and so we planned a trip centered, in my mind, around the Formula 1 race in Magny-Cours and visiting the Nurburgring.
+
+We arrived in Munich in the morning and went outside to get a taxi to the BMW European Delivery center.  Outside was a lineup of cream-colored cars, mostly Mercedes E-class wagons and R-class MPVs.  A 220d E-class pulled up, we loaded our bags and proceeded towards Munich.  The drive along the motorway was fun because, in addition to reaching upwards of 160 Km/h, I saw numerous cars that I had previously only heard about on *Top Gear*.  At the European Delivery center, we were told that the car would take about 45 minutes to prepare.  We walked upstairs to the cafe and had some coffee and German snacks.  This will be the only time that the word "snacks" will be what Americans understand to be a small or partial meal; throughout the rest of the trip, it seemed that what Germans call a snack most others would call a good lunch.  Also, in Germany, what looks to be a croissant probably has eggs and ham inside.  These items are tasty.
+
+After waiting a spell, we walked around the lot outside checking out the numerous diesel and 1-series cars that never make it to the US.  We headed back inside to wait a bit more and after about an hour and a half someone approached with the papers to sign over the car.  He explained to us the insurance that came with it (which is all the coverage you need, it seems) and go over other paperwork.  We then headed to the garage to get a quick rundown of the car's features.  After hearing about how many horsepowers [sic] the car has, we loaded our luggage into the 5er's trunk, which is significantly larger than that of either of my parents' current cars, a Volvo S80 and Acura TL.  Once loaded, we bid "auf wiedersehen" to the friendly Germans and my dad makes his way through the unnecessarily small garage door and we are on our way to driving the car, which had only 1 mile on the odometer, through Europe.
+
+We headed towards the Bavarian Alps where we would spend our first night in a small town named Ettal, home to a magnificent monastery which, of course, brews the local beer.  After sitting down for a late lunch with a half-liter of the aforementioned beer we walked to the far end of town, which took all of 5 minutes.  We hopped back into the car at that point and took a short drive to neighboring towns to explore a few churches and pick up some bottled water.

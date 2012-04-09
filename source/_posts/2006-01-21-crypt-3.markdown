@@ -1,0 +1,12 @@
+---
+layout: post
+title: "crypt(3)"
+date: 2006-01-21 22:23
+comments: true
+categories: [Linux]
+---
+Anyone who has used Unix or a derivative for long enough should know of crypt(3), the basic Unix hashing function.  Back In The Day, unices used crypt(3) for hashing passwords and It Was Good; computers were once slow enough that DES was an acceptable encryption algorithm even with a limit of 8 characters.  Since about the turn of the century (the latest one), any Unix worth it's salt (heh, crypto pun) offers other options for password encryption, most often MD5.  Furthermore, everything I've run into, until today, used MD5 passwords by default, though Debian Potato still offered to use crypt(3) and non-shadowed passwords (knowing that came in useful in a cracking competition my freshman year).
+
+Getting to the point, I logged into a Solaris machine that I set up recently and typed the password wrong, but it let me in.  At first I was...quite scared.  I logged in again, carefully typing the root password and was granted access.  I recalled the crypt(3) function...I logged in, typing the first 8 characters carefully and garbage for the rest.  I got in.  Long story short, Solaris 10 (SunOS 5.10) still uses crypt(3) as the default password encryption.  It's a simple fix, you just change a line in `/etc/security/policy.conf`, but still sort of apalling none the less.
+
+* <a href="http://www.vmunix.com/mark/blog/archives/2005/10/31/changing-default-password-encryption-in-solaris/">How-to  change Solaris' default password encryption</a>
