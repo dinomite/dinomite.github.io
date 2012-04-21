@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "vBulletin login with WWW::Mechanize"
-date: 2006-04-03 24:45
+date: 2006-04-03 23:45
 comments: true
 categories: [Programming]
 ---

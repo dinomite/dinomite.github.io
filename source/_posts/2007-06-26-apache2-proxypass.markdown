@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Apache2 ProxyPass"
-date: 2007-06-26 24:02
+date: 2007-06-26 23:02
 comments: true
 categories: [Sysadmin]
 ---

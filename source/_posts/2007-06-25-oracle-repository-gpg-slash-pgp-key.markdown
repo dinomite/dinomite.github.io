@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Oracle Repository GPG/PGP Key"
-date: 2007-06-25 24:59
+date: 2007-06-25 23:59
 comments: true
 categories: [Linux]
 ---

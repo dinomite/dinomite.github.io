@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Apache Won't Start: No space left on device"
-date: 2008-06-25 24:10
+date: 2008-06-25 23:10
 comments: true
 categories: [Sysadmin]
 ---
