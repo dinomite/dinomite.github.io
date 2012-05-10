@@ -1,8 +1,7 @@
----
+--- 
 layout: post
-title: "Smoking"
-date: 2007-06-02 04:53
-comments: true
-categories: []
+title: Smoking
+mt_id: 116
+date: 2007-06-02 04:53:26 -07:00
 ---
 Smoking food is great; the only downside is that if you want it ready for an afternoon barbecue, you have to get up early to put the meat to the heat.  Alton Brown's recipe for [pulled pork](http://www.foodnetwork.com/food/recipes/recipe/0,1977,FOOD_9936_23019,00.html) is what I use; it simply consists of brining a pork shoulder overnight and then smoking with a simple rub.  If you've got the smoker running, you might as well toss on [other](http://www.aolfoodblog.com/2007/05/30/smokin-cherry/) [stuff](http://www.recipegoldmine.com/smoke/smoke22.html) as well.

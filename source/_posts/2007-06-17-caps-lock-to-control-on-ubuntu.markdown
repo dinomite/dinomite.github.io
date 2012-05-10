@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Caps Lock to Control on Ubuntu"
-date: 2007-06-17 18:51
-comments: true
-categories: [Linux]
+title: Caps Lock to Control on Ubuntu
+mt_id: 119
+date: 2007-06-17 18:51:48 -07:00
 ---
 If you've ever used a Sun workstation, you know the joys of having a control key where most keyboards position the caps lock key.  If you're an experienced user of the Interweb, you know that there is nary an occasion that calls for the caps lock.  The fact that you have to hold down the shift key is a good moment to reconsider any yelling.  Though I don't use the console often, it is endlessly annoying to find that I don't have a <em>properly</em> positioned control key when I do.  I went searching for the right way to change the keyboard's layout, since I hadn't ever bothered to do it previously.  I found [this](http://www.vollink.com/gary/deb_ctrlcaps.html) how-to by Gary Vollink which describes how to replace the worthless caps lock with the useful control key in all operating systems anyone ever uses.
 

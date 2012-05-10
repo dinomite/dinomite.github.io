@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "iTunes Library Statistics"
-date: 2006-03-19 18:41
-comments: true
-categories: [Programming]
+title: iTunes Library Statistics
+mt_id: 52
+date: 2006-03-19 18:41:46 -08:00
 ---
 I wrote a little program to print some statistics about your iTunes library while watching the Malaysian GP today.  It doesn't really do the whole XML thing, and only prints a couple of things that iTunes itself won't tell you, but It's a start of something that could be good.  Right now it will tell you which artists and genres you have the most songs of, the average length of songs in your library and their average size.
 

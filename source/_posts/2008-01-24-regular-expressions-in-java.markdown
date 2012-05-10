@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Regular Expressions in Java"
-date: 2008-01-24 07:04
-comments: true
-categories: [Programming]
+title: Regular Expressions in Java
+mt_id: 176
+date: 2008-01-24 07:04:55 -08:00
 ---
 Perl is my favorite language in part because of the fluidity with which regular expressions fit in.  To loop through a file grabbing content out of matching lines is absolutely trivial:
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Finding Perl Module Dependencies"
-date: 2007-05-11 06:48
-comments: true
-categories: [Programming]
+title: Finding Perl Module Dependencies
+mt_id: 110
+date: 2007-05-11 06:48:14 -07:00
 ---
 So you've written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you've made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they're going to be running your script on, or maybe you just don't want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it's run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.
 

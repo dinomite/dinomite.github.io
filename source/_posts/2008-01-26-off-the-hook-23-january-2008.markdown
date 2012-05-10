@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 23 January 2008"
-date: 2008-01-26 06:00
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 23 January 2008
+mt_id: 177
+date: 2008-01-26 06:00:08 -08:00
 ---
 The Data Loss of the Week award goes to [GE Money](http://www.gemoney.com), the credit card processing company used by [JC Penny](http://www.jcpenny.com) department stores, who lost information on 650,000 customers including social security numbers for 150,000 of those.  The information was on a backup tape that was stored in a warehouse of [Iron Mountain](http://www.ironmountain.com/index.asp) and went missing last October.  Of course, the company reported that there was no reason to suspect the data was stolen nor used fraudulently.  Mike mentions that, like most lost data incidents, a year of free credit monitoring will probably be given to the victims.  Emmanuel wonders whether those given the credit monitoring service will be automatically billed for it after the year is up.  Bernie S. uses a service after [TD Ameritrade lost his information](http://seattletimes.nwsource.com/html/businesstechnology/2004100554_btdatabreaches31.html) 3 months ago.  He said that they did not take any billing information, so wouldn't be able to charge him without his knowledge and likens it to the [Do Not Call List](http://en.wikipedia.org/wiki/United_States_National_Do_Not_Call_Registry), which is often abused by unscrupulous telemarketers.  The [Identity Theft Resource Center](http://www.idtheftcenter.org/) says that there was a 6 fold increase in the number of compromised records last year, a total of 125 million in 2007.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Using sed"
-date: 2007-02-24 16:06
-comments: true
-categories: [Linux]
+title: Using sed
+mt_id: 96
+date: 2007-02-24 16:06:57 -08:00
 ---
 Many people don't have a clue how to use old-school Unix commands such as `sed` and I can say that I was in that camp until recently.  Previously, I would be more inclined to write a script in Perl or open up vi to perform complex and repetitive replacement tasks across multiple files.  I'm comfortable with both Perl and vi, most importantly their regular expressions which allow for quick and easy manipulation of text.  I was pushed to learn `sed` when I had a number of different files that all needed a very similar modification to each of their thousands of lines.  Sure I could write a Perl script to do it, but it was a good opportunity to learn the stream editor and I'm glad I did.
 

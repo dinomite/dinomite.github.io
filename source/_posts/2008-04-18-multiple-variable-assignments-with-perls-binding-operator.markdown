@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Multiple Variable Assignments with Perl's Binding Operator"
-date: 2008-04-18 08:29
-comments: true
-categories: [Programming]
+title: Multiple Variable Assignments with Perl's Binding Operator
+mt_id: 203
+date: 2008-04-18 08:29:55 -07:00
 ---
 I learned something new in the world of Perl regular expressions today when I came across this line:
 

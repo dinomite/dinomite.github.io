@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Code Golf"
-date: 2007-10-26 07:46
-comments: true
-categories: [Programming]
+title: Code Golf
+mt_id: 153
+date: 2007-10-26 07:46:32 -07:00
 ---
 I stumbled across a [code golf](http://golf.shinh.org) earlier this week that offers numerous problems.  The specific challenge I came across was the [fizz buzz](http://en.wikipedia.org/wiki/Bizz_buzz) problem that I had been introduced to a few weeks ago.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Windows Server 2003 Updates"
-date: 2007-04-05 11:50
-comments: true
-categories: [Sysadmin]
+title: Windows Server 2003 Updates
+mt_id: 101
+date: 2007-04-05 11:50:26 -07:00
 ---
 Dear Microsoft,
 

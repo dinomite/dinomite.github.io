@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Installing VMware Workstation on Ubuntu Feisty (7.04)"
-date: 2007-06-01 09:43
-comments: true
-categories: [Linux]
+title: Installing VMware Workstation on Ubuntu Feisty (7.04)
+mt_id: 115
+date: 2007-06-01 09:43:31 -07:00
 ---
 I found a new, easy process for installing VMware on Ubuntu, having updated the kernel on my Feisty machine since the last time I used the virtual machine.  Whenever the kernel changes, VMware needs to rebuild it's kernel module to suit, via the script `vmware-config.pl`.  This involves a few steps such that VMware can correctly build it's module against the kernel you're running.  First, you need to grab the headers for your running kernel and set them up to support building:
 

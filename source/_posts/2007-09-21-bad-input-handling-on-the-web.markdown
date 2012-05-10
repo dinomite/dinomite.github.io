@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Bad Input Handling on The Web"
-date: 2007-09-21 08:05
-comments: true
-categories: [Web]
+title: Bad Input Handling on The Web
+mt_id: 147
+date: 2007-09-21 08:05:10 -07:00
 ---
 I came across this on the Verizon billing page today when entering my account number:
 <a href='http://dinomite.net/wp-content/uploads/2007/09/west_fios_small.gif' title='FIOS Account Number'><img src='http://dinomite.net/wp-content/uploads/2007/09/west_fios_small.gif' alt='FIOS Account Number' /></a>

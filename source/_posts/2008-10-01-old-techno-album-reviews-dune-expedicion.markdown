@@ -1,9 +1,8 @@
----
+--- 
 layout: post
 title: "Old Techno Album Reviews: Dune - Expedicion"
-date: 2008-10-01 15:18
-comments: true
-categories: [Music]
+mt_id: 224
+date: 2008-10-01 15:18:50 -07:00
 ---
 Best known for their eponymous debut album, [Dune](http://en.wikipedia.org/wiki/Dune_(German_band)) is a mid-90's techno outfit whose music incorporates many of the styles endemic to [House](http://en.wikipedia.org/wiki/House_music) and [Dance](http://en.wikipedia.org/wiki/Electronic_dance_music) at the time.  **Expedicion** is a good exploration of the style, featuring lots of fast beats throughout, a bit singing vocals and even some good-old meaningless talking throughout some tracks.  The entire album is also sprinkled with radio recordings including the classic NASA piece, "we're go for auto-sequence start" on the opening track *Rising*.
 

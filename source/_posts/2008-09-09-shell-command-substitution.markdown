@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Shell Command Substitution"
-date: 2008-09-09 17:08
-comments: true
-categories: [Sysadmin]
+title: Shell Command Substitution
+mt_id: 221
+date: 2008-09-09 17:08:07 -07:00
 ---
 The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with `scp`; "there must be a better way," I thought.
 

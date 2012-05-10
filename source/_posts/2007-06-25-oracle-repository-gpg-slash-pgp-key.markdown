@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Oracle Repository GPG/PGP Key"
-date: 2007-06-25 23:59
-comments: true
-categories: [Linux]
+title: Oracle Repository GPG/PGP Key
+mt_id: 122
+date: 2007-06-25 12:59:36 -07:00
 ---
 If you're using the Oracle apt repository (`deb http://oss.oracle.com/debian/ unstable main non-free`) with Ubuntu or a recent version of Debian and don't have their GPG key, you'll get the following error when running `apt-get update`:
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Driving Across the United States day 3"
-date: 2008-03-25 06:52
-comments: true
-categories: []
+title: Driving Across the United States day 3
+mt_id: 196
+date: 2008-03-25 06:52:33 -07:00
 ---
 After a couple days of seeing next to nothing while driving through southwestern Virginia, Tennessee, Arkansas and Texas, a day of <strong>absolutely</strong> nothing was on tap in the form of West Texas.  Our drive took us from Abilene through [Sweetwater](http://en.wikipedia.org/wiki/Sweetwater,_Texas) to Big Spring where we ditched the interstate in favor of state highways.  Plentiful along this route are oil wells, pumps visible for as far as one can see.  There were also a number of drilling crews working to create new wells in the the most productive oil fields on the continent.  Additionally, Sweetwater is home to the [largest wind generator](http://en.wikipedia.org/wiki/Wind_farm) concentration in the Western hemisphere.  The hills in the town are home to innumerable multi-megawatt, 90+ meter diameter wind turbines.  Other than said hills, the highest thing around is a highway overpass, from which I took a few pictures.
 

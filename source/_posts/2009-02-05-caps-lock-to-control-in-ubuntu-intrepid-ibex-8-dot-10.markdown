@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Caps Lock to Control in Ubuntu Intrepid Ibex (8.10)"
-date: 2009-02-05 09:53
-comments: true
-categories: [Linux]
+title: Caps Lock to Control in Ubuntu Intrepid Ibex (8.10)
+mt_id: 235
+date: 2009-02-05 09:53:11 -08:00
 ---
 I've [written this post before](http://dinomite.net/2007/caps-lock-to-control-on-ubuntu/), but things have changed since the 7.04 Feisty Fawn release, so it's worth an update.  In recent releases of Ubuntu the Gnome Control Center has made it easy to simply click away the unneeded caps lock key, turning it into whatever you want.  I wanted to try KDE 4.2 a few days ago and found no way to turn off the caps lock key.  From my previous post, I knew that it's easy to add a line to the `xorg.conf`which will turn the caps lock into another control, but when I opened the file on my Ubuntu 8.10 machine, I was surprised to find very little in it:
 <pre class="brush: bash;">

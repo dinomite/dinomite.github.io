@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "A Good Day for Rum"
-date: 2008-10-06 22:49
-comments: true
-categories: [Politics]
+title: A Good Day for Rum
+mt_id: 226
+date: 2008-10-06 22:49:54 -07:00
 ---
 The passage of the [Emergency Economic Stabilization Act of 2008](http://en.wikipedia.org/wiki/Emergency_Economic_Stabilization_Act_of_2008) ([H.R. 1424](http://en.wikipedia.org/wiki/H.R._1424)) was a good thing for rum lovers:
 
@@ -17,4 +16,4 @@ This change extends the limit on taxation of rum from Puerto Rico and the United
 
 ## References
 *[Ammendments to HR1424 - Division C, Title 3, Sec. 308, Page S10368](http://thomas.loc.gov/cgi-bin/query/R?r110:FLD001:S60386)<br>
-*[26USC §7652f](http://fourmilab.ch/uscode/26usc/www/t26-F-78-D-7652.html)
+*[26USC Â§7652f](http://fourmilab.ch/uscode/26usc/www/t26-F-78-D-7652.html)

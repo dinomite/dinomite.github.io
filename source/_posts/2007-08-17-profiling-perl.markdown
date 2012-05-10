@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Profiling Perl"
-date: 2007-08-17 11:05
-comments: true
-categories: [Programming]
+title: Profiling Perl, part 1
+mt_id: 139
+date: 2007-08-17 11:05:30 -07:00
 ---
 An important and often-overlooked part of programming is profiling of code to find out where the most time is being spent and then figuring out how the resulting sections of your program can be improved.  This aspect of writing code gets little attention from people writing user-bound applications because generally, computers are fast enough that even atrocious code can complete before the user is ready to respond.  Despite this fact execution speed is still important, especially in data processing code such as that which parses large datasets (which I often find myself doing) or converts videos, for instance.  If your code consists of a number of nested loops, you can probably benefit from profiling it and speeding up the most oft-used pieces.  Even if that doesn't apply, timing the execution of statements will certainly improve your understanding of which operations are fast and which drag you down.
 

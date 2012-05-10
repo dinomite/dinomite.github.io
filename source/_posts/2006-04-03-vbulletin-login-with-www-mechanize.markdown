@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "vBulletin login with WWW::Mechanize"
-date: 2006-04-03 23:45
-comments: true
-categories: [Programming]
+title: vBulletin login with WWW::Mechanize
+mt_id: 57
+date: 2006-04-03 12:45:46 -07:00
 ---
 This is just part of a script that I wrote to...do something.  The pertinent part here is using WWW::Mechanize to login to a vBulletin web forum.  I figure Googlebot will guide someone trying to figure out how to use WWW::Mechanize this way.
 

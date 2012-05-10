@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Automated Encrypted Backups via SSH"
-date: 2007-10-03 13:19
-comments: true
-categories: [Sysadmin]
+title: Automated Encrypted Backups via SSH
+mt_id: 149
+date: 2007-10-03 13:19:20 -07:00
 ---
 This is a hack of the script `rsnaptar` included with the rsnapshot distribution.  In short, it takes a  few rsnapshot directories, runs them through `tar`, `gzip` and `gpg` finally depositing the results on another machine.  I wrote this so that I could grab the backups from a server at work and routinely toss them onto a DVD that I take home with me.  It's a bad idea to be walking around with all of the company's source code, hence the GPG.  The magic all happens on one line which runs `tar`, piping the output to `ssh` which runs `gzip` reading from stdin on the remote machine then on to `gpg` dumping its output wherever you want.
 

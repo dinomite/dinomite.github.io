@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Corn Runs the World"
-date: 2007-01-18 09:10
-comments: true
-categories: [Politics]
+title: Corn Runs the World
+mt_id: 79
+date: 2007-01-18 09:10:35 -08:00
 ---
 This week and last, news outlets have mentioned the [rising price of tortillas](http://www.commercialappeal.com/mca/business/article/0,1426,MCA_440_5278441,00.html) in Mexico.  It seems humorous on the surface but tortillas are the staple food of Mexico's poor and the 14% increase in prices for the commodity in the past year, as compared to the country's 4% inflation, is significant for many.  Tortillas have increased in price because the white corn from which they are made has similarly increased in value due in part to the increased demand for yellow corn that is used to make ethanol.
 

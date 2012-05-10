@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Chevrolet HHR Panel"
-date: 2007-08-11 07:59
-comments: true
-categories: [Cars]
+title: Chevrolet HHR Panel
+mt_id: 133
+date: 2007-08-11 07:59:35 -07:00
 ---
 It's not often that I praise any of the American auto manufacturers, least of all Chevrolet.  This isn't because I'm a European car fanboy or otherwise prejudiced against American cars but simply because they [churn](http://en.wikipedia.org/wiki/Ford_Five_Hundred) [out](http://en.wikipedia.org/wiki/Chevrolet_Impala) [so](http://en.wikipedia.org/wiki/Pontiac_Aztek) [much](http://en.wikipedia.org/wiki/Dodge_Neon) [crap](http://en.wikipedia.org/wiki/Oldsmobile).  The chronic problem for manufacturers is that of  [least-common-deonminator, good-enough, penny-pinching engineering](http://www.codinghorror.com/blog/archives/000321.html).
 

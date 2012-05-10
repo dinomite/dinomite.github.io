@@ -1,9 +1,8 @@
----
+--- 
 layout: post
 title: "Apache Won't Start: No space left on device"
-date: 2008-06-25 23:10
-comments: true
-categories: [Sysadmin]
+mt_id: 213
+date: 2008-06-25 12:10:03 -07:00
 ---
 I'm doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:
 
@@ -17,4 +16,4 @@ After being confused because there certainly is enough disk space, I Googled for
 ~$ for id in \`ipcs -s |awk '/USERNAME/ {print $2}'\`; do ipcrm -s $id; done
 </pre>
 
-That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then `ipcrm`'s those semaphores.
+That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then `ipcrm`'s those semaphores. 

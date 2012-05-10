@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "fawk"
-date: 2009-02-08 23:26
-comments: true
-categories: [Linux]
+title: fawk
+mt_id: 236
+date: 2009-02-08 12:26:35 -08:00
 ---
 There are a lot of old-school Unix commands that can be strung together to form miniatures programs a solution where one doesn't already exist.  Often times, they're great for nothing more than trimming the output from command line programs to make ocular searching easier.  `awk` is one of these great little text processing utilities, though I usually find myself using it in only it's simplest fashion: to print a specific record from a line of input.
 <pre class="brush: bash;">Caligula:~$ df -h|awk '{print $2}'

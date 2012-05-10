@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Tough Mudder Norcal 2010"
-date: 2010-10-14 20:09
-comments: true
-categories: [Fitness]
+title: Tough Mudder Norcal 2010
+mt_id: 261
+date: 2010-10-14 20:09:36 -07:00
 ---
 On October 9th, I ran the [Northern California Tough Mudder](http://toughmudder.com/events/northern-california/bear-valley-course-map/).  Billing itself as "the TOUGHEST one day event on the planet", Tough Mudder is an endurance race helad at a number of venues throughout the United States.  The event is basically a trail run punctuated by obstacles.  Except there aren't many trails involved--the terrain covered is largely rock washes and barren mountain.  <a href="http://toughmudder.com/events/">Most of the locations</a> are ski resorts, perfect because they offer challenging ground with significant elevation change to add difficulty.
 
@@ -29,4 +28,4 @@ More pictures:
 
  - <a href="http://www.facebook.com/album.php?aid=31551&id=124998340846518">From Tough Mudder on Facebook</a>
  - <a href="http://www.facebook.com/album.php?aid=226592&id=44016588030">Even more from them</a>
- - <a href="http://www.brightroom.com/view_user_event.asp?EVENTID=65677&BIB=2921&LNSEARCH=1&PWD=">Me, looking pretty buff and tired</a>
+ - <a href="http://www.brightroom.com/view_user_event.asp?EVENTID=65677&BIB=2921&LNSEARCH=1&PWD=">Me, looking pretty buff and tired</a> 

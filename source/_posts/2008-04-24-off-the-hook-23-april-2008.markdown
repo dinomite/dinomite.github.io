@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 23 April 2008"
-date: 2008-04-24 21:36
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 23 April 2008
+mt_id: 207
+date: 2008-04-24 21:36:55 -07:00
 ---
 This is the synopsis of [Off The Hook](http://www.2600.com/offthehook) that aired on [23 April 2008](http://www.2600.com/offthehook/2008/0408.html).  The show runs live on [WBAI](http://www.wbai.org) at 7pm on Wednesdays.  Call in at 212.209.2900 or send letters to [oth@2600.com](mailto:oth@2600.com).  The show is also available as a [high-quality podcast](http://www.2600.com/news/view/article/2509).
 

@@ -1,8 +1,7 @@
----
+--- 
 layout: post
-title: "Spinner"
-date: 2006-02-26 11:58
-comments: true
-categories: [Linux]
+title: Spinner
+mt_id: 47
+date: 2006-02-26 11:58:08 -08:00
 ---
 Do you administer or use unix systems remotely?  Ones that log you out if you're idle for long enough?  [Spinner](http://www.laffeycomputer.com/spinner.html) is a program that runs in the background and periodically sends characters to keep your session from going idle.  Cool.

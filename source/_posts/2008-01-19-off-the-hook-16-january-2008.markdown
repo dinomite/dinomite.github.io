@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 16 January 2008"
-date: 2008-01-19 11:43
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 16 January 2008
+mt_id: 172
+date: 2008-01-19 11:43:14 -08:00
 ---
 [The Off The Hook site](http://www.2600.com/oth/) takes a while to post synopsis of the episodes and once they are posted, the overviews aren't very detailed.  I'm going to start taking some notes as I listen to the show and putting them here, for the good of all internet denizens who may find this via Google.
 

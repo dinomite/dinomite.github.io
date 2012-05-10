@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Python Switch Statements - part 2"
-date: 2008-02-11 23:22
-comments: true
-categories: [Programming]
+title: Python Switch Statements - part 2
+mt_id: 182
+date: 2008-02-11 12:22:36 -08:00
 ---
 My friend Lex read my post on [Python's lack of switch statements](http://dinomite.net/archives/dictatorial-leadership-is-sometimes-the-best) and sent me a note that the normal method for implementing something along the lines of a `switch` in Python is to use a dictionary.  First, let's define some functions:
 

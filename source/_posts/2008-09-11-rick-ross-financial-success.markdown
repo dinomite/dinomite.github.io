@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Rick Ross' Financial Success"
-date: 2008-09-11 23:28
-comments: true
-categories: [Music]
+title: Rick Ross' Financial Success
+mt_id: 220
+date: 2008-09-11 23:28:38 -07:00
 ---
 Since he was [mentioned on The Daily Show]() a few weeks ago, [Rick Ross](http://en.wikipedia.org/wiki/Rick_Ross_(rapper)) has quickly become my favorite rapper.  The king of repetition, Ross hails from Miami and makes much of his activities trafficking drugs despite [allegations that he worked for the man](http://www.thesmokinggun.com/archive/years/2008/0721081rickross1.html) during part of his life.  Like many rappers, Rick Ross talks a lot about his expensive cars and I noticed a trend in the vehicles of which he spoke.
 

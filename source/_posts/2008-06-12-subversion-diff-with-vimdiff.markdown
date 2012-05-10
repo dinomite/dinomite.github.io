@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Subversion diff with vimdiff"
-date: 2008-06-12 11:03
-comments: true
-categories: [Programming]
+title: Subversion diff with vimdiff
+mt_id: 214
+date: 2008-06-12 11:03:40 -07:00
 ---
 Side by side diffs are much more legible and useful than those in [unified format](http://en.wikipedia.org/wiki/Diff#Unified_format) or any other linear diff.  By default, the `svn diff` command presents output in the unified format, though it has an option, `--diff-cmd`, which allows you to specify the program that will perform the diff.  Passing `vimdiff` as the diff command doesn't work as the options passed by `svn diff` are a bit complicated:
 

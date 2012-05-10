@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Genesis According to George Gamow"
-date: 2006-04-10 08:55
-comments: true
-categories: [Uncategorized]
+title: Genesis According to George Gamow
+mt_id: 55
+date: 2006-04-10 08:55:34 -07:00
 ---
 I've been reading [Big Bang: The Origin of the Universe](http://www.amazon.com/gp/product/0007162219/sr=8-1/qid=1144684215/ref=pd_bbs_1/104-8438297-9319959?%5Fencoding=UTF8) by Simon Singh, an excellent history of all cosmology.  The book starts with the very beginning of astronomical exploration, such as Eratosthenes who was the first to estimate the Earth's diameter.  I'm nearing the end of the book (the mid 1900's, shortly after the Big Bang theory was created) and ran across this, [George Gamow](http://en.wikipedia.org/wiki/George_Gamow)'s version of the bible's Genesis:
 

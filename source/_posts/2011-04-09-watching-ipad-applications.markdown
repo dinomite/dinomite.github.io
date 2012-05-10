@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Watching iPad Applications"
-date: 2011-04-09 09:00
-comments: true
-categories: [Networking]
+title: Watching iPad Applications
+mt_id: 271
+date: 2011-04-09 09:00:00 -07:00
 ---
 Shortly after the release of [The Daily](http://www.thedaily.com), [Andy Baio](http://waxy.org) created [The Daily: Indexed](http://thedailyindexed.tumblr.com) and, more importantly, described how he created that index in [a blog post](http://waxy.org/2011/02/how_i_indexed_the_daily/).  The crux of his reverse engineering of The Daily app was [Charles](http://www.charlesproxy.com), which he describes how to use in the aforementioned blog post.  Since reading that post, I've wanted to explore a number of applications on my iPad and iPhone to see what they're really doing when they cause the network indicator to spin.
 
@@ -13,4 +12,4 @@ I didn't get to my goal right away because the first thing I noticed upon starti
 
 Getting back to my initial focus, Reeder attempts to mark a post read as soon as you open a post--any failure of a post being marked read is because the network was slow or inoperative at the time you were reading.  Reeder periodically refreshes all of your feeds, as indicated by the spinning icon on the iPad or the replaced battery display on the iPhone, but it actually spends much longer doing this than the icon's state would lead you to believe.  From day-to-day usage the update to the feeds I care about (read: those that actually have updates) is done in short order, but Charles reveals that Reeder is still pulling data from individual websites.  My guess is that Reeder pulls the feed list from Google, gets the new posts mentioned therein, and then proceeds to do its own checking of feeds.
 
-Reeder was the only app that had really crossed my mind after Andy Baio's post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I'll turn to if I have future questions that need answering.
+Reeder was the only app that had really crossed my mind after Andy Baio's post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I'll turn to if I have future questions that need answering. 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "DIY R-Strap"
-date: 2009-03-15 23:40
-comments: true
-categories: [photography]
+title: DIY R-Strap
+mt_id: 240
+date: 2009-03-15 23:40:25 -07:00
 ---
 After seeing the [BlackRapid R-Strap](http://www.blackrapid.com/) mentioned on [Photojojo](http://photojojo.com/content/buy-this/diy-camera-r-strap/) I knew that I wanted one for greater convenience when walking about with my camera.  I hate neck straps because they get in the way when you aren't using them and make you look like a fat tourist when you are.  I might as well break out the khaki shorts and Hawaiian shirt.  Aside from the not-exactly-cheap $50 price tag, I figured that and R-Strap was something I should DIY.
 

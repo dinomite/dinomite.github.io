@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Screen Presets"
-date: 2009-11-17 22:40
-comments: true
-categories: [Sysadmin]
+title: Screen Presets
+mt_id: 247
+date: 2009-11-17 22:40:11 -08:00
 ---
 Ubuntu's [Screen Profiles](https://wiki.ubuntu.com/ScreenProfiles) package taught a lot of folks about how GNU Screen can be so much more than a fancy replacement for [nohup(1)](http://en.wikipedia.org/wiki/Nohup).  Since GNU Screen's name is difficult enough to search for, they have thankfully renamed the package to [Byobu](https://launchpad.net/byobu).  Byobu provides users with a whole bunch of pre-defined aliases to make working within Screen easier, and make more sense by defining a useful status line.  There's more that can be done with screen, the most notable in my view is creating predefined working environments that make getting yourself up and running when logging into a system easy.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Linux Filesystem Internals"
-date: 2008-02-15 15:18
-comments: true
-categories: [Linux]
+title: Linux Filesystem Internals
+mt_id: 188
+date: 2008-02-15 15:18:37 -08:00
 ---
 Someone asked me questions about filesystems recently and, though I used to have a good handle on them, my knowledge has waned over the years.  I figured writing about filesystem internals was a good way to brush up on that knowledge.
 

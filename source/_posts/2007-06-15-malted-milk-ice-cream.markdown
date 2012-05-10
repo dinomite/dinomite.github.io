@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Malted Milk Ice Cream"
-date: 2007-06-15 18:00
-comments: true
-categories: []
+title: Malted Milk Ice Cream
+mt_id: 120
+date: 2007-06-15 18:00:08 -07:00
 ---
 A Google search for 'malted milk ice cream' only turns up a single recipe, that from [A Perfect Scoop](http://www.amazon.com/Perfect-Scoop-Sorbets-Granitas-Accompaniments/dp/1580088082/ref=pd_bbs_sr_1/103-8039568-6832620?ie=UTF8&s=books&qid=1181954898&sr=8-1).  I used that as the basis for my ice cream but only very loosely.  I've been cooking long enough what changes can be made to a recipe without screwing it up completely and so took the liberty of omitting the eggs.  I usually make ice cream without eggs mainly because I'm lazy and if you use eggs you have heat your mixture to cook them.  Also, without eggs ice cream is considerably healthier, containing much less fat and cholesterol.  Finally, ice cream made with eggs is technically a custard.  That final stipulation is the one I pull out when I don't want people to think I'm lazy.  My recipe is as follows:
 

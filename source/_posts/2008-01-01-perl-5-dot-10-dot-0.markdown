@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Perl 5.10.0"
-date: 2008-01-01 18:41
-comments: true
-categories: [Programming]
+title: Perl 5.10.0
+mt_id: 170
+date: 2008-01-01 18:41:18 -08:00
 ---
 Sure, it's already slathered across every news site known to man but just like everyone else I have different reasons for being excited about Perl 5.10.0.
 

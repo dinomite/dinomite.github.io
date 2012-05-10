@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "My desk"
-date: 2006-02-09 21:16
-comments: true
-categories: [Uncategorized]
+title: My desk
+mt_id: 41
+date: 2006-02-09 21:16:15 -08:00
 ---
 This probably isn't that interesting, but I'll may find it good to look back on at some point.  A simple picture of my desk while I'm working on a project on the laptop and the right screen (I just got the LCD for Christmas); you can also see the massive queue of books I needed to get through at that time.  That little plastic shelf almost broke.
 <img src="http://dinomite.net/2006/02/desk.jpg" class="mt-image-center" style="text-align: center; display: block; margin: 0 auto 20px;" />

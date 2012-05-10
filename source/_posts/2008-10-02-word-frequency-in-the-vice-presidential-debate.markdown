@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Word Frequency in the Vice Presidential Debate"
-date: 2008-10-02 22:41
-comments: true
-categories: [Politics]
+title: Word Frequency in the Vice Presidential Debate
+mt_id: 223
+date: 2008-10-02 22:41:44 -07:00
 ---
 It's always interesting to see what keywords debaters drop to get their points across.  To analyze tonight's debate between Biden &amp; Palin, I grabbed a [transcript from CNN](http://edition.cnn.com/2008/POLITICS/10/02/debate.transcript/?iref=mpstoryview) that was posted shortly after.  The transcript listed each speaker's name (Biden, Ifill or Palin), followed by their first sentence in that statement, with subsequent statements on new lines.  To make it easily `grep`able,  wrote a quick Perl script to join each speaker's full passages into a single line, beginning with their name.  With that done, it's trivial to search for words the candidates spoke.  [The transcript is here](http://dinomite.net/~dinomite/vpdebate.txt).
 

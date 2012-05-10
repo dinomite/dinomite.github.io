@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Changing a Shortname on Mac OS X"
-date: 2008-02-19 06:35
-comments: true
-categories: [Mac]
+title: Changing a Shortname on Mac OS X
+mt_id: 192
+date: 2008-02-19 06:35:06 -08:00
 ---
 When you install Mac OS X, it asks you for your full name, which is what it will use for what it calls the username.  Despite calling it the username, it is not actually field 1 in `/etc/passwd`, which is what Unix users would call the username.  Mac OS X refers to the first field of `/etc/passwd` as a user's "short name," normally a concatenated and lowercased version of your full name.  As one would expect, your Unix username, what you would use to login at a console or via SSH, is actually the short name; your files are stored in /Users/<shortname> and are owned by <shortname>.
 

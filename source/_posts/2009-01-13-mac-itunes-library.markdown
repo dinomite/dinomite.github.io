@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Mac::iTunes::Library"
-date: 2009-01-13 10:02
-comments: true
-categories: [Programming]
+title: Mac::iTunes::Library
+mt_id: 231
+date: 2009-01-13 10:02:46 -08:00
 ---
 Though [I use Last.fm](http://last.fm/user/dinomite) it's not a perfect representation of my listening habits.  Between the occasional server downtime, not uncommon in the Audioscrobbler days, I wanted to be able to get some accurate statistics about my music library.  It's easy to create smart playlists to find the number of songs you have of each genre or by each artist in your library, but much more interesting is to see what you actually listen to the most.  There are a number of artist whom I only have a limited collection of, but enjoy quite a lot.  DJ Miko being a great example - 10th by number of tracks, but a strong 3rd by playcount.  I just can't get enough of those Eurodance beats.  Conversely, Scooter is a prolific producer, but a long way from my favorite artist.
 

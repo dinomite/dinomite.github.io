@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Dulce de Leche Ice Cream"
-date: 2007-10-29 13:12
-comments: true
-categories: []
+title: Dulce de Leche Ice Cream
+mt_id: 154
+date: 2007-10-29 13:12:56 -07:00
 ---
 My dad made up a bunch of [dulce de leche](http://en.wikipedia.org/wiki/Dulce_de_leche) a while back; if you're going to boil one can, you might as well fill the pot.  For those who don't know, the easiest way to make dulce de leche, a caramelized milk product popular in South and Central America, is to boil a can of <em>sweetened</em> [condensed milk](http://en.wikipedia.org/wiki/Condensed_milk) for two to three hours.  At the shorter end of that range, you'll end up with viscosity similar to a caramel syrup; longer and it turns into a thick, spreadable paste, not unlike Nutella.
 

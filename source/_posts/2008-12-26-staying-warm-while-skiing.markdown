@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Staying warm while skiing"
-date: 2008-12-26 20:40
-comments: true
-categories: [Fitness]
+title: Staying warm while skiing
+mt_id: 233
+date: 2008-12-26 20:40:25 -08:00
 ---
 After years of being cold on the slopes, I think that I've finally gotten the gear to keep myself warm.  Through a high of 4 degrees Fahrenheit a few days ago and 16 degree snow with 20+ MPH winds today.  I'm sure someone will find this information useful.
 

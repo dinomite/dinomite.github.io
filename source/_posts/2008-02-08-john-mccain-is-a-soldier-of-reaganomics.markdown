@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "John McCain is a Soldier of Reaganomics"
-date: 2008-02-08 16:01
-comments: true
-categories: [Politics]
+title: John McCain is a Soldier of Reaganomics
+mt_id: 184
+date: 2008-02-08 16:01:36 -08:00
 ---
 John McCain's economic advisor, Douglas Holtz-Eakin, was on [Wednesday's Marketplace](http://marketplace.publicradio.org/display/web/2008/01/30/econ_advisors_holtz_eakin/) discussing the senator's economic strategy for the country.  In the interview, Holtz-Eakin said this of McCain:
 

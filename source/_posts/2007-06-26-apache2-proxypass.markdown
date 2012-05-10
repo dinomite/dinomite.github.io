@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Apache2 ProxyPass"
-date: 2007-06-26 23:02
-comments: true
-categories: [Sysadmin]
+title: Apache2 ProxyPass
+mt_id: 123
+date: 2007-06-26 12:02:05 -07:00
 ---
 If you're trying to setup a proxy on Apache2 in Ubuntu Feisty, by default it disallows all access to any proxy URLs, which is good.  What isn't good, however, is that nowhere I could find mentioned that this could be found in the `proxy.conf` file located in `/etc/apache2/mods-enabled`.  I spent some time wondering why my Allow and Deny orders were being ignored until I looked at this file and found that it has the final say.  To allow access to your proxy, you must edit this file adding 'Allow' orders within the `<proxy *>` block.  Simply use hostnames, IP addresses or [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation:
 

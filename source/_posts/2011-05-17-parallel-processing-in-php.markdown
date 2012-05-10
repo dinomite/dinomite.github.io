@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Parallel Processing in PHP"
-date: 2011-05-17 08:30
-comments: true
-categories: [Programming]
+title: Parallel Processing in PHP
+mt_id: 267
+date: 2011-05-17 08:30:00 -07:00
 ---
 Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power--network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.
 
@@ -99,4 +98,4 @@ class Par extends gosUtility_Parallel {
 
 The example above runs out-of-the-box (provided your PHP was built with <a href="http://us.php.net/pcntl">`--enable-pcntl`</a>, so I encourage you to [download the source](https://launchpad.net/genius) and take it for a test drive.
 
-Incidently, if you're in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way.
+Incidently, if you're in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way. 

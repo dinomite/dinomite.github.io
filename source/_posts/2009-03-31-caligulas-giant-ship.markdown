@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Caligula's Giant Ship"
-date: 2009-03-31 23:11
-comments: true
-categories: [history]
+title: Caligula's Giant Ship
+mt_id: 238
+date: 2009-03-31 23:11:13 -07:00
 ---
 Like any good [geek](http://www.geekcode.com), I have a naming system for my computers and associated devices.  Real systems &#x2014; which I define as those that run SSH &#x2014; are named after [Roman Emperors](http://en.wikipedia.org/wiki/List_of_Roman_Emperors); things that are computer-like but don't run SSH are named after [Roman generals](http://en.wikipedia.org/wiki/List_of_Roman_generals).
 

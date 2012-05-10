@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Gas v. Diesel and Energy Content"
-date: 2008-05-21 12:05
-comments: true
-categories: [Economics]
+title: Gas v. Diesel and Energy Content
+mt_id: 209
+date: 2008-05-21 00:05:05 -07:00
 ---
 Anyone who pays attention to the car world from an efficiency perspective has no doubt heard of the popularity that diesel engines have in Europe, but lack in the United States.  Diesels post significantly better distance per volume of fuel (miles per gallon, [furlongs](http://en.wikipedia.org/wiki/Furlong) per [peck](http://en.wikipedia.org/wiki/Peck)) than their gasoline counterparts.  I've always wondered how much of this disparity can be accounted for by diesel fuel's higher energy content.  A quick search turned up [some statistics](http://cta.ornl.gov/data/appendix_b.shtml) (See table B-4) produced by [Oak Ridge National Laboratory](http://en.wikipedia.org/wiki/Oak_Ridge_National_Laboratory)'s [Center for Transportation Analysis](http://cta.ornl.gov/cta/) which lists a gallon of diesel as containing 38.6 [MJ](http://en.wikipedia.org/wiki/Joule) per liter and gasoline as posesing 34.8 MJ/L.  Not that big of a difference; gasoline has 90% the energy content of diesel.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Setting Up Ubuntu for Building Kernel Modules"
-date: 2007-02-06 11:16
-comments: true
-categories: [Linux]
+title: Setting Up Ubuntu for Building Kernel Modules
+mt_id: 84
+date: 2007-02-06 11:16:31 -08:00
 ---
 When you build kernel modules or other programs that depend upon the kernel you need to have the kernel source configured per the currently running kernel.  To see what kernel your machine is running, simply run `uname -a`.  To setup your machine to allow things to build against the kernel, you first need the source for your currently running kernel:
 

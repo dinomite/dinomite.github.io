@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "NetBank Failure"
-date: 2007-10-01 07:44
-comments: true
-categories: [Economics]
+title: NetBank Failure
+mt_id: 152
+date: 2007-10-01 07:44:28 -07:00
 ---
 <img src='http://dinomite.net/wp-content/uploads/2007/10/netbank-logo.gif' class='right' alt='NetBank logo' />
 It's not every day that you hear about a bank failure.  Prior to [NetBank's failure](http://www.fdic.gov/bank/individual/failed/NetBank.html) on Friday, the last was in February and that was the first in [two and a half years](http://www.fdic.gov/bank/individual/failed/banklist.html).  Thanks to the [Federal Deposit Insurance Corporation](http://en.wikipedia.org/wiki/Federal_Deposit_Insurance_Corporation) (not to be confused with [The Fed](http://en.wikipedia.org/wiki/United_States_Federal_Reserve)), the impact of a bank's dissolution doesn't have much effect on its customers.  As detailed in the above-linked FDIC page on the NetBank failure, ING Direct will take over the accounts of NetBank and anyone with deposits less than the [FDIC insurance limit](http://www.mymoneyblog.com/archives/2007/05/fdic-insurance-what-if-my-bank-fails-make-sure-your-money-is-covered.html) won't suffer any loss at all.  Those with uninsured deposits (the amount exceeding $100,000) can only expect to see half of that amount:

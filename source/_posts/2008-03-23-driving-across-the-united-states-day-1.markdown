@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Driving Across the United States day 1"
-date: 2008-03-23 05:25
-comments: true
-categories: []
+title: Driving Across the United States day 1
+mt_id: 198
+date: 2008-03-23 05:25:02 -07:00
 ---
 I'm moving from [The Commonwealth of Virginia](http://en.wikipedia.org/wiki/Arlington,_Virginia) to [The California Republic](http://en.wikipedia.org/wiki/Silicon_Valley).  As an adventure, and a means to get my car to the West Coast, I'm driving across the country with my dad in my [M3](http://gallery.dinomite.net/v/Cars/BMW_M3/).  Because of the nature of the car, we're avoiding the snowy highways through the middle of the country and following a generally southern route.
 

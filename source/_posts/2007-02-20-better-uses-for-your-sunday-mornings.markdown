@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Better uses for your Sunday mornings"
-date: 2007-02-20 08:08
-comments: true
-categories: []
+title: Better uses for your Sunday mornings
+mt_id: 98
+date: 2007-02-20 08:08:54 -08:00
 ---
 Many people spend their Sunday mornings going to church for an hour or two, which I argue is a waste of time.  I don't expect to convince anyone to give up religion altogether by saying this, but that's really beside the point; church is a waste of time, even for the religious.  From a theological perspective, God wants you to respect him and obey the tenets of your religion, but most of all, religion is supposed to help you have a good life.  Now, I'm sure some people do get a lot out of hearing a sermon once a week, or meeting with like-minded people, but undoubtedly many simple see it as a necessary chore to maintaining their faith.  My alternative is simple: exercise.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Popular IM Networks"
-date: 2008-08-29 14:03
-comments: true
-categories: [Computers]
+title: Popular IM Networks
+mt_id: 216
+date: 2008-08-29 14:03:20 -07:00
 ---
 [A blog post](http://billionsconnected.com/blog/2008/08/global-im-market-share-im-usage/) by one of [EQO](http://www.eqo.com)'s founders, Jeff LaPorte, claims to have insight into the market share of the instant messaging services throughout the world.  The [graphic](http://billionsconnected.com/blog/wp-content/uploads/2008/08/global_im_market_share_stats_july_08.pdf) (PDF) shows the strength of competing IM services in different markets throughout the world.  I immediately questioned the data because it showed AOL Instant Messenger with a narrow lead over MSN and Yahoo!, who share a close second.  Personally, I've never used either of those services, nor do I know anyone who regularly does; is that because I'm a curmudgeon or the EQO data is inaccurate?  I must side with the latter.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 5 March 2008"
-date: 2008-03-06 20:47
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 5 March 2008
+mt_id: 189
+date: 2008-03-06 20:47:07 -08:00
 ---
 This is the synopsis of [Off The Hook](http://www.2600.com/offthehook) that aired on [5 March 2008](http://www.2600.com/offthehook/2008/0308.html).
 

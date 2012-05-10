@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Building an Olympic Lifting Platform"
-date: 2011-04-21 21:29
-comments: true
-categories: [CrossFit]
+title: Building an Olympic Lifting Platform
+mt_id: 270
+date: 2011-04-21 21:29:48 -07:00
 ---
 <a href="http://www.flickr.com/photos/dinomite/5510688763/in/set-72157626102609509/"><img alt="Finished platform" src="http://farm6.static.flickr.com/5174/5510688763_2a99df1c6d.jpg" width="500" height="333" class="mt-image-right" /></a>
 CrossFit got me started on Olympic lifting and it is now one of my favorite things that I do in the exercise realm.  The tools needed for CrossFit are few and generally inexpensive, but Oly lifting does require some significant outlay if you plan on doing it at home.  One of the things you need is a platform upon which to perform lifts--it's important to have a stable, flat surface to stand on, and have the ability to drop weights.  Before going through with building a platform I dumped a light bar on my brick patio and the back yard, both of which left marks.  It was time for me to build a platform.
@@ -30,4 +29,4 @@ Assembly is a very simple affair:
  8.  Put a <a href="http://www.flickr.com/photos/dinomite/5510663107/in/set-72157626102609509/">crapton of weights</a> on top to ensure your platform comes out flat
  9.  Once everything is dry, give it a coat of deck sealant to make it waterproof
 
-The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I'd take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting.
+The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I'd take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting. 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 12 March 2008"
-date: 2008-03-13 14:16
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 12 March 2008
+mt_id: 195
+date: 2008-03-13 14:16:22 -07:00
 ---
 This is the synopsis of [Off The Hook](http://www.2600.com/offthehook) that aired on [12 March 2008](http://www.2600.com/offthehook/2008/0308.html).  The show runs live on [WBAI](http://www.wbai.org) at 7pm on Wednesdays.  Call in at 212.209.2900 or send letters to [oth@2600.com](mailto:oth@2600.com).  The show is also available as a [high-quality podcast](http://www.2600.com/news/view/article/2509).
 

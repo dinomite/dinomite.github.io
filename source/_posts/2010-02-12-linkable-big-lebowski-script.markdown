@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Linkable Big Lebowski Script"
-date: 2010-02-12 08:49
-comments: true
-categories: []
+title: Linkable Big Lebowski Script
+mt_id: 253
+date: 2010-02-12 08:49:08 -08:00
 ---
 Recently, I wanted to respond to <a href="http://twitter.com/peasleer/status/8136443388">a friend's tweet</a>
 with a <a href="http://twitter.com/dinomite/status/8138332322">specific quote</a> from The Big Lebowski.  While there are a number of Big Lebowski scripts around

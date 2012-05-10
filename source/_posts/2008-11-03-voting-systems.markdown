@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Voting Systems"
-date: 2008-11-03 23:50
-comments: true
-categories: [Politics]
+title: Voting Systems
+mt_id: 227
+date: 2008-11-03 23:50:50 -08:00
 ---
 On the eve of the election, I am thinking about [voting systems](http://en.wikipedia.org/wiki/Voting_system) better than that which is currently employed in United States [general elections](http://en.wikipedia.org/wiki/General_election).
 

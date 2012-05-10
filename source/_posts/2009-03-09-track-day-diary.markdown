@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Track Day Diary"
-date: 2009-03-09 22:30
-comments: true
-categories: [Cars]
+title: Track Day Diary
+mt_id: 241
+date: 2009-03-09 22:30:25 -07:00
 ---
 If you're into cars, a weekend at the racetrack is as good as it gets.  The local chapters of car clubs ([BMW CCA](http://bmwcca.org), [PCA](http://pca.org), [FCA](http://ferrariclubofamerica.org), [SCCA](http://scca.org) etc.) rent a track for the weekend, organize instructors from member volunteers, and allow you to Drive Like You Mean It on a real racetrack while teaching you to be a much better driver.  Track weekends are variously called Driver's Schools, High Performance Driver Education (HPDE), or simply track days.  The weekends aren't cheap &#x2014; the [NCC BMW CCA](http://nccbmwcca.org) I used to drive with charges $430 and the [GGC BMW CCA](http://ggcbmwcca.org) $525 &#x2014; but are worth every penny.  Your first time can be quite daunting, since it's hard to know what to expect or how to prepare.  Hopefully this overview of my most recent day with the Golden Gate Chapter at [Infineon Raceway](http://en.wikipedia.org/wiki/Infineon_Raceway) will be helpful.
 
@@ -26,3 +25,4 @@ Friday
 On Friday, I come home from work, pack all of my gear into the car, and head to bed around 10PM.  I won't actually get there until 11 and probably won't fall asleep until later still, but since I have to leave the house at 5:30AM to get to the track by 7, I make the effort to get a good night's sleep.  Why 7AM?  The drivers meeting will be at 8AM, the instructors will do ride-along intro laps thereafter and the track opens at 9AM.  All track events require everyone to attend the drivers meeting and, like the rest of the day, things run a very strict time table.  Renting a track is very expensive and everyone wants to make the most of it, so be on time and build yourself some extra cushion, especially if it's your first time out.
 
 To The Track
+--------

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Brake Pads for the E36 M3"
-date: 2010-11-20 09:07
-comments: true
-categories: [Cars]
+title: Brake Pads for the E36 M3
+mt_id: 263
+date: 2010-11-20 09:07:15 -08:00
 ---
 I've been doing autocross and track days with my 1997 BMW M3 for long
 enough that I can offer some insight into the brake pads available for
@@ -20,6 +19,7 @@ Like stock pads, these will work for your first track experience if you are cons
 occasional autocross.
 
 Hawk High Performance Street (HPS)
+--------
 The HPS are biled as a stock-replacement pad and I would agree with that.  They dust a bit less than BMW OEM pads, and provide a little bit more fade resistance.  For track use, the HPS is much like stock or the EBC Greenstuff mentioned above--they'll work if you're new & conservative or slow.
 
 Axxis Ultimate (ULT)
@@ -34,4 +34,4 @@ Hawk Blue
 ---------
 I am lazy, so I put my pads on at home before driving to the track, so I got to experience these on the street.  To begin with, the first stop from neighborhood speeds takes about twice the distance you expect, and the initial bit is nonexistent.  After a couple more low speed stops, the brakes have enough heat to work just fine, but they still squeal as though you are murdering cats with each brake application.
 
-On the track, the Hawk Blue is an awesome pad.  Being a true track pad it takes some heat before they really work, as described above.  Just like you need to get your tires and brain up to temperature, with a track pad you need some heat in the brakes before they will do what you expect.  You should be driving judiciously on your out lap anyway, so this ought not be a problem.  The wear on these is much better than any of the aforementioned pads--a day at Laguna Seca burned less than one quarter.  If you have been going to the track for a while, or if you've gotten fast enough to begin feeling fade in your existing brake setup, get some track pads.
+On the track, the Hawk Blue is an awesome pad.  Being a true track pad it takes some heat before they really work, as described above.  Just like you need to get your tires and brain up to temperature, with a track pad you need some heat in the brakes before they will do what you expect.  You should be driving judiciously on your out lap anyway, so this ought not be a problem.  The wear on these is much better than any of the aforementioned pads--a day at Laguna Seca burned less than one quarter.  If you have been going to the track for a while, or if you've gotten fast enough to begin feeling fade in your existing brake setup, get some track pads. 

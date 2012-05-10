@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Keeping Your Home Directory in Subversion"
-date: 2008-06-09 23:25
-comments: true
-categories: [Linux]
+title: Keeping Your Home Directory in Subversion
+mt_id: 211
+date: 2008-06-09 23:25:46 -07:00
 ---
 I've heard of doing this for a long time, but always figured it'd be a huge jump to put my home directory into a revision control system.  For years I've scp'd files to a new machine when I moved in and when I made changes to my vimrc or ssh config, it was hell to propagate the changes to my other machines.  No more is this an issue, since I've commited my home directory.  The process is really quite trivial.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "4 a.m."
-date: 2007-08-05 07:49
-comments: true
-categories: []
+title: 4 a.m.
+mt_id: 137
+date: 2007-08-05 07:49:47 -07:00
 ---
 The [TED](http://en.wikipedia.org/wiki/TED_%28conference%29) conference this year featured a great talk by [Rives](http://www.shopliftwindchimes.com/) who [spun an amazing tale](http://www.ted.com/index.php/talks/view/id/148) about the use of the time 4 a.m. in literature, music and history.
 

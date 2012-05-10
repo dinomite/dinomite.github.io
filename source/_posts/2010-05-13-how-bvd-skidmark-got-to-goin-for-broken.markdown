@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "How BVD Skidmark Got to Goin' For Broken"
-date: 2010-05-13 09:22
-comments: true
-categories: [Cars]
+title: How BVD Skidmark Got to Goin' For Broken
+mt_id: 258
+date: 2010-05-13 09:22:08 -07:00
 ---
 Goin' for Broken was the first [24 Hours of LeMons](http://www.24hoursoflemons.com/) event for Team BVD Skidmark.  None of us had ever done LeMons before, and only a few of my teammates had even been on a racetrack previously.
 
@@ -42,4 +41,4 @@ To The Races
 
 After all of this work, the car was ready to go and we [headed to the track](http://dinomite.net/2010/bvd-skidmarks-first-24-hours-of-lemons/).  At the track, we rigged up a few things, including some [probe thermometers](http://www.amazon.com/Polder-Original-Cooking-Timer-Thermometer/dp/B0000CF5MT/ref=sr_1_6?ie=UTF8&s=home-garden&qid=1273725647&sr=8-6) for monitoring the water & transmission temperatures.  It turns out, these hack gauges were the best thing in the world--they feature temperature alarms that make sure you know when something has gone wrong.  Without a doubt, having the alarm go off after our water pump belt broke kept us in the race.
 
-If you have ever thought about doing the 24 Hours of LeMons or had the desire to race at all, get a team together and do it.  It's a bit of work, but entirely doable and an incredible amount of fun.
+If you have ever thought about doing the 24 Hours of LeMons or had the desire to race at all, get a team together and do it.  It's a bit of work, but entirely doable and an incredible amount of fun. 

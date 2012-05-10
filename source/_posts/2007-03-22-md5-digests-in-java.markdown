@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "MD5 Digests in Java"
-date: 2007-03-22 13:59
-comments: true
-categories: [Programming]
+title: MD5 Digests in Java
+mt_id: 102
+date: 2007-03-22 13:59:16 -07:00
 ---
 File hashes have a multitude of uses and MD5 is, despite the fact that weaknesses have been found in the algorithm, still very useful and widely employed.  Creating MD5 digests in Java is quite easy, but the documentation for [MessageDigest](http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html) is a little bit tricky.  Here is a simple method that takes in a string of input and returns the hash of the string.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 27 February 2008"
-date: 2008-03-01 07:18
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 27 February 2008
+mt_id: 191
+date: 2008-03-01 07:18:01 -08:00
 ---
 This is the synopsis of [Off The Hook](http://www.2600.com/offthehook) that aired on [27 February 2008](http://www.2600.com/offthehook/2008/0208.html).
 

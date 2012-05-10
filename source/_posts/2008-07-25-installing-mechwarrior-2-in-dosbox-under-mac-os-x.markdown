@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Installing Mechwarrior 2 in DOSBox Under Mac OS X"
-date: 2008-07-25 09:17
-comments: true
-categories: [Mac]
+title: Installing Mechwarrior 2 in DOSBox Under Mac OS X
+mt_id: 212
+date: 2008-07-25 09:17:42 -07:00
 ---
 Put the Mechwarrior 2 CD into your Mac's CD drive; it will show up as two mounted discs, one for the audio and one for the game data.  The disc I have is for Mechwarrior 2 v1.1, so the game data is mounted as `/Volumes/MECH2_V1_1`; if you have a different version, the mount point will be slightly different and subsequent commands should be adjusted to match.  To access the disc in DOSBox, you must mount it.  Start DOSBox and type:
 <pre>mount d /Volumes/MECH2_V1_1 -t cdrom -usecd 0</pre>

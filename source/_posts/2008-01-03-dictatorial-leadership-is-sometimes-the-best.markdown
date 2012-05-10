@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Dictatorial Leadership is Sometimes the Best"
-date: 2008-01-03 18:46
-comments: true
-categories: [Programming]
+title: Dictatorial Leadership is Sometimes the Best
+mt_id: 173
+date: 2008-01-03 18:46:27 -08:00
 ---
 While writing some Python code today I came to a point where a [switch](http://en.wikipedia.org/wiki/Switch_statement) might have been appropriate.  Knowing that switch statements, like any control structure, differ amongst languages I ran a quick search and came up with this  [Python Enhancement Proposal](http://www.python.org/dev/peps/pep-3103/).  The first paragraph of that page is a rejection notice which states, quite simply, "A quick poll during my keynote presentation at PyCon 2007 shows this proposal has no popular support. I therefore reject it."  Wow, that's quite a unilateral decision; I looked at the author, '''guido at python.org''' and thought, "that's certainly his prerogative," for, if you recall analogies from the SAT, Guido van Rossum : Python :: Linus Torvalds : the Linux kernel.
 

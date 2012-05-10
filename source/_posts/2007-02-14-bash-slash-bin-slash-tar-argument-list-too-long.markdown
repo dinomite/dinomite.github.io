@@ -1,9 +1,8 @@
----
+--- 
 layout: post
 title: "bash: /bin/tar: Argument list too long"
-date: 2007-02-14 06:25
-comments: true
-categories: [Linux]
+mt_id: 91
+date: 2007-02-14 06:25:27 -08:00
 ---
 Anyone who has worked with large numbers of files has seen the error '`Argument list too long`' returned by a command before, usually something like `cp` or `rm`.  Eventually, they find `xargs` and all is well again; rather than globbing directly, you use `find` and `xargs` to feed the intended command:
 

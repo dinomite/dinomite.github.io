@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Driving Across the United States day 2"
-date: 2008-03-24 06:04
-comments: true
-categories: []
+title: Driving Across the United States day 2
+mt_id: 197
+date: 2008-03-24 06:04:53 -07:00
 ---
 The second day started with a trip through Memphis, TN to stop by [Graceland](http://en.wikipedia.org/wiki/Graceland), not because either of us particularly care about Elvis but it's a major stop for Americana, so you can't just drive by.  Surprisingly, even on Easter this landmark of tackiness was open and visitors could take a tour of the mansion, were they so inclined.  This was of little interest so, after a couple of pictures, we drove on to Arkansas with a stop to see the Mississippi river up close.  The river is incredibly wide as everyone has always heard and it was moving quite quickly due to recent rains.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Introduction to Genres of Electronic Music through Remixes"
-date: 2007-04-15 06:09
-comments: true
-categories: []
+title: Introduction to Genres of Electronic Music through Remixes
+mt_id: 108
+date: 2007-04-15 06:09:55 -07:00
 ---
 Undoubtedly, the most comprehensive map to electronic music is [Ishkur's Guide](http://www.di.fm/edmguide/edmguide.html) which covers every genre, even reaching out to Rap, much of which contains electronic elements.  Ishkur's Guide is certainly worth perusing if you're interested in electronic music, but is a bit cumbersome for someone simply looking for an overview.  The best way to get a quick understanding of the different genres within electronic music is to hear the same song presented through different interpretations.  Madonna's [<em>Like a Prayer</em>](http://en.wikipedia.org/wiki/Like_a_Prayer_%28song%29) fits this bill nicely, as it has been remixed by numerous artists in a myriad of styles.
 
@@ -12,7 +11,7 @@ Undoubtedly, the most comprehensive map to electronic music is [Ishkur's Guide](
 <ul>
 <li><a href="http://dinomite.net/static/music/like-a-prayer-house-mix.mp3">Mad'House'smix</a></li>
 </ul>
-First is a version by [Mad'House](http://en.wikipedia.org/wiki/Mad'House), a short-lived ensemble which <em>only</em> made remixes of Madonna songs.  I would describe this mix as having a [house](http://en.wikipedia.org/wiki/House_music) feel, which is certainly in keeping the the group's intentions.  It adds a harder base beat, electronic bass kicks and replaces Madonna's vocals with those of Buse Ünlü, the group's vocalist.  This track keeps true to the feeling of the original, while forgoing the instrumentation in pop princess' version entirely.
+First is a version by [Mad'House](http://en.wikipedia.org/wiki/Mad'House), a short-lived ensemble which <em>only</em> made remixes of Madonna songs.  I would describe this mix as having a [house](http://en.wikipedia.org/wiki/House_music) feel, which is certainly in keeping the the group's intentions.  It adds a harder base beat, electronic bass kicks and replaces Madonna's vocals with those of Buse ÃœnlÃ¼, the group's vocalist.  This track keeps true to the feeling of the original, while forgoing the instrumentation in pop princess' version entirely.
 
 <ul>
 <li><a href="http://dinomite.net/static/music/like-a-prayer-club-mix.mp3">DJ M bbe's club mix</a></li>
@@ -32,4 +31,4 @@ Break out your subwoofer, because the club mix is here.  Club music is, hence th
 <ul>
 <li><a href="http://dinomite.net/static/music/like-a-prayer-darkcore-mix.mp3">Mr. Bungle's darkcore mix</a></li>
 </ul>
-You probably wouldn't have guessed that someone could make <em>Like a Prayer</em> sound evil and depressing, but here it is.  Replace the vocals with those of an angsty adolescent, simplify the beats down to electronic drum hits, replace the melody with a spartan version from a machine and you've got yourself [darkcore](http://en.wikipedia.org/wiki/Darkcore).
+You probably wouldn't have guessed that someone could make <em>Like a Prayer</em> sound evil and depressing, but here it is.  Replace the vocals with those of an angsty adolescent, simplify the beats down to electronic drum hits, replace the melody with a spartan version from a machine and you've got yourself [darkcore](http://en.wikipedia.org/wiki/Darkcore). 

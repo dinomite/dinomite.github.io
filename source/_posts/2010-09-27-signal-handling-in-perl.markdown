@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Signal Handling in Perl"
-date: 2010-09-27 18:54
-comments: true
-categories: [Programming]
+title: Signal Handling in Perl
+mt_id: 256
+date: 2010-09-27 18:54:29 -07:00
 ---
 Perl signal handling is easy.  Simply create a subroutine to handle a signal and register it as handler in the <a href="http://perldoc.perl.org/perlvar.html#%25SIG">%SIG</a> hash:
 
@@ -164,4 +163,4 @@ sub restartChildren {
 }
 </pre>
 
-The parent process utilizes <a href="http://search.cpan.org/perldoc/Parallel::ForkManager">Parallel::ForkManager</a> to spin off children.  We store the PIDs of these children in a package global, <tt>@children</tt>, because the signal handler gets no state information (i.e. it isn't given <tt>$self</tt>), so it can only access things that are global to the package.  As before, we register signal handlers, which do whatever is required.  In the case of <tt>cleanupAndShutdown()</tt> (which handles INT and TERM), we kill all of the children and then <tt>exit</tt> in the parent process.  If the parent process receives a HUP instead, we kill the children and then simply <tt>return</tt> from the signal handler, which returns to the main loop of the parent which will respawn the children.
+The parent process utilizes <a href="http://search.cpan.org/perldoc/Parallel::ForkManager">Parallel::ForkManager</a> to spin off children.  We store the PIDs of these children in a package global, <tt>@children</tt>, because the signal handler gets no state information (i.e. it isn't given <tt>$self</tt>), so it can only access things that are global to the package.  As before, we register signal handlers, which do whatever is required.  In the case of <tt>cleanupAndShutdown()</tt> (which handles INT and TERM), we kill all of the children and then <tt>exit</tt> in the parent process.  If the parent process receives a HUP instead, we kill the children and then simply <tt>return</tt> from the signal handler, which returns to the main loop of the parent which will respawn the children. 

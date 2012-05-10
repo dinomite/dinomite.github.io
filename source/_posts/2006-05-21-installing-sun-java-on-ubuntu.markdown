@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Installing Sun Java on Ubuntu"
-date: 2006-05-21 17:12
-comments: true
-categories: [Linux]
+title: Installing Sun Java on Ubuntu
+mt_id: 68
+date: 2006-05-21 17:12:57 -07:00
 ---
 I installed Azureus on my Ubuntu machine recently and found it to absolutely *peg* the CPU when downloading more than a few torrents at once.  I know that Bittorrent is a pretty CPU intensive protocol, but I had been running similar numbers of torrents on the same machine using [bittornado](http://packages.ubuntu.com/breezy/net/bittornado) with much less ado.  By default, Ubuntu installs the [GCJ Java virtual machine](http://packages.ubuntu.com/breezy/interpreters/java-gcj-compat), which is a perfectly serviceable JVM, but I suspected it wasn't as good as Sun's own.  I'll shall not decree that Sun's JVM is better than GCJ, as I didn't actually run any tests, but Azureus runs faster now that I'm using the Sun machine.  Onward.
 

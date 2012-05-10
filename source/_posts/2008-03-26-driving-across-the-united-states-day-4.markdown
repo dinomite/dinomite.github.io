@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Driving Across the United States day 4"
-date: 2008-03-26 18:21
-comments: true
-categories: []
+title: Driving Across the United States day 4
+mt_id: 199
+date: 2008-03-26 18:21:26 -07:00
 ---
 <a href='http://dinomite.net/wp-content/uploads/vla-telescope.jpg' title='VLA Telescope'><img src='http://dinomite.net/wp-content/uploads/vla-telescope.jpg' alt='VLA Telescope' class='right'/></a>
 

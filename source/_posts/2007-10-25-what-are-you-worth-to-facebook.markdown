@@ -1,8 +1,7 @@
----
+--- 
 layout: post
-title: "What Are You Worth to Facebook?"
-date: 2007-10-25 07:45
-comments: true
-categories: []
+title: What Are You Worth to Facebook?
+mt_id: 156
+date: 2007-10-25 07:45:05 -07:00
 ---
 It was [widely](http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top) [reported](http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story)  [yesterday](http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508) that Microsoft bought a 1.6% stake in [Facebook](http://facebook.com) for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook's 42 million accounts.  [Marketplace's coverage](http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/) put that number at $300 dollars, which takes into account Facebook's projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn't necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus [isn't actually my friend](https://dinomite.net/index.php?tag=atheism).  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don't want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?

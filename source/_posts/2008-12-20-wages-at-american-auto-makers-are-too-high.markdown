@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Wages at American auto makers are too high"
-date: 2008-12-20 08:48
-comments: true
-categories: [Economics]
+title: Wages at American auto makers are too high
+mt_id: 229
+date: 2008-12-20 08:48:55 -08:00
 ---
 [Harley Shaiken](http://geography.berkeley.edu/PeopleHistory/faculty/H_Shaiken.html) had [a piece on Marketplace](http://marketplace.publicradio.org/display/web/2008/12/18/pm_shaiken_commentary/) yesterday arguing that high labor costs, the sticking point for Senate Republicans concerning last week's bailout, are not a prime reason for the US auto maker's downfall.  I don't feel the need to break apart Shaiken's short argument, because he sums it up well in the final sentence, "A superior product, high productivity and high wages pave the road to a healthy economy and a decent society."  We can all agree that workers in Detroit have high wages and the indigenous car manufacturers even have [good productivity](http://www.mlive.com/business/index.ssf/2008/06/harbour_report_detroit_3_erasi.html); but a superior product?  Not a chance.
 

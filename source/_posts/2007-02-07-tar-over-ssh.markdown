@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "tar Over SSH"
-date: 2007-02-07 06:10
-comments: true
-categories: [Linux]
+title: tar Over SSH
+mt_id: 89
+date: 2007-02-07 06:10:45 -08:00
 ---
 `scp` is great for ease of use, but if you're transferring numerous files, small ones in particular, it isn't the fastest method.  `tar`, however, is very well suited to gathering small files into a single unit, but `tar`ing the files, `scp`ing the tarball and then un-`tar`ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:
 

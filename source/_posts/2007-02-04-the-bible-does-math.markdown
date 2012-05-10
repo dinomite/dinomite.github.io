@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "The Bible Does Math"
-date: 2007-02-04 06:13
-comments: true
-categories: [Uncategorized]
+title: The Bible Does Math
+mt_id: 86
+date: 2007-02-04 06:13:14 -08:00
 ---
 I just finish reading Sam Harris' <em>Letter to a Christian Nation</em>, which is a very good book.  At one point he notes that the bible stipulates [Pi](http://en.wikipedia.org/wiki/Pi) is exactly 3.  I wondered how such a book would lay out mathematical constants, but it's pretty straightforward:
 

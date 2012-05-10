@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Crapcan Racing Tips"
-date: 2010-12-16 03:48
-comments: true
-categories: [Cars]
+title: Crapcan Racing Tips
+mt_id: 265
+date: 2010-12-16 03:48:44 -08:00
 ---
 <a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/2010-12-lemons-00012.jpg.html"><img alt="The Jaywatch car" src="http://mpierce.org/gallery/d/4339-2/2010-12-lemons-00012.jpg" width="400" height="267" class="mt-image-left" /></a>
 [Drivers' schools](http://www.nccbmwcca.org/content.php?120-driving-school) are incredibly fun and the best way to improve your driving prowess.  [Track days](http://www.nasaproracing.com/hpde/) can be incredibly useful for honing your skill once you have been on track enough to catch your own mistakes.  While incredibly useful tools for learning to drive fast, neither can touch the [24 Hours of LeMons](http://www.24hoursoflemons.com/) for having fun with motorsports.  I have previously written about [the basics of getting to a LeMons race](http://dinomite.net/2010/how-bvd-skidmark-got-to-goin-for-broken/), and what happened at [our first race](http://dinomite.net/2010/bvd-skidmarks-first-24-hours-of-lemons/).  The team just finished another race, the 2010 Arse-Freeze-Apalooza at Buttonwillow this past weekend, where we finished 68th of 173.  Better than half made us happy, because the head gasket blew with an hour and a half left in the race.
@@ -25,4 +24,4 @@ Caution Wave
 ===========
 If you've done other racing or track days, one of the first things you'll notice about crapcan racing is the number of yellow flags thrown.  When you have hundreds of $500 cars on a racetrack with inexperienced drivers, problems happen often.  At the Arse-Freeze-Apalooza, Jay said that the recovery crew did 75 tows on Saturday alone.  Oftentimes, cautions will be thrown well ahead of what you can see if you're closely following a pack of cars.  For this reason, you'll see folks who have been racing a while throw up their hand by the rear-view mirror and wave when they see a yellow flag.  This way, everyone behind knows that they are going to slow for caution, and you should too.
 
-Photos by [Marshall Pierce](http://mpierce.org/gallery/v/motorsport/2010-12-lemons/).
+Photos by [Marshall Pierce](http://mpierce.org/gallery/v/motorsport/2010-12-lemons/). 

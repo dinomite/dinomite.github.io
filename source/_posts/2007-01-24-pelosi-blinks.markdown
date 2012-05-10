@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Pelosi Blinks"
-date: 2007-01-24 06:35
-comments: true
-categories: [Politics]
+title: Pelosi Blinks
+mt_id: 80
+date: 2007-01-24 06:35:19 -08:00
 ---
 Check out how often Nancy Pelosi blinks - about once per second.  The president blinks at a more relaxed pace of once every 3-5 seconds and then there's Cheney, who's robot eyes never need to be refreshed.
 [youtube]YzhJXQLxxZs[/youtube]

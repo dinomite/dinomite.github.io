@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "The Plan for Iraq"
-date: 2007-01-31 09:57
-comments: true
-categories: [Politics]
+title: The Plan for Iraq
+mt_id: 88
+date: 2007-01-31 09:57:10 -08:00
 ---
 NPR's [All Things Considered](http://www.npr.org/templates/rundowns/rundown.php?prgId=2) had a story about a [Minnesota National Guard unit](http://www.npr.org/templates/story/story.php?storyId=7085635) that has been told that their stay in Iraq will be extended, like many other of our deployed forces in the world.  One of the soldiers in the unit was given the opportunity to pose a question to President Bush during his interview with NPR's Juan Williams.  The soldier asked whether the President had a plan for Iraq if the troop surge didn't have the intended effect, to which Bush responded,
 

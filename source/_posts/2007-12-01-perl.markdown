@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Perl"
-date: 2007-12-01 07:31
-comments: true
-categories: [Programming]
+title: Perl, Python and Ruby
+mt_id: 163
+date: 2007-12-01 07:31:21 -08:00
 ---
 After reading [this article](http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/) comparing the new Ruby 1.9 to it's older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Off The Hook - 30 January 2008"
-date: 2008-02-04 08:29
-comments: true
-categories: [Off The Hook]
+title: Off The Hook - 30 January 2008
+mt_id: 185
+date: 2008-02-04 08:29:21 -08:00
 ---
 In attendance: Emmanuel, Bernie S, Mike, Redbird and Not Kevin.
 

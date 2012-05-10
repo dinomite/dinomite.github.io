@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Splitting MP3s in Perl"
-date: 2008-09-26 10:35
-comments: true
-categories: [Programming]
+title: Splitting MP3s in Perl
+mt_id: 225
+date: 2008-09-26 10:35:19 -07:00
 ---
 I listen to some podcasts daily that have annoying messages in them that never change.  With a bit of research, I came across the [MP3::Splitter](http://search.cpan.org/~ilyaz/MP3-Splitter-0.04/Splitter.pm) module on [CPAN](http://search.cpan.org/) which has somewhat confusing documentation but provides a method `mp3split()` that pulls specified pieces of a file.  You provide `mp3split()` with the input MP3 filename, options as a hash and then any number of arrays that specify which portions of the MP3 to copy into new files.  The easiest syntax for specifying a portion is to pass the start position and the length of the desired chunk, both in seconds.  From the command line, I did this:
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "here-documents in Perl"
-date: 2008-05-24 08:10
-comments: true
-categories: [Programming]
+title: here-documents in Perl
+mt_id: 210
+date: 2008-05-24 08:10:20 -07:00
 ---
 [Here-documents](http://en.wikipedia.org/wiki/Here_document) are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn't know their proper name.  In Python, you define a here document with three single or double quotes:
 

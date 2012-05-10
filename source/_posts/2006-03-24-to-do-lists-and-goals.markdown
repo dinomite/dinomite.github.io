@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "To-do lists and goals"
-date: 2006-03-24 22:10
-comments: true
-categories: []
+title: To-do lists and goals
+mt_id: 60
+date: 2006-03-24 22:10:37 -08:00
 ---
 My social psychology teach counseled his students in the great benefit that goals can have on mood, [self-esteem](http://en.wikipedia.org/wiki/Self-esteem) and [self-efficacy](http://en.wikipedia.org/wiki/Self-efficacy), the latter being much more important in light of recent studies.  Accomplishing goals, however small, has a great positive effect upon one's feelings of self worth (self-esteem), motivation and ability to achieve (self-efficacy).  In this light, he implored everyone to create to-do lists every day, outlining everything you plan to do.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "SSH Tunnels for Quick"
-date: 2007-09-09 18:06
-comments: true
-categories: [Networking]
+title: SSH Tunnels for Quick, Secure Net Access
+mt_id: 144
+date: 2007-09-09 18:06:58 -07:00
 ---
 An SSH tunnel is a great way to quickly setup a secure method for browsing the web from an unsecure location, such as a public wireless network.  All you need is a machine running an SSH server.  I setup a tunnel from my Mac OS X laptop using the following command:
 

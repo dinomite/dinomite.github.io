@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Why Oil Companies Support Carbon Caps"
-date: 2007-05-22 15:39
-comments: true
-categories: [Politics]
+title: Why Oil Companies Support Carbon Caps
+mt_id: 114
+date: 2007-05-22 15:39:04 -07:00
 ---
 Amongst all of the recent news about climate change, I started hearing about large corporations, even oil and car companies, who were backing legislation such as carbon caps.  The most notable of these groups is the [US Climate Action Partnership](http://en.wikipedia.org/wiki/U.S._Climate_Action_Partnership) which includes companies like BP America and PG&E that are throughly tied to fossil fuels.  Why are these companies supportive of legislation that will create wholesale changes in the manner in which their industries operate?
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "United States Federal Lands"
-date: 2008-09-16 20:27
-comments: true
-categories: [Politics]
+title: United States Federal Lands
+mt_id: 219
+date: 2008-09-16 20:27:11 -07:00
 ---
 I gave this post a vague title because the control of [federal lands](http://en.wikipedia.org/wiki/Federal_lands), such as National Parks, National Memorials and National Forests, is a surprisingly complicated issue.  Tracts controlled by the federal government arise from disparate processes and are controlled by a number of different agencies including the National Park Service, Bureau of Land Management and the United States Forest Service.
 

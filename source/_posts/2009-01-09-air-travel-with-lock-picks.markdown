@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Air Travel with Lock Picks"
-date: 2009-01-09 11:20
-comments: true
-categories: [Hacking]
+title: Air Travel with Lock Picks
+mt_id: 232
+date: 2009-01-09 11:20:40 -08:00
 ---
 For the first time a few months ago I traveled by plane and brought lock picks in my carry on luggage.  After having read [this article](http://www.i-hacked.com/content/view/267/2/) about sneaking lock picks in the extension tubes of rolling luggage, I wondered what would really be required to just sneak picks through.  Though flying with lock picks isn't illegal the TSA agents are not known for their accurate knowledge of the rules concerning air travel.  I really wanted to have picks at my destination so that I could do a seminar on picking; I didn't want them to be taken away by an overzealous agent.
 

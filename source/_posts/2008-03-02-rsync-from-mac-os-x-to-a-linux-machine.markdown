@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Rsync from Mac OS X to a Linux Machine"
-date: 2008-03-02 08:15
-comments: true
-categories: [Mac]
+title: Rsync from Mac OS X to a Linux Machine
+mt_id: 190
+date: 2008-03-02 08:15:25 -08:00
 ---
 If you try to `rsync` from a Mac OS X machine using the `-E` switch (capture extended attributes & resource forks - you want this) to a Linux or BSD computer, you'll get something like the following error:
 

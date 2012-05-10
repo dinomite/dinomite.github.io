@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Tokyo Ska Paradise Orchestra"
-date: 2007-08-04 02:45
-comments: true
-categories: [Music]
+title: Tokyo Ska Paradise Orchestra
+mt_id: 126
+date: 2007-08-04 02:45:01 -07:00
 ---
 Really, what other band will you ever see with a [sousaphone](http://en.wikipedia.org/wiki/Sousaphone) and steel drum on stage?
 

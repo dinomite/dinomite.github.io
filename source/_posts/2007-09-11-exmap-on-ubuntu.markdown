@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "EXMAP on Ubuntu"
-date: 2007-09-11 17:05
-comments: true
-categories: [Linux]
+title: EXMAP on Ubuntu
+mt_id: 142
+date: 2007-09-11 17:05:46 -07:00
 ---
 EXMAP is a shared memory analysis utility that makes it easy to determine exactly how much memory a process is using.  Unlike `top`, which counts all memory shared amongst programs toward each of those programs, EXMAP gives three numbers most notable of which is "Effective Resident" memory usage.  This number is the amount of memory mapped directly by a process, plus a portion of any shared memory pools it is part of, that is, the program is only counted as using an equal portion of shared memory as all other processes that are sharing the same.
 

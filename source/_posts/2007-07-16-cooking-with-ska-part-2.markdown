@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Cooking With Ska Part 2"
-date: 2007-07-16 18:48
-comments: true
-categories: []
+title: Cooking With Ska Part 2
+mt_id: 130
+date: 2007-07-16 18:48:53 -07:00
 ---
 Five Iron Frenzy has a very good song entitled *Rhubarb Pie*, though it fails to give a recipe for the desert.
 

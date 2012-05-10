@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Hang on"
-date: 2006-02-07 10:06
-comments: true
-categories: [Politics]
+title: Hang on, Stevens
+mt_id: 44
+date: 2006-02-07 10:06:16 -08:00
 ---
 Though I like his books, I don't often listen to [Al Franken's radio show](http://shows.airamericaradio.com/alfrankenshow/); the show makes him seem more like a balance for Rush Limbaugh.  That's really an overstatement, because Franken isn't a psychotic drug addict who wants to kill people on the other side of the line, but Republicans these day seem to fit into the moderate (John McCain) or extreme (Rush Limbaugh, Tom DeLay, Ann Coulter, etc.) bins with little in between making it hard to find an analog for Franken.  Back to the point, though, I listened to The Al Franken show today (Monday's show via Autocast; the word podcast is a misnomer) and he had a funny bit, featuring a parody song entitled ["Hang on Stevens"](http://shows.airamericaradio.com/alfrankenshow/node/4154) admonishing the leftmost of the supreme court justices to not relinquish his seat on the bench until after the 2009 inauguration.
 

@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Motorola Razr Shortcuts and Bluetooth"
-date: 2007-02-18 20:28
-comments: true
-categories: [Uncategorized]
+title: Motorola Razr Shortcuts and Bluetooth
+mt_id: 93
+date: 2007-02-18 20:28:46 -08:00
 ---
 I recently got a bluetooth headset to use with my Motorola Razr and it works wonderfully, with the one drawback that having bluetooth enabled on the phone all the time reduces its battery life from 5-6 days standby, to 3-4.  I thought that turning bluetooth on and off was a pain, requiring navigating 6 menus deep to do so, until I saw the option for shortcuts in another configuration menu.  Shortcuts are easy to setup and make doing anything, including enabling or disabling bluetooth, a snap.
 

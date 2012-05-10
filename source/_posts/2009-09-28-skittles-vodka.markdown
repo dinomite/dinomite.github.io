@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Skittles Vodka"
-date: 2009-09-28 23:13
-comments: true
-categories: [Cooking]
+title: Skittles Vodka
+mt_id: 249
+date: 2009-09-28 23:13:58 -07:00
 ---
 When walking through Ikea one day, I spotted the perfect bottles in which to make Skittles vodka.  Starting with these, here is the process for making this infusion.
 <a href="http://www.flickr.com/photos/dinomite/3964554487/" class="tt-flickr tt-flickr-Small" title="Skittles vodka materials"><img class="alignright" src="http://farm3.static.flickr.com/2465/3964554487_50b848e127_m.jpg" alt="Skittles vodka materials" width="240" height="122" /></a> 
@@ -40,4 +39,4 @@ After each of the containers was filled, I gave them a quick shake; within a few
 <p>Finally, the filtration.  This step is the most difficult, because it requires a lot of patience even though you're almost done!</p>
 
 <a href="http://www.flickr.com/photos/dinomite/3964546733/" class="tt-flickr tt-flickr-Small" title="Completed Skittles vodka"><img class="alignleft" src="http://farm3.static.flickr.com/2473/3964546733_0ab8c7a1db_m.jpg" alt="Completed Skittles vodka" width="240" height="128" /></a>
-<p>A lot of the mass of Skittles is binder—corn starch and the like.  It leaves a significant amount of scum onthe top of your Skittles vodka mix.  To strain it off, I started by using standard office coffee filters, but those clogged very quickly.  I switched to normal paper towels, which made filtering take about 5 minutes per bottle.  After filtering, re-bottle and enjoy your super-sweet vodka rainbow!</p>
+<p>A lot of the mass of Skittles is binderâ€”corn starch and the like.  It leaves a significant amount of scum onthe top of your Skittles vodka mix.  To strain it off, I started by using standard office coffee filters, but those clogged very quickly.  I switched to normal paper towels, which made filtering take about 5 minutes per bottle.  After filtering, re-bottle and enjoy your super-sweet vodka rainbow!</p>

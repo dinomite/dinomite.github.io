@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Tab History Add-on for Firefox"
-date: 2007-11-26 13:26
-comments: true
-categories: [Computers]
+title: Tab History Add-on for Firefox
+mt_id: 158
+date: 2007-11-26 13:26:14 -08:00
 ---
 There are literally hundreds of lists of the best Firefox extensions yet [few](http://db.rambleschmack.net/pc_tips/best_firefox_extensions) mention what I deem to be the most important: [Tab History](https://addons.mozilla.org/en-US/firefox/addon/1859).  A feature that I first became addicted to in [Galeon](http://galeon.sourceforge.net), Tab History causes newly created tabs created by middle-clicking a link or clicking "Open Link in New Tab" to inherit the history of their parent.
 

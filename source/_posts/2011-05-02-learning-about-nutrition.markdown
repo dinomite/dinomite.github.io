@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Learning About Nutrition"
-date: 2011-05-02 07:30
-comments: true
-categories: [Fitness]
+title: Learning About Nutrition
+mt_id: 273
+date: 2011-05-02 07:30:25 -07:00
 ---
 <a href="http://www.fitbomb.com/p/why-i-eat-paleo.html"><img alt="Go Paleo" src="http://dinomite.net/assets_c/2011/05/Go%20Paleo-thumb-500x500-2.jpg" width="400" height="400" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
 I have learned a *lot* about nutrition in the past few years, mainly fueled by my interest in fitness.  Once I got beyond run-of-the-mill [Globo Gym](http://rehobothcrossfit.com/2010/08/19/globo-gym-vs-crossfit-gym/) workouts by delving into truly challenging fitness like [parkour](http://www.americanparkour.com) and [CrossFit](http://crossfit.com), it became apparent that I would need to match exercise with proper nutrition in order to excel.  Note: if you don't give a shit about what I've done and just want to learn about nutrition, <a href="#information">head to the bottom</a>.
@@ -64,4 +63,4 @@ To get an idea of this whole Paleo thing that I have fallen in love with check o
 * [Fit Bomb's What Is Paleo?](http://www.fitbomb.com/p/why-i-eat-paleo.html)
 * [The Paleo Solution](http://www.kk.org/cooltools/archives/005236.php) - Robb Wolf's book on the paleo diet (which I reviewed on [Cool Tools](http://www.kk.org/cooltools))
 * [The Paleo Diet](http://www.amazon.com/Paleo-Diet-Weight-Healthy-Designed/dp/0470913029/ref=sr_1_3?ie=UTF8&qid=1304303375&sr=8-3) - Dr. Loren Cordain, another big name in the paleo community
-* [The Primal Blueprint](http://www.amazon.com/Primal-Blueprint-Reprogram-effortless-boundless/dp/0982207700/ref=sr_1_8?ie=UTF8&qid=1304303375&sr=8-8) - I haven't read Mark Sisson's book, but I do read his [very good blog](http://www.marksdailyapple.com/)
+* [The Primal Blueprint](http://www.amazon.com/Primal-Blueprint-Reprogram-effortless-boundless/dp/0982207700/ref=sr_1_8?ie=UTF8&qid=1304303375&sr=8-8) - I haven't read Mark Sisson's book, but I do read his [very good blog](http://www.marksdailyapple.com/) 

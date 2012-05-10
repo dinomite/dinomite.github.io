@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Peanut Butter Ice Cream"
-date: 2007-07-09 19:01
-comments: true
-categories: []
+title: Peanut Butter Ice Cream
+mt_id: 124
+date: 2007-07-09 19:01:17 -07:00
 ---
 I got an [automatic ice cream machine](http://www.cuisinart.com/catalog/product.php?product_id=313&item_id=422&cat_id=10) as a graduation gift recently and, because it's so easy, I've been making tons of the stuff.  All thats involved is whipping together a mix, tossing it into the bucket and turning the dial; no need to fool with ice and because it's compressor-driven, you can create one batch right after the other without needing multiple frozen cores.  This allows me to easily create a number of slightly different mixes in order to find the best possible recipe for a superb ice cream.  Everyone loved a peanut butter flavored masterpiece I made a few weeks ago, so I figured that'd be a good thing to start with.
 

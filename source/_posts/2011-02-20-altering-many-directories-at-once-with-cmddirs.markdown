@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Altering many directories at once with CmdDirs"
-date: 2011-02-20 14:34
-comments: true
-categories: [Programming]
+title: Altering many directories at once with CmdDirs
+mt_id: 268
+date: 2011-02-20 14:34:25 -08:00
 ---
 <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I'm working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
 
@@ -37,4 +36,5 @@ Here's a one-liner for installing `cmddirs`:
 
 <pre>
 curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs > ~/bin/cmddirs && chmod a+x ~/bin/cmddirs
-</pre>
+</pre> 
+

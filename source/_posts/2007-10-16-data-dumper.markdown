@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Data::Dumper"
-date: 2007-10-16 11:08
-comments: true
-categories: [Programming]
+title: Data::Dumper
+mt_id: 155
+date: 2007-10-16 11:08:04 -07:00
 ---
 [Data::Dumper](http://perldoc.perl.org/Data/Dumper.html) is one of the most useful Perl modules when developing code, providing quick and easy access to the contents of data structures.  Are you unsure whether you're setting the values of a hash correctly?  Don't understand how someone has organized an object that you're 'use'ing?  Data::Dumper to the rescue.
 

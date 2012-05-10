@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "Custom Weather Radar Images"
-date: 2007-12-07 05:19
-comments: true
-categories: [Programming]
+title: Custom Weather Radar Images
+mt_id: 167
+date: 2007-12-07 05:19:38 -08:00
 ---
 <a href='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' title='NWS base reflectivity for LWX' class='right'><img src='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' alt='NWS base reflectivity for LWX' /></a>
 If you know the slightest bit about weather and the geography of the area which you are observing, you can, in the short term, forecast more accurately than what a weather website provides.  I often want to be able to bring a radar image up quickly and clicking around websites takes time.  Sure I could bookmark the weather page directly, but this was an interesting exercise and will prove useful when I get an iPhone.

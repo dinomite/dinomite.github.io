@@ -1,9 +1,8 @@
----
+--- 
 layout: post
-title: "mdadm Isn't Someone You Want to Hear From"
-date: 2007-11-28 09:08
-comments: true
-categories: [Sysadmin]
+title: mdadm Isn't Someone You Want to Hear From
+mt_id: 165
+date: 2007-11-28 09:08:56 -08:00
 ---
 A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning
 <pre>
