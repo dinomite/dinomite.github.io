@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Wikipedia recent changes and watchlist
 mt_id: 106
 date: 2007-04-09 19:26:44 -07:00

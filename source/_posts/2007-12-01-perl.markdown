@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Perl, Python and Ruby
 mt_id: 163
 date: 2007-12-01 07:31:21 -08:00

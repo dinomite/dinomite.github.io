@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Hell Bank Notes"
 date: 2006-01-14 20:50
 comments: true

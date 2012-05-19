@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Senator Leghorn
 mt_id: 73
 date: 2006-07-13 17:44:41 -07:00

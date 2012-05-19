@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Self-efficacy
 mt_id: 53
 date: 2006-03-17 22:47:53 -08:00

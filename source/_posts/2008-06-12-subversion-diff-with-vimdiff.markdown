@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Subversion diff with vimdiff
 mt_id: 214
 date: 2008-06-12 11:03:40 -07:00

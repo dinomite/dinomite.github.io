@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Stopping Brute Force SSH Attacks with fail2ban
 mt_id: 40
 date: 2006-02-10 10:40:34 -08:00

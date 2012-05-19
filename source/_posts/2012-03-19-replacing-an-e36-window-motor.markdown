@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Replacing an E36 Window Motor
 mt_id: 278
 date: 2012-03-19 21:25:34 -07:00

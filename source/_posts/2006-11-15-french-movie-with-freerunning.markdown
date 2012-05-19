@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: French movie with freerunning
 mt_id: 69
 date: 2006-11-15 13:50:32 -08:00

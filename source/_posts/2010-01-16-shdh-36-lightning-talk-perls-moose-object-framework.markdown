@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "SHDH 36 Lightning Talk: Perl's Moose Object Framework"
 mt_id: 252
 date: 2010-01-16 19:56:35 -08:00

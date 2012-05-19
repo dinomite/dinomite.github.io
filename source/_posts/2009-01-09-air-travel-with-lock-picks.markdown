@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Air Travel with Lock Picks
 mt_id: 232
 date: 2009-01-09 11:20:40 -08:00

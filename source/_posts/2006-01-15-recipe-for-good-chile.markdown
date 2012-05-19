@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Recipe for Good Chile"
 date: 2006-01-15 19:46
 comments: true

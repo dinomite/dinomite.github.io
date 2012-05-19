@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: E36 M3 Fuel Mileage
 mt_id: 266
 date: 2010-12-10 08:33:26 -08:00

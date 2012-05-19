@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Custom Weather Radar Images
 mt_id: 167
 date: 2007-12-07 05:19:38 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Python Switch Statements - part 2
 mt_id: 182
 date: 2008-02-11 12:22:36 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: UFC Advertisement on FoodTV
 mt_id: 75
 date: 2006-12-23 21:56:52 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Rsync from Mac OS X to a Linux Machine
 mt_id: 190
 date: 2008-03-02 08:15:25 -08:00

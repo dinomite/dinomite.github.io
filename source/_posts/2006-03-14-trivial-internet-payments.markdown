@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Trivial Internet Payments
 mt_id: 45
 date: 2006-03-14 16:53:21 -08:00

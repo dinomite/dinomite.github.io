@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: John McCain is a Soldier of Reaganomics
 mt_id: 184
 date: 2008-02-08 16:01:36 -08:00

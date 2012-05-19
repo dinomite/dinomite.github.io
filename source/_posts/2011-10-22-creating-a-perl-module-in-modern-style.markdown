@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Creating a Perl Module in Modern Style
 mt_id: 276
 date: 2011-10-22 09:00:00 -07:00

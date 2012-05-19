@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Spinner
 mt_id: 47
 date: 2006-02-26 11:58:08 -08:00

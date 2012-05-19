@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Windows XP on Intel Macs
 mt_id: 46
 date: 2006-02-27 11:24:29 -08:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "M3 Tranny Mounts"
 date: 2006-01-14 23:55
 comments: true

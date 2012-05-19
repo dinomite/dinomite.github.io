@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Pelosi Blinks
 mt_id: 80
 date: 2007-01-24 06:35:19 -08:00

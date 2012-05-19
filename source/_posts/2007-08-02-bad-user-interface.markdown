@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Bad User Interface
 mt_id: 127
 date: 2007-08-02 19:31:23 -07:00

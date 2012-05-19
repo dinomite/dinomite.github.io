@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Windows Server 2003 Updates
 mt_id: 101
 date: 2007-04-05 11:50:26 -07:00

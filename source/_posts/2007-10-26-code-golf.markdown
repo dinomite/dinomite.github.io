@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Code Golf
 mt_id: 153
 date: 2007-10-26 07:46:32 -07:00

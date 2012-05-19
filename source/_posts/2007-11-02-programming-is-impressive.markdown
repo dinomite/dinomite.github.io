@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Programming is Impressive
 mt_id: 161
 date: 2007-11-02 23:14:06 -07:00

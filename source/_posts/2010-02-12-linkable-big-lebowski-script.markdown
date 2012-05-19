@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Linkable Big Lebowski Script
 mt_id: 253
 date: 2010-02-12 08:49:08 -08:00

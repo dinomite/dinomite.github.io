@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Rafter Pull-Up Bar
 mt_id: 275
 date: 2011-05-22 21:57:52 -07:00

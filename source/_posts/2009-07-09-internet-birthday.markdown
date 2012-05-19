@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Internet Birthday
 mt_id: 250
 date: 2009-07-09 23:20:22 -07:00

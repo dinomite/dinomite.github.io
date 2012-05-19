@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Installing Sun Java on Ubuntu
 mt_id: 68
 date: 2006-05-21 17:12:57 -07:00

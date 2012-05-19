@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Linksys WUSB54G in Ubuntu
 mt_id: 141
 date: 2007-09-01 14:50:04 -07:00

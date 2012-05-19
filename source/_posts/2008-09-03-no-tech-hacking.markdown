@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: No-Tech Hacking
 mt_id: 217
 date: 2008-09-03 00:45:50 -07:00

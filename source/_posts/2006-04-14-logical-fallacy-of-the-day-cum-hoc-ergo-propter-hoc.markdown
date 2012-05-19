@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Logical Fallacy of the Day: cum hoc ergo propter hoc"
 mt_id: 64
 date: 2006-04-14 22:04:35 -07:00

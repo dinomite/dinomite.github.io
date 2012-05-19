@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Obfuscated code
 mt_id: 67
 date: 2006-05-06 10:27:59 -07:00

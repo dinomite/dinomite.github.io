@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: GQ Style Guy archives
 mt_id: 76
 date: 2006-12-24 20:42:09 -08:00

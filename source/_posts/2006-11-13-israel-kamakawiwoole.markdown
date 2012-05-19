@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Israel Kamakawiwo'ole
 mt_id: 70
 date: 2006-11-13 18:22:13 -08:00

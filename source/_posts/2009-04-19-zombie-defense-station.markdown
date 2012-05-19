@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Zombie Defense Station
 mt_id: 245
 date: 2009-04-19 09:48:53 -07:00

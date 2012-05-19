@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Disconnecting: Corrupted MAC on input."
 mt_id: 162
 date: 2007-12-02 18:25:03 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Brake Pads for the E36 M3
 mt_id: 263
 date: 2010-11-20 09:07:15 -08:00

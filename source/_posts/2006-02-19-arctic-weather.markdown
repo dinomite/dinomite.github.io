@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Arctic weather
 mt_id: 49
 date: 2006-02-19 10:46:54 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Sonic Commercials
 mt_id: 42
 date: 2006-02-09 20:54:30 -08:00

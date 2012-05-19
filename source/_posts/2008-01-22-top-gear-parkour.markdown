@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Top Gear Parkour
 mt_id: 175
 date: 2008-01-22 06:56:24 -08:00

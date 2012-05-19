@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "bash: /bin/tar: Argument list too long"
 mt_id: 91
 date: 2007-02-14 06:25:27 -08:00

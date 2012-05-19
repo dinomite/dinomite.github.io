@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Loss Prevention and You
 mt_id: 59
 date: 2006-03-26 20:51:07 -08:00

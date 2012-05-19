@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Quick Tip: Python's noop Equivalent"
 mt_id: 164
 date: 2007-11-30 06:52:45 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: What happened here?
 mt_id: 56
 date: 2006-04-07 12:21:00 -07:00

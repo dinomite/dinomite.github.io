@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Tokyo Ska Paradise Orchestra
 mt_id: 126
 date: 2007-08-04 02:45:01 -07:00

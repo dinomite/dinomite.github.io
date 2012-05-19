@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Writing your own Perl modules
 mt_id: 104
 date: 2007-03-13 14:33:35 -07:00

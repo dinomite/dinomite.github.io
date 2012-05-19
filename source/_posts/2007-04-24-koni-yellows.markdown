@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Koni Yellows
 mt_id: 109
 date: 2007-04-24 21:01:52 -07:00

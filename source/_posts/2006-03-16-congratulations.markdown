@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Congratulations!
 mt_id: 54
 date: 2006-03-16 11:56:38 -08:00

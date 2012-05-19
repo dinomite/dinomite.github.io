@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Richard Dawkins - The God Delusion
 mt_id: 83
 date: 2007-01-28 15:11:31 -08:00

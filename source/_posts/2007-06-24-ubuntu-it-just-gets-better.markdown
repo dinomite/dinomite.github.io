@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Ubuntu: It Just Gets Better"
 mt_id: 121
 date: 2007-06-24 13:23:30 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: vBulletin login with WWW::Mechanize
 mt_id: 57
 date: 2006-04-03 12:45:46 -07:00

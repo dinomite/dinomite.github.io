@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Driving Across the United States day 3
 mt_id: 196
 date: 2008-03-25 06:52:33 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Peanut Butter Ice Cream
 mt_id: 124
 date: 2007-07-09 19:01:17 -07:00

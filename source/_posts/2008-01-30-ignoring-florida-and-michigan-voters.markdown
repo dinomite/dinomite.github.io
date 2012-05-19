@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Ignoring Florida and Michigan Voters
 mt_id: 179
 date: 2008-01-30 08:44:12 -08:00

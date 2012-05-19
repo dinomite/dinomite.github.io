@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Keeping Your Home Directory in Subversion
 mt_id: 211
 date: 2008-06-09 23:25:46 -07:00

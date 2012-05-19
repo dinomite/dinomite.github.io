@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Rick Ross' Financial Success
 mt_id: 220
 date: 2008-09-11 23:28:38 -07:00

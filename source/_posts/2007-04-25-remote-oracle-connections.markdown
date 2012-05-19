@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Remote Oracle Connections
 mt_id: 113
 date: 2007-04-25 13:17:16 -07:00

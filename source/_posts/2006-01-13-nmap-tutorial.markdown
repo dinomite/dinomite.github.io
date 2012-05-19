@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Nmap Tutorial"
 date: 2006-01-13 23:18
 comments: true

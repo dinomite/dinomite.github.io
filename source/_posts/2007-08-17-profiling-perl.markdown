@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Profiling Perl, part 1
 mt_id: 139
 date: 2007-08-17 11:05:30 -07:00

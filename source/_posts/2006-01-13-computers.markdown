@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Computers"
 date: 2006-01-13 19:45
 comments: true

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Taqueria Pancho Villa
 mt_id: 202
 date: 2008-04-17 15:16:39 -07:00

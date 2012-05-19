@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: First Impressions from Campaign Websites
 mt_id: 174
 date: 2008-01-02 07:27:53 -08:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Filesystems"
 date: 2006-01-13 23:24
 comments: true

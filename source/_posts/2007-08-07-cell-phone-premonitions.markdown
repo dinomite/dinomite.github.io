@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Cell Phone Premonitions
 mt_id: 136
 date: 2007-08-07 06:35:09 -07:00

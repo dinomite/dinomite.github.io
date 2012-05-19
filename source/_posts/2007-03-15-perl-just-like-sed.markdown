@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Perl Just Like sed
 mt_id: 103
 date: 2007-03-15 08:23:19 -07:00

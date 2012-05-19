@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Oracle Repository GPG/PGP Key
 mt_id: 122
 date: 2007-06-25 12:59:36 -07:00

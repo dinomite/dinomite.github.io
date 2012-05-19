@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Time Machine for Linux
 mt_id: 159
 date: 2007-11-15 07:22:27 -08:00

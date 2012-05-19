@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Gas v. Diesel and Energy Content
 mt_id: 209
 date: 2008-05-21 00:05:05 -07:00

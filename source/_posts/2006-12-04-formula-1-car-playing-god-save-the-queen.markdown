@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Formula 1 car playing God Save the Queen
 mt_id: 77
 date: 2006-12-04 21:48:42 -08:00

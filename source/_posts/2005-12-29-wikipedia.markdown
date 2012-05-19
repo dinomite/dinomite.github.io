@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Wikipedia
 mt_id: 18
 date: 2005-12-29 20:42:50 -08:00

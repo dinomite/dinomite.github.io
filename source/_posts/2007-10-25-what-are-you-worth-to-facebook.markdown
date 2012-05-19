@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: What Are You Worth to Facebook?
 mt_id: 156
 date: 2007-10-25 07:45:05 -07:00

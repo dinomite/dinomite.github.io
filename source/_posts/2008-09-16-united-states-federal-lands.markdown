@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: United States Federal Lands
 mt_id: 219
 date: 2008-09-16 20:27:11 -07:00

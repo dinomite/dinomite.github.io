@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Very old Parkour
 mt_id: 228
 date: 2008-12-13 15:53:02 -08:00

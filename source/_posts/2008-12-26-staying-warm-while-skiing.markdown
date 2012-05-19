@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Staying warm while skiing
 mt_id: 233
 date: 2008-12-26 20:40:25 -08:00

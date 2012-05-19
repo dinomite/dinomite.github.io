@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Setting Up Ubuntu for Building Kernel Modules
 mt_id: 84
 date: 2007-02-06 11:16:31 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: MD5 Digests in Java
 mt_id: 102
 date: 2007-03-22 13:59:16 -07:00

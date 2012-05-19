@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Code Golf: Saving Time"
 mt_id: 222
 date: 2008-09-21 21:57:55 -07:00

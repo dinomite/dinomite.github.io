@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Using Gmail as an information store
 mt_id: 94
 date: 2007-02-27 07:15:50 -08:00

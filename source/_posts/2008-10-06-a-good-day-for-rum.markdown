@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: A Good Day for Rum
 mt_id: 226
 date: 2008-10-06 22:49:54 -07:00

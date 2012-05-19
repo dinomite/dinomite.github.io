@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: tar over SSH (part 2)
 mt_id: 112
 date: 2007-04-26 19:50:18 -07:00

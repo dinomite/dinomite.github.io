@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: A Failure of Logistics
 mt_id: 208
 date: 2008-05-16 21:07:34 -07:00

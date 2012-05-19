@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Creating Encrypted Backups with GPG
 mt_id: 117
 date: 2007-06-13 05:14:08 -07:00

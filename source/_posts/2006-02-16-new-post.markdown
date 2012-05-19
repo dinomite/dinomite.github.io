@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "new-post"
 date: 2006-02-16 08:30
 comments: true

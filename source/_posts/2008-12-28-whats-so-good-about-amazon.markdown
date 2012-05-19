@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: What's so good about Amazon?
 mt_id: 230
 date: 2008-12-28 19:31:11 -08:00

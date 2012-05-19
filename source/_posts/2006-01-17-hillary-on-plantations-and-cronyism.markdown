@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Hillary on Plantations and Cronyism"
 date: 2006-01-17 20:47
 comments: true

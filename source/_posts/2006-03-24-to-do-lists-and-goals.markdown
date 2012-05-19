@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: To-do lists and goals
 mt_id: 60
 date: 2006-03-24 22:10:37 -08:00

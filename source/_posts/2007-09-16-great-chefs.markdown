@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Great Chefs
 mt_id: 146
 date: 2007-09-16 08:15:48 -07:00

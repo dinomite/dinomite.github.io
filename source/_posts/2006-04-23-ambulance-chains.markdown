@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Ambulance chains
 mt_id: 61
 date: 2006-04-23 09:20:52 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: The Bible Does Math
 mt_id: 86
 date: 2007-02-04 06:13:14 -08:00

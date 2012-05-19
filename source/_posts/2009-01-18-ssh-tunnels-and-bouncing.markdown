@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: SSH Tunnels and Bouncing
 mt_id: 234
 date: 2009-01-18 13:51:19 -08:00

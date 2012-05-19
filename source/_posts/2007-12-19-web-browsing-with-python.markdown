@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Web Browsing With Python
 mt_id: 169
 date: 2007-12-19 17:52:53 -08:00

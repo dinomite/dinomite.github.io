@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Wasted Energy
 mt_id: 259
 date: 2010-07-09 22:52:48 -07:00

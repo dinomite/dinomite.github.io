@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Linux Filesystem Internals
 mt_id: 188
 date: 2008-02-15 15:18:37 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Changing the Physical Interface for a VMware Bridged Interface
 mt_id: 143
 date: 2007-09-13 15:36:20 -07:00

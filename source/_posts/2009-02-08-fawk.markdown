@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: fawk
 mt_id: 236
 date: 2009-02-08 12:26:35 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: mythbackend startup error
 mt_id: 78
 date: 2006-11-28 14:50:48 -08:00

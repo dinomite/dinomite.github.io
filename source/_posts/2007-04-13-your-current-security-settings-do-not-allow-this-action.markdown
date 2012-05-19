@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Your current security settings do not allow this action
 mt_id: 107
 date: 2007-04-13 08:34:58 -07:00

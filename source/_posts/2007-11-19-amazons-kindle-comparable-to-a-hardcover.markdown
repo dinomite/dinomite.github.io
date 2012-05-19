@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Amazon's Kindle Comparable to a Hardcover?
 mt_id: 157
 date: 2007-11-19 19:03:21 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: del.icio.us spying
 mt_id: 63
 date: 2006-04-16 20:24:43 -07:00

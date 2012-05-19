@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "iTunes -> MP3dir"
 date: 2006-01-14 11:51
 comments: true

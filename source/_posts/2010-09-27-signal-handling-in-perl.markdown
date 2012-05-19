@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Signal Handling in Perl
 mt_id: 256
 date: 2010-09-27 18:54:29 -07:00

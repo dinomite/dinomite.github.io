@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: "Code Golf: Grid Computing"
 mt_id: 171
 date: 2008-01-15 09:58:52 -08:00

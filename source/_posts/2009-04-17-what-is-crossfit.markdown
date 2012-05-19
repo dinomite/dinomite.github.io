@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: What is CrossFit?
 mt_id: 244
 date: 2009-04-17 00:15:24 -07:00

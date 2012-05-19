@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Malted Milk Ice Cream
 mt_id: 120
 date: 2007-06-15 18:00:08 -07:00

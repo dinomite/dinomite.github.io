@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Installing Proggy Fonts in Ubuntu
 mt_id: 205
 date: 2008-05-06 13:56:56 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Perl's Taint Mode
 mt_id: 132
 date: 2007-08-15 06:35:29 -07:00

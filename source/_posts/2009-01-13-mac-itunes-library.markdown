@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Mac::iTunes::Library
 mt_id: 231
 date: 2009-01-13 10:02:46 -08:00

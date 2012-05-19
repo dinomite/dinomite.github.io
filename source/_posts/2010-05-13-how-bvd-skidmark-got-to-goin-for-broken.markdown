@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: How BVD Skidmark Got to Goin' For Broken
 mt_id: 258
 date: 2010-05-13 09:22:08 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Tab History Add-on for Firefox
 mt_id: 158
 date: 2007-11-26 13:26:14 -08:00

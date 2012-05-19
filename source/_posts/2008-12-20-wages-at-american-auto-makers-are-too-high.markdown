@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Wages at American auto makers are too high
 mt_id: 229
 date: 2008-12-20 08:48:55 -08:00

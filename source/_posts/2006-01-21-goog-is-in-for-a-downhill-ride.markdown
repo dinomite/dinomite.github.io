@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "GOOG is in for a Downhill Ride"
 date: 2006-01-21 09:39
 comments: true

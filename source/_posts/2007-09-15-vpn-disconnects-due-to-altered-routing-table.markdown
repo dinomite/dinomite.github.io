@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: VPN Disconnects due to Altered Routing Table
 mt_id: 145
 date: 2007-09-15 11:06:34 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Who Uses Backslashes?
 mt_id: 85
 date: 2007-02-05 10:56:37 -08:00

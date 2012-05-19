@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Apache2 ProxyPass
 mt_id: 123
 date: 2007-06-26 12:02:05 -07:00

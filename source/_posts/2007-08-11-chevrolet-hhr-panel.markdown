@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Chevrolet HHR Panel
 mt_id: 133
 date: 2007-08-11 07:59:35 -07:00

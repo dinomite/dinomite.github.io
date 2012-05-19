@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: mdadm Isn't Someone You Want to Hear From
 mt_id: 165
 date: 2007-11-28 09:08:56 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Learning About Nutrition
 mt_id: 273
 date: 2011-05-02 07:30:25 -07:00

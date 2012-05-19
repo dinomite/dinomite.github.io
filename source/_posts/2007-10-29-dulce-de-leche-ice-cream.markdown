@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Dulce de Leche Ice Cream
 mt_id: 154
 date: 2007-10-29 13:12:56 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: tar Over SSH
 mt_id: 89
 date: 2007-02-07 06:10:45 -08:00

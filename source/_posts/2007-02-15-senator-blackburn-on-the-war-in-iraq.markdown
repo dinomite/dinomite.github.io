@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Senator Blackburn on The War in Iraq
 mt_id: 92
 date: 2007-02-15 13:30:18 -08:00

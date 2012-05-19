@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Conversations within the apartment
 mt_id: 43
 date: 2006-02-08 15:20:56 -08:00

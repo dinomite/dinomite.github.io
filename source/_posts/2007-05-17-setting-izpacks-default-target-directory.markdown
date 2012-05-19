@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Setting IzPack's Default Target Directory
 mt_id: 111
 date: 2007-05-17 09:44:11 -07:00

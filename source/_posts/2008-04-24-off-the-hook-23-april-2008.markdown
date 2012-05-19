@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Off The Hook - 23 April 2008
 mt_id: 207
 date: 2008-04-24 21:36:55 -07:00

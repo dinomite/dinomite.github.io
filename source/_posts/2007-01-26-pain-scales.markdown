@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Pain Scales
 mt_id: 82
 date: 2007-01-26 07:29:15 -08:00

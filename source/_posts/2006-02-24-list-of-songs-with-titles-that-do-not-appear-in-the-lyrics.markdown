@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: List of songs with titles that do not appear in the lyrics
 mt_id: 48
 date: 2006-02-24 21:12:15 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Tough Mudder Norcal 2010
 mt_id: 261
 date: 2010-10-14 20:09:36 -07:00

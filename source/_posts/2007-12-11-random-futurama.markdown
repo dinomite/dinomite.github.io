@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Random Futurama
 mt_id: 168
 date: 2007-12-11 19:36:17 -08:00

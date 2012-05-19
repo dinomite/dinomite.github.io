@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: here-documents in Perl
 mt_id: 210
 date: 2008-05-24 08:10:20 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Finding Perl Module Dependencies
 mt_id: 110
 date: 2007-05-11 06:48:14 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Changing CPAN Mirrors
 mt_id: 201
 date: 2008-04-14 17:24:06 -07:00

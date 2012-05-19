@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Driving Across the United States day 2
 mt_id: 197
 date: 2008-03-24 06:04:53 -07:00

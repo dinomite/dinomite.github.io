@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: EXMAP on Ubuntu
 mt_id: 142
 date: 2007-09-11 17:05:46 -07:00

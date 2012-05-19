@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: CHM to PDF conversion
 mt_id: 100
 date: 2007-03-05 13:16:24 -08:00

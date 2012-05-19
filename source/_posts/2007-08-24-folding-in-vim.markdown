@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Folding in vim
 mt_id: 140
 date: 2007-08-24 16:39:12 -07:00

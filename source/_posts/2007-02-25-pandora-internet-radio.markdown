@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Pandora Internet Radio
 mt_id: 95
 date: 2007-02-25 18:49:42 -08:00

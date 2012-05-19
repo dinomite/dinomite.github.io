@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Screen Presets
 mt_id: 247
 date: 2009-11-17 22:40:11 -08:00

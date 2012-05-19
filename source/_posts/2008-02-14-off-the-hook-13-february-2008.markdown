@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Off The Hook - 13 February 2008
 mt_id: 187
 date: 2008-02-14 11:47:08 -08:00

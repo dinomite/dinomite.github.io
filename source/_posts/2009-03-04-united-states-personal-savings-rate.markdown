@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: United States Personal Savings Rate
 mt_id: 237
 date: 2009-03-04 22:50:21 -08:00

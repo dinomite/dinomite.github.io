@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: I'm on the Genius Engineering blog
 mt_id: 243
 date: 2009-04-10 10:35:42 -07:00

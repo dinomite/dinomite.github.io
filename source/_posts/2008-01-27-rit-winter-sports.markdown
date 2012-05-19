@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: RIT Winter Sports
 mt_id: 181
 date: 2008-01-27 13:22:43 -08:00

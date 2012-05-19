@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: DEFCON 16 EFF Panel
 mt_id: 215
 date: 2008-08-09 15:00:00 -07:00

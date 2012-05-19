@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Random number generators
 mt_id: 66
 date: 2006-05-01 16:25:42 -07:00

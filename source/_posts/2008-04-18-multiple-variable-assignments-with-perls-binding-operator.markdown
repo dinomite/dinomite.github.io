@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Multiple Variable Assignments with Perl's Binding Operator
 mt_id: 203
 date: 2008-04-18 08:29:55 -07:00

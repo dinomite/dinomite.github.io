@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Caligula's Giant Ship
 mt_id: 238
 date: 2009-03-31 23:11:13 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Crontab Files
 mt_id: 239
 date: 2009-04-08 23:20:47 -07:00

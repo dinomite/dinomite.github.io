@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Marvell Gigabit ethernet adapter
 mt_id: 58
 date: 2006-03-29 14:01:21 -08:00

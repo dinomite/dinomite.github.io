@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Bad Input Handling on The Web
 mt_id: 147
 date: 2007-09-21 08:05:10 -07:00

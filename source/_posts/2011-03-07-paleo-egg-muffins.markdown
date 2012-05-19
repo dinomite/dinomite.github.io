@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Paleo Egg Muffins
 mt_id: 269
 date: 2011-03-07 17:18:45 -08:00

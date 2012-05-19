@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Shell Command Substitution
 mt_id: 221
 date: 2008-09-09 17:08:07 -07:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Internet routing from airplanes
 mt_id: 65
 date: 2006-04-28 13:33:59 -07:00

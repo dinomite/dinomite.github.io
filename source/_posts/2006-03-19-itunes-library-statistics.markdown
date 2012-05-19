@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: iTunes Library Statistics
 mt_id: 52
 date: 2006-03-19 18:41:46 -08:00

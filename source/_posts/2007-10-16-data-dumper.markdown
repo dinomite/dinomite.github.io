@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Data::Dumper
 mt_id: 155
 date: 2007-10-16 11:08:04 -07:00

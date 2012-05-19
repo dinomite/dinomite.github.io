@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Time to Start Collecting Pennies
 mt_id: 87
 date: 2007-02-02 07:46:24 -08:00

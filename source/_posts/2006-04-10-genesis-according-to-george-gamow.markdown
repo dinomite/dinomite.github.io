@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Genesis According to George Gamow
 mt_id: 55
 date: 2006-04-10 08:55:34 -07:00

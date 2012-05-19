@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Parkour on ESPN
 mt_id: 160
 date: 2007-11-09 18:20:50 -08:00

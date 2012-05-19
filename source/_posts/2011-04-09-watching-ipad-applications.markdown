@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Watching iPad Applications
 mt_id: 271
 date: 2011-04-09 09:00:00 -07:00

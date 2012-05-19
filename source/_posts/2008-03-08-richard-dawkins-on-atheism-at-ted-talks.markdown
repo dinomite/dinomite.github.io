@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Richard Dawkins on Atheism at TED Talks
 mt_id: 193
 date: 2008-03-08 13:58:20 -08:00

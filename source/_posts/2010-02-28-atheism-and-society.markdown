@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Atheism and Society
 mt_id: 254
 date: 2010-02-28 17:57:42 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: The Plan for Iraq
 mt_id: 88
 date: 2007-01-31 09:57:10 -08:00

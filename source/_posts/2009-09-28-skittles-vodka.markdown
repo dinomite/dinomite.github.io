@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Skittles Vodka
 mt_id: 249
 date: 2009-09-28 23:13:58 -07:00

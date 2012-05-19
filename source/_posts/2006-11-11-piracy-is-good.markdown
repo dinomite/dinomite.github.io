@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Piracy is good?
 mt_id: 71
 date: 2006-11-11 21:44:32 -08:00

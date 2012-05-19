@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Voting Systems
 mt_id: 227
 date: 2008-11-03 23:50:50 -08:00

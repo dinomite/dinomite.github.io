@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Malfunction Junction
 mt_id: 99
 date: 2007-03-03 18:20:57 -08:00

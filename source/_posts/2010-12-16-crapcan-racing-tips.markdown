@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Crapcan Racing Tips
 mt_id: 265
 date: 2010-12-16 03:48:44 -08:00

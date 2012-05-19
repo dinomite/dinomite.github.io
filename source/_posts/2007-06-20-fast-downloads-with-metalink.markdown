@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Fast Downloads with Metalink
 mt_id: 118
 date: 2007-06-20 16:24:20 -07:00

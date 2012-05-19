@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "illwill on Wikipedia"
 date: 2006-01-31 16:23
 comments: true

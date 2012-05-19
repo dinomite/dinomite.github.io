@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Perceptions Are Not Reality
 mt_id: 151
 date: 2007-10-08 15:07:40 -07:00

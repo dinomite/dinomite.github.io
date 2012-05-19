@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Automated Encrypted Backups via SSH
 mt_id: 149
 date: 2007-10-03 13:19:20 -07:00

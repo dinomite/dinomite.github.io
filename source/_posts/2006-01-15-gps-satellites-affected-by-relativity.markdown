@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "GPS Satellites Affected by Relativity"
 date: 2006-01-15 21:07
 comments: true

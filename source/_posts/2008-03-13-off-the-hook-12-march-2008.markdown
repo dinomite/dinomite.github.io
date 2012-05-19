@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Off The Hook - 12 March 2008
 mt_id: 195
 date: 2008-03-13 14:16:22 -07:00

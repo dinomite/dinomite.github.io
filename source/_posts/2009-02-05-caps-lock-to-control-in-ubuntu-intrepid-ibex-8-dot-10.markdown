@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Caps Lock to Control in Ubuntu Intrepid Ibex (8.10)
 mt_id: 235
 date: 2009-02-05 09:53:11 -08:00

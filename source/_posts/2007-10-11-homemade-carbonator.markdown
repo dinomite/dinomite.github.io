@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Homemade Carbonator
 mt_id: 150
 date: 2007-10-11 06:58:49 -07:00

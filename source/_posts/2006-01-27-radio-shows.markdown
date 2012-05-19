@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Radio Shows"
 date: 2006-01-27 16:35
 comments: true

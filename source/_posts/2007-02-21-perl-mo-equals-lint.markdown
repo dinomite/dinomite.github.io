@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: perl -MO=Lint
 mt_id: 97
 date: 2007-02-21 11:14:39 -08:00

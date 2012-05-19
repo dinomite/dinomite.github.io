@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Track Day Diary
 mt_id: 241
 date: 2009-03-09 22:30:25 -07:00

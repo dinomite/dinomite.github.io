@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Altering many directories at once with CmdDirs
 mt_id: 268
 date: 2011-02-20 14:34:25 -08:00

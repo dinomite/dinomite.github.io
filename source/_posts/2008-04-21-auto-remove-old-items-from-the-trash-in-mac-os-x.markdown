@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Auto-remove Old Items from The Trash in Mac OS X
 mt_id: 204
 date: 2008-04-21 11:37:20 -07:00

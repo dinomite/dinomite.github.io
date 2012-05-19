@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Corn Runs the World
 mt_id: 79
 date: 2007-01-18 09:10:35 -08:00

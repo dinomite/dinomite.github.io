@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: DIY R-Strap
 mt_id: 240
 date: 2009-03-15 23:40:25 -07:00

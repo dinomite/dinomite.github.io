@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Intel"
 date: 2006-03-22 13:05
 comments: true

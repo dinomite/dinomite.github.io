@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Smart Bookmarks
 mt_id: 194
 date: 2008-03-12 22:15:46 -07:00

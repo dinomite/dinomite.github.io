@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Popular IM Networks
 mt_id: 216
 date: 2008-08-29 14:03:20 -07:00

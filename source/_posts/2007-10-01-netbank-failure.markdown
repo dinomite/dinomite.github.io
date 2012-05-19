@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: NetBank Failure
 mt_id: 152
 date: 2007-10-01 07:44:28 -07:00

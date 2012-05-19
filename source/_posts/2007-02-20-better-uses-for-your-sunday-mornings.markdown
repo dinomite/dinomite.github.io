@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Better uses for your Sunday mornings
 mt_id: 98
 date: 2007-02-20 08:08:54 -08:00

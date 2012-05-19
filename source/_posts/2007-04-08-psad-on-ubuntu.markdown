@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: psad on Ubuntu
 mt_id: 105
 date: 2007-04-08 18:33:11 -07:00

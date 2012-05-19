@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Creating an OpenVPN Server on Ubuntu
 mt_id: 264
 date: 2010-12-01 17:16:01 -08:00

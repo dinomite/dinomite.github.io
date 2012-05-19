@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: SSH Tunnels for Quick, Secure Net Access
 mt_id: 144
 date: 2007-09-09 18:06:58 -07:00

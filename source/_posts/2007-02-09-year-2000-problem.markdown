@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Year 2000 Problem
 mt_id: 90
 date: 2007-02-09 21:34:37 -08:00

@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Bush's New Health Care Plan
 mt_id: 81
 date: 2007-01-24 14:40:46 -08:00

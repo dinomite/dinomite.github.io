@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Bruce Schneier plugin for Hudson
 mt_id: 248
 date: 2009-10-28 22:40:57 -07:00

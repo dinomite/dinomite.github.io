@@ -1,5 +1,6 @@
 --- 
 layout: post
+comments: true
 title: Cooking With Ska Part 2
 mt_id: 130
 date: 2007-07-16 18:48:53 -07:00
