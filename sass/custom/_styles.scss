@@ -53,8 +53,18 @@ body > nav form .search {
 }
 
 #content {
-    border-radius: 0.5em 0 0 0;
+    border-radius: .5em 0 0 0;
 }
+
+// BEGIN Fix top-right corner of main box
+aside.sidebar {
+    margin-left: -1em;
+}
+
+aside.sidebar section {
+    padding-left: 1em;
+}
+// END Fix top-right corner of main box
 
 //
 // Miscellaneous
