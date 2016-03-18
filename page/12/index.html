@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+          <p>Page 12 of 27</p>
+
+    <p><a href="/page/11/">Previous page</a></p>
+
+<ul>
+    <h2><a href="/blog/2008/01/02/first-impressions-from-campaign-websites.html">First Impressions from Campaign Websites</a></h2>
+    <div class="article-title-date">Jan  2, 2008</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Ron Paul is an internet celebrity in the realm of campaign fund raising and for good reason: his campaign has garnered $19.5 million in donations in the fourth quarter, $6 million of that on the December 16th anniversary of the <a href="http://en.wikipedia.org/wiki/Boston_Tea_Party">Boston Tea Party</a>.  The news media never fails to mention his internet popularity and the fact that the majority of his donations stem from the tubes that run the new world.  When I went to check out Ron Paul's website and that of some other candidates, I was intrigued.  Users who go to the <a href="http://www.ronpaul2008.com">Super Libertarian's internet presence</a> are presented with a clean and informative site:</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/01/ron_paul1.png" title="Ron Paul campaign web page"><img src="http://dinomite.net/wp-content/uploads/2008/01/ron_paul1.png" alt="Ron Paul campaign web page" height="350" width="522" /></a></p>
+
+<p>Top and center is useful information, in this case the time until the upcoming caucus in Iowa and primaries in New Hampshire.  The site includes information about his fund raising effort, links to donate and a form for getting campaign update emails below the fold.  Visiting other campaign sites is a different story:</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/01/clinton.png" title="Hillary Clinton campaign web page"><img src="http://dinomite.net/wp-content/uploads/2008/01/clinton.png" alt="Hillary Clinton campaign web page" height="328" width="402" /></a></p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/01/obama.png" title="Barack Obama campaign web page"><img src="http://dinomite.net/wp-content/uploads/2008/01/obama.png" alt="Barack Obama campaign web page" height="334" width="446" /></a></p>
+
+<p>When you visit the websites for <a href="http://www.hillaryclinton.com">HIllary Clinton</a> or <a href="http://www.barackobama.com">Barack Obama</a> you are asked for contact information before seeing anything substantive.  You have to fill out the form or click through to get to the candidate's website.  Thankfully, their websites send cookies; subsequent visits forgo the information garnering forms whether or not you put in anything.  But why put up this stumbling block?  Ron Paul's site is much more elegant; the form for signing up to get campaign information is still easy to get to, but it's not intrusive.</p>
+
+    <h2><a href="/blog/2008/01/01/perl-5-dot-10-dot-0.html">Perl 5.10.0</a></h2>
+    <div class="article-title-date">Jan  1, 2008</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Sure, it's already slathered across every news site known to man but just like everyone else I have different reasons for being excited about Perl 5.10.0.</p>
+
+<p>Like many others, I often choose Perl for its seamless regex support so the faster regex engine in this new release is definitely welcome.  This version also fixes an erroneous piece of missing syntax for subscript slices. I was always confused why the interpreter forced me to use <code>-&gt;</code> instead of the non-arrowed form.  The big one, not because it was hugely lacking but simply a seemingly odd oversight, is the switch statement, which is called <code>given/when</code> in Perl:</p>
+
+<pre class="brush: perl;">
+given ($foo) {
+    when (/^abc/) { $abc = 1; }
+    when (/^def/) { $def = 1; }
+    when (/^xyz/) { $xyz = 1; }
+    default { $nothing = 1; }
+}
+</pre>
+
+<p>Sure, switch statements don't really do anything special, but they are often quite a bit cleaner than if/elif chains and the fact that Perl's implementation can handle regex is awesome.</p>
+
+    <h2><a href="/blog/2007/12/19/web-browsing-with-python.html">Web Browsing With Python</a></h2>
+    <div class="article-title-date">Dec 19, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Python provides a stateful web browsing module called <a href="http://wwwsearch.sourceforge.net/mechanize/"><code>mechanize</code></a>, named after Perl's mature and featureful <a href="http://search.cpan.org/author/PETDANCE/WWW-Mechanize-1.34/lib/WWW/Mechanize.pm"><code>WWW::Mechanize</code></a>.  Though it isn't as powerful as the Perl version, <code>mechanize</code> provides an easy-to-use framework for browsing web pages including interacting with forms and accessing SSL content.  The documentation for <code>mechanize</code> on the web is sparse, but viewing the source file (<code>/usr/lib/python2.5/site-packages/mechanize/_mechanize.py</code> on my Ubuntu machine) provides some needed insight.  Here's a quick overview of the operation of <code>mechanize</code>:</p>
+
+<pre class="brush: python;">
+#!/usr/bin/python
+import re
+from mechanize import Browser
+br = Browser()
+
+# Ignore robots.txt
+br.set_handle_robots( False )
+# Google demands a user-agent that isn't a robot
+br.addheaders = [('User-agent', 'Firefox')]
+
+# Retrieve the Google home page, saving the response
+br.open( "http://google.com" )
+
+# Select the search box and search for 'foo'
+br.select_form( 'f' )
+br.form[ 'q' ] = 'foo'
+
+# Get the search results
+br.submit()
+
+# Find the link to foofighters.com; why did we run a search?
+resp = None
+for link in br.links():
+    siteMatch = re.compile( 'www.foofighters.com' ).search( link.url )
+    if siteMatch:
+        resp = br.follow_link( link )
+        break
+
+# Print the site
+content = resp.get_data()
+print content
+</pre>
+
+<p>That's a pretty straightforward and simple usage.  The <code>get_data()</code> method gives you the HTML content of the pages, which I often find suitable to run a <code>.split('\n')</code> and then do some regex on line by line.</p>
+
+    <h2><a href="/blog/2007/12/11/random-futurama.html">Random Futurama</a></h2>
+    <div class="article-title-date">Dec 11, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>I like <a href="http://en.wikipedia.org/wiki/Futurama">Futurama</a>.  All of it.  Though I occasionally have a hankering for a specific episode, I often just want /any/ episode, so I wrote a quick Perl script to play one at random.  I have a directory filled with all of Futurama, so this is an easy proposition:</p>
+
+<pre class="brush: perl;">
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my @files = split /\n/, `ls *avi`;
+
+my $num = rand(scalar(@files));
+
+system "mplayer "$files[$num]"";
+</pre>
+
+    <h2><a href="/blog/2007/12/07/custom-weather-radar-images.html">Custom Weather Radar Images</a></h2>
+    <div class="article-title-date">Dec  7, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p><a href="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" title="NWS base reflectivity for LWX" class="right"><img src="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" alt="NWS base reflectivity for LWX" /></a>
+If you know the slightest bit about weather and the geography of the area which you are observing, you can, in the short term, forecast more accurately than what a weather website provides.  I often want to be able to bring a radar image up quickly and clicking around websites takes time.  Sure I could bookmark the weather page directly, but this was an interesting exercise and will prove useful when I get an iPhone.</p>
+
+<p>The <a href="http://nws.noaa.gov">National Weather Service</a> doesn't have a simple image of the weather on their <a href="http://radar.weather.gov/radar.php?rid=lwx&amp;product=N0R&amp;overlay=11101111&amp;loop=no">radar page</a>, rather, it is an image that is dynamically generated from a set of standard overlays using Javascript.  This allows them to more efficiently distribute radar images, since the terrain and maps that are the background never change.  The organization they use is <a href="http://www.srh.noaa.gov/srh/jetstream/doppler/ridge_download.htm">well documented</a>, making it easy to find the overlays for you local radar.  In my case, I wanted the topographical map, counties and highways in the image.    I found the URL for each of these components using the aforementioned documentation and grabbed the appropriate images with <code>wget</code>.</p>
+<pre>
+wget http://radar.weather.gov/ridge/Legend/N0R/LWX_N0R_Legend_0.gif\
+http://radar.weather.gov/ridge/Overlays/County/Short/LWX_County_Short.gif\
+http://radar.weather.gov/ridge/Overlays/Highways/Short/LWX_Highways_Short.gif\
+http://radar.weather.gov/ridge/Overlays/Topo/Short/LWX_Topo_Short.jpg\
+http://radar.weather.gov/ridge/RadarImg/N0R/LWX_N0R_0.gif
+</pre>
+
+<p>The only layer that will change will be the last one, the actual radar data, so in my script that is the only one that will be <code>wget</code>d on subsequent runs.  To build the image, I used the <code>composite</code> program that is part of the ImageMagick package:</p>
+<pre>
+composite -compose atop LWX_N0R_0.gif LWX_Topo_Short.jpg base_reflectivity.jpg
+composite -compose atop LWX_Highways_Short.gif base_reflectivity.jpg base_reflectivity.jpg
+composite -compose atop LWX_County_Short.gif base_reflectivity.jpg base_reflectivity.jpg
+composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflectivity.jpg
+</pre>
+
+<p>I want the counties, highways and legend to show up on top of the weather data which itself is pasted atop the topographical map.  To achieve this, I first toss the radar data onto the topographical image creating a new image, <code>base_reflectivity.jpg</code>.  Then, I add each of the other layers to the <code>base_reflectivity.jpg</code> image in sequence.</p>
+
+    <h2><a href="/blog/2007/12/04/connecting-to-oracle-without-a-password-on-windows.html">Connecting to Oracle Without a Password on Windows</a></h2>
+    <div class="article-title-date">Dec  4, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>If you have forgotten, were never given or otherwise don't have the password to an Oracle database, never fear, there is a method to accessing the database.  From the local machine you must be a user in the group "ora_dba".  Run "sqlplus" (the command line version) with the option "/nolog", which tells SQL*Plus not to login.  At the "SQL&gt;" prompt, type "connect / as sysdba" which ought to log you in.  At that point, you can change the password for any account (<code>sys</code> would be a good one to change, since apparently you don't know it) using the command <code>alter user &lt;username&gt; identified by "&lt;password&gt;";</code>.  Make sure to <code>commit;</code> after doing that.</p>
+
+    <h2><a href="/blog/2007/12/02/disconnecting-corrupted-mac-on-input.html">Disconnecting: Corrupted MAC on input.</a></h2>
+    <div class="article-title-date">Dec  2, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>I woke up to find the entitled error in the <code>rsnapshot</code> logs on one of my machines, which occurred as it was trying to remotely backup, via SSH, another.  A quick search and reading through a number of threads revealed <a href="http://monkey.org/openbsd/archive/misc/0207/msg02592.html">this message</a> stating that this problem was encountered with a Linksys router involved.  Lo and behold, my home network was just switched to a Linksys BEFSR41 when the problem began.</p>
+
+<p>I think the router may also be the culprit for the occasional "error establishing encrypted connection code -12192" that Firefox has been giving me since the switch.</p>
+
+    <h2><a href="/blog/2007/12/01/perl.html">Perl, Python and Ruby</a></h2>
+    <div class="article-title-date">Dec  1, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it's older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
+
+<pre>
+Python:
+real    0m43.415s
+user    0m41.455s
+sys     0m0.132s
+
+Ruby:
+real    0m35.379s
+user    0m33.722s
+sys     0m0.112s
+</pre>
+
+<p>I threw together some quick Perl:</p>
+
+<pre class="brush: ruby;">
+sub fib {
+    my $n = shift;
+
+    if ( $n == 0 or $n == 1 ) {
+        return $n;
+    } else {
+        return fib($n - 1) + fib($n - 2);
+    }
+}
+
+for (0..35) {
+    print "n=$_ =&gt; " . fib($_) . "\n";
+}
+</pre>
+
+<p>and ran it:</p>
+
+<pre>
+Perl:
+real    1m15.329s
+user    1m9.188s
+sys     0m0.364s
+</pre>
+
+<p>That's impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:</p>
+
+<p>C code:</p>
+<pre class="brush: cpp;">
+#include <stdio.h>
+
+int fib(int n) {
+    if ( (n == 0) || (n == 1) )
+        return n;
+    else
+        return (fib(n-1) + fib(n-2));
+} //fib
+
+int main() {
+    int x;
+    for (x = 0; x &lt; 36; x++) {
+        printf( "n = %d =&gt; %d\n", x, fib(x) );
+    } //for
+
+    return 0;
+}
+
+
+C timing:
+<pre>
+real    0m0.605s
+user    0m0.564s
+sys     0m0.000s
+</pre>
+
+Java code:
+<pre class="brush: java;">
+class Fib {
+    static int fib(int n) {
+        if ( (n == 0) || (n == 1) )
+            return n;
+        else
+            return (fib(n-1) + fib(n-2));
+    } //fib
+
+    public static void main(String args[]) {
+        for (int x = 0; x &lt; 36; x++) {
+            System.out.println( "n = " + x + " =&gt; " + fib(x) );
+        } //for
+    } //main
+} //Fib
+</pre>
+
+Java timing:
+<pre>
+real    0m0.455s
+user    0m0.412s
+sys     0m0.012s
+</pre>
+
+It's very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don't take these benchmarks as having any significant meaning.  Really, don't take them to mean much of anything, unless all you do is write lots of simple recursive code.
+</stdio.h></pre>
+
+    <h2><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent.html">Quick Tip: Python's noop Equivalent</a></h2>
+    <div class="article-title-date">Nov 30, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Python can't deal with empty code blocks, which may arise if you want to stub out a block but leave the implementation for later.  If you have one in your code, the interpreter will give the following error:</p>
+
+<pre class="brush: python;">
+  File "foo.py", line 1
+    if (foo == bar):
+     ^
+IndentationError: expected an indented block
+</pre>
+
+<p>In this case, you can use the <code>pass</code> operator which will do nothing but take up a line, resulting in the following code:</p>
+
+<pre class="brush: python;">
+if (foo == bar):
+    pass #TODO
+else:
+    print "nothing to do!"
+</pre>
+
+    <h2><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from.html">mdadm Isn't Someone You Want to Hear From</a></h2>
+    <div class="article-title-date">Nov 28, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning</p>
+<pre>
+from:		mdadm monitoring &lt;root@dinomite.net&gt;
+to:			root@dinomite.net,
+date:		Nov 28, 2007 6:25 AM
+subject:	Fail event on /dev/md0:claudius
+
+This is an automatically generated mail message from mdadm
+running on claudius
+
+A Fail event had been detected on md device /dev/md0.
+
+Faithfully yours, etc.
+</pre>
+
+<p>Ugh; that means one of the drives in RAID set on Claudius has failed.  I only run <a href="http://en.wikipedia.org/wiki/RAID#Standard_levels">RAID0</a> on the machine, so data loss isn't any issue unless the second drive gives up, too.  I try not to actively administer machines; I just get them setup in a solid state and then make use of them, no reason to waste time fiddling around.  I hadn't done anything of note with the machine in question in some time, so I wasn't even sure what the drive setup was, though <code>df</code> clears that up:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/md0              5.5G  1.7G  3.6G  32% /
+varrun                506M  116K  506M   1% /var/run
+varlock               506M  4.0K  506M   1% /var/lock
+udev                  506M   88K  506M   1% /dev
+devshm                506M     0  506M   0% /dev/shm
+/dev/md1               68G   13G   54G  19% /home
+/dev/hdd1              19G   13G  5.1G  72% /backup
+tmpfs                 506M   18M  488M   4% /lib/modules/2.6.15-29-k7/volatile
+</pre>
+
+<p>So, md0 is the root (/) filesystem and Claudius also has a second RAID device, md1, which supports the <code>/home</code> filesystem.  I used <code>mdadm --detail</code> to get some more information about <code>md0</code>:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md0
+/dev/md0:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:00 2006
+     Raid Level : raid1
+     Array Size : 5855552 (5.58 GiB 6.00 GB)
+    Device Size : 5855552 (5.58 GiB 6.00 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 0
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 11:35:45 2007
+          State : clean, degraded
+ Active Devices : 1
+Working Devices : 1
+ Failed Devices : 1
+  Spare Devices : 0
+
+           UUID : 16c480c4:6bbc2b89:189b2529:3af755b2
+         Events : 0.16665869
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        -      removed
+       1       3       65        1      active sync   /dev/hdb1
+
+       2       3        1        -      faulty   /dev/hda1
+</pre>
+
+<p>So it thinks there's a problem with <code>/dev/hda1</code>, one of the two partitions that makes up this RAID device.  At this point, I recall that Claudius has three disks in it, a 20G (/backup) and two 80G, the latter two support both of the systems RAID devices, <code>md0</code> and <code>md1</code>.  The notice that mdadm sent me was only concerning <code>md0</code> which is odd, because <code>md1</code> spans both of those physical disks as well:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md1
+/dev/md1:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:07 2006
+     Raid Level : raid1
+     Array Size : 71778304 (68.45 GiB 73.50 GB)
+    Device Size : 71778304 (68.45 GiB 73.50 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 1
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 11:38:25 2007
+          State : clean
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           UUID : 41d43030:23b3662d:c1c06634:4132ebc3
+         Events : 0.2117050
+
+    Number   Major   Minor   RaidDevice State
+       0       3        2        0      active sync   /dev/hda2
+       1       3       66        1      active sync   /dev/hdb2
+</pre>
+
+<p>and it doesn't show any problems.  What does this mean?  Well, I'm not exactly sure, but it does mean that the disk <code>/dev/hda</code> which holds the failed partition (<code>hda1</code>) of <code>md0</code> isn't completely bad; it's still spinning away and working.  That probably means that the filesystem on <code>hda1</code> somehow got muddled up or that there's a physical error on the portion of the disk support <code>hda1</code>.  Either way, the first step for me is to simly rebuild the array as it was before.  This is as simple as removing the faulty partition and adding it back to the array:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm /dev/md0 -r /dev/hda1
+mdadm: hot removed /dev/hda1
+claudius:/home/dinomite/public_html# mdadm /dev/md0 -a /dev/hda1
+mdadm: hot added /dev/hda1
+</pre>
+
+<p>The RAID device will automatically begin rebuilding this partition and keep you informed of the status.</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md0
+/dev/md0:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:00 2006
+     Raid Level : raid1
+     Array Size : 5855552 (5.58 GiB 6.00 GB)
+    Device Size : 5855552 (5.58 GiB 6.00 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 0
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 12:03:36 2007
+          State : clean, degraded, recovering
+ Active Devices : 1
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 1
+
+ Rebuild Status : 3% complete
+
+           UUID : 16c480c4:6bbc2b89:189b2529:3af755b2
+         Events : 0.16666531
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        -      removed
+       1       3       65        1      active sync   /dev/hdb1
+
+       2       3        1        0      spare rebuilding   /dev/hda1
+</pre>
+
+<p>Though a failed RAID device isn't the best way to start your morning, managing them in Linux is a fairly straightforward operation.  If the device actually had been bad, I would simply have to shut down the machine, replace the bad drive, partition it like the other one (<code>fdisk -l</code> helps) and then add it to the array as shown above.  In most cases, this wouldn't be much harder than what I had to do, though my case the server is a few hundred miles away, so that'd be quite a hike.</p>
+
+</ul>
+
+    <p><a href="/page/13/">Next page</a></p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612.html">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom.html">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x.html">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses.html">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation.html">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge.html">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013.html">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d.html">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor.html">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep.html">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers.html">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux.html">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized.html">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking.html">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars.html">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming.html">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics.html">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

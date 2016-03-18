@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Code Golf: Saving Time « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I'm finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don't read below if you don't want hints!</p>
+
+<p>My first draft grabs the hour and minutes using capturing in a regex, then turns them both into positions on a twelve hour clockface.  The clock location is passed to the function <code>symbol</code> which, through use of some nasty nested ternaries, what should be printed at the passed position on the clock face. (470 characters):</p>
+
+<pre class="brush: perl;">
+&lt;&gt; =~ /(\d+):(\d+)/;
+$H = $1 % 12;
+$M = ($2 - ($2 % 5)) / 5;
+
+$;=' ';
+
+$z = $;x8 . symbol(0) . $/;
+$z .= $;x4 . symbol(11) . $;x7 . symbol(1) . $/.$/;
+$z .= $; . symbol(10) . $;x13 . symbol(2) . $/.$/;
+$z .= symbol(9) . $;x15 . symbol(3) . $/.$/;
+$z .= $; . symbol(8) . $;x13 . symbol(4) . $/.$/;
+$z .= $;x4 . symbol(7) . $;x7 . symbol(5) . $/;
+$z .= $;x8 . symbol(6);
+
+print $z;
+
+sub symbol {
+    $_ = shift;
+    $H==$_ ? ($H==$M ? 'x' : 'h') : ($M==$_ ? 'm' : 'o');
+}
+</pre>
+
+<p>Perl provides the automatic variables <code>$`</code> and <code>$'</code> (aka  <code>$PREMATCH</code> and <code>$POSTMATCH</code> with <code>use English</code>) which are, unsurprisingly, the portions of a scalar before and after what your regex matched.  I simplified the input regex by simply matching the colon and grabbing the hours &amp; minutes from <code>$`</code> and <code>$'</code>.    shorten subroutine name (398 characters):</p>
+
+<pre class="brush: perl;">
+&lt;&gt; =~ /:/;
+$H = $` % 12;
+$M = int $'/5;
+
+$;=' ';
+
+$z = $;x8 . sy(0) . $/; 
+$z .= $;x4 . sy(11) . $;x7 . sy(1) . $/.$/;
+$z .= $; . sy(10) . $;x13 . sy(2) . $/.$/;
+$z .= sy(9) . $;x15 . sy(3) . $/.$/;
+$z .= $; . sy(8) . $;x13 . sy(4) . $/.$/;
+$z .= $;x4 . sy(7) . $;x7 . sy(5) . $/;
+$z .= $;x8 . sy(6);
+
+print $z;
+
+sub sy {
+    $_ = shift;
+    $H==$_ ? ($H==$M ? 'x' : 'h') : ($M==$_ ? 'm' : 'o');
+}
+</pre>
+
+<p>I spun off the drawing of most lines into a single function, which takes the number of preceding spaces, the leftmost hour mark on the line, the number of interstitial spaces and the final hour mark on the line (380 characters):</p>
+
+<pre class="brush: perl;">
+&lt;&gt; =~ /:/;
+$H = $` % 12;
+$M = int $'/5;
+
+$;=' ';
+
+$z = $;x8 . sy(0) . $/; 
+$z .= li(4,11,7,1) . $/;
+$z .= li(1,10,13,2) . $/;
+$z .= li(0,9,15,3) . $/;
+$z .= li(1,8,13,4) . $/;
+$z .= li(4,7,7,5);
+$z .= $;x8 . sy(6);
+
+print $z;
+
+sub li {
+    $;x$_[0] . sy($_[1]) . $;x$_[2] . sy($_[3]) . $/;
+}   
+sub sy {
+    $_ = shift;
+    $H==$_ ? ($H==$M ? 'x' : 'h') : ($M==$_ ? 'm' : 'o');
+}
+</pre>
+
+<p>Before getting totally mucked up (311 characters):</p>
+
+<pre class="brush: perl;">
+&lt;&gt; =~ /:/;
+$H = $` % 12;
+$M = int $'/5;
+print ' 'x8 . sy(0) . $/ . li(4,11,7,1) . $/ . li(1,10,13,2) . $/ . li(0,9,15,3) . $/ . li(1,8,13,4) . $/ . li(4,7,7,5) . ' 'x8 . sy(6);
+
+sub li {' 'x$_[0] . sy($_[1]) . ' 'x$_[2] . sy($_[3]) . $/;}
+sub sy {$_ = shift; $H==$_ ? $H==$M ? 'x' : 'h' : $M==$_ ? 'm' : 'o';}
+</pre>
+
+<p>My final effort which is 244 characters when concatenated onto a single line:</p>
+
+<pre class="brush: perl;">
+&lt;&gt;=~/:/;
+$H=$`%12;
+$M=int $'/5;
+sub li{' 'x$_[0].sy($_[1]).' 'x$_[2].sy($_[3]).$/}
+sub sy{$_=shift;$H==$_?$H==$M?'x':'h':$M==$_?'m':'o'}
+print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13,4).$/.li(4,7,7,5).' 'x8 .sy(6)
+</pre>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612.html">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom.html">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x.html">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses.html">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation.html">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge.html">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013.html">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d.html">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor.html">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep.html">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers.html">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux.html">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized.html">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking.html">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars.html">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming.html">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics.html">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

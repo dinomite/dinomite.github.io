@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Smart Bookmarks « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p><a href="http://www.codinghorror.com/blog/">Jeff Atwood of Coding Horror</a> made a very good point recently about <a href="http://www.codinghorror.com/blog/archives/001037.html">browser shortcuts</a> that make browsing the web quicker because they reduce your dependence upon the mouse.  If you have any semblance of <a href="http://en.wikipedia.org/wiki/Repetitive_strain_injury">RSI</a> caused by mouse usage, like mine is, then learning to maximize use of the keyboard in place of the mouse is paramount.  Following on this I will share a number of <a href="http://en.wikipedia.org/wiki/Smart_bookmark">smart bookmarks</a> that I have found to be indispensible since I started using them way back when <a href="http://galeon.sourceforge.net/Main">Galeon</a> was my browser of choice and Firefox nÃ©e Phoenix wasn't even on the drawing board.</p>
+
+<p>Smart bookmarks are bookmarks that you call with a keyword and an argument; the argument is shoved into the appropriate place within the bookmark and the resulting URL is then retrieved.  Their function is similar to the manner in which a fresh installation of Firefox will automatically bring up a Google search results page if you type something that isn't a URL into the address bar.  To create a smart bookmark in Firefox, first bookmark a page such as a Google Search results page in the normal fashion.</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/03/google-foo.png" title="Google foo"><img src="http://dinomite.net/wp-content/uploads/2008/03/google-foo.png" alt="Google foo" /></a></p>
+
+<p>Then, open the "Organize Bookmarks" window by selecting it from the Bookmarks menu in Firefox.</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/03/bookmarks.png" title="Organize Bookmarks"><img src="http://dinomite.net/wp-content/uploads/2008/03/bookmarks.png" alt="Organize Bookmarks" /></a></p>
+
+<p>Select "Properties" for the bookmark you created and enter something into the "Keyword" field; for Google, I use the letter "g".  To actually make it a smart bookmark, you need to tell your browser where the string you pass needs to end up by placing "%s" (a percent sign and an "s") in the appropriate place.  For my Google search bookmark, the resulting URL string is this: http://www.google.com/search?hl=en&amp;q=%s&amp;btnG=Google+Search</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/03/properties.png" title="Bookmark properties"><img src="http://dinomite.net/wp-content/uploads/2008/03/properties.png" alt="Bookmark properties" /></a></p>
+
+<p>What does this get you?  Well, now you can select the address bar (Apple+L in MacOS, Ctrl+L or Alt+D in Windows &amp; Linux) type "g foo" in order to search for "foo".  A lot of people use the search bar in Firefox to do just that already, but I find my method better because I have a ton of smart bookmarks for performing different searches.  Alongside that one for Google, I have a <a href="http://en.wikipedia.org/wiki/%s">Wikipedia smart bookmark</a> (bookmark that link and add a keyword such as "w") which will take me directly to the Wikipedia article for the string I enter, a <a href="http://www.google.com/search?hl=en&amp;q=%s%20site%3Aen.wikipedia.org&amp;btnG=Google+Search">Wikipedia search bookmark</a> that does a Google search of just Wikipedia ("ws") and a <a href="http://finance.google.com/finance?q=%s">Google Finance search bookmark</a> ("gf").</p>
+
+<p>Others that I use include:</p>
+<ul>
+<li>a - <a href="http://amazon.com/s/ref=nb_ss_gw/102-2288794-0413724?url=search-alias%3daps&amp;field-keywords=%s&amp;go.x=0&amp;go.y=0&amp;go=go">Amazon</a></li>
+<li>p - <a href="http://packages.ubuntu.com/cgi-bin/search_packages.pl?keywords=%s&amp;searchon=names&amp;subword=1&amp;version=feisty&amp;release=all">Ubuntu package search</a></li>
+<li>pc - <a href="http://packages.ubuntu.com/cgi-bin/search_contents.pl?word=%s&amp;searchmode=searchfiles&amp;case=insensitive&amp;version=feisty&amp;arch=i386">Ubuntu package contents search</a></li>
+<li>d - <a href="http://dictionary.reference.com/search?q=%s&amp;x=0&amp;y=0">Dictionary</a></li>
+<li>t - <a href="http://thesaurus.reference.com/search?q=%s">Thesaurus</a></li>
+<li>pd - <a href="http://perldoc.perl.org/search.html?q=%s">Perldocs</a></li>
+<li>pm - <a href="http://search.cpan.org/search?query=%s&amp;mode=all">CPAN</a></li>
+<li>y - <a href="http://youtube.com/results?search_query=%s&amp;search=Search">YouTube</a></li>
+</ul>
+
+<p>By far the ones that I use the most are those for Google and Wikipedia searching but having ultra-quick access to a thesaurus and dictionary greatly heightens my writing skill.  Smart bookmarks are something where, once you start using them, you'll wonder how others ever get stuff done while they waste time reaching for the mouse.</p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612.html">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom.html">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x.html">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses.html">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation.html">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge.html">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013.html">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d.html">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor.html">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep.html">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers.html">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux.html">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized.html">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking.html">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars.html">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming.html">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics.html">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+          <p>Page 20 of 27</p>
+
+    <p><a href="/page/19/">Previous page</a></p>
+
+<ul>
+    <h2><a href="/blog/2007/02/14/bash-slash-bin-slash-tar-argument-list-too-long.html">bash: /bin/tar: Argument list too long</a></h2>
+    <div class="article-title-date">Feb 14, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Anyone who has worked with large numbers of files has seen the error '<code>Argument list too long</code>' returned by a command before, usually something like <code>cp</code> or <code>rm</code>.  Eventually, they find <code>xargs</code> and all is well again; rather than globbing directly, you use <code>find</code> and <code>xargs</code> to feed the intended command:</p>
+
+<pre>
+~/tmp$ ls | wc -l
+77029
+~/tmp$ cp * /foo/bar/
+bash: /bin/cp: Argument list too long
+~/tmp$ find . -print0 | xargs -0 -I {} cp {} /foo/bar/
+</pre>
+
+<p>For those who don't know, that final command is running find, which simply prints a list of the files in the current directory.  <code>xargs</code> then passes a not-too-long subset of that list to <code>cp</code> in batches, replacing the {} with said list.  The <code>-print0</code> tells <code>find</code> to terminate each filename with a null character rather than the default newline, so that weird filenames work; the corresponding option <code>-0</code> must be used with <code>xargs</code> so that it looks for that syntax.  Now, on to the problem of the day.</p>
+
+<p>I know <code>xargs</code>, but for the problem I had, I didn't think it would help (more on that later).  I wanted to <code>tar</code> up a whole bunch of files, too many for the command line to handle.  The solution was simple, for <code>tar</code> provides an option to receive its list of files that makeup an archive from a file:</p>
+
+<pre>
+~/tmp$ find . -print &gt; baz.lst
+~/tmp$ tar -cf baz.tar --files-from baz.lst
+</pre>
+
+<p>Simple.  There's probably a way to one-line that, but simply piping the output of <code>find</code> to tar with <code>--files-from -</code> didn't work, and I didn't spend any more time trying to figure it out.  As I said previously, I didn't think <code>xargs</code> would help, but I pulled up the <code>tar</code> manpage and, using the <code>-r</code> option, you can append to an existing archive, which could work in conjunction with <code>xargs</code> just fine.</p>
+
+    <h2><a href="/blog/2007/02/09/year-2000-problem.html">Year 2000 Problem</a></h2>
+    <div class="article-title-date">Feb  9, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>It's been a while since I've seen evidence of a <a href="http://en.wikipedia.org/wiki/Y2K">Year 2000 problem</a>, but Amazon insists on <a href="http://amazon.com/s/ref=nb_ss_gw/104-9106441-1564711?url=search-alias%3Daps&amp;field-keywords=professional+xml&amp;Go.x=0&amp;Go.y=0&amp;Go=Go">this search page</a> that an XML book was published in 1901.<img id="image100" src="http://dinomite.net/wp-content/uploads/2007/02/1901.jpg" alt="XML book published in 1901" /></p>
+
+    <h2><a href="/blog/2007/02/07/tar-over-ssh.html">tar Over SSH</a></h2>
+    <div class="article-title-date">Feb  7, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p><code>scp</code> is great for ease of use, but if you're transferring numerous files, small ones in particular, it isn't the fastest method.  <code>tar</code>, however, is very well suited to gathering small files into a single unit, but <code>tar</code>ing the files, <code>scp</code>ing the tarball and then un-<code>tar</code>ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:</p>
+
+<p><code>
+tar cf - sourcedir/ | ssh user@dest_host tar xf - -C /destination/path
+</code></p>
+
+<p>Make note of those naked dashes - they are the secret to this whole operation.  First we call the <code>tar</code> command with the options to <b>c</b>reate a tarball and that the <b>f</b>ilename to output immediately follows the options; in this case, we tell it to pipe the output to <code>stdout</code>.  Finally, we give the first <code>tar</code> command the list of files (a directory in this example) that we want sent.  The output of that tar command (the tarball itself, since we directed output to <code>stdout</code>) gets piped to <code>ssh</code> which is invoked like you normally would, except with a command to run tacked on the end.  As soon as <code>ssh</code> connects to the destination host, it simply runs <code>tar</code>, which listens for an input file coming from <code>stdin</code> that it will unpack into the directory given by <code>-C</code>.</p>
+
+<addendum>
+I noticed that a lot of people Google for "tar over scp", which might be your first thought if you've never done this before.  This note is just to help those people out, because this is most likely the solution they are in search of.
+</addendum>
+
+    <h2><a href="/blog/2007/02/06/setting-up-ubuntu-for-building-kernel-modules.html">Setting Up Ubuntu for Building Kernel Modules</a></h2>
+    <div class="article-title-date">Feb  6, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>When you build kernel modules or other programs that depend upon the kernel you need to have the kernel source configured per the currently running kernel.  To see what kernel your machine is running, simply run <code>uname -a</code>.  To setup your machine to allow things to build against the kernel, you first need the source for your currently running kernel:</p>
+
+<pre class="brush: bash;">
+export KERNEL_VERSION=`uname -r|cut -d '-' -f 1`
+sudo aptitude install linux-source-$KERNEL_VERSION
+cd /usr/src/
+sudo tar jxf linux-source-$KERNEL_VERSION.tar.bz2
+sudo ln -s linux-source-$KERNEL_VERSION linux
+ln -s /usr/src/linux /lib/modules/`uname -r`/build
+</pre>
+
+<p>First, in order to get things to build against the kernel you have to alter a single file to match the kernel you're running.  Run <code>uname -r</code> and note everything following the first three decimal-separated numbers:</p>
+
+<pre class="brush: bash;">
+$ uname -r
+2.6.17-10-386
+</pre>
+
+<p>Just use a text editor (vi!) and edit ` /usr/src/linux/Makefile<code>, changing the </code>EXTRAVERSION` variable to match yours from above:</p>
+
+<pre class="brush: bash;">
+VERSION = 2
+PATCHLEVEL = 6
+SUBLEVEL = 17
+#EXTRAVERSION = .14-ubuntu1
+EXTRAVERSION = -10-386
+NAME=Crazed Snow-Weasel
+</pre>
+
+<p>Next, you need to get the .config for the running kernel and setup the kernel source:</p>
+
+<pre class="brush: bash;">
+sudo cp /boot/config-`uname -r` /usr/src/linux/.config
+cd /usr/src/linux
+make oldconfig
+make prepare0
+make scripts
+</pre>
+
+<p>That's it.  Now you should be able to build things, like kernel modules, against the kernel source.</p>
+
+    <h2><a href="/blog/2007/02/05/who-uses-backslashes.html">Who Uses Backslashes?</a></h2>
+    <div class="article-title-date">Feb  5, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>My local NPR station, <a href="http://www.wamu.org">WAMU</a> has been running an advertisement for IBM federal services and they mention the URL, which is spoken as "ibm.com backslash foo backslash bar," which won't work if you type it into your interweb browser.  Really, no one uses the Windows command line for anything real, who still thinks with backslashes?</p>
+
+    <h2><a href="/blog/2007/02/04/the-bible-does-math.html">The Bible Does Math</a></h2>
+    <div class="article-title-date">Feb  4, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>I just finish reading Sam Harris' <em>Letter to a Christian Nation</em>, which is a very good book.  At one point he notes that the bible stipulates <a href="http://en.wikipedia.org/wiki/Pi">Pi</a> is exactly 3.  I wondered how such a book would lay out mathematical constants, but it's pretty straightforward:</p>
+
+<blockquote>
+The sea was then cast; it was made with a circular rim, and measured ten cubits across, five in height, and thirty in circumference.
+Under the brim, gourds encircled it, ten to the cubit all the way around; the gourds were in two rows and were cast in one mold with the sea.
+</blockquote>
+<p>Kings 7:23-24</p>
+
+<blockquote>
+He also made the molten sea. It was perfectly round, ten cubits in diameter, five in depth, and thirty in circumference
+</blockquote>
+<p>II Chronicles 4:2</p>
+
+<p>I must say that it's a weak argument, because they could be simply approximations by an observer, but it's funny nonetheless.</p>
+
+    <h2><a href="/blog/2007/02/02/time-to-start-collecting-pennies.html">Time to Start Collecting Pennies</a></h2>
+    <div class="article-title-date">Feb  2, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>The debate over whether to get rid of the worth-more-as-metal-than-currency penny has gone on for <a href="http://money.cnn.com/2006/06/01/news/newsmakers/penny/index.htm">a number of years</a> as inflation has marginalized the coin's usefulness.  In the <a href="http://www.chicagofed.org/publications/fedletter/cflfebruary2007_235a.pdf">February <i>Chicago Fed Letter</i></a> a senior economist at the Federal Reserve Bank of Chicago, FranÃ§ois R. Velde, <a href="http://www.nytimes.com/2007/02/01/business/01scenes.html?ex=1327986000&amp;en=fc1b2020abae45d6&amp;ei=5090&amp;partner=rssuserland&amp;emc=rss">outlined a plan</a> to rid the country of the 1 cent penny entirely.  He does not advocate debasing <a href="http://en.wikipedia.org/wiki/Cent_%28United_States_coin%29">pennies</a>, making them out of cheaper materials than the current mix of Copper plating around a Zinc core, which has been done previously (think steel pennies).  Rather, Verde proposes changing the value of the penny from one to five cents.  As the New York Times article explains, there won't really be any financial wizardry involved; the penny you hold would immediately increase in value five fold.  That's the best rate you can get short of winning the lottery and it's enough to make me want to gather up thousands of pennies to store under my mattress.</p>
+
+<p>My only thought is, when if it's decided that The Fed will change the value of the penny, wouldn't there be a mad rush to acquire pennies before the switch?  You'd definitely see me in line at the bank.</p>
+
+    <h2><a href="/blog/2007/01/31/the-plan-for-iraq.html">The Plan for Iraq</a></h2>
+    <div class="article-title-date">Jan 31, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>NPR's <a href="http://www.npr.org/templates/rundowns/rundown.php?prgId=2">All Things Considered</a> had a story about a <a href="http://www.npr.org/templates/story/story.php?storyId=7085635">Minnesota National Guard unit</a> that has been told that their stay in Iraq will be extended, like many other of our deployed forces in the world.  One of the soldiers in the unit was given the opportunity to pose a question to President Bush during his interview with NPR's Juan Williams.  The soldier asked whether the President had a plan for Iraq if the troop surge didn't have the intended effect, to which Bush responded,</p>
+
+<blockquote>
+Well, I would say to Ryan, I put it in place on the advice of a lot of smart people, particularly the military people who think it will work, and let us go into this aspect of the Iraqi strategy feeling it will work. But I will also assure Ryan that we're constantly adjusting to conditions on the ground.
+</blockquote>
+
+<p>Wow.  That plays right along with Bush's idea that everything he does will be successful and that there is no need for backup plans.  Thanks for answering that question, next time you can just say "no."  Thankfully, the soldier understood the true meaning of Bush's response and had this to say upon hearing it:</p>
+
+<blockquote>
+No, it did not answer my question.  I would have liked to know more so that there will be a plan if this does not work. For some of us that are over here, particularly me, my unit, we all feel, what's the point of us being extended if your initial plan to send more troops over here does not work? What are you going to do, Mr. President?
+</blockquote>
+
+<p>Will Bush get the troop surge?  There really is a good chance (I'd say it's a forgone conclusion) that the troop surge won't fix anything.  What will happen then?</p>
+
+    <h2><a href="/blog/2007/01/28/richard-dawkins-the-god-delusion.html">Richard Dawkins - The God Delusion</a></h2>
+    <div class="article-title-date">Jan 28, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>I just picked up <strong>The God Delusion</strong> by Richard Dawkins, a book which I'm sure contains numerous interesting quotes.  The first chapter focuses on the undue respect afforded to religious beliefs.  Dawkins makes the point that, though people can openly argue about politics, economics and warfare, religion gets a pass.  Arguing about religion is a way to bring up undue hatred from anyone whose views differ.  In concluding the chapter he quotes <a href="http://en.wikipedia.org/wiki/H._L._Mencken">H. L. Mencken</a> who said, "We must respect the other fellow's religion, but only in the sense and to the extent that we respect his theory that his wife is beautiful and his children smart."  A fitting summarization.</p>
+
+    <h2><a href="/blog/2007/01/26/pain-scales.html">Pain Scales</a></h2>
+    <div class="article-title-date">Jan 26, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>While reading about <a href="http://en.wikipedia.org/wiki/Capsaicin">capsaicin</a> and <a href="http://en.wikipedia.org/wiki/Scoville_scale">the Scoville scale</a> on <a href="http://en.wikipedia.org">my favorite website</a>, I noticed the <a href="http://en.wikipedia.org/wiki/Schmidt_Sting_Pain_Index">Shmidt Sting Pain Index</a> was listed.  Like so often happens when browsing Wikipedia, this led me to read about other <a href="http://en.wikipedia.org/wiki/Pain_scale">pain indices</a>.  Other than the Wong-Baker scale shown at the top of the page, I didn't know that there were such defined scales.</p>
+
+</ul>
+
+    <p><a href="/page/21/">Next page</a></p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612.html">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom.html">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x.html">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses.html">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation.html">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge.html">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013.html">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d.html">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor.html">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep.html">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers.html">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux.html">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized.html">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking.html">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars.html">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming.html">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics.html">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

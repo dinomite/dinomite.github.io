@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Time Machine for Linux « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>Since Apple's recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I've seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple's <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I've been doing incremental backups for years but, unlike all of the recent articles in question, I didn't roll my own solution: I use 'rsnapshot' to do all of the hard work for me.</p>
+
+<p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you're using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
+
+<pre>
+~$ sudo aptitude install rsnapshot
+</pre>
+
+<p>Next, you must edit the <code>rsnapshot.conf</code> file which, in most Linux distributions, resides in <code>/etc</code>.  Note that the key/value pairs in this file must be <b>tab</b> delimited.  The file is well commented; the major things that need to be changed are:</p>
+
+<ul>
+  <li><code>snapshot_root</code> - where the backups will be stored</li>
+  <li>backup intervals - how many of each interval to keep around (I do 7 dailys, 4 weeklys and 3 monthlys)</li>
+  <li>backup points - what to backup</li>
+</ul>
+
+<p>The last point requires some elaboration, as this is what <code>rsnapshot</code> will be backing up.  for a server that is only backing up it's own stuff this can be fairly simple:</p>
+
+<pre>
+backup    /etc/            servername/
+backup    /var/lib/svn/    servername/
+backup    /home/           servername/
+</pre>
+
+<p>Which tells <code>rsnapshot</code> to backup <code>/etc</code>, <code>/home</code> and the subversion repository and place them in the directory <code>servername</code> under the <code>snapshot_root</code> directory.  <code>rsnapshot</code> is also capable of backup up remote hosts via ssh:</p>
+
+<pre>
+backup    root@remote:/etc/     remote/     +rsync_long_args=--bwlimit=120
+backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
+</pre>
+
+<p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I'm on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612.html">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom.html">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x.html">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses.html">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation.html">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge.html">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013.html">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d.html">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor.html">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep.html">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers.html">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux.html">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized.html">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking.html">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars.html">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming.html">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics.html">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>
