@@ -28,32 +28,49 @@
     <div class="article-title-date">Mar 22, 2007</div>
     <p>File hashes have a multitude of uses and MD5 is, despite the fact that weaknesses have been found in the algorithm, still very useful and widely employed.  Creating MD5 digests in Java is quite easy, but the documentation for <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html">MessageDigest</a> is a little bit tricky.  Here is a simple method that takes in a string of input and returns the hash of the string.</p>
 
-<p><code>&lt;pre&gt;
+<p><code><pre>
 public static String md5(String input) {
-	// Compute the MD5 digest of the passed String
-	MessageDigest algorithm = null;
-	try {
-		algorithm = MessageDigest.getInstance("MD5");
-	} catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
-	algorithm.reset();
-	byte[] hash = algorithm.digest(input.getBytes());</code></p>
-
-<pre><code>// Convert it to a String
+    // Compute the MD5 digest of the passed String
+    MessageDigest algorithm = null;
+    try {
+        algorithm = MessageDigest.getInstance(&quot;MD5&quot;);
+    } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
+    algorithm.reset();
+    byte[] hash = algorithm.digest(input.getBytes());</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre>// Convert it to a String
 StringBuffer ret = new StringBuffer();
 for (int x = 0; x &lt; hash.length; x++) {
-	String hexString = Integer.toHexString(0xFF &amp; hash[x]);
-	if (hexString.length() == 1)
-		hexString = "0" + hexString;
+    String hexString = Integer.toHexString(0xFF &amp; hash[x]);
+    if (hexString.length() == 1)
+        hexString = "0" + hexString;
 
-	ret.append(hexString);
+    ret.append(hexString);
 
-	// Add the dashes
-	if (x == 3 || x == 5 || x == 7 || x == 9)
-		ret.append("-");
+    // Add the dashes
+    if (x == 3 || x == 5 || x == 7 || x == 9)
+        ret.append("-");
 } //for
 
-return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
-</code></pre>
+return ret.toString().toUpperCase();
+</pre></td></tr></tbody></table>
+</div>
+
+<p>} //md5
+</code></pre></p>
 
   </div>
 
@@ -76,6 +93,10 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -112,10 +133,6 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -131,7 +148,8 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

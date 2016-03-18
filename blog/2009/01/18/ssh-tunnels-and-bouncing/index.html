@@ -26,12 +26,12 @@
   <div class="main-content">
     <h1 class="article-title">SSH Tunnels and Bouncing</h1>
     <div class="article-title-date">Jan 18, 2009</div>
-    <p>I have a workstation at my office, drewble, that has a non-routable IP address.  Our network is setup such that, even from the VPN, I can't access that machine directly â€” I have to go through one of our dev servers to get to it.  Obviously, having to hop from one machine to another is a bit cumbersome, but as with many thing, this can be alleviated with some simple Unix magic.  A simple alias in my <code>.bashrc</code> makes the bouncing simple:</p>
+    <p>I have a workstation at my office, drewble, that has a non-routable IP address.  Our network is setup such that, even from the VPN, I can&rsquo;t access that machine directly â€” I have to go through one of our dev servers to get to it.  Obviously, having to hop from one machine to another is a bit cumbersome, but as with many thing, this can be alleviated with some simple Unix magic.  A simple alias in my <code>.bashrc</code> makes the bouncing simple:
 <pre>
-alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 9999 drew@localhost"
-</pre>
+alias drewble=&quot;ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 9999 drew@localhost&quot;
+</pre></p>
 
-<p>The first SSH command in this alias goes to the dev server, <code>dev1</code>, setting up a forward of the local port <code>9999</code> to the SSH port, <code>22</code>, on my workstation, <code>drewble</code>, found via its zeroconf hostname.  The <code>-f</code> options causes SSH to background after logging in and <code>-N</code> means that SSH won't run any commands after loggging in; I only care about forwarding ports.  The second command utilizes the tunnel setup on port 9999 to get me to the workstation, setting up a dynamic tunnel on port 7070 which can be used as a SOCKS proxy by things like my web browser.</p>
+<p>The first SSH command in this alias goes to the dev server, <code>dev1</code>, setting up a forward of the local port <code>9999</code> to the SSH port, <code>22</code>, on my workstation, <code>drewble</code>, found via its zeroconf hostname.  The <code>-f</code> options causes SSH to background after logging in and <code>-N</code> means that SSH won&rsquo;t run any commands after loggging in; I only care about forwarding ports.  The second command utilizes the tunnel setup on port 9999 to get me to the workstation, setting up a dynamic tunnel on port 7070 which can be used as a SOCKS proxy by things like my web browser.</p>
 
   </div>
 
@@ -54,6 +54,10 @@ alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 999
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -90,10 +94,6 @@ alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 999
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -109,7 +109,8 @@ alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 999
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

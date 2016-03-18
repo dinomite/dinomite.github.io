@@ -30,11 +30,11 @@
 
 <p>Among <a href="http://en.wikipedia.org/wiki/Single-winner_voting_system">single-winner voting systems</a>, the most common is <a href="http://en.wikipedia.org/wiki/Instant-runoff_voting">instant-runoff voting</a> and the simplest, making it the most reasonable choice as a replacement for the single-vote system that we currently use.  In an instant-runoff election, you fill out a ballot showing the order of preference for the candidates available.  When votes are tallied, your number one candidate is used to tally votes; if that candidate did not achieve a majority, then he is eliminated from the election and your second choice is taken.  This continues until a candidate has achieved a majority, thereby winning the election.</p>
 
-<p>IRV allows for voters to cast a ballot for a candidate whom they truly believe in without feeling that they are throwing their vote away.  This solves the Ralph Nader problem from the 2000 election.  Nader was the prime choice for many Americans but his status as a third-party candidate meant that he had no chance of winning the election.  Many who might have wanted to vote for Nader instead voted for one of the two major-party candidates, because their vote would otherwise be wasted.  The few who did vote for Nader, were then blamed for Al Gore's loss of the election, since they most likely would have voted for the Democratic candidate were it not for the Green Party's presence.  Instant-runoff voting keeps third-party candidates from "stealing" votes from the major parties and makes third-parties viable, since voters can feel confident in voting for such candidates.</p>
+<p>IRV allows for voters to cast a ballot for a candidate whom they truly believe in without feeling that they are throwing their vote away.  This solves the Ralph Nader problem from the 2000 election.  Nader was the prime choice for many Americans but his status as a third-party candidate meant that he had no chance of winning the election.  Many who might have wanted to vote for Nader instead voted for one of the two major-party candidates, because their vote would otherwise be wasted.  The few who did vote for Nader, were then blamed for Al Gore&rsquo;s loss of the election, since they most likely would have voted for the Democratic candidate were it not for the Green Party&rsquo;s presence.  Instant-runoff voting keeps third-party candidates from &ldquo;stealing&rdquo; votes from the major parties and makes third-parties viable, since voters can feel confident in voting for such candidates.</p>
 
 <p>Another area of voting that is lacking in the United States is the security and integrity of the voting system.  There are endless reports of electronic voting machines losing votes, miscounting votes or being tampered with.  Creating a system that is both secure and verifiable while at the same time anonymous is not a trivial task but there is a group of people who deal with such odd logic puzzles: cryptographers.  After the fiasco of electronic voting machines in the 2004 election, many people spent time thinking about methods for secure, verifiable voting.  One of those was <a href="http://en.wikipedia.org/wiki/Ron_Rivest">Ron Rivest</a>, the R in RSA, who came up with the <a href="http://en.wikipedia.org/wiki/ThreeBallot">ThreeBallot</a> voting protocol.</p>
 
-<p>The entire protocol is <a href="http://theory.csail.mit.edu/~rivest/Rivest-TheThreeBallotVotingSystem.pdf">detailed in Rivest's paper</a>, but the gist of the system is that the voter fills out three ballots which are identical, save for a unique number identifying each.  Through some cryptographic logic magic, the ballots are marked such that any single ballot of the triplet does not divulge whom the voter cast their ballot for; because the ballot is unique, however, the voter is given a copy of one of the three to take home.  This receipt can later be checked against the ballots that are published so that the voter can verify that their choice was indeed counted.  Again, this publishing doesn't divulge information about whom they voted for, despite the fact that all of the information of the election is published, allowing anyone to perform a recount.</p>
+<p>The entire protocol is <a href="http://theory.csail.mit.edu/~rivest/Rivest-TheThreeBallotVotingSystem.pdf">detailed in Rivest&rsquo;s paper</a>, but the gist of the system is that the voter fills out three ballots which are identical, save for a unique number identifying each.  Through some cryptographic logic magic, the ballots are marked such that any single ballot of the triplet does not divulge whom the voter cast their ballot for; because the ballot is unique, however, the voter is given a copy of one of the three to take home.  This receipt can later be checked against the ballots that are published so that the voter can verify that their choice was indeed counted.  Again, this publishing doesn&rsquo;t divulge information about whom they voted for, despite the fact that all of the information of the election is published, allowing anyone to perform a recount.</p>
 
 <p>See also:
 <a href="http://www.punchscan.org/">Punchscan</a>
@@ -61,6 +61,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -97,10 +101,6 @@
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -116,7 +116,8 @@
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -26,43 +26,43 @@
   <div class="main-content">
     <h1 class="article-title">psad on Ubuntu</h1>
     <div class="article-title-date">Apr  8, 2007</div>
-    <p><code>psad</code> (PortScan Attack Detector) is a useful tool for detecting portscans against a system and, optionally, blocking the offending host.  To use <code>psad</code> you configure your firewall to drop and log all packets that are not specifically allowed, i.e., those that are handled by services on the machine.  The configuration for <code>psad</code> can cause a little bit of grief because it depends on some quite particular firewall setup and, if you don't want massive logfiles, some editing of <code>syslog.conf</code>.  To begin with, you'll need to install <code>psad</code> which can be done via apt:</p>
+    <p><code>psad</code> (PortScan Attack Detector) is a useful tool for detecting portscans against a system and, optionally, blocking the offending host.  To use <code>psad</code> you configure your firewall to drop and log all packets that are not specifically allowed, i.e., those that are handled by services on the machine.  The configuration for <code>psad</code> can cause a little bit of grief because it depends on some quite particular firewall setup and, if you don&rsquo;t want massive logfiles, some editing of <code>syslog.conf</code>.  To begin with, you&rsquo;ll need to install <code>psad</code> which can be done via apt:</p>
 
-<p><code>&lt;pre&gt;
+<p><code><pre>
 $ sudo aptitude install psad
-&lt;/pre&gt;</code></p>
+</pre></code></p>
 
 <p>There are some configuration details that should be changed in <code>/etc/psad/psad.conf</code>, most notably the hostname and email variables.  Make sure that if you set the email address to something other than one of the accounts on the machine that your mail daemon is setup to deliver mail to the outside world.  Next, setup the firewall to accept packets for the services that your machine runs then drop and log all others.  In this example, the machine runs a web server (port 80) and ssh (port 22):</p>
 
-<p><code>&lt;pre&gt;
+<p><code><pre>
 $ sudo iptables -F INPUT
 $ sudo iptables -P INPUT ACCEPT
 $ sudo iptables -A INPUT -i lo -j ACCEPT
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
-$ sudo iptables -A INPUT -j LOG --log-prefix "DROP " --log-level debug
+$ sudo iptables -A INPUT -j LOG --log-prefix &quot;DROP &quot; --log-level debug
 $ sudo iptables -A INPUT -j DROP
-&lt;/pre&gt;</code></p>
+</pre></code></p>
 
-<p>Which should probably be put into a script that will be run on startup.  Finally alter the <code>/etc/syslog.conf</code> so that your <code>/var/log/messages</code> doesn't fill up as the second-to-last rule above  writes a logline each time a packet is dropped.  First, I changed the line that controls <code>kern.log</code> from this:</p>
+<p>Which should probably be put into a script that will be run on startup.  Finally alter the <code>/etc/syslog.conf</code> so that your <code>/var/log/messages</code> doesn&rsquo;t fill up as the second-to-last rule above  writes a logline each time a packet is dropped.  First, I changed the line that controls <code>kern.log</code> from this:</p>
 
-<p><code>&lt;pre&gt;
-kern.*				-/var/log/kern.log
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+kern.*              -/var/log/kern.log
+</pre></code></p>
 
 <p>to this:</p>
 
-<p><code>&lt;pre&gt;
-kern.info;kern.!debug		-/var/log/kern.log
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+kern.info;kern.!debug       -/var/log/kern.log
+</pre></code></p>
 
 <p>and adding this line at the end:</p>
 
-<p><code>&lt;pre&gt;
-*.=debug	|/var/lib/psad/psadfifo
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+*.=debug    |/var/lib/psad/psadfifo
+</pre></code></p>
 
-<p>The first syslog change keeps your /var/log/kern.log and /var/log/messages from getting a line each time a packet is dropped (which is quite often) and the latter change sends all those dropped packet notifications (which are at the 'debug' loglevel) to psad.</p>
+<p>The first syslog change keeps your /var/log/kern.log and /var/log/messages from getting a line each time a packet is dropped (which is quite often) and the latter change sends all those dropped packet notifications (which are at the &lsquo;debug&rsquo; loglevel) to psad.</p>
 
   </div>
 
@@ -85,6 +85,10 @@ kern.info;kern.!debug		-/var/log/kern.log
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -121,10 +125,6 @@ kern.info;kern.!debug		-/var/log/kern.log
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -140,7 +140,8 @@ kern.info;kern.!debug		-/var/log/kern.log
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

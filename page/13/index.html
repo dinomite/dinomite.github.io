@@ -28,24 +28,45 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from/">mdadm Isn't Someone You Want to Hear From</a></h1>
-    <div class="article-title-date">Nov 28, 2007</div>
-    <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning</p>
-<pre>
-from:		mdadm monitoring &lt;root@dinomite.net&gt;
-to:			root@dinomite.net,
-date:		Nov 28, 2007 6:25 AM
-subject:	Fail event on /dev/md0:claudius
+    <h1 class="article-title"><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent/">Quick Tip: Python's noop Equivalent</a></h1>
+    <div class="article-title-date">Nov 30, 2007</div>
+    <p>Python can&rsquo;t deal with empty code blocks, which may arise if you want to stub out a block but leave the implementation for later.  If you have one in your code, the interpreter will give the following error:</p>
 
-This is an automatically generated mail message from mdadm
-running on claudius
-
-A Fail event had been detected on md device /dev/md0.
-
-Faithfully yours, etc.
+<pre class="brush: python;">
+  File "foo.py", line 1
+    if (foo == bar):
+     ^
+IndentationError: expected an indented block
 </pre>
 
-<p>Ugh; that means one of the drives in RAID set on Claudius has failed.  I only run <a href="http://en.wikipedia.org/wiki/RAID#Standard_levels">RAID0</a> on the machine, so data loss isn't any issue unless the second drive gives up, too.  I try not to actively administer machines; I just get them setup in a solid state and then make use of them, no reason to waste time fiddling around.  I hadn't done anything of note with the machine in question in some time, so I wasn't even sure what the drive setup was, though <code>df</code> clears that up:</p>
+<p>In this case, you can use the <code>pass</code> operator which will do nothing but take up a line, resulting in the following code:</p>
+
+<pre class="brush: python;">
+if (foo == bar):
+    pass #TODO
+else:
+    print "nothing to do!"
+</pre>
+
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from/">mdadm Isn't Someone You Want to Hear From</a></h1>
+    <div class="article-title-date">Nov 28, 2007</div>
+    <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning
+<pre>
+from:       mdadm monitoring <a href="mailto:root@dinomite.net">root@dinomite.net</a>
+to:         root@dinomite.net,
+date:       Nov 28, 2007 6:25 AM
+subject:    Fail event on /dev/md0:claudius</p>
+
+<p>This is an automatically generated mail message from mdadm
+running on claudius</p>
+
+<p>A Fail event had been detected on md device /dev/md0.</p>
+
+<p>Faithfully yours, etc.
+</pre></p>
+
+<p>Ugh; that means one of the drives in RAID set on Claudius has failed.  I only run <a href="http://en.wikipedia.org/wiki/RAID#Standard_levels">RAID0</a> on the machine, so data loss isn&rsquo;t any issue unless the second drive gives up, too.  I try not to actively administer machines; I just get them setup in a solid state and then make use of them, no reason to waste time fiddling around.  I hadn&rsquo;t done anything of note with the machine in question in some time, so I wasn&rsquo;t even sure what the drive setup was, though <code>df</code> clears that up:</p>
 
 <pre>
 claudius:/home/dinomite/public_html# df -h
@@ -92,7 +113,7 @@ Working Devices : 1
        2       3        1        -      faulty   /dev/hda1
 </pre>
 
-<p>So it thinks there's a problem with <code>/dev/hda1</code>, one of the two partitions that makes up this RAID device.  At this point, I recall that Claudius has three disks in it, a 20G (/backup) and two 80G, the latter two support both of the systems RAID devices, <code>md0</code> and <code>md1</code>.  The notice that mdadm sent me was only concerning <code>md0</code> which is odd, because <code>md1</code> spans both of those physical disks as well:</p>
+<p>So it thinks there&rsquo;s a problem with <code>/dev/hda1</code>, one of the two partitions that makes up this RAID device.  At this point, I recall that Claudius has three disks in it, a 20G (/backup) and two 80G, the latter two support both of the systems RAID devices, <code>md0</code> and <code>md1</code>.  The notice that mdadm sent me was only concerning <code>md0</code> which is odd, because <code>md1</code> spans both of those physical disks as well:</p>
 
 <pre>
 claudius:/home/dinomite/public_html# mdadm --detail /dev/md1
@@ -122,7 +143,7 @@ Working Devices : 2
        1       3       66        1      active sync   /dev/hdb2
 </pre>
 
-<p>and it doesn't show any problems.  What does this mean?  Well, I'm not exactly sure, but it does mean that the disk <code>/dev/hda</code> which holds the failed partition (<code>hda1</code>) of <code>md0</code> isn't completely bad; it's still spinning away and working.  That probably means that the filesystem on <code>hda1</code> somehow got muddled up or that there's a physical error on the portion of the disk support <code>hda1</code>.  Either way, the first step for me is to simly rebuild the array as it was before.  This is as simple as removing the faulty partition and adding it back to the array:</p>
+<p>and it doesn&rsquo;t show any problems.  What does this mean?  Well, I&rsquo;m not exactly sure, but it does mean that the disk <code>/dev/hda</code> which holds the failed partition (<code>hda1</code>) of <code>md0</code> isn&rsquo;t completely bad; it&rsquo;s still spinning away and working.  That probably means that the filesystem on <code>hda1</code> somehow got muddled up or that there&rsquo;s a physical error on the portion of the disk support <code>hda1</code>.  Either way, the first step for me is to simly rebuild the array as it was before.  This is as simple as removing the faulty partition and adding it back to the array:</p>
 
 <pre>
 claudius:/home/dinomite/public_html# mdadm /dev/md0 -r /dev/hda1
@@ -165,16 +186,16 @@ Working Devices : 2
        2       3        1        0      spare rebuilding   /dev/hda1
 </pre>
 
-<p>Though a failed RAID device isn't the best way to start your morning, managing them in Linux is a fairly straightforward operation.  If the device actually had been bad, I would simply have to shut down the machine, replace the bad drive, partition it like the other one (<code>fdisk -l</code> helps) and then add it to the array as shown above.  In most cases, this wouldn't be much harder than what I had to do, though my case the server is a few hundred miles away, so that'd be quite a hike.</p>
+<p>Though a failed RAID device isn&rsquo;t the best way to start your morning, managing them in Linux is a fairly straightforward operation.  If the device actually had been bad, I would simply have to shut down the machine, replace the bad drive, partition it like the other one (<code>fdisk -l</code> helps) and then add it to the array as shown above.  In most cases, this wouldn&rsquo;t be much harder than what I had to do, though my case the server is a few hundred miles away, so that&rsquo;d be quite a hike.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/26/tab-history-add-on-for-firefox/">Tab History Add-on for Firefox</a></h1>
     <div class="article-title-date">Nov 26, 2007</div>
-    <p>There are literally hundreds of lists of the best Firefox extensions yet <a href="http://db.rambleschmack.net/pc_tips/best_firefox_extensions">few</a> mention what I deem to be the most important: <a href="https://addons.mozilla.org/en-US/firefox/addon/1859">Tab History</a>.  A feature that I first became addicted to in <a href="http://galeon.sourceforge.net">Galeon</a>, Tab History causes newly created tabs created by middle-clicking a link or clicking "Open Link in New Tab" to inherit the history of their parent.</p>
+    <p>There are literally hundreds of lists of the best Firefox extensions yet <a href="http://db.rambleschmack.net/pc_tips/best_firefox_extensions">few</a> mention what I deem to be the most important: <a href="https://addons.mozilla.org/en-US/firefox/addon/1859">Tab History</a>.  A feature that I first became addicted to in <a href="http://galeon.sourceforge.net">Galeon</a>, Tab History causes newly created tabs created by middle-clicking a link or clicking &ldquo;Open Link in New Tab&rdquo; to inherit the history of their parent.</p>
 
-<p>That is, I can run a search, open a whole bunch of the windows in tabs and then close the windows with reckless abandon once I decide one of the tabs fulfills my needs.  Later, if I find that the tab I'm reading doesn't have the information I was searching for, I don't need to ctrl+shift+t and sift through the tabs that I had prematurely closed searching for the web search that I had run.  Instead, because the tab in question was spawned from said search, I simply hit 'back' and head right back to the original page.</p>
+<p>That is, I can run a search, open a whole bunch of the windows in tabs and then close the windows with reckless abandon once I decide one of the tabs fulfills my needs.  Later, if I find that the tab I&rsquo;m reading doesn&rsquo;t have the information I was searching for, I don&rsquo;t need to ctrl+shift+t and sift through the tabs that I had prematurely closed searching for the web search that I had run.  Instead, because the tab in question was spawned from said search, I simply hit &lsquo;back&rsquo; and head right back to the original page.</p>
 
-<p>Similarly, if I'm reading an article opening links in new tabs as I go, I will usually close that article's tab before perusing the links that it contained.  If I happen upon one of those new tabs and have forgotten what the context for it was in the article, I can simply hit the back button to find the answer.</p>
+<p>Similarly, if I&rsquo;m reading an article opening links in new tabs as I go, I will usually close that article&rsquo;s tab before perusing the links that it contained.  If I happen upon one of those new tabs and have forgotten what the context for it was in the article, I can simply hit the back button to find the answer.</p>
 
 <p>Tab History really is the most important Firefox extension to me.</p>
 
@@ -182,14 +203,14 @@ Working Devices : 2
     <h1 class="article-title"><a href="/blog/2007/11/19/amazons-kindle-comparable-to-a-hardcover/">Amazon's Kindle Comparable to a Hardcover?</a></h1>
     <div class="article-title-date">Nov 19, 2007</div>
     <p><a class="left" title="Bezos loves Kindle" href="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg"><img src="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg" alt="Bezos loves Kindle" /></a>
-Morgan Webb made a comparison between Amazon's new <a href="http://amazon.com/gp/product/B000FI73MA/sr=53-1/qid=1195527445/ref=tr_359161">Kindle</a> eBook reader and a hardcover book.  Though she was simply trying to liken the Kindle to the nearest priced physical book product, this is a false comparison.  Someone buying a hardcover book is looking for something more than just the words and content of the story; they enjoy the physical representation of a fine work.  A more accurate comparison for the Kindle is a regular old paperback, whose purchaser is simply looking for the cheapest representation of the book's content.  At less than $15 for the average paperback, the Kindle doesn't look like such a good deal, since they charge $10 per book for the $400 device.</p>
+Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.com/gp/product/B000FI73MA/sr=53-1/qid=1195527445/ref=tr_359161">Kindle</a> eBook reader and a hardcover book.  Though she was simply trying to liken the Kindle to the nearest priced physical book product, this is a false comparison.  Someone buying a hardcover book is looking for something more than just the words and content of the story; they enjoy the physical representation of a fine work.  A more accurate comparison for the Kindle is a regular old paperback, whose purchaser is simply looking for the cheapest representation of the book&rsquo;s content.  At less than $15 for the average paperback, the Kindle doesn&rsquo;t look like such a good deal, since they charge $10 per book for the $400 device.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h1>
     <div class="article-title-date">Nov 15, 2007</div>
-    <p>Since Apple's recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I've seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple's <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I've been doing incremental backups for years but, unlike all of the recent articles in question, I didn't roll my own solution: I use 'rsnapshot' to do all of the hard work for me.</p>
+    <p>Since Apple&rsquo;s recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I&rsquo;ve seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple&rsquo;s <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I&rsquo;ve been doing incremental backups for years but, unlike all of the recent articles in question, I didn&rsquo;t roll my own solution: I use &lsquo;rsnapshot&rsquo; to do all of the hard work for me.</p>
 
-<p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you're using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
+<p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you&rsquo;re using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
 
 <pre>
 ~$ sudo aptitude install rsnapshot
@@ -198,12 +219,12 @@ Morgan Webb made a comparison between Amazon's new <a href="http://amazon.com/gp
 <p>Next, you must edit the <code>rsnapshot.conf</code> file which, in most Linux distributions, resides in <code>/etc</code>.  Note that the key/value pairs in this file must be <b>tab</b> delimited.  The file is well commented; the major things that need to be changed are:</p>
 
 <ul>
-  <li><code>snapshot_root</code> - where the backups will be stored</li>
-  <li>backup intervals - how many of each interval to keep around (I do 7 dailys, 4 weeklys and 3 monthlys)</li>
-  <li>backup points - what to backup</li>
+<li><code>snapshot_root</code> - where the backups will be stored</li>
+<li>backup intervals - how many of each interval to keep around (I do 7 dailys, 4 weeklys and 3 monthlys)</li>
+<li>backup points - what to backup</li>
 </ul>
 
-<p>The last point requires some elaboration, as this is what <code>rsnapshot</code> will be backing up.  for a server that is only backing up it's own stuff this can be fairly simple:</p>
+<p>The last point requires some elaboration, as this is what <code>rsnapshot</code> will be backing up.  for a server that is only backing up it&rsquo;s own stuff this can be fairly simple:</p>
 
 <pre>
 backup    /etc/            servername/
@@ -218,26 +239,26 @@ backup    root@remote:/etc/     remote/     +rsync_long_args=--bwlimit=120
 backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
 </pre>
 
-<p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I'm on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
+<p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I&rsquo;m on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/09/parkour-on-espn/">Parkour on ESPN</a></h1>
     <div class="article-title-date">Nov  9, 2007</div>
-    <p>ESPN had a spot on Parkour this past week; sounds like the sport is actually gaining some traction.  Time to gather up my cold weather gear and get back out there.</p>
-<object width="440" height="361"><param name="movie" value="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" /><param name="wmode" value="transparent" /><param name="allowScriptAccess" value="always" /><embed src="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" type="application/x-shockwave-flash" wmode="transparent" width="440" height="361" allowscriptaccess="always" /></object>
+    <p>ESPN had a spot on Parkour this past week; sounds like the sport is actually gaining some traction.  Time to gather up my cold weather gear and get back out there.
+<object width="440" height="361"><param name="movie" value="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><embed src="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" type="application/x-shockwave-flash" wmode="transparent" width="440" height="361" allowScriptAccess="always"></embed></object></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/02/programming-is-impressive/">Programming is Impressive</a></h1>
     <div class="article-title-date">Nov  2, 2007</div>
     <p>When you program you tend to have an impressive (or confusing, take your pick) looking screen, particularly if you consider vim an IDE:
-<a href="http://dinomite.net/wp-content/uploads/2007/11/screen.png" title="Writing code"><img src="http://dinomite.net/wp-content/uploads/2007/11/screen-thumb.png" alt="Writing code (thumbnail)" /></a></p>
+<a href='http://dinomite.net/wp-content/uploads/2007/11/screen.png' title='Writing code'><img src='http://dinomite.net/wp-content/uploads/2007/11/screen-thumb.png' alt='Writing code (thumbnail)' /></a></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/10/29/dulce-de-leche-ice-cream/">Dulce de Leche Ice Cream</a></h1>
     <div class="article-title-date">Oct 29, 2007</div>
-    <p>My dad made up a bunch of <a href="http://en.wikipedia.org/wiki/Dulce_de_leche">dulce de leche</a> a while back; if you're going to boil one can, you might as well fill the pot.  For those who don't know, the easiest way to make dulce de leche, a caramelized milk product popular in South and Central America, is to boil a can of <em>sweetened</em> <a href="http://en.wikipedia.org/wiki/Condensed_milk">condensed milk</a> for two to three hours.  At the shorter end of that range, you'll end up with viscosity similar to a caramel syrup; longer and it turns into a thick, spreadable paste, not unlike Nutella.</p>
+    <p>My dad made up a bunch of <a href="http://en.wikipedia.org/wiki/Dulce_de_leche">dulce de leche</a> a while back; if you&rsquo;re going to boil one can, you might as well fill the pot.  For those who don&rsquo;t know, the easiest way to make dulce de leche, a caramelized milk product popular in South and Central America, is to boil a can of <em>sweetened</em> <a href="http://en.wikipedia.org/wiki/Condensed_milk">condensed milk</a> for two to three hours.  At the shorter end of that range, you&rsquo;ll end up with viscosity similar to a caramel syrup; longer and it turns into a thick, spreadable paste, not unlike Nutella.</p>
 
-<p>I have seen numerous references on the internet of people not wanting to boil a can for fear of it exploding, but this trepidation is unfounded - boiling is a normal part of the <a href="http://en.wikipedia.org/wiki/Canning">canning</a> process.  The contents of the can are put in, the can is sealed and then it is brought to 100°C or even hotter to sterilize the elements within.  Leaving a can in boiling water on the stove is perfectly safe, assuming the pan doesn't run dry, the water will keep the system, can included, from breaking the boiling point.  That's just basic <a href="http://en.wikipedia.org/wiki/Thermodynamics">thermodynamics</a>.  As mentioned previously, it's worthwhile to boil a few cans at once, since the energy expenditure of keeping a pot simmering on the stove is nearly identical.</p>
+<p>I have seen numerous references on the internet of people not wanting to boil a can for fear of it exploding, but this trepidation is unfounded - boiling is a normal part of the <a href="http://en.wikipedia.org/wiki/Canning">canning</a> process.  The contents of the can are put in, the can is sealed and then it is brought to 100&#xB0;C or even hotter to sterilize the elements within.  Leaving a can in boiling water on the stove is perfectly safe, assuming the pan doesn&rsquo;t run dry, the water will keep the system, can included, from breaking the boiling point.  That&rsquo;s just basic <a href="http://en.wikipedia.org/wiki/Thermodynamics">thermodynamics</a>.  As mentioned previously, it&rsquo;s worthwhile to boil a few cans at once, since the energy expenditure of keeping a pot simmering on the stove is nearly identical.</p>
 
 <p>To make the ice cream, combine these ingredients and toss it into your ice cream maker:</p>
 
@@ -249,133 +270,107 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
 Vanilla to taste (1-3 teaspoons)
 </pre>
 
-<p>I used thick (3 hour) dulce de leche, which lends a very strong flavor and skim milk, because it was in the fridge.  To get everything to combine, I had to stir it on the stove for about 10 minutes.  Don't just let milk sit on the stove unstirred, however; it grows a nasty skin quite quickly.  If you don't have another can of sweetened condensed milk, it can be replaced by another cup of cream, a half cup of milk and a cup of sugar.</p>
+<p>I used thick (3 hour) dulce de leche, which lends a very strong flavor and skim milk, because it was in the fridge.  To get everything to combine, I had to stir it on the stove for about 10 minutes.  Don&rsquo;t just let milk sit on the stove unstirred, however; it grows a nasty skin quite quickly.  If you don&rsquo;t have another can of sweetened condensed milk, it can be replaced by another cup of cream, a half cup of milk and a cup of sugar.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/10/26/code-golf/">Code Golf</a></h1>
     <div class="article-title-date">Oct 26, 2007</div>
     <p>I stumbled across a <a href="http://golf.shinh.org">code golf</a> earlier this week that offers numerous problems.  The specific challenge I came across was the <a href="http://en.wikipedia.org/wiki/Bizz_buzz">fizz buzz</a> problem that I had been introduced to a few weeks ago.</p>
 
-<p>My initial attempt in Perl was this:</p>
+<p>My initial attempt in Perl was this:
 <pre>
 for (1..100) {
-    $a = "";
-    $a = "Fizz" if !($_ % 3);
-
-    if (!($_ % 5)) {
-        $a .= "Buzz"
-    } elsif ($_ % 3) {
-        $a = $_
-    }
-
-    print "$a\n"
+    $a = &quot;&quot;;
+    $a = &quot;Fizz&quot; if !($_ % 3);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>if (!($_ % 5)) {
+    $a .= "Buzz"
+} elsif ($_ % 3) {
+    $a = $_
 }
-</pre>
 
-<p>Nothing special at all, just some fairly tight, clean code.  Aside from the broken apart <code>if</code> block and the use of bad variable names (<code>$a</code>, <code>$_</code>) it wouldn't look out of place in a normal program.  After exhausting my knowledge of esoteric Perl, I whittled it down to this:</p>
+print "$a\n"
+</pre></td></tr></tbody></table>
+</div>
+
+<p>}
+</pre></p>
+
+<p>Nothing special at all, just some fairly tight, clean code.  Aside from the broken apart <code>if</code> block and the use of bad variable names (<code>$a</code>, <code>$_</code>) it wouldn&rsquo;t look out of place in a normal program.  After exhausting my knowledge of esoteric Perl, I whittled it down to this:
 <pre>
 for (1..100) {
-    $a = ($_ % 3) ? "" : "Fizz";
-    $a .= "Buzz" if !($_ % 5);
+    $a = ($_ % 3) ? &quot;&quot; : &quot;Fizz&quot;;
+    $a .= &quot;Buzz&quot; if !($_ % 5);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>$a ||= $_;
 
-    $a ||= $_;
+print "$a\n"
+</pre></td></tr></tbody></table>
+</div>
 
-    print "$a\n"
-}
-</pre>
+<p>}
+</pre></p>
 
-<p>With a bit of digging, I found that I could use the <code>+</code> and <code>,</code> operators as part of <code>print</code> to get rid of that <code>$a</code> assignment:</p>
+<p>With a bit of digging, I found that I could use the <code>+</code> and <code>,</code> operators as part of <code>print</code> to get rid of that <code>$a</code> assignment:
 <pre>
 for (1..100) {
-    $a = ($_ % 3) ? "" : "Fizz";
-    $a .= "Buzz" if !($_ % 5);
+    $a = ($_ % 3) ? &quot;&quot; : &quot;Fizz&quot;;
+    $a .= &quot;Buzz&quot; if !($_ % 5);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print + $a || $_, "\n"
+</pre></td></tr></tbody></table>
+</div>
 
-    print + $a || $_, "\n"
-}
-</pre>
+<p>}
+</pre></p>
 
-<p>But you certainly don't need most of the parenthesis, and Perl deals with barewords just fine:</p>
+<p>But you certainly don&rsquo;t need most of the parenthesis, and Perl deals with barewords just fine:
 <pre>
 for (1..100) {
-    $a = $_ % 3 ? "" : Fizz;
-    $a .= Buzz if !($_ % 5);
+    $a = $_ % 3 ? &quot;&quot; : Fizz;
+    $a .= Buzz if !($_ % 5);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print + $a || $_, "\n"
+</pre></td></tr></tbody></table>
+</div>
 
-    print + $a || $_, "\n"
-}
-</pre>
+<p>}
+</pre></p>
 
-<p>Finally, after reading through <a href="http://perldoc.perl.org/perlvar.html"><code>perlvar</code></a> I found that the input record separator, which defaults to "\n", can take the place of that four-character newline:</p>
+<p>Finally, after reading through <a href="http://perldoc.perl.org/perlvar.html"><code>perlvar</code></a> I found that the input record separator, which defaults to &ldquo;\n&rdquo;, can take the place of that four-character newline:
 <pre>
 for (1..100) {
-    $a = $_ % 3 ? "" : Fizz;
-    $a .= Buzz if !($_ % 5);
+    $a = $_ % 3 ? &quot;&quot; : Fizz;
+    $a .= Buzz if !($_ % 5);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>print + $a || $_, $/
+</pre></td></tr></tbody></table>
+</div>
 
-    print + $a || $_, $/
-}
-</pre>
+<p>}
+</pre></p>
 
-<p>101 characters, but you can go a step further, drop the $a assignment and condense those statements down below:</p>
+<p>101 characters, but you can go a step further, drop the $a assignment and condense those statements down below:
 <pre>
 for (1..100) {
-    print + ($_ % 3 ? "" : Fizz) . ($_ % 5 ? "" : Buzz) || $_, $/
+    print + ($_ % 3 ? &quot;&quot; : Fizz) . ($_ % 5 ? &quot;&quot; : Buzz) || $_, $/
 }
-</pre>
+</pre></p>
 
-<p>Finally, since this is now a single Perl statement, the curly braces can be eliminated by placing the loop control at the end (thanks to Fotios for that tip).  After you beat the whitespace out, you end up with 56 characters:</p>
+<p>Finally, since this is now a single Perl statement, the curly braces can be eliminated by placing the loop control at the end (thanks to Fotios for that tip).  After you beat the whitespace out, you end up with 56 characters:
 <pre>
-print+($_%3?"":Fizz).($_%5?"":Buzz)||$_,$/for(1..100)
-</pre>
+print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
+</pre></p>
 
 <p><a href="http://en.wikipedia.org/wiki/Q.E.D.">Q.E.D.</a></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/10/25/what-are-you-worth-to-facebook/">What Are You Worth to Facebook?</a></h1>
     <div class="article-title-date">Oct 25, 2007</div>
-    <p>It was <a href="http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top">widely</a> <a href="http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story">reported</a>  <a href="http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508">yesterday</a> that Microsoft bought a 1.6% stake in <a href="http://facebook.com">Facebook</a> for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook's 42 million accounts.  <a href="http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/">Marketplace's coverage</a> put that number at $300 dollars, which takes into account Facebook's projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn't necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus <a href="https://dinomite.net/index.php?tag=atheism">isn't actually my friend</a>.  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don't want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?</p>
-
-    <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/10/16/data-dumper/">Data::Dumper</a></h1>
-    <div class="article-title-date">Oct 16, 2007</div>
-    <p><a href="http://perldoc.perl.org/Data/Dumper.html">Data::Dumper</a> is one of the most useful Perl modules when developing code, providing quick and easy access to the contents of data structures.  Are you unsure whether you're setting the values of a hash correctly?  Don't understand how someone has organized an object that you're 'use'ing?  Data::Dumper to the rescue.</p>
-
-<pre>
-use Data::Dumper;
-
-my %foo;
-$foo{'bar'} = 'This is bar';
-$foo{'baz'}{'foo'} = 'This is foo, stored under baz in %foo';
-$foo{'qux'} = 'This is qux';
-
-print "The hash '%foo' looks like this:\n";
-print Dumper(\%foo);
-</pre>
-
-<p>When executed:</p>
-<pre>
-The hash '%foo' looks like this:
-$VAR1 = {
-          'bar' =&gt; 'This is bar',
-          'baz' =&gt; {
-                     'foo' =&gt; 'This is foo, stored under baz in %foo'
-                   },
-          'qux' =&gt; 'This is qux'
-        };
-</pre>
-
-<p>Note that I passed Dumper() a reference to the 'foo' hash by using a backslash, which is what you will want most of the time with anything other than a scalar.  Passing a reference causes Dumper() to print the entire variable's contents in the same scope.  If you pass 'foo' directly, instead of its reference, you end up with this:</p>
-<pre>
-The hash '%foo' looks like this:
-$VAR1 = 'bar';
-$VAR2 = 'This is bar';
-$VAR3 = 'baz';
-$VAR4 = {
-          'foo' =&gt; 'This is foo, stored under baz in %foo'
-        };
-$VAR5 = 'qux';
-$VAR6 = 'This is qux';
-</pre>
-
-<p>Which doesn't make it clear that 'foo' is a hash.</p>
+    <p>It was <a href="http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top">widely</a> <a href="http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story">reported</a>  <a href="http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508">yesterday</a> that Microsoft bought a 1.6% stake in <a href="http://facebook.com">Facebook</a> for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook&rsquo;s 42 million accounts.  <a href="http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/">Marketplace&rsquo;s coverage</a> put that number at $300 dollars, which takes into account Facebook&rsquo;s projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn&rsquo;t necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus <a href="https://dinomite.net/index.php?tag=atheism">isn&rsquo;t actually my friend</a>.  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don&rsquo;t want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?</p>
 
     <div class="article-footer"></div>
 </ul>
@@ -403,6 +398,10 @@ $VAR6 = 'This is qux';
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -439,10 +438,6 @@ $VAR6 = 'This is qux';
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -458,7 +453,8 @@ $VAR6 = 'This is qux';
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

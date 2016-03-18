@@ -26,12 +26,12 @@
   <div class="main-content">
     <h1 class="article-title">Code Golf: Saving Time</h1>
     <div class="article-title-date">Sep 21, 2008</div>
-    <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I'm finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don't read below if you don't want hints!</p>
+    <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I&rsquo;m finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don&rsquo;t read below if you don&rsquo;t want hints! </p>
 
 <p>My first draft grabs the hour and minutes using capturing in a regex, then turns them both into positions on a twelve hour clockface.  The clock location is passed to the function <code>symbol</code> which, through use of some nasty nested ternaries, what should be printed at the passed position on the clock face. (470 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /(\d+):(\d+)/;
+<> =~ /(\d+):(\d+)/;
 $H = $1 % 12;
 $M = ($2 - ($2 % 5)) / 5;
 
@@ -53,10 +53,10 @@ sub symbol {
 }
 </pre>
 
-<p>Perl provides the automatic variables <code>$`</code> and <code>$'</code> (aka  <code>$PREMATCH</code> and <code>$POSTMATCH</code> with <code>use English</code>) which are, unsurprisingly, the portions of a scalar before and after what your regex matched.  I simplified the input regex by simply matching the colon and grabbing the hours &amp; minutes from <code>$`</code> and <code>$'</code>.    shorten subroutine name (398 characters):</p>
+<p>Perl provides the automatic variables <code>$`</code> and <code>$&#39;</code> (aka  <code>$PREMATCH</code> and <code>$POSTMATCH</code> with <code>use English</code>) which are, unsurprisingly, the portions of a scalar before and after what your regex matched.  I simplified the input regex by simply matching the colon and grabbing the hours &amp; minutes from <code>$`</code> and <code>$&#39;</code>.    shorten subroutine name (398 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 
@@ -81,7 +81,7 @@ sub sy {
 <p>I spun off the drawing of most lines into a single function, which takes the number of preceding spaces, the leftmost hour mark on the line, the number of interstitial spaces and the final hour mark on the line (380 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 
@@ -109,7 +109,7 @@ sub sy {
 <p>Before getting totally mucked up (311 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 print ' 'x8 . sy(0) . $/ . li(4,11,7,1) . $/ . li(1,10,13,2) . $/ . li(0,9,15,3) . $/ . li(1,8,13,4) . $/ . li(4,7,7,5) . ' 'x8 . sy(6);
@@ -121,7 +121,7 @@ sub sy {$_ = shift; $H==$_ ? $H==$M ? 'x' : 'h' : $M==$_ ? 'm' : 'o';}
 <p>My final effort which is 244 characters when concatenated onto a single line:</p>
 
 <pre class="brush: perl;">
-&lt;&gt;=~/:/;
+<>=~/:/;
 $H=$`%12;
 $M=int $'/5;
 sub li{' 'x$_[0].sy($_[1]).' 'x$_[2].sy($_[3]).$/}
@@ -150,6 +150,10 @@ print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -186,10 +190,6 @@ print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -205,7 +205,8 @@ print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

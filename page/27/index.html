@@ -28,333 +28,391 @@
     <p><a href="/page/26/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2006/01/13/nmap-tutorial/">Nmap Tutorial</a></h1>
+    <div class="article-title-date">Jan 13, 2006</div>
+    <p>Port scanning is a method of finding listening services (open ports) on a
+computer.  In laymen&rsquo;s terms, port scanning is akin to checking if doors and
+windows are unlocked on a house.  It is useful for locating vulnerable computers
+on a network for security auditing purposes as well as attacking them.
+
+<img src='http://dinomite.net/wp-content/images/TCP.bmp' alt='TCP diagram' align='right' />
+
+</p><p>To understand port scanning, you first must know how the TCP protocol works.
+TCP is called a connection oriented protocol, as it initiates a connection
+between two machines when they want to transfer data.  This is compared to
+connectionless protocols, like UDP, which don&rsquo;t initiate connections or gurantee
+delivery of data.  To begin a connection, the client sends a packet to the
+server with the SYN flag set which tells the server it wants to initiate a
+connection and where to start numbering packets.  The server responds with a
+packet that has the SYN and ACK flags set, acknowleding the connection.  The
+client then completes the setup of the connection by responding with a packet
+having the ACK flag set.  After this point, the client and server can
+communicate as a stream, sending all the data they wish.  When they have
+completed sending all of their data, the connection is terminated when one of
+them sends a FIN/ACK packet and the other responds with an ACK.
+
+</p><p>Now that we&rsquo;ve covered the basics of TCP, we can move on to Nmap itself.
+Nmap is a featureful port scanner supporting all of the popular scanning
+mechanisms including TCP connect(), SYN, FIN, Xmas and null scans.  In addition,
+Nmap supports ping sweeping, operating system detection, decoy and zombie hosts.
+
+</p><p>The TCP connect() scan is the simplest and Nmap&rsquo;s default.  All it does is
+check each port on the target machine by initiating a connection using the
+operating system&rsquo;s connect() call.  Being that it only utilizes standard system
+calls available to normal users, this type of scan does not require root or
+administrator priveleges.  However, the connect() is easily detected because it
+is fairly noisy; the port scanner must fully initiate a connection with each
+port that it finds open.
+
+</p><p>A SYN scan, also knowsn as a half-open scan, only sends the first packet of a
+connection initiate, the SYN packet.  It never attempts to complete the
+connection, rather it simply listens for the response of the target.  If it
+replies with a SYN/ACK packet, the port is in listening mode.  If it responds
+with a RST/ACK, the port is closed.  The SYN scan is considered to be a stealth
+scan, as the connection is never completed and therefore never registered with
+any listening services.  Most modern firewalls and monitoring systems can detect
+SYN scans, however.
+
+</p><p>FIN, Xmas tree and null scans all work in the same manner.  The port scanner
+sends a packet to the target machine out of the blue, which doesn&rsquo;t make sense
+out of the context of a connection.  RFC 793 stipulates that closed ports should
+respond to this probe with a RST whilst open ports will ignore it.  Unfortunately, this doesn&rsquo;t
+work against Microsoft operating systems because they don&rsquo;t comply to the standard,
+ignoring such packets instead.
+
+</p><p>Because of their nature, attempting to connect to numerous ports on a
+computer, port scans can usually be detected quite easily.  Most port scanners
+will scan in a random order, so that their activities aren&rsquo;t blatantly obvious,
+ but the speed and manner with which they scan is usually still easily detected.
+ Many firewalls have options to detect and slow or prevent port scans.  Linux&rsquo;s
+ current kernel-based firewall, Netfilter (IPChains) has a number of rules that
+ can do this, such as rules to limit port connections over a time period.
+ There are also more advanced programs, like <a href="http://www.snort.org">snort</a> and <a href="http://www.cipherdyne.com/psad">Port Scan Attack Detector (PSAD)</a>
+ which can monitor for port scans, notify you of them and take action (blocking
+ the scanning hosts) to prevent such scans.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/13/new-rules-for-2006-formula-1-season/">New Rules for 2006 Formula 1 Season</a></h1>
     <div class="article-title-date">Jan 13, 2006</div>
     <p>The new rules for the 2006 Formula 1 season were released earlier this month and they make some pretty big changes, mostly in the name of reducing the cost to participating teams.  In addition to the new 2.4-liter V8 engines, which are rev-limited to 19,000 rpm, the FIA has said that they will review bodywork to reduce downforce whilst maintain drag levels.  In this same vein of increacing reliance on mechanical grip, tire sizes have been increased and slick tires are back.  One of the big questions from last year was whtether F1 would continue to have two tire manufacturers and it looks like all of the cars will be on Bridgestones next year.  Cars will continue to have only a single set of tires for the race and in addition to three-weekend engines, transmissions will have to last four events.</p>
 
-<p>Of the more obvious cost-cutting measures was the reduction of the minimum weight from 590 to 550 kilograms (1300 to 1212 pounds).  The reason for this is that all of the cars in the series have been <em>well</em> under the former limit and to reach the minimum used expensive tungsten, chosen for it's very high density.  As always, the astonishing thing about these number is that a standard small passenger car is just shy of 3000 pounds and yet produces less than one quarter of the horsepower of a Formula 1 car.</p>
+<p>Of the more obvious cost-cutting measures was the reduction of the minimum weight from 590 to 550 kilograms (1300 to 1212 pounds).  The reason for this is that all of the cars in the series have been <em>well</em> under the former limit and to reach the minimum used expensive tungsten, chosen for it&rsquo;s very high density.  As always, the astonishing thing about these number is that a standard small passenger car is just shy of 3000 pounds and yet produces less than one quarter of the horsepower of a Formula 1 car.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/13/fry/">Fry</a></h1>
     <div class="article-title-date">Jan 13, 2006</div>
-    <p>Just about done configuring wordpress.  Here's a picture of Fry:</p>
+    <p>Just about done configuring wordpress.  Here&rsquo;s a picture of Fry:</p>
 
-<p><img src="/wp-content/uploads/fry.jpg" alt="Fry" /></p>
+<p><img src='/wp-content/uploads/fry.jpg' alt='Fry' /></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/13/forever-young/">Forever Young</a></h1>
     <div class="article-title-date">Jan 13, 2006</div>
-    <p>Forever Young by <a href="http://www.allmusic.com/cg/amg.dll?p=amg&amp;sql=11:wiaxlf3e5cqe">Alphaville</a> is a standard House anthem but the original version of the song, which I only heard recently, is downright terrible.</p>
+    <p>Forever Young by <a href="http://www.allmusic.com/cg/amg.dll?p=amg&sql=11:wiaxlf3e5cqe">Alphaville</a> is a standard House anthem but the original version of the song, which I only heard recently, is downright terrible.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/13/filesystems/">Filesystems</a></h1>
     <div class="article-title-date">Jan 13, 2006</div>
-    <p>This is the outline to a seminar that I gave at <a href="http://www.csh.rit.edu">CSH</a> on filesystems.  The impetus was simply my lack of knowledge for how filesystems work and the misconceptions (particularly about journaling) that most people have.  Synopsis: use ReiserFS, but don't believe the <a href="http://funroll-loops.org">Gentoo kiddies</a> who say you'll get a massive performance boost; you wont.  ReiserFS is slightly faster than EXT3, a little bit more space efficient and gets beyond the 2GB filesize limit.  I run EXT2 because  it's a touche faster than all the journaling filesystems and I know that my systems aren't going to go down uncleanly.  Most people, however, aren't as meticulous as I am so a Journaling filesystem is a better fit.
+    <p>This is the outline to a seminar that I gave at <a href="http://www.csh.rit.edu">CSH</a> on filesystems.  The impetus was simply my lack of knowledge for how filesystems work and the misconceptions (particularly about journaling) that most people have.  Synopsis: use ReiserFS, but don&rsquo;t believe the <a href="http://funroll-loops.org">Gentoo kiddies</a> who say you&rsquo;ll get a massive performance boost; you wont.  ReiserFS is slightly faster than EXT3, a little bit more space efficient and gets beyond the 2GB filesize limit.  I run EXT2 because  it&rsquo;s a touche faster than all the journaling filesystems and I know that my systems aren&rsquo;t going to go down uncleanly.  Most people, however, aren&rsquo;t as meticulous as I am so a Journaling filesystem is a better fit.
 
    <ol>
     <li dir="ltr" style="text-align:left">&#xA0;<span lang="en-US">Filesystem writes</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Non-journaling (EXT2, FAT)</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Non-journaling (EXT2, FAT)</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Update meta-data (size)</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Update indirect mapping blocks</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Write data</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Update meta-data (size)</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Update indirect mapping blocks</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Write data</span></li>
        </ol>
       </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Journaling modes</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Journaling modes</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Journal</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Logs data and metadata changes</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Slowest, most secure</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Requires each write to be made twice</span>
-	   <ol>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Written to journal</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Then written to disk</span></li>
-	   </ol>
-	  </li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Log line only deleted once the transaction is done</span></li>
-	 </ol>
-	</li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Ordered (default for EXT3)</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Only logs changes to metadata</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Writes data updates before metadata is changed</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	If metadata wasn't updated, the change never happened</span></li>
-	 </ol>
-	</li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Writeback (default for ReiserFS and XFS)</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Only logs changes to metdata</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Uses regular write process</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Causes problems if metadata is written but data isn't</span></li>
-	 </ol>
-	</li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Journal</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Logs data and metadata changes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Slowest, most secure</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Requires each write to be made twice</span>
+       <ol>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Written to journal</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Then written to disk</span></li>
+       </ol>
+      </li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Log line only deleted once the transaction is done</span></li>
+     </ol>
+    </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Ordered (default for EXT3)</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Only logs changes to metadata</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Writes data updates before metadata is changed</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> If metadata wasn&rsquo;t updated, the change never happened</span></li>
+     </ol>
+    </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Writeback (default for ReiserFS and XFS)</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Only logs changes to metdata</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Uses regular write process</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Causes problems if metadata is written but data isn&rsquo;t</span></li>
+     </ol>
+    </li>
        </ol>
       </li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	EXT2 - non-journaling Linux</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   EXT2 - non-journaling Linux</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum file size of 2GB</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Supports maximum filesystem size of 4TB</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum file name size of 255 characters</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Supports regular files, directories, devices and symlinks</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Files created within a directory inherit attributes (permission, owner, group)</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Allows user defined block sizes</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum file size of 2GB</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Supports maximum filesystem size of 4TB</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum file name size of 255 characters</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Supports regular files, directories, devices and symlinks</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Files created within a directory inherit attributes (permission, owner, group)</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Allows user defined block sizes</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Typically 1024, 2048 or 4096 bytes</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Larger blocks speed up I/O; fewer requests issued, less head movement</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Typically 1024, 2048 or 4096 bytes</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Larger blocks speed up I/O; fewer requests issued, less head movement</span></li>
        </ol>
       </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Fast symlinks</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Fast symlinks</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Target name stored in inode, not data area</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Max size of link is 60 character</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Target name stored in inode, not data area</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Max size of link is 60 character</span></li>
        </ol>
       </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Superblocks track clean/not clean state of filesystem</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Superblocks track clean/not clean state of filesystem</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Marked not clean when mounted read/write</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Marked clean on unmount or remounted read only</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Uses mount counter; after X mounts, ignores state and forces fsck</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Marked not clean when mounted read/write</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Marked clean on unmount or remounted read only</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Uses mount counter; after X mounts, ignores state and forces fsck</span></li>
        </ol>
       </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Includes support for secure deletion; random data written to deleted blocks</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Physical structure - disk divided into number block groups (see Fig. 1)</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Includes support for secure deletion; random data written to deleted blocks</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Physical structure - disk divided into number block groups (see Fig. 1)</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Each block group contains redundant filesystem info and data for the block (see Fig. 2, reference 3)</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Super block - total number of blocks in filesystem, check counter, etc.</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Group descriptor - pointers to block bitmap, inode bitmap, and inode table</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Block bitmap - tells which blocks are in use</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Inode bitmap - tells which inodes are in use</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Inode table - each file has an inode; stores file attributes</span>
-	   <ol>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Create time (ctime)</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Modify time (mtime)</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Permissions</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Owner</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Type (regular file, directory, device, symlink)</span></li>
-	    <li dir="ltr" style="text-align:left"><span lang="en-US">	Where file is stored on disk (see Fig. 3)</span>
-	     <ol>
-	      <li dir="ltr" style="text-align:left"><span lang="en-US">	Fifteen pointers in each inode</span></li>
-	      <li dir="ltr" style="text-align:left"><span lang="en-US">	First thirteen point to actual data blocks</span></li>
-	      <li dir="ltr" style="text-align:left"><span lang="en-US">	Fourteenth is indirect pointer - points to a block of pointers</span></li>
-	      <li dir="ltr" style="text-align:left"><span lang="en-US">	Fifteenth is doubly indirect - points to a block of pointers which point to blocks of pointers</span></li>
-	     </ol>
-	    </li>
-	   </ol>
-	  </li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Data blocks - actual data is here</span></li>
-	 </ol>
-	</li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Each block group contains redundant filesystem info and data for the block (see Fig. 2, reference 3)</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Super block - total number of blocks in filesystem, check counter, etc.</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Group descriptor - pointers to block bitmap, inode bitmap, and inode table</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Block bitmap - tells which blocks are in use</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Inode bitmap - tells which inodes are in use</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Inode table - each file has an inode; stores file attributes</span>
+       <ol>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Create time (ctime)</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Modify time (mtime)</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Permissions</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Owner</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Type (regular file, directory, device, symlink)</span></li>
+        <li dir="ltr" style="text-align:left"><span lang="en-US">   Where file is stored on disk (see Fig. 3)</span>
+         <ol>
+          <li dir="ltr" style="text-align:left"><span lang="en-US"> Fifteen pointers in each inode</span></li>
+          <li dir="ltr" style="text-align:left"><span lang="en-US"> First thirteen point to actual data blocks</span></li>
+          <li dir="ltr" style="text-align:left"><span lang="en-US"> Fourteenth is indirect pointer - points to a block of pointers</span></li>
+          <li dir="ltr" style="text-align:left"><span lang="en-US"> Fifteenth is doubly indirect - points to a block of pointers which point to blocks of pointers</span></li>
+         </ol>
+        </li>
+       </ol>
+      </li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Data blocks - actual data is here</span></li>
+     </ol>
+    </li>
        </ol>
       </li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	EXT3 - EXT2 with journaling</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   EXT3 - EXT2 with journaling</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Built on top of EXT2; it just adds journaling</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Supports all three modes of journaling</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Built on top of EXT2; it just adds journaling</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Supports all three modes of journaling</span></li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	ReiserFS - Journaling with good small file performance</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   ReiserFS - Journaling with good small file performance</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum file size of 8TB</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum filesystem size of 16TB</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Writeback journaling by default; supports ordered and journaled modes</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Metadata organized in B+ trees</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Allocates space for file size exactly, rather than in blocks</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Tail packing</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum file size of 8TB</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum filesystem size of 16TB</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Writeback journaling by default; supports ordered and journaled modes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Metadata organized in B+ trees</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Allocates space for file size exactly, rather than in blocks</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Tail packing</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Small files and less-than-block-sized tails are stored in the B+ tree</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Small file accesses are much faster</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Slightly more efficient use of storage space (~5% comp. to EXT2)</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Overall performance hit (it's always repacking)</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Small files and less-than-block-sized tails are stored in the B+ tree</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Small file accesses are much faster</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Slightly more efficient use of storage space (~5% comp. to EXT2)</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Overall performance hit (it&rsquo;s always repacking)</span></li>
        </ol>
       </li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	XFS</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   XFS</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum file size of 9 exabytes</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Maximum filesystem size of 18 exabytes (64-bit mode)</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Metadata organized in B+ trees</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Dynamically allocated inodes</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Block size 512 bytes to 64 kilobytes</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Uses writeback journaling</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Delayed allocation</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum file size of 9 exabytes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Maximum filesystem size of 18 exabytes (64-bit mode)</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Metadata organized in B+ trees</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Dynamically allocated inodes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Block size 512 bytes to 64 kilobytes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Uses writeback journaling</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Delayed allocation</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Data to be written is cached in RAM</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Space is reserved for data, but location is not</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Once enough data is collected (or an entire file) extents are found and data is written to the disk</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Helps improve allocation of single, contiguous regions for files</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Data to be written is cached in RAM</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Space is reserved for data, but location is not</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Once enough data is collected (or an entire file) extents are found and data is written to the disk</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Helps improve allocation of single, contiguous regions for files</span></li>
        </ol>
       </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Guranteed rate I/O - allows apps to reserve bandwidth</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Physically arranged into allocation groups (much like EXT2 block groups)</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Guranteed rate I/O - allows apps to reserve bandwidth</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Physically arranged into allocation groups (much like EXT2 block groups)</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Each group is mostly independent, managing it's own free space</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Act like transparent sub-filesystems</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Each allocation group has two B+ trees</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	One manages extents (ranges) of free space</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Another to manage inodes</span></li>
-	 </ol>
-	</li>
-       </ol>
-      </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Each group is mostly independent, managing it&rsquo;s own free space</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Act like transparent sub-filesystems</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Each allocation group has two B+ trees</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> One manages extents (ranges) of free space</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Another to manage inodes</span></li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	UFS - BSD loves thee</span>
-     <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Physical Structure</span>
-       <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Boot block</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Only in first cylinder group</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	8k, contains information for booting from this filesystem</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Blank if said filesystem isn't used for booting</span></li>
-	 </ol>
-	</li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Superblock</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Size of the filesystem</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Label (name)</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Size in blocks</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Date of last update</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Cylinder group size</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Data blocks per cylinder group</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Summary</span></li>
-	 </ol>
-	</li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Cylinder group structure</span>
-	 <ol>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Copy of the superblock</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Cylinder group header (free/used table, etc.)</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Inodes</span></li>
-	  <li dir="ltr" style="text-align:left"><span lang="en-US">	Data blocks</span></li>
-	 </ol>
-	</li>
        </ol>
       </li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	ZFS - Hott</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   UFS - BSD loves thee</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Endian-neutral - magic allows the filesystem to work on SPARC and x86</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Fully 128-bit - More addressable bits than god can count</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Negates the need for external volume managers</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Physical Structure</span>
+       <ol>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Boot block</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Only in first cylinder group</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> 8k, contains information for booting from this filesystem</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Blank if said filesystem isn&rsquo;t used for booting</span></li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	NTFS - very little known</span></li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	FAT 12/16/32, VFAT - like EXT, but stupid</span></li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	ISO 9660 - CD-ROM Filesystem</span></li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	Comparison</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Superblock</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Small files</span>
-       <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	UFS and EXT2/3 have to allocate at least 1 kilobyte blocks; lost storage efficiency</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	ReiserFS significantly faster</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Size of the filesystem</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Label (name)</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Size in blocks</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Date of last update</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Cylinder group size</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Data blocks per cylinder group</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Summary</span></li>
+     </ol>
+    </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Cylinder group structure</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Copy of the superblock</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Cylinder group header (free/used table, etc.)</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Inodes</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Data blocks</span></li>
+     </ol>
+    </li>
        </ol>
       </li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	Tweaks (see reference 4)</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   ZFS - Hott</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Noatime</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	ReiserFS - notail; swap usage for efficiency</span></li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Tmpfs - /dev/shm</span>
-       <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Filesystem stored in RAM/swap space</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Like ramdisks, but hotter</span></li>
-       </ol>
-      </li>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	Stack mounting - mount an already-mounted filesystem somewhere else</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Endian-neutral - magic allows the filesystem to work on SPARC and x86</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Fully 128-bit - More addressable bits than god can count</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Negates the need for external volume managers</span></li>
      </ol>
     </li>
-    <li dir="ltr" style="text-align:left"><span lang="en-US">	Not covered</span>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   NTFS - very little known</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   FAT 12/16/32, VFAT - like EXT, but stupid</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   ISO 9660 - CD-ROM Filesystem</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Comparison</span>
      <ol>
-      <li dir="ltr" style="text-align:left"><span lang="en-US">	OCFS - Oracle filesystem</span>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Small files</span>
        <ol>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Hybrid filesystem/raw device access</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">	Databases do their own caching/read ahead; having an FS cache is bad</span></li>
-	<li dir="ltr" style="text-align:left"><span lang="en-US">&#xA0;</span><a href="http://otn.oracle.com/tech/linux/pdf/Linux-FS-Performance-Comparison.pdf"><span lang="en-US">http://otn.oracle.com/tech/linux/pdf/Linux-FS-Performance-Comparison.pdf</span></a></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   UFS and EXT2/3 have to allocate at least 1 kilobyte blocks; lost storage efficiency</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   ReiserFS significantly faster</span></li>
+       </ol>
+      </li>
+     </ol>
+    </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Tweaks (see reference 4)</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Noatime</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> ReiserFS - notail; swap usage for efficiency</span></li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Tmpfs - /dev/shm</span>
+       <ol>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Filesystem stored in RAM/swap space</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Like ramdisks, but hotter</span></li>
+       </ol>
+      </li>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> Stack mounting - mount an already-mounted filesystem somewhere else</span></li>
+     </ol>
+    </li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Not covered</span>
+     <ol>
+      <li dir="ltr" style="text-align:left"><span lang="en-US"> OCFS - Oracle filesystem</span>
+       <ol>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Hybrid filesystem/raw device access</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">   Databases do their own caching/read ahead; having an FS cache is bad</span></li>
+    <li dir="ltr" style="text-align:left"><span lang="en-US">&#xA0;</span><a href="http://otn.oracle.com/tech/linux/pdf/Linux-FS-Performance-Comparison.pdf"><span lang="en-US">http://otn.oracle.com/tech/linux/pdf/Linux-FS-Performance-Comparison.pdf</span></a></li>
        </ol>
       </li>
      </ol>
     </li>
    </ol>
-   </p>
-<p class="ww-preformatted_text" dir="ltr" style="text-align:center;margin-bottom:14pt"><span lang="en-US">&#xA0;</span><span style="font-weight:bold;font-size:14pt;font-family:'Times New Roman'" lang="en-US">Sources</span></p>
-<ol>
+   </p><p class="ww-preformatted_text" dir="ltr" style="text-align:center;margin-bottom:14pt"><span lang="en-US">&#xA0;</span><span style="font-weight:bold;font-size:14pt;font-family:'Times New Roman'" lang="en-US">Sources</span></p>
+
+<p><ol>
     <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-weight:bold;font-size:14pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">A Non-Technical Look Inside the EXT2 File System.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://www.linuxgazette.com/issue21/gx/ext/layout.gif"><span style="font-family:'Times New Roman'" lang="en-US">http://www.linuxgazette.com/issue21/gx/ext/layout.gif</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	Filesystems HOWTO.</span><a name="_Hlt496279260"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span></a><a href="http://www.tldp.org/HOWTO/Filesystems-HOWTO.html"><span style="font-family:'Times New Roman'" lang="en-US">http://www.tldp.org/HOWTO/Filesystems-HOWTO.html</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	Analysis of the EXT2fs Structure.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://www.nondot.org/sabre/os/files/FileSystems/ext2fs/"><span style="font-family:'Times New Roman'" lang="en-US">http://www.nondot.org/sabre/os/files/FileSystems/ext2fs/</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	Advanced Filesystem Implementor's Guide.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US"></span><a href="http://www-106.ibm.com/developerworks/library/l-fs.html"><span style="font-family:'Times New Roman'" lang="en-US">http://www-106.ibm.com/developerworks/library/l-fs.html</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	ReiserFS Docs</span><span style="font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://p-nand-q.com/download/rfstool/reiserfs_docs.html"><span style="font-family:'Times New Roman'" lang="en-US">http://p-nand-q.com/download/rfstool/reiserfs_docs.html</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	Scalability in the XFS File System.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://oss.sgi.com/projects/xfs/papers/xfs_usenix/index.html"><span style="font-family:'Times New Roman'" lang="en-US">http://oss.sgi.com/projects/xfs/papers/xfs_usenix/index.html</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">	Getting Started with XFS Filesystems.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://oss.sgi.com/projects/xfs/papers/getting_started_with_xfs.pdf"><span style="font-family:'Times New Roman'" lang="en-US">http://oss.sgi.com/projects/xfs/papers/getting_started_with_xfs.pdf</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">Understanding Filesystem Types.</span><span style="font-family:'Times New Roman'" lang="en-US">	- </span><a href="http://uw713doc.sco.com/en/FS_admin/CONTENTS.html"><span lang="en-US">http://uw713doc.sco.com/en/FS_admin/CONTENTS.html</span></a></li>
-    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">NodeWorks Encyclopedia: UFS.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://pedia.nodeworks.com/U/UF/UFS/"><span lang="en-US">http://pedia.nodeworks.com/U/UF/UFS/</span></a></li>
+    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    Filesystems HOWTO.</span><a name="_Hlt496279260"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span></a><a href="http://www.tldp.org/HOWTO/Filesystems-HOWTO.html"><span style="font-family:'Times New Roman'" lang="en-US">http://www.tldp.org/HOWTO/Filesystems-HOWTO.html</span></a></li>
+    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    Analysis of the EXT2fs Structure.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://www.nondot.org/sabre/os/files/FileSystems/ext2fs/"><span style="font-family:'Times New Roman'" lang="en-US">http://www.nondot.org/sabre/os/files/FileSystems/ext2fs/</span></a></li>
+    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    Advanced Filesystem Implementor&rsquo;s Guide.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US"></span><a href="http://www-106.ibm.com/developerworks/library/l-fs.html"><span style="font-family:'Times New Roman'" lang="en-US">http://www-106.ibm.com/developerworks/library/l-fs.html</span></a></li>
+    <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    ReiserFS Docs</span><span style="font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://p-nand-q.com/download/rfstool/reiserfs_docs.html"><span style="font-family:'Times New Roman'" lang="en-US">http://p-nand-q.com/download/rfstool/reiserfs<em>docs.html</span></a></li>
+    &lt;li class=&ldquo;ww-preformatted</em>text&rdquo; dir=&ldquo;ltr&rdquo; style=&ldquo;text-align:left;margin-bottom:14pt&rdquo;&gt;<span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    Scalability in the XFS File System.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://oss.sgi.com/projects/xfs/papers/xfs_usenix/index.html"><span style="font-family:'Times New Roman'" lang="en-US">http://oss.sgi.com/projects/xfs/papers/xfs<em>usenix/index.html</span></a></li>
+    &lt;li class=&ldquo;ww-preformatted</em>text&rdquo; dir=&ldquo;ltr&rdquo; style=&ldquo;text-align:left;margin-bottom:14pt&rdquo;&gt;<span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">    Getting Started with XFS Filesystems.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://oss.sgi.com/projects/xfs/papers/getting_started_with_xfs.pdf"><span style="font-family:'Times New Roman'" lang="en-US">http://oss.sgi.com/projects/xfs/papers/getting<em>started</em>with<em>xfs.pdf</span></a></li>
+    &lt;li class=&ldquo;ww-preformatted</em>text&rdquo; dir=&ldquo;ltr&rdquo; style=&ldquo;text-align:left;margin-bottom:14pt&rdquo;&gt;<span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">Understanding Filesystem Types.</span><span style="font-family:'Times New Roman'" lang="en-US">    - </span><a href="http://uw713doc.sco.com/en/FS_admin/CONTENTS.html"><span lang="en-US">http://uw713doc.sco.com/en/FS<em>admin/CONTENTS.html</span></a></li>
+    &lt;li class=&ldquo;ww-preformatted</em>text&rdquo; dir=&ldquo;ltr&rdquo; style=&ldquo;text-align:left;margin-bottom:14pt&rdquo;&gt;<span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">NodeWorks Encyclopedia: UFS.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a href="http://pedia.nodeworks.com/U/UF/UFS/"><span lang="en-US">http://pedia.nodeworks.com/U/UF/UFS/</span></a></li>
     <li class="ww-preformatted_text" dir="ltr" style="text-align:left;margin-bottom:14pt"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US">&#xA0;</span><span style="font-size:12pt;font-family:'Times New Roman';text-decoration:underline" lang="en-US">Wikipedia.</span><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"> - </span><a name="_Hlt496294964"><span style="font-size:12pt;font-family:'Times New Roman'" lang="en-US"></span></a><a href="http://en.wikipedia.org"><span lang="en-US">http://en.wikipedia.org</span></a></li>
-   </ol>
+   </ol></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/13/darwin-kernel-compile/">Darwin Kernel Compile</a></h1>
     <div class="article-title-date">Jan 13, 2006</div>
     <h1>Compiling the Darwin Kernel</h1>
 
-<p>I'm writing this how-to beause when I wanted to enable MAC address spoofing on my Powerbook, it was a little bit more of an adventure than I had hoped for.  I had to look through a number of different tutorials, picking and choosing what I knew from my experience with Mac OSX and Linux/BSD to be correct; there are a number of conflicting directions in other tutorials.  Hopefully mine makes sense the whole way through.</p>
+<p>I&rsquo;m writing this how-to beause when I wanted to enable MAC address spoofing on my Powerbook, it was a little bit more of an adventure than I had hoped for.  I had to look through a number of different tutorials, picking and choosing what I knew from my experience with Mac OSX and Linux/BSD to be correct; there are a number of conflicting directions in other tutorials.  Hopefully mine makes sense the whole way through.</p>
 
 <h2>Prepare the Build Environment</h2>
 
-<p>To build a Mach kernel you need a number of things, namely, XCode, bootstrap_cmds, Libstreams, cctools, kext-tools, IOKitUser and xnu.  The former is included on any new Mac (run the "Developer Tools" installer in the Applications folder) and the latter must be obtained from the Apple developers site, which requires a (free) membership login.</p>
+<p>To build a Mach kernel you need a number of things, namely, XCode, bootstrap_cmds, Libstreams, cctools, kext-tools, IOKitUser and xnu.  The former is included on any new Mac (run the &ldquo;Developer Tools&rdquo; installer in the Applications folder) and the latter must be obtained from the Apple developers site, which requires a (free) membership login.</p>
 
 <ol>
-  <li>Assuming you have XCode installed, the first thing to do is grab the packages that you'll need for building the kernel.  They can be obtained from the abovementioned location, <a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl">http://www.opensource.apple.com/darwinsource/tarballs/apsl</a>.  You'll need the following packages:
-    <ul>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/bootstrap_cmds-44.tar.gz">bootstrap_cmds</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/Libstreams-23.tar.gz">Libstreams</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/cctools-525.tar.gz">cctools</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/kext_tools-42.tar.gz">kext-tools</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/IOKitUser-184.tar.gz">IOKitUser</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/xnu-517.11.1.tar.gz">xnu</a>
+<li><p>Assuming you have XCode installed, the first thing to do is grab the packages that you&rsquo;ll need for building the kernel.  They can be obtained from the abovementioned location, <a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl">http://www.opensource.apple.com/darwinsource/tarballs/apsl</a>.  You&rsquo;ll need the following packages:</p>
+
+<ul>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/bootstrap_cmds-44.tar.gz">bootstrap_cmds</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/Libstreams-23.tar.gz">Libstreams</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/cctools-525.tar.gz">cctools</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/kext_tools-42.tar.gz">kext-tools</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/IOKitUser-184.tar.gz">IOKitUser</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/xnu-517.11.1.tar.gz">xnu</a>
 Just grab those packages (get the latest versions) and toss them into a directory where we can work.  I used /usr/local/src.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Untar all of those packages:  &lt;pre&gt;# cd /usr/local/src; for i in $(ls); do tar zxvf $i; done&lt;/pre&gt;  Whew, that was tough.  Go make a sandwich before continuing.</p>
-  </li>
-  <li>
-    <p>Let's build what we need in <code>bootstrap_cmds</code> and <code>Libstreams</code>, because they're easy.
-<br /><strong>Note</strong>: I'm performing all of these commands as root, which isn't enabled be default on Mac OS X (I think).  Most people will probably more comfortable with untarring/building all of these things in their own userspace (say, your home directory) and then using sudo when you need to be root.  I come from Linux, where <em>Real Men</em> use su.
+</ul></li>
+<li><p>Untar all of those packages:  <pre># cd /usr/local/src; for i in $(ls); do tar zxvf $i; done</pre>  Whew, that was tough.  Go make a sandwich before continuing.</p></li>
+<li><p>Let&rsquo;s build what we need in <code>bootstrap_cmds</code> and <code>Libstreams</code>, because they&rsquo;re easy.
+<br /><strong>Note</strong>: I&rsquo;m performing all of these commands as root, which isn&rsquo;t enabled be default on Mac OS X (I think).  Most people will probably more comfortable with untarring/building all of these things in their own userspace (say, your home directory) and then using sudo when you need to be root.  I come from Linux, where <em>Real Men</em> use su.
 <br /><code># cd bootstrap_cmds-*/relpath.tproj</code>
 <br /><code># make</code>
 <br /><code># make install</code>
 <br />Now, Libstreams:
 <br /><code># cd ../../Libstreams-*</code>
 <br /><code># make</code>
-<br /><code># make install</code></p>
-  </li>
-  <li>
-    <p>Time to build cctools, it's a little bit more involved.
+<br /><code># make install</code></p></li>
+<li><p>Time to build cctools, it&rsquo;s a little bit more involved.
 <br /><code># cd ../cctools-*</code>
 <br /><code># cp /usr/include/sys/unistd.h /System/Library/Frameworks/Kernel.framework/Headers/sys/</code>
-We only care about some of what cctools has to offer, so bust open it's <code>Makefile</code> and lets edit it a little.  We're going to comment out the two lines (28 and 29) that define <code>COMMON_SUBDIRS</code> and redefine it as<code> COMMON_SUBDIRS = libstuff libmacho misc</code>.
+We only care about some of what cctools has to offer, so bust open it&rsquo;s <code>Makefile</code> and lets edit it a little.  We&rsquo;re going to comment out the two lines (28 and 29) that define <code>COMMON_SUBDIRS</code> and redefine it as<code>COMMON_SUBDIRS = libstuff libmacho misc</code>.
 <br /><code>#COMMON_SUBDIRS = libstuff as gprof misc libmacho ld libdyld \</code>
 <br /><code>#                mkshlib otool profileServer RelNotes man cbtlibs</code>
 <br /><code>COMMON_SUBDIRS = libstuff libmacho misc</code>
-That's what it should look like when you're done, at which point you're ready to build and install it.
+That&rsquo;s what it should look like when you&rsquo;re done, at which point you&rsquo;re ready to build and install it.
 <br /><code># make RC_OS=macos</code>
 <br /><code># cp misc/seg_hack.NEW /usr/local/bin/seg_hack</code>
 <br /><code># cd ld</code>
 <br /><code># make RC_OS=macos kld_build</code>
 <br /><code># cp static_kld/libkld.a /usr/local/lib</code>
-<br /><code># ranlib /usr/local/lib/libkld.a</code></p>
-  </li>
-  <li>Compiling kextsymboltool is where I ran into trouble, well, because I grabbed the wrong IOKit version (I didn't have the newest one), so watch out for that.  If you get the right version, everything should go smoothly.
+<br /><code># ranlib /usr/local/lib/libkld.a</code></p></li>
+<li><p>Compiling kextsymboltool is where I ran into trouble, well, because I grabbed the wrong IOKit version (I didn&rsquo;t have the newest one), so watch out for that.  If you get the right version, everything should go smoothly.
 <br /><code># cd ../../</code>
 <br /><code># mv IOKitUser* IOKit</code>
 <br /><code># mv IOKit /usr/include</code>
@@ -364,7 +422,7 @@ That's what it should look like when you're done, at which point you're ready to
 <br /><code># cd kext_tools*</code>
 <br /><code># gcc kextsymboltool.c -o kextsymboltool</code>
 <br /><code># cp kextsymboltool /usr/local/bin</code>
-<br /><code># chmod 755 /usr/local/bin/kextsymboltool</code></li>
+<br /><code># chmod 755 /usr/local/bin/kextsymboltool</code></p></li>
 </ol>
 
 <p><strong>Done!</strong>  Well, sort of.  The build environment is all set up, so now if you ever want to build a new kernel, you can start on the next step.</p>
@@ -372,12 +430,13 @@ That's what it should look like when you're done, at which point you're ready to
 <h2>Building the Kernel</h2>
 
 <ol>
-  <li>The first thing to do is apply any patches that you desire.  You'll probably be adding some patches; otherwise, why would you be rebuilding the kernel?  I'm using a patch to enable setting the MAC address of my network cards manually (for MAC address spoofing), one that boots my mac in verbose mode by default and a third that allows all users (not just root) to craft and send raw packets.  They are available from the following locations (the direct links are for xnu version 517):
-    <ul>
-      <li><a href="http://cerberus.sourcefire.com/~jeff/archives/patches/macosx/BIOCSHDRCMPLT-panther.patch">BIOCSHDRCMPLT</a> - MAC address patch by <a href="http://cerberus.sourcefire.com/%7Ejeff/security.html">Jeff Nathan</a></li>
-      <li><a href="http://slagheap.net/etherspoof/517/FORCE_VERBOSE.patch">FORCE_VERBOSE</a> - Verbose booting patch by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a></li>
-      <li><a href="http://slagheap.net/etherspoof/517/RAW4ALL.patch">RAW4ALL</a> - Raw packet creation patch also by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a>
-<br />To begin with, let's move to the kernel source directory:
+<li><p>The first thing to do is apply any patches that you desire.  You&rsquo;ll probably be adding some patches; otherwise, why would you be rebuilding the kernel?  I&rsquo;m using a patch to enable setting the MAC address of my network cards manually (for MAC address spoofing), one that boots my mac in verbose mode by default and a third that allows all users (not just root) to craft and send raw packets.  They are available from the following locations (the direct links are for xnu version 517):</p>
+
+<ul>
+<li><a href="http://cerberus.sourcefire.com/~jeff/archives/patches/macosx/BIOCSHDRCMPLT-panther.patch">BIOCSHDRCMPLT</a> - MAC address patch by <a href="http://cerberus.sourcefire.com/%7Ejeff/security.html">Jeff Nathan</a></li>
+<li><a href="http://slagheap.net/etherspoof/517/FORCE_VERBOSE.patch">FORCE_VERBOSE</a> - Verbose booting patch by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a></li>
+<li><a href="http://slagheap.net/etherspoof/517/RAW4ALL.patch">RAW4ALL</a> - Raw packet creation patch also by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a>
+<br />To begin with, let&rsquo;s move to the kernel source directory:
 <br /><code># cd ../xnu*</code>
 <br />Grab the three patches:
 <br /><code># wget http://cerberus.sourcefire.com/%7Ejeff/archives/patches/macosx/BIOCSHDRCMPLT-10.3.3.patch</code>
@@ -388,49 +447,39 @@ That's what it should look like when you're done, at which point you're ready to
 <br /><code># patch -p0 -b --verbose --suffix=.orig &lt; FORCE_VERBOSE.patch</code>
 <br /><code># patch -p0 -b --verbose --suffix=.orig &lt; BIOCHSHDRCMPLT-10.3.3.patch</code>
 Pay attention to the output of those patches; if the source changes significantly from the time I wrote this page, they might not apply properly.  If they work fine, you can move on.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Finally, we will actually build the kernel:
+</ul></li>
+<li><p>Finally, we will actually build the kernel:
 <br /><code># make exporthdrs</code>
 <br /><code># make</code>
-<br />The new kernel is now in <code>BUILD/obj/RELEASE_PPC/mach_kernel</code> under the current directory.  Next, we'll install and prepare to boot with the new kernel.</p>
-  </li>
-  <li>To install, just copy the new kernel to the root (/) directory.  We'll name it differently from the stock kernel, so that you have something to fall back on if your new kernel fails to boot properly.
+<br />The new kernel is now in <code>BUILD/obj/RELEASE_PPC/mach_kernel</code> under the current directory.  Next, we&rsquo;ll install and prepare to boot with the new kernel.</p></li>
+<li><p>To install, just copy the new kernel to the root (/) directory.  We&rsquo;ll name it differently from the stock kernel, so that you have something to fall back on if your new kernel fails to boot properly.
 <br /><code># cp BUILD/obj/RELEASE_PPC/mach_kernel /mach_kernel.new</code>
 <br /><code># chmod 644 /mach_kernel.new</code>
 <br /><code># chown root.wheel /mach_kernel.new</code>
-<br />Now configure the machine to boot from the new kernel:</li>
+<br />Now configure the machine to boot from the new kernel:</p></li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><br /><code># nvram boot-file=\</code>nvram boot-device</td>
-      <td>awk -F , '{print $1}'</td>
-      <td>awk '{print $2}'`,mach_kernel.new`</td>
-    </tr>
-  </tbody>
-</table>
+<p><br /><code># nvram boot-file=\</code>nvram boot-device | awk -F , &rsquo;{print $1}&rsquo; | awk &rsquo;{print $2}&rsquo;`,mach_kernel.new`</p>
 
-<p><strong>Note</strong>: That is supposed to work, but really, didn't for me.  I had  to make a leap-of-faith and replace the stock kernel with the one that I just built.
+<p><strong>Note</strong>: That is supposed to work, but really, didn&rsquo;t for me.  I had  to make a leap-of-faith and replace the stock kernel with the one that I just built.
 <br /><code># cp mach_kernel mach_kernel.bak</code>
 <br /><code># cp mach_kernel.new mach_kernel</code>
-<br /><code># nvram boot-file=""</code>
+<br /><code># nvram boot-file=&quot;&quot;</code>
 <br />and then reboot.</p>
 
 <p>You should be all set!  Upon reboot, the computer should boot with your new kernel.  In the event something goes wrong, you can zap the PRAM by holding
-option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold option-apple-o-f which will boot into OpenFirmware; type "reset-all" and then "mac-boot".  If neither of those fixes the problem, hold option-apple-n-v during boot to reset the NVRAM.</p>
+option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold option-apple-o-f which will boot into OpenFirmware; type &ldquo;reset-all&rdquo; and then &ldquo;mac-boot&rdquo;.  If neither of those fixes the problem, hold option-apple-n-v during boot to reset the NVRAM.</p>
 
 <h2>Sources</h2>
-<ul>
-	<li><a href="http://www.labo-apple.org/en/print/242/">Compile Mac OS X
-	Kernel</a></li>
-	<li><a href="http://opendarwin.org/~jpm/xnu.html">building xnu on darwin/mac
-	os x</a></li>
-	<li><a href="http://slagheap.net/etherspoof/">MAC Spoofing on the Mac</a></li>
 
-	<li><a href="http://www.bur.st/~paul/compile_xnu.html">Compiling a Mach/xnu kernel for MacOSX</a></li>
+<ul>
+    <li><a href="http://www.labo-apple.org/en/print/242/">Compile Mac OS X
+    Kernel</a></li>
+    <li><a href="http://opendarwin.org/~jpm/xnu.html">building xnu on darwin/mac
+    os x</a></li>
+    <li><a href="http://slagheap.net/etherspoof/">MAC Spoofing on the Mac</a></li>
+
+    <li><a href="http://www.bur.st/~paul/compile_xnu.html">Compiling a Mach/xnu kernel for MacOSX</a></li>
 </ul>
 
     <div class="article-footer"></div>
@@ -440,24 +489,24 @@ option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold optio
 Information that I have written concerning computers and programming.</p>
 
 <ul>
-  <li><a href="http://dinomite.net/computers/darwin-kernel-compile/">Darwin Kernel Compile</a> -  A how-to for compiling your own kernel under Mac OSX. Now you can snub off all of those people who say it's not a real OS unless you run a custom kernel. The reason you probably want to build your own Mac kernel is to enable MAC address spoofing, which I cover.</li>
-  <li><a href="http://dinomite.net/computers/nmap/">Nmap</a> -  An introduction to portscanning and Nmap.</li>
-  <li><a href="http://dinomite.net/computers/filesystems">Filesystems</a> -  I gave a seminar about filesystems for <a href="http://www.csh.rit.edu">CSH</a> members. I became quite well versed in the low-level operation of most filesystems, EXT, UFS and Reiser in particular. I didn't realize until I was actually speaking to other people about filesystems how boring and monotonous they are.</li>
+<li><a href="http://dinomite.net/computers/darwin-kernel-compile/">Darwin Kernel Compile</a> -  A how-to for compiling your own kernel under Mac OSX. Now you can snub off all of those people who say it&rsquo;s not a real OS unless you run a custom kernel. The reason you probably want to build your own Mac kernel is to enable MAC address spoofing, which I cover.</li>
+<li><a href="http://dinomite.net/computers/nmap/">Nmap</a> -  An introduction to portscanning and Nmap.</li>
+<li><a href="http://dinomite.net/computers/filesystems">Filesystems</a> -  I gave a seminar about filesystems for <a href="http://www.csh.rit.edu">CSH</a> members. I became quite well versed in the low-level operation of most filesystems, EXT, UFS and Reiser in particular. I didn&rsquo;t realize until I was actually speaking to other people about filesystems how boring and monotonous they are.</li>
 </ul>
 
 <p><strong>Code</strong><br />
 Programs that I have written to solve specific little problems.</p>
 
 <ul>
-  <li><a href="http://dinomite.net/computers/playlist/">playlist.pl</a> - A perl script to automatically turn an iTunes playlist into an mp3 directory.</li>
-  <li><a href="http://dinomite.net/wp-content/attic/portscan.txt">portscan.pl</a> - A simple portscanner I wrote to learn Perl threads.</li>
-  <li><a href="http://dinomite.net/wp-content/attic/ws.txt">ws.pl</a> - This script was, for the most part, originally in 2600 magazine. The printed version didn't work very well, my version is a lot faster and some other stuff that I don't remember. It's well commented, interesting to look at if you like networking.  It can find all webservers on the given subnet.</li>
+<li><a href="http://dinomite.net/computers/playlist/">playlist.pl</a> - A perl script to automatically turn an iTunes playlist into an mp3 directory.</li>
+<li><a href="http://dinomite.net/wp-content/attic/portscan.txt">portscan.pl</a> - A simple portscanner I wrote to learn Perl threads.</li>
+<li><a href="http://dinomite.net/wp-content/attic/ws.txt">ws.pl</a> - This script was, for the most part, originally in 2600 magazine. The printed version didn&rsquo;t work very well, my version is a lot faster and some other stuff that I don&rsquo;t remember. It&rsquo;s well commented, interesting to look at if you like networking.  It can find all webservers on the given subnet.</li>
 </ul>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2005/12/29/wikipedia/">Wikipedia</a></h1>
     <div class="article-title-date">Dec 29, 2005</div>
-    <p>If you ever talk to me in real life, you've undoubtedly heard me extol the virtues of <a href="http://en.wikipedia.org">Wikipedia</a> (I just noticed that wikipaedia.org is owned by a squator, sad), the most wide reaching cache of information on the internet.  Well, I really dont' have anything particularly interesting to say, though today I learned about <a href="http://en.wikipedia.org/wiki/The_Scream">The Scream</a>, <a href="http://en.wikipedia.org/wiki/Lhasa_Apso">Lhasa Apsos</a>, <a href="http://en.wikipedia.org/wiki/American_football">football</a> and <a href="http://en.wikipedia.org/wiki/Heat_pump">heat pumps</a>.  Use Wikipedia, love it and if you do both, <a href="http://wikimediafoundation.org/wiki/Wikimedia_needs_your_help">donate to wikipedia</a>; they've currently collected about $152k, which is a lot for an interweb organization.</p>
+    <p>If you ever talk to me in real life, you&rsquo;ve undoubtedly heard me extol the virtues of <a href="http://en.wikipedia.org">Wikipedia</a> (I just noticed that wikipaedia.org is owned by a squator, sad), the most wide reaching cache of information on the internet.  Well, I really dont&rsquo; have anything particularly interesting to say, though today I learned about <a href="http://en.wikipedia.org/wiki/The_Scream">The Scream</a>, <a href="http://en.wikipedia.org/wiki/Lhasa_Apso">Lhasa Apsos</a>, <a href="http://en.wikipedia.org/wiki/American_football">football</a> and <a href="http://en.wikipedia.org/wiki/Heat_pump">heat pumps</a>.  Use Wikipedia, love it and if you do both, <a href="http://wikimediafoundation.org/wiki/Wikimedia_needs_your_help">donate to wikipedia</a>; they&rsquo;ve currently collected about $152k, which is a lot for an interweb organization.</p>
 
     <div class="article-footer"></div>
 </ul>
@@ -484,6 +533,10 @@ Programs that I have written to solve specific little problems.</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -520,10 +573,6 @@ Programs that I have written to solve specific little problems.</p>
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -539,7 +588,8 @@ Programs that I have written to solve specific little problems.</p>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

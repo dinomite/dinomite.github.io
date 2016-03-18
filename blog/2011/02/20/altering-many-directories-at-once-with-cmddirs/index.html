@@ -26,11 +26,11 @@
   <div class="main-content">
     <h1 class="article-title">Altering many directories at once with CmdDirs</h1>
     <div class="article-title-date">Feb 20, 2011</div>
-    <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I'm working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
+    <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I&rsquo;m working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
 
 <p>While I love Git, it does not make such actions this simple.  Git requires you to be in the repository directory (or set a number of environment variables) to work wit that repo.  While the <a href="http://superuser.com/questions/235455/bash-script-to-perform-an-action-on-each-subdirectory-in-a-directory"><code>-exec</code> option of <code>find(1)</code></a> allows me to descend into each directory and perform an action, I wanted to make this easy, because such all-checkout-actions are something that I want to do a number of times each day.  Like most problems, this one is (best?) solved with Perl.  Enter <a href="https://github.com/dinomite/CmdDirs">App::CmdDirs</a>.</p>
 
-<p><a href="https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs">CmdDirs</a> is a fairly simple Perl app that I have written to do what I describe above--descend into any number of directories and perform a command in each one.</p>
+<p><a href="https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs">CmdDirs</a> is a fairly simple Perl app that I have written to do what I describe above&ndash;descend into any number of directories and perform a command in each one.</p>
 
 <pre>titus:~/sandbox$ ls
 CmdAll                 mac-itunes             genius-os
@@ -52,14 +52,13 @@ Performing `git st` in &lt;webservice-loc-congrec&gt;
 ## master
 </pre>
 
-<p>See the numerous directories? Note that there are 9 directories in my <code>sandbox</code> but <code>git st</code> was only performed in a few of them, those which are Git repositories.  CmdDirs has a modicum of intelligence: if it knows what your command is, the command will only be performed in applicable directories.  This can be overridden with <code>-all</code>, <code>-git</code>, or <code>-svn</code> doing what you expect.  Git and Subversion are the only two things supported right now, because that's all I have a need for. Writing new <a href="https://github.com/dinomite/CmdDirs/tree/master/lib/App/CmdDirs/Traverser">Traversers</a> is simple–just copy the form of git.pm or svn.pm.  You can probably Achieve at this endeavor even without knowing Perl.</p>
+<p>See the numerous directories? Note that there are 9 directories in my <code>sandbox</code> but <code>git st</code> was only performed in a few of them, those which are Git repositories.  CmdDirs has a modicum of intelligence: if it knows what your command is, the command will only be performed in applicable directories.  This can be overridden with <code>-all</code>, <code>-git</code>, or <code>-svn</code> doing what you expect.  Git and Subversion are the only two things supported right now, because that&rsquo;s all I have a need for. Writing new <a href="https://github.com/dinomite/CmdDirs/tree/master/lib/App/CmdDirs/Traverser">Traversers</a> is simple&ndash;just copy the form of git.pm or svn.pm.  You can probably Achieve at this endeavor even without knowing Perl.</p>
 
-<p>Here's a one-liner for installing <code>cmddirs</code>:</p>
+<p>Here&rsquo;s a one-liner for installing <code>cmddirs</code>:</p>
 
 <pre>
-curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddirs &amp;&amp; chmod a+x ~/bin/cmddirs
-</pre>
-
+curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs > ~/bin/cmddirs && chmod a+x ~/bin/cmddirs
+</pre> 
 
   </div>
 
@@ -82,6 +81,10 @@ curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddi
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -118,10 +121,6 @@ curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddi
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -137,7 +136,8 @@ curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddi
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -26,15 +26,15 @@
   <div class="main-content">
     <h1 class="article-title">Linksys WUSB54G in Ubuntu</h1>
     <div class="article-title-date">Sep  1, 2007</div>
-    <p>Since we're going all-wireless in my new house, I had to setup my Ubuntu machine with a wireless card.  All of the slots on the computer are filled, so I grabbed a Linksys WUSB54G USB (hence the model number) adapter.  Installing it required some terminal work, unusual for Ubuntu.  <a href="http://ubuntuforums.org/showthread.php?t=478558">This thread</a> gives a somewhat cryptic outline of the steps required to get the card working and following them requires a bit of Linux experience.  For the unexperienced, read on.</p>
+    <p>Since we&rsquo;re going all-wireless in my new house, I had to setup my Ubuntu machine with a wireless card.  All of the slots on the computer are filled, so I grabbed a Linksys WUSB54G USB (hence the model number) adapter.  Installing it required some terminal work, unusual for Ubuntu.  <a href="http://ubuntuforums.org/showthread.php?t=478558">This thread</a> gives a somewhat cryptic outline of the steps required to get the card working and following them requires a bit of Linux experience.  For the unexperienced, read on.</p>
 
-<p>After plugging the card in on my Feisty machine, it came up in the network manager (System &gt; Administration &gt; Network) but wouldn't connect to any networks, be they open or encrypted, G or B, nothing.  So I retreated to the interwebs and found that <a href="http://ndiswrapper.sourceforge.net/joomla/">ndiswrapper</a> was the solution to my problems.  To begin, install <code>ndiswrapper-utils-1.9</code>:</p>
+<p>After plugging the card in on my Feisty machine, it came up in the network manager (System &gt; Administration &gt; Network) but wouldn&rsquo;t connect to any networks, be they open or encrypted, G or B, nothing.  So I retreated to the interwebs and found that <a href="http://ndiswrapper.sourceforge.net/joomla/">ndiswrapper</a> was the solution to my problems.  To begin, install <code>ndiswrapper-utils-1.9</code>:</p>
 
 <pre>
 ~$ sudo aptitude install ndiswrapper-utils-1.9
 </pre>
 
-<p>Then, download the latest driver from the Linksys site, unzip it and find the WUSB54Gv4 directory under the Drivers directory.  Run <code>ndiswrapper -v</code> and check to make sure there aren't any errors.  Then, install the new Linksys driver.</p>
+<p>Then, download the latest driver from the Linksys site, unzip it and find the WUSB54Gv4 directory under the Drivers directory.  Run <code>ndiswrapper -v</code> and check to make sure there aren&rsquo;t any errors.  Then, install the new Linksys driver.</p>
 
 <pre>
 ~$ sudo ndiswrapper -i rt2500usb.inf
@@ -46,7 +46,7 @@ vermagic:       2.6.20-16-generic SMP mod_unload 586
 ~$ sudo ndiswrapper -m
 </pre>
 
-<p>You have to blacklist the standard kernel driver so that it won't override the <code>ndiswrapper</code> driver.  To do so, add the following to the end of <code>/etc/modprobe.d/blacklist</code>:</p>
+<p>You have to blacklist the standard kernel driver so that it won&rsquo;t override the <code>ndiswrapper</code> driver.  To do so, add the following to the end of <code>/etc/modprobe.d/blacklist</code>:</p>
 
 <pre>
 # WUSB54G driver
@@ -76,6 +76,10 @@ blacklist rt2570
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -112,10 +116,6 @@ blacklist rt2570
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -131,7 +131,8 @@ blacklist rt2570
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

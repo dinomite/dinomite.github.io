@@ -26,7 +26,7 @@
   <div class="main-content">
     <h1 class="article-title">Stopping Brute Force SSH Attacks with fail2ban</h1>
     <div class="article-title-date">Feb 10, 2006</div>
-    <p>I noticed a lot of network and forking activity while using my computer last week, thanks to <a href="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html">GKrellM</a>  I checked around and noticed a constant series of hits in my auth.log from someone trying common names to login via SSH.  I blocked the offender, but from looking through the log, this happened quite often and, though I have very strong passwords, this was very annoying to me to see all that crap in the logs.  I searched around and found a daemon called fail2ban that simply watches the logs and blocks hosts who have more than a specified number of failed login attempts.  It's in the Debian repositories, so just <code>apt-get install fail2ban</code> and then configure it in <code>/etc/fail2ban.conf</code>.</p>
+    <p>I noticed a lot of network and forking activity while using my computer last week, thanks to <a href="http://members.dslextreme.com/users/billw/gkrellm/gkrellm.html">GKrellM</a>  I checked around and noticed a constant series of hits in my auth.log from someone trying common names to login via SSH.  I blocked the offender, but from looking through the log, this happened quite often and, though I have very strong passwords, this was very annoying to me to see all that crap in the logs.  I searched around and found a daemon called fail2ban that simply watches the logs and blocks hosts who have more than a specified number of failed login attempts.  It&rsquo;s in the Debian repositories, so just <code>apt-get install fail2ban</code> and then configure it in <code>/etc/fail2ban.conf</code>.</p>
 
 <p>I also saw some cool tips on the <a href="http://wiki.clug.org.za/index.php/Defending_Against_Brute_Force_SSH_Attacks">CLUG Wiki</a>.</p>
 
@@ -51,6 +51,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -87,10 +91,6 @@
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -106,7 +106,8 @@
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

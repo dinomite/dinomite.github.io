@@ -26,25 +26,25 @@
   <div class="main-content">
     <h1 class="article-title">Custom Weather Radar Images</h1>
     <div class="article-title-date">Dec  7, 2007</div>
-    <p><a href="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" title="NWS base reflectivity for LWX" class="right"><img src="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" alt="NWS base reflectivity for LWX" /></a>
+    <p><a href='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' title='NWS base reflectivity for LWX' class='right'><img src='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' alt='NWS base reflectivity for LWX' /></a>
 If you know the slightest bit about weather and the geography of the area which you are observing, you can, in the short term, forecast more accurately than what a weather website provides.  I often want to be able to bring a radar image up quickly and clicking around websites takes time.  Sure I could bookmark the weather page directly, but this was an interesting exercise and will prove useful when I get an iPhone.</p>
 
-<p>The <a href="http://nws.noaa.gov">National Weather Service</a> doesn't have a simple image of the weather on their <a href="http://radar.weather.gov/radar.php?rid=lwx&amp;product=N0R&amp;overlay=11101111&amp;loop=no">radar page</a>, rather, it is an image that is dynamically generated from a set of standard overlays using Javascript.  This allows them to more efficiently distribute radar images, since the terrain and maps that are the background never change.  The organization they use is <a href="http://www.srh.noaa.gov/srh/jetstream/doppler/ridge_download.htm">well documented</a>, making it easy to find the overlays for you local radar.  In my case, I wanted the topographical map, counties and highways in the image.    I found the URL for each of these components using the aforementioned documentation and grabbed the appropriate images with <code>wget</code>.</p>
+<p>The <a href="http://nws.noaa.gov">National Weather Service</a> doesn&rsquo;t have a simple image of the weather on their <a href="http://radar.weather.gov/radar.php?rid=lwx&amp;product=N0R&amp;overlay=11101111&amp;loop=no">radar page</a>, rather, it is an image that is dynamically generated from a set of standard overlays using Javascript.  This allows them to more efficiently distribute radar images, since the terrain and maps that are the background never change.  The organization they use is <a href="http://www.srh.noaa.gov/srh/jetstream/doppler/ridge_download.htm">well documented</a>, making it easy to find the overlays for you local radar.  In my case, I wanted the topographical map, counties and highways in the image.    I found the URL for each of these components using the aforementioned documentation and grabbed the appropriate images with <code>wget</code>.
 <pre>
-wget http://radar.weather.gov/ridge/Legend/N0R/LWX_N0R_Legend_0.gif\
-http://radar.weather.gov/ridge/Overlays/County/Short/LWX_County_Short.gif\
-http://radar.weather.gov/ridge/Overlays/Highways/Short/LWX_Highways_Short.gif\
-http://radar.weather.gov/ridge/Overlays/Topo/Short/LWX_Topo_Short.jpg\
-http://radar.weather.gov/ridge/RadarImg/N0R/LWX_N0R_0.gif
-</pre>
+wget http://radar.weather.gov/ridge/Legend/N0R/LWX<em>N0R</em>Legend<em>0.gif\
+http://radar.weather.gov/ridge/Overlays/County/Short/LWX</em>County<em>Short.gif\
+http://radar.weather.gov/ridge/Overlays/Highways/Short/LWX</em>Highways<em>Short.gif\
+http://radar.weather.gov/ridge/Overlays/Topo/Short/LWX</em>Topo<em>Short.jpg\
+http://radar.weather.gov/ridge/RadarImg/N0R/LWX</em>N0R_0.gif
+</pre></p>
 
-<p>The only layer that will change will be the last one, the actual radar data, so in my script that is the only one that will be <code>wget</code>d on subsequent runs.  To build the image, I used the <code>composite</code> program that is part of the ImageMagick package:</p>
+<p>The only layer that will change will be the last one, the actual radar data, so in my script that is the only one that will be <code>wget</code>d on subsequent runs.  To build the image, I used the <code>composite</code> program that is part of the ImageMagick package:
 <pre>
-composite -compose atop LWX_N0R_0.gif LWX_Topo_Short.jpg base_reflectivity.jpg
-composite -compose atop LWX_Highways_Short.gif base_reflectivity.jpg base_reflectivity.jpg
-composite -compose atop LWX_County_Short.gif base_reflectivity.jpg base_reflectivity.jpg
-composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflectivity.jpg
-</pre>
+composite -compose atop LWX<em>N0R</em>0.gif LWX<em>Topo</em>Short.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>Highways<em>Short.gif base</em>reflectivity.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>County<em>Short.gif base</em>reflectivity.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>N0R<em>Legend</em>0.gif base<em>reflectivity.jpg base</em>reflectivity.jpg
+</pre></p>
 
 <p>I want the counties, highways and legend to show up on top of the weather data which itself is pasted atop the topographical map.  To achieve this, I first toss the radar data onto the topographical image creating a new image, <code>base_reflectivity.jpg</code>.  Then, I add each of the other layers to the <code>base_reflectivity.jpg</code> image in sequence.</p>
 
@@ -69,6 +69,10 @@ composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflecti
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -105,10 +109,6 @@ composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflecti
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -124,7 +124,8 @@ composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflecti
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

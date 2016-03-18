@@ -26,15 +26,15 @@
   <div class="main-content">
     <h1 class="article-title">Watching iPad Applications</h1>
     <div class="article-title-date">Apr  9, 2011</div>
-    <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I've wanted to explore a number of applications on my iPad and iPhone to see what they're really doing when they cause the network indicator to spin.</p>
+    <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I&rsquo;ve wanted to explore a number of applications on my iPad and iPhone to see what they&rsquo;re really doing when they cause the network indicator to spin.</p>
 
-<p>First things first, I setup Charles and started up <a href="http://reederapp.com/">Reeder</a>, an RSS feed reader that integrates tightly with Google Reader.  My main interest was to see when it actually marked posts as read–I often read in short spurts on my iPhone, which results in pulling up a post only to switch out of Reeder or lock my phone seconds later.  Sometimes the posts would be marked read if I pulled up Google Reader, but sometimes they were still marked unread.  Was this a network latency problem when the phone was using 3G/Edge internet, or was it Reeder doing some fanciness with when it marked posts read?</p>
+<p>First things first, I setup Charles and started up <a href="http://reederapp.com/">Reeder</a>, an RSS feed reader that integrates tightly with Google Reader.  My main interest was to see when it actually marked posts as read&ndash;I often read in short spurts on my iPhone, which results in pulling up a post only to switch out of Reeder or lock my phone seconds later.  Sometimes the posts would be marked read if I pulled up Google Reader, but sometimes they were still marked unread.  Was this a network latency problem when the phone was using 3G/Edge internet, or was it Reeder doing some fanciness with when it marked posts read?</p>
 
-<p>I didn't get to my goal right away because the first thing I noticed upon starting up Reeder is that it hits the original blog for every single one of the feeds that I subscribed to in Google Reader.  As someone who hasn't cleaned up a number of blogs that don't post anymore, this was a few hundred feeds.  I shouldn't have been surprised by this, as it doesn't really make sense for Google to pull all of the content for all of those blogs and package it up for my convenience.</p>
+<p>I didn&rsquo;t get to my goal right away because the first thing I noticed upon starting up Reeder is that it hits the original blog for every single one of the feeds that I subscribed to in Google Reader.  As someone who hasn&rsquo;t cleaned up a number of blogs that don&rsquo;t post anymore, this was a few hundred feeds.  I shouldn&rsquo;t have been surprised by this, as it doesn&rsquo;t really make sense for Google to pull all of the content for all of those blogs and package it up for my convenience.</p>
 
-<p>Getting back to my initial focus, Reeder attempts to mark a post read as soon as you open a post–any failure of a post being marked read is because the network was slow or inoperative at the time you were reading.  Reeder periodically refreshes all of your feeds, as indicated by the spinning icon on the iPad or the replaced battery display on the iPhone, but it actually spends much longer doing this than the icon's state would lead you to believe.  From day-to-day usage the update to the feeds I care about (read: those that actually have updates) is done in short order, but Charles reveals that Reeder is still pulling data from individual websites.  My guess is that Reeder pulls the feed list from Google, gets the new posts mentioned therein, and then proceeds to do its own checking of feeds.</p>
+<p>Getting back to my initial focus, Reeder attempts to mark a post read as soon as you open a post&ndash;any failure of a post being marked read is because the network was slow or inoperative at the time you were reading.  Reeder periodically refreshes all of your feeds, as indicated by the spinning icon on the iPad or the replaced battery display on the iPhone, but it actually spends much longer doing this than the icon&rsquo;s state would lead you to believe.  From day-to-day usage the update to the feeds I care about (read: those that actually have updates) is done in short order, but Charles reveals that Reeder is still pulling data from individual websites.  My guess is that Reeder pulls the feed list from Google, gets the new posts mentioned therein, and then proceeds to do its own checking of feeds.</p>
 
-<p>Reeder was the only app that had really crossed my mind after Andy Baio's post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I'll turn to if I have future questions that need answering.</p>
+<p>Reeder was the only app that had really crossed my mind after Andy Baio&rsquo;s post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I&rsquo;ll turn to if I have future questions that need answering. </p>
 
   </div>
 
@@ -57,6 +57,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -93,10 +97,6 @@
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -112,7 +112,8 @@
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

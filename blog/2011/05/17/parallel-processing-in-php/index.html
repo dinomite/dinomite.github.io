@@ -26,38 +26,46 @@
   <div class="main-content">
     <h1 class="article-title">Parallel Processing in PHP</h1>
     <div class="article-title-date">May 17, 2011</div>
-    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power–network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
+    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power&ndash;network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
 
-<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn't a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.</p>
+<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn&rsquo;t a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.  </p>
 
-<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project–you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos'</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
+<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project&ndash;you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos&rsquo;</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
 
-<p>Using the library is simple–extend gosUtility_Parallel and override the <code>doWorkChildImpl()</code> method:</p>
+<p>Using the library is simple&ndash;extend gosUtility<em>Parallel and override the <code>doWorkChildImpl()</code> method:
 <pre class="brush: php">
 // Include the Genius config file
-require_once dirname(dirname(__FILE__)) .'/Core/testConfig.inc.php';
+require</em>once dirname(dirname(<strong>FILE</strong>)) .&#39;/Core/testConfig.inc.php&#39;;</p>
 
-class Minimal extends gosUtility_Parallel {
+<p>class Minimal extends gosUtility<em>Parallel {
     protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " started");
-        usleep(2000000);
+        gosUtility</em>Parallel::$logger-&gt;debug($this-&gt;workerID . &quot; started&quot;);
+        usleep(2000000);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>    gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
+    usleep(2000000);
 
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
-        usleep(2000000);
-
-        gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
-        exit(1);
-        return;
-    }
+    gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
+    exit(1);
+    return;
 }
-</pre>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>}
+</pre></p>
 
 <p>This class creates simple workers that print a couple of debug messages with some sleeping in between, and then announce that they are done working.  Now you can instantiate the class with a single argument: the number of children to run.  gosUtility_Parallel will take care of all the details.</p>
 
 <pre class="bursh: php">
 // Make with the go
 $minimal = new Minimal(2);
-$minimal-&gt;go();
+$minimal->go();
 </pre>
 
 <p>If children <code>exit</code> with a non-zero status, the parent will spin up a replacement.  The parent will continue to run until all children have exited normally, or it gets <code>INT</code> (say, ctrl+c) or <code>TERM</code> (the default signal sent by kill(1)), in which case it will pass that signal on to the children, ensure they shut down, and then end itself.  gosUtility_Parallel provides ample logging information; running the above produces the following output:</p>
@@ -94,33 +102,33 @@ class Par extends gosUtility_Parallel {
     }
 
     protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " started");
+        gosUtility_Parallel::$logger->debug($this->workerID . " started");
 
         // Run until told not to
         global $run;
         while ($run) {
-            gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work.");
+            gosUtility_Parallel::$logger->debug($this->workerID . " doing work.");
             usleep(2000000);
-            if ($this-&gt;workerID == 0 &amp;&amp; rand(0,10) == 7) {
-                gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " returning");
+            if ($this->workerID == 0 && rand(0,10) == 7) {
+                gosUtility_Parallel::$logger->info($this->workerID . " returning");
                 return;
             }
         }
     }
 
     protected function parentCleanup() {
-        gosUtility_Parallel::$logger-&gt;debug("Parent cleaning up");
+        gosUtility_Parallel::$logger->debug("Parent cleaning up");
     }
 
     protected function childCleanup() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " cleaning up");
+        gosUtility_Parallel::$logger->debug($this->workerID . " cleaning up");
     }
 }
 </pre>
 
 <p>The example above runs out-of-the-box (provided your PHP was built with <a href="http://us.php.net/pcntl"><code>--enable-pcntl</code></a>, so I encourage you to <a href="https://launchpad.net/genius">download the source</a> and take it for a test drive.</p>
 
-<p>Incidently, if you're in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way.</p>
+<p>Incidently, if you&rsquo;re in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way. </p>
 
   </div>
 
@@ -143,6 +151,10 @@ class Par extends gosUtility_Parallel {
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -179,10 +191,6 @@ class Par extends gosUtility_Parallel {
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -198,7 +206,8 @@ class Par extends gosUtility_Parallel {
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

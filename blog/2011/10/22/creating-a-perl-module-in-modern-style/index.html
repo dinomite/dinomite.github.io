@@ -28,89 +28,146 @@
     <div class="article-title-date">Oct 22, 2011</div>
     <p>One of the very best things about Perl is <a href="https://metacpan.org/">CPAN</a>, a repository of modules to do everything from <a href="https://metacpan.org/module/WWW::Mechanize">browse the web</a> to <a href="https://metacpan.org/module/Image::Magick">manipulating image files</a>.  CPAN provides a consistent method for installing modules (<a href="https://metacpan.org/module/App::cpanminus#Installing-to-system-perl">install cpanminus</a> and then <code>cpanm &lt;Module::Name&gt;</code>) and the largest number of modules of all the scripting languages.  More often than not, what you are trying to do has already been done and exists as a CPAN module.  In the event you are doing something new, the best way to give back to the community and get free help is to encapsulate your work and distribute it as a module on CPAN.</p>
 
-<p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009…the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
+<p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009&hellip;the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
 
 <p>Whereas <a href="https://metacpan.org/module/ExtUtils::MakeMaker">ExtUtils::MakeMaker</a> and <a href="https://metacpan.org/module/Module::Build">Module::Build</a> are systems for building, testing, and installing a release, Dist::Zilla sits at a higher level.  With Dist::Zilla, you create a single file that controls the build &amp; test flow (using <a href="https://metacpan.org/module/Dist::Zilla::Plugin::MakeMaker">ExtUtils::MakeMaker</a> under the hood) but also provide functionality for generating semi-boilerplate files (LICENSE, MANIFEST, META.yml) and releasing the code via CPAN.  The configuration file, <code>dist.ini</code>, is easy-to-read and short in contrast to prior build systems.</p>
 
-<p>To start using Dist::Zilla, install it using the standard CPAN shell command (<code>cpan -i Dist::Zilla</code>) or with cpanminus (<code>cpanm Dist::Zilla</code>).  You utilize Dist::Zilla through the command <code>dzil</code>; if that's not in your path (<code>which dzil</code>), then you'll want to find it and symlink it somewhere useful or add it to your path.  Global setup of dzil is done by invoking <code>dzil setup</code> and answering the questions it poses.  With that done you can very easily mint a new distribution:</p>
+<p>To start using Dist::Zilla, install it using the standard CPAN shell command (<code>cpan -i Dist::Zilla</code>) or with cpanminus (<code>cpanm Dist::Zilla</code>).  You utilize Dist::Zilla through the command <code>dzil</code>; if that&rsquo;s not in your path (<code>which dzil</code>), then you&rsquo;ll want to find it and symlink it somewhere useful or add it to your path.  Global setup of dzil is done by invoking <code>dzil setup</code> and answering the questions it poses.  With that done you can very easily mint a new distribution:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nv">Titus:</span><span class="o">~/</span><span class="nv">sandbox$</span> <span class="nv">dzil</span> <span class="k">new</span> <span class="nn">Number::</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">making</span> <span class="nv">target</span> <span class="nv">dir</span> <span class="sr">/Users/</span><span class="nv">dinomite</span><span class="sr">/Dropbox/s</span><span class="nv">andbox</span><span class="o">/</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">writing</span> <span class="nv">files</span> <span class="nv">to</span> <span class="sr">/Users/</span><span class="nv">dinomite</span><span class="sr">/Dropbox/s</span><span class="nv">andbox</span><span class="o">/</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">dist</span> <span class="nv">minted</span> <span class="nv">in</span> <span class="o">./</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p><code>perl
-Titus:~/sandbox$ dzil new Number::Cruncher
-[DZ] making target dir /Users/dinomite/Dropbox/sandbox/Number-Cruncher
-[DZ] writing files to /Users/dinomite/Dropbox/sandbox/Number-Cruncher
-[DZ] dist minted in ./Number-Cruncher
-</code></p>
-
-<p>In the newly created Number-Cruncher directory you'll find a <code>lib</code> directory containing <code>Number/Cruncher.pm</code> and a <code>dist.ini</code>
+<p>In the newly created Number-Cruncher directory you&rsquo;ll find a <code>lib</code> directory containing <code>Number/Cruncher.pm</code> and a <code>dist.ini</code>
 :</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nv">name</span>    <span class="o">=</span> <span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="nv">author</span>  <span class="o">=</span> <span class="nv">Drew</span> <span class="nv">Stephens</span> <span class="p">[</span><span class="nv">drew@dinomite</span><span class="o">.</span><span class="nv">net</span><span class="p">]</span>
+<span class="nv">license</span> <span class="o">=</span> <span class="nv">Perl_5</span>
+<span class="nv">copyright_holder</span> <span class="o">=</span> <span class="nv">Drew</span> <span class="nv">Stephens</span>
+<span class="nv">copyright_year</span>   <span class="o">=</span> <span class="mi">2011</span>
 
-<p>```perl
-name    = Number-Cruncher
-author  = Drew Stephens [drew@dinomite.net]
-license = Perl_5
-copyright_holder = Drew Stephens
-copyright_year   = 2011</p>
+<span class="nv">version</span> <span class="o">=</span> <span class="mf">0.001</span>
 
-<p>version = 0.001</p>
+<span class="p">[</span><span class="nv">@Basic</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p>[@Basic]
-```</p>
+<p>At this point, code and tests are the only things needed to have a Perl module.  Here&rsquo;s some simple code for <code>lib/Number/Cruncher.pm</code>:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
+<span class="nb">package</span> <span class="nn">Number::</span><span class="nv">Cruncher</span><span class="p">;</span>
 
-<p>At this point, code and tests are the only things needed to have a Perl module.  Here's some simple code for <code>lib/Number/Cruncher.pm</code>:</p>
+<span class="o">=</span><span class="nv">head1</span> <span class="nv">NAME</span>
 
-<p>```perl
-use strict;
-use warnings;
-package Number::Cruncher;</p>
+<span class="nn">Number::</span><span class="nv">Cruncher</span> <span class="o">-</span> <span class="nv">crunch</span> <span class="nv">numbers</span>
 
-<p>=head1 NAME</p>
+<span class="o">=</span><span class="nv">cut</span>
 
-<p>Number::Cruncher - crunch numbers</p>
+<span class="k">sub </span><span class="nf">new</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$class</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$self</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nv">first</span> <span class="o">=&gt;</span> <span class="nb">shift</span><span class="p">,</span>
+        <span class="nv">second</span> <span class="o">=&gt;</span> <span class="nb">shift</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="nb">bless</span> <span class="nv">$self</span><span class="p">,</span> <span class="nv">$class</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$self</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p>=cut</p>
+<span class="k">sub </span><span class="nf">crunch</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$self</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">first</span><span class="p">}</span> <span class="o">+</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">second</span><span class="p">};</span>
+<span class="p">}</span>
 
-<p>sub new {
-    my $class = shift;
-    my $self = {
-        first =&gt; shift,
-        second =&gt; shift,
-    };
-    bless $self, $class;
-    return $self;
-}</p>
-
-<p>sub crunch {
-    my $self = shift;
-    return $self-&gt;{first} + $self-&gt;{second};
-}</p>
-
-<p>1;
-```</p>
+<span class="mi">1</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>And the associated test file that I created, <code>t/number-cruncher.t</code>:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c1">#!/usr/bin/env perl</span>
+<span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
 
-<p>```perl
-#!/usr/bin/env perl
-use strict;
-use warnings;</p>
+<span class="k">use</span> <span class="nn">Test::</span><span class="nv">More</span> <span class="nv">tests</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">;</span>
 
-<p>use Test::More tests =&gt; 2;</p>
+<span class="k">BEGIN</span> <span class="p">{</span> <span class="nv">use_ok</span> <span class="s">'Number::Cruncher'</span><span class="p">;</span> <span class="p">}</span>
 
-<p>BEGIN { use_ok 'Number::Cruncher'; }</p>
+<span class="k">my</span> <span class="nv">$first</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$second</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$cruncher</span> <span class="o">=</span> <span class="nn">Number::</span><span class="nv">Cruncher</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span><span class="nv">$first</span><span class="p">,</span> <span class="nv">$second</span><span class="p">);</span>
+<span class="nv">ok</span> <span class="p">((</span><span class="nv">$first</span> <span class="o">+</span> <span class="nv">$second</span><span class="p">)</span> <span class="o">==</span> <span class="nv">$cruncher</span><span class="o">-&gt;</span><span class="nv">crunch</span><span class="p">());</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p>my $first = 1;
-my $second = 7;
-my $cruncher = Number::Cruncher-&gt;new($first, $second);
-ok (($first + $second) == $cruncher-&gt;crunch());
-```</p>
-
-<p>In three files–<code>dist.ini</code>, <code>lib/Number/Cruncher.pm</code>, and <code>t/number-cruncher.t</code>–we have a module.  Run the test with <code>dzil test</code> and you'll see Dist::Zilla build your module into a temporary directory and run the test suite from there:</p>
-
-<p><code>sh
-Titus:~/sandbox/Number-Cruncher$ dzil test
-[DZ] building test distribution under .build/mgJsQhkFi6
-[DZ] beginning to build Number-Cruncher
-[DZ] guessing dist's main_module is lib/Number/Cruncher.pm
+<p>In three files&ndash;<code>dist.ini</code>, <code>lib/Number/Cruncher.pm</code>, and <code>t/number-cruncher.t</code>&ndash;we have a module.  Run the test with <code>dzil test</code> and you&rsquo;ll see Dist::Zilla build your module into a temporary directory and run the test suite from there:</p>
+<div class="highlight shell"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="gp">Titus:~/sandbox/Number-Cruncher$ </span>dzil <span class="nb">test</span>
+<span class="o">[</span>DZ] building <span class="nb">test </span>distribution under .build/mgJsQhkFi6
+<span class="o">[</span>DZ] beginning to build Number-Cruncher
+<span class="o">[</span>DZ] guessing dist<span class="s1">'s main_module is lib/Number/Cruncher.pm
 [DZ] extracting distribution abstract from lib/Number/Cruncher.pm
 [DZ] writing Number-Cruncher in .build/mgJsQhkFi6
 Checking if your kit is complete...
@@ -118,42 +175,54 @@ Looks good
 Writing Makefile for Number::Cruncher
 cp lib/Number/Cruncher.pm blib/lib/Number/Cruncher.pm
 Manifying blib/man3/Number::Cruncher.3
-PERL_DL_NONLAZY=1 /usr/local/Cellar/perl/5.12.3/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+PERL_DL_NONLAZY=1 /usr/local/Cellar/perl/5.12.3/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, '</span>blib/lib<span class="s1">', '</span>blib/arch<span class="s1">')" t/*.t
 t/number-cruncher.t .. ok   
 All tests successful.
 Files=1, Tests=2,  0 wallclock secs ( 0.02 usr  0.01 sys +  0.02 cusr  0.00 csys =  0.05 CPU)
 Result: PASS
-[DZ] all's well; removing .build/mgJsQhkFi6
-</code></p>
+[DZ] all'</span>s well; removing .build/mgJsQhkFi6
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To build a distributable tarball, just run <code>dzil build</code>:</p>
-
-<p>```sh
-Titus:~/sandbox/Number-Cruncher$ dzil build
-[DZ] beginning to build Number-Cruncher
-[DZ] guessing dist's main_module is lib/Number/Cruncher.pm
+<div class="highlight shell"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="gp">Titus:~/sandbox/Number-Cruncher$ </span>dzil build
+<span class="o">[</span>DZ] beginning to build Number-Cruncher
+<span class="o">[</span>DZ] guessing dist<span class="s1">'s main_module is lib/Number/Cruncher.pm
 [DZ] extracting distribution abstract from lib/Number/Cruncher.pm
 [DZ] writing Number-Cruncher in Number-Cruncher-0.001
 [DZ] building archive with Archive::Tar::Wrapper
 [DZ] writing archive to Number-Cruncher-0.001.tar.gz
 Titus:~/sandbox/Number-Cruncher$ ls Number-Cruncher-0.001*
-Number-Cruncher-0.001.tar.gz</p>
+Number-Cruncher-0.001.tar.gz
 
-<p>Number-Cruncher-0.001:
+Number-Cruncher-0.001:
 LICENSE     META.yml    README      lib
 MANIFEST    Makefile.PL dist.ini    t
-```</p>
+</span></pre></td></tr></tbody></table>
+</div>
 
-<p>If you already have a PAUSE account, you can use <code>dzil release</code> to upload that tarball to PAUSE for inclusion in CPAN.  If you haven't authored a Perl module before, <a href="http://pause.perl.org/pause/query?ACTION=request_id">request an account</a> for uploading modules to CPAN.  With PAUSE and Dist::Zilla, creating widely-available Perl modules is easy.</p>
+<p>If you already have a PAUSE account, you can use <code>dzil release</code> to upload that tarball to PAUSE for inclusion in CPAN.  If you haven&rsquo;t authored a Perl module before, <a href="http://pause.perl.org/pause/query?ACTION=request_id">request an account</a> for uploading modules to CPAN.  With PAUSE and Dist::Zilla, creating widely-available Perl modules is easy.</p>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://dzil.org">dzil.org</a></li>
-  <li><a href="https://metacpan.org/module/Dist::Zilla::Tutorial">Dist::Zilla::Tutorial</a></li>
-  <li><a href="https://metacpan.org/release/Shell-Verbose">Shell::Verbose</a>, my first Dist::Zilla-powered module</li>
+<li><a href="http://dzil.org">dzil.org</a></li>
+<li><a href="https://metacpan.org/module/Dist::Zilla::Tutorial">Dist::Zilla::Tutorial</a></li>
+<li><a href="https://metacpan.org/release/Shell-Verbose">Shell::Verbose</a>, my first Dist::Zilla-powered module 
+<p><br /> </p></li>
 </ul>
-<p><br /> </p>
 
   </div>
 
@@ -176,6 +245,10 @@ MANIFEST    Makefile.PL dist.ini    t
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -212,10 +285,6 @@ MANIFEST    Makefile.PL dist.ini    t
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -231,7 +300,8 @@ MANIFEST    Makefile.PL dist.ini    t
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

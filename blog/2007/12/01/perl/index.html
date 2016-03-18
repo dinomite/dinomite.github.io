@@ -26,7 +26,7 @@
   <div class="main-content">
     <h1 class="article-title">Perl, Python and Ruby</h1>
     <div class="article-title-date">Dec  1, 2007</div>
-    <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it's older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
+    <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it&rsquo;s older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
 
 <pre>
 Python:
@@ -54,7 +54,7 @@ sub fib {
 }
 
 for (0..35) {
-    print "n=$_ =&gt; " . fib($_) . "\n";
+    print "n=$_ => " . fib($_) . "\n";
 }
 </pre>
 
@@ -67,37 +67,40 @@ user    1m9.188s
 sys     0m0.364s
 </pre>
 
-<p>That's impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:</p>
+<p>That&rsquo;s impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:</p>
 
-<p>C code:</p>
-<pre class="brush: cpp;">
-#include <stdio.h>
+<p>C code:
+<pre class="brush: cpp;"></p>
 
-int fib(int n) {
+<h1>include <stdio.h></h1>
+
+<p>int fib(int n) {
     if ( (n == 0) || (n == 1) )
         return n;
     else
         return (fib(n-1) + fib(n-2));
-} //fib
+} //fib</p>
 
-int main() {
+<p>int main() {
     int x;
     for (x = 0; x &lt; 36; x++) {
-        printf( "n = %d =&gt; %d\n", x, fib(x) );
-    } //for
+        printf( &quot;n = %d =&gt; %d\n&quot;, x, fib(x) );
+    } //for</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>return 0;
+</pre></td></tr></tbody></table>
+</div>
 
-    return 0;
-}
+<p>}
+</pre></p>
 
-
-C timing:
+<p>C timing:
 <pre>
 real    0m0.605s
 user    0m0.564s
 sys     0m0.000s
-</pre>
+</pre></p>
 
-Java code:
+<p>Java code:
 <pre class="brush: java;">
 class Fib {
     static int fib(int n) {
@@ -105,25 +108,30 @@ class Fib {
             return n;
         else
             return (fib(n-1) + fib(n-2));
-    } //fib
+    } //fib</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>public static void main(String args[]) {
+    for (int x = 0; x &lt; 36; x++) {
+        System.out.println( "n = " + x + " =&gt; " + fib(x) );
+    } //for
+} //main
+</pre></td></tr></tbody></table>
+</div>
 
-    public static void main(String args[]) {
-        for (int x = 0; x &lt; 36; x++) {
-            System.out.println( "n = " + x + " =&gt; " + fib(x) );
-        } //for
-    } //main
-} //Fib
-</pre>
+<p>} //Fib
+</pre></p>
 
-Java timing:
+<p>Java timing:
 <pre>
 real    0m0.455s
 user    0m0.412s
 sys     0m0.012s
-</pre>
+</pre></p>
 
-It's very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don't take these benchmarks as having any significant meaning.  Really, don't take them to mean much of anything, unless all you do is write lots of simple recursive code.
-</stdio.h></pre>
+<p>It&rsquo;s very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don&rsquo;t take these benchmarks as having any significant meaning.  Really, don&rsquo;t take them to mean much of anything, unless all you do is write lots of simple recursive code.</p>
 
   </div>
 
@@ -146,6 +154,10 @@ It's very interesting to see the huge speed disparities in these languages, but 
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -182,10 +194,6 @@ It's very interesting to see the huge speed disparities in these languages, but 
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -201,7 +209,8 @@ It's very interesting to see the huge speed disparities in these languages, but 
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

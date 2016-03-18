@@ -28,11 +28,18 @@
     <p><a href="/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a></h1>
+    <div class="article-title-date">Mar 19, 2012</div>
+    <p>There are enough BMW E36 cars out there owned by enthusiasts that nearly any problem you have there is a do-it-yourself tutorial for fixing on the internet. Dead window motors is no different&ndash;Doug Vetter has <a href="http://www.dvatp.com/bmw/diy/power_window/">a very detailed description</a> of how to replace the window motor &amp; regulator on the E36.  Seriously, if you&rsquo;re going to to do this fix (or are wondering whether you should), go check out Doug&rsquo;s page.  The only amendment I&rsquo;ll make to his description is about replacing the window motor only, without removing the regulator.  In short, doing so is possible, but a (cheap!) special tool is required.</p>
+
+<p>Doug&rsquo;s instructions mention that a low-profile ratchet is required to remove the window motor with the regulator in place, and when he says low-profile, he means it.  I bought one of <a href="http://www.amazon.com/gp/product/B000XYOUS6/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;tag=dinomitenet-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B000XYOUS6">these cheap ratchets</a> on Amazon in preparation for this job.  While it doesn&rsquo;t have the requisite T-30 bit, this style of ratchet is the only thing that will fit in the space between the door and de-riveted window regulator.  Check your local hardware store for the T-30 bit&ndash;regular old interchangeable screwdriver bits fit perfectly.  Beyond that, follow Doug&rsquo;s instructions for breaking the window regulator rivets, use your $9 ratchet to unbolt the motor, and bolt the shiny, expensive new motor in its place.  If you&rsquo;re handy, you&rsquo;ll be done in an hour. </p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a></h1>
     <div class="article-title-date">Oct 26, 2011</div>
-    <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
+    <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep&rsquo;s current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90&rsquo;s&ndash;a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90&rsquo;s the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
 
-<p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it–<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
+<p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it&ndash;<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
 
 <p>Net::Twitter::Queue is a simple Perl module that employs <a href="https://metacpan.org/module/Net::Twitter">Net::Twitter</a> to do the heavy lifting.  To use it, I have a queue of tweets in a file, <code>tweets.yaml</code>:</p>
 
@@ -64,99 +71,156 @@ Titus:~/$ twurl authorize --consumer-key [consumer_key] \
 caligula:~/twitter/dailywub$ ls
 config.yaml  tweets.yaml
 caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
-'$q=Net::Twitter::Queue-&gt;new-&gt;tweet'
+'$q=Net::Twitter::Queue->new->tweet'
 </pre>
 
-<p>Easy as that–the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter.</p>
+<p>Easy as that&ndash;the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/10/22/creating-a-perl-module-in-modern-style/">Creating a Perl Module in Modern Style</a></h1>
     <div class="article-title-date">Oct 22, 2011</div>
     <p>One of the very best things about Perl is <a href="https://metacpan.org/">CPAN</a>, a repository of modules to do everything from <a href="https://metacpan.org/module/WWW::Mechanize">browse the web</a> to <a href="https://metacpan.org/module/Image::Magick">manipulating image files</a>.  CPAN provides a consistent method for installing modules (<a href="https://metacpan.org/module/App::cpanminus#Installing-to-system-perl">install cpanminus</a> and then <code>cpanm &lt;Module::Name&gt;</code>) and the largest number of modules of all the scripting languages.  More often than not, what you are trying to do has already been done and exists as a CPAN module.  In the event you are doing something new, the best way to give back to the community and get free help is to encapsulate your work and distribute it as a module on CPAN.</p>
 
-<p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009…the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
+<p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009&hellip;the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
 
 <p>Whereas <a href="https://metacpan.org/module/ExtUtils::MakeMaker">ExtUtils::MakeMaker</a> and <a href="https://metacpan.org/module/Module::Build">Module::Build</a> are systems for building, testing, and installing a release, Dist::Zilla sits at a higher level.  With Dist::Zilla, you create a single file that controls the build &amp; test flow (using <a href="https://metacpan.org/module/Dist::Zilla::Plugin::MakeMaker">ExtUtils::MakeMaker</a> under the hood) but also provide functionality for generating semi-boilerplate files (LICENSE, MANIFEST, META.yml) and releasing the code via CPAN.  The configuration file, <code>dist.ini</code>, is easy-to-read and short in contrast to prior build systems.</p>
 
-<p>To start using Dist::Zilla, install it using the standard CPAN shell command (<code>cpan -i Dist::Zilla</code>) or with cpanminus (<code>cpanm Dist::Zilla</code>).  You utilize Dist::Zilla through the command <code>dzil</code>; if that's not in your path (<code>which dzil</code>), then you'll want to find it and symlink it somewhere useful or add it to your path.  Global setup of dzil is done by invoking <code>dzil setup</code> and answering the questions it poses.  With that done you can very easily mint a new distribution:</p>
+<p>To start using Dist::Zilla, install it using the standard CPAN shell command (<code>cpan -i Dist::Zilla</code>) or with cpanminus (<code>cpanm Dist::Zilla</code>).  You utilize Dist::Zilla through the command <code>dzil</code>; if that&rsquo;s not in your path (<code>which dzil</code>), then you&rsquo;ll want to find it and symlink it somewhere useful or add it to your path.  Global setup of dzil is done by invoking <code>dzil setup</code> and answering the questions it poses.  With that done you can very easily mint a new distribution:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="nv">Titus:</span><span class="o">~/</span><span class="nv">sandbox$</span> <span class="nv">dzil</span> <span class="k">new</span> <span class="nn">Number::</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">making</span> <span class="nv">target</span> <span class="nv">dir</span> <span class="sr">/Users/</span><span class="nv">dinomite</span><span class="sr">/Dropbox/s</span><span class="nv">andbox</span><span class="o">/</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">writing</span> <span class="nv">files</span> <span class="nv">to</span> <span class="sr">/Users/</span><span class="nv">dinomite</span><span class="sr">/Dropbox/s</span><span class="nv">andbox</span><span class="o">/</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="p">[</span><span class="nv">DZ</span><span class="p">]</span> <span class="nv">dist</span> <span class="nv">minted</span> <span class="nv">in</span> <span class="o">./</span><span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p><code>perl
-Titus:~/sandbox$ dzil new Number::Cruncher
-[DZ] making target dir /Users/dinomite/Dropbox/sandbox/Number-Cruncher
-[DZ] writing files to /Users/dinomite/Dropbox/sandbox/Number-Cruncher
-[DZ] dist minted in ./Number-Cruncher
-</code></p>
-
-<p>In the newly created Number-Cruncher directory you'll find a <code>lib</code> directory containing <code>Number/Cruncher.pm</code> and a <code>dist.ini</code>
+<p>In the newly created Number-Cruncher directory you&rsquo;ll find a <code>lib</code> directory containing <code>Number/Cruncher.pm</code> and a <code>dist.ini</code>
 :</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="nv">name</span>    <span class="o">=</span> <span class="nv">Number</span><span class="o">-</span><span class="nv">Cruncher</span>
+<span class="nv">author</span>  <span class="o">=</span> <span class="nv">Drew</span> <span class="nv">Stephens</span> <span class="p">[</span><span class="nv">drew@dinomite</span><span class="o">.</span><span class="nv">net</span><span class="p">]</span>
+<span class="nv">license</span> <span class="o">=</span> <span class="nv">Perl_5</span>
+<span class="nv">copyright_holder</span> <span class="o">=</span> <span class="nv">Drew</span> <span class="nv">Stephens</span>
+<span class="nv">copyright_year</span>   <span class="o">=</span> <span class="mi">2011</span>
 
-<p>```perl
-name    = Number-Cruncher
-author  = Drew Stephens [drew@dinomite.net]
-license = Perl_5
-copyright_holder = Drew Stephens
-copyright_year   = 2011</p>
+<span class="nv">version</span> <span class="o">=</span> <span class="mf">0.001</span>
 
-<p>version = 0.001</p>
+<span class="p">[</span><span class="nv">@Basic</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p>[@Basic]
-```</p>
+<p>At this point, code and tests are the only things needed to have a Perl module.  Here&rsquo;s some simple code for <code>lib/Number/Cruncher.pm</code>:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
+<span class="nb">package</span> <span class="nn">Number::</span><span class="nv">Cruncher</span><span class="p">;</span>
 
-<p>At this point, code and tests are the only things needed to have a Perl module.  Here's some simple code for <code>lib/Number/Cruncher.pm</code>:</p>
+<span class="o">=</span><span class="nv">head1</span> <span class="nv">NAME</span>
 
-<p>```perl
-use strict;
-use warnings;
-package Number::Cruncher;</p>
+<span class="nn">Number::</span><span class="nv">Cruncher</span> <span class="o">-</span> <span class="nv">crunch</span> <span class="nv">numbers</span>
 
-<p>=head1 NAME</p>
+<span class="o">=</span><span class="nv">cut</span>
 
-<p>Number::Cruncher - crunch numbers</p>
+<span class="k">sub </span><span class="nf">new</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$class</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$self</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nv">first</span> <span class="o">=&gt;</span> <span class="nb">shift</span><span class="p">,</span>
+        <span class="nv">second</span> <span class="o">=&gt;</span> <span class="nb">shift</span><span class="p">,</span>
+    <span class="p">};</span>
+    <span class="nb">bless</span> <span class="nv">$self</span><span class="p">,</span> <span class="nv">$class</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$self</span><span class="p">;</span>
+<span class="p">}</span>
 
-<p>=cut</p>
+<span class="k">sub </span><span class="nf">crunch</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$self</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">first</span><span class="p">}</span> <span class="o">+</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">second</span><span class="p">};</span>
+<span class="p">}</span>
 
-<p>sub new {
-    my $class = shift;
-    my $self = {
-        first =&gt; shift,
-        second =&gt; shift,
-    };
-    bless $self, $class;
-    return $self;
-}</p>
-
-<p>sub crunch {
-    my $self = shift;
-    return $self-&gt;{first} + $self-&gt;{second};
-}</p>
-
-<p>1;
-```</p>
+<span class="mi">1</span><span class="p">;</span>
+</pre></td></tr></tbody></table>
+</div>
 
 <p>And the associated test file that I created, <code>t/number-cruncher.t</code>:</p>
+<div class="highlight perl"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="c1">#!/usr/bin/env perl</span>
+<span class="k">use</span> <span class="nv">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="nv">warnings</span><span class="p">;</span>
 
-<p>```perl
-#!/usr/bin/env perl
-use strict;
-use warnings;</p>
+<span class="k">use</span> <span class="nn">Test::</span><span class="nv">More</span> <span class="nv">tests</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">;</span>
 
-<p>use Test::More tests =&gt; 2;</p>
+<span class="k">BEGIN</span> <span class="p">{</span> <span class="nv">use_ok</span> <span class="s">'Number::Cruncher'</span><span class="p">;</span> <span class="p">}</span>
 
-<p>BEGIN { use_ok 'Number::Cruncher'; }</p>
+<span class="k">my</span> <span class="nv">$first</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$second</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$cruncher</span> <span class="o">=</span> <span class="nn">Number::</span><span class="nv">Cruncher</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span><span class="nv">$first</span><span class="p">,</span> <span class="nv">$second</span><span class="p">);</span>
+<span class="nv">ok</span> <span class="p">((</span><span class="nv">$first</span> <span class="o">+</span> <span class="nv">$second</span><span class="p">)</span> <span class="o">==</span> <span class="nv">$cruncher</span><span class="o">-&gt;</span><span class="nv">crunch</span><span class="p">());</span>
+</pre></td></tr></tbody></table>
+</div>
 
-<p>my $first = 1;
-my $second = 7;
-my $cruncher = Number::Cruncher-&gt;new($first, $second);
-ok (($first + $second) == $cruncher-&gt;crunch());
-```</p>
-
-<p>In three files–<code>dist.ini</code>, <code>lib/Number/Cruncher.pm</code>, and <code>t/number-cruncher.t</code>–we have a module.  Run the test with <code>dzil test</code> and you'll see Dist::Zilla build your module into a temporary directory and run the test suite from there:</p>
-
-<p><code>sh
-Titus:~/sandbox/Number-Cruncher$ dzil test
-[DZ] building test distribution under .build/mgJsQhkFi6
-[DZ] beginning to build Number-Cruncher
-[DZ] guessing dist's main_module is lib/Number/Cruncher.pm
+<p>In three files&ndash;<code>dist.ini</code>, <code>lib/Number/Cruncher.pm</code>, and <code>t/number-cruncher.t</code>&ndash;we have a module.  Run the test with <code>dzil test</code> and you&rsquo;ll see Dist::Zilla build your module into a temporary directory and run the test suite from there:</p>
+<div class="highlight shell"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="gp">Titus:~/sandbox/Number-Cruncher$ </span>dzil <span class="nb">test</span>
+<span class="o">[</span>DZ] building <span class="nb">test </span>distribution under .build/mgJsQhkFi6
+<span class="o">[</span>DZ] beginning to build Number-Cruncher
+<span class="o">[</span>DZ] guessing dist<span class="s1">'s main_module is lib/Number/Cruncher.pm
 [DZ] extracting distribution abstract from lib/Number/Cruncher.pm
 [DZ] writing Number-Cruncher in .build/mgJsQhkFi6
 Checking if your kit is complete...
@@ -164,105 +228,125 @@ Looks good
 Writing Makefile for Number::Cruncher
 cp lib/Number/Cruncher.pm blib/lib/Number/Cruncher.pm
 Manifying blib/man3/Number::Cruncher.3
-PERL_DL_NONLAZY=1 /usr/local/Cellar/perl/5.12.3/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+PERL_DL_NONLAZY=1 /usr/local/Cellar/perl/5.12.3/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, '</span>blib/lib<span class="s1">', '</span>blib/arch<span class="s1">')" t/*.t
 t/number-cruncher.t .. ok   
 All tests successful.
 Files=1, Tests=2,  0 wallclock secs ( 0.02 usr  0.01 sys +  0.02 cusr  0.00 csys =  0.05 CPU)
 Result: PASS
-[DZ] all's well; removing .build/mgJsQhkFi6
-</code></p>
+[DZ] all'</span>s well; removing .build/mgJsQhkFi6
+</pre></td></tr></tbody></table>
+</div>
 
 <p>To build a distributable tarball, just run <code>dzil build</code>:</p>
-
-<p>```sh
-Titus:~/sandbox/Number-Cruncher$ dzil build
-[DZ] beginning to build Number-Cruncher
-[DZ] guessing dist's main_module is lib/Number/Cruncher.pm
+<div class="highlight shell"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="gp">Titus:~/sandbox/Number-Cruncher$ </span>dzil build
+<span class="o">[</span>DZ] beginning to build Number-Cruncher
+<span class="o">[</span>DZ] guessing dist<span class="s1">'s main_module is lib/Number/Cruncher.pm
 [DZ] extracting distribution abstract from lib/Number/Cruncher.pm
 [DZ] writing Number-Cruncher in Number-Cruncher-0.001
 [DZ] building archive with Archive::Tar::Wrapper
 [DZ] writing archive to Number-Cruncher-0.001.tar.gz
 Titus:~/sandbox/Number-Cruncher$ ls Number-Cruncher-0.001*
-Number-Cruncher-0.001.tar.gz</p>
+Number-Cruncher-0.001.tar.gz
 
-<p>Number-Cruncher-0.001:
+Number-Cruncher-0.001:
 LICENSE     META.yml    README      lib
 MANIFEST    Makefile.PL dist.ini    t
-```</p>
+</span></pre></td></tr></tbody></table>
+</div>
 
-<p>If you already have a PAUSE account, you can use <code>dzil release</code> to upload that tarball to PAUSE for inclusion in CPAN.  If you haven't authored a Perl module before, <a href="http://pause.perl.org/pause/query?ACTION=request_id">request an account</a> for uploading modules to CPAN.  With PAUSE and Dist::Zilla, creating widely-available Perl modules is easy.</p>
+<p>If you already have a PAUSE account, you can use <code>dzil release</code> to upload that tarball to PAUSE for inclusion in CPAN.  If you haven&rsquo;t authored a Perl module before, <a href="http://pause.perl.org/pause/query?ACTION=request_id">request an account</a> for uploading modules to CPAN.  With PAUSE and Dist::Zilla, creating widely-available Perl modules is easy.</p>
 
-<h2 id="see-also">See Also</h2>
+<h2>See Also</h2>
 
 <ul>
-  <li><a href="http://dzil.org">dzil.org</a></li>
-  <li><a href="https://metacpan.org/module/Dist::Zilla::Tutorial">Dist::Zilla::Tutorial</a></li>
-  <li><a href="https://metacpan.org/release/Shell-Verbose">Shell::Verbose</a>, my first Dist::Zilla-powered module</li>
+<li><a href="http://dzil.org">dzil.org</a></li>
+<li><a href="https://metacpan.org/module/Dist::Zilla::Tutorial">Dist::Zilla::Tutorial</a></li>
+<li><a href="https://metacpan.org/release/Shell-Verbose">Shell::Verbose</a>, my first Dist::Zilla-powered module 
+<p><br /> </p></li>
 </ul>
-<p><br /> </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/05/22/rafter-pull-up-bar/">Rafter Pull-Up Bar</a></h1>
     <div class="article-title-date">May 22, 2011</div>
-    <p>I quite enjoy exercising and, ever since I did parkour, I've really liked body weight movements. I don't do much in the way of parkour any more, but I do CrossFit <a href="http://www.flickr.com/photos/dinomite/5722067913/in/photostream">religiously</a>, which features a <em>lot</em> of pull-ups.  I've got a <a href="http://www.amazon.com/Iron-Total-Upper-Body-Workout/dp/B001EJMS6K/ref=sr_1_7">doorway pull-up bar</a> which is superb for just getting going in the morning; since they're only $25, I think everyone should have (and use) one.  While having a pull-up bar inside the house is great, I do most of my real workouts in my garage–with easy access to running (the street), box jumps (wall in my back yard), and a barbell, I can do many different <a href="http://www.crossfit.com/cf-info/faq.html#General0">WODs</a>.  For WODs that involve pull-ups, I've been doing them on the rafters in the garage.  While this works, the rafters are a bit too high to get to easily and they <em>really</em> strain my grip.  I'm all for the workout being difficult, but I don't always want it to be training for climbing.  To that end, I built a pull-up bar this weekend.
+    <p>I quite enjoy exercising and, ever since I did parkour, I&rsquo;ve really liked body weight movements. I don&rsquo;t do much in the way of parkour any more, but I do CrossFit <a href="http://www.flickr.com/photos/dinomite/5722067913/in/photostream">religiously</a>, which features a <em>lot</em> of pull-ups.  I&rsquo;ve got a <a href="http://www.amazon.com/Iron-Total-Upper-Body-Workout/dp/B001EJMS6K/ref=sr_1_7">doorway pull-up bar</a> which is superb for just getting going in the morning; since they&rsquo;re only $25, I think everyone should have (and use) one.  While having a pull-up bar inside the house is great, I do most of my real workouts in my garage&ndash;with easy access to running (the street), box jumps (wall in my back yard), and a barbell, I can do many different <a href="http://www.crossfit.com/cf-info/faq.html#General0">WODs</a>.  For WODs that involve pull-ups, I&rsquo;ve been doing them on the rafters in the garage.  While this works, the rafters are a bit too high to get to easily and they <em>really</em> strain my grip.  I&rsquo;m all for the workout being difficult, but I don&rsquo;t always want it to be training for climbing.  To that end, I built a pull-up bar this weekend.
 <a href="http://www.flickr.com/photos/dinomite/5749073468/in/photostream"><img alt="pull-up bar" src="http://farm3.static.flickr.com/2702/5749073468_34876074a9.jpg" width="500" height="164" class="mt-image-center" /></a></p>
 
 <p><a href="http://www.flickr.com/photos/dinomite/5748521987/in/set-72157626658390219/"><img alt="bolt detail" src="http://farm3.static.flickr.com/2160/5748521987_81c1001769_m.jpg" width="240" height="240" class="mt-image-right" /></a>
-It's a pretty simple affair, largely based upon <a href="http://www.youtube.com/watch?v=S4vk4M-Vr5o">this instructional video</a>.  The pull-up bar runs perpendicular to a pair of rafters that are 4 feet apart, hanging a few inches below the bottom of the rafters.  In my garage, the rafters are 2x6, which seem to be plenty sturdy enough even when I kip &amp; do muscle-ups over the bar.</p>
+It&rsquo;s a pretty simple affair, largely based upon <a href="http://www.youtube.com/watch?v=S4vk4M-Vr5o">this instructional video</a>.  The pull-up bar runs perpendicular to a pair of rafters that are 4 feet apart, hanging a few inches below the bottom of the rafters.  In my garage, the rafters are 2x6, which seem to be plenty sturdy enough even when I kip &amp; do muscle-ups over the bar.</p>
 
 <p>The materials I used for the bar:</p>
 
 <ul>
-  <li>A 48" long, 1" diameter pipe</li>
-  <li>Two 12" long 2x6s</li>
-  <li>Two 6" long 2x6s</li>
-  <li>Six 4" long 3/8" bolts</li>
-  <li>Six 3/8" nuts</li>
-  <li>Twelve flat washers</li>
-  <li>Eight 2.5" long wood screws</li>
-  <li>Construction adhesive</li>
+<li>A 48&quot; long, 1&quot; diameter pipe</li>
+<li>Two 12&quot; long 2x6s</li>
+<li>Two 6&quot; long 2x6s</li>
+<li>Six 4&quot; long 3/8&quot; bolts</li>
+<li>Six 3/8&quot; nuts</li>
+<li>Twelve flat washers</li>
+<li>Eight 2.5&quot; long wood screws</li>
+<li>Construction adhesive</li>
 </ul>
 
 <p><a href="http://www.flickr.com/photos/dinomite/5748523795/in/set-72157626658390219"><img alt="bolt detail" src="http://farm4.static.flickr.com/3430/5748523795_25a4de0930_m.jpg" width="210" height="240" class="mt-image-right" /></a>
-The only prep beyond cutting the wood is drilling the holes for the bar in the larger 2x6 pieces.  Note that a 1" diameter bar has a 1" <em>interior</em> diameter, so you need a larger drill bit than 1"; I used a 1Â¼" bit which was still slightly small, but worked with a bit of extra drill action.  Once the bar holes are drilled, I made the holes for the 3/8" bolts on the opposite half of the 2x6, and corresponding holes in the rafters where the bar was to be mounted.  My standard procedure for woodworking is to supplement my lackluster skill with adhesive, so I applied some construction adhesive with my caulk gun between the 2x6 and the rafter and then bolted it in place.</p>
+The only prep beyond cutting the wood is drilling the holes for the bar in the larger 2x6 pieces.  Note that a 1&quot; diameter bar has a 1&quot; <em>interior</em> diameter, so you need a larger drill bit than 1&quot;; I used a 1Â¼&quot; bit which was still slightly small, but worked with a bit of extra drill action.  Once the bar holes are drilled, I made the holes for the 3/8&quot; bolts on the opposite half of the 2x6, and corresponding holes in the rafters where the bar was to be mounted.  My standard procedure for woodworking is to supplement my lackluster skill with adhesive, so I applied some construction adhesive with my caulk gun between the 2x6 and the rafter and then bolted it in place.</p>
 
-<p>With the supports bolted in place, I slipped the bar itself through the holes and quickly discovered the need for something more.  The bar itself is 48 inches long, and the space between my rafters is also 48 inches.  Since I put the supports inside a pair of rafters, the bar was nicely flush with the outside of the supports, but this also meant it would only take a couple of inches of lateral movement for it to fall out.  The solution is to cap fashion caps using some more 2x6 and secure it with wood screws.</p>
+<p>With the supports bolted in place, I slipped the bar itself through the holes and quickly discovered the need for something more.  The bar itself is 48 inches long, and the space between my rafters is also 48 inches.  Since I put the supports inside a pair of rafters, the bar was nicely flush with the outside of the supports, but this also meant it would only take a couple of inches of lateral movement for it to fall out.  The solution is to cap fashion caps using some more 2x6 and secure it with wood screws. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/05/17/parallel-processing-in-php/">Parallel Processing in PHP</a></h1>
     <div class="article-title-date">May 17, 2011</div>
-    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power–network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
+    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power&ndash;network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
 
-<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn't a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.</p>
+<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn&rsquo;t a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.  </p>
 
-<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project–you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos'</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
+<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project&ndash;you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos&rsquo;</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
 
-<p>Using the library is simple–extend gosUtility_Parallel and override the <code>doWorkChildImpl()</code> method:</p>
+<p>Using the library is simple&ndash;extend gosUtility<em>Parallel and override the <code>doWorkChildImpl()</code> method:
 <pre class="brush: php">
 // Include the Genius config file
-require_once dirname(dirname(__FILE__)) .'/Core/testConfig.inc.php';
+require</em>once dirname(dirname(<strong>FILE</strong>)) .&#39;/Core/testConfig.inc.php&#39;;</p>
 
-class Minimal extends gosUtility_Parallel {
+<p>class Minimal extends gosUtility<em>Parallel {
     protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " started");
-        usleep(2000000);
+        gosUtility</em>Parallel::$logger-&gt;debug($this-&gt;workerID . &quot; started&quot;);
+        usleep(2000000);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre>    gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
+    usleep(2000000);
 
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
-        usleep(2000000);
-
-        gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
-        exit(1);
-        return;
-    }
+    gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
+    exit(1);
+    return;
 }
-</pre>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>}
+</pre></p>
 
 <p>This class creates simple workers that print a couple of debug messages with some sleeping in between, and then announce that they are done working.  Now you can instantiate the class with a single argument: the number of children to run.  gosUtility_Parallel will take care of all the details.</p>
 
 <pre class="bursh: php">
 // Make with the go
 $minimal = new Minimal(2);
-$minimal-&gt;go();
+$minimal->go();
 </pre>
 
 <p>If children <code>exit</code> with a non-zero status, the parent will spin up a replacement.  The parent will continue to run until all children have exited normally, or it gets <code>INT</code> (say, ctrl+c) or <code>TERM</code> (the default signal sent by kill(1)), in which case it will pass that signal on to the children, ensure they shut down, and then end itself.  gosUtility_Parallel provides ample logging information; running the above produces the following output:</p>
@@ -299,149 +383,154 @@ class Par extends gosUtility_Parallel {
     }
 
     protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " started");
+        gosUtility_Parallel::$logger->debug($this->workerID . " started");
 
         // Run until told not to
         global $run;
         while ($run) {
-            gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work.");
+            gosUtility_Parallel::$logger->debug($this->workerID . " doing work.");
             usleep(2000000);
-            if ($this-&gt;workerID == 0 &amp;&amp; rand(0,10) == 7) {
-                gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " returning");
+            if ($this->workerID == 0 && rand(0,10) == 7) {
+                gosUtility_Parallel::$logger->info($this->workerID . " returning");
                 return;
             }
         }
     }
 
     protected function parentCleanup() {
-        gosUtility_Parallel::$logger-&gt;debug("Parent cleaning up");
+        gosUtility_Parallel::$logger->debug("Parent cleaning up");
     }
 
     protected function childCleanup() {
-        gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " cleaning up");
+        gosUtility_Parallel::$logger->debug($this->workerID . " cleaning up");
     }
 }
 </pre>
 
 <p>The example above runs out-of-the-box (provided your PHP was built with <a href="http://us.php.net/pcntl"><code>--enable-pcntl</code></a>, so I encourage you to <a href="https://launchpad.net/genius">download the source</a> and take it for a test drive.</p>
 
-<p>Incidently, if you're in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way.</p>
+<p>Incidently, if you&rsquo;re in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/05/02/learning-about-nutrition/">Learning About Nutrition</a></h1>
     <div class="article-title-date">May  2, 2011</div>
-    <p><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">{% img right http://dinomite.net/images/posts/gopaleo.jpg 400 400 "Go Paleo" %}</a>
-I have learned a <em>lot</em> about nutrition in the past few years, mainly fueled by my interest in fitness.  Once I got beyond run-of-the-mill <a href="http://rehobothcrossfit.com/2010/08/19/globo-gym-vs-crossfit-gym/">Globo Gym</a> workouts by delving into truly challenging fitness like <a href="http://www.americanparkour.com">parkour</a> and <a href="http://crossfit.com">CrossFit</a>, it became apparent that I would need to match exercise with proper nutrition in order to excel.  Note: if you don't give a shit about what I've done and just want to learn about nutrition, <a href="#information">head to the bottom</a>.</p>
+    <p><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">{% img right http://dinomite.net/images/posts/gopaleo.jpg 400 400 &ldquo;Go Paleo&rdquo; %}</a>
+I have learned a <em>lot</em> about nutrition in the past few years, mainly fueled by my interest in fitness.  Once I got beyond run-of-the-mill <a href="http://rehobothcrossfit.com/2010/08/19/globo-gym-vs-crossfit-gym/">Globo Gym</a> workouts by delving into truly challenging fitness like <a href="http://www.americanparkour.com">parkour</a> and <a href="http://crossfit.com">CrossFit</a>, it became apparent that I would need to match exercise with proper nutrition in order to excel.  Note: if you don&rsquo;t give a shit about what I&rsquo;ve done and just want to learn about nutrition, <a href="#information">head to the bottom</a>.</p>
 
-<h1 id="in-the-beginning-there-was-parkour">In The Beginning, There Was Parkour</h1>
-<p>Training at <a href="http://www.primal-fitness.com/">Primal Fitness</a> was the first time I came across folks who offered dietary advice that wasn't focused on weight loss–something I haven't ever been interested in or needed.  Right in line with the nature of the parkour community at the time, the focus of nutrition was pretty loose: eat more protein and less sugar.  Like any athlete trying to build muscle, eating more protein than that on a <a href="http://en.wikipedia.org/wiki/Western_pattern_diet">standard American diet (SAD)</a> is mostly a no brainer.  Weight lifting folks long ago figured out that protein was essential to building muscle, and in recent years it's common knowledge since we all see <a href="http://www.urbandictionary.com/define.php?term=bro">Bros</a> downing their <a href="http://www.youtube.com/watch?v=4JMOh-cul6M#t=1m40s">protein powder</a>.  Less sugar has <a href="http://www.westonaprice.org/abcs-of-nutrition/475-principles-of-healthy-diets">almost always been</a> generally accepted as good nutrition advice…at least until it was pushed out by the blind fear of fat…but I'm getting ahead of myself.</p>
+<h1>In The Beginning, There Was Parkour</h1>
 
-<h1 id="the-next-level-crossfit">The Next Level: CrossFit</h1>
-<p>I picked up CrossFit from hanging out at Primal Fitness, and largely as a way to get better at parkour.  Parkour involves lots of short distance sprinting with long distance running and a large amount of gymnastic strength &amp; jumping.  What better to train such a diverse set of skills than the <a href="http://www.crossfit.com/cf-info/what-crossfit.html">general purpose fitness focus</a> of CrossFit?  Indeed, Primal is also a CrossFit box in addition to being the first facility in the US with such a focus on Parkour.  What does CrossFit have to say about nutrition?  Quite a bit, and it's a significant part of the famous World-Class Fitness in 100 Words:</p>
+<p>Training at <a href="http://www.primal-fitness.com/">Primal Fitness</a> was the first time I came across folks who offered dietary advice that wasn&rsquo;t focused on weight loss&ndash;something I haven&rsquo;t ever been interested in or needed.  Right in line with the nature of the parkour community at the time, the focus of nutrition was pretty loose: eat more protein and less sugar.  Like any athlete trying to build muscle, eating more protein than that on a <a href="http://en.wikipedia.org/wiki/Western_pattern_diet">standard American diet (SAD)</a> is mostly a no brainer.  Weight lifting folks long ago figured out that protein was essential to building muscle, and in recent years it&rsquo;s common knowledge since we all see <a href="http://www.urbandictionary.com/define.php?term=bro">Bros</a> downing their <a href="http://www.youtube.com/watch?v=4JMOh-cul6M#t=1m40s">protein powder</a>.  Less sugar has <a href="http://www.westonaprice.org/abcs-of-nutrition/475-principles-of-healthy-diets">almost always been</a> generally accepted as good nutrition advice&hellip;at least until it was pushed out by the blind fear of fat&hellip;but I&rsquo;m getting ahead of myself.</p>
+
+<h1>The Next Level: CrossFit</h1>
+
+<p>I picked up CrossFit from hanging out at Primal Fitness, and largely as a way to get better at parkour.  Parkour involves lots of short distance sprinting with long distance running and a large amount of gymnastic strength &amp; jumping.  What better to train such a diverse set of skills than the <a href="http://www.crossfit.com/cf-info/what-crossfit.html">general purpose fitness focus</a> of CrossFit?  Indeed, Primal is also a CrossFit box in addition to being the first facility in the US with such a focus on Parkour.  What does CrossFit have to say about nutrition?  Quite a bit, and it&rsquo;s a significant part of the famous World-Class Fitness in 100 Words:</p>
 
 <blockquote>
-  <p>Eat meat and vegetables, nuts and seeds, some fruit, little starch and no sugar. Keep intake to levels that will support exercise but not body fat. Practice and train major lifts: Deadlift, clean, squat, presses, C&amp;J, and snatch. Similarly, master the basics of gymnastics: pull-ups, dips, rope climb, push-ups, sit-ups, presses to handstand, pirouettes, flips, splits, and holds. Bike, run, swim, row, etc, hard and fast. Five or six days per week mix these elements in as many combinations and patterns as creativity will allow. Routine is the enemy. Keep workouts short and intense. Regularly learn and play new sports.</p>
+<p>Eat meat and vegetables, nuts and seeds, some fruit, little starch and no sugar. Keep intake to levels that will support exercise but not body fat. Practice and train major lifts: Deadlift, clean, squat, presses, C&amp;J, and snatch. Similarly, master the basics of gymnastics: pull-ups, dips, rope climb, push-ups, sit-ups, presses to handstand, pirouettes, flips, splits, and holds. Bike, run, swim, row, etc, hard and fast. Five or six days per week mix these elements in as many combinations and patterns as creativity will allow. Routine is the enemy. Keep workouts short and intense. Regularly learn and play new sports.</p>
 </blockquote>
 
-<h1 id="enter-the-zone">Enter The Zone</h1>
-<p>The main <a href="http://www.crossfit.com/cf-info/start-diet.html">dietary message from CrossFit HQ</a> is that <a href="http://zoneperfect.com/nutrition-program">The Zone Diet</a> is the best set of guiding principals for optimum nutrition.  As much as it may seem on the face of it, this isn't just some marketing cross-promotion crap–much like CrossFit you don't need to buy anything to eat Zone.  The basic tenet is that your meals should all be made up of 40% energy (calories) provided by carbohydrates, 30% by protein, and 30% by fat (<a href="http://www.iom.edu/Reports/2002/Dietary-Reference-Intakes-for-Energy-Carbohydrate-Fiber-Fat-Fatty-Acids-Cholesterol-Protein-and-Amino-Acids.aspx">the food pyramid advises</a> about 55:20:25).  Zone prescribes that the carbohydrates you eat be of the low-glycemic index variety: vegetables, whole grains, whole fruit, though <a href="http://robbwolf.com/2009/11/24/the-black-box-summit-or-how-i-got-fired-from-the-crossfit-nutrition-certification/">some argue</a> that this is offered as secondary to the macronutrient ratio that is the center of Zone.</p>
+<h1>Enter The Zone</h1>
 
-<p>I gave Zone a solid try while doing CrossFit on my own in 2009 and really liked it–when I managed to stick to the relatively low carbohydrate formula for even a few days I had much more stable energy throughout the day and felt ready to tackle the workout of the day whether I decided to do it first thing in the morning or late in the evening.  For a couple of years, I more-or-less followed the Zone and was pretty happy.  When I moved back to DC, I started CrossFitting at <a href="http://www.potomaccrossfit.com">Potomac CrossFit</a> right around the time they were starting a Paleo Challenge, which encourages people to give a strict paleo diet a try for 30 days.  While I didn't participate in the challenge, I figured it was worth reading up on paleo and giving it a try since I had heard so much about it in the CrossFit community.</p>
+<p>The main <a href="http://www.crossfit.com/cf-info/start-diet.html">dietary message from CrossFit HQ</a> is that <a href="http://zoneperfect.com/nutrition-program">The Zone Diet</a> is the best set of guiding principals for optimum nutrition.  As much as it may seem on the face of it, this isn&rsquo;t just some marketing cross-promotion crap&ndash;much like CrossFit you don&rsquo;t need to buy anything to eat Zone.  The basic tenet is that your meals should all be made up of 40% energy (calories) provided by carbohydrates, 30% by protein, and 30% by fat (<a href="http://www.iom.edu/Reports/2002/Dietary-Reference-Intakes-for-Energy-Carbohydrate-Fiber-Fat-Fatty-Acids-Cholesterol-Protein-and-Amino-Acids.aspx">the food pyramid advises</a> about 55:20:25).  Zone prescribes that the carbohydrates you eat be of the low-glycemic index variety: vegetables, whole grains, whole fruit, though <a href="http://robbwolf.com/2009/11/24/the-black-box-summit-or-how-i-got-fired-from-the-crossfit-nutrition-certification/">some argue</a> that this is offered as secondary to the macronutrient ratio that is the center of Zone.</p>
 
-<h1 id="where-i-end-up-paleo">Where I End Up: Paleo</h1>
-<p>I picked up <a href="http://robbwolf.com/">Robb Wolf</a>'s book, <a href="http://www.kk.org/cooltools/archives/005236.php">The Paleo Solution</a> and, after initially being off-put by the self-help, anecdotal nature at the beginning of the book, I was impressed with the scientific information and references provided later.  Over the week I read the book I quickly moved from "I'll give this paleo thing a bit of a try" to "I will only eat grass-fed beef and organic broccoli cooked in coconut oil".  I found it so convincing in part because of the science, but also the back-to-basics origin for the ideas on nutrition.  As anyone who has read widely on <a href="http://www.goodhealth.com/articles/2008/04/07/the_age_of_nutritionism_and_pitfalls_of_the_western_diet">modern nutritionism</a> knows, the dietary advice offerings in the past 50 years have done nothing to make Americans or Westerners in general any healthier.  Things like margarine are pushed as healthier replacements only to later find that partially hydrogenated fats are supremely deadly.</p>
+<p>I gave Zone a solid try while doing CrossFit on my own in 2009 and really liked it&ndash;when I managed to stick to the relatively low carbohydrate formula for even a few days I had much more stable energy throughout the day and felt ready to tackle the workout of the day whether I decided to do it first thing in the morning or late in the evening.  For a couple of years, I more-or-less followed the Zone and was pretty happy.  When I moved back to DC, I started CrossFitting at <a href="http://www.potomaccrossfit.com">Potomac CrossFit</a> right around the time they were starting a Paleo Challenge, which encourages people to give a strict paleo diet a try for 30 days.  While I didn&rsquo;t participate in the challenge, I figured it was worth reading up on paleo and giving it a try since I had heard so much about it in the CrossFit community.</p>
 
-<p>Paleo starts by saying, "Nutrition is so complex we haven't come close to understanding it enough scientifically to offer complete dietary advice."  Instead, paleo nutrition bases the nutrition guidelines on what we evolved to eat, that is the foods that sustained humans for the hundreds of thousands of years prior to the rise of agriculture.  Since we have arguably evolved very little since the products of agriculture (grains, legumes) became the central part of our diet, about 10,000 years ago, looking back to what our evolution had us eating seems a very good start.  We need not attempt to reenact the caveman lifestyle, but we can use the diets of our evolutionary ancestors as a logical framework for making nutrition choices in the modern world.</p>
+<h1>Where I End Up: Paleo</h1>
 
-<p>In so many words, that is my nutritional journey–I am now a complete paleo convert.  After trying it for a month, I was absolutely hooked and, a lot like CrossFit, I now try to tell everyone I meet about how awesome this paleo thing is.  In addition to never suffering from <a href="http://www.youtube.com/watch?v=XO_uJVL8KkA">blood sugar fluctuation induced unhappiness</a> I am also not only ready to tackle workouts whenever, but reading to absolutely own them.  Beyond that, the dietary guidelines of paleo fall in line with a <a href="http://www.dovepress.com/the-western-diet-and-lifestyle-and-diseases-of-civilization-peer-reviewed-article-RRCC">wide set of evidence</a> showing that modern diets are wrong in so many ways I really believe that eating this way makes me greatly healthier overall.</p>
+<p>I picked up <a href="http://robbwolf.com/">Robb Wolf</a>&rsquo;s book, <a href="http://www.kk.org/cooltools/archives/005236.php">The Paleo Solution</a> and, after initially being off-put by the self-help, anecdotal nature at the beginning of the book, I was impressed with the scientific information and references provided later.  Over the week I read the book I quickly moved from &ldquo;I&rsquo;ll give this paleo thing a bit of a try&rdquo; to &ldquo;I will only eat grass-fed beef and organic broccoli cooked in coconut oil&rdquo;.  I found it so convincing in part because of the science, but also the back-to-basics origin for the ideas on nutrition.  As anyone who has read widely on <a href="http://www.goodhealth.com/articles/2008/04/07/the_age_of_nutritionism_and_pitfalls_of_the_western_diet">modern nutritionism</a> knows, the dietary advice offerings in the past 50 years have done nothing to make Americans or Westerners in general any healthier.  Things like margarine are pushed as healthier replacements only to later find that partially hydrogenated fats are supremely deadly.</p>
 
-<h1 id="a-nameinformationinformation-on-nutritiona"><a name="information">Information on Nutrition</a></h1>
-<p>The original point of this post was not to just tell my story of nutritional discovery, but to let others know what they should read to understand nutrition.  I never like to just tell people what they should eat, because that makes me just another guy hocking advice that Really Will Make Everything Better!  Instead, I want to give folks the information to make their own decision–and I think the evidence points so strongly in one direction that anyone who does read up on it will be in the same camp that I'm in.</p>
+<p>Paleo starts by saying, &ldquo;Nutrition is so complex we haven&rsquo;t come close to understanding it enough scientifically to offer complete dietary advice.&rdquo;  Instead, paleo nutrition bases the nutrition guidelines on what we evolved to eat, that is the foods that sustained humans for the hundreds of thousands of years prior to the rise of agriculture.  Since we have arguably evolved very little since the products of agriculture (grains, legumes) became the central part of our diet, about 10,000 years ago, looking back to what our evolution had us eating seems a very good start.  We need not attempt to reenact the caveman lifestyle, but we can use the diets of our evolutionary ancestors as a logical framework for making nutrition choices in the modern world.</p>
 
-<p>If you're just getting interested in nutrition, then these are the articles you should read.  If you don't care about nutrition, I would encourage you to at least read those by Michael Pollan: they paint a pretty grim picture of the food supply in the United States</p>
+<p>In so many words, that is my nutritional journey&ndash;I am now a complete paleo convert.  After trying it for a month, I was absolutely hooked and, a lot like CrossFit, I now try to tell everyone I meet about how awesome this paleo thing is.  In addition to never suffering from <a href="http://www.youtube.com/watch?v=XO_uJVL8KkA">blood sugar fluctuation induced unhappiness</a> I am also not only ready to tackle workouts whenever, but reading to absolutely own them.  Beyond that, the dietary guidelines of paleo fall in line with a <a href="http://www.dovepress.com/the-western-diet-and-lifestyle-and-diseases-of-civilization-peer-reviewed-article-RRCC">wide set of evidence</a> showing that modern diets are wrong in so many ways I really believe that eating this way makes me greatly healthier overall.</p>
+
+<h1><a name="information">Information on Nutrition</a></h1>
+
+<p>The original point of this post was not to just tell my story of nutritional discovery, but to let others know what they should read to understand nutrition.  I never like to just tell people what they should eat, because that makes me just another guy hocking advice that Really Will Make Everything Better!  Instead, I want to give folks the information to make their own decision&ndash;and I think the evidence points so strongly in one direction that anyone who does read up on it will be in the same camp that I&rsquo;m in.</p>
+
+<p>If you&rsquo;re just getting interested in nutrition, then these are the articles you should read.  If you don&rsquo;t care about nutrition, I would encourage you to at least read those by Michael Pollan: they paint a pretty grim picture of the food supply in the United States</p>
 
 <ul>
-  <li><a href="http://www.nytimes.com/2007/01/28/magazine/28nutritionism.t.html?_r=1&amp;ref=magazine&amp;oref=slogin">Unhappy Meals</a> - Michael Pollan</li>
-  <li><a href="http://www.nytimes.com/2002/03/31/magazine/power-steer.html?pagewanted=all&amp;src=pm">Power Steer</a> - Michael Pollan</li>
-  <li><a href="http://www.nytimes.com/2002/07/07/magazine/what-if-it-s-all-been-a-big-fat-lie.html?pagewanted=all">What if It's All Been a Big Fat Lie</a> - Gary Taubes</li>
-  <li><a href="http://www.westonaprice.org/abcs-of-nutrition/475-principles-of-healthy-diets">Principles of Healthy Diets</a> - Weston A Price Foundation</li>
+<li><a href="http://www.nytimes.com/2007/01/28/magazine/28nutritionism.t.html?_r=1&amp;ref=magazine&amp;oref=slogin">Unhappy Meals</a> - Michael Pollan</li>
+<li><a href="http://www.nytimes.com/2002/03/31/magazine/power-steer.html?pagewanted=all&amp;src=pm">Power Steer</a> - Michael Pollan</li>
+<li><a href="http://www.nytimes.com/2002/07/07/magazine/what-if-it-s-all-been-a-big-fat-lie.html?pagewanted=all">What if It&rsquo;s All Been a Big Fat Lie</a> - Gary Taubes</li>
+<li><a href="http://www.westonaprice.org/abcs-of-nutrition/475-principles-of-healthy-diets">Principles of Healthy Diets</a> - Weston A Price Foundation</li>
 </ul>
 
 <p>For those who want to know more, a good next step is to check out some documentaries:</p>
 
 <ul>
-  <li><a href="http://en.wikipedia.org/wiki/Fat_Head_%28documentary%29">Fathead (2009)</a> - A response to <a href="http://en.wikipedia.org/wiki/SuperSize_Me">Super Size Me</a> that effectively presents the flaws of the <a href="http://en.wikipedia.org/wiki/Lipid_hypothesis">lipid hypothesis</a></li>
-  <li><a href="http://en.wikipedia.org/wiki/King_Corn_%28film%29">King Corn (2007)</a> - On the American industrialized food system</li>
+<li><a href="http://en.wikipedia.org/wiki/Fat_Head_%28documentary%29">Fathead (2009)</a> - A response to <a href="http://en.wikipedia.org/wiki/SuperSize_Me">Super Size Me</a> that effectively presents the flaws of the <a href="http://en.wikipedia.org/wiki/Lipid_hypothesis">lipid hypothesis</a></li>
+<li><a href="http://en.wikipedia.org/wiki/King_Corn_%28film%29">King Corn (2007)</a> - On the American industrialized food system</li>
 </ul>
 
 <p>To really understand what nutrition is about, book reading is in order:</p>
 
 <ul>
-  <li><a href="http://www.amazon.com/Why-We-Get-Fat-About/dp/0307272702">Why We Get Fat</a> - A much longer version of the Gary Taubes article above explaining the history &amp; details of modern nutrition advice</li>
-  <li><a href="http://www.amazon.com/Omnivores-Dilemma-Natural-History-Meals/dp/0143038583/ref=sr_1_1?ie=UTF8&amp;qid=1304302727&amp;sr=8-1">The Omnivore's Dilemma</a> - Michael Pollan's book that introduced nutritionism and its failings, and describes the industrial food system in detail, contrasting it with local agriculture</li>
-  <li><a href="http://www.amazon.com/Defense-Food-Eaters-Manifesto/dp/0143114964/ref=sr_1_1?ie=UTF8&amp;qid=1304302881&amp;sr=8-1">In Defense of Food</a> - More on food &amp; nutritionism. This is where "Eat food.  Not too much.  Mostly plants" comes from</li>
-  <li><a href="http://www.marksdailyapple.com/vegetarian-myth-review/">The Vegetarian Myth</a> - A very striking and thorough tearing apart of every angle of vegetarianism written by a former long-time vegan</li>
+<li><a href="http://www.amazon.com/Why-We-Get-Fat-About/dp/0307272702">Why We Get Fat</a> - A much longer version of the Gary Taubes article above explaining the history &amp; details of modern nutrition advice</li>
+<li><a href="http://www.amazon.com/Omnivores-Dilemma-Natural-History-Meals/dp/0143038583/ref=sr_1_1?ie=UTF8&amp;qid=1304302727&amp;sr=8-1">The Omnivore&rsquo;s Dilemma</a> - Michael Pollan&rsquo;s book that introduced nutritionism and its failings, and describes the industrial food system in detail, contrasting it with local agriculture</li>
+<li><a href="http://www.amazon.com/Defense-Food-Eaters-Manifesto/dp/0143114964/ref=sr_1_1?ie=UTF8&amp;qid=1304302881&amp;sr=8-1">In Defense of Food</a> - More on food &amp; nutritionism. This is where &ldquo;Eat food.  Not too much.  Mostly plants&rdquo; comes from</li>
+<li><a href="http://www.marksdailyapple.com/vegetarian-myth-review/">The Vegetarian Myth</a> - A very striking and thorough tearing apart of every angle of vegetarianism written by a former long-time vegan</li>
 </ul>
 
-<p>If you really want to have a thorough understanding of the lipid hypothesis, Gary Taubes wrote another book that is basically Why We Get Fat with even more scientific evidence and why the calories in-calories out model for obesity doesn't work entitled <a href="http://www.amazon.com/Good-Calories-Bad-Controversial-Science/dp/1400033462/ref=sr_1_1?ie=UTF8&amp;qid=1304302628&amp;sr=8-1">Good Calories, Bad Calories</a>.</p>
+<p>If you really want to have a thorough understanding of the lipid hypothesis, Gary Taubes wrote another book that is basically Why We Get Fat with even more scientific evidence and why the calories in-calories out model for obesity doesn&rsquo;t work entitled <a href="http://www.amazon.com/Good-Calories-Bad-Controversial-Science/dp/1400033462/ref=sr_1_1?ie=UTF8&amp;qid=1304302628&amp;sr=8-1">Good Calories, Bad Calories</a>.</p>
 
 <p>To get an idea of this whole Paleo thing that I have fallen in love with check out these things, in order of brevity (read: depth):</p>
 
 <ul>
-  <li><a href="http://whole9life.com/2010/05/the-paleo-pitch/">Whole 9's The Paleo Pitch</a></li>
-  <li><a href="http://robbwolf.com/faq/#overview">Robb Wolf's Paleo Overview</a></li>
-  <li><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">Fit Bomb's What Is Paleo?</a></li>
-  <li><a href="http://www.kk.org/cooltools/archives/005236.php">The Paleo Solution</a> - Robb Wolf's book on the paleo diet (which I reviewed on <a href="http://www.kk.org/cooltools">Cool Tools</a>)</li>
-  <li><a href="http://www.amazon.com/Paleo-Diet-Weight-Healthy-Designed/dp/0470913029/ref=sr_1_3?ie=UTF8&amp;qid=1304303375&amp;sr=8-3">The Paleo Diet</a> - Dr. Loren Cordain, another big name in the paleo community</li>
-  <li><a href="http://www.amazon.com/Primal-Blueprint-Reprogram-effortless-boundless/dp/0982207700/ref=sr_1_8?ie=UTF8&amp;qid=1304303375&amp;sr=8-8">The Primal Blueprint</a> - I haven't read Mark Sisson's book, but I do read his <a href="http://www.marksdailyapple.com/">very good blog</a></li>
+<li><a href="http://whole9life.com/2010/05/the-paleo-pitch/">Whole 9&rsquo;s The Paleo Pitch</a></li>
+<li><a href="http://robbwolf.com/faq/#overview">Robb Wolf&rsquo;s Paleo Overview</a></li>
+<li><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">Fit Bomb&rsquo;s What Is Paleo?</a></li>
+<li><a href="http://www.kk.org/cooltools/archives/005236.php">The Paleo Solution</a> - Robb Wolf&rsquo;s book on the paleo diet (which I reviewed on <a href="http://www.kk.org/cooltools">Cool Tools</a>)</li>
+<li><a href="http://www.amazon.com/Paleo-Diet-Weight-Healthy-Designed/dp/0470913029/ref=sr_1_3?ie=UTF8&amp;qid=1304303375&amp;sr=8-3">The Paleo Diet</a> - Dr. Loren Cordain, another big name in the paleo community</li>
+<li><a href="http://www.amazon.com/Primal-Blueprint-Reprogram-effortless-boundless/dp/0982207700/ref=sr_1_8?ie=UTF8&amp;qid=1304303375&amp;sr=8-8">The Primal Blueprint</a> - I haven&rsquo;t read Mark Sisson&rsquo;s book, but I do read his <a href="http://www.marksdailyapple.com/">very good blog</a> </li>
 </ul>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/04/21/building-an-olympic-lifting-platform/">Building an Olympic Lifting Platform</a></h1>
     <div class="article-title-date">Apr 21, 2011</div>
     <p><a href="http://www.flickr.com/photos/dinomite/5510688763/in/set-72157626102609509/"><img alt="Finished platform" src="http://farm6.static.flickr.com/5174/5510688763_2a99df1c6d.jpg" width="500" height="333" class="mt-image-right" /></a>
-CrossFit got me started on Olympic lifting and it is now one of my favorite things that I do in the exercise realm.  The tools needed for CrossFit are few and generally inexpensive, but Oly lifting does require some significant outlay if you plan on doing it at home.  One of the things you need is a platform upon which to perform lifts–it's important to have a stable, flat surface to stand on, and have the ability to drop weights.  Before going through with building a platform I dumped a light bar on my brick patio and the back yard, both of which left marks.  It was time for me to build a platform.</p>
+CrossFit got me started on Olympic lifting and it is now one of my favorite things that I do in the exercise realm.  The tools needed for CrossFit are few and generally inexpensive, but Oly lifting does require some significant outlay if you plan on doing it at home.  One of the things you need is a platform upon which to perform lifts&ndash;it&rsquo;s important to have a stable, flat surface to stand on, and have the ability to drop weights.  Before going through with building a platform I dumped a light bar on my brick patio and the back yard, both of which left marks.  It was time for me to build a platform.</p>
 
-<p>The basic arrangement of a platform is simple: a sufficiently wide patch of wood to stand on flanked by rubber to absorb dropped weights.  There are a <a href="http://straighttothebar.com/articles/2009/03/diy_how_to_build_an_olympic_we/index.html">handful</a> of <a href="http://board.crossfit.com/showthread.php?t=20752">notes</a> on building platforms online, most of which suggest two base layers made from full sheets of 3/4" plywood topped with a third half-sheet of 3/4" plywood with horestall mats on either side.  Simple enough, but these instructions also usually state that the resulting device cannot be lifted by on person alone.  I wanted to have the ability to at least flip my platform on end by myself to get it out of the way, so I took a different route.  To keep the weight more reasonable, I used 3/8" (11/32" at your local lumber yard) plywood and reduced the fore to aft dimension from 8 feet to 6, making for an 8 foot wide by 6 foot long platform.  In practice, this is plenty of space to perform lifts, even if you're doing some real speed as part of a <a href="http://crossfit.com">CrossFit</a> workout.</p>
+<p>The basic arrangement of a platform is simple: a sufficiently wide patch of wood to stand on flanked by rubber to absorb dropped weights.  There are a <a href="http://straighttothebar.com/articles/2009/03/diy_how_to_build_an_olympic_we/index.html">handful</a> of <a href="http://board.crossfit.com/showthread.php?t=20752">notes</a> on building platforms online, most of which suggest two base layers made from full sheets of &frac34;&quot; plywood topped with a third half-sheet of &frac34;&quot; plywood with horestall mats on either side.  Simple enough, but these instructions also usually state that the resulting device cannot be lifted by on person alone.  I wanted to have the ability to at least flip my platform on end by myself to get it out of the way, so I took a different route.  To keep the weight more reasonable, I used 3/8&quot; (11/32&quot; at your local lumber yard) plywood and reduced the fore to aft dimension from 8 feet to 6, making for an 8 foot wide by 6 foot long platform.  In practice, this is plenty of space to perform lifts, even if you&rsquo;re doing some real speed as part of a <a href="http://crossfit.com">CrossFit</a> workout.</p>
 
 <p>Materials:</p>
 
 <ul>
-  <li>Two 6x8 foot sheets of cheap 11/32 plywood</li>
-  <li>Two 4x6 foot sheets of cheap 11/32 plywood</li>
-  <li>One 4x6 foot sheet of nice 11/32 plywood</li>
-  <li>Construction adhesive</li>
-  <li>150 3/4 inch wood screws</li>
+<li>Two 6x8 foot sheets of cheap 11/32 plywood</li>
+<li>Two 4x6 foot sheets of cheap 11/32 plywood</li>
+<li>One 4x6 foot sheet of nice 11/32 plywood</li>
+<li>Construction adhesive</li>
+<li>150 &frac34; inch wood screws</li>
 </ul>
 
 <p>Assembly is a very simple affair:</p>
 
 <ol>
-  <li>Lay the 6x8 sheets with their long edges side by side (<a href="http://www.flickr.com/photos/dinomite/5510660609/in/set-72157626102609509/">photo</a>)</li>
-  <li>Apply construction adhesive to half of 6x8 sheet pair and top with one of the 4x6 sheets</li>
-  <li>Drill &amp; screw edges every 6 to 10 inches, and put screws all over the interior as well–it's OK to put screws anywhere, as you won't be standing on this portion</li>
-  <li>Top with weights to ensure layers bond evenly  (<a href="http://www.flickr.com/photos/dinomite/5510661483/in/set-72157626102609509/">photo</a>)</li>
-  <li>Apply adhesive to <a href="http://www.flickr.com/photos/dinomite/5511260930/in/set-72157626102609509/">other half</a>, top with remaining 4x6 sheet, and repeat screwing process</li>
-  <li>Test fit 4x6 piece of nice plywood in the center of the previously assembled parts and mark edges</li>
-  <li>Apply adhesive to the platform between marks, lay nice plywood down and secure with screws along front &amp; back (4 foot) edges only</li>
-  <li>Put a <a href="http://www.flickr.com/photos/dinomite/5510663107/in/set-72157626102609509/">crapton of weights</a> on top to ensure your platform comes out flat</li>
-  <li>Once everything is dry, give it a coat of deck sealant to make it waterproof</li>
+<li> Lay the 6x8 sheets with their long edges side by side (<a href="http://www.flickr.com/photos/dinomite/5510660609/in/set-72157626102609509/">photo</a>)</li>
+<li> Apply construction adhesive to half of 6x8 sheet pair and top with one of the 4x6 sheets</li>
+<li> Drill &amp; screw edges every 6 to 10 inches, and put screws all over the interior as well&ndash;it&rsquo;s OK to put screws anywhere, as you won&rsquo;t be standing on this portion</li>
+<li> Top with weights to ensure layers bond evenly  (<a href="http://www.flickr.com/photos/dinomite/5510661483/in/set-72157626102609509/">photo</a>)</li>
+<li> Apply adhesive to <a href="http://www.flickr.com/photos/dinomite/5511260930/in/set-72157626102609509/">other half</a>, top with remaining 4x6 sheet, and repeat screwing process</li>
+<li> Test fit 4x6 piece of nice plywood in the center of the previously assembled parts and mark edges</li>
+<li> Apply adhesive to the platform between marks, lay nice plywood down and secure with screws along front &amp; back (4 foot) edges only</li>
+<li> Put a <a href="http://www.flickr.com/photos/dinomite/5510663107/in/set-72157626102609509/">crapton of weights</a> on top to ensure your platform comes out flat</li>
+<li> Once everything is dry, give it a coat of deck sealant to make it waterproof</li>
 </ol>
 
-<p>The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I'd take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting.</p>
+<p>The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I&rsquo;d take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/04/09/watching-ipad-applications/">Watching iPad Applications</a></h1>
     <div class="article-title-date">Apr  9, 2011</div>
-    <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I've wanted to explore a number of applications on my iPad and iPhone to see what they're really doing when they cause the network indicator to spin.</p>
+    <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I&rsquo;ve wanted to explore a number of applications on my iPad and iPhone to see what they&rsquo;re really doing when they cause the network indicator to spin.</p>
 
-<p>First things first, I setup Charles and started up <a href="http://reederapp.com/">Reeder</a>, an RSS feed reader that integrates tightly with Google Reader.  My main interest was to see when it actually marked posts as read–I often read in short spurts on my iPhone, which results in pulling up a post only to switch out of Reeder or lock my phone seconds later.  Sometimes the posts would be marked read if I pulled up Google Reader, but sometimes they were still marked unread.  Was this a network latency problem when the phone was using 3G/Edge internet, or was it Reeder doing some fanciness with when it marked posts read?</p>
+<p>First things first, I setup Charles and started up <a href="http://reederapp.com/">Reeder</a>, an RSS feed reader that integrates tightly with Google Reader.  My main interest was to see when it actually marked posts as read&ndash;I often read in short spurts on my iPhone, which results in pulling up a post only to switch out of Reeder or lock my phone seconds later.  Sometimes the posts would be marked read if I pulled up Google Reader, but sometimes they were still marked unread.  Was this a network latency problem when the phone was using 3G/Edge internet, or was it Reeder doing some fanciness with when it marked posts read?</p>
 
-<p>I didn't get to my goal right away because the first thing I noticed upon starting up Reeder is that it hits the original blog for every single one of the feeds that I subscribed to in Google Reader.  As someone who hasn't cleaned up a number of blogs that don't post anymore, this was a few hundred feeds.  I shouldn't have been surprised by this, as it doesn't really make sense for Google to pull all of the content for all of those blogs and package it up for my convenience.</p>
+<p>I didn&rsquo;t get to my goal right away because the first thing I noticed upon starting up Reeder is that it hits the original blog for every single one of the feeds that I subscribed to in Google Reader.  As someone who hasn&rsquo;t cleaned up a number of blogs that don&rsquo;t post anymore, this was a few hundred feeds.  I shouldn&rsquo;t have been surprised by this, as it doesn&rsquo;t really make sense for Google to pull all of the content for all of those blogs and package it up for my convenience.</p>
 
-<p>Getting back to my initial focus, Reeder attempts to mark a post read as soon as you open a post–any failure of a post being marked read is because the network was slow or inoperative at the time you were reading.  Reeder periodically refreshes all of your feeds, as indicated by the spinning icon on the iPad or the replaced battery display on the iPhone, but it actually spends much longer doing this than the icon's state would lead you to believe.  From day-to-day usage the update to the feeds I care about (read: those that actually have updates) is done in short order, but Charles reveals that Reeder is still pulling data from individual websites.  My guess is that Reeder pulls the feed list from Google, gets the new posts mentioned therein, and then proceeds to do its own checking of feeds.</p>
+<p>Getting back to my initial focus, Reeder attempts to mark a post read as soon as you open a post&ndash;any failure of a post being marked read is because the network was slow or inoperative at the time you were reading.  Reeder periodically refreshes all of your feeds, as indicated by the spinning icon on the iPad or the replaced battery display on the iPhone, but it actually spends much longer doing this than the icon&rsquo;s state would lead you to believe.  From day-to-day usage the update to the feeds I care about (read: those that actually have updates) is done in short order, but Charles reveals that Reeder is still pulling data from individual websites.  My guess is that Reeder pulls the feed list from Google, gets the new posts mentioned therein, and then proceeds to do its own checking of feeds.</p>
 
-<p>Reeder was the only app that had really crossed my mind after Andy Baio's post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I'll turn to if I have future questions that need answering.</p>
+<p>Reeder was the only app that had really crossed my mind after Andy Baio&rsquo;s post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I&rsquo;ll turn to if I have future questions that need answering. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/03/07/paleo-egg-muffins/">Paleo Egg Muffins</a></h1>
@@ -449,26 +538,26 @@ CrossFit got me started on Olympic lifting and it is now one of my favorite thin
     <p>There are a <a href="http://nomnompaleo.com/post/3397688384/curried-beef-broccoli-slaw-mushroom-frittata">number</a> of <a href="http://www.norcalsc.com/index.php/post/egg_cupcakes_to_go/">recipes</a> for <a href="http://everydaypaleo.com/2010/03/24/egg-cupcakes/">paleo</a> <a href="http://paleoblocks.blogspot.com/2010/08/breakfast-muffins.html">muffins</a>, which are a great way to get fast <a href="http://en.wikipedia.org/wiki/Paleolithic_diet">paleo</a> food in the morning.  As I usually do with cooking, I created my own recipe from the ones I found online.  For 24 muffins, I assembled:</p>
 
 <ul>
-  <li>18 eggs</li>
-  <li>5 small sausages (breakfast size)</li>
-  <li>2 large sausages</li>
-  <li>1 red pepper</li>
-  <li>1 large onion</li>
-  <li>1/2 cup strained yogurt (Greek style)</li>
+<li>18 eggs</li>
+<li>5 small sausages (breakfast size)</li>
+<li>2 large sausages</li>
+<li>1 red pepper</li>
+<li>1 large onion</li>
+<li>&frac12; cup strained yogurt (Greek style)</li>
 </ul>
 
-<p>The odd sausage arrangement is simply because that is what I had on hand–once cooked and crumbled it was about 2 ½ cups worth of sausage.</p>
+<p>The odd sausage arrangement is simply because that is what I had on hand&ndash;once cooked and crumbled it was about 2 &frac12; cups worth of sausage.</p>
 
-<p>I began by cooking the sausage, followed by sautÃ©ing the diced onion &amp; pepper in the fat that rendered out of the sausage.  After cracking all of the eggs into a a large bowl, I whisked them together with the yogurt.  With all of that assembled, I combined the sausage with the pepper &amp; onion and portioned it into a pair of muffin pans.  The eggs are the last thing before the oven, filling each cup ⅔rds full.  Into the oven for 15 minutes, rotate top/bottom pan, and give them another 7-10.  The bottoms of mine were a bit under cooked, so I might try putting the lower rack all the way down, rather than the standard in-the-middle.</p>
+<p>I began by cooking the sausage, followed by sautÃ©ing the diced onion &amp; pepper in the fat that rendered out of the sausage.  After cracking all of the eggs into a a large bowl, I whisked them together with the yogurt.  With all of that assembled, I combined the sausage with the pepper &amp; onion and portioned it into a pair of muffin pans.  The eggs are the last thing before the oven, filling each cup &#8532;rds full.  Into the oven for 15 minutes, rotate top/bottom pan, and give them another 7-10.  The bottoms of mine were a bit under cooked, so I might try putting the lower rack all the way down, rather than the standard in-the-middle. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/02/20/altering-many-directories-at-once-with-cmddirs/">Altering many directories at once with CmdDirs</a></h1>
     <div class="article-title-date">Feb 20, 2011</div>
-    <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I'm working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
+    <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I&rsquo;m working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
 
 <p>While I love Git, it does not make such actions this simple.  Git requires you to be in the repository directory (or set a number of environment variables) to work wit that repo.  While the <a href="http://superuser.com/questions/235455/bash-script-to-perform-an-action-on-each-subdirectory-in-a-directory"><code>-exec</code> option of <code>find(1)</code></a> allows me to descend into each directory and perform an action, I wanted to make this easy, because such all-checkout-actions are something that I want to do a number of times each day.  Like most problems, this one is (best?) solved with Perl.  Enter <a href="https://github.com/dinomite/CmdDirs">App::CmdDirs</a>.</p>
 
-<p><a href="https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs">CmdDirs</a> is a fairly simple Perl app that I have written to do what I describe above--descend into any number of directories and perform a command in each one.</p>
+<p><a href="https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs">CmdDirs</a> is a fairly simple Perl app that I have written to do what I describe above&ndash;descend into any number of directories and perform a command in each one.</p>
 
 <pre>titus:~/sandbox$ ls
 CmdAll                 mac-itunes             genius-os
@@ -490,36 +579,13 @@ Performing `git st` in &lt;webservice-loc-congrec&gt;
 ## master
 </pre>
 
-<p>See the numerous directories? Note that there are 9 directories in my <code>sandbox</code> but <code>git st</code> was only performed in a few of them, those which are Git repositories.  CmdDirs has a modicum of intelligence: if it knows what your command is, the command will only be performed in applicable directories.  This can be overridden with <code>-all</code>, <code>-git</code>, or <code>-svn</code> doing what you expect.  Git and Subversion are the only two things supported right now, because that's all I have a need for. Writing new <a href="https://github.com/dinomite/CmdDirs/tree/master/lib/App/CmdDirs/Traverser">Traversers</a> is simple–just copy the form of git.pm or svn.pm.  You can probably Achieve at this endeavor even without knowing Perl.</p>
+<p>See the numerous directories? Note that there are 9 directories in my <code>sandbox</code> but <code>git st</code> was only performed in a few of them, those which are Git repositories.  CmdDirs has a modicum of intelligence: if it knows what your command is, the command will only be performed in applicable directories.  This can be overridden with <code>-all</code>, <code>-git</code>, or <code>-svn</code> doing what you expect.  Git and Subversion are the only two things supported right now, because that&rsquo;s all I have a need for. Writing new <a href="https://github.com/dinomite/CmdDirs/tree/master/lib/App/CmdDirs/Traverser">Traversers</a> is simple&ndash;just copy the form of git.pm or svn.pm.  You can probably Achieve at this endeavor even without knowing Perl.</p>
 
-<p>Here's a one-liner for installing <code>cmddirs</code>:</p>
+<p>Here&rsquo;s a one-liner for installing <code>cmddirs</code>:</p>
 
 <pre>
-curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddirs &amp;&amp; chmod a+x ~/bin/cmddirs
-</pre>
-
-
-    <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2010/12/16/crapcan-racing-tips/">Crapcan Racing Tips</a></h1>
-    <div class="article-title-date">Dec 16, 2010</div>
-    <p><a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/2010-12-lemons-00012.jpg.html"><img alt="The Jaywatch car" src="http://mpierce.org/gallery/d/4339-2/2010-12-lemons-00012.jpg" width="400" height="267" class="mt-image-left" /></a>
-<a href="http://www.nccbmwcca.org/content.php?120-driving-school">Drivers' schools</a> are incredibly fun and the best way to improve your driving prowess.  <a href="http://www.nasaproracing.com/hpde/">Track days</a> can be incredibly useful for honing your skill once you have been on track enough to catch your own mistakes.  While incredibly useful tools for learning to drive fast, neither can touch the <a href="http://www.24hoursoflemons.com/">24 Hours of LeMons</a> for having fun with motorsports.  I have previously written about <a href="http://dinomite.net/2010/how-bvd-skidmark-got-to-goin-for-broken/">the basics of getting to a LeMons race</a>, and what happened at <a href="http://dinomite.net/2010/bvd-skidmarks-first-24-hours-of-lemons/">our first race</a>.  The team just finished another race, the 2010 Arse-Freeze-Apalooza at Buttonwillow this past weekend, where we finished 68th of 173.  Better than half made us happy, because the head gasket blew with an hour and a half left in the race.</p>
-
-<p>Track driving is certainly a specialized skill and racing is a step beyond that–in addition to driving a car at the limit, you have to deal with numerous other cars on track who may decide to pass you at any time.  In crapcan racing things are even crazier because most folks don't care much if the car gets hit and many of them have little to no experience driving on a racetrack, much less in anger.</p>
-
-<h1 id="track-experience">Track Experience</h1>
-<p>The biggest piece of advice I can give is to get some track experience before heading out on track in your first LeMons race.  Street driving, or even autocross shares very little with driving on a racetrack, and there is no adequate preparation aside from sufficient time on a track.  Even if you have done a lemons race, going to a much less crowded HPDE or other track even twill be very information–rare are the times you get to take an unmolested line, much less lap, at a race.</p>
-
-<h1 id="many-races">Many Races</h1>
-<p><a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/2010-12-lemons-00097.jpg.html"><img alt="F'ed Up Racing" src="http://mpierce.org/gallery/d/4509-2/2010-12-lemons-00097.jpg" width="400" height="267" class="mt-image-right" /></a>
-The first time you go to a 24 Hours of LeMons event, you'll find at least three different types of race teams: those who built something that doesn't belong on a racetrack; the teams there to win; and the teams that are just there to have fun in any way possible.  Don't get me wrong, everyone is there to have fun, but the former two have very specific goals in mind.  The folks who bring a <a href="http://www.thetruthaboutcars.com/2010/12/and-the-real-winner-is-2/">Fiat 600</a> or a <a href="http://www.flickr.com/photos/43812942@N06/5233878618/in/set-72157625406524427/">limousine</a> aren't interested in winning the race outright–they're looking for the <a href="http://jalopnik.com/5068138/index-of-effluency-bar-set-unreasonably-high-for-thunderhill-peugeot-505-turbo-or-chevy-corvair">Index of Effluency</a>, or simply testing their own mechanical mettle.</p>
-
-<p>By the same token, some teams come with the intent to win the speed race–they have a reliable, quick car, know how to do fast pit stops, and don't intend to spend time in the penalty box.  If it's not obvious who these teams are, check the time sheets after a couple hours of racing; they are the ones on the lead lap or just behind.  Figure out which cars belong in this group, do your best to stay out of their way, and certainly don't hit them.</p>
-
-<h1 id="caution-wave">Caution Wave</h1>
-<p>If you've done other racing or track days, one of the first things you'll notice about crapcan racing is the number of yellow flags thrown.  When you have hundreds of $500 cars on a racetrack with inexperienced drivers, problems happen often.  At the Arse-Freeze-Apalooza, Jay said that the recovery crew did 75 tows on Saturday alone.  Oftentimes, cautions will be thrown well ahead of what you can see if you're closely following a pack of cars.  For this reason, you'll see folks who have been racing a while throw up their hand by the rear-view mirror and wave when they see a yellow flag.  This way, everyone behind knows that they are going to slow for caution, and you should too.</p>
-
-<p>Photos by <a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/">Marshall Pierce</a>.</p>
+curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs > ~/bin/cmddirs && chmod a+x ~/bin/cmddirs
+</pre> 
 
     <div class="article-footer"></div>
 </ul>
@@ -547,6 +613,10 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -583,10 +653,6 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -602,7 +668,8 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

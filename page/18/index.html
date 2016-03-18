@@ -28,11 +28,27 @@
     <p><a href="/page/17/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/05/17/setting-izpacks-default-target-directory/">Setting IzPack's Default Target Directory</a></h1>
+    <div class="article-title-date">May 17, 2007</div>
+    <p><a href="http://www.izpack.org">IzPack</a> is a great installer written in Java and configured with XML files, though the documentation can be a little bit lacking.  This OK because the variables are all named well so one can easily look to an existing installer (such as that for IzPack itself or 7-zip) and copy needed bits of code.  One thing that I found elusive was how to set the default install directory to something other than &ldquo;C:\Program Files&amp;lt;product name&gt;&rdquo;.  The &lt;info&gt; element provides an &lt;appsubpath&gt; element that allows you to specify something other than &lt;product name&gt;, but you&rsquo;re still limited to something within the default Windows installation directory.  Alas, mailing lists to the rescue!  <a href="https://lists.berlios.de/pipermail/izpack-users/2006-November/002928.html">This post</a> describes declaring a resource in the install.xml and after a bit of fiddling I came up with the following.</p>
+
+<p>First, create a file TargetDir.txt with nothing more than the path you want to install at, for me that file simply contained &ldquo;C:\foo&rdquo;.  Next, point to the resource in the install.xml:</p>
+
+<p><code><pre>
+&lt;resources&gt;
+    &lt;!-- Set the default installation directory shown in the TargetPanel --&gt;
+    &lt;res id=&quot;TargetPanel.dir&quot; src=&quot;TargetDir.txt&quot; /&gt;
+&lt;/resources&gt;
+</pre></code></p>
+
+<p>Rebuild the installer and you&rsquo;re set.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/05/11/finding-perl-module-dependencies/">Finding Perl Module Dependencies</a></h1>
     <div class="article-title-date">May 11, 2007</div>
-    <p>So you've written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you've made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they're going to be running your script on, or maybe you just don't want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it's run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.</p>
+    <p>So you&rsquo;ve written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you&rsquo;ve made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they&rsquo;re going to be running your script on, or maybe you just don&rsquo;t want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it&rsquo;s run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.</p>
 
-<p>The only hiccup, some of the modules you've used depend on other modules…which may have further dependencies.  Rather than suffer through dependency reminiscent of Red Hat (even the newest version…), you can use the Devel::Modlist module which will tell you which modules are required to run the program.  Invoked with the 'nocore' option, Devel::Modlist will ignore standard modules, which ought to be installed with any Perl distribution.  Here is an example from a program I wrote; the only module I invoke directly is XML::SAX.</p>
+<p>The only hiccup, some of the modules you&rsquo;ve used depend on other modules&hellip;which may have further dependencies.  Rather than suffer through dependency reminiscent of Red Hat (even the newest version&hellip;), you can use the Devel::Modlist module which will tell you which modules are required to run the program.  Invoked with the &lsquo;nocore&rsquo; option, Devel::Modlist will ignore standard modules, which ought to be installed with any Perl distribution.  Here is an example from a program I wrote; the only module I invoke directly is XML::SAX.</p>
 
 <pre><code>
 ~/code$ perl -d -MDevel::Modlist=nocore merge.pl foo.xml bar.xml
@@ -69,63 +85,68 @@ XML::SAX::PurePerl::XMLDecl
     <p><a href="http://dinomite.net/archives/tar-over-ssh">In our last episode</a> we used tar to move a file structure across the network.  This time, to create a tarball directly onto another machine the following command can be used:</p>
 
 <p><code>
-tar czf - foo/ | ssh user@host "cat &gt; /path/to/foo.tgz"
+tar czf - foo/ | ssh user@host &quot;cat &gt; /path/to/foo.tgz&quot;
 </code></p>
 
-<p>This is useful if the machine you're taring from doesn't have enough disk space to hold the tarball.  Furthermore, it's probably faster because the tarball is only being written once, directly to its final location.</p>
+<p>This is useful if the machine you&rsquo;re taring from doesn&rsquo;t have enough disk space to hold the tarball.  Furthermore, it&rsquo;s probably faster because the tarball is only being written once, directly to its final location.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/25/remote-oracle-connections/">Remote Oracle Connections</a></h1>
     <div class="article-title-date">Apr 25, 2007</div>
-    <p>Like many 'enterprise solutions,' Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it's often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
+    <p>Like many &lsquo;enterprise solutions,&rsquo; Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it&rsquo;s often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
 
 <p><code>
 ~$ sqlplus uname/pass@[//hostname[:port]/]sid
 </code></p>
 
-<p>Really, it's quite straightforward.</p>
+<p>Really, it&rsquo;s quite straightforward.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/24/koni-yellows/">Koni Yellows</a></h1>
     <div class="article-title-date">Apr 24, 2007</div>
-    <p>I installed Koni Adjustable Sport shocks on my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a> a few months ago and before even driving the car I turned them to full stiff, like ya do.  Who want's anything but the most hardcore?  I finally got around to turning them down this past week (it's not like I go to the track all that often) and what a difference that makes!  Koni Yellows on full-soft are just like stock shocks and with a few turns under the hood, they become a good bit more go-kart like.</p>
+    <p>I installed Koni Adjustable Sport shocks on my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a> a few months ago and before even driving the car I turned them to full stiff, like ya do.  Who want&rsquo;s anything but the most hardcore?  I finally got around to turning them down this past week (it&rsquo;s not like I go to the track all that often) and what a difference that makes!  Koni Yellows on full-soft are just like stock shocks and with a few turns under the hood, they become a good bit more go-kart like.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/15/introduction-to-genres-of-electronic-music-through-remixes/">Introduction to Genres of Electronic Music through Remixes</a></h1>
     <div class="article-title-date">Apr 15, 2007</div>
-    <p>Undoubtedly, the most comprehensive map to electronic music is <a href="http://www.di.fm/edmguide/edmguide.html">Ishkur's Guide</a> which covers every genre, even reaching out to Rap, much of which contains electronic elements.  Ishkur's Guide is certainly worth perusing if you're interested in electronic music, but is a bit cumbersome for someone simply looking for an overview.  The best way to get a quick understanding of the different genres within electronic music is to hear the same song presented through different interpretations.  Madonna's <a href="http://en.wikipedia.org/wiki/Like_a_Prayer_%28song%29"><em>Like a Prayer</em></a> fits this bill nicely, as it has been remixed by numerous artists in a myriad of styles.</p>
+    <p>Undoubtedly, the most comprehensive map to electronic music is <a href="http://www.di.fm/edmguide/edmguide.html">Ishkur&rsquo;s Guide</a> which covers every genre, even reaching out to Rap, much of which contains electronic elements.  Ishkur&rsquo;s Guide is certainly worth perusing if you&rsquo;re interested in electronic music, but is a bit cumbersome for someone simply looking for an overview.  The best way to get a quick understanding of the different genres within electronic music is to hear the same song presented through different interpretations.  Madonna&rsquo;s <a href="http://en.wikipedia.org/wiki/Like_a_Prayer_%28song%29"><em>Like a Prayer</em></a> fits this bill nicely, as it has been remixed by numerous artists in a myriad of styles.</p>
 
-<p><a href="http://dinomite.net/static/music/madonna-like-a-prayer-original.mp3">The original</a> version of the song is a pop-styled electronic-backed vocal ensemble with a number of distinct elements.  Taking note of the song's components is important to understanding which parts the remixes keep, which they alter and what from the song is tossed out completely.  The archetype begins with an odd riff from a guitar that isn't heard anywhere else in the song, nor in any remixes; such introductions are often thrown to the wayside when songs are remixed.  From there, the song progresses with an ethereal chorus backing Madonna's airy and LOVING vocals which sets the mood.  From there, the an 80's electric bass and drum set are added, which come and go throughout the balance of the tune.  As you will hear in the remixes all of the elements of the song will be subject to change.</p>
+<p><a href="http://dinomite.net/static/music/madonna-like-a-prayer-original.mp3">The original</a> version of the song is a pop-styled electronic-backed vocal ensemble with a number of distinct elements.  Taking note of the song&rsquo;s components is important to understanding which parts the remixes keep, which they alter and what from the song is tossed out completely.  The archetype begins with an odd riff from a guitar that isn&rsquo;t heard anywhere else in the song, nor in any remixes; such introductions are often thrown to the wayside when songs are remixed.  From there, the song progresses with an ethereal chorus backing Madonna&rsquo;s airy and LOVING vocals which sets the mood.  From there, the an 80&rsquo;s electric bass and drum set are added, which come and go throughout the balance of the tune.  As you will hear in the remixes all of the elements of the song will be subject to change.</p>
 
 <ul>
 <li><a href="http://dinomite.net/static/music/like-a-prayer-house-mix.mp3">Mad'House'smix</a></li>
 </ul>
-<p>First is a version by <a href="http://en.wikipedia.org/wiki/Mad'House">Mad'House</a>, a short-lived ensemble which <em>only</em> made remixes of Madonna songs.  I would describe this mix as having a <a href="http://en.wikipedia.org/wiki/House_music">house</a> feel, which is certainly in keeping the the group's intentions.  It adds a harder base beat, electronic bass kicks and replaces Madonna's vocals with those of Buse ÃœnlÃ¼, the group's vocalist.  This track keeps true to the feeling of the original, while forgoing the instrumentation in pop princess' version entirely.</p>
+
+<p>First is a version by <a href="http://en.wikipedia.org/wiki/Mad'House">Mad&#39;House</a>, a short-lived ensemble which <em>only</em> made remixes of Madonna songs.  I would describe this mix as having a <a href="http://en.wikipedia.org/wiki/House_music">house</a> feel, which is certainly in keeping the the group&rsquo;s intentions.  It adds a harder base beat, electronic bass kicks and replaces Madonna&rsquo;s vocals with those of Buse ÃœnlÃ¼, the group&rsquo;s vocalist.  This track keeps true to the feeling of the original, while forgoing the instrumentation in pop princess&rsquo; version entirely.</p>
 
 <ul>
-<li><a href="http://dinomite.net/static/music/like-a-prayer-club-mix.mp3">DJ M bbe's club mix</a></li>
+<li><a href="http://dinomite.net/static/music/like-a-prayer-club-mix.mp3">DJ M bbe&rsquo;s club mix</a></li>
 </ul>
-<p>Break out your subwoofer, because the club mix is here.  Club music is, hence the name, intended for dance clubs, which accounts for the overpowering bass kick.  Beyond Mad'House's mix, this track brings the aforementioned bass beat, more heavily altered vocals and transforms the choir to make them sound much more anthem-esque.  Club mixes are all about big sounds in a vain attempt to keep from being drowned out in the hustle of late-night dancing and in doing so, share the self righteousness that Anthem Trance (see Ishkur's guide) is known for; all tension and power without any release.</p>
+
+<p>Break out your subwoofer, because the club mix is here.  Club music is, hence the name, intended for dance clubs, which accounts for the overpowering bass kick.  Beyond Mad&#39;House&rsquo;s mix, this track brings the aforementioned bass beat, more heavily altered vocals and transforms the choir to make them sound much more anthem-esque.  Club mixes are all about big sounds in a vain attempt to keep from being drowned out in the hustle of late-night dancing and in doing so, share the self righteousness that Anthem Trance (see Ishkur&rsquo;s guide) is known for; all tension and power without any release.</p>
 
 <ul>
-<li><a href="http://dinomite.net/static/music/like-a-prayer-hi-nrg-mix.mp3">Anabolic Frolic's HI-NRG mix</a></li>
+<li><a href="http://dinomite.net/static/music/like-a-prayer-hi-nrg-mix.mp3">Anabolic Frolic&rsquo;s HI-NRG mix</a></li>
 </ul>
-<p><a href="http://en.wikipedia.org/wiki/Hi-NRG">HI-NRG</a> is the music of raver kiddies.  If you've ever seen the movie <em><a href="http://en.wikipedia.org/wiki/Go_%281999_film%29">Go</a></em>, you know what raves are about.  Lots of drugs, <a href="http://en.wikipedia.org/wiki/Methylenedioxymethamphetamine">ecstacy</a> in particular, sex and dancing…all..night…long.  The dancing, not the sex.  Really.  Only when rolling would one feel the need to dance to such fast-paced music for 10 hours straight.  150 beats per minute is the minimum here, folks.  A continuous rising and falling ethereal piano is a staple of HI-NRG, as are the high-pitched vocals replacing the calmer and more subdued singing of Madonna.  <a href="http://en.wikipedia.org/wiki/Anabolic_Frolic">Anabolic Frolic</a>'s Happy2bHardcore series of mix albums is characteristic of the genre.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Hi-NRG">HI-NRG</a> is the music of raver kiddies.  If you&rsquo;ve ever seen the movie <em><a href="http://en.wikipedia.org/wiki/Go_%281999_film%29">Go</a></em>, you know what raves are about.  Lots of drugs, <a href="http://en.wikipedia.org/wiki/Methylenedioxymethamphetamine">ecstacy</a> in particular, sex and dancing&hellip;all..night&hellip;long.  The dancing, not the sex.  Really.  Only when rolling would one feel the need to dance to such fast-paced music for 10 hours straight.  150 beats per minute is the minimum here, folks.  A continuous rising and falling ethereal piano is a staple of HI-NRG, as are the high-pitched vocals replacing the calmer and more subdued singing of Madonna.  <a href="http://en.wikipedia.org/wiki/Anabolic_Frolic">Anabolic Frolic</a>&rsquo;s Happy2bHardcore series of mix albums is characteristic of the genre.</p>
 
 <ul>
 <li><a href="http://dinomite.net/static/music/like-a-prayer-gabber-mix.mp3">Gabber mix</a></li>
 </ul>
-<p>150 beats per minute, no less.  Deafening bass beats, chipmunk vocals and hard charging melodies.  These are the tenets of <a href="http://en.wikipedia.org/wiki/Gabber">gabber</a>.  The original song?  Yeah, it's in there somewhere, represented in the tings, thumps and industrial sounds pervasive within the gabber genre.  When someone who doesn't enjoy electronic music (or, more often, thinks they won't like it) describes "techno," this is what a sketch artist would build from their description.  In reality, however, gabber is on the fringe of the electronic genre, the bastard child of <a href="http://en.wikipedia.org/wiki/Industrial_music">industrial</a> and HI-NRG.</p>
+
+<p>150 beats per minute, no less.  Deafening bass beats, chipmunk vocals and hard charging melodies.  These are the tenets of <a href="http://en.wikipedia.org/wiki/Gabber">gabber</a>.  The original song?  Yeah, it&rsquo;s in there somewhere, represented in the tings, thumps and industrial sounds pervasive within the gabber genre.  When someone who doesn&rsquo;t enjoy electronic music (or, more often, thinks they won&rsquo;t like it) describes &ldquo;techno,&rdquo; this is what a sketch artist would build from their description.  In reality, however, gabber is on the fringe of the electronic genre, the bastard child of <a href="http://en.wikipedia.org/wiki/Industrial_music">industrial</a> and HI-NRG.</p>
 
 <ul>
-<li><a href="http://dinomite.net/static/music/like-a-prayer-darkcore-mix.mp3">Mr. Bungle's darkcore mix</a></li>
+<li><a href="http://dinomite.net/static/music/like-a-prayer-darkcore-mix.mp3">Mr. Bungle&rsquo;s darkcore mix</a></li>
 </ul>
-<p>You probably wouldn't have guessed that someone could make <em>Like a Prayer</em> sound evil and depressing, but here it is.  Replace the vocals with those of an angsty adolescent, simplify the beats down to electronic drum hits, replace the melody with a spartan version from a machine and you've got yourself <a href="http://en.wikipedia.org/wiki/Darkcore">darkcore</a>.</p>
+
+<p>You probably wouldn&rsquo;t have guessed that someone could make <em>Like a Prayer</em> sound evil and depressing, but here it is.  Replace the vocals with those of an angsty adolescent, simplify the beats down to electronic drum hits, replace the melody with a spartan version from a machine and you&rsquo;ve got yourself <a href="http://en.wikipedia.org/wiki/Darkcore">darkcore</a>. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/13/your-current-security-settings-do-not-allow-this-action/">Your current security settings do not allow this action</a></h1>
     <div class="article-title-date">Apr 13, 2007</div>
-    <p>Windows Server 2003 (or maybe it's just Internet Explorer 7) has a number of wonderful features that will make every day a cheery adventure.  Among them are draconian security policies that, beyond making little sense, are controlled from places they don't belong.  Apparently a mapped network share is considered a web page.  Who would have guessed that?  Well, if you get the error in the title when trying to run or even right-click something from a share on the network, it can be fixed from Internet Options.  From IE7, press 'alt' to show the menu, go to Tools&gt;Internet Options.  In the Internet Options window, go to the security tab, select the 'Internet' zone and click 'Custom' near the bottom right.  In the resulting window under 'Miscellaneous', set things that say 'disable' to 'prompt' or 'enable'.  I'm not sure which one controls the above mentioned behavior, but it ought to be fairly obvious which are involved; just allow them.</p>
+    <p>Windows Server 2003 (or maybe it&rsquo;s just Internet Explorer 7) has a number of wonderful features that will make every day a cheery adventure.  Among them are draconian security policies that, beyond making little sense, are controlled from places they don&rsquo;t belong.  Apparently a mapped network share is considered a web page.  Who would have guessed that?  Well, if you get the error in the title when trying to run or even right-click something from a share on the network, it can be fixed from Internet Options.  From IE7, press &lsquo;alt&rsquo; to show the menu, go to Tools&gt;Internet Options.  In the Internet Options window, go to the security tab, select the &#39;Internet&rsquo; zone and click &#39;Custom&rsquo; near the bottom right.  In the resulting window under &#39;Miscellaneous&rsquo;, set things that say &#39;disable&rsquo; to &#39;prompt&rsquo; or &#39;enable&rsquo;.  I&rsquo;m not sure which one controls the above mentioned behavior, but it ought to be fairly obvious which are involved; just allow them. </p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/09/wikipedia-recent-changes-and-watchlist/">Wikipedia recent changes and watchlist</a></h1>
@@ -135,85 +156,53 @@ tar czf - foo/ | ssh user@host "cat &gt; /path/to/foo.tgz"
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/08/psad-on-ubuntu/">psad on Ubuntu</a></h1>
     <div class="article-title-date">Apr  8, 2007</div>
-    <p><code>psad</code> (PortScan Attack Detector) is a useful tool for detecting portscans against a system and, optionally, blocking the offending host.  To use <code>psad</code> you configure your firewall to drop and log all packets that are not specifically allowed, i.e., those that are handled by services on the machine.  The configuration for <code>psad</code> can cause a little bit of grief because it depends on some quite particular firewall setup and, if you don't want massive logfiles, some editing of <code>syslog.conf</code>.  To begin with, you'll need to install <code>psad</code> which can be done via apt:</p>
+    <p><code>psad</code> (PortScan Attack Detector) is a useful tool for detecting portscans against a system and, optionally, blocking the offending host.  To use <code>psad</code> you configure your firewall to drop and log all packets that are not specifically allowed, i.e., those that are handled by services on the machine.  The configuration for <code>psad</code> can cause a little bit of grief because it depends on some quite particular firewall setup and, if you don&rsquo;t want massive logfiles, some editing of <code>syslog.conf</code>.  To begin with, you&rsquo;ll need to install <code>psad</code> which can be done via apt:</p>
 
-<p><code>&lt;pre&gt;
+<p><code><pre>
 $ sudo aptitude install psad
-&lt;/pre&gt;</code></p>
+</pre></code></p>
 
 <p>There are some configuration details that should be changed in <code>/etc/psad/psad.conf</code>, most notably the hostname and email variables.  Make sure that if you set the email address to something other than one of the accounts on the machine that your mail daemon is setup to deliver mail to the outside world.  Next, setup the firewall to accept packets for the services that your machine runs then drop and log all others.  In this example, the machine runs a web server (port 80) and ssh (port 22):</p>
 
-<p><code>&lt;pre&gt;
+<p><code><pre>
 $ sudo iptables -F INPUT
 $ sudo iptables -P INPUT ACCEPT
 $ sudo iptables -A INPUT -i lo -j ACCEPT
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
-$ sudo iptables -A INPUT -j LOG --log-prefix "DROP " --log-level debug
+$ sudo iptables -A INPUT -j LOG --log-prefix &quot;DROP &quot; --log-level debug
 $ sudo iptables -A INPUT -j DROP
-&lt;/pre&gt;</code></p>
+</pre></code></p>
 
-<p>Which should probably be put into a script that will be run on startup.  Finally alter the <code>/etc/syslog.conf</code> so that your <code>/var/log/messages</code> doesn't fill up as the second-to-last rule above  writes a logline each time a packet is dropped.  First, I changed the line that controls <code>kern.log</code> from this:</p>
+<p>Which should probably be put into a script that will be run on startup.  Finally alter the <code>/etc/syslog.conf</code> so that your <code>/var/log/messages</code> doesn&rsquo;t fill up as the second-to-last rule above  writes a logline each time a packet is dropped.  First, I changed the line that controls <code>kern.log</code> from this:</p>
 
-<p><code>&lt;pre&gt;
-kern.*				-/var/log/kern.log
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+kern.*              -/var/log/kern.log
+</pre></code></p>
 
 <p>to this:</p>
 
-<p><code>&lt;pre&gt;
-kern.info;kern.!debug		-/var/log/kern.log
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+kern.info;kern.!debug       -/var/log/kern.log
+</pre></code></p>
 
 <p>and adding this line at the end:</p>
 
-<p><code>&lt;pre&gt;
-*.=debug	|/var/lib/psad/psadfifo
-&lt;/pre&gt;</code></p>
+<p><code><pre>
+*.=debug    |/var/lib/psad/psadfifo
+</pre></code></p>
 
-<p>The first syslog change keeps your /var/log/kern.log and /var/log/messages from getting a line each time a packet is dropped (which is quite often) and the latter change sends all those dropped packet notifications (which are at the 'debug' loglevel) to psad.</p>
+<p>The first syslog change keeps your /var/log/kern.log and /var/log/messages from getting a line each time a packet is dropped (which is quite often) and the latter change sends all those dropped packet notifications (which are at the &lsquo;debug&rsquo; loglevel) to psad.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/05/windows-server-2003-updates/">Windows Server 2003 Updates</a></h1>
     <div class="article-title-date">Apr  5, 2007</div>
     <p>Dear Microsoft,</p>
 
-<p>I am running Windows <strong>Server</strong> 2003 on, get this, a <strong>server</strong>!  I know that I haven't restarted since running an update, please stop telling me.</p>
+<p>I am running Windows <strong>Server</strong> 2003 on, get this, a <strong>server</strong>!  I know that I haven&rsquo;t restarted since running an update, please stop telling me.</p>
 
 <p>Thanks,<br />
 Admins Everywhere</p>
-
-    <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/03/22/md5-digests-in-java/">MD5 Digests in Java</a></h1>
-    <div class="article-title-date">Mar 22, 2007</div>
-    <p>File hashes have a multitude of uses and MD5 is, despite the fact that weaknesses have been found in the algorithm, still very useful and widely employed.  Creating MD5 digests in Java is quite easy, but the documentation for <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html">MessageDigest</a> is a little bit tricky.  Here is a simple method that takes in a string of input and returns the hash of the string.</p>
-
-<p><code>&lt;pre&gt;
-public static String md5(String input) {
-	// Compute the MD5 digest of the passed String
-	MessageDigest algorithm = null;
-	try {
-		algorithm = MessageDigest.getInstance("MD5");
-	} catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
-	algorithm.reset();
-	byte[] hash = algorithm.digest(input.getBytes());</code></p>
-
-<pre><code>// Convert it to a String
-StringBuffer ret = new StringBuffer();
-for (int x = 0; x &lt; hash.length; x++) {
-	String hexString = Integer.toHexString(0xFF &amp; hash[x]);
-	if (hexString.length() == 1)
-		hexString = "0" + hexString;
-
-	ret.append(hexString);
-
-	// Add the dashes
-	if (x == 3 || x == 5 || x == 7 || x == 9)
-		ret.append("-");
-} //for
-
-return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
-</code></pre>
 
     <div class="article-footer"></div>
 </ul>
@@ -241,6 +230,10 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -277,10 +270,6 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -296,7 +285,8 @@ return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

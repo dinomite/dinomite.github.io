@@ -28,14 +28,33 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/09/26/splitting-mp3s-in-perl/">Splitting MP3s in Perl</a></h1>
+    <div class="article-title-date">Sep 26, 2008</div>
+    <p>I listen to some podcasts daily that have annoying messages in them that never change.  With a bit of research, I came across the <a href="http://search.cpan.org/~ilyaz/MP3-Splitter-0.04/Splitter.pm">MP3::Splitter</a> module on <a href="http://search.cpan.org/">CPAN</a> which has somewhat confusing documentation but provides a method <code>mp3split()</code> that pulls specified pieces of a file.  You provide <code>mp3split()</code> with the input MP3 filename, options as a hash and then any number of arrays that specify which portions of the MP3 to copy into new files.  The easiest syntax for specifying a portion is to pass the start position and the length of the desired chunk, both in seconds.  From the command line, I did this:</p>
+
+<pre class="brush: bash;">
+perl -MMP3::Splitter -e "mp3split('foo.mp3', {}, [20,25], [95,600], [950,INF])"
+</pre>
+
+<p>which creates three new MP3 files, 01<em>foo.mp3, 02</em>foo.mp3 and 03_foo.mp3.  These can then be joined to create a new MP3:</p>
+
+<pre class="brush: bash;">
+cat 01_foo.mp3 > new.mp3
+cat 02_foo.mp3 >> new.mp3
+cat 03_foo.mp3 >> new.mp3
+</pre>
+
+<p>Which will leave you with <code>new.mp3</code> that is a concatenation of the three pieces.  Using <code>cat</code> to join them means the resulting file will probably have some artifacts at the join points but that&rsquo;s not a problem for my use.  If it is, you can use something like <code>mp3join</code> to properly join the files.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/21/code-golf-saving-time/">Code Golf: Saving Time</a></h1>
     <div class="article-title-date">Sep 21, 2008</div>
-    <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I'm finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don't read below if you don't want hints!</p>
+    <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I&rsquo;m finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don&rsquo;t read below if you don&rsquo;t want hints! </p>
 
 <p>My first draft grabs the hour and minutes using capturing in a regex, then turns them both into positions on a twelve hour clockface.  The clock location is passed to the function <code>symbol</code> which, through use of some nasty nested ternaries, what should be printed at the passed position on the clock face. (470 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /(\d+):(\d+)/;
+<> =~ /(\d+):(\d+)/;
 $H = $1 % 12;
 $M = ($2 - ($2 % 5)) / 5;
 
@@ -57,10 +76,10 @@ sub symbol {
 }
 </pre>
 
-<p>Perl provides the automatic variables <code>$`</code> and <code>$'</code> (aka  <code>$PREMATCH</code> and <code>$POSTMATCH</code> with <code>use English</code>) which are, unsurprisingly, the portions of a scalar before and after what your regex matched.  I simplified the input regex by simply matching the colon and grabbing the hours &amp; minutes from <code>$`</code> and <code>$'</code>.    shorten subroutine name (398 characters):</p>
+<p>Perl provides the automatic variables <code>$`</code> and <code>$&#39;</code> (aka  <code>$PREMATCH</code> and <code>$POSTMATCH</code> with <code>use English</code>) which are, unsurprisingly, the portions of a scalar before and after what your regex matched.  I simplified the input regex by simply matching the colon and grabbing the hours &amp; minutes from <code>$`</code> and <code>$&#39;</code>.    shorten subroutine name (398 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 
@@ -85,7 +104,7 @@ sub sy {
 <p>I spun off the drawing of most lines into a single function, which takes the number of preceding spaces, the leftmost hour mark on the line, the number of interstitial spaces and the final hour mark on the line (380 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 
@@ -113,7 +132,7 @@ sub sy {
 <p>Before getting totally mucked up (311 characters):</p>
 
 <pre class="brush: perl;">
-&lt;&gt; =~ /:/;
+<> =~ /:/;
 $H = $` % 12;
 $M = int $'/5;
 print ' 'x8 . sy(0) . $/ . li(4,11,7,1) . $/ . li(1,10,13,2) . $/ . li(0,9,15,3) . $/ . li(1,8,13,4) . $/ . li(4,7,7,5) . ' 'x8 . sy(6);
@@ -125,7 +144,7 @@ sub sy {$_ = shift; $H==$_ ? $H==$M ? 'x' : 'h' : $M==$_ ? 'm' : 'o';}
 <p>My final effort which is 244 characters when concatenated onto a single line:</p>
 
 <pre class="brush: perl;">
-&lt;&gt;=~/:/;
+<>=~/:/;
 $H=$`%12;
 $M=int $'/5;
 sub li{' 'x$_[0].sy($_[1]).' 'x$_[2].sy($_[3]).$/}
@@ -136,87 +155,104 @@ print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/16/united-states-federal-lands/">United States Federal Lands</a></h1>
     <div class="article-title-date">Sep 16, 2008</div>
-    <hr />
-<p><a href="http://flickr.com/photos/zsafwan/2238940368/"><img src="http://farm3.static.flickr.com/2199/2238940368_6ed860e04d.jpg" class="image-right" /></a></p>
+    <hr>
+
+<p><a href="http://flickr.com/photos/zsafwan/2238940368/"><img src="http://farm3.static.flickr.com/2199/2238940368_6ed860e04d.jpg" class=right /></a></p>
 
 <p>I gave this post a vague title because the control of <a href="http://en.wikipedia.org/wiki/Federal_lands">federal lands</a>, such as National Parks, National Memorials and National Forests, is a surprisingly complicated issue.  Tracts controlled by the federal government arise from disparate processes and are controlled by a number of different agencies including the National Park Service, Bureau of Land Management and the United States Forest Service.</p>
 
-<h2 id="agencies">Agencies</h2>
+<h2>Agencies</h2>
 
-<h3 id="national-park-service">National Park Service</h3>
+<h3>National Park Service</h3>
+
 <p>The most well-known federal land management agency is the <a href="http://en.wikipedia.org/wiki/National_Park_Service">National Park Service</a>, housed under the <a href="http://en.wikipedia.org/wiki/United_States_Department_of_the_Interior">Department of the Interior</a>.  The NPS was created in 1916 to organize management of the fledgling system of parks that began with the designation of <a href="http://en.wikipedia.org/wiki/Yellowstone_National_Park">Yellowstone National Park</a> in 1862.</p>
 
-<h3 id="bureau-of-land-management">Bureau of Land Management</h3>
+<h3>Bureau of Land Management</h3>
+
 <p>Originally created in 1812 as the <a href="http://en.wikipedia.org/wiki/General_Land_Office">General Land Office</a> under the <a href="http://en.wikipedia.org/wiki/Department_of_the_Treasury">Department of the Treasury</a> the <a href="http://en.wikipedia.org/wiki/Burearu_of_Land_Management">Bureau of Land Management</a> became part of the Department of the Interior after merging with the <a href="http://en.wikipedia.org/wiki/United_States_Grazing_Service">United States Grazing Service</a>.  Unlike the National Park Service, the BLM does not exist as an agency purely to protect the lands that it controls; the BLM issues permits for grazing, logging and mineral collection on many of the lands that they control.</p>
 
-<h3 id="us-forest-service">U.S. Forest Service</h3>
+<h3>U.S. Forest Service</h3>
+
 <p>The <a href="http://en.wikipedia.org/wiki/United_States_Forest_Service">United States Forest Service</a> is responsible for the management of National Grasslands and National Forests, controlling access to grazing, logging and mineral collection on lands under their control in addition to allowing recreation on these lands.</p>
 
-<h3 id="us-fish-and-wildlife-service">U.S. Fish and Wildlife Service</h3>
-<p>The <a href="http://en.wikipedia.org/wiki/United_States_Fish_and_Wildlife_Service">United States Fish and Wildlife Service</a> is the caretaker of the country's National Wildlife Refuges and National Fish Hatcheries.</p>
+<h3>U.S. Fish and Wildlife Service</h3>
 
-<h2 id="lands">Lands</h2>
-<p>### National Park
-Beginning with the creation of <a href="http://en.wikipedia.org/wiki/Yellowstone">Yellowstone</a> in 1862 by congress <a href="http://en.wikipedia.org/wiki/National_park">National Parks</a> are areas created by the legislative branch as natural preserves for recreational use by citizens of the country.  National Parks do not allow for logging, mineral extraction or any other exploitation of the land.  These lands are generally the most visited areas controlled by the federal government, receive the most funding for improvements to support visitors to the park and the most legislative attention.  National Parks are all manage under the National Park Service.</p>
+<p>The <a href="http://en.wikipedia.org/wiki/United_States_Fish_and_Wildlife_Service">United States Fish and Wildlife Service</a> is the caretaker of the country&rsquo;s National Wildlife Refuges and National Fish Hatcheries.</p>
 
-<h3 id="national-monument">National Monument</h3>
-<p>As a DC native, the term <a href="http://en.wikipedia.org/wiki/U.S._National_Monument">National Monument</a> evokes thoughts of man made symbol commemorating a person or event.  In terms of U.S. public lands, however, a national monument is a tract set aside by executive order without the approval of Congress.  The land for a national monument may be that which the federal government already controls or something that is given to the government by an individual or state.  The presidential power to create such lands was granted by the <a href="http://en.wikipedia.org/wiki/Antiquities_Act">Antiquities Act of 1906</a> signed by Theodore Roosevelt and first used to protect <a href="http://en.wikipedia.org/wiki/Devils_Tower_National_Monument">Devil's Tower</a> in Northeastern Wyoming.  The intent of the act is to allow the president to afford protection to natural resources of the United States more quickly than an act of Congress is capable.  National monuments are intended to be less expansive than national parks, generally protecting a single natural feature.  Management of national monuments falls to either the National Park Service or the Bureau of Land Management.</p>
+<h2>Lands</h2>
 
-<h3 id="national-memorial">National Memorial</h3>
+<h3>National Park</h3>
+
+<p>Beginning with the creation of <a href="http://en.wikipedia.org/wiki/Yellowstone">Yellowstone</a> in 1862 by congress <a href="http://en.wikipedia.org/wiki/National_park">National Parks</a> are areas created by the legislative branch as natural preserves for recreational use by citizens of the country.  National Parks do not allow for logging, mineral extraction or any other exploitation of the land.  These lands are generally the most visited areas controlled by the federal government, receive the most funding for improvements to support visitors to the park and the most legislative attention.  National Parks are all manage under the National Park Service.</p>
+
+<h3>National Monument</h3>
+
+<p>As a DC native, the term <a href="http://en.wikipedia.org/wiki/U.S._National_Monument">National Monument</a> evokes thoughts of man made symbol commemorating a person or event.  In terms of U.S. public lands, however, a national monument is a tract set aside by executive order without the approval of Congress.  The land for a national monument may be that which the federal government already controls or something that is given to the government by an individual or state.  The presidential power to create such lands was granted by the <a href="http://en.wikipedia.org/wiki/Antiquities_Act">Antiquities Act of 1906</a> signed by Theodore Roosevelt and first used to protect <a href="http://en.wikipedia.org/wiki/Devils_Tower_National_Monument">Devil&rsquo;s Tower</a> in Northeastern Wyoming.  The intent of the act is to allow the president to afford protection to natural resources of the United States more quickly than an act of Congress is capable.  National monuments are intended to be less expansive than national parks, generally protecting a single natural feature.  Management of national monuments falls to either the National Park Service or the Bureau of Land Management.</p>
+
+<h3>National Memorial</h3>
+
 <p>Now this is what should make me think of the <a href="http://en.wikipedia.org/wiki/Lincoln_Memorial">Lincoln</a> and <a href="http://en.wikipedia.org/wiki/Jefferson_Memorial">Jefferson</a> Memorials in Washington.  <a href="http://en.wikipedia.org/wiki/National_Memorial">National Memorials</a> are protected areas established by the legislative branch to commemorate a historic person or event.  Though most National Memorials are administered by the National Park Service, some, such as the <a href="http://en.wikipedia.org/wiki/Benjamin_Franklin_National_Memorial">Benjamin Franklin National Memorial</a> are overseen by another organization and considered an affiliated area of the NPS.</p>
 
-<h3 id="national-wilderness-area">National Wilderness Area</h3>
+<h3>National Wilderness Area</h3>
+
 <p>A <a href="http://en.wikipedia.org/wiki/National_Wilderness_Preservation_System">National Wilderness Area</a>  is defined within land that is already under federal control by the <a href="http://en.wikipedia.org/wiki/Wilderness_Act">Wilderness Act of 1964</a> as an area in which commercial activities are forbidden and human activity is limited to non-motorized recreation and non-invasive activities such as scientific study.  NWAs exist under the cooperative purview of all four land management agencies, the National Park Service, Bureau of Land Management, U.S. Forest Service and the U.S. Fish &amp; Wildlife Service.</p>
 
-<h3 id="national-forest-and-grassland">National Forest and Grassland</h3>
+<h3>National Forest and Grassland</h3>
+
 <p>Managed by the <a href="http://en.wikipedia.org/wiki/United_States_Forest_Service">Forest Service</a>, a division of the <a href="http://en.wikipedia.org/wiki/United_States_Department_of_Agriculture">Department of Agriculture</a>, <a href="http://en.wikipedia.org/wiki/United_States_National_Forest">National Forests</a> are unlike their protected brethren in that commercial exploitation of their resources is allowed with permits given for grazing, logging and mineral extraction.  Lands administered by the Forest Service my also be licensed for commercial recreation such as ski resorts.  National Forests are created by executive order as granted by the <a href="http://en.wikipedia.org/wiki/Land_Revision_Act_of_1891">Land Revision Act of 1891</a> and <a href="http://en.wikipedia.org/wiki/United_States_National_Grassland">National Grasslands</a> by the <a href="http://www2.law.cornell.edu/uscode/html/uscode07/usc_sec_07_00001000----000-.html">Bankhead-Jones Farm Tenant Act</a>.</p>
 
-<h3 id="national-recreation-area">National Recreation Area</h3>
+<h3>National Recreation Area</h3>
+
 <p>Until 1963, <a href="http://en.wikipedia.org/wiki/National_Recreation_Area">National Recreation Areas</a> were created by executive order but a change in policy means that all Areas designated thereafter are by legislative action.  National Recreation Areas can be managed by the National Park Service, Bureau of Land Management or the U.S. Forest Service.  NRAs are usually created to encourage water sports on lakes created by the damming of rivers.</p>
 
-<h3 id="national-wildlife-refuge">National Wildlife Refuge</h3>
+<h3>National Wildlife Refuge</h3>
+
 <p>Originally defined by the National Wildlife Refuge System Administration Act of 1966 a National Wildlife Refuges exist, unsurprisingly, as habitats for specific or groups of species.  They are created by congressional legislation and administrated by the U.S. Fish and Wildlife Service.</p>
 
-<h3 id="national-seashore">National Seashore</h3>
-<p>Usually controlled by the National Park Service, <a href="http://en.wikipedia.org/wiki/National_seashore">National Seashores</a> are protected areas that are similar to both NRA's and National Parks.  Most of the areas contained within a National Seashore is available for recreation, often including vehicular offroading trails.</p>
+<h3>National Seashore</h3>
 
-<h3 id="national-historical-park">National Historical Park</h3>
+<p>Usually controlled by the National Park Service, <a href="http://en.wikipedia.org/wiki/National_seashore">National Seashores</a> are protected areas that are similar to both NRA&rsquo;s and National Parks.  Most of the areas contained within a National Seashore is available for recreation, often including vehicular offroading trails.</p>
+
+<h3>National Historical Park</h3>
+
 <p><a href="http://en.wikipedia.org/wiki/National_Historical_Park">National Historical Parks</a> or National Historic Sites are historically significant structures or areas governed by the National Park Service.  These areas were at one time declared by the Secretary of the Interior, but in modern times by acts of congress.</p>
 
-<h3 id="parkway">Parkway</h3>
+<h3>Parkway</h3>
+
 <p>Parkways are roads controlled by the National Park Service and are often scenic roads through federally controlled lands, such as <a href="http://en.wikipedia.org/wiki/Blue_Ridge_Parkway">Blue Ridge</a> and <a href="http://en.wikipedia.org/wiki/Rock_Creek_and_Potomac_Parkway">Rock Creek</a> parkways.  Others, such as a significant portion of the <a href="http://en.wikipedia.org/wiki/Baltimore-Washington_Parkway">Baltimore-Washington Parkway</a>, are not maintained by the NPS but state and local agencies instead.</p>
 
-<h1 id="references">References</h1>
-<p><a href="http://www2.law.cornell.edu/uscode/uscode16/usc_sup_01_16_10_1.html">16 USC - Conservation</a><br />
+<h1>References</h1>
+
+<p><a href="http://www2.law.cornell.edu/uscode/uscode16/usc_sup_01_16_10_1.html">16 USC - Conservation</a><br>
 <a href="http://www.law.cornell.edu/uscode/html/uscode43/usc_sup_01_43.html">43 USC - Public Lands</a></p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/11/rick-ross-financial-success/">Rick Ross' Financial Success</a></h1>
     <div class="article-title-date">Sep 11, 2008</div>
-    <p>Since he was <a href="">mentioned on The Daily Show</a> a few weeks ago, <a href="http://en.wikipedia.org/wiki/Rick_Ross_(rapper)">Rick Ross</a> has quickly become my favorite rapper.  The king of repetition, Ross hails from Miami and makes much of his activities trafficking drugs despite <a href="http://www.thesmokinggun.com/archive/years/2008/0721081rickross1.html">allegations that he worked for the man</a> during part of his life.  Like many rappers, Rick Ross talks a lot about his expensive cars and I noticed a trend in the vehicles of which he spoke.</p>
+    <p>Since he was <a href="#">mentioned on The Daily Show</a> a few weeks ago, <a href="http://en.wikipedia.org/wiki/Rick_Ross_(rapper)">Rick Ross</a> has quickly become my favorite rapper.  The king of repetition, Ross hails from Miami and makes much of his activities trafficking drugs despite <a href="http://www.thesmokinggun.com/archive/years/2008/0721081rickross1.html">allegations that he worked for the man</a> during part of his life.  Like many rappers, Rick Ross talks a lot about his expensive cars and I noticed a trend in the vehicles of which he spoke.</p>
 
 <p><a href="http://dinomite.net/wp-content/uploads/2008/09/7series.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/7series-300x172.jpg" alt="" title="BMW 7 Series" width="300" height="172" class="alignright size-medium wp-image-341" /></a>
-In his first album, Port of Miami, Ross' makes a number of references to his white on white BMW 745i such as this line from the hit single <em>Hustlin'</em>:</p>
+In his first album, Port of Miami, Ross&rsquo; makes a number of references to his white on white BMW 745i such as this line from the hit single <em>Hustlin&rsquo;</em>:</p>
 
 <blockquote>
-Who tha fuck you think ya fuckin with?  I'm tha fuckin boss<br />
+Who tha fuck you think ya fuckin with?  I&rsquo;m tha fuckin boss<br>
 745 white on white, thats fuckin Ross
 </blockquote>
 
 <p>To be sure, any BMW 7 series is a fine car, but the 745i is the base model of the line.  Is Rick Ross a poor rapper?  Not too fast, in the song <em>White House</em>, he mentions a Rolls Royce Phantom:</p>
 
 <blockquote>
-we in the white house<br />
+we in the white house<br>
 big phantom on the lawn getting wiped down
 </blockquote>
 
 <p>Is this song a fantasy about occupying the <a href="http://en.wikipedia.org/wiki/White_House">White House</a> proper, or is it simply hyperbole about his mansion, with a nod to cocaine usage and trade?  Given the previous mention of a 745i, I can only assume that the Phantom was but a fantasy for Rick Ross in 2006.</p>
 
 <p><a href="http://dinomite.net/wp-content/uploads/2008/09/maybach-116.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/maybach-116-300x225.jpg" alt="" title="Maybach" width="300" height="225" class="alignright size-medium wp-image-347" /></a>
-Times change.  In 2008, Rick Ross released the album <em>Trilla</em> and it sounds like he's had a significant upgrade.  The song <em>Luxury Tax</em>, makes specific mention of a 760, the top of the line BMW 7 Series:</p>
+Times change.  In 2008, Rick Ross released the album <em>Trilla</em> and it sounds like he&rsquo;s had a significant upgrade.  The song <em>Luxury Tax</em>, makes specific mention of a 760, the top of the line BMW 7 Series:</p>
 
 <blockquote>
-Got my whole arm rocked.<br />
+Got my whole arm rocked.<br>
 Keep the 760 double parked in the wrong spot.
 </blockquote>
 
@@ -225,12 +261,12 @@ Keep the 760 double parked in the wrong spot.
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/09/shell-command-substitution/">Shell Command Substitution</a></h1>
     <div class="article-title-date">Sep  9, 2008</div>
-    <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; "there must be a better way," I thought.</p>
+    <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; &ldquo;there must be a better way,&rdquo; I thought.</p>
 
-<p>Enter command substitution, a process by which you use the output from an executed command as the input to another.  Many people have used this in a simple manner such as <code>ls /usr/src/linux-`uname -r`</code>which takes the output of <code>uname -r</code>, namely the kernel release you're running, and uses that to flesh out the <code>ls</code> command.  There is a more complicated form, however, that I use for diffing remote files.  In the aforementioned example, I used the following command to diff the files:</p>
+<p>Enter command substitution, a process by which you use the output from an executed command as the input to another.  Many people have used this in a simple manner such as <code>ls /usr/src/linux-`uname -r`</code>which takes the output of <code>uname -r</code>, namely the kernel release you&rsquo;re running, and uses that to flesh out the <code>ls</code> command.  There is a more complicated form, however, that I use for diffing remote files.  In the aforementioned example, I used the following command to diff the files:</p>
 
 <pre>
-vimdiff &lt;(ssh stg1 cat /etc/rc.d/init.d/httpd) &lt;(ssh stg2 cat /etc/rc.d/init.d/httpd)
+vimdiff <(ssh stg1 cat /etc/rc.d/init.d/httpd) <(ssh stg2 cat /etc/rc.d/init.d/httpd)
 </pre>
 
 <p>Much like a subselect in MySQL, the <code>cat</code> commands are executed on the remote machine and then piped to <code>vimdiff</code> allowing for single command, no-file-copying diffs.</p>
@@ -245,37 +281,37 @@ GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
 </pre>
 
-<p>The machines I was SSHing to don't do GSSAPI, so every time I tried to connect my client had to wait a short timeout before trying other authentication methods.  Since I don't care about GSSAPI (few people use it), I simply set those options to <code>no</code> and now my SSH sessions start much more quickly.</p>
+<p>The machines I was SSHing to don&rsquo;t do GSSAPI, so every time I tried to connect my client had to wait a short timeout before trying other authentication methods.  Since I don&rsquo;t care about GSSAPI (few people use it), I simply set those options to <code>no</code> and now my SSH sessions start much more quickly.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/03/no-tech-hacking/">No-Tech Hacking</a></h1>
     <div class="article-title-date">Sep  3, 2008</div>
-    <p>While looking through the <a href="http://www.thelasthope.org/talks.html">audio</a> from <a href="http://www.thelasthope.org">the last hope</a>, I stumbled across <a href="http://johnny.ihackstuff.com/">Johnny Long</a>'s talk entitle <a href="http://video.google.com/videoplay?docid=-2160824376898701015">No-Tech Hacking</a>.  I saw this talk a couple of years ago at <a href="http://shmoocon.org/">ShmooCon</a> and re-watched it via the above Google Video link and it's just as good as the first time.  Anyone interested in any sort of security should watch this talk because it's very interesting and very funny.</p>
+    <p>While looking through the <a href="http://www.thelasthope.org/talks.html">audio</a> from <a href="http://www.thelasthope.org">the last hope</a>, I stumbled across <a href="http://johnny.ihackstuff.com/">Johnny Long</a>&rsquo;s talk entitle <a href="http://video.google.com/videoplay?docid=-2160824376898701015">No-Tech Hacking</a>.  I saw this talk a couple of years ago at <a href="http://shmoocon.org/">ShmooCon</a> and re-watched it via the above Google Video link and it&rsquo;s just as good as the first time.  Anyone interested in any sort of security should watch this talk because it&rsquo;s very interesting and very funny.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/08/29/popular-im-networks/">Popular IM Networks</a></h1>
     <div class="article-title-date">Aug 29, 2008</div>
-    <p><a href="http://billionsconnected.com/blog/2008/08/global-im-market-share-im-usage/">A blog post</a> by one of <a href="http://www.eqo.com">EQO</a>'s founders, Jeff LaPorte, claims to have insight into the market share of the instant messaging services throughout the world.  The <a href="http://billionsconnected.com/blog/wp-content/uploads/2008/08/global_im_market_share_stats_july_08.pdf">graphic</a> (PDF) shows the strength of competing IM services in different markets throughout the world.  I immediately questioned the data because it showed AOL Instant Messenger with a narrow lead over MSN and Yahoo!, who share a close second.  Personally, I've never used either of those services, nor do I know anyone who regularly does; is that because I'm a curmudgeon or the EQO data is inaccurate?  I must side with the latter.</p>
+    <p><a href="http://billionsconnected.com/blog/2008/08/global-im-market-share-im-usage/">A blog post</a> by one of <a href="http://www.eqo.com">EQO</a>&rsquo;s founders, Jeff LaPorte, claims to have insight into the market share of the instant messaging services throughout the world.  The <a href="http://billionsconnected.com/blog/wp-content/uploads/2008/08/global_im_market_share_stats_july_08.pdf">graphic</a> (PDF) shows the strength of competing IM services in different markets throughout the world.  I immediately questioned the data because it showed AOL Instant Messenger with a narrow lead over MSN and Yahoo!, who share a close second.  Personally, I&rsquo;ve never used either of those services, nor do I know anyone who regularly does; is that because I&rsquo;m a curmudgeon or the EQO data is inaccurate?  I must side with the latter.</p>
 
-<p>The crux of the issue is that EQO is an instant messaging application for mobile phones running Windows CE, so the data they have is for that subset of the IM user market, not representative of the market as a whole.  So what can we glean from this data?  People who have Windows-based smartphones prefer MSN worldwide, save for AIM's slight edge in the United States.  What can't we learn from the data?  The state of the instant message market as a whole.  EQO's usage data ignores other smartphone users, most notably the iPhone and users who don't have smartphones or aren't interested in IMing from their phones.</p>
+<p>The crux of the issue is that EQO is an instant messaging application for mobile phones running Windows CE, so the data they have is for that subset of the IM user market, not representative of the market as a whole.  So what can we glean from this data?  People who have Windows-based smartphones prefer MSN worldwide, save for AIM&rsquo;s slight edge in the United States.  What can&rsquo;t we learn from the data?  The state of the instant message market as a whole.  EQO&rsquo;s usage data ignores other smartphone users, most notably the iPhone and users who don&rsquo;t have smartphones or aren&rsquo;t interested in IMing from their phones.</p>
 
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/08/09/defcon-16-eff-panel/">DEFCON 16 EFF Panel</a></h1>
     <div class="article-title-date">Aug  9, 2008</div>
-    <p>Much of the <a href="http://www.eff.org">Electronic Frontier Foundation</a>'s talk at DEFCON 16 concerned the temporary injunction that prevented <a href="http://www.defcon.org/html/defcon-16/dc-16-speakers.html#Anderson">MIT students</a> from giving a talk on vulnerabilities of the <a href="http://www.mbta.com">MBTA</a> farecard system.  The injunction seems to say taht the only people prevented from disseminating the information about the system are the MIT students themselves and any cohorts in their research.  One question that I head was which other systems may be vulnerable to the same RFID card attack and here's the list from their slides:</p>
+    <p>Much of the <a href="http://www.eff.org">Electronic Frontier Foundation</a>&rsquo;s talk at DEFCON 16 concerned the temporary injunction that prevented <a href="http://www.defcon.org/html/defcon-16/dc-16-speakers.html#Anderson">MIT students</a> from giving a talk on vulnerabilities of the <a href="http://www.mbta.com">MBTA</a> farecard system.  The injunction seems to say taht the only people prevented from disseminating the information about the system are the MIT students themselves and any cohorts in their research.  One question that I head was which other systems may be vulnerable to the same RFID card attack and here&rsquo;s the list from their slides:</p>
 
 <ul>
-  <li>Boston</li>
-  <li>London</li>
-  <li>Netherlands</li>
-  <li>Minneapolis</li>
-  <li>South Korea</li>
-  <li>Hong Kong</li>
-  <li>Beijing</li>
-  <li>Madrid</li>
-  <li>Rio de Janeiro</li>
-  <li>New Dehli</li>
-  <li>Bangkok</li>
+<li>Boston</li>
+<li>London</li>
+<li>Netherlands</li>
+<li>Minneapolis</li>
+<li>South Korea</li>
+<li>Hong Kong</li>
+<li>Beijing</li>
+<li>Madrid</li>
+<li>Rio de Janeiro</li>
+<li>New Dehli</li>
+<li>Bangkok</li>
 </ul>
 
 <p>More information is provided in <a href="http://dinomite.net/wp-content/uploads/defcon-16-anderson-ryan-cheisa.pdf">their slides</a>.</p>
@@ -283,39 +319,22 @@ GSSAPIDelegateCredentials yes
     <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/07/25/installing-mechwarrior-2-in-dosbox-under-mac-os-x/">Installing Mechwarrior 2 in DOSBox Under Mac OS X</a></h1>
     <div class="article-title-date">Jul 25, 2008</div>
-    <p>Put the Mechwarrior 2 CD into your Mac's CD drive; it will show up as two mounted discs, one for the audio and one for the game data.  The disc I have is for Mechwarrior 2 v1.1, so the game data is mounted as <code>/Volumes/MECH2_V1_1</code>; if you have a different version, the mount point will be slightly different and subsequent commands should be adjusted to match.  To access the disc in DOSBox, you must mount it.  Start DOSBox and type:</p>
-<pre>mount d /Volumes/MECH2_V1_1 -t cdrom -usecd 0</pre>
-<p>You will also need a place to act as a fake <code>C</code> drive, where the game will be installed.  I created a directory <code>dosprog</code> in my home directory and mounted it in DOSBox like so:</p>
+    <p>Put the Mechwarrior 2 CD into your Mac&rsquo;s CD drive; it will show up as two mounted discs, one for the audio and one for the game data.  The disc I have is for Mechwarrior 2 v1.1, so the game data is mounted as <code>/Volumes/MECH2_V1_1</code>; if you have a different version, the mount point will be slightly different and subsequent commands should be adjusted to match.  To access the disc in DOSBox, you must mount it.  Start DOSBox and type:
+<pre>mount d /Volumes/MECH2<em>V1</em>1 -t cdrom -usecd 0</pre>
+You will also need a place to act as a fake <code>C</code> drive, where the game will be installed.  I created a directory <code>dosprog</code> in my home directory and mounted it in DOSBox like so:
 <pre>mount c ~/dosprog</pre>
-<p>To install the game simply go to the mounted CD and run the setup:</p>
+To install the game simply go to the mounted CD and run the setup:
 <pre>
 d:
 INSTALL.EXE
 </pre>
-<p>Follow the installation program, clicking happy things like "yes", "continue" and "full install".  Choose the top-most audio devices in the list.  Next, download the NOCD crack <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">from here</a>, unzip it in Mac OS and use the files from the crack to replace those in your <code>dosprog/mech2</code> folder.  Now, back in DOSBox, go to the c:\MECH2 directory and play:</p>
+Follow the installation program, clicking happy things like &ldquo;yes&rdquo;, &ldquo;continue&rdquo; and &ldquo;full install&rdquo;.  Choose the top-most audio devices in the list.  Next, download the NOCD crack <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">from here</a>, unzip it in Mac OS and use the files from the crack to replace those in your <code>dosprog/mech2</code> folder.  Now, back in DOSBox, go to the c:\MECH2 directory and play:
 <pre>
 c:
 cd c:\MECH2
 MECH2.EXE
 </pre>
-<p>See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a></p>
-
-    <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h1>
-    <div class="article-title-date">Jun 25, 2008</div>
-    <p>I'm doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:</p>
-
-<pre>
-[Wed Jun 25 18:57:11 2008] [emerg] (28)No space left on device: Couldn't create accept lock
-</pre>
-
-<p>After being confused because there certainly is enough disk space, I Googled for other possibilities and it turns out I had hit another limit, that of active semaphores.  When some of my processes were killed, they died uncleanly and didn't clean up their open semaphores, filling the maximum number available to my user.  It's easy to tell that this is the root of the issue; running <code>ipcs -s</code> showed a list of 95 open semaphores.  Clearing them up is just as easy:</p>
-
-<pre>
-~$ for id in \`ipcs -s |awk '/USERNAME/ {print $2}'\`; do ipcrm -s $id; done
-</pre>
-
-<p>That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then <code>ipcrm</code>'s those semaphores.</p>
+See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a></p>
 
     <div class="article-footer"></div>
 </ul>
@@ -343,6 +362,10 @@ MECH2.EXE
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -379,10 +402,6 @@ MECH2.EXE
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -398,7 +417,8 @@ MECH2.EXE
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -26,42 +26,42 @@
   <div class="main-content">
     <h1 class="article-title">Profiling Perl, part 1</h1>
     <div class="article-title-date">Aug 17, 2007</div>
-    <p>An important and often-overlooked part of programming is profiling of code to find out where the most time is being spent and then figuring out how the resulting sections of your program can be improved.  This aspect of writing code gets little attention from people writing user-bound applications because generally, computers are fast enough that even atrocious code can complete before the user is ready to respond.  Despite this fact execution speed is still important, especially in data processing code such as that which parses large datasets (which I often find myself doing) or converts videos, for instance.  If your code consists of a number of nested loops, you can probably benefit from profiling it and speeding up the most oft-used pieces.  Even if that doesn't apply, timing the execution of statements will certainly improve your understanding of which operations are fast and which drag you down.</p>
+    <p>An important and often-overlooked part of programming is profiling of code to find out where the most time is being spent and then figuring out how the resulting sections of your program can be improved.  This aspect of writing code gets little attention from people writing user-bound applications because generally, computers are fast enough that even atrocious code can complete before the user is ready to respond.  Despite this fact execution speed is still important, especially in data processing code such as that which parses large datasets (which I often find myself doing) or converts videos, for instance.  If your code consists of a number of nested loops, you can probably benefit from profiling it and speeding up the most oft-used pieces.  Even if that doesn&rsquo;t apply, timing the execution of statements will certainly improve your understanding of which operations are fast and which drag you down.</p>
 
-<p>The very simplest form of profiling code is using manually activated timers.  In Perl, this is accomplished with the <code>Benchmark::Timer</code> module as follows:</p>
+<p>The very simplest form of profiling code is using manually activated timers.  In Perl, this is accomplished with the <code>Benchmark::Timer</code> module as follows:
 <pre class="brush: perl;">
 use strict;
-use warnings;
+use warnings;</p>
 
-use Benchmark::Timer;
-my $timer = Benchmark::Timer-&gt;new();
+<p>use Benchmark::Timer;
+my $timer = Benchmark::Timer-&gt;new();</p>
 
-$timer-&gt;start('overall');
+<p>$timer-&gt;start(&#39;overall&#39;);</p>
 
-$timer-&gt;start('single');
+<p>$timer-&gt;start(&#39;single&#39;);
 sleep 5;
-$timer-&gt;stop('single');
+$timer-&gt;stop(&#39;single&#39;);</p>
 
-$timer-&gt;start('loop');
+<p>$timer-&gt;start(&#39;loop&#39;);
 for (my $x = 0; $x &lt; 5; $x++) {
     sleep 1;
 }
-$timer-&gt;stop('loop');
+$timer-&gt;stop(&#39;loop&#39;);</p>
 
-$timer-&gt;stop('overall');
+<p>$timer-&gt;stop(&#39;overall&#39;);</p>
 
-print "The single 'sleep' took " . $timer-&gt;result('single') . " seconds.\n";
-print "The 'sleep' loop took " . $timer-&gt;result('loop') . " seconds.\n";
-print "Overall, this took " . $timer-&gt;result('overall') . " seconds.\n";
-</pre>
+<p>print &quot;The single &#39;sleep&#39; took &quot; . $timer-&gt;result(&#39;single&#39;) . &quot; seconds.\n&quot;;
+print &quot;The &#39;sleep&#39; loop took &quot; . $timer-&gt;result(&#39;loop&#39;) . &quot; seconds.\n&quot;;
+print &quot;Overall, this took &quot; . $timer-&gt;result(&#39;overall&#39;) . &quot; seconds.\n&quot;;
+</pre></p>
 
-<p>Which, when run, produces something like the following output:</p>
+<p>Which, when run, produces something like the following output:
 <pre>
 ~$ ./foo.pl
-The single 'sleep' took 5.002198 seconds.
-The 'sleep' loop took 5.020094 seconds.
+The single &#39;sleep&#39; took 5.002198 seconds.
+The &#39;sleep&#39; loop took 5.020094 seconds.
 Overall, this took 10.022404 seconds.
-</pre>
+</pre></p>
 
 <p>Easy and quick.  Next time, Devel::DProf.</p>
 
@@ -86,6 +86,10 @@ Overall, this took 10.022404 seconds.
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -122,10 +126,6 @@ Overall, this took 10.022404 seconds.
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -141,7 +141,8 @@ Overall, this took 10.022404 seconds.
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

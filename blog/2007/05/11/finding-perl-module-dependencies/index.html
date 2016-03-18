@@ -26,9 +26,9 @@
   <div class="main-content">
     <h1 class="article-title">Finding Perl Module Dependencies</h1>
     <div class="article-title-date">May 11, 2007</div>
-    <p>So you've written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you've made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they're going to be running your script on, or maybe you just don't want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it's run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.</p>
+    <p>So you&rsquo;ve written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you&rsquo;ve made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they&rsquo;re going to be running your script on, or maybe you just don&rsquo;t want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it&rsquo;s run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.</p>
 
-<p>The only hiccup, some of the modules you've used depend on other modules…which may have further dependencies.  Rather than suffer through dependency reminiscent of Red Hat (even the newest version…), you can use the Devel::Modlist module which will tell you which modules are required to run the program.  Invoked with the 'nocore' option, Devel::Modlist will ignore standard modules, which ought to be installed with any Perl distribution.  Here is an example from a program I wrote; the only module I invoke directly is XML::SAX.</p>
+<p>The only hiccup, some of the modules you&rsquo;ve used depend on other modules&hellip;which may have further dependencies.  Rather than suffer through dependency reminiscent of Red Hat (even the newest version&hellip;), you can use the Devel::Modlist module which will tell you which modules are required to run the program.  Invoked with the &lsquo;nocore&rsquo; option, Devel::Modlist will ignore standard modules, which ought to be installed with any Perl distribution.  Here is an example from a program I wrote; the only module I invoke directly is XML::SAX.</p>
 
 <pre><code>
 ~/code$ perl -d -MDevel::Modlist=nocore merge.pl foo.xml bar.xml
@@ -81,6 +81,10 @@ XML::SAX::PurePerl::XMLDecl
     <li>
       <ol>
             <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
+            <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
             </li>
@@ -116,10 +120,6 @@ XML::SAX::PurePerl::XMLDecl
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -135,7 +135,8 @@ XML::SAX::PurePerl::XMLDecl
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

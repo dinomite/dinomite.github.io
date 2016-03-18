@@ -26,71 +26,75 @@
   <div class="main-content">
     <h1 class="article-title">Code Golf: Grid Computing</h1>
     <div class="article-title-date">Jan 15, 2008</div>
-    <p><a href="http://codegolf.com/grid-computing">A new puzzle</a> went up on <a href="http://codegolf.com">Code Golf</a> a few weeks ago and I finally got some time to sit down and hack on it, so here's another annotated instalment of my pruning process.  I haven't gotten anywhere near the smallest solutions which are half of my 109 characters.  See the action below, but don't look if you don't want hints!</p>
+    <p><a href="http://codegolf.com/grid-computing">A new puzzle</a> went up on <a href="http://codegolf.com">Code Golf</a> a few weeks ago and I finally got some time to sit down and hack on it, so here&rsquo;s another annotated instalment of my pruning process.  I haven&rsquo;t gotten anywhere near the smallest solutions which are half of my 109 characters.  See the action below, but don&rsquo;t look if you don&rsquo;t want hints! </p>
 
-<p>Initially, a straightforward <code>for</code> loop that reads from standard input or a passed file; huzzah for Perl's built-in flexibility.  Within this loop, a counter, <code>$n</code>, is incremented to fill an array, <code>@c</code>, with the sum of each column; the sum of the row is stored in <code>$r</code>.  At the end of each iteration of the loop, the greatest row sum, <code>$a</code>, is set to the just-completed row if said row is greater than what has been seen previously or the answer is <code>undef</code>, as it is the first time through.  The lower loop puts the greatest column sum into <code>$b</code>.</p>
+<p>Initially, a straightforward <code>for</code> loop that reads from standard input or a passed file; huzzah for Perl&rsquo;s built-in flexibility.  Within this loop, a counter, <code>$n</code>, is incremented to fill an array, <code>@c</code>, with the sum of each column; the sum of the row is stored in <code>$r</code>.  At the end of each iteration of the loop, the greatest row sum, <code>$a</code>, is set to the just-completed row if said row is greater than what has been seen previously or the answer is <code>undef</code>, as it is the first time through.  The lower loop puts the greatest column sum into <code>$b</code>.</p>
 
-<p>My first pass through is 190 characters:</p>
+<p>My first pass through is 190 characters:
 <pre class="brush: perl;">
 for (&lt;&gt;) {
-	$n = $r = 0;
-	for (split ' ', $_) {
-		@c[$n] += $_;
-		$r += $_;
-		$n++;
-	}
+    $n = $r = 0;
+    for (split &#39; &#39;, $<em>) {
+        @c[$n] += $</em>;
+        $r += $_;
+        $n++;
+    }</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$a = $r if ($r &gt; $a);
+</pre></td></tr></tbody></table>
+</div>
 
-	$a = $r if ($r &gt; $a);
-}
+<p>}</p>
 
-for (@c) {
-	$b = $_ if ($_ &gt; $b);
-}
+<p>for (@c) {
+    $b = $_ if ($_ &gt; $b);
+}</p>
 
-($b &gt; $a) ? print $b.$/ : print $a.$/;
-</pre>
+<p>($b &gt; $a) ? print $b.$/ : print $a.$/;
+</pre></p>
 
-<p>Note that Perl is flexible; by using <code>&lt;&gt;</code>, input can be passed as a file on the command line or via stdin.  With some quick re-ordering of the top loop and turning the lower loop into a <code>map</code>, 20 characters are saved.  170 characters:</p>
+<p>Note that Perl is flexible; by using <code>&lt;&gt;</code>, input can be passed as a file on the command line or via stdin.  With some quick re-ordering of the top loop and turning the lower loop into a <code>map</code>, 20 characters are saved.  170 characters:
 <pre class="brush: perl;">
 for (&lt;&gt;) {
-	$n = $r = 0;
-	@c[$n++] += $_, $r += $_ for (split ' ', $_);
+    $n = $r = 0;
+    @c[$n++] += $<em>, $r += $</em> for (split &#39; &#39;, $_);</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>$a = $r if ($r &gt; $a);
+</pre></td></tr></tbody></table>
+</div>
 
-	$a = $r if ($r &gt; $a);
-}
+<p>}</p>
 
-map {$b = $_ if ($_ &gt; $b)} @c;
+<p>map {$b = $_ if ($_ &gt; $b)} @c;</p>
 
-($b &gt; $a) ? print $b.$/ : print $a.$/;
-</pre>
+<p>($b &gt; $a) ? print $b.$/ : print $a.$/;
+</pre></p>
 
-<p>Much of the whitespace can be removed (though I'll leave the newlines for now).  Down to 138 characters:</p>
+<p>Much of the whitespace can be removed (though I&rsquo;ll leave the newlines for now).  Down to 138 characters:
 <pre class="brush: perl;">
 for(&lt;&gt;){
-	$n=$r=0;
-	@c[$n++]+=$_, $r+=$_ for split' ',$_;
-	$a=$r if $r&gt;$a;
-}
+    $n=$r=0;
+    @c[$n++]+=$<em>, $r+=$</em> for split&#39; &#39;,$_;
+    $a=$r if $r&gt;$a;
+}</p>
 
-map{$b=$_ if $_&gt;$b} @c;
+<p>map{$b=$_ if $_&gt;$b} @c;</p>
 
-$b&gt;$a ? print $b.$/ : print $a.$/;
-</pre>
+<p>$b&gt;$a ? print $b.$/ : print $a.$/;
+</pre></p>
 
-<p>The <code>print</code> can be simplified, dropping 6 characters:</p>
+<p>The <code>print</code> can be simplified, dropping 6 characters:
 <pre class="brush: perl;">
 for(&lt;&gt;){
-	$n=$r=0;
-	@c[$n++]+=$_, $r+=$_ for split' ',$_;
-	$a=$r if $r&gt;$a;
-}
+    $n=$r=0;
+    @c[$n++]+=$<em>, $r+=$</em> for split&#39; &#39;,$_;
+    $a=$r if $r&gt;$a;
+}</p>
 
-map{$b=$_ if $_&gt;$b} @c;
+<p>map{$b=$_ if $_&gt;$b} @c;</p>
 
-print $b&gt;$a ? $b.$/ : $a.$/;
-</pre>
+<p>print $b&gt;$a ? $b.$/ : $a.$/;
+</pre></p>
 
-<p>At which point I'm stuck.  After beating out the last bits of whitespace, that is 109 characters.</p>
+<p>At which point I&rsquo;m stuck.  After beating out the last bits of whitespace, that is 109 characters.</p>
 
   </div>
 
@@ -113,6 +117,10 @@ print $b&gt;$a ? $b.$/ : $a.$/;
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -149,10 +157,6 @@ print $b&gt;$a ? $b.$/ : $a.$/;
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -168,7 +172,8 @@ print $b&gt;$a ? $b.$/ : $a.$/;
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

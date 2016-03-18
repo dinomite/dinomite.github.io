@@ -5,45 +5,73 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2016-03-06T19:00:00-05:00</updated>
+  <updated>2016-03-17T20:00:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Better Rails.cache Invalidation with Quick Queries</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/"/>
+    <id>http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/</id>
+    <published>2016-03-17T20:00:00-04:00</published>
+    <updated>2016-03-18T13:50:35-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Foobar&lt;/p&gt;
+&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_cool_method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+</content>
+  </entry>
   <entry>
     <title>Winter Tech Forum is The Finest</title>
     <link rel="alternate" href="http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
     <id>http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/</id>
     <published>2016-03-06T19:00:00-05:00</published>
-    <updated>2016-03-18T10:53:06-04:00</updated>
+    <updated>2016-03-18T12:10:37-04:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img alt="Snowshoeing" src="https://farm2.staticflickr.com/1621/25017324783_93c29cc2ed_z_d.jpg" /&gt;&lt;/p&gt;
 
-&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps' writeup&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
 
-&lt;h1 id="open-spaces"&gt;Open Spaces&lt;/h1&gt;
+&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps&amp;rsquo; writeup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Open Spaces&lt;/h1&gt;
+
 &lt;p&gt;The participation of everyone present, combined with the way discussions, happen is what makes WTF special.
 Open Spaces sessions are led by…whoever shows up. The person or people who had the idea might give a very brief introduction of their ideas on the topic or questions they are trying to explore, but from there the discussion can go anywhere. This leads to hugely informative sharing of experiences, be they technical, organizational, or otherwise. Recall illuminating conversations you’ve had with smart colleagues or friends in the tech industry and you’ve got a good idea of what the entire week at WTF is like.&lt;/p&gt;
 
-&lt;h1 id="people"&gt;People&lt;/h1&gt;
+&lt;h1&gt;People&lt;/h1&gt;
+
 &lt;p&gt;The conference itself is only a small part of WTF. Crested Butte is a delightfully small town (1,500 people, 0.7 square miles) and most of the attendees stay within a few minutes walk of each other. Proximity is used to great effect during the progressive dinner, where each of the big houses cooks something and the whole conference ambles from one location to the next every half-hour. The traveling party makes for wonderful discussions, as you are encourage by the whirlwind of movement to meet and talk to new people.
 WTF is also small, this year about 35 people, meaning you can, and should, meet everyone at the conference. Though some companies are &lt;a href="https://www.netflix.com/"&gt;overrepresented&lt;/a&gt; (which speaks well of their &lt;a href="http://www.slideshare.net/reed2001/culture-1798664"&gt;culture&lt;/a&gt;), the diversity of experience makes every interaction informative.&lt;/p&gt;
 
-&lt;h1 id="lightning-talks"&gt;Lightning Talks&lt;/h1&gt;
+&lt;h1&gt;Lightning Talks&lt;/h1&gt;
+
 &lt;p&gt;Lightning talks are one of many highlights of WTF. The talks are five minutes, you can have whatever slides or props you want, and the topics are unconstrained. You would expect those on Kubernetes or Kotlin, but probably not the just-as-interesting ones on ski mountaineering, knitting, and Asperger syndrome. These quick introductions to a topic foster ideas that lead to later scheduled discussions, or just informative conversations with others.&lt;/p&gt;
 
-&lt;h1 id="technology"&gt;Technology&lt;/h1&gt;
+&lt;h1&gt;Technology&lt;/h1&gt;
+
 &lt;p&gt;Technology-wise, JVM languages are popular amongst attendees, but even there the gamut from Java to Scala (with Kotlin somewhere in between) means ideas come from all angles. Open mindedness is a key tenet of everyone, so despite the very practical inclinations, languages like &lt;a href="https://www.rust-lang.org/"&gt;Rust&lt;/a&gt; and &lt;a href="http://www.ponylang.org/"&gt;Pony&lt;/a&gt; are exercised during the hack day.
 Discussions of deployment and infrastructure (where to draw the line between the two), testing strategies, and artificial intelligence round out the technical side of discussions&lt;/p&gt;
 
-&lt;h1 id="organizations"&gt;Organizations&lt;/h1&gt;
+&lt;h1&gt;Organizations&lt;/h1&gt;
+
 &lt;p&gt;How we work together is the other big focus of WTF. Creating a company that trusts its employees (&lt;a href="http://www.mindviewinc.com/"&gt;Bruce’s&lt;/a&gt; &lt;a href="http://www.reinventing-business.com/"&gt;Trust Organization&lt;/a&gt; or Teal) is a popular discussion topic. The best way to interview &amp;amp; hire for a high-functioning company was a standout session with markedly different viewpoints (particularly on coding tests) that were very informative.&lt;/p&gt;
 
-&lt;h1 id="activities"&gt;Activities&lt;/h1&gt;
+&lt;h1&gt;Activities&lt;/h1&gt;
+
 &lt;p&gt;The daily schedule is organized to take advantage of the beautiful surrounds of Crested Butte. Most afternoons will have a group snowshoeing or cross-country skiing around the town or on the many trails through the alpine valleys. If you like downhill skiing, the &lt;a href="http://www.skicb.com/"&gt;Crested Butte ski area&lt;/a&gt; is a short bus ride away. Some folks don’t care for the evils of nature and just hang out in one of the great rental houses—folks are very open to sharing their space, food, and quaffables.&lt;/p&gt;
 
-&lt;h1 id="should-you-go"&gt;Should you go?&lt;/h1&gt;
+&lt;h1&gt;Should you go?&lt;/h1&gt;
+
 &lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
 The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
 </content>
@@ -59,15 +87,15 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     </author>
     <content type="html">&lt;p&gt;I got a &lt;a href="http://www.lacrossetechnology.com/c84612/"&gt;La Crosse C84612&lt;/a&gt; weather station as a gift.  Costco sold this model sometime last year, though now the closest thing they have is a quite expensive &lt;a href="http://www.costco.com/Oregon-Scientific-WMR300-Ultra-Precision-Professional-Weather-System.product.100086588.html"&gt;Oregon Scientific unit&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The La Crosse has been a great weather station for me: easy to set up, accurate reporting, and no interaction required.  One of the features it came with that I was most excited about was internet connetivity.  The station comes with a gateway that wirelessly (900MHz, not wifi) links up with the other components of the weather station, which also link wirelessly.  Good system in theory, but it's only set up to send data to La Crosse Alerts™, a website which I can best describe as functional.&lt;/p&gt;
+&lt;p&gt;The La Crosse has been a great weather station for me: easy to set up, accurate reporting, and no interaction required.  One of the features it came with that I was most excited about was internet connetivity.  The station comes with a gateway that wirelessly (900MHz, not wifi) links up with the other components of the weather station, which also link wirelessly.  Good system in theory, but it&amp;rsquo;s only set up to send data to La Crosse Alerts™, a website which I can best describe as functional.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/13623412293/"&gt;&lt;img src="https://farm8.staticflickr.com/7241/13623412293_bdc93cd82f_z.jpg" alt="The main view of La Crosse Alerts™" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/13623412293/"&gt;&lt;img src="https://farm8.staticflickr.com/7241/13623412293_bdc93cd82f_z.jpg" alt='The main view of La Crosse Alerts™'/&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Since the output of the gateway is simply data on the wire, I figured it'd be possible to capture the communication between the gateway and the La Crosse Alerts™ server.  The first step in such a journey is to look around and see what other folks have found, and what a productive step that was this time.&lt;/p&gt;
+&lt;p&gt;Since the output of the gateway is simply data on the wire, I figured it&amp;rsquo;d be possible to capture the communication between the gateway and the La Crosse Alerts™ server.  The first step in such a journey is to look around and see what other folks have found, and what a productive step that was this time.&lt;/p&gt;
 
-&lt;p&gt;I stumbled across a &lt;a href="http://www.wxforum.net/index.php?topic=14299.0"&gt;thread on WXForum&lt;/a&gt; of folks discussing the GW1000U, which is the gateway that is part of the C84612 weather station.  If you read through there, you'll see that &lt;a href="http://www.wxforum.net/index.php?action=profile;u=11566"&gt;skydvrz&lt;/a&gt; has put in a ton of effort and reverse engineer the communication.  He has written a Windows program that takes the place of the La Crosse Alerts server, collecting data from the gateway and storing it in MySQL.  Create an account on the forum and ask skydvrz for the latest code.&lt;/p&gt;
+&lt;p&gt;I stumbled across a &lt;a href="http://www.wxforum.net/index.php?topic=14299.0"&gt;thread on WXForum&lt;/a&gt; of folks discussing the GW1000U, which is the gateway that is part of the C84612 weather station.  If you read through there, you&amp;rsquo;ll see that &lt;a href="http://www.wxforum.net/index.php?action=profile;u=11566"&gt;skydvrz&lt;/a&gt; has put in a ton of effort and reverse engineer the communication.  He has written a Windows program that takes the place of the La Crosse Alerts server, collecting data from the gateway and storing it in MySQL.  Create an account on the forum and ask skydvrz for the latest code.&lt;/p&gt;
 
-&lt;p&gt;The best part about this replacement server is that it sends dtaa to Weather Underground, which has a &lt;a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KVAARLIN28"&gt;much better interface for weather stations&lt;/a&gt;, providing history &amp;amp; graphs that are far superior to La Crosse's site.&lt;/p&gt;
+&lt;p&gt;The best part about this replacement server is that it sends dtaa to Weather Underground, which has a &lt;a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KVAARLIN28"&gt;much better interface for weather stations&lt;/a&gt;, providing history &amp;amp; graphs that are far superior to La Crosse&amp;rsquo;s site.&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -81,15 +109,9 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     </author>
     <content type="html">&lt;p&gt;There are &lt;a href="http://photographyforrealestate.net/2012/09/09/how-to-use-lightroom-4-to-create-a-time-lapse-video/"&gt;a bunch&lt;/a&gt; of &lt;a href="http://lightroom-blog.com/2013/09/17/timelapse-again-in-lightroom-5-2/"&gt;tutorials&lt;/a&gt; for creating time-lapse videos in Lightroom.  All of the ones I found only provide a preset for making 1280x720 (720p) videos.  I took one of those presets and updated it to be make a &lt;a href="/assets/JPEG 82 (1080p).lrtemplate"&gt;1920x1080 (1080p) video from stills&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Download this an add it to your Lightroom video presets.  On Mac, this is located at &lt;code&gt;~/Library/Application Support/Adobe/Lightroom/Export Presets/Video/&lt;/code&gt;.  For Windows, &lt;a href="http://store.apple.com/us"&gt;see here&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Download this an add it to your Lightroom video presets.  On Mac, this is located at &lt;code&gt;~/Library/Application Support/Adobe/Lightroom/Export Presets/Video/&lt;/code&gt;.  For Windows, &lt;a href="http://store.apple.com/us"&gt;see here&lt;/a&gt;[^1].&lt;/p&gt;
 
-&lt;div class="footnotes"&gt;
-  &lt;ol&gt;
-    &lt;li id="fn:1"&gt;
-      &lt;p&gt;Seriously not trying to be a dick, I just don't fucking know and give zero shits &lt;a href="#fnref:1" class="reversefootnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
+&lt;p&gt;[^1]: Seriously not trying to be a dick, I just don&amp;rsquo;t fucking know and give zero shits&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -101,9 +123,9 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;at(1) is a standard command in &lt;a href="http://www.freebsd.org/cgi/man.cgi?query=at&amp;amp;sektion=1"&gt;every&lt;/a&gt; &lt;a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?at"&gt;Unix-like&lt;/a&gt; &lt;a href="http://www.openbsd.org/cgi-bin/man.cgi?query=at&amp;amp;apropos=0&amp;amp;sektion=0&amp;amp;manpath=OpenBSD+Current&amp;amp;arch=i386&amp;amp;format=html"&gt;operating&lt;/a&gt; &lt;a href="http://www.shrubbery.net/solaris9ab/SUNWaman/hman1/at.1.html"&gt;system&lt;/a&gt; &lt;a href="http://illumos.org/man/1/at"&gt;that&lt;/a&gt; &lt;a href="http://www.unix.com/man-page/opensolaris/1/at/"&gt;I&lt;/a&gt; &lt;a href="http://plan9.bell-labs.com/magic/man2html?man=at&amp;amp;sect=1"&gt;know&lt;/a&gt; &lt;a href="http://netbsd.gw.com/cgi-bin/man-cgi?at++NetBSD-current"&gt;of&lt;/a&gt;, including &lt;a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/at.1.html"&gt;Mac OS&lt;/a&gt;, for scheduling tasks to be run at a later time.  Unfortunately, OS X doesn't run (or even seem to have) atd(8), the daemon responsible for running at(1)-scheduled tasks.  Complicating matters is the fact that at(1) is a very difficult to search for, because search engines strip such common words, so figuring out such issues can't really be done with even the best searching.  So here I'll list other things that one might search for: atq, atrm, and batch, which are all part of the at(1) suite of tools.&lt;/p&gt;
+    <content type="html">&lt;p&gt;at(1) is a standard command in &lt;a href="http://www.freebsd.org/cgi/man.cgi?query=at&amp;amp;sektion=1"&gt;every&lt;/a&gt; &lt;a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?at"&gt;Unix-like&lt;/a&gt; &lt;a href="http://www.openbsd.org/cgi-bin/man.cgi?query=at&amp;amp;apropos=0&amp;amp;sektion=0&amp;amp;manpath=OpenBSD+Current&amp;amp;arch=i386&amp;amp;format=html"&gt;operating&lt;/a&gt; &lt;a href="http://www.shrubbery.net/solaris9ab/SUNWaman/hman1/at.1.html"&gt;system&lt;/a&gt; &lt;a href="http://illumos.org/man/1/at"&gt;that&lt;/a&gt; &lt;a href="http://www.unix.com/man-page/opensolaris/1/at/"&gt;I&lt;/a&gt; &lt;a href="http://plan9.bell-labs.com/magic/man2html?man=at&amp;amp;sect=1"&gt;know&lt;/a&gt; &lt;a href="http://netbsd.gw.com/cgi-bin/man-cgi?at++NetBSD-current"&gt;of&lt;/a&gt;, including &lt;a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/at.1.html"&gt;Mac OS&lt;/a&gt;, for scheduling tasks to be run at a later time.  Unfortunately, OS X doesn&amp;rsquo;t run (or even seem to have) atd(8), the daemon responsible for running at(1)-scheduled tasks.  Complicating matters is the fact that at(1) is a very difficult to search for, because search engines strip such common words, so figuring out such issues can&amp;rsquo;t really be done with even the best searching.  So here I&amp;rsquo;ll list other things that one might search for: atq, atrm, and batch, which are all part of the at(1) suite of tools.&lt;/p&gt;
 
-&lt;p&gt;My (likely vain) hope is that this post will spread a bit of knowledge and maybe catch searches, if someone's searches match my description.&lt;/p&gt;
+&lt;p&gt;My (likely vain) hope is that this post will spread a bit of knowledge and maybe catch searches, if someone&amp;rsquo;s searches match my description.&lt;/p&gt;
 </content>
   </entry>
   <entry>
@@ -115,188 +137,29 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=zH64dlgyydM"&gt;I like dogs&lt;/a&gt; and recently got a beaglish one of my own from the &lt;a href="http://www.lostdogrescue.org/"&gt;Lost Dog Foundation&lt;/a&gt;.  While wonderful, he has the affliction of walking excitement common to hunting hounds—appropriate to his name, Scout wants to lead the way and suss out any squirrels to be found.  At only 25 pounds, he won't drag you down the street, but the constant tugging on the leash is tiring.  I've tried a number of collars &amp;amp; harnesses to try to combat this problem, and what follows are my opinions on them.&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=zH64dlgyydM"&gt;I like dogs&lt;/a&gt; and recently got a beaglish one of my own from the &lt;a href="http://www.lostdogrescue.org/"&gt;Lost Dog Foundation&lt;/a&gt;.  While wonderful, he has the affliction of walking excitement common to hunting hounds—appropriate to his name, Scout wants to lead the way and suss out any squirrels to be found.  At only 25 pounds, he won&amp;rsquo;t drag you down the street, but the constant tugging on the leash is tiring.  I&amp;rsquo;ve tried a number of collars &amp;amp; harnesses to try to combat this problem, and what follows are my opinions on them.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://www.flickr.com/photos/dinomite/11892424355/"&gt;&lt;img src="http://farm6.staticflickr.com/5471/11892424355_bd7c2bcc67_z.jpg" alt="Scout being Rowdy" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.flickr.com/photos/dinomite/11892424355/"&gt;&lt;img src='http://farm6.staticflickr.com/5471/11892424355_bd7c2bcc67_z.jpg' alt='Scout being Rowdy'&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id="illusion-collarhttpwwwcesarswaycomshopillusion-dog-collar-leash-system"&gt;&lt;a href="http://www.cesarsway.com/shop/Illusion-Dog-Collar-Leash-System"&gt;Illusion Collar&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;My girlfriend had been watching a lot of &lt;a href="http://www.cesarsway.com/"&gt;Caesar Millan&lt;/a&gt; before we got our dog and we put a fair bit of stock in his methods.  Using a leash in the way that &lt;a href="https://www.youtube.com/watch?v=vjub9dCBiv8"&gt;Caesar describes&lt;/a&gt;, well up the dog's neck and close to the ears, allowed us to control Scout, but the leash wouldn't stay there, so we figured it was worth trying the oddly-named&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; Illusion Collar to make this easier.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://www.cesarsway.com/shop/Illusion-Dog-Collar-Leash-System"&gt;Illusion Collar&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;While the Illusion collar does what it's supposed to, keeping the operative part of the collar well up the dog's neck for better control, this did nothing for Scout and he remaiined unruly on walks.&lt;/p&gt;
+&lt;p&gt;My girlfriend had been watching a lot of &lt;a href="http://www.cesarsway.com/"&gt;Caesar Millan&lt;/a&gt; before we got our dog and we put a fair bit of stock in his methods.  Using a leash in the way that &lt;a href="https://www.youtube.com/watch?v=vjub9dCBiv8"&gt;Caesar describes&lt;/a&gt;, well up the dog&amp;rsquo;s neck and close to the ears, allowed us to control Scout, but the leash wouldn&amp;rsquo;t stay there, so we figured it was worth trying the oddly-named[^1] Illusion Collar to make this easier.&lt;/p&gt;
 
-&lt;h2 id="petsafe-easy-walk-harnesshttpwwwamazoncomgpproductb0009zbkg4refaslisstlieutf8camp1789creative390957creativeasinb0009zbkg4linkcodeas2tagdinomitenet-20"&gt;&lt;a href="http://www.amazon.com/gp/product/B0009ZBKG4/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B0009ZBKG4&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20"&gt;PetSafe Easy Walk Harness&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;I've found this harness to be by far the most effective.  The harness has a circle of straps around the dog's body, just behind their shoulders and a strap across the dog's chest.  The front strap has a cinching portion to which the leash clips, tightening a bit when the dog pulls.  More importantly, because the attachment is on the dog's chest, the force of any pulling turns them sideways, greatly limiting thier ability to pull.&lt;/p&gt;
+&lt;p&gt;While the Illusion collar does what it&amp;rsquo;s supposed to, keeping the operative part of the collar well up the dog&amp;rsquo;s neck for better control, this did nothing for Scout and he remaiined unruly on walks.&lt;/p&gt;
 
-&lt;p&gt;The downside to the Easy Walk is that the strap behind the dog's front legs can rub their fur-less armpits raw, as I've found with Scout and other friends have reported.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://www.amazon.com/gp/product/B0009ZBKG4/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B0009ZBKG4&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20"&gt;PetSafe Easy Walk Harness&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h2 id="freedom-no-pull-harnesshttpwwwamazoncomgpproductb0085xohdurefaslisstlieutf8camp1789creative390957creativeasinb0085xohdulinkcodeas2tagdinomitenet-20"&gt;&lt;a href="http://www.amazon.com/gp/product/B0085XOHDU/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B0085XOHDU&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20"&gt;Freedom No-Pull Harness&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;This is set up similarly to the PetSafe Easy Walk mentioned above, but with additional versatility.  Like the PetSafe it has an attachment point on the dog's chest, with all of the noted advantages &amp;amp; disadvantages, though the front attachment on the Freedom No-Pull isn't cinching.  Where it does have a cinching attachment point is on the dog's back between their shoulder blades.  Using this attachment doesn't provide nearly the pulling prevention of the front attachment, but it does keep from driving the underbody strap into the dog's armpits and chafing them.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve found this harness to be by far the most effective.  The harness has a circle of straps around the dog&amp;rsquo;s body, just behind their shoulders and a strap across the dog&amp;rsquo;s chest.  The front strap has a cinching portion to which the leash clips, tightening a bit when the dog pulls.  More importantly, because the attachment is on the dog&amp;rsquo;s chest, the force of any pulling turns them sideways, greatly limiting thier ability to pull.&lt;/p&gt;
 
-&lt;p&gt;The intended arrangement is to clip a leash into both attachments and use it like a horse's reins—tug on the front one when the dog pulls to correct the behavior.  This is effective, but it does halve the length of your leash.&lt;/p&gt;
+&lt;p&gt;The downside to the Easy Walk is that the strap behind the dog&amp;rsquo;s front legs can rub their fur-less armpits raw, as I&amp;rsquo;ve found with Scout and other friends have reported.&lt;/p&gt;
 
-&lt;div class="footnotes"&gt;
-  &lt;ol&gt;
-    &lt;li id="fn:1"&gt;
-      &lt;p&gt;The Illusion collar is named after his estranged wife Ilusión &lt;a href="#fnref:1" class="reversefootnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</content>
-  </entry>
-  <entry>
-    <title>GORUCK Challenge</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2013/06/27/goruck-challenge-preparation/"/>
-    <id>http://blog.url.com/blog/2013/06/27/goruck-challenge-preparation/</id>
-    <published>2013-06-26T20:00:00-04:00</published>
-    <updated>2016-03-17T20:17:39-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9157378869/"&gt;&lt;img src="https://farm4.staticflickr.com/3713/9157378869_d05b4078ef_z.jpg" /&gt;&lt;/a&gt;
-Photo credit: &lt;a href="http://www.facebook.com/troyangrignon"&gt;Troy Angrignon&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="http://www.amazon.com/gp/product/B0085XOHDU/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B0085XOHDU&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20"&gt;Freedom No-Pull Harness&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;I did the &lt;a href="https://www.goruck.com/events/Challenge"&gt;GORUCK Challenge&lt;/a&gt; last
-weekend.  The GORUCK Challenge is a 12 hour guided tour of a city, led by
-special forces guys known as the Cadre.  Every challenge, even in the same city,
-is a different experience, tailored by the Cadre based upon their desires, the
-folks on the team, and what the city has to offer.&lt;/p&gt;
+&lt;p&gt;This is set up similarly to the PetSafe Easy Walk mentioned above, but with additional versatility.  Like the PetSafe it has an attachment point on the dog&amp;rsquo;s chest, with all of the noted advantages &amp;amp; disadvantages, though the front attachment on the Freedom No-Pull isn&amp;rsquo;t cinching.  Where it does have a cinching attachment point is on the dog&amp;rsquo;s back between their shoulder blades.  Using this attachment doesn&amp;rsquo;t provide nearly the pulling prevention of the front attachment, but it does keep from driving the underbody strap into the dog&amp;rsquo;s armpits and chafing them.&lt;/p&gt;
 
-&lt;h2 id="class-662-summary"&gt;Class 662 Summary&lt;/h2&gt;
-&lt;p&gt;A team of 34 people, each with a 45-55 pound rucksack hiked &amp;amp; ran 20 miles
-around San Francisco over the course of 12 hours.  We were accompanied by two 30
-pound bags of quarters, a ~100 pound log, and, for about half of the time,
-a ~300 pound couch adorned with a 210-230 pound person. In the last few hours,
-we swapped the couch for a pair of 250 pound logs.&lt;/p&gt;
+&lt;p&gt;The intended arrangement is to clip a leash into both attachments and use it like a horse&amp;rsquo;s reins—tug on the front one when the dog pulls to correct the behavior.  This is effective, but it does halve the length of your leash.&lt;/p&gt;
 
-&lt;h2 id="difficulty"&gt;Difficulty&lt;/h2&gt;
-&lt;p&gt;Overall the event was a &lt;em&gt;ton&lt;/em&gt; of fun.  Having read numerous things in the weeks
-leading up to this, my first challenge, I had gotten a bit worried.  The number
-of people who listed this as the hardest thing they'd ever done and hinted
-at the misery they endured made it sound like a rough, "Well, I'm glad I did
-that. Once." sort of thing.  Nothing could be further from the truth.  If
-you're physically capable, you'll have a good time until the end.&lt;/p&gt;
-
-&lt;p&gt;What do I mean by capable?  I don't think a single test other than the Challenge
-itself (or perhaps doing a Light and saying it was easy) could make it clear,
-but I can put it in CrossFit terms.  CrossFit + weight lifting is my main
-regimen, 3-4 days a week at &lt;a href="http://www.patriotcrossfit.com/blog/"&gt;Patriot CrossFit&lt;/a&gt;
-in Arlington if you want to get an idea of the programming.  I'm certainly no
-firebreather, but I manage to do a majority of the workouts as prescribed and
-in fairly good time.  If you can follow the &lt;a href="http://www.crossfit.com/"&gt;main site&lt;/a&gt;,
-doing half of the workouts as prescribed without being horribly slow, you'll be
-fine.  You need not be &lt;a href="http://www.youtube.com/watch?v=xJ27XzR3HJc"&gt;Jason Kaplan&lt;/a&gt;
-to be in good enough shape—my 7 minute Fran is enough to make the Challenge a
-non-killer event.&lt;/p&gt;
-
-&lt;h1 id="notes-on-preparation"&gt;Notes on Preparation&lt;/h1&gt;
-
-&lt;h2 id="hydration"&gt;Hydration&lt;/h2&gt;
-&lt;p&gt;I say hydration here because I think something more than water is important.
-I used a &lt;a href="https://www.goruck.com/Gear/Details/low-profile-hydration-bladder"&gt;low-profile SOURCE bladder&lt;/a&gt;
-which fit well in the main compartment between my bricks and the main flap.
-I filled it with water and 6 &lt;a href="https://www.amazon.com/dp/B001QW1L72/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B001QW1L72&amp;amp;adid=16NHVNWNJT4379CHRA7K&amp;amp;"&gt;Nuun tablets&lt;/a&gt;
-initially, and tossed in a few more tablets when I refilled at around 0300.  We
-didn't stop for water again and I was out near the end of the challenge, along
-with most of the team.  If my next Challenge is anywhere warmer, I'll find a way
-to have a second bladder or even a couple of Nalgenes.&lt;/p&gt;
-
-&lt;h2 id="food"&gt;Food&lt;/h2&gt;
-&lt;p&gt;I often deride cyclists for their obsession with fast carbs, thinking that
-without sucking down maltodextrin every 20 minutes they might just go from being
-a world-class überathelete on their Yellow Polkadot Single Baller Edition
-Cervélo to a prole riding a Mongoose.  But it is to cyclists whom I turned when
-gathering supplies for this challenge.  In the end, I downed seven gels and two
-packs of chewie jobbies throughout the 12 hours.  Are those absolutely
-necessary?  Not at all, I could have gotten through without any of that and
-gone strict paleo with some bananas or some such.  But it would have sucked.
-Having good blood sugar support after glycogen stores are depleted increases
-your ability to perform for sure; more importantly, the carbohydrate combined
-with caffeine improves mood, keeping the event from being a gruelling death
-march.&lt;/p&gt;
-
-&lt;p&gt;So hit up your local bike shop and get some of those goofy fast acting
-carbohydrate sources.  I had a couple of &lt;a href="https://www.amazon.com/dp/B0010TADUW/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B0010TADUW&amp;amp;adid=01XQGWDWXR3T3TSYGRMM&amp;amp;"&gt;Honey Stingers&lt;/a&gt;
-(which are mostly honey) but most of what I brought were caffeinated (35mg or
-70mg depending on the flavor) &lt;a href="https://www.amazon.com/dp/B007I6NLFU/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B007I6NLFU&amp;amp;adid=0YDREPJX49416514ZN73&amp;amp;"&gt;Gu Roctane&lt;/a&gt;
-energy gels.  I drink tea regularly, so I think the regular-strength (35mg) ones
-were best for me.  Next time I'll probably bring 10 gels along with a bunch of
-the &lt;a href="https://www.amazon.com/dp/B0041HKO3G/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B0041HKO3G&amp;amp;adid=1KMX5P2VRMECJ8Q9Q0NJ&amp;amp;"&gt;chewie versions&lt;/a&gt;.
-The chewies are amazingly delightful after you've speed marched across the city.
-If you're the prepared sort, it'd be good to bring some extra.  Even amongst
-such a rarefied group there are knuckleheads who bring little to no food.  If
-someone's performance falls off, a caffeinated gel is a great way to bring them
-back.&lt;/p&gt;
-
-&lt;p&gt;I also brought a few bars (Luna or UberFood, I think) but only ate one.  It's
-nice to have something different during a long break (5 minutes).&lt;/p&gt;
-
-&lt;h2 id="clothing"&gt;Clothing&lt;/h2&gt;
-&lt;p&gt;This challenge was during June in San Francisco.  For those who don't know,
-that's winter.  Paradoxically, it wasn't windy &lt;em&gt;or&lt;/em&gt; foggy that night, but it was
-a bit cold.&lt;/p&gt;
-
-&lt;p&gt;I wore Under Armour leggings, some Champion workout shorts, &lt;a href="http://www.drymaxsocks.com/running_hyper_thin.php"&gt;Drymax socks&lt;/a&gt;,
-a &lt;a href="https://www.amazon.com/dp/B00275Q8ZW/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B00275Q8ZW&amp;amp;adid=0JWP8VED4W44F2TK8VZ7&amp;amp;"&gt;padded football shirt&lt;/a&gt;,
-a long-sleeve Under Armour Cold Gear top, and a workout shirt over that.&lt;/p&gt;
-
-&lt;p&gt;Unsure of my shoe choice up until the day of The Challenge, I settled on Inov8
-F-Lite 195s.  I've been wearing minimalist shoes (Merrel Trail Gloves are my
-favorites) exclusively for a few years now, but I was concerned that the extra
-weight on my back would lead to a Bad Time for my feet &amp;amp; knees.  I had bought
-some F-Lite 230s which were what I had planed on until the day of, but I settled
-on the 195s because my feet feel better in them.  They were just fine, despite
-the weight and surfaces we were walking on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.fieggen.com/shoelace/surgeonknot.htm"&gt;&lt;img src="http://www.fieggen.com/Dont_Link/FinishedSurgeonKnot1.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The other thing you need to do is &lt;a href="http://www.fieggen.com/shoelace/surgeonknot.htm"&gt;tie your shoes properly&lt;/a&gt;.
-If you can slip your shoes off without untying them, they aren't tied properly.
-We had to stop multiple times during our first time hack in which we needed to
-cover 3.5 miles in 35 minutes due to shoes that came untied or got flat tired.
-Properly tying your shoes completely prevents both of these and will keep your
-teammates from thinking you're incompetent from the beginning.&lt;/p&gt;
-
-&lt;p&gt;Pockets.  You want pockets.  Movements are often an hour or more, during which
-time you don't have opportunity to dig around your pack for the aforementioned
-sugary delights.  Every time you stop, ensure your pockets have a gel or two in
-them.  Pockets are also where you'll shove the trash after you down one of those
-as cadre are strict about littering, rightly so.&lt;/p&gt;
-
-&lt;h2 id="your-ruck"&gt;Your Ruck&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9159389132/"&gt;&lt;img src="https://farm6.staticflickr.com/5540/9159389132_4c88fea201_c.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9159343672/"&gt;&lt;img class="image-right" src="https://farm4.staticflickr.com/3667/9159343672_fa6d911781.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Do something to your ruck so that you can differentiate it from everyone elses.
-All cadre are different, but you'll end up taking your ruck off and passing it
-to teammates at some point in the night, and if they all look the same, it's
-impossible to find your own.  I had a light-colored War Stories &amp;amp; Free Beer
-patch so that I could identify my GR1 from the back; the loops of cord that I
-use to hold my hydration tube makes it notable from the front.&lt;/p&gt;
-
-&lt;p&gt;Having a black Omega carabiner clipped through three MOLLE sure does look cool,
-but it's not particularly funcitonal.  I have one on my ruck and it's nice for
-briefly attaching a water bottle or my bike helmet, but it's really difficult
-to remove for other uses.  When your ruck is jammed full of bricks, water, and
-yoga blocks, you can't manipulate the fabric enough to remove the 'biner
-easily, so save yourself the hassle and have it only clipped through two loops
-so that it's faster to get at.&lt;/p&gt;
-
-&lt;h2 id="other-junk"&gt;Other Junk&lt;/h2&gt;
-
-&lt;p&gt;Minimize it, but don't go crazy.  There are endless words written to the effect
-of "if you're not sure, don't bring it".  I largely subscribe to this mentality,
-as you most likely aren't going to need things, but there's a dose of realism
-that is needed here.  Between the 30 pounds of bricks and the 10 pounds of
-water and misc that are the minimum weight, you aren't going to notice a few
-extra food bars, gels, or a windbreaker, so don't sweat it.  If the weather is
-on the edge of being cold, bring the windbreaker.  I always carry a Sharpie &amp;amp;
-a pen in my ruck day to day and was sad that I didn't have them when we needed
-to write things down.&lt;/p&gt;
-
-&lt;p&gt;Things to certainly not bring are those that will absorb water.  Carrying around
-a small portion of your local body of water is a bad time.&lt;/p&gt;
+&lt;p&gt;[^1]: The Illusion collar is named after his estranged wife Ilusión&lt;/p&gt;
 </content>
   </entry>
 </feed>

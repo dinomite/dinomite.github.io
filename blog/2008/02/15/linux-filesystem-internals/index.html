@@ -32,22 +32,22 @@
 
 <p>At a low level, Unix filesystems are made up of three main pieces on the disk: a superblock, inodes and data blocks.  The superblock contains information about the filesystem: a magic number to identify the type, the size of the filesystem, free data blocks and other gross information.  After the superblock comes a list of inodes, each of which contains metadata about a file including the permissions, the number of links to the file, the file type (symlink, directory, etc.) and the datablocks that hold the actual file data.   Note the conspicuous lack of a filename in the inode; more on this later. The balance of the space on a partition is made up of those data blocks which hold the actual file data.</p>
 
-<p>As mentioned previously, inodes only store metadata; the actual data is stored in one or more data blocks, the inode merely keeps a list of the blocks that contain the data for the file.  In ext2/3, each inode has 15 blocks that can each refer to a single data block, each of which is usually 1 kilobyte meaning that the maximum filesize on ext2 is 15 kilobytes…but that's certainly not true.  The 15 data-referencing blocks are actually allocated more intelligently than that.  The first 12 (0..11) are direct blocks, pointing to the first 12 blocks (kilobytes) of a file.  The 12th block is the indirect block; instead of pointing to data blocks that contain data, it points to a data block that contains a list of up to 2060 addresses of blocks that contain data.  Since a maximum filesize of (2060+12) 2072 kilobytes isn't sufficient for most peoples needs, the 13th block is doubly-indirect and the 14th is triply-indirect.  With all that indirection, the maximum filesize on ext2/3 is about 35 gigabytes, which ought to be enough for anyone.</p>
+<p>As mentioned previously, inodes only store metadata; the actual data is stored in one or more data blocks, the inode merely keeps a list of the blocks that contain the data for the file.  In ext2/3, each inode has 15 blocks that can each refer to a single data block, each of which is usually 1 kilobyte meaning that the maximum filesize on ext2 is 15 kilobytes&hellip;but that&rsquo;s certainly not true.  The 15 data-referencing blocks are actually allocated more intelligently than that.  The first 12 (0..11) are direct blocks, pointing to the first 12 blocks (kilobytes) of a file.  The 12th block is the indirect block; instead of pointing to data blocks that contain data, it points to a data block that contains a list of up to 2060 addresses of blocks that contain data.  Since a maximum filesize of (2060+12) 2072 kilobytes isn&rsquo;t sufficient for most peoples needs, the 13th block is doubly-indirect and the 14th is triply-indirect.  With all that indirection, the maximum filesize on ext2/3 is about 35 gigabytes, which ought to be enough for anyone.</p>
 
 <p>So, when you want to read a file, the operating system first checks the metadata in the inode to ensure you have permission to access said file.  Assuming you do, data is pulled from the data blocks listed in the inode, with appropriate indirection depending upon the size of the file.</p>
 
 <p>I mentioned previously that filenames are not part of the inode, which seems odd as the filename seems to be a type of file metadata.  The rub is that in POSIX systems a file can have multiple names; my home directory can be referred to as <code>/home/dinomite</code>, <code>/home/dinomite/.</code>, <code>/home/dinomite/bin/..</code> or a number of other names.  How is this handled and where are filenames actually put?  In directories.  A directory boils down to nothing more than a list of names and their associated inode numbers, which we refer to has a link, giving name to the system call <code>unlink</code> which most people refer to as delete.  When you refer to a file by name, the operating system starts at the root node (<code>/</code>), which is always inode number 2.  Beginning with the root directory listing, it matches filenames to inode numbers, cascading this lookup until it has found the file that you referenced.</p>
 
-<p>The important thing mentioned in the previous paragraph is that filenames in a directory list are links to a file; each of those links is noted in the file's inode as the link count.  Whenever a file is given a name (either by being created or a hard link via <code>ln</code>), the link count is incremented; when a link is deleted, the link count is decremented.  When the link count reaches zero, the kernel releases those data block, unless the file is currently open.  In the latter case, the data blocks are freed when the file is closed.  This also lends insight into how undelete programs work and what computer people mean when they say deleting something doesn't actually get rid of the data on the disk.  When you delete a file, more properly known as unlinking it, the only thing that actually goes away is the data in the inode.  Until they are overwritten, the data blocks still contain the data prior to being deleted.  <code>fsck</code> works in a similar manner, searching for inodes that have positive link counts, but no references in directories.</p>
+<p>The important thing mentioned in the previous paragraph is that filenames in a directory list are links to a file; each of those links is noted in the file&rsquo;s inode as the link count.  Whenever a file is given a name (either by being created or a hard link via <code>ln</code>), the link count is incremented; when a link is deleted, the link count is decremented.  When the link count reaches zero, the kernel releases those data block, unless the file is currently open.  In the latter case, the data blocks are freed when the file is closed.  This also lends insight into how undelete programs work and what computer people mean when they say deleting something doesn&rsquo;t actually get rid of the data on the disk.  When you delete a file, more properly known as unlinking it, the only thing that actually goes away is the data in the inode.  Until they are overwritten, the data blocks still contain the data prior to being deleted.  <code>fsck</code> works in a similar manner, searching for inodes that have positive link counts, but no references in directories.</p>
 
-<p>Finally, there are symbolic links.  With a symlink, an inode is allocated and has its symlink bit set.  If the file pointed to by the symlink is 60 bytes or less, it is stored directly in the inode.  If its longer, the pointed-to file is stored in data blocks and they are pointed to by the inode in the normal fashion.  Note that symbolic links to not affect an inode's link count, hence broken links.</p>
+<p>Finally, there are symbolic links.  With a symlink, an inode is allocated and has its symlink bit set.  If the file pointed to by the symlink is 60 bytes or less, it is stored directly in the inode.  If its longer, the pointed-to file is stored in data blocks and they are pointed to by the inode in the normal fashion.  Note that symbolic links to not affect an inode&rsquo;s link count, hence broken links.</p>
 
-<p>References</p>
+<p>References
 <ul>
 <li><a href="http://perl.plover.com/classes/ext2fs/">Internals of the ext2 Filesystem</a> - M. J. Dominus</li>
-<li><a href="http://perl.plover.com/classes/files/">What's a file?</a> - M. J. Dominus</li>
-<li><a href="http://uranus.chrysocome.net/explore2fs/es2fs.htm">John's ext2 spec</a> - John Newbigin</li>
-</ul>
+<li><a href="http://perl.plover.com/classes/files/">What&rsquo;s a file?</a> - M. J. Dominus</li>
+<li><a href="http://uranus.chrysocome.net/explore2fs/es2fs.htm">John&rsquo;s ext2 spec</a> - John Newbigin</li>
+</ul></p>
 
   </div>
 
@@ -70,6 +70,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -106,10 +110,6 @@
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -125,7 +125,8 @@
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -26,23 +26,23 @@
   <div class="main-content">
     <h1 class="article-title">fawk</h1>
     <div class="article-title-date">Feb  8, 2009</div>
-    <p>There are a lot of old-school Unix commands that can be strung together to form miniatures programs a solution where one doesn't already exist.  Often times, they're great for nothing more than trimming the output from command line programs to make ocular searching easier.  <code>awk</code> is one of these great little text processing utilities, though I usually find myself using it in only it's simplest fashion: to print a specific record from a line of input.</p>
-<pre class="brush: bash;">Caligula:~$ df -h|awk '{print $2}'
+    <p>There are a lot of old-school Unix commands that can be strung together to form miniatures programs a solution where one doesn&rsquo;t already exist.  Often times, they&rsquo;re great for nothing more than trimming the output from command line programs to make ocular searching easier.  <code>awk</code> is one of these great little text processing utilities, though I usually find myself using it in only it&rsquo;s simplest fashion: to print a specific record from a line of input.
+<pre class="brush: bash;">Caligula:~$ df -h|awk &#39;{print $2}&#39;
 698Gi
 298Gi
 190Gi</pre>
-<p>That <code>awk</code> command, <code>'{print $2}'</code>, is more than a bit cumbersome to type, so I keyed up a quick function in my <code>.bashrc</code> to make performing this quick operation easier:</p>
+That <code>awk</code> command, <code>&#39;{print $2}&#39;</code>, is more than a bit cumbersome to type, so I keyed up a quick function in my <code>.bashrc</code> to make performing this quick operation easier:
 <pre class="brush: bash;">Caligula:~$ df -h|fawk 2
 698Gi
 298Gi
 190Gi</pre>
-<p>And the function:</p>
+And the function:
 <pre class="brush: bash;">function fawk {
-    first="awk '{print "
-    last="}'"
-    cmd="${first}$${1}${last}"
+    first=&quot;awk &#39;{print &quot;
+    last=&quot;}&#39;&quot;
+    cmd=&quot;${first}$${1}${last}&quot;
     eval $cmd
-}</pre>
+}</pre></p>
 
   </div>
 
@@ -65,6 +65,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -101,10 +105,6 @@
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -120,7 +120,8 @@
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

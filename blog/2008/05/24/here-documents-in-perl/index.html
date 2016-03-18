@@ -26,7 +26,7 @@
   <div class="main-content">
     <h1 class="article-title">here-documents in Perl</h1>
     <div class="article-title-date">May 24, 2008</div>
-    <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn't know their proper name.  In Python, you define a here document with three single or double quotes:</p>
+    <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn&rsquo;t know their proper name.  In Python, you define a here document with three single or double quotes:</p>
 
 <pre class="brush: python;">foo = """
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -36,15 +36,15 @@ fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in c
 mollit anim id est laborum.
 """</pre>
 
-<p>One day, when I wanted to put some large blocks of text amongst code, I searched for a way to do this in Perl and found the syntax:</p>
-<pre class="brush: perl;">my $foo =&lt;&lt; "EOF";
+<p>One day, when I wanted to put some large blocks of text amongst code, I searched for a way to do this in Perl and found the syntax:
+<pre class="brush: perl;">my $foo =&lt;&lt; &quot;EOF&quot;;
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
 mollit anim id est laborum.
 EOF</pre>
-<p>Note the use of quotes for the string-terminating sentinel (EOF, in this case, though it can be anything), which affects how the sting is interpreted.  Just like with other strings in Perl, double-quotes mean that variables and escapes will be interpreted whereas they are ignored in single-quoted strings.</p>
+Note the use of quotes for the string-terminating sentinel (EOF, in this case, though it can be anything), which affects how the sting is interpreted.  Just like with other strings in Perl, double-quotes mean that variables and escapes will be interpreted whereas they are ignored in single-quoted strings.</p>
 
   </div>
 
@@ -67,6 +67,10 @@ EOF</pre>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -103,10 +107,6 @@ EOF</pre>
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -122,7 +122,8 @@ EOF</pre>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -26,7 +26,7 @@
   <div class="main-content">
     <h1 class="article-title">Changing CPAN Mirrors</h1>
     <div class="article-title-date">Apr 14, 2008</div>
-    <p>I wanted to change the mirrors that CPAN was set to use because it seemed that the first one on the list wasn't responding.  I figured there must be a way to do this from the CPAN command line and indeed, a quick Google search <a href="http://sial.org/howto/perl/life-with-cpan/#s5">turned up a result</a>.  To do what I wanted, I first printed the current URL list, shifted off the offending host and then wrote the altered configuration to disk for next time</p>
+    <p>I wanted to change the mirrors that CPAN was set to use because it seemed that the first one on the list wasn&rsquo;t responding.  I figured there must be a way to do this from the CPAN command line and indeed, a quick Google search <a href="http://sial.org/howto/perl/life-with-cpan/#s5">turned up a result</a>.  To do what I wanted, I first printed the current URL list, shifted off the offending host and then wrote the altered configuration to disk for next time
 <pre>
 cpan&gt; o conf urllist
     urllist
@@ -35,7 +35,7 @@ cpan&gt; o conf urllist
         ftp://cpan.calvin.edu/pub/CPAN
         ftp://cpan.cse.msu.edu/
         ftp://cpan.mirrors.redwire.net/pub/CPAN/
-Type 'o conf' to view configuration edit options
+Type &#39;o conf&#39; to view configuration edit options
 cpan&gt; o conf urllist shift
 cpan&gt; o conf urllist
     urllist
@@ -43,9 +43,9 @@ cpan&gt; o conf urllist
         ftp://cpan.calvin.edu/pub/CPAN
         ftp://cpan.cse.msu.edu/
         ftp://cpan.mirrors.redwire.net/pub/CPAN/
-Type 'o conf' to view configuration edit options
+Type &#39;o conf&#39; to view configuration edit options
 cpan&gt; o conf urllist commit
-</pre>
+</pre></p>
 
 <p>To completely reconfigure CPAN, you can use the command <code>o conf init</code>.</p>
 
@@ -70,6 +70,10 @@ cpan&gt; o conf urllist commit
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -106,10 +110,6 @@ cpan&gt; o conf urllist commit
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -125,7 +125,8 @@ cpan&gt; o conf urllist commit
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

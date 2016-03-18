@@ -26,9 +26,9 @@
   <div class="main-content">
     <h1 class="article-title">Installing Sun Java on Ubuntu</h1>
     <div class="article-title-date">May 21, 2006</div>
-    <p>I installed Azureus on my Ubuntu machine recently and found it to absolutely <em>peg</em> the CPU when downloading more than a few torrents at once.  I know that Bittorrent is a pretty CPU intensive protocol, but I had been running similar numbers of torrents on the same machine using <a href="http://packages.ubuntu.com/breezy/net/bittornado">bittornado</a> with much less ado.  By default, Ubuntu installs the <a href="http://packages.ubuntu.com/breezy/interpreters/java-gcj-compat">GCJ Java virtual machine</a>, which is a perfectly serviceable JVM, but I suspected it wasn't as good as Sun's own.  I'll shall not decree that Sun's JVM is better than GCJ, as I didn't actually run any tests, but Azureus runs faster now that I'm using the Sun machine.  Onward.</p>
+    <p>I installed Azureus on my Ubuntu machine recently and found it to absolutely <em>peg</em> the CPU when downloading more than a few torrents at once.  I know that Bittorrent is a pretty CPU intensive protocol, but I had been running similar numbers of torrents on the same machine using <a href="http://packages.ubuntu.com/breezy/net/bittornado">bittornado</a> with much less ado.  By default, Ubuntu installs the <a href="http://packages.ubuntu.com/breezy/interpreters/java-gcj-compat">GCJ Java virtual machine</a>, which is a perfectly serviceable JVM, but I suspected it wasn&rsquo;t as good as Sun&rsquo;s own.  I&rsquo;ll shall not decree that Sun&rsquo;s JVM is better than GCJ, as I didn&rsquo;t actually run any tests, but Azureus runs faster now that I&rsquo;m using the Sun machine.  Onward.</p>
 
-<p>Overall this is a pretty simple install. First, because of how Sun's JVM is licensed, you need to manually download it from <a href="http://java.sun.com/j2se/1.5.0/download.jsp">the Sun site</a>.  If you plan on compiling Java code, get the Java Development Kit (JDK); if you don't write software, you can just get the Java Runtime Environment (JRE).  Either way, make sure you get the vanilla package, not the RPM (RedHat package).</p>
+<p>Overall this is a pretty simple install. First, because of how Sun&rsquo;s JVM is licensed, you need to manually download it from <a href="http://java.sun.com/j2se/1.5.0/download.jsp">the Sun site</a>.  If you plan on compiling Java code, get the Java Development Kit (JDK); if you don&rsquo;t write software, you can just get the Java Runtime Environment (JRE).  Either way, make sure you get the vanilla package, not the RPM (RedHat package).</p>
 
 <p>Once you have that, you need to install <code>java-package</code> using apt-get.  You will first need to change two lines in your <code>/etc/apt/sources.list</code> file, adding <code>universe</code> and <code>multiverse</code> as is shown below:</p>
 
@@ -37,11 +37,11 @@ deb http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe mult
 deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe multiverse</b>
 </code></p>
 
-<p>Open a terminal and type this in, answering "yes" to any questions the program asks:</p>
+<p>Open a terminal and type this in, answering &ldquo;yes&rdquo; to any questions the program asks:</p>
 
 <p><code>sudo apt-get install java-package</code></p>
 
-<p>Now, you just need to make a .deb out of Sun's Java package that you grabbed.  In the same terminal, change to the directory where said package resides and run the following, once again choosing happy answers like 'y' and 'yes' when you are presented with quesions:</p>
+<p>Now, you just need to make a .deb out of Sun&rsquo;s Java package that you grabbed.  In the same terminal, change to the directory where said package resides and run the following, once again choosing happy answers like &lsquo;y&rsquo; and &#39;yes&rsquo; when you are presented with quesions:</p>
 
 <p><code>chmod +x *.bin; fakeroot make-jpkg *.bin; sudo dpkg -i sun-j2sdk*.deb</code></p>
 
@@ -70,6 +70,10 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe 
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -106,10 +110,6 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe 
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -125,7 +125,8 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe 
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

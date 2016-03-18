@@ -28,55 +28,49 @@
     <div class="article-title-date">Jan 13, 2006</div>
     <h1>Compiling the Darwin Kernel</h1>
 
-<p>I'm writing this how-to beause when I wanted to enable MAC address spoofing on my Powerbook, it was a little bit more of an adventure than I had hoped for.  I had to look through a number of different tutorials, picking and choosing what I knew from my experience with Mac OSX and Linux/BSD to be correct; there are a number of conflicting directions in other tutorials.  Hopefully mine makes sense the whole way through.</p>
+<p>I&rsquo;m writing this how-to beause when I wanted to enable MAC address spoofing on my Powerbook, it was a little bit more of an adventure than I had hoped for.  I had to look through a number of different tutorials, picking and choosing what I knew from my experience with Mac OSX and Linux/BSD to be correct; there are a number of conflicting directions in other tutorials.  Hopefully mine makes sense the whole way through.</p>
 
 <h2>Prepare the Build Environment</h2>
 
-<p>To build a Mach kernel you need a number of things, namely, XCode, bootstrap_cmds, Libstreams, cctools, kext-tools, IOKitUser and xnu.  The former is included on any new Mac (run the "Developer Tools" installer in the Applications folder) and the latter must be obtained from the Apple developers site, which requires a (free) membership login.</p>
+<p>To build a Mach kernel you need a number of things, namely, XCode, bootstrap_cmds, Libstreams, cctools, kext-tools, IOKitUser and xnu.  The former is included on any new Mac (run the &ldquo;Developer Tools&rdquo; installer in the Applications folder) and the latter must be obtained from the Apple developers site, which requires a (free) membership login.</p>
 
 <ol>
-  <li>Assuming you have XCode installed, the first thing to do is grab the packages that you'll need for building the kernel.  They can be obtained from the abovementioned location, <a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl">http://www.opensource.apple.com/darwinsource/tarballs/apsl</a>.  You'll need the following packages:
-    <ul>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/bootstrap_cmds-44.tar.gz">bootstrap_cmds</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/Libstreams-23.tar.gz">Libstreams</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/cctools-525.tar.gz">cctools</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/kext_tools-42.tar.gz">kext-tools</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/IOKitUser-184.tar.gz">IOKitUser</a></li>
-      <li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/xnu-517.11.1.tar.gz">xnu</a>
+<li><p>Assuming you have XCode installed, the first thing to do is grab the packages that you&rsquo;ll need for building the kernel.  They can be obtained from the abovementioned location, <a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl">http://www.opensource.apple.com/darwinsource/tarballs/apsl</a>.  You&rsquo;ll need the following packages:</p>
+
+<ul>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/bootstrap_cmds-44.tar.gz">bootstrap_cmds</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/Libstreams-23.tar.gz">Libstreams</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/cctools-525.tar.gz">cctools</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/kext_tools-42.tar.gz">kext-tools</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/IOKitUser-184.tar.gz">IOKitUser</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/xnu-517.11.1.tar.gz">xnu</a>
 Just grab those packages (get the latest versions) and toss them into a directory where we can work.  I used /usr/local/src.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Untar all of those packages:  &lt;pre&gt;# cd /usr/local/src; for i in $(ls); do tar zxvf $i; done&lt;/pre&gt;  Whew, that was tough.  Go make a sandwich before continuing.</p>
-  </li>
-  <li>
-    <p>Let's build what we need in <code>bootstrap_cmds</code> and <code>Libstreams</code>, because they're easy.
-<br /><strong>Note</strong>: I'm performing all of these commands as root, which isn't enabled be default on Mac OS X (I think).  Most people will probably more comfortable with untarring/building all of these things in their own userspace (say, your home directory) and then using sudo when you need to be root.  I come from Linux, where <em>Real Men</em> use su.
+</ul></li>
+<li><p>Untar all of those packages:  <pre># cd /usr/local/src; for i in $(ls); do tar zxvf $i; done</pre>  Whew, that was tough.  Go make a sandwich before continuing.</p></li>
+<li><p>Let&rsquo;s build what we need in <code>bootstrap_cmds</code> and <code>Libstreams</code>, because they&rsquo;re easy.
+<br /><strong>Note</strong>: I&rsquo;m performing all of these commands as root, which isn&rsquo;t enabled be default on Mac OS X (I think).  Most people will probably more comfortable with untarring/building all of these things in their own userspace (say, your home directory) and then using sudo when you need to be root.  I come from Linux, where <em>Real Men</em> use su.
 <br /><code># cd bootstrap_cmds-*/relpath.tproj</code>
 <br /><code># make</code>
 <br /><code># make install</code>
 <br />Now, Libstreams:
 <br /><code># cd ../../Libstreams-*</code>
 <br /><code># make</code>
-<br /><code># make install</code></p>
-  </li>
-  <li>
-    <p>Time to build cctools, it's a little bit more involved.
+<br /><code># make install</code></p></li>
+<li><p>Time to build cctools, it&rsquo;s a little bit more involved.
 <br /><code># cd ../cctools-*</code>
 <br /><code># cp /usr/include/sys/unistd.h /System/Library/Frameworks/Kernel.framework/Headers/sys/</code>
-We only care about some of what cctools has to offer, so bust open it's <code>Makefile</code> and lets edit it a little.  We're going to comment out the two lines (28 and 29) that define <code>COMMON_SUBDIRS</code> and redefine it as<code> COMMON_SUBDIRS = libstuff libmacho misc</code>.
+We only care about some of what cctools has to offer, so bust open it&rsquo;s <code>Makefile</code> and lets edit it a little.  We&rsquo;re going to comment out the two lines (28 and 29) that define <code>COMMON_SUBDIRS</code> and redefine it as<code>COMMON_SUBDIRS = libstuff libmacho misc</code>.
 <br /><code>#COMMON_SUBDIRS = libstuff as gprof misc libmacho ld libdyld \</code>
 <br /><code>#                mkshlib otool profileServer RelNotes man cbtlibs</code>
 <br /><code>COMMON_SUBDIRS = libstuff libmacho misc</code>
-That's what it should look like when you're done, at which point you're ready to build and install it.
+That&rsquo;s what it should look like when you&rsquo;re done, at which point you&rsquo;re ready to build and install it.
 <br /><code># make RC_OS=macos</code>
 <br /><code># cp misc/seg_hack.NEW /usr/local/bin/seg_hack</code>
 <br /><code># cd ld</code>
 <br /><code># make RC_OS=macos kld_build</code>
 <br /><code># cp static_kld/libkld.a /usr/local/lib</code>
-<br /><code># ranlib /usr/local/lib/libkld.a</code></p>
-  </li>
-  <li>Compiling kextsymboltool is where I ran into trouble, well, because I grabbed the wrong IOKit version (I didn't have the newest one), so watch out for that.  If you get the right version, everything should go smoothly.
+<br /><code># ranlib /usr/local/lib/libkld.a</code></p></li>
+<li><p>Compiling kextsymboltool is where I ran into trouble, well, because I grabbed the wrong IOKit version (I didn&rsquo;t have the newest one), so watch out for that.  If you get the right version, everything should go smoothly.
 <br /><code># cd ../../</code>
 <br /><code># mv IOKitUser* IOKit</code>
 <br /><code># mv IOKit /usr/include</code>
@@ -86,7 +80,7 @@ That's what it should look like when you're done, at which point you're ready to
 <br /><code># cd kext_tools*</code>
 <br /><code># gcc kextsymboltool.c -o kextsymboltool</code>
 <br /><code># cp kextsymboltool /usr/local/bin</code>
-<br /><code># chmod 755 /usr/local/bin/kextsymboltool</code></li>
+<br /><code># chmod 755 /usr/local/bin/kextsymboltool</code></p></li>
 </ol>
 
 <p><strong>Done!</strong>  Well, sort of.  The build environment is all set up, so now if you ever want to build a new kernel, you can start on the next step.</p>
@@ -94,12 +88,13 @@ That's what it should look like when you're done, at which point you're ready to
 <h2>Building the Kernel</h2>
 
 <ol>
-  <li>The first thing to do is apply any patches that you desire.  You'll probably be adding some patches; otherwise, why would you be rebuilding the kernel?  I'm using a patch to enable setting the MAC address of my network cards manually (for MAC address spoofing), one that boots my mac in verbose mode by default and a third that allows all users (not just root) to craft and send raw packets.  They are available from the following locations (the direct links are for xnu version 517):
-    <ul>
-      <li><a href="http://cerberus.sourcefire.com/~jeff/archives/patches/macosx/BIOCSHDRCMPLT-panther.patch">BIOCSHDRCMPLT</a> - MAC address patch by <a href="http://cerberus.sourcefire.com/%7Ejeff/security.html">Jeff Nathan</a></li>
-      <li><a href="http://slagheap.net/etherspoof/517/FORCE_VERBOSE.patch">FORCE_VERBOSE</a> - Verbose booting patch by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a></li>
-      <li><a href="http://slagheap.net/etherspoof/517/RAW4ALL.patch">RAW4ALL</a> - Raw packet creation patch also by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a>
-<br />To begin with, let's move to the kernel source directory:
+<li><p>The first thing to do is apply any patches that you desire.  You&rsquo;ll probably be adding some patches; otherwise, why would you be rebuilding the kernel?  I&rsquo;m using a patch to enable setting the MAC address of my network cards manually (for MAC address spoofing), one that boots my mac in verbose mode by default and a third that allows all users (not just root) to craft and send raw packets.  They are available from the following locations (the direct links are for xnu version 517):</p>
+
+<ul>
+<li><a href="http://cerberus.sourcefire.com/~jeff/archives/patches/macosx/BIOCSHDRCMPLT-panther.patch">BIOCSHDRCMPLT</a> - MAC address patch by <a href="http://cerberus.sourcefire.com/%7Ejeff/security.html">Jeff Nathan</a></li>
+<li><a href="http://slagheap.net/etherspoof/517/FORCE_VERBOSE.patch">FORCE_VERBOSE</a> - Verbose booting patch by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a></li>
+<li><a href="http://slagheap.net/etherspoof/517/RAW4ALL.patch">RAW4ALL</a> - Raw packet creation patch also by <a href="http://slagheap.net/etherspoof/">Peter Bartoli</a>
+<br />To begin with, let&rsquo;s move to the kernel source directory:
 <br /><code># cd ../xnu*</code>
 <br />Grab the three patches:
 <br /><code># wget http://cerberus.sourcefire.com/%7Ejeff/archives/patches/macosx/BIOCSHDRCMPLT-10.3.3.patch</code>
@@ -110,49 +105,39 @@ That's what it should look like when you're done, at which point you're ready to
 <br /><code># patch -p0 -b --verbose --suffix=.orig &lt; FORCE_VERBOSE.patch</code>
 <br /><code># patch -p0 -b --verbose --suffix=.orig &lt; BIOCHSHDRCMPLT-10.3.3.patch</code>
 Pay attention to the output of those patches; if the source changes significantly from the time I wrote this page, they might not apply properly.  If they work fine, you can move on.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Finally, we will actually build the kernel:
+</ul></li>
+<li><p>Finally, we will actually build the kernel:
 <br /><code># make exporthdrs</code>
 <br /><code># make</code>
-<br />The new kernel is now in <code>BUILD/obj/RELEASE_PPC/mach_kernel</code> under the current directory.  Next, we'll install and prepare to boot with the new kernel.</p>
-  </li>
-  <li>To install, just copy the new kernel to the root (/) directory.  We'll name it differently from the stock kernel, so that you have something to fall back on if your new kernel fails to boot properly.
+<br />The new kernel is now in <code>BUILD/obj/RELEASE_PPC/mach_kernel</code> under the current directory.  Next, we&rsquo;ll install and prepare to boot with the new kernel.</p></li>
+<li><p>To install, just copy the new kernel to the root (/) directory.  We&rsquo;ll name it differently from the stock kernel, so that you have something to fall back on if your new kernel fails to boot properly.
 <br /><code># cp BUILD/obj/RELEASE_PPC/mach_kernel /mach_kernel.new</code>
 <br /><code># chmod 644 /mach_kernel.new</code>
 <br /><code># chown root.wheel /mach_kernel.new</code>
-<br />Now configure the machine to boot from the new kernel:</li>
+<br />Now configure the machine to boot from the new kernel:</p></li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><br /><code># nvram boot-file=\</code>nvram boot-device</td>
-      <td>awk -F , '{print $1}'</td>
-      <td>awk '{print $2}'`,mach_kernel.new`</td>
-    </tr>
-  </tbody>
-</table>
+<p><br /><code># nvram boot-file=\</code>nvram boot-device | awk -F , &rsquo;{print $1}&rsquo; | awk &rsquo;{print $2}&rsquo;`,mach_kernel.new`</p>
 
-<p><strong>Note</strong>: That is supposed to work, but really, didn't for me.  I had  to make a leap-of-faith and replace the stock kernel with the one that I just built.
+<p><strong>Note</strong>: That is supposed to work, but really, didn&rsquo;t for me.  I had  to make a leap-of-faith and replace the stock kernel with the one that I just built.
 <br /><code># cp mach_kernel mach_kernel.bak</code>
 <br /><code># cp mach_kernel.new mach_kernel</code>
-<br /><code># nvram boot-file=""</code>
+<br /><code># nvram boot-file=&quot;&quot;</code>
 <br />and then reboot.</p>
 
 <p>You should be all set!  Upon reboot, the computer should boot with your new kernel.  In the event something goes wrong, you can zap the PRAM by holding
-option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold option-apple-o-f which will boot into OpenFirmware; type "reset-all" and then "mac-boot".  If neither of those fixes the problem, hold option-apple-n-v during boot to reset the NVRAM.</p>
+option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold option-apple-o-f which will boot into OpenFirmware; type &ldquo;reset-all&rdquo; and then &ldquo;mac-boot&rdquo;.  If neither of those fixes the problem, hold option-apple-n-v during boot to reset the NVRAM.</p>
 
 <h2>Sources</h2>
-<ul>
-	<li><a href="http://www.labo-apple.org/en/print/242/">Compile Mac OS X
-	Kernel</a></li>
-	<li><a href="http://opendarwin.org/~jpm/xnu.html">building xnu on darwin/mac
-	os x</a></li>
-	<li><a href="http://slagheap.net/etherspoof/">MAC Spoofing on the Mac</a></li>
 
-	<li><a href="http://www.bur.st/~paul/compile_xnu.html">Compiling a Mach/xnu kernel for MacOSX</a></li>
+<ul>
+    <li><a href="http://www.labo-apple.org/en/print/242/">Compile Mac OS X
+    Kernel</a></li>
+    <li><a href="http://opendarwin.org/~jpm/xnu.html">building xnu on darwin/mac
+    os x</a></li>
+    <li><a href="http://slagheap.net/etherspoof/">MAC Spoofing on the Mac</a></li>
+
+    <li><a href="http://www.bur.st/~paul/compile_xnu.html">Compiling a Mach/xnu kernel for MacOSX</a></li>
 </ul>
 
   </div>
@@ -176,6 +161,10 @@ option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold optio
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -212,10 +201,6 @@ option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold optio
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -231,7 +216,8 @@ option-apple-p-r through <b>three</b> startup chimes.  Alternatively, hold optio
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

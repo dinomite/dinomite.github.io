@@ -26,7 +26,7 @@
   <div class="main-content">
     <h1 class="article-title">vBulletin login with WWW::Mechanize</h1>
     <div class="article-title-date">Apr  3, 2006</div>
-    <p>This is just part of a script that I wrote to…do something.  The pertinent part here is using WWW::Mechanize to login to a vBulletin web forum.  I figure Googlebot will guide someone trying to figure out how to use WWW::Mechanize this way.</p>
+    <p>This is just part of a script that I wrote to&hellip;do something.  The pertinent part here is using WWW::Mechanize to login to a vBulletin web forum.  I figure Googlebot will guide someone trying to figure out how to use WWW::Mechanize this way.</p>
 
 <pre class="brush: perl;">
 use WWW::Mechanize;
@@ -34,21 +34,21 @@ my $username = "foo";
 my $password = "bar";
 my $forum = "http://www.foo.com/forum/";
 
-my $mech = WWW::Mechanize-&gt;new  (
-                                    autocheck   =&gt;  1,
-                                    agent       =&gt;  'Perl WWW::Mechanize',
+my $mech = WWW::Mechanize->new  (
+                                    autocheck   =>  1,
+                                    agent       =>  'Perl WWW::Mechanize',
                                 );
 
-$mech-&gt;get( $forum );
-$mech-&gt;submit_form(
-                        form_number =&gt;  1,
-                        fields      =&gt;  {
-                                            vb_login_username =&gt; $username,
-                                            vb_login_password =&gt; $password
+$mech->get( $forum );
+$mech->submit_form(
+                        form_number =>  1,
+                        fields      =>  {
+                                            vb_login_username => $username,
+                                            vb_login_password => $password
                                         }
                     );
-$mech-&gt;follow_link(
-    text =&gt; "Click here if your browser does not automatically redirect you."
+$mech->follow_link(
+    text => "Click here if your browser does not automatically redirect you."
     );
 </pre>
 
@@ -73,6 +73,10 @@ $mech-&gt;follow_link(
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -109,10 +113,6 @@ $mech-&gt;follow_link(
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -128,7 +128,8 @@ $mech-&gt;follow_link(
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>
