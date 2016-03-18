@@ -28,6 +28,36 @@
     <p><a href="/page/14/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/09/11/exmap-on-ubuntu/">EXMAP on Ubuntu</a></h1>
+    <div class="article-title-date">Sep 11, 2007</div>
+    <p>EXMAP is a shared memory analysis utility that makes it easy to determine exactly how much memory a process is using.  Unlike <code>top</code>, which counts all memory shared amongst programs toward each of those programs, EXMAP gives three numbers most notable of which is &ldquo;Effective Resident&rdquo; memory usage.  This number is the amount of memory mapped directly by a process, plus a portion of any shared memory pools it is part of, that is, the program is only counted as using an equal portion of shared memory as all other processes that are sharing the same.</p>
+
+<p>On my system, both Gaim (Pidgin my foot) and Evolution are using aspell.  In top, they are both responsible for libaspell.so in its entirety, contributing 672K to each of their displayed memory usage.  EXMAP puts 338K towards Gaim and 334K to Evolution, a much more accurate tally, since only a single instance of libaspell is actually in memory, shared by the two other processes.  From my quick testing, it seems that subsequent users of shared memory take the larger share, 4K more in Gaim&rsquo;s case, since I started it after Evolution.  If I close Gaim, Evolution is then credited with the entire 632K of memory that libaspell occupies.</p>
+
+<p>So, on to installing EXMAP which certainly isn&rsquo;t hard, but requires a kernel module which makes it non-trivial.  First, use <code>apt-get</code> (or really, it&rsquo;s better replacement <code>aptitude</code>) to install EXMAP, the required kernel module source and the stuff you&rsquo;ll need to build said module:</p>
+
+<pre>
+sudo -i
+aptitude install linux-headers-$(uname -r)
+aptitude install module-assistant build-essential
+aptitude install exmap exmap-modules-source
+</pre>
+
+<p>Then, build the EXMAP module:</p>
+
+<pre>
+module-assistant prepare
+module-assistant update
+module-assistant build exmap
+module-assistant install exmap
+depmod
+modprobe exmap
+echo exmap >> /etc/modules
+</pre>
+
+<p><code>module-assistant</code> automatically compiles and installs the module against the kernel headers that <code>aptitude</code> installed in the previous block and <code>depmod</code> calculates the dependencies amongst all modules, including the new EXMAP one.  <code>modprobe</code> installs the new module into the kernel and adding its name to <code>/etc/modules</code> ensures that it will be ready next time your system restarts as well.  Once all that is done, you can run <code>gexmap</code>.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/09/09/ssh-tunnels-for-quick/">SSH Tunnels for Quick, Secure Net Access</a></h1>
     <div class="article-title-date">Sep  9, 2007</div>
     <p>An SSH tunnel is a great way to quickly setup a secure method for browsing the web from an unsecure location, such as a public wireless network.  All you need is a machine running an SSH server.  I setup a tunnel from my Mac OS X laptop using the following command:</p>
@@ -212,13 +242,6 @@ sudo dpkg-reconfigure libpaper1
 </code></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/08/07/cell-phone-premonitions/">Cell Phone Premonitions</a></h1>
-    <div class="article-title-date">Aug  7, 2007</div>
-    <p><a href="http://www.freakonomics.com/blog/">The Freakonomics Blog</a> mentioned <a href="http://www.chicagotribune.com/services/newspaper/premium/printedition/Sunday/chi-cell_bdaug05,0,3857748.story?coll=chi-newslocalchicago-hed">a story</a> about mobile phone providers knowing that something was happening near the I-35 bridge in Minneapolis due to hugely increased call volumes.  Later in the article there is also a mention of T-Mobile tracking the change in commuting patterns by the movement of cell phones.</p>
-
-<p>Cell phone activity, just like any <a href="http://en.wikipedia.org/wiki/Side_channel_attack">side-channel attack</a>, can be exploited to learn a lot about a population.  There are certainly legal and privacy implications to such data being made public, but it would be amazing to look at from a research point of view.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/16/">Next page</a></p>
@@ -244,6 +267,10 @@ sudo dpkg-reconfigure libpaper1
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -280,10 +307,6 @@ sudo dpkg-reconfigure libpaper1
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -299,7 +322,8 @@ sudo dpkg-reconfigure libpaper1
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

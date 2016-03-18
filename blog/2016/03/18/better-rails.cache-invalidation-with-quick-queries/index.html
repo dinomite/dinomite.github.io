@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Better Rails.cache Invalidation with Quick Queries « Dinomite.net</title>
+
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
+
+<body>
+<div id="main" role="main">
+  <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+  <div class="main-content">
+    <h1 class="article-title">Better Rails.cache Invalidation with Quick Queries</h1>
+    <div class="article-title-date">Mar 18, 2016</div>
+    <p>Rails <a href="http://guides.rubyonrails.org/caching_with_rails.html">provides a caching framework</a>, built-in.  Just set <code>config.cache_store</code> in your <code>application.rb</code>.  The easiest way to use caching is using time-base invalidation—you compute something expensive and store it in the cache with an expiration time.  The first time you try to retrieve it after the expiration, recompute &amp; cache the new value.</p>
+<div class="highlight ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">Product</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">expensive_operation</span>
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"product/expensive_operation"</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">12</span><span class="p">.</span><span class="nf">hours</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">LVMH</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">do_it</span><span class="p">()</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Many things in the world don&rsquo;t respond well to only being updated on a wallclock schedule.  User profiles are viewed much more often than they are updated, meaning time-based cache expiration will cause needless regeneration of unchanged values.  Furthermore, when a user does update their profile, not seeing that reflected immediately is confusing.</p>
+
+<p>The first problem can be ameliorated by using very long expirations and the latter by force-expiring related cache entries when issuing updates.  That last bit leaves a huge potential pitfall: forgetting to invalidate the cache when updating the value.  Another approach for keeping your cache fresh is to use a quickly-retrieved value that indicates whether the cache needs to be regenerated.</p>
+
+<p>In our application, user profiles show friend relationships and use that information to pull in recent comments from those friends, an expensive operation spanning many tables.  One key bit that informs how much searching we need to do is those friend relationships.  If the user has new friends we need to look at all of those new friend&rsquo;s recent comments and build them for display.  While checking the entire friends list is expensive, checking the latest change for a single user is quick.</p>
+<div class="highlight ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">FriendsAPI</span>
+  <span class="k">def</span> <span class="nf">get_friends</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+    <span class="n">key_prefix</span> <span class="o">=</span> <span class="s2">"friends_api:get_friends:</span><span class="si">#{</span><span class="n">user</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">status</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">most_recent_friends_time</span>
+
+    <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key_prefix</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">1</span><span class="p">.</span><span class="nf">week</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">delete_matched</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key_prefix</span><span class="si">}</span><span class="s2">:*"</span><span class="p">)</span>
+
+      <span class="n">inflated_friends</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">friends</span> <span class="o">=</span> <span class="n">user</span><span class="p">.</span><span class="nf">get_all_friends</span>
+      <span class="n">friends</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">friend</span><span class="o">|</span>
+        <span class="n">inflated_friends</span> <span class="o">&lt;&lt;</span> <span class="no">InflatedFriend</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">friend</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">inflated_friends</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The key here is that <code>user.most_recent_friends_time</code> is a fast query.  The cache key is a compound of the calling-specific values (the user and the requested status) and the timestamp for the most recent friend change time.  When the method is executed, <code>Rails.cache.fetch()</code> attempts to retrieve an entry for the last friend change time.  If the user hasn&rsquo;t created any new friendships since the last time the method ran (and it&rsquo;s been less than <a href="https://www.youtube.com/watch?v=fC_q9KPczAg">one week</a>), it&rsquo;ll be in the cache.  If the user has made more friends, then the cache will miss.  On a miss, the first thing to do is remove any prior entries, then just do the expensive bit and return it.</p>
+
+  </div>
+
+  <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Posts by Year</h5></li>
+        <li><a href="/blog/2005">2005</a></li>
+        <li><a href="/blog/2006">2006</a></li>
+        <li><a href="/blog/2007">2007</a></li>
+        <li><a href="/blog/2008">2008</a></li>
+        <li><a href="/blog/2009">2009</a></li>
+        <li><a href="/blog/2010">2010</a></li>
+        <li><a href="/blog/2011">2011</a></li>
+        <li><a href="/blog/2012">2012</a></li>
+        <li><a href="/blog/2013">2013</a></li>
+        <li><a href="/blog/2014">2014</a></li>
+        <li><a href="/blog/2015">2015</a></li>
+        <li><a href="/blog/2016">2016</a></li>
+  </ul>
+</sidebar>
+
+</div>
+
+<footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+</body>
+</html>

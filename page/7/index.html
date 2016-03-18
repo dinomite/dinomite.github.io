@@ -28,6 +28,25 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/09/26/splitting-mp3s-in-perl/">Splitting MP3s in Perl</a></h1>
+    <div class="article-title-date">Sep 26, 2008</div>
+    <p>I listen to some podcasts daily that have annoying messages in them that never change.  With a bit of research, I came across the <a href="http://search.cpan.org/~ilyaz/MP3-Splitter-0.04/Splitter.pm">MP3::Splitter</a> module on <a href="http://search.cpan.org/">CPAN</a> which has somewhat confusing documentation but provides a method <code>mp3split()</code> that pulls specified pieces of a file.  You provide <code>mp3split()</code> with the input MP3 filename, options as a hash and then any number of arrays that specify which portions of the MP3 to copy into new files.  The easiest syntax for specifying a portion is to pass the start position and the length of the desired chunk, both in seconds.  From the command line, I did this:</p>
+
+<pre class="brush: bash;">
+perl -MMP3::Splitter -e "mp3split('foo.mp3', {}, [20,25], [95,600], [950,INF])"
+</pre>
+
+<p>which creates three new MP3 files, 01<em>foo.mp3, 02</em>foo.mp3 and 03_foo.mp3.  These can then be joined to create a new MP3:</p>
+
+<pre class="brush: bash;">
+cat 01_foo.mp3 > new.mp3
+cat 02_foo.mp3 >> new.mp3
+cat 03_foo.mp3 >> new.mp3
+</pre>
+
+<p>Which will leave you with <code>new.mp3</code> that is a concatenation of the three pieces.  Using <code>cat</code> to join them means the resulting file will probably have some artifacts at the join points but that&rsquo;s not a problem for my use.  If it is, you can use something like <code>mp3join</code> to properly join the files.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/21/code-golf-saving-time/">Code Golf: Saving Time</a></h1>
     <div class="article-title-date">Sep 21, 2008</div>
     <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I&rsquo;m finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don&rsquo;t read below if you don&rsquo;t want hints! </p>
@@ -318,23 +337,6 @@ MECH2.EXE
 See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h1>
-    <div class="article-title-date">Jun 25, 2008</div>
-    <p>I&rsquo;m doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:</p>
-
-<pre>
-[Wed Jun 25 18:57:11 2008] [emerg] (28)No space left on device: Couldn't create accept lock
-</pre>
-
-<p>After being confused because there certainly is enough disk space, I Googled for other possibilities and it turns out I had hit another limit, that of active semaphores.  When some of my processes were killed, they died uncleanly and didn&rsquo;t clean up their open semaphores, filling the maximum number available to my user.  It&rsquo;s easy to tell that this is the root of the issue; running <code>ipcs -s</code> showed a list of 95 open semaphores.  Clearing them up is just as easy:</p>
-
-<pre>
-~$ for id in \`ipcs -s |awk '/USERNAME/ {print $2}'\`; do ipcrm -s $id; done
-</pre>
-
-<p>That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then <code>ipcrm</code>&rsquo;s those semaphores. </p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/8/">Next page</a></p>
@@ -360,6 +362,10 @@ See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a><
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -396,10 +402,6 @@ See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a><
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -415,7 +417,8 @@ See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a><
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

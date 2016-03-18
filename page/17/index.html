@@ -28,6 +28,21 @@
     <p><a href="/page/16/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/06/26/apache2-proxypass/">Apache2 ProxyPass</a></h1>
+    <div class="article-title-date">Jun 26, 2007</div>
+    <p>If you&rsquo;re trying to setup a proxy on Apache2 in Ubuntu Feisty, by default it disallows all access to any proxy URLs, which is good.  What isn&rsquo;t good, however, is that nowhere I could find mentioned that this could be found in the <code>proxy.conf</code> file located in <code>/etc/apache2/mods-enabled</code>.  I spent some time wondering why my Allow and Deny orders were being ignored until I looked at this file and found that it has the final say.  To allow access to your proxy, you must edit this file adding &lsquo;Allow&rsquo; orders within the <code>&lt;proxy *&gt;</code> block.  Simply use hostnames, IP addresses or <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">CIDR</a> notation:</p>
+
+<p><code><pre>
+Allow from foo.com
+Allow from 192.168.1.52
+Allow from 10.1.0
+Allow from 10.1.0.0/255.255.0.0
+Allow from 192.168.0.0/16
+</pre></code></p>
+
+<p>For more detail, see the <a href="http://httpd.apache.org/docs/1.3/mod/mod_access.html"><code>mod_access</code> documentation</a>.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/06/25/oracle-repository-gpg-slash-pgp-key/">Oracle Repository GPG/PGP Key</a></h1>
     <div class="article-title-date">Jun 25, 2007</div>
     <p>If you&rsquo;re using the Oracle apt repository (<code>deb http://oss.oracle.com/debian/ unstable main non-free</code>) with Ubuntu or a recent version of Debian and don&rsquo;t have their GPG key, you&rsquo;ll get the following error when running <code>apt-get update</code>:</p>
@@ -140,22 +155,6 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
 <p>The more sinister reason that carbon producers support cap-and-trade legislation is that they know the world is changing.  Alternative fuels are gaining momentum as gas prices soar and hatred of pollution and high prices adds to the animosity towards carbon-based fuels.  Tempering this hatred with pseudo-green initiatives like supporting carbon-control legislation may help fossil-fuel dependent companies stand up to other energy sources.  This also has the side effect of possibly convincing some rainy-day environmentalists that oil companies aren&rsquo;t so bad after all.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/05/17/setting-izpacks-default-target-directory/">Setting IzPack's Default Target Directory</a></h1>
-    <div class="article-title-date">May 17, 2007</div>
-    <p><a href="http://www.izpack.org">IzPack</a> is a great installer written in Java and configured with XML files, though the documentation can be a little bit lacking.  This OK because the variables are all named well so one can easily look to an existing installer (such as that for IzPack itself or 7-zip) and copy needed bits of code.  One thing that I found elusive was how to set the default install directory to something other than &ldquo;C:\Program Files&amp;lt;product name&gt;&rdquo;.  The &lt;info&gt; element provides an &lt;appsubpath&gt; element that allows you to specify something other than &lt;product name&gt;, but you&rsquo;re still limited to something within the default Windows installation directory.  Alas, mailing lists to the rescue!  <a href="https://lists.berlios.de/pipermail/izpack-users/2006-November/002928.html">This post</a> describes declaring a resource in the install.xml and after a bit of fiddling I came up with the following.</p>
-
-<p>First, create a file TargetDir.txt with nothing more than the path you want to install at, for me that file simply contained &ldquo;C:\foo&rdquo;.  Next, point to the resource in the install.xml:</p>
-
-<p><code><pre>
-&lt;resources&gt;
-    &lt;!-- Set the default installation directory shown in the TargetPanel --&gt;
-    &lt;res id=&quot;TargetPanel.dir&quot; src=&quot;TargetDir.txt&quot; /&gt;
-&lt;/resources&gt;
-</pre></code></p>
-
-<p>Rebuild the installer and you&rsquo;re set.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/18/">Next page</a></p>
@@ -181,6 +180,10 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -217,10 +220,6 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -236,7 +235,8 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>

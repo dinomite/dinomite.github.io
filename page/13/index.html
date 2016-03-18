@@ -28,6 +28,27 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent/">Quick Tip: Python's noop Equivalent</a></h1>
+    <div class="article-title-date">Nov 30, 2007</div>
+    <p>Python can&rsquo;t deal with empty code blocks, which may arise if you want to stub out a block but leave the implementation for later.  If you have one in your code, the interpreter will give the following error:</p>
+
+<pre class="brush: python;">
+  File "foo.py", line 1
+    if (foo == bar):
+     ^
+IndentationError: expected an indented block
+</pre>
+
+<p>In this case, you can use the <code>pass</code> operator which will do nothing but take up a line, resulting in the following code:</p>
+
+<pre class="brush: python;">
+if (foo == bar):
+    pass #TODO
+else:
+    print "nothing to do!"
+</pre>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from/">mdadm Isn't Someone You Want to Hear From</a></h1>
     <div class="article-title-date">Nov 28, 2007</div>
     <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning
@@ -352,50 +373,6 @@ print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
     <p>It was <a href="http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top">widely</a> <a href="http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story">reported</a>  <a href="http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508">yesterday</a> that Microsoft bought a 1.6% stake in <a href="http://facebook.com">Facebook</a> for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook&rsquo;s 42 million accounts.  <a href="http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/">Marketplace&rsquo;s coverage</a> put that number at $300 dollars, which takes into account Facebook&rsquo;s projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn&rsquo;t necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus <a href="https://dinomite.net/index.php?tag=atheism">isn&rsquo;t actually my friend</a>.  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don&rsquo;t want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/10/16/data-dumper/">Data::Dumper</a></h1>
-    <div class="article-title-date">Oct 16, 2007</div>
-    <p><a href="http://perldoc.perl.org/Data/Dumper.html">Data::Dumper</a> is one of the most useful Perl modules when developing code, providing quick and easy access to the contents of data structures.  Are you unsure whether you&rsquo;re setting the values of a hash correctly?  Don&rsquo;t understand how someone has organized an object that you&rsquo;re &lsquo;use&#39;ing?  Data::Dumper to the rescue.</p>
-
-<pre>
-use Data::Dumper;
-
-my %foo;
-$foo{'bar'} = 'This is bar';
-$foo{'baz'}{'foo'} = 'This is foo, stored under baz in %foo';
-$foo{'qux'} = 'This is qux';
-
-print "The hash '%foo' looks like this:\n";
-print Dumper(\%foo);
-</pre>
-
-<p>When executed:
-<pre>
-The hash &#39;%foo&#39; looks like this:
-$VAR1 = {
-          &#39;bar&#39; =&gt; &#39;This is bar&#39;,
-          &#39;baz&#39; =&gt; {
-                     &#39;foo&#39; =&gt; &#39;This is foo, stored under baz in %foo&#39;
-                   },
-          &#39;qux&#39; =&gt; &#39;This is qux&#39;
-        };
-</pre></p>
-
-<p>Note that I passed Dumper() a reference to the &#39;foo&rsquo; hash by using a backslash, which is what you will want most of the time with anything other than a scalar.  Passing a reference causes Dumper() to print the entire variable&rsquo;s contents in the same scope.  If you pass &#39;foo&rsquo; directly, instead of its reference, you end up with this:
-<pre>
-The hash &#39;%foo&#39; looks like this:
-$VAR1 = &#39;bar&#39;;
-$VAR2 = &#39;This is bar&#39;;
-$VAR3 = &#39;baz&#39;;
-$VAR4 = {
-          &#39;foo&#39; =&gt; &#39;This is foo, stored under baz in %foo&#39;
-        };
-$VAR5 = &#39;qux&#39;;
-$VAR6 = &#39;This is qux&#39;;
-</pre></p>
-
-<p>Which doesn&rsquo;t make it clear that &#39;foo&rsquo; is a hash.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/14/">Next page</a></p>
@@ -421,6 +398,10 @@ $VAR6 = &#39;This is qux&#39;;
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -457,10 +438,6 @@ $VAR6 = &#39;This is qux&#39;;
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
-              <div class="article-link-date">Mar 19, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -476,7 +453,8 @@ $VAR6 = &#39;This is qux&#39;;
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
     </li>
   </ul>
