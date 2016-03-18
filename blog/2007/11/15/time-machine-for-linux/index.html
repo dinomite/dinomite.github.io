@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Time Machine for Linux « Dinomite.net</title>
+  <title>Time Machine for Linux « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Since Apple's recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I've seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple's <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I've been doing incremental backups for years but, unlike all of the recent articles in question, I didn't roll my own solution: I use 'rsnapshot' to do all of the hard work for me.</p>
+  <div class="main-content">
+    <h1 class="article-title">Time Machine for Linux</h1>
+    <div class="article-title-date">Nov 15, 2007</div>
+    <p>Since Apple's recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I've seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple's <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I've been doing incremental backups for years but, unlike all of the recent articles in question, I didn't roll my own solution: I use 'rsnapshot' to do all of the hard work for me.</p>
 
 <p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you're using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
 
@@ -57,9 +59,9 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
 
 <p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I'm on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -155,11 +157,11 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

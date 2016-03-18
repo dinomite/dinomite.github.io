@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/19/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/02/15/senator-blackburn-on-the-war-in-iraq/">Senator Blackburn on The War in Iraq</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/02/15/senator-blackburn-on-the-war-in-iraq/">Senator Blackburn on The War in Iraq</a></h1>
     <div class="article-title-date">Feb 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://en.wikipedia.org/wiki/Marsha_Blackburn">Representative Marsha Blackburn </a> (R, TN) made the most blatant invocation of patriotism as a scare tactic that I've ever heard in the debate over the non-binding resolution to condemn President Bush's troop surge.</p>
 
 <blockquote>
@@ -41,10 +38,9 @@ Rep. Blackburn: I think the question we have to ask is who's side are you on?  W
 
 <p>Wow, could you be more of a fear monger?  Remember, if you don't support a war in which thousands of American soldiers have died, countless more (really, find the statistics) have been maimed and costs us billions each year, then you're on the side of the terrorists.</p>
 
-    <h2><a href="/blog/2007/02/14/bash-slash-bin-slash-tar-argument-list-too-long/">bash: /bin/tar: Argument list too long</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/14/bash-slash-bin-slash-tar-argument-list-too-long/">bash: /bin/tar: Argument list too long</a></h1>
     <div class="article-title-date">Feb 14, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Anyone who has worked with large numbers of files has seen the error '<code>Argument list too long</code>' returned by a command before, usually something like <code>cp</code> or <code>rm</code>.  Eventually, they find <code>xargs</code> and all is well again; rather than globbing directly, you use <code>find</code> and <code>xargs</code> to feed the intended command:</p>
 
 <pre>
@@ -66,16 +62,14 @@ bash: /bin/cp: Argument list too long
 
 <p>Simple.  There's probably a way to one-line that, but simply piping the output of <code>find</code> to tar with <code>--files-from -</code> didn't work, and I didn't spend any more time trying to figure it out.  As I said previously, I didn't think <code>xargs</code> would help, but I pulled up the <code>tar</code> manpage and, using the <code>-r</code> option, you can append to an existing archive, which could work in conjunction with <code>xargs</code> just fine.</p>
 
-    <h2><a href="/blog/2007/02/09/year-2000-problem/">Year 2000 Problem</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/09/year-2000-problem/">Year 2000 Problem</a></h1>
     <div class="article-title-date">Feb  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>It's been a while since I've seen evidence of a <a href="http://en.wikipedia.org/wiki/Y2K">Year 2000 problem</a>, but Amazon insists on <a href="http://amazon.com/s/ref=nb_ss_gw/104-9106441-1564711?url=search-alias%3Daps&amp;field-keywords=professional+xml&amp;Go.x=0&amp;Go.y=0&amp;Go=Go">this search page</a> that an XML book was published in 1901.<img id="image100" src="http://dinomite.net/wp-content/uploads/2007/02/1901.jpg" alt="XML book published in 1901" /></p>
 
-    <h2><a href="/blog/2007/02/07/tar-over-ssh/">tar Over SSH</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/07/tar-over-ssh/">tar Over SSH</a></h1>
     <div class="article-title-date">Feb  7, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><code>scp</code> is great for ease of use, but if you're transferring numerous files, small ones in particular, it isn't the fastest method.  <code>tar</code>, however, is very well suited to gathering small files into a single unit, but <code>tar</code>ing the files, <code>scp</code>ing the tarball and then un-<code>tar</code>ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:</p>
 
 <p><code>
@@ -88,10 +82,9 @@ tar cf - sourcedir/ | ssh user@dest_host tar xf - -C /destination/path
 I noticed that a lot of people Google for "tar over scp", which might be your first thought if you've never done this before.  This note is just to help those people out, because this is most likely the solution they are in search of.
 </addendum>
 
-    <h2><a href="/blog/2007/02/06/setting-up-ubuntu-for-building-kernel-modules/">Setting Up Ubuntu for Building Kernel Modules</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/06/setting-up-ubuntu-for-building-kernel-modules/">Setting Up Ubuntu for Building Kernel Modules</a></h1>
     <div class="article-title-date">Feb  6, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>When you build kernel modules or other programs that depend upon the kernel you need to have the kernel source configured per the currently running kernel.  To see what kernel your machine is running, simply run <code>uname -a</code>.  To setup your machine to allow things to build against the kernel, you first need the source for your currently running kernel:</p>
 
 <pre class="brush: bash;">
@@ -133,16 +126,14 @@ make scripts
 
 <p>That's it.  Now you should be able to build things, like kernel modules, against the kernel source.</p>
 
-    <h2><a href="/blog/2007/02/05/who-uses-backslashes/">Who Uses Backslashes?</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/05/who-uses-backslashes/">Who Uses Backslashes?</a></h1>
     <div class="article-title-date">Feb  5, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>My local NPR station, <a href="http://www.wamu.org">WAMU</a> has been running an advertisement for IBM federal services and they mention the URL, which is spoken as "ibm.com backslash foo backslash bar," which won't work if you type it into your interweb browser.  Really, no one uses the Windows command line for anything real, who still thinks with backslashes?</p>
 
-    <h2><a href="/blog/2007/02/04/the-bible-does-math/">The Bible Does Math</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/04/the-bible-does-math/">The Bible Does Math</a></h1>
     <div class="article-title-date">Feb  4, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I just finish reading Sam Harris' <em>Letter to a Christian Nation</em>, which is a very good book.  At one point he notes that the bible stipulates <a href="http://en.wikipedia.org/wiki/Pi">Pi</a> is exactly 3.  I wondered how such a book would lay out mathematical constants, but it's pretty straightforward:</p>
 
 <blockquote>
@@ -158,18 +149,16 @@ He also made the molten sea. It was perfectly round, ten cubits in diameter, fiv
 
 <p>I must say that it's a weak argument, because they could be simply approximations by an observer, but it's funny nonetheless.</p>
 
-    <h2><a href="/blog/2007/02/02/time-to-start-collecting-pennies/">Time to Start Collecting Pennies</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/02/time-to-start-collecting-pennies/">Time to Start Collecting Pennies</a></h1>
     <div class="article-title-date">Feb  2, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>The debate over whether to get rid of the worth-more-as-metal-than-currency penny has gone on for <a href="http://money.cnn.com/2006/06/01/news/newsmakers/penny/index.htm">a number of years</a> as inflation has marginalized the coin's usefulness.  In the <a href="http://www.chicagofed.org/publications/fedletter/cflfebruary2007_235a.pdf">February <i>Chicago Fed Letter</i></a> a senior economist at the Federal Reserve Bank of Chicago, FranÃ§ois R. Velde, <a href="http://www.nytimes.com/2007/02/01/business/01scenes.html?ex=1327986000&amp;en=fc1b2020abae45d6&amp;ei=5090&amp;partner=rssuserland&amp;emc=rss">outlined a plan</a> to rid the country of the 1 cent penny entirely.  He does not advocate debasing <a href="http://en.wikipedia.org/wiki/Cent_%28United_States_coin%29">pennies</a>, making them out of cheaper materials than the current mix of Copper plating around a Zinc core, which has been done previously (think steel pennies).  Rather, Verde proposes changing the value of the penny from one to five cents.  As the New York Times article explains, there won't really be any financial wizardry involved; the penny you hold would immediately increase in value five fold.  That's the best rate you can get short of winning the lottery and it's enough to make me want to gather up thousands of pennies to store under my mattress.</p>
 
 <p>My only thought is, when if it's decided that The Fed will change the value of the penny, wouldn't there be a mad rush to acquire pennies before the switch?  You'd definitely see me in line at the bank.</p>
 
-    <h2><a href="/blog/2007/01/31/the-plan-for-iraq/">The Plan for Iraq</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/01/31/the-plan-for-iraq/">The Plan for Iraq</a></h1>
     <div class="article-title-date">Jan 31, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>NPR's <a href="http://www.npr.org/templates/rundowns/rundown.php?prgId=2">All Things Considered</a> had a story about a <a href="http://www.npr.org/templates/story/story.php?storyId=7085635">Minnesota National Guard unit</a> that has been told that their stay in Iraq will be extended, like many other of our deployed forces in the world.  One of the soldiers in the unit was given the opportunity to pose a question to President Bush during his interview with NPR's Juan Williams.  The soldier asked whether the President had a plan for Iraq if the troop surge didn't have the intended effect, to which Bush responded,</p>
 
 <blockquote>
@@ -184,12 +173,12 @@ No, it did not answer my question.  I would have liked to know more so that ther
 
 <p>Will Bush get the troop surge?  There really is a good chance (I'd say it's a forgone conclusion) that the troop surge won't fix anything.  What will happen then?</p>
 
-    <h2><a href="/blog/2007/01/28/richard-dawkins-the-god-delusion/">Richard Dawkins - The God Delusion</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/01/28/richard-dawkins-the-god-delusion/">Richard Dawkins - The God Delusion</a></h1>
     <div class="article-title-date">Jan 28, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I just picked up <strong>The God Delusion</strong> by Richard Dawkins, a book which I'm sure contains numerous interesting quotes.  The first chapter focuses on the undue respect afforded to religious beliefs.  Dawkins makes the point that, though people can openly argue about politics, economics and warfare, religion gets a pass.  Arguing about religion is a way to bring up undue hatred from anyone whose views differ.  In concluding the chapter he quotes <a href="http://en.wikipedia.org/wiki/H._L._Mencken">H. L. Mencken</a> who said, "We must respect the other fellow's religion, but only in the sense and to the extent that we respect his theory that his wife is beautiful and his children smart."  A fitting summarization.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/21/">Next page</a></p>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Caps Lock to Control in Ubuntu Intrepid Ibex (8.10) « Dinomite.net</title>
+  <title>Caps Lock to Control in Ubuntu Intrepid Ibex (8.10) « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>I've <a href="http://dinomite.net/2007/caps-lock-to-control-on-ubuntu/">written this post before</a>, but things have changed since the 7.04 Feisty Fawn release, so it's worth an update.  In recent releases of Ubuntu the Gnome Control Center has made it easy to simply click away the unneeded caps lock key, turning it into whatever you want.  I wanted to try KDE 4.2 a few days ago and found no way to turn off the caps lock key.  From my previous post, I knew that it's easy to add a line to the <code>xorg.conf</code>which will turn the caps lock into another control, but when I opened the file on my Ubuntu 8.10 machine, I was surprised to find very little in it:</p>
+  <div class="main-content">
+    <h1 class="article-title">Caps Lock to Control in Ubuntu Intrepid Ibex (8.10)</h1>
+    <div class="article-title-date">Feb  5, 2009</div>
+    <p>I've <a href="http://dinomite.net/2007/caps-lock-to-control-on-ubuntu/">written this post before</a>, but things have changed since the 7.04 Feisty Fawn release, so it's worth an update.  In recent releases of Ubuntu the Gnome Control Center has made it easy to simply click away the unneeded caps lock key, turning it into whatever you want.  I wanted to try KDE 4.2 a few days ago and found no way to turn off the caps lock key.  From my previous post, I knew that it's easy to add a line to the <code>xorg.conf</code>which will turn the caps lock into another control, but when I opened the file on my Ubuntu 8.10 machine, I was surprised to find very little in it:</p>
 <pre class="brush: bash;">
 Section "Files"
 EndSection
@@ -72,9 +74,9 @@ EndSection
 
 <p>With that, you will now have a caps lock key no matter what window manager or desktop system you use.  I love the caps lock as a control because I use vi extensively and make use of ^f &amp; ^b, which move up and down pages, and ^e &amp; ^y that move the buffer's view up and down without moving the cursor.  I'm sure emacs users will appreciate this change as well, since they use control alongside 6 or 7 other keys whenever they want to do something.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -170,11 +172,11 @@ EndSection
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

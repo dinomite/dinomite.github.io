@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Shell Command Substitution « Dinomite.net</title>
+  <title>Shell Command Substitution « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; "there must be a better way," I thought.</p>
+  <div class="main-content">
+    <h1 class="article-title">Shell Command Substitution</h1>
+    <div class="article-title-date">Sep  9, 2008</div>
+    <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; "there must be a better way," I thought.</p>
 
 <p>Enter command substitution, a process by which you use the output from an executed command as the input to another.  Many people have used this in a simple manner such as <code>ls /usr/src/linux-`uname -r`</code>which takes the output of <code>uname -r</code>, namely the kernel release you're running, and uses that to flesh out the <code>ls</code> command.  There is a more complicated form, however, that I use for diffing remote files.  In the aforementioned example, I used the following command to diff the files:</p>
 
@@ -34,9 +36,9 @@ vimdiff &lt;(ssh stg1 cat /etc/rc.d/init.d/httpd) &lt;(ssh stg2 cat /etc/rc.d/in
 
 <p>Much like a subselect in MySQL, the <code>cat</code> commands are executed on the remote machine and then piped to <code>vimdiff</code> allowing for single command, no-file-copying diffs.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -132,11 +134,11 @@ vimdiff &lt;(ssh stg1 cat /etc/rc.d/init.d/httpd) &lt;(ssh stg2 cat /etc/rc.d/in
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

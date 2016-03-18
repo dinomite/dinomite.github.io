@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perl and Dubstep « Dinomite.net</title>
+  <title>Perl and Dubstep « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
+  <div class="main-content">
+    <h1 class="article-title">Perl and Dubstep</h1>
+    <div class="article-title-date">Oct 26, 2011</div>
+    <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
 
 <p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it–<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
 
@@ -63,9 +65,9 @@ caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
 
 <p>Easy as that–the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -161,11 +163,11 @@ caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

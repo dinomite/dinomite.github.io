@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>crypt(3) « Dinomite.net</title>
+  <title>crypt(3) « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Anyone who has used Unix or a derivative for long enough should know of crypt(3), the basic Unix hashing function.  Back In The Day, unices used crypt(3) for hashing passwords and It Was Good; computers were once slow enough that DES was an acceptable encryption algorithm even with a limit of 8 characters.  Since about the turn of the century (the latest one), any Unix worth it's salt (heh, crypto pun) offers other options for password encryption, most often MD5.  Furthermore, everything I've run into, until today, used MD5 passwords by default, though Debian Potato still offered to use crypt(3) and non-shadowed passwords (knowing that came in useful in a cracking competition my freshman year).</p>
+  <div class="main-content">
+    <h1 class="article-title">crypt(3)</h1>
+    <div class="article-title-date">Jan 21, 2006</div>
+    <p>Anyone who has used Unix or a derivative for long enough should know of crypt(3), the basic Unix hashing function.  Back In The Day, unices used crypt(3) for hashing passwords and It Was Good; computers were once slow enough that DES was an acceptable encryption algorithm even with a limit of 8 characters.  Since about the turn of the century (the latest one), any Unix worth it's salt (heh, crypto pun) offers other options for password encryption, most often MD5.  Furthermore, everything I've run into, until today, used MD5 passwords by default, though Debian Potato still offered to use crypt(3) and non-shadowed passwords (knowing that came in useful in a cracking competition my freshman year).</p>
 
 <p>Getting to the point, I logged into a Solaris machine that I set up recently and typed the password wrong, but it let me in.  At first I was…quite scared.  I logged in again, carefully typing the root password and was granted access.  I recalled the crypt(3) function…I logged in, typing the first 8 characters carefully and garbage for the rest.  I got in.  Long story short, Solaris 10 (SunOS 5.10) still uses crypt(3) as the default password encryption.  It's a simple fix, you just change a line in <code>/etc/security/policy.conf</code>, but still sort of apalling none the less.</p>
 
@@ -32,9 +34,9 @@
   <li><a href="http://www.vmunix.com/mark/blog/archives/2005/10/31/changing-default-password-encryption-in-solaris/">How-to  change Solaris' default password encryption</a></li>
 </ul>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -130,11 +132,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Using sed « Dinomite.net</title>
+  <title>Using sed « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,14 +23,16 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Many people don't have a clue how to use old-school Unix commands such as <code>sed</code> and I can say that I was in that camp until recently.  Previously, I would be more inclined to write a script in Perl or open up vi to perform complex and repetitive replacement tasks across multiple files.  I'm comfortable with both Perl and vi, most importantly their regular expressions which allow for quick and easy manipulation of text.  I was pushed to learn <code>sed</code> when I had a number of different files that all needed a very similar modification to each of their thousands of lines.  Sure I could write a Perl script to do it, but it was a good opportunity to learn the stream editor and I'm glad I did.</p>
+  <div class="main-content">
+    <h1 class="article-title">Using sed</h1>
+    <div class="article-title-date">Feb 24, 2007</div>
+    <p>Many people don't have a clue how to use old-school Unix commands such as <code>sed</code> and I can say that I was in that camp until recently.  Previously, I would be more inclined to write a script in Perl or open up vi to perform complex and repetitive replacement tasks across multiple files.  I'm comfortable with both Perl and vi, most importantly their regular expressions which allow for quick and easy manipulation of text.  I was pushed to learn <code>sed</code> when I had a number of different files that all needed a very similar modification to each of their thousands of lines.  Sure I could write a Perl script to do it, but it was a good opportunity to learn the stream editor and I'm glad I did.</p>
 
 <p>The most useful thing <code>sed</code> can do is regex-based alterations to files just like vi, except you can apply a <code>sed</code> command to multiple files from the command line with a simple glob.  The syntax for <code>sed</code> regex is much like that for <code>vi</code> or Perl; the big difference that I encountered as compared to Perl is that capturing with parenthesis is done using backslash-escaped parenthesis and the later references with backslash-escaped numbers.  If you run <code>sed</code> without any options, it takes a regex and any number of input files; the output will be to standard out, so <code>sed 's/foo/bar/' *.txt</code> will replace 'foo' with 'bar' in all text files in the current directory, showing you the results on <code>STDOUT</code>. This is great to test and make sure the right changes are going to be made, but to actually make the changes, the best method is to use <code>sed</code>'s in-place editing option, <code>-i</code>.  Now, if you run <code>sed -i 's/foo/bar/' *.txt</code>, <code>sed</code> will replace 'foo' with 'bar' in all files in the current directory, altering each of the files.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -126,11 +128,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Remote Oracle Connections « Dinomite.net</title>
+  <title>Remote Oracle Connections « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Like many 'enterprise solutions,' Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it's often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
+  <div class="main-content">
+    <h1 class="article-title">Remote Oracle Connections</h1>
+    <div class="article-title-date">Apr 25, 2007</div>
+    <p>Like many 'enterprise solutions,' Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it's often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
 
 <p><code>
 ~$ sqlplus uname/pass@[//hostname[:port]/]sid
@@ -32,9 +34,9 @@
 
 <p>Really, it's quite straightforward.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -130,11 +132,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Changing the Physical Interface for a VMware Bridged Interface « Dinomite.net</title>
+  <title>Changing the Physical Interface for a VMware Bridged Interface « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,12 +23,14 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>I use VMware to run a virtual Windows machine for my company's VPN and the occasional game of Starcraft.  When I moved and switch from a wired network to wireless, the device with which I connect to the internet changed from good old <code>eth0</code> to the new-fangled <code>ath0</code>.  VMware was setup to tie its virtual interface for bridged networking to <code>eth0</code>.  Since <code>eth0</code> no longer has a network connection, the virtual machine lost the internet as well.  To fix this, I had to open <code>/etc/vmware/locations</code> and change the reference to <code>eth0</code> to <code>ath0</code>.  The virtual interface that I use is <code>vmnet0</code> so the line in the file referenced <code>VNET_0_INTERFACE</code>.  Simply changing that line and restarting the VMware backend (<code>/etc/init.d/vmware restart</code>) fixed everything.</p>
+  <div class="main-content">
+    <h1 class="article-title">Changing the Physical Interface for a VMware Bridged Interface</h1>
+    <div class="article-title-date">Sep 13, 2007</div>
+    <p>I use VMware to run a virtual Windows machine for my company's VPN and the occasional game of Starcraft.  When I moved and switch from a wired network to wireless, the device with which I connect to the internet changed from good old <code>eth0</code> to the new-fangled <code>ath0</code>.  VMware was setup to tie its virtual interface for bridged networking to <code>eth0</code>.  Since <code>eth0</code> no longer has a network connection, the virtual machine lost the internet as well.  To fix this, I had to open <code>/etc/vmware/locations</code> and change the reference to <code>eth0</code> to <code>ath0</code>.  The virtual interface that I use is <code>vmnet0</code> so the line in the file referenced <code>VNET_0_INTERFACE</code>.  Simply changing that line and restarting the VMware backend (<code>/etc/init.d/vmware restart</code>) fixed everything.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -124,11 +126,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Rsync from Mac OS X to a Linux Machine « Dinomite.net</title>
+  <title>Rsync from Mac OS X to a Linux Machine « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>If you try to <code>rsync</code> from a Mac OS X machine using the <code>-E</code> switch (capture extended attributes &amp; resource forks - you want this) to a Linux or BSD computer, you'll get something like the following error:</p>
+  <div class="main-content">
+    <h1 class="article-title">Rsync from Mac OS X to a Linux Machine</h1>
+    <div class="article-title-date">Mar  2, 2008</div>
+    <p>If you try to <code>rsync</code> from a Mac OS X machine using the <code>-E</code> switch (capture extended attributes &amp; resource forks - you want this) to a Linux or BSD computer, you'll get something like the following error:</p>
 
 <pre>
 rsync: on remote machine: -vlogDtprzE: unknown option
@@ -51,9 +53,9 @@ tar zxf rsync-2.6.3.tar.gz &amp;&amp; cd rsync-2.6.3 &amp;&amp; patch &lt; ../EA
 
 <p>By default, it installs to <code>/usr/local/bin/rsync</code> so installing this version won't trash that put in place by your sytem's package manager.  I also found a post on <a href="http://macosxhints.com">macosxhints.com</a> concerning <code>rsync</code> interacting with the disk indexing of Spotlight.  If you are writing tons of files to a Spotlight-indexed disk on a Mac, the indexer can become overwhelmed.  The solution is to disable Spotlight on the disk in question with <code>mdutil -i off &lt;mountpoint&gt;</code> or to write into a directory appended with <code>.noindex</code>.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -149,11 +151,11 @@ tar zxf rsync-2.6.3.tar.gz &amp;&amp; cd rsync-2.6.3 &amp;&amp; patch &lt; ../EA
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Setting IzPack's Default Target Directory « Dinomite.net</title>
+  <title>Setting IzPack's Default Target Directory « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p><a href="http://www.izpack.org">IzPack</a> is a great installer written in Java and configured with XML files, though the documentation can be a little bit lacking.  This OK because the variables are all named well so one can easily look to an existing installer (such as that for IzPack itself or 7-zip) and copy needed bits of code.  One thing that I found elusive was how to set the default install directory to something other than "C:\Program Files\&lt;product name&gt;".  The &lt;info&gt; element provides an &lt;appsubpath&gt; element that allows you to specify something other than &lt;product name&gt;, but you're still limited to something within the default Windows installation directory.  Alas, mailing lists to the rescue!  <a href="https://lists.berlios.de/pipermail/izpack-users/2006-November/002928.html">This post</a> describes declaring a resource in the install.xml and after a bit of fiddling I came up with the following.</p>
+  <div class="main-content">
+    <h1 class="article-title">Setting IzPack's Default Target Directory</h1>
+    <div class="article-title-date">May 17, 2007</div>
+    <p><a href="http://www.izpack.org">IzPack</a> is a great installer written in Java and configured with XML files, though the documentation can be a little bit lacking.  This OK because the variables are all named well so one can easily look to an existing installer (such as that for IzPack itself or 7-zip) and copy needed bits of code.  One thing that I found elusive was how to set the default install directory to something other than "C:\Program Files\&lt;product name&gt;".  The &lt;info&gt; element provides an &lt;appsubpath&gt; element that allows you to specify something other than &lt;product name&gt;, but you're still limited to something within the default Windows installation directory.  Alas, mailing lists to the rescue!  <a href="https://lists.berlios.de/pipermail/izpack-users/2006-November/002928.html">This post</a> describes declaring a resource in the install.xml and after a bit of fiddling I came up with the following.</p>
 
 <p>First, create a file TargetDir.txt with nothing more than the path you want to install at, for me that file simply contained "C:\foo".  Next, point to the resource in the install.xml:</p>
 
@@ -37,9 +39,9 @@
 
 <p>Rebuild the installer and you're set.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -135,11 +137,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

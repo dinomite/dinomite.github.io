@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a></h2>
+    <h1 class="article-title"><a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a></h1>
     <div class="article-title-date">Oct 26, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
 
 <p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it–<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
@@ -72,10 +69,9 @@ caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
 
 <p>Easy as that–the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter.</p>
 
-    <h2><a href="/blog/2011/10/22/creating-a-perl-module-in-modern-style/">Creating a Perl Module in Modern Style</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/10/22/creating-a-perl-module-in-modern-style/">Creating a Perl Module in Modern Style</a></h1>
     <div class="article-title-date">Oct 22, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>One of the very best things about Perl is <a href="https://metacpan.org/">CPAN</a>, a repository of modules to do everything from <a href="https://metacpan.org/module/WWW::Mechanize">browse the web</a> to <a href="https://metacpan.org/module/Image::Magick">manipulating image files</a>.  CPAN provides a consistent method for installing modules (<a href="https://metacpan.org/module/App::cpanminus#Installing-to-system-perl">install cpanminus</a> and then <code>cpanm &lt;Module::Name&gt;</code>) and the largest number of modules of all the scripting languages.  More often than not, what you are trying to do has already been done and exists as a CPAN module.  In the event you are doing something new, the best way to give back to the community and get free help is to encapsulate your work and distribute it as a module on CPAN.</p>
 
 <p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009…the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
@@ -205,10 +201,9 @@ MANIFEST    Makefile.PL dist.ini    t
 </ul>
 <p><br /> </p>
 
-    <h2><a href="/blog/2011/05/22/rafter-pull-up-bar/">Rafter Pull-Up Bar</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/05/22/rafter-pull-up-bar/">Rafter Pull-Up Bar</a></h1>
     <div class="article-title-date">May 22, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I quite enjoy exercising and, ever since I did parkour, I've really liked body weight movements. I don't do much in the way of parkour any more, but I do CrossFit <a href="http://www.flickr.com/photos/dinomite/5722067913/in/photostream">religiously</a>, which features a <em>lot</em> of pull-ups.  I've got a <a href="http://www.amazon.com/Iron-Total-Upper-Body-Workout/dp/B001EJMS6K/ref=sr_1_7">doorway pull-up bar</a> which is superb for just getting going in the morning; since they're only $25, I think everyone should have (and use) one.  While having a pull-up bar inside the house is great, I do most of my real workouts in my garage–with easy access to running (the street), box jumps (wall in my back yard), and a barbell, I can do many different <a href="http://www.crossfit.com/cf-info/faq.html#General0">WODs</a>.  For WODs that involve pull-ups, I've been doing them on the rafters in the garage.  While this works, the rafters are a bit too high to get to easily and they <em>really</em> strain my grip.  I'm all for the workout being difficult, but I don't always want it to be training for climbing.  To that end, I built a pull-up bar this weekend.
 <a href="http://www.flickr.com/photos/dinomite/5749073468/in/photostream"><img alt="pull-up bar" src="http://farm3.static.flickr.com/2702/5749073468_34876074a9.jpg" width="500" height="164" class="mt-image-center" /></a></p>
 
@@ -233,10 +228,9 @@ The only prep beyond cutting the wood is drilling the holes for the bar in the l
 
 <p>With the supports bolted in place, I slipped the bar itself through the holes and quickly discovered the need for something more.  The bar itself is 48 inches long, and the space between my rafters is also 48 inches.  Since I put the supports inside a pair of rafters, the bar was nicely flush with the outside of the supports, but this also meant it would only take a couple of inches of lateral movement for it to fall out.  The solution is to cap fashion caps using some more 2x6 and secure it with wood screws.</p>
 
-    <h2><a href="/blog/2011/05/17/parallel-processing-in-php/">Parallel Processing in PHP</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/05/17/parallel-processing-in-php/">Parallel Processing in PHP</a></h1>
     <div class="article-title-date">May 17, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power–network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
 
 <p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn't a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.</p>
@@ -333,10 +327,9 @@ class Par extends gosUtility_Parallel {
 
 <p>Incidently, if you're in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way.</p>
 
-    <h2><a href="/blog/2011/05/02/learning-about-nutrition/">Learning About Nutrition</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/05/02/learning-about-nutrition/">Learning About Nutrition</a></h1>
     <div class="article-title-date">May  2, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">{% img right http://dinomite.net/images/posts/gopaleo.jpg 400 400 "Go Paleo" %}</a>
 I have learned a <em>lot</em> about nutrition in the past few years, mainly fueled by my interest in fitness.  Once I got beyond run-of-the-mill <a href="http://rehobothcrossfit.com/2010/08/19/globo-gym-vs-crossfit-gym/">Globo Gym</a> workouts by delving into truly challenging fitness like <a href="http://www.americanparkour.com">parkour</a> and <a href="http://crossfit.com">CrossFit</a>, it became apparent that I would need to match exercise with proper nutrition in order to excel.  Note: if you don't give a shit about what I've done and just want to learn about nutrition, <a href="#information">head to the bottom</a>.</p>
 
@@ -403,10 +396,9 @@ I have learned a <em>lot</em> about nutrition in the past few years, mainly fuel
   <li><a href="http://www.amazon.com/Primal-Blueprint-Reprogram-effortless-boundless/dp/0982207700/ref=sr_1_8?ie=UTF8&amp;qid=1304303375&amp;sr=8-8">The Primal Blueprint</a> - I haven't read Mark Sisson's book, but I do read his <a href="http://www.marksdailyapple.com/">very good blog</a></li>
 </ul>
 
-    <h2><a href="/blog/2011/04/21/building-an-olympic-lifting-platform/">Building an Olympic Lifting Platform</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/04/21/building-an-olympic-lifting-platform/">Building an Olympic Lifting Platform</a></h1>
     <div class="article-title-date">Apr 21, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://www.flickr.com/photos/dinomite/5510688763/in/set-72157626102609509/"><img alt="Finished platform" src="http://farm6.static.flickr.com/5174/5510688763_2a99df1c6d.jpg" width="500" height="333" class="mt-image-right" /></a>
 CrossFit got me started on Olympic lifting and it is now one of my favorite things that I do in the exercise realm.  The tools needed for CrossFit are few and generally inexpensive, but Oly lifting does require some significant outlay if you plan on doing it at home.  One of the things you need is a platform upon which to perform lifts–it's important to have a stable, flat surface to stand on, and have the ability to drop weights.  Before going through with building a platform I dumped a light bar on my brick patio and the back yard, both of which left marks.  It was time for me to build a platform.</p>
 
@@ -438,10 +430,9 @@ CrossFit got me started on Olympic lifting and it is now one of my favorite thin
 
 <p>The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I'd take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting.</p>
 
-    <h2><a href="/blog/2011/04/09/watching-ipad-applications/">Watching iPad Applications</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/04/09/watching-ipad-applications/">Watching iPad Applications</a></h1>
     <div class="article-title-date">Apr  9, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I've wanted to explore a number of applications on my iPad and iPhone to see what they're really doing when they cause the network indicator to spin.</p>
 
 <p>First things first, I setup Charles and started up <a href="http://reederapp.com/">Reeder</a>, an RSS feed reader that integrates tightly with Google Reader.  My main interest was to see when it actually marked posts as read–I often read in short spurts on my iPhone, which results in pulling up a post only to switch out of Reeder or lock my phone seconds later.  Sometimes the posts would be marked read if I pulled up Google Reader, but sometimes they were still marked unread.  Was this a network latency problem when the phone was using 3G/Edge internet, or was it Reeder doing some fanciness with when it marked posts read?</p>
@@ -452,10 +443,9 @@ CrossFit got me started on Olympic lifting and it is now one of my favorite thin
 
 <p>Reeder was the only app that had really crossed my mind after Andy Baio's post, and it fulfilled my desire to experiment with Charles, which is a very good tool that I'll turn to if I have future questions that need answering.</p>
 
-    <h2><a href="/blog/2011/03/07/paleo-egg-muffins/">Paleo Egg Muffins</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/03/07/paleo-egg-muffins/">Paleo Egg Muffins</a></h1>
     <div class="article-title-date">Mar  7, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>There are a <a href="http://nomnompaleo.com/post/3397688384/curried-beef-broccoli-slaw-mushroom-frittata">number</a> of <a href="http://www.norcalsc.com/index.php/post/egg_cupcakes_to_go/">recipes</a> for <a href="http://everydaypaleo.com/2010/03/24/egg-cupcakes/">paleo</a> <a href="http://paleoblocks.blogspot.com/2010/08/breakfast-muffins.html">muffins</a>, which are a great way to get fast <a href="http://en.wikipedia.org/wiki/Paleolithic_diet">paleo</a> food in the morning.  As I usually do with cooking, I created my own recipe from the ones I found online.  For 24 muffins, I assembled:</p>
 
 <ul>
@@ -471,10 +461,9 @@ CrossFit got me started on Olympic lifting and it is now one of my favorite thin
 
 <p>I began by cooking the sausage, followed by sautÃ©ing the diced onion &amp; pepper in the fat that rendered out of the sausage.  After cracking all of the eggs into a a large bowl, I whisked them together with the yogurt.  With all of that assembled, I combined the sausage with the pepper &amp; onion and portioned it into a pair of muffin pans.  The eggs are the last thing before the oven, filling each cup ⅔rds full.  Into the oven for 15 minutes, rotate top/bottom pan, and give them another 7-10.  The bottoms of mine were a bit under cooked, so I might try putting the lower rack all the way down, rather than the standard in-the-middle.</p>
 
-    <h2><a href="/blog/2011/02/20/altering-many-directories-at-once-with-cmddirs/">Altering many directories at once with CmdDirs</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2011/02/20/altering-many-directories-at-once-with-cmddirs/">Altering many directories at once with CmdDirs</a></h1>
     <div class="article-title-date">Feb 20, 2011</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I'm working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
 
 <p>While I love Git, it does not make such actions this simple.  Git requires you to be in the repository directory (or set a number of environment variables) to work wit that repo.  While the <a href="http://superuser.com/questions/235455/bash-script-to-perform-an-action-on-each-subdirectory-in-a-directory"><code>-exec</code> option of <code>find(1)</code></a> allows me to descend into each directory and perform an action, I wanted to make this easy, because such all-checkout-actions are something that I want to do a number of times each day.  Like most problems, this one is (best?) solved with Perl.  Enter <a href="https://github.com/dinomite/CmdDirs">App::CmdDirs</a>.</p>
@@ -510,10 +499,9 @@ curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs &gt; ~/bin/cmddi
 </pre>
 
 
-    <h2><a href="/blog/2010/12/16/crapcan-racing-tips/">Crapcan Racing Tips</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2010/12/16/crapcan-racing-tips/">Crapcan Racing Tips</a></h1>
     <div class="article-title-date">Dec 16, 2010</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/2010-12-lemons-00012.jpg.html"><img alt="The Jaywatch car" src="http://mpierce.org/gallery/d/4339-2/2010-12-lemons-00012.jpg" width="400" height="267" class="mt-image-left" /></a>
 <a href="http://www.nccbmwcca.org/content.php?120-driving-school">Drivers' schools</a> are incredibly fun and the best way to improve your driving prowess.  <a href="http://www.nasaproracing.com/hpde/">Track days</a> can be incredibly useful for honing your skill once you have been on track enough to catch your own mistakes.  While incredibly useful tools for learning to drive fast, neither can touch the <a href="http://www.24hoursoflemons.com/">24 Hours of LeMons</a> for having fun with motorsports.  I have previously written about <a href="http://dinomite.net/2010/how-bvd-skidmark-got-to-goin-for-broken/">the basics of getting to a LeMons race</a>, and what happened at <a href="http://dinomite.net/2010/bvd-skidmarks-first-24-hours-of-lemons/">our first race</a>.  The team just finished another race, the 2010 Arse-Freeze-Apalooza at Buttonwillow this past weekend, where we finished 68th of 173.  Better than half made us happy, because the head gasket blew with an hour and a half left in the race.</p>
 
@@ -533,6 +521,7 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
 
 <p>Photos by <a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/">Marshall Pierce</a>.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/3/">Next page</a></p>

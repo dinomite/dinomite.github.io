@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Creating a Perl Module in Modern Style « Dinomite.net</title>
+  <title>Creating a Perl Module in Modern Style « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>One of the very best things about Perl is <a href="https://metacpan.org/">CPAN</a>, a repository of modules to do everything from <a href="https://metacpan.org/module/WWW::Mechanize">browse the web</a> to <a href="https://metacpan.org/module/Image::Magick">manipulating image files</a>.  CPAN provides a consistent method for installing modules (<a href="https://metacpan.org/module/App::cpanminus#Installing-to-system-perl">install cpanminus</a> and then <code>cpanm &lt;Module::Name&gt;</code>) and the largest number of modules of all the scripting languages.  More often than not, what you are trying to do has already been done and exists as a CPAN module.  In the event you are doing something new, the best way to give back to the community and get free help is to encapsulate your work and distribute it as a module on CPAN.</p>
+  <div class="main-content">
+    <h1 class="article-title">Creating a Perl Module in Modern Style</h1>
+    <div class="article-title-date">Oct 22, 2011</div>
+    <p>One of the very best things about Perl is <a href="https://metacpan.org/">CPAN</a>, a repository of modules to do everything from <a href="https://metacpan.org/module/WWW::Mechanize">browse the web</a> to <a href="https://metacpan.org/module/Image::Magick">manipulating image files</a>.  CPAN provides a consistent method for installing modules (<a href="https://metacpan.org/module/App::cpanminus#Installing-to-system-perl">install cpanminus</a> and then <code>cpanm &lt;Module::Name&gt;</code>) and the largest number of modules of all the scripting languages.  More often than not, what you are trying to do has already been done and exists as a CPAN module.  In the event you are doing something new, the best way to give back to the community and get free help is to encapsulate your work and distribute it as a module on CPAN.</p>
 
 <p>Historically, creating a module suitable for general consumption was a confusing.  Tutorials <a href="http://world.std.com/~swmcd/steven/perl/module_mechanics.html">from years past</a> abound, <a href="http://www.perlmonks.org/?node_id=431702">each one longer</a> <a href="http://members.pcug.org.au/~rcook/PerlModule_HOWTO.html">than the previous</a>, and <a href="http://mathforum.org/~ken/perl_modules.html">always employing a different toolchain</a>, making synthesis of common concepts impossible.  These days, however, things are much easier.  In the past 6 years or so the Perl community has tried on a <a href="https://metacpan.org/module/ExtUtils::MakeMaker">number</a> of <a href="https://metacpan.org/module/Module::Build">methods</a> for <a href="https://metacpan.org/module/Module::Install">building</a> modules.  The focus of this article will be a recent (circa late 2009…the Perl ecosystem takes a measured pace) build system, <a href="https://metacpan.org/module/Dist::Zilla">Dist::Zilla</a>.</p>
 
@@ -153,9 +155,9 @@ MANIFEST    Makefile.PL dist.ini    t
 </ul>
 <p><br /> </p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -251,11 +253,11 @@ MANIFEST    Makefile.PL dist.ini    t
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

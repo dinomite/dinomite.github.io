@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Code Golf: Grid Computing « Dinomite.net</title>
+  <title>Code Golf: Grid Computing « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p><a href="http://codegolf.com/grid-computing">A new puzzle</a> went up on <a href="http://codegolf.com">Code Golf</a> a few weeks ago and I finally got some time to sit down and hack on it, so here's another annotated instalment of my pruning process.  I haven't gotten anywhere near the smallest solutions which are half of my 109 characters.  See the action below, but don't look if you don't want hints!</p>
+  <div class="main-content">
+    <h1 class="article-title">Code Golf: Grid Computing</h1>
+    <div class="article-title-date">Jan 15, 2008</div>
+    <p><a href="http://codegolf.com/grid-computing">A new puzzle</a> went up on <a href="http://codegolf.com">Code Golf</a> a few weeks ago and I finally got some time to sit down and hack on it, so here's another annotated instalment of my pruning process.  I haven't gotten anywhere near the smallest solutions which are half of my 109 characters.  See the action below, but don't look if you don't want hints!</p>
 
 <p>Initially, a straightforward <code>for</code> loop that reads from standard input or a passed file; huzzah for Perl's built-in flexibility.  Within this loop, a counter, <code>$n</code>, is incremented to fill an array, <code>@c</code>, with the sum of each column; the sum of the row is stored in <code>$r</code>.  At the end of each iteration of the loop, the greatest row sum, <code>$a</code>, is set to the just-completed row if said row is greater than what has been seen previously or the answer is <code>undef</code>, as it is the first time through.  The lower loop puts the greatest column sum into <code>$b</code>.</p>
 
@@ -90,9 +92,9 @@ print $b&gt;$a ? $b.$/ : $a.$/;
 
 <p>At which point I'm stuck.  After beating out the last bits of whitespace, that is 109 characters.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -188,11 +190,11 @@ print $b&gt;$a ? $b.$/ : $a.$/;
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

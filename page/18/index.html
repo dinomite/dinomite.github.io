@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/17/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/05/11/finding-perl-module-dependencies/">Finding Perl Module Dependencies</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/05/11/finding-perl-module-dependencies/">Finding Perl Module Dependencies</a></h1>
     <div class="article-title-date">May 11, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>So you've written a Perl program and want to give it to someone else.  The only problem is, like any good Perl program, you've made good use of modules, some of which may be non-standard.  The person in question may not be able to install modules on the machine they're going to be running your script on, or maybe you just don't want to hassle them with that.  The easy way is to give them the modules in the proper directory structure right alongside your program; they simply toss the group of modules in the same directory as the script and when it's run the Perl interpreter searches . (the current directory) for the modules, finds them and goes about its merry way.</p>
 
 <p>The only hiccup, some of the modules you've used depend on other modules…which may have further dependencies.  Rather than suffer through dependency reminiscent of Red Hat (even the newest version…), you can use the Devel::Modlist module which will tell you which modules are required to run the program.  Invoked with the 'nocore' option, Devel::Modlist will ignore standard modules, which ought to be installed with any Perl distribution.  Here is an example from a program I wrote; the only module I invoke directly is XML::SAX.</p>
@@ -66,10 +63,9 @@ XML::SAX::PurePerl::XMLDecl
 ~/code$
 </code></pre>
 
-    <h2><a href="/blog/2007/04/26/tar-over-ssh-part-2/">tar over SSH (part 2)</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/26/tar-over-ssh-part-2/">tar over SSH (part 2)</a></h1>
     <div class="article-title-date">Apr 26, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://dinomite.net/archives/tar-over-ssh">In our last episode</a> we used tar to move a file structure across the network.  This time, to create a tarball directly onto another machine the following command can be used:</p>
 
 <p><code>
@@ -78,10 +74,9 @@ tar czf - foo/ | ssh user@host "cat &gt; /path/to/foo.tgz"
 
 <p>This is useful if the machine you're taring from doesn't have enough disk space to hold the tarball.  Furthermore, it's probably faster because the tarball is only being written once, directly to its final location.</p>
 
-    <h2><a href="/blog/2007/04/25/remote-oracle-connections/">Remote Oracle Connections</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/25/remote-oracle-connections/">Remote Oracle Connections</a></h1>
     <div class="article-title-date">Apr 25, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Like many 'enterprise solutions,' Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it's often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
 
 <p><code>
@@ -90,16 +85,14 @@ tar czf - foo/ | ssh user@host "cat &gt; /path/to/foo.tgz"
 
 <p>Really, it's quite straightforward.</p>
 
-    <h2><a href="/blog/2007/04/24/koni-yellows/">Koni Yellows</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/24/koni-yellows/">Koni Yellows</a></h1>
     <div class="article-title-date">Apr 24, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I installed Koni Adjustable Sport shocks on my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a> a few months ago and before even driving the car I turned them to full stiff, like ya do.  Who want's anything but the most hardcore?  I finally got around to turning them down this past week (it's not like I go to the track all that often) and what a difference that makes!  Koni Yellows on full-soft are just like stock shocks and with a few turns under the hood, they become a good bit more go-kart like.</p>
 
-    <h2><a href="/blog/2007/04/15/introduction-to-genres-of-electronic-music-through-remixes/">Introduction to Genres of Electronic Music through Remixes</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/15/introduction-to-genres-of-electronic-music-through-remixes/">Introduction to Genres of Electronic Music through Remixes</a></h1>
     <div class="article-title-date">Apr 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Undoubtedly, the most comprehensive map to electronic music is <a href="http://www.di.fm/edmguide/edmguide.html">Ishkur's Guide</a> which covers every genre, even reaching out to Rap, much of which contains electronic elements.  Ishkur's Guide is certainly worth perusing if you're interested in electronic music, but is a bit cumbersome for someone simply looking for an overview.  The best way to get a quick understanding of the different genres within electronic music is to hear the same song presented through different interpretations.  Madonna's <a href="http://en.wikipedia.org/wiki/Like_a_Prayer_%28song%29"><em>Like a Prayer</em></a> fits this bill nicely, as it has been remixed by numerous artists in a myriad of styles.</p>
 
 <p><a href="http://dinomite.net/static/music/madonna-like-a-prayer-original.mp3">The original</a> version of the song is a pop-styled electronic-backed vocal ensemble with a number of distinct elements.  Taking note of the song's components is important to understanding which parts the remixes keep, which they alter and what from the song is tossed out completely.  The archetype begins with an odd riff from a guitar that isn't heard anywhere else in the song, nor in any remixes; such introductions are often thrown to the wayside when songs are remixed.  From there, the song progresses with an ethereal chorus backing Madonna's airy and LOVING vocals which sets the mood.  From there, the an 80's electric bass and drum set are added, which come and go throughout the balance of the tune.  As you will hear in the remixes all of the elements of the song will be subject to change.</p>
@@ -129,22 +122,19 @@ tar czf - foo/ | ssh user@host "cat &gt; /path/to/foo.tgz"
 </ul>
 <p>You probably wouldn't have guessed that someone could make <em>Like a Prayer</em> sound evil and depressing, but here it is.  Replace the vocals with those of an angsty adolescent, simplify the beats down to electronic drum hits, replace the melody with a spartan version from a machine and you've got yourself <a href="http://en.wikipedia.org/wiki/Darkcore">darkcore</a>.</p>
 
-    <h2><a href="/blog/2007/04/13/your-current-security-settings-do-not-allow-this-action/">Your current security settings do not allow this action</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/13/your-current-security-settings-do-not-allow-this-action/">Your current security settings do not allow this action</a></h1>
     <div class="article-title-date">Apr 13, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Windows Server 2003 (or maybe it's just Internet Explorer 7) has a number of wonderful features that will make every day a cheery adventure.  Among them are draconian security policies that, beyond making little sense, are controlled from places they don't belong.  Apparently a mapped network share is considered a web page.  Who would have guessed that?  Well, if you get the error in the title when trying to run or even right-click something from a share on the network, it can be fixed from Internet Options.  From IE7, press 'alt' to show the menu, go to Tools&gt;Internet Options.  In the Internet Options window, go to the security tab, select the 'Internet' zone and click 'Custom' near the bottom right.  In the resulting window under 'Miscellaneous', set things that say 'disable' to 'prompt' or 'enable'.  I'm not sure which one controls the above mentioned behavior, but it ought to be fairly obvious which are involved; just allow them.</p>
 
-    <h2><a href="/blog/2007/04/09/wikipedia-recent-changes-and-watchlist/">Wikipedia recent changes and watchlist</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/09/wikipedia-recent-changes-and-watchlist/">Wikipedia recent changes and watchlist</a></h1>
     <div class="article-title-date">Apr  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Mediawiki got a new feature recently, pages shown on your <a href="http://en.wikipedia.org/wiki/Special:Watchlist">watchlist</a> or the <a href="http://en.wikipedia.org/wiki/Special:Recentchanges">recent changes</a> page now show the number of bytes added (green) or removed (red) from the page.</p>
 
-    <h2><a href="/blog/2007/04/08/psad-on-ubuntu/">psad on Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/08/psad-on-ubuntu/">psad on Ubuntu</a></h1>
     <div class="article-title-date">Apr  8, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><code>psad</code> (PortScan Attack Detector) is a useful tool for detecting portscans against a system and, optionally, blocking the offending host.  To use <code>psad</code> you configure your firewall to drop and log all packets that are not specifically allowed, i.e., those that are handled by services on the machine.  The configuration for <code>psad</code> can cause a little bit of grief because it depends on some quite particular firewall setup and, if you don't want massive logfiles, some editing of <code>syslog.conf</code>.  To begin with, you'll need to install <code>psad</code> which can be done via apt:</p>
 
 <p><code>&lt;pre&gt;
@@ -183,10 +173,9 @@ kern.info;kern.!debug		-/var/log/kern.log
 
 <p>The first syslog change keeps your /var/log/kern.log and /var/log/messages from getting a line each time a packet is dropped (which is quite often) and the latter change sends all those dropped packet notifications (which are at the 'debug' loglevel) to psad.</p>
 
-    <h2><a href="/blog/2007/04/05/windows-server-2003-updates/">Windows Server 2003 Updates</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/04/05/windows-server-2003-updates/">Windows Server 2003 Updates</a></h1>
     <div class="article-title-date">Apr  5, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Dear Microsoft,</p>
 
 <p>I am running Windows <strong>Server</strong> 2003 on, get this, a <strong>server</strong>!  I know that I haven't restarted since running an update, please stop telling me.</p>
@@ -194,10 +183,9 @@ kern.info;kern.!debug		-/var/log/kern.log
 <p>Thanks,<br />
 Admins Everywhere</p>
 
-    <h2><a href="/blog/2007/03/22/md5-digests-in-java/">MD5 Digests in Java</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/03/22/md5-digests-in-java/">MD5 Digests in Java</a></h1>
     <div class="article-title-date">Mar 22, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>File hashes have a multitude of uses and MD5 is, despite the fact that weaknesses have been found in the algorithm, still very useful and widely employed.  Creating MD5 digests in Java is quite easy, but the documentation for <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html">MessageDigest</a> is a little bit tricky.  Here is a simple method that takes in a string of input and returns the hash of the string.</p>
 
 <p><code>&lt;pre&gt;
@@ -227,6 +215,7 @@ for (int x = 0; x &lt; hash.length; x++) {
 return ret.toString().toUpperCase(); } //md5 &lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/19/">Next page</a></p>

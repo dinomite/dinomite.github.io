@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/9/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2008/03/06/off-the-hook-5-march-2008/">Off The Hook - 5 March 2008</a></h2>
+    <h1 class="article-title"><a href="/blog/2008/03/06/off-the-hook-5-march-2008/">Off The Hook - 5 March 2008</a></h1>
     <div class="article-title-date">Mar  6, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0308.html">5 March 2008</a>.</p>
 
 <p>In the studio: Emmanuel, Mike, Redbird, Not Kevin
@@ -65,10 +62,9 @@ Letters - oth@2600.com</p>
 
 <p>A caller asks about receiving digital television signals from Jersey.  Despite having a large antenna in his attic, he is unable to receive the digital version of a channel that he receives fine in analog.  Bernie notes that the UHF frequencies for digital TV are higher than those for analog and so the antenna might not be tuned properly.</p>
 
-    <h2><a href="/blog/2008/03/02/rsync-from-mac-os-x-to-a-linux-machine/">Rsync from Mac OS X to a Linux Machine</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/03/02/rsync-from-mac-os-x-to-a-linux-machine/">Rsync from Mac OS X to a Linux Machine</a></h1>
     <div class="article-title-date">Mar  2, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you try to <code>rsync</code> from a Mac OS X machine using the <code>-E</code> switch (capture extended attributes &amp; resource forks - you want this) to a Linux or BSD computer, you'll get something like the following error:</p>
 
 <pre>
@@ -96,10 +92,9 @@ tar zxf rsync-2.6.3.tar.gz &amp;&amp; cd rsync-2.6.3 &amp;&amp; patch &lt; ../EA
 
 <p>By default, it installs to <code>/usr/local/bin/rsync</code> so installing this version won't trash that put in place by your sytem's package manager.  I also found a post on <a href="http://macosxhints.com">macosxhints.com</a> concerning <code>rsync</code> interacting with the disk indexing of Spotlight.  If you are writing tons of files to a Spotlight-indexed disk on a Mac, the indexer can become overwhelmed.  The solution is to disable Spotlight on the disk in question with <code>mdutil -i off &lt;mountpoint&gt;</code> or to write into a directory appended with <code>.noindex</code>.</p>
 
-    <h2><a href="/blog/2008/03/01/off-the-hook-27-february-2008/">Off The Hook - 27 February 2008</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/03/01/off-the-hook-27-february-2008/">Off The Hook - 27 February 2008</a></h1>
     <div class="article-title-date">Mar  1, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0208.html">27 February 2008</a>.</p>
 
 <p>In the studio: Emmanuel, Mike, Redbird, Not Kevin, Lazlo<br />
@@ -118,10 +113,9 @@ Via Skype: Jon Erickson, author of Hacking: The Art of Exploitation</p>
 
 </li></ul>
 
-    <h2><a href="/blog/2008/02/19/changing-a-shortname-on-mac-os-x/">Changing a Shortname on Mac OS X</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/19/changing-a-shortname-on-mac-os-x/">Changing a Shortname on Mac OS X</a></h1>
     <div class="article-title-date">Feb 19, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>When you install Mac OS X, it asks you for your full name, which is what it will use for what it calls the username.  Despite calling it the username, it is not actually field 1 in <code>/etc/passwd</code>, which is what Unix users would call the username.  Mac OS X refers to the first field of <code>/etc/passwd</code> as a user's "short name," normally a concatenated and lowercased version of your full name.  As one would expect, your Unix username, what you would use to login at a console or via SSH, is actually the short name; your files are stored in /Users/<shortname> and are owned by <shortname>.</shortname></shortname></p>
 
 <p>Like many Unix users, I have a username (dinomite) that is different from my real name (Drew Stephens) and I like it that way.  Having a username on one machine that doesn't match that on all of my others is a hassle, requiring me to specify a username whenever I SSH to or from said machine.  After having reinstalled OS X recently I wanted to change my short name on the system to rectify this problem.  Though some tutorials make it seem like an <a href="http://docs.info.apple.com/article.html?artnum=106824">involved process</a>, it's actually fairly straightforward if you have some Unix and OS X experience.  Here's how I did it in 10.5 (Leopard).</p>
@@ -132,10 +126,9 @@ Via Skype: Jon Erickson, author of Hacking: The Art of Exploitation</p>
 
 <p>Open a terminal (Applications &gt; Utilities &gt; Terminal) and change to /Users.  <code>ls</code> ought to show directories for both your current short name and the newly created one.  Now you just have to move your files from your old short name to the new one: <code>mv &lt;old short name&gt;/* &lt;old short name&gt;/.* &lt;new short name&gt;/</code>.  Once that completes, you need to change the ownership to the new short name: <code>chown -R &lt;new short name&gt; /Users/&lt;new short name&gt;</code>.  Since everything is now in the new users' domain, you can now delete your old username, log out of root and log in using your newly short named account.</p>
 
-    <h2><a href="/blog/2008/02/15/linux-filesystem-internals/">Linux Filesystem Internals</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/15/linux-filesystem-internals/">Linux Filesystem Internals</a></h1>
     <div class="article-title-date">Feb 15, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Someone asked me questions about filesystems recently and, though I used to have a good handle on them, my knowledge has waned over the years.  I figured writing about filesystem internals was a good way to brush up on that knowledge.</p>
 
 <p>This information applies generally to <a href="http://en.wikipedia.org/wiki/Unix_File_System">UFS</a>, FFS, <a href="http://en.wikipedia.org/wiki/Ext2">ext2</a>/<a href="http://en.wikipedia.org/wiki/Ext3">3</a> and XFS.  <a href="http://en.wikipedia.org/wiki/ReiserFS">ReiserFS</a> and <a href="http://en.wikipedia.org/wiki/Hierarchical_File_System">HFS</a>(<a href="http://en.wikipedia.org/wiki/HFS_Plus">+</a>) employ B-trees for organization of file metadata rather than inode lists, so they are somewhat different.  <a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a> is the tits and all of its shenanigans are handled differently.</p>
@@ -159,10 +152,9 @@ Via Skype: Jon Erickson, author of Hacking: The Art of Exploitation</p>
 <li><a href="http://uranus.chrysocome.net/explore2fs/es2fs.htm">John's ext2 spec</a> - John Newbigin</li>
 </ul>
 
-    <h2><a href="/blog/2008/02/14/off-the-hook-13-february-2008/">Off The Hook - 13 February 2008</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/14/off-the-hook-13-february-2008/">Off The Hook - 13 February 2008</a></h1>
     <div class="article-title-date">Feb 14, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0208.html">13 February 2008</a>.</p>
 
 <p>In the studio: Emmanuel, Mike, Not Kevin<br />
@@ -195,10 +187,9 @@ On the phone: Bernie S from Philadelphia, <a href="http://en.wikipedia.org/wiki/
 
 <p>Emmanuel mentions the real-world protests of <a href="http://xenu.net">Scientology</a> by "Anonymous"; in New York, <a href="http://gothamist.com/2008/02/11/nyc_scientology.php">more than 200 people were present</a>.  Another demonstration will take place on the 15th of March at Scientology sites throughout the world.</p>
 
-    <h2><a href="/blog/2008/02/11/python-switch-statements-part-2/">Python Switch Statements - part 2</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/11/python-switch-statements-part-2/">Python Switch Statements - part 2</a></h1>
     <div class="article-title-date">Feb 11, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>My friend Lex read my post on <a href="http://dinomite.net/archives/dictatorial-leadership-is-sometimes-the-best">Python's lack of switch statements</a> and sent me a note that the normal method for implementing something along the lines of a <code>switch</code> in Python is to use a dictionary.  First, let's define some functions:</p>
 
 <pre class="brush: python;">
@@ -239,10 +230,9 @@ switch.get('bar', nomatch)()
 }[string]()
 </pre>
 
-    <h2><a href="/blog/2008/02/10/off-the-hook-6-february-2008/">Off The Hook - 6 February 2008</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/10/off-the-hook-6-february-2008/">Off The Hook - 6 February 2008</a></h1>
     <div class="article-title-date">Feb 10, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0208.html">6 February 2008</a>.</p>
 
 <p>It's a fund raising week at <a href="http://www.wbai.org">WBAI</a>, so <a href="http://www.2600.com/offthehook">Off The Hook</a> is a little bit light on content, but they are big on giving you stuff for donating to the station.  Be sure to tune in live next week because they often extend the fund raisers, so you might be able to pledge next week for different stuff.  The premiums for this show are:</p>
@@ -262,10 +252,9 @@ switch.get('bar', nomatch)()
 
 <p>Emmanuel plays a clip from a November 1999 show and discussion of the upcoming <a href="http://en.wikipedia.org/wiki/Y2K">Year 2000 Problem</a>.  Emmanuel laments people who think that 1999 is the last year of the century or that 2000 is the first year of the new millennium.  Micro controllers that control municipal functions are brought up, in particular the <a href="http://en.wikipedia.org/wiki/PDP-11">PDP-11</a>s (not micro controllers) that control the release of sewage into the <a href="http://en.wikipedia.org/wiki/East_River">East River</a> according to lunar cycles, which influence tides.</p>
 
-    <h2><a href="/blog/2008/02/08/john-mccain-is-a-soldier-of-reaganomics/">John McCain is a Soldier of Reaganomics</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/08/john-mccain-is-a-soldier-of-reaganomics/">John McCain is a Soldier of Reaganomics</a></h1>
     <div class="article-title-date">Feb  8, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>John McCain's economic advisor, Douglas Holtz-Eakin, was on <a href="http://marketplace.publicradio.org/display/web/2008/01/30/econ_advisors_holtz_eakin/">Wednesday's Marketplace</a> discussing the senator's economic strategy for the country.  In the interview, Holtz-Eakin said this of McCain:</p>
 
 <blockquote>
@@ -276,10 +265,9 @@ He is a foot soldier in the Reagan Revolution. He saw President Reagan cut taxes
 
 <p>Excuse me?  Are we really still bringing up Reagonomics?  The <a href="http://en.wikipedia.org/wiki/Reaganomics">trickle-down economics</a> championed by the Reagan administration is a contentious issue and its effects on the general populace, like that of all economic matters, is debatable.  One thing that isn't debatable, however, is the <a href="http://en.wikipedia.org/wiki/National_debt_by_U.S._presidential_terms">size of the federal debt</a>.  To put it quite frankly: Republicans want to cut taxes and spend like there's no tomorrow.  Ideally such a policy should be a boon to the economy and yet there's no clear evidence for that being the case.  What such strategies do affect are programs like Social Security; the money for tax cuts has to come from somewhere and more often than not it is by marginalizing other Federal programs.  Don't get me wrong, I don't particularly care for Social Security but the fact of the matter is I pay into it and I want to get my money's worth.  As it stands, I may never see the 6% of my pay that goes toward the troubled fund.</p>
 
-    <h2><a href="/blog/2008/02/04/off-the-hook-30-january-2008/">Off The Hook - 30 January 2008</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/02/04/off-the-hook-30-january-2008/">Off The Hook - 30 January 2008</a></h1>
     <div class="article-title-date">Feb  4, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>In attendance: Emmanuel, Bernie S, Mike, Redbird and Not Kevin.</p>
 
 <p>Bernie mentions that <a href="http://en.wikipedia.org/wiki/Advanced_Mobile_Phone_System">analog cell phone service (AMPS)</a> will be shut off during the week of February 18th.</p>
@@ -317,6 +305,7 @@ Brooklyn, New York 11226<br />
 
 <p>Apparently OTH has a bunch of 80+ year old listeners.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/11/">Next page</a></p>

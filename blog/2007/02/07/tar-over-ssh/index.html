@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>tar Over SSH « Dinomite.net</title>
+  <title>tar Over SSH « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p><code>scp</code> is great for ease of use, but if you're transferring numerous files, small ones in particular, it isn't the fastest method.  <code>tar</code>, however, is very well suited to gathering small files into a single unit, but <code>tar</code>ing the files, <code>scp</code>ing the tarball and then un-<code>tar</code>ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:</p>
+  <div class="main-content">
+    <h1 class="article-title">tar Over SSH</h1>
+    <div class="article-title-date">Feb  7, 2007</div>
+    <p><code>scp</code> is great for ease of use, but if you're transferring numerous files, small ones in particular, it isn't the fastest method.  <code>tar</code>, however, is very well suited to gathering small files into a single unit, but <code>tar</code>ing the files, <code>scp</code>ing the tarball and then un-<code>tar</code>ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:</p>
 
 <p><code>
 tar cf - sourcedir/ | ssh user@dest_host tar xf - -C /destination/path
@@ -36,9 +38,9 @@ tar cf - sourcedir/ | ssh user@dest_host tar xf - -C /destination/path
 I noticed that a lot of people Google for "tar over scp", which might be your first thought if you've never done this before.  This note is just to help those people out, because this is most likely the solution they are in search of.
 </addendum>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -134,11 +136,11 @@ I noticed that a lot of people Google for "tar over scp", which might be your fi
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

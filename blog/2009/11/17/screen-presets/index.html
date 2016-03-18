@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Screen Presets « Dinomite.net</title>
+  <title>Screen Presets « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Ubuntu's <a href="https://wiki.ubuntu.com/ScreenProfiles">Screen Profiles</a> package taught a lot of folks about how GNU Screen can be so much more than a fancy replacement for <a href="http://en.wikipedia.org/wiki/Nohup">nohup(1)</a>.  Since GNU Screen's name is difficult enough to search for, they have thankfully renamed the package to <a href="https://launchpad.net/byobu">Byobu</a>.  Byobu provides users with a whole bunch of pre-defined aliases to make working within Screen easier, and make more sense by defining a useful status line.  There's more that can be done with screen, the most notable in my view is creating predefined working environments that make getting yourself up and running when logging into a system easy.</p>
+  <div class="main-content">
+    <h1 class="article-title">Screen Presets</h1>
+    <div class="article-title-date">Nov 17, 2009</div>
+    <p>Ubuntu's <a href="https://wiki.ubuntu.com/ScreenProfiles">Screen Profiles</a> package taught a lot of folks about how GNU Screen can be so much more than a fancy replacement for <a href="http://en.wikipedia.org/wiki/Nohup">nohup(1)</a>.  Since GNU Screen's name is difficult enough to search for, they have thankfully renamed the package to <a href="https://launchpad.net/byobu">Byobu</a>.  Byobu provides users with a whole bunch of pre-defined aliases to make working within Screen easier, and make more sense by defining a useful status line.  There's more that can be done with screen, the most notable in my view is creating predefined working environments that make getting yourself up and running when logging into a system easy.</p>
 
 <p>I've got a number of different things that I commonly do where I want a number of different screen windows: running the deamons on our development server, connecting to the DB servers in each of the different environments, and developing an experimental project.  For each of these applications, I have created a screenrc that I keep in my <code>.screen/</code> directory; the basic format is this:</p>
 
@@ -48,9 +50,9 @@ select 0
 
 <p>To run a specific preset, just invoke screen with the <code>-c</code> option: <code>screen -c ~/.screen/daemons</code>.  Easy.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -146,11 +148,11 @@ select 0
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

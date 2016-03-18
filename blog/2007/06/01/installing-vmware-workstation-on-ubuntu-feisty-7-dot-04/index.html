@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Installing VMware Workstation on Ubuntu Feisty (7.04) « Dinomite.net</title>
+  <title>Installing VMware Workstation on Ubuntu Feisty (7.04) « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>I found a new, easy process for installing VMware on Ubuntu, having updated the kernel on my Feisty machine since the last time I used the virtual machine.  Whenever the kernel changes, VMware needs to rebuild it's kernel module to suit, via the script <code>vmware-config.pl</code>.  This involves a few steps such that VMware can correctly build it's module against the kernel you're running.  First, you need to grab the headers for your running kernel and set them up to support building:</p>
+  <div class="main-content">
+    <h1 class="article-title">Installing VMware Workstation on Ubuntu Feisty (7.04)</h1>
+    <div class="article-title-date">Jun  1, 2007</div>
+    <p>I found a new, easy process for installing VMware on Ubuntu, having updated the kernel on my Feisty machine since the last time I used the virtual machine.  Whenever the kernel changes, VMware needs to rebuild it's kernel module to suit, via the script <code>vmware-config.pl</code>.  This involves a few steps such that VMware can correctly build it's module against the kernel you're running.  First, you need to grab the headers for your running kernel and set them up to support building:</p>
 
 <pre>
 ~$ sudo -i
@@ -49,9 +51,9 @@
 
 <p>Follow the directions provided by the VMware configuration script (the defaults are safe, but read the information) and you're done.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -147,11 +149,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

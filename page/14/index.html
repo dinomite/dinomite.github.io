@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/13/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/10/11/homemade-carbonator/">Homemade Carbonator</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/10/11/homemade-carbonator/">Homemade Carbonator</a></h1>
     <div class="article-title-date">Oct 11, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://dinomite.net/wp-content/uploads/2007/10/carbonator.jpg" title="Carbonator" class="right"><img src="http://dinomite.net/wp-content/uploads/2007/10/carbonator-thumb.jpg" alt="Carbonator thumbnail" /></a>
 After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS">this instructable</a> I was very excited because I've recently started drinking a lot of seltzer water and I felt silly paying for something so simple.  I collected parts from eBay and some online distributors as follows:</p>
 
@@ -46,16 +43,14 @@ After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS
 
 <p>It's a pretty simple arrangement, in the end.  Just hook the regulator up to the tank along with the tubing to the carbonator cap, adjust the pressure to 50PSI and then fizzy up a bottle of cold water.</p>
 
-    <h2><a href="/blog/2007/10/08/perceptions-are-not-reality/">Perceptions Are Not Reality</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/08/perceptions-are-not-reality/">Perceptions Are Not Reality</a></h1>
     <div class="article-title-date">Oct  8, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I watched some music videos on <a href="http://en.wikipedia.org/wiki/YouTube">YouTube</a> today and found that <a href="http://en.wikipedia.org/wiki/Ska-P">Ska-P</a> <a href="http://youtube.com/watch?v=Q-Iv7JqlTjw">do</a> <a href="http://youtube.com/watch?v=cZhl8HU2WQI">not</a> <a href="http://youtube.com/watch?v=o8EZXKp9gWg">look</a> at all as I imagined them.  Yum!Yum!ORANGE, however, <a href="http://youtube.com/watch?v=0HJTa_ZPiw0">look</a> <a href="http://youtube.com/watch?v=pSJdx95F_3U">exactly</a> <a href="http://youtube.com/watch?v=92-w7P2aicM">like</a> <a href="http://youtube.com/watch?v=M2uVcKZB3RM">my</a> <a href="http://youtube.com/watch?v=-pRyO2Ywx_M">mind</a> <a href="http://youtube.com/watch?v=YCJuqLO_a4g">pictured</a>.</p>
 
-    <h2><a href="/blog/2007/10/03/automated-encrypted-backups-via-ssh/">Automated Encrypted Backups via SSH</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/03/automated-encrypted-backups-via-ssh/">Automated Encrypted Backups via SSH</a></h1>
     <div class="article-title-date">Oct  3, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is a hack of the script <code>rsnaptar</code> included with the rsnapshot distribution.  In short, it takes a  few rsnapshot directories, runs them through <code>tar</code>, <code>gzip</code> and <code>gpg</code> finally depositing the results on another machine.  I wrote this so that I could grab the backups from a server at work and routinely toss them onto a DVD that I take home with me.  It's a bad idea to be walking around with all of the company's source code, hence the GPG.  The magic all happens on one line which runs <code>tar</code>, piping the output to <code>ssh</code> which runs <code>gzip</code> reading from stdin on the remote machine then on to <code>gpg</code> dumping its output wherever you want.</p>
 
 <pre>
@@ -84,10 +79,9 @@ for BACKUP_POINT in `${LS} ${SNAPSHOT_DIR}`; do
 done
 </pre>
 
-    <h2><a href="/blog/2007/10/01/netbank-failure/">NetBank Failure</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/01/netbank-failure/">NetBank Failure</a></h1>
     <div class="article-title-date">Oct  1, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><img src="http://dinomite.net/wp-content/uploads/2007/10/netbank-logo.gif" class="right" alt="NetBank logo" />
 It's not every day that you hear about a bank failure.  Prior to <a href="http://www.fdic.gov/bank/individual/failed/NetBank.html">NetBank's failure</a> on Friday, the last was in February and that was the first in <a href="http://www.fdic.gov/bank/individual/failed/banklist.html">two and a half years</a>.  Thanks to the <a href="http://en.wikipedia.org/wiki/Federal_Deposit_Insurance_Corporation">Federal Deposit Insurance Corporation</a> (not to be confused with <a href="http://en.wikipedia.org/wiki/United_States_Federal_Reserve">The Fed</a>), the impact of a bank's dissolution doesn't have much effect on its customers.  As detailed in the above-linked FDIC page on the NetBank failure, ING Direct will take over the accounts of NetBank and anyone with deposits less than the <a href="http://www.mymoneyblog.com/archives/2007/05/fdic-insurance-what-if-my-bank-fails-make-sure-your-money-is-covered.html">FDIC insurance limit</a> won't suffer any loss at all.  Those with uninsured deposits (the amount exceeding $100,000) can only expect to see half of that amount:</p>
 
@@ -97,10 +91,9 @@ It's not every day that you hear about a bank failure.  Prior to <a href="http:/
 
 <p>The lesson?  This isn't the depression, but bank failures still happen.  If you keep your deposits under the FDIC limit then it's very much a non-issue; if you exceed those limits, you could sustain significant losses.  When Metrobank failed last February those with more than $100k at the bank got lucky because the FDIC was able to cover the relatively small amount of exceeding assets fully.  In the case of NetBank, the amount of uninsured assets are great enough that the FDIC isn't doing that again.</p>
 
-    <h2><a href="/blog/2007/09/29/youre-tuned-into-perfecto-radio/">You're tuned into Perfecto Radio, New York City, Miami, Los Angeles</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/29/youre-tuned-into-perfecto-radio/">You're tuned into Perfecto Radio, New York City, Miami, Los Angeles</a></h1>
     <div class="article-title-date">Sep 29, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>One of the rotating taglines in the subtitle of this website is the line that is the title of this post:
 "You're tuned into Perfecto Radio, New York City, Miami, Los Angeles"
 <img src="http://dinomite.net/wp-content/uploads/2007/10/perfecto.JPG" class="alignright" alt="Perfecto Records" />
@@ -108,10 +101,9 @@ A few weeks ago, I receive and email from someone wondering which <a href="http:
 
 <p>Just listening to this album again and at the end of Tatoine's <em>Music</em> a similar phrase is said, "You're tuned into Perfecto Radio, Chicago, Detroit, Seattle."</p>
 
-    <h2><a href="/blog/2007/09/21/bad-input-handling-on-the-web/">Bad Input Handling on The Web</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/21/bad-input-handling-on-the-web/">Bad Input Handling on The Web</a></h1>
     <div class="article-title-date">Sep 21, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I came across this on the Verizon billing page today when entering my account number:
 <a href="http://dinomite.net/wp-content/uploads/2007/09/west_fios_small.gif" title="FIOS Account Number"><img src="http://dinomite.net/wp-content/uploads/2007/09/west_fios_small.gif" alt="FIOS Account Number" /></a></p>
 
@@ -122,30 +114,26 @@ A few weeks ago, I receive and email from someone wondering which <a href="http:
 
 <p>Their web application ought to prepend "2020" to what I enter; the user simply shouldn't be bothered with this.</p>
 
-    <h2><a href="/blog/2007/09/16/great-chefs/">Great Chefs</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/16/great-chefs/">Great Chefs</a></h1>
     <div class="article-title-date">Sep 16, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you watch a lot of <em>Iron Chef</em>, like I do, then this is quite funny:</p>
 
 <p>[youtube]QdroyuTXYRU[/youtube]</p>
 
-    <h2><a href="/blog/2007/09/15/vpn-disconnects-due-to-altered-routing-table/">VPN Disconnects due to Altered Routing Table</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/15/vpn-disconnects-due-to-altered-routing-table/">VPN Disconnects due to Altered Routing Table</a></h1>
     <div class="article-title-date">Sep 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I was having trouble with my Nortel Contivity VPN client disconnecting giving an error message, "The routing table cannot be altered after the Contivity VPN Connection has been established. The Contivity VPN Connection has been Closed."  This would happen after 10-20 minutes of being connected and would cause all of my SSH sessions to drop, which made it hard to get work done.  After some searching, I found the solution to my problem, a simple registry addition.  I added the DWORD named "PerformRouterDiscovery" with the value 0 to the key <code>"HKEY_LOCAL_MACHINE_SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"</code>.  After rebooting, the VPN works without the random disconnects.  Download <a href="http://dinomite.net/wp-content/uploads/2007/09/performrouterdiscovery.reg">this .reg file</a> and run it to add the aforementioned key.</p>
 
-    <h2><a href="/blog/2007/09/13/changing-the-physical-interface-for-a-vmware-bridged-interface/">Changing the Physical Interface for a VMware Bridged Interface</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/13/changing-the-physical-interface-for-a-vmware-bridged-interface/">Changing the Physical Interface for a VMware Bridged Interface</a></h1>
     <div class="article-title-date">Sep 13, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I use VMware to run a virtual Windows machine for my company's VPN and the occasional game of Starcraft.  When I moved and switch from a wired network to wireless, the device with which I connect to the internet changed from good old <code>eth0</code> to the new-fangled <code>ath0</code>.  VMware was setup to tie its virtual interface for bridged networking to <code>eth0</code>.  Since <code>eth0</code> no longer has a network connection, the virtual machine lost the internet as well.  To fix this, I had to open <code>/etc/vmware/locations</code> and change the reference to <code>eth0</code> to <code>ath0</code>.  The virtual interface that I use is <code>vmnet0</code> so the line in the file referenced <code>VNET_0_INTERFACE</code>.  Simply changing that line and restarting the VMware backend (<code>/etc/init.d/vmware restart</code>) fixed everything.</p>
 
-    <h2><a href="/blog/2007/09/11/exmap-on-ubuntu/">EXMAP on Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/11/exmap-on-ubuntu/">EXMAP on Ubuntu</a></h1>
     <div class="article-title-date">Sep 11, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>EXMAP is a shared memory analysis utility that makes it easy to determine exactly how much memory a process is using.  Unlike <code>top</code>, which counts all memory shared amongst programs toward each of those programs, EXMAP gives three numbers most notable of which is "Effective Resident" memory usage.  This number is the amount of memory mapped directly by a process, plus a portion of any shared memory pools it is part of, that is, the program is only counted as using an equal portion of shared memory as all other processes that are sharing the same.</p>
 
 <p>On my system, both Gaim (Pidgin my foot) and Evolution are using aspell.  In top, they are both responsible for libaspell.so in its entirety, contributing 672K to each of their displayed memory usage.  EXMAP puts 338K towards Gaim and 334K to Evolution, a much more accurate tally, since only a single instance of libaspell is actually in memory, shared by the two other processes.  From my quick testing, it seems that subsequent users of shared memory take the larger share, 4K more in Gaim's case, since I started it after Evolution.  If I close Gaim, Evolution is then credited with the entire 632K of memory that libaspell occupies.</p>
@@ -173,6 +161,7 @@ echo exmap &gt;&gt; /etc/modules
 
 <p><code>module-assistant</code> automatically compiles and installs the module against the kernel headers that <code>aptitude</code> installed in the previous block and <code>depmod</code> calculates the dependencies amongst all modules, including the new EXMAP one.  <code>modprobe</code> installs the new module into the kernel and adding its name to <code>/etc/modules</code> ensures that it will be ready next time your system restarts as well.  Once all that is done, you can run <code>gexmap</code>.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/15/">Next page</a></p>

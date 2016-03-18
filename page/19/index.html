@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/18/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/03/15/perl-just-like-sed/">Perl Just Like sed</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/03/15/perl-just-like-sed/">Perl Just Like sed</a></h1>
     <div class="article-title-date">Mar 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I came across a post today in which someone mentioned that they used Perl for text replacement and, despite the simplicity of the solution, I hadn't ever thought of it.  By simply using three options with the <code>perl</code> command, you can run a quick script to do regex replacement in a file.  The <code>-p</code> option tells Perl to treat your script as a loop, reading in from the diamond (<code>&lt;&gt;</code>) operator.  <code>-i</code> makes it do in-place editing of files and <code>-e</code> allows you to script from the command line.  For example:</p>
 
 <p><code>&lt;pre&gt;
@@ -41,10 +38,9 @@
 
 <p>The above command will replace 'foo' with 'bar' throughout the file 'baz.txt'</p>
 
-    <h2><a href="/blog/2007/03/13/writing-your-own-perl-modules/">Writing your own Perl modules</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/03/13/writing-your-own-perl-modules/">Writing your own Perl modules</a></h1>
     <div class="article-title-date">Mar 13, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Making your own Perl modules is actually really easy, only involving a few special alterations to a script and an environment variable to make them easy to utilize.  To make Perl modules, you first need to understand Object Oriented Perl, so if that's new to you, check out <a href="http://search.cpan.org/dist/perl/pod/perltoot.pod">Tom's object-oriented Perl Tutorial</a>.  Onward.</p>
 
 <p>For this example, I'll just use a simplified version of the 'Person' class from the above-mentioned tutorial:</p>
@@ -89,10 +85,9 @@ export PERL5LIB=~/perl-modules
 
 <p>Another thing to keep in mind when writing modules is that you should load the <code>Carp</code> module and use the functions <code>carp</code> and <code>croak</code> rather than <code>warn</code> and <code>die</code> respectively.  <code>Carp</code>'s functions produce errors that reference the proper context in the user's code when an error occurs, rather then saying there is a problem in your module.</p>
 
-    <h2><a href="/blog/2007/03/05/chm-to-pdf-conversion/">CHM to PDF conversion</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/03/05/chm-to-pdf-conversion/">CHM to PDF conversion</a></h1>
     <div class="article-title-date">Mar  5, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Have some CHMs that you'd rather browse as PDFs?  Easy.  To convert, you'll need <code>libchm-bin</code> and <code>htmldoc</code> on Ubuntu, probably the same on Debian and similar on others.  Then, do the following:</p>
 
 <p><code>&lt;pre&gt;
@@ -102,56 +97,50 @@ $ htmldoc --webpage -f foo.pdf foo/*.html
 
 <p>Done.</p>
 
-    <h2><a href="/blog/2007/03/03/malfunction-junction/">Malfunction Junction</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/03/03/malfunction-junction/">Malfunction Junction</a></h1>
     <div class="article-title-date">Mar  3, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Wikipedia has an amazingly large and varied database of information, including numerous lists, such as a <a href="http://en.wikipedia.org/wiki/Malfunction_Junction">list of ridiculous highway intersections</a>.  There are some really screwed up intersections shown on that page most notably <a href="http://maps.google.com/maps?q=Knoxville+TN&amp;ll=35.968559,-83.928831&amp;spn=0.007086,0.017231&amp;t=h">I-40 meeting I-295 in Knoxville</a>,    <a href="http://maps.google.com/maps?q=Detroit+MI&amp;ll=42.378733,-83.216962&amp;spn=0.003448,0.007328&amp;t=h">I-96 with highway 39 in Detroit</a>,  and the local-to-me <a href="http://maps.google.com/maps?ie=UTF8&amp;lr=lang_en&amp;om=1&amp;z=15&amp;ll=38.784197,-77.172303&amp;spn=0.027632,0.066133&amp;t=h">Springfield Mixing Bowl</a>.  None of these intersections, however, can shake a stick at Swindon's <a href="http://en.wikipedia.org/wiki/Magic_Roundabout_%28Swindon%29">Magic Roundabout</a> which is a single large central roundabout with 5 feeder roundabouts.</p>
 
-    <h2><a href="/blog/2007/02/27/using-gmail-as-an-information-store/">Using Gmail as an information store</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/27/using-gmail-as-an-information-store/">Using Gmail as an information store</a></h1>
     <div class="article-title-date">Feb 27, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://www.micropersuasion.com">This guy</a> has a <a href="http://www.micropersuasion.com/2007/02/transform_gmail.html">very good tip</a> on how to use Gmail to store arbitrary information.  I'm sure everyone has at sometime used some web-based email as a method of either moving data or otherwise storing something, by simply sending a message to yourself.  Well, he goes a step further and setup a way to automatically take emails sent to a specific sub address (<code>yourname+something@gmail.com</code>) and archive them away.  Simply setup a filter to take anything sent to <code>yourname+database@gmail.com</code>, apply the label 'database' and archive it.  When you come across something interesting on the internets, simply email it to <code>yourname+database@gmail.com</code> and it will skip your inbox but be held forevermore in Gmail's coffers.  To recall it later, just run a search for <code>label:database keywords</code> and google will search through your database.</p>
 
 <p>Rubel goes a step further, using Google Toolbar's 'send to Gmail' function which takes the page you're currently looking at and pipes it to an email.  Just toss in your database address and send it to be stored.</p>
 
-    <h2><a href="/blog/2007/02/25/pandora-internet-radio/">Pandora Internet Radio</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/25/pandora-internet-radio/">Pandora Internet Radio</a></h1>
     <div class="article-title-date">Feb 25, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://pandora.com">Pandora</a> is an internet radio service that also recommends new music, based upon what you tell it you like.  You simple give it some artists that you like and it will start playing songs by those artists, as well as artists that Pandora thinks are similar.  By giving each played track a thumbs-up or thumbs-down vote, Pandora learns what you like and tailors the 'stations' that you make to your taste, all the while showing you new music similar to what you have given a thumbs-up.  Check it out.</p>
 
-    <h2><a href="/blog/2007/02/24/using-sed/">Using sed</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/24/using-sed/">Using sed</a></h1>
     <div class="article-title-date">Feb 24, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Many people don't have a clue how to use old-school Unix commands such as <code>sed</code> and I can say that I was in that camp until recently.  Previously, I would be more inclined to write a script in Perl or open up vi to perform complex and repetitive replacement tasks across multiple files.  I'm comfortable with both Perl and vi, most importantly their regular expressions which allow for quick and easy manipulation of text.  I was pushed to learn <code>sed</code> when I had a number of different files that all needed a very similar modification to each of their thousands of lines.  Sure I could write a Perl script to do it, but it was a good opportunity to learn the stream editor and I'm glad I did.</p>
 
 <p>The most useful thing <code>sed</code> can do is regex-based alterations to files just like vi, except you can apply a <code>sed</code> command to multiple files from the command line with a simple glob.  The syntax for <code>sed</code> regex is much like that for <code>vi</code> or Perl; the big difference that I encountered as compared to Perl is that capturing with parenthesis is done using backslash-escaped parenthesis and the later references with backslash-escaped numbers.  If you run <code>sed</code> without any options, it takes a regex and any number of input files; the output will be to standard out, so <code>sed 's/foo/bar/' *.txt</code> will replace 'foo' with 'bar' in all text files in the current directory, showing you the results on <code>STDOUT</code>. This is great to test and make sure the right changes are going to be made, but to actually make the changes, the best method is to use <code>sed</code>'s in-place editing option, <code>-i</code>.  Now, if you run <code>sed -i 's/foo/bar/' *.txt</code>, <code>sed</code> will replace 'foo' with 'bar' in all files in the current directory, altering each of the files.</p>
 
-    <h2><a href="/blog/2007/02/21/perl-mo-equals-lint/">perl -MO=Lint</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/21/perl-mo-equals-lint/">perl -MO=Lint</a></h1>
     <div class="article-title-date">Feb 21, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>It is generally accepted that when developing Perl, you should be using warnings (<code>use warnings</code>) and recommended that you go a step further with <code>use strict</code>, which forces the declaration of variables with <code>my</code> before they are used, among other things.  Beyond these two, however, is the <a href="http://search.cpan.org/~nwclark/perl-5.8.8/ext/B/B/Lint.pm"><code>B::Lint</code></a> module that performs <a href="http://www.perl.com/doc/manual/html/lib/B/Lint.html">further checks on your code</a>.  Using it couldn't be simpler; simply pass the option <code>-MO=Lint,all</code> to the Perl command when invoking your program.  The <code>-M</code> option tells Perl that you want to use the module specified, and '<code>,all</code>' is an option passed to the Lint module, telling it to perform all checks, which is probably what you want.  If you have some bad habit, or want it to specifically skip some checks, you can add that on to the argument list, prepending the option listed in <a href="http://search.cpan.org/~nwclark/perl-5.8.8/ext/B/B/Lint.pm">the documentation</a> with 'no-'.</p>
 
-    <h2><a href="/blog/2007/02/20/better-uses-for-your-sunday-mornings/">Better uses for your Sunday mornings</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/20/better-uses-for-your-sunday-mornings/">Better uses for your Sunday mornings</a></h1>
     <div class="article-title-date">Feb 20, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Many people spend their Sunday mornings going to church for an hour or two, which I argue is a waste of time.  I don't expect to convince anyone to give up religion altogether by saying this, but that's really beside the point; church is a waste of time, even for the religious.  From a theological perspective, God wants you to respect him and obey the tenets of your religion, but most of all, religion is supposed to help you have a good life.  Now, I'm sure some people do get a lot out of hearing a sermon once a week, or meeting with like-minded people, but undoubtedly many simple see it as a necessary chore to maintaining their faith.  My alternative is simple: exercise.</p>
 
 <p>From the perspective of the CDC, AMA or any number of other health-minded organizations, the vast majority of Americans are significantly overweight and get much less exercise then they ought to.  Quite simply, spending an hour or two every Sunday exercising would greatly improve this situation and is significantly beneficial from a psychological standpoint as well.  On the surface, it would seem that a religious sermon would be more beneficial for mental well being than physical exercise.  Studies show, however, that the mental benefits resulting from exercise are as profound as the physiological ones.  Exercise improves mood, alertness and overall affect for days afterward.  A good sermon can change ones life, or improve mood as well, but most sermons aren't that inspiring, and hearing someone talk does a lot less for preventing a heart attack than regular exercise.</p>
 
-    <h2><a href="/blog/2007/02/18/motorola-razr-shortcuts-and-bluetooth/">Motorola Razr Shortcuts and Bluetooth</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/02/18/motorola-razr-shortcuts-and-bluetooth/">Motorola Razr Shortcuts and Bluetooth</a></h1>
     <div class="article-title-date">Feb 18, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I recently got a bluetooth headset to use with my Motorola Razr and it works wonderfully, with the one drawback that having bluetooth enabled on the phone all the time reduces its battery life from 5-6 days standby, to 3-4.  I thought that turning bluetooth on and off was a pain, requiring navigating 6 menus deep to do so, until I saw the option for shortcuts in another configuration menu.  Shortcuts are easy to setup and make doing anything, including enabling or disabling bluetooth, a snap.</p>
 
 <p>To setup a shortcut, you simply navigat to the menu option you want as a shortcut, in this case Settings &gt; Connection &gt; Bluetooth Link &gt; Setup &gt; Power.  Then, highlight 'on' and hold down the menu key (top middle button) until a popup asks you if you want to assign a shortcut.  Say yes, and then assign it the key '1', the default.  Do the same for 'off' in the bluetooth power menu, assigning it the key '2'.  Now, you can simply press the menu button and then 1 or 2 to turn bluetooth on or off.  Shortcuts can be altered from the Settings &gt; Tools &gt; Shortcuts menu.  I'm very happy that Motorola included the shortcuts feature, in particular because the Razr's interface is so blindingly slow.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/20/">Next page</a></p>

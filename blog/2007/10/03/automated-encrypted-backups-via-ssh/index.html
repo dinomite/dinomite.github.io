@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Automated Encrypted Backups via SSH « Dinomite.net</title>
+  <title>Automated Encrypted Backups via SSH « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>This is a hack of the script <code>rsnaptar</code> included with the rsnapshot distribution.  In short, it takes a  few rsnapshot directories, runs them through <code>tar</code>, <code>gzip</code> and <code>gpg</code> finally depositing the results on another machine.  I wrote this so that I could grab the backups from a server at work and routinely toss them onto a DVD that I take home with me.  It's a bad idea to be walking around with all of the company's source code, hence the GPG.  The magic all happens on one line which runs <code>tar</code>, piping the output to <code>ssh</code> which runs <code>gzip</code> reading from stdin on the remote machine then on to <code>gpg</code> dumping its output wherever you want.</p>
+  <div class="main-content">
+    <h1 class="article-title">Automated Encrypted Backups via SSH</h1>
+    <div class="article-title-date">Oct  3, 2007</div>
+    <p>This is a hack of the script <code>rsnaptar</code> included with the rsnapshot distribution.  In short, it takes a  few rsnapshot directories, runs them through <code>tar</code>, <code>gzip</code> and <code>gpg</code> finally depositing the results on another machine.  I wrote this so that I could grab the backups from a server at work and routinely toss them onto a DVD that I take home with me.  It's a bad idea to be walking around with all of the company's source code, hence the GPG.  The magic all happens on one line which runs <code>tar</code>, piping the output to <code>ssh</code> which runs <code>gzip</code> reading from stdin on the remote machine then on to <code>gpg</code> dumping its output wherever you want.</p>
 
 <pre>
 #!/bin/sh
@@ -52,9 +54,9 @@ for BACKUP_POINT in `${LS} ${SNAPSHOT_DIR}`; do
 done
 </pre>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -150,11 +152,11 @@ done
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/14/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/09/09/ssh-tunnels-for-quick/">SSH Tunnels for Quick, Secure Net Access</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/09/09/ssh-tunnels-for-quick/">SSH Tunnels for Quick, Secure Net Access</a></h1>
     <div class="article-title-date">Sep  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>An SSH tunnel is a great way to quickly setup a secure method for browsing the web from an unsecure location, such as a public wireless network.  All you need is a machine running an SSH server.  I setup a tunnel from my Mac OS X laptop using the following command:</p>
 
 <pre>
@@ -46,10 +43,9 @@ ssh -C -D 7070 dinomite.net
 
 <p>Many other applications, such as Adium, support SOCKS proxies and can be set up in a similar way to send their traffic to port 7070 and take advantage of an SSH tunnel.</p>
 
-    <h2><a href="/blog/2007/09/01/linksys-wusb54g-in-ubuntu/">Linksys WUSB54G in Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/09/01/linksys-wusb54g-in-ubuntu/">Linksys WUSB54G in Ubuntu</a></h1>
     <div class="article-title-date">Sep  1, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Since we're going all-wireless in my new house, I had to setup my Ubuntu machine with a wireless card.  All of the slots on the computer are filled, so I grabbed a Linksys WUSB54G USB (hence the model number) adapter.  Installing it required some terminal work, unusual for Ubuntu.  <a href="http://ubuntuforums.org/showthread.php?t=478558">This thread</a> gives a somewhat cryptic outline of the steps required to get the card working and following them requires a bit of Linux experience.  For the unexperienced, read on.</p>
 
 <p>After plugging the card in on my Feisty machine, it came up in the network manager (System &gt; Administration &gt; Network) but wouldn't connect to any networks, be they open or encrypted, G or B, nothing.  So I retreated to the interwebs and found that <a href="http://ndiswrapper.sourceforge.net/joomla/">ndiswrapper</a> was the solution to my problems.  To begin, install <code>ndiswrapper-utils-1.9</code>:</p>
@@ -79,10 +75,9 @@ blacklist rt2570
 
 <p>Then, restart your machine and you should be able to configure wireless using the Gnome GUI tools.</p>
 
-    <h2><a href="/blog/2007/08/24/folding-in-vim/">Folding in vim</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/24/folding-in-vim/">Folding in vim</a></h1>
     <div class="article-title-date">Aug 24, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you work with large files, in particular large markup documents vim's folding feature can make your day a whole lot better.  Just like the fancy folding that IDEs like Eclipse and Visual Studio provide, vim can reduce whole sections of text to a single line making it easy to skip around and keep your attention focused on what is important.  There are a number of different methods that vim can automatically figure out where to fold your file but I've found that <code>indent</code> does what I want most of the time.  To turn folding on and off easily, I wrote the following function in my <code>~/.vimrc</code></p>
 
 <pre>
@@ -106,10 +101,9 @@ nmap <silent> &#60;F3&#62; :call ToggleFolding()&#60;CR&#62;
 You can open and close folds using `zo` &amp; `zc` and jump between them with `zk` &amp; `zj`.
 </silent></pre>
 
-    <h2><a href="/blog/2007/08/17/profiling-perl/">Profiling Perl, part 1</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/17/profiling-perl/">Profiling Perl, part 1</a></h1>
     <div class="article-title-date">Aug 17, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>An important and often-overlooked part of programming is profiling of code to find out where the most time is being spent and then figuring out how the resulting sections of your program can be improved.  This aspect of writing code gets little attention from people writing user-bound applications because generally, computers are fast enough that even atrocious code can complete before the user is ready to respond.  Despite this fact execution speed is still important, especially in data processing code such as that which parses large datasets (which I often find myself doing) or converts videos, for instance.  If your code consists of a number of nested loops, you can probably benefit from profiling it and speeding up the most oft-used pieces.  Even if that doesn't apply, timing the execution of statements will certainly improve your understanding of which operations are fast and which drag you down.</p>
 
 <p>The very simplest form of profiling code is using manually activated timers.  In Perl, this is accomplished with the <code>Benchmark::Timer</code> module as follows:</p>
@@ -149,10 +143,9 @@ Overall, this took 10.022404 seconds.
 
 <p>Easy and quick.  Next time, Devel::DProf.</p>
 
-    <h2><a href="/blog/2007/08/16/more-sed/">More sed</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/16/more-sed/">More sed</a></h1>
     <div class="article-title-date">Aug 16, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>So, if you come from the world of Perl, like I do, you're probably very familiar with the usage of regular expressions to match (m/(foo)bar(baz)/) and replace (s/foo(bar)/baz$1/) strings.  <code>sed</code> acts upon lines and often you want to delete a range of lines.  For the following regex, I had a document something like this:</p>
 
 <p><code> </code></p>
@@ -174,10 +167,9 @@ Overall, this took 10.022404 seconds.
 
 <p>Simple.  The more you get to know it, the more awesome <code>sed</code> is.</p>
 
-    <h2><a href="/blog/2007/08/15/perls-taint-mode/">Perl's Taint Mode</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/15/perls-taint-mode/">Perl's Taint Mode</a></h1>
     <div class="article-title-date">Aug 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Perl is a great language for web programming and one of the features that makes it well suited is <em>Taint Mode</em>.  Perl's Taint Mode, quite simply, restricts what the programmer can do with variables that are acquired from user input.  If a programs relies on the user to specify something, it's a bad assumption to treat those values as safe for use in operations that may affect the outside world, such as opening files and using tainted values in <code>system()</code> calls.  Perl wont restrict you from using tainted values in innocuous things such as print statements but it does pass taintedness on to other variables that a tainted value touches.  Furthermore, modules such as DBI support recognizing taintedness of variable for safety.</p>
 
 <p>To learn more, check out these articles:</p>
@@ -187,20 +179,18 @@ Overall, this took 10.022404 seconds.
   <li><a href="http://www.webreference.com/programming/perl/taint/">Introduction to Perl's Taint Mode</a></li>
 </ul>
 
-    <h2><a href="/blog/2007/08/11/chevrolet-hhr-panel/">Chevrolet HHR Panel</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/11/chevrolet-hhr-panel/">Chevrolet HHR Panel</a></h1>
     <div class="article-title-date">Aug 11, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>It's not often that I praise any of the American auto manufacturers, least of all Chevrolet.  This isn't because I'm a European car fanboy or otherwise prejudiced against American cars but simply because they <a href="http://en.wikipedia.org/wiki/Ford_Five_Hundred">churn</a> <a href="http://en.wikipedia.org/wiki/Chevrolet_Impala">out</a> <a href="http://en.wikipedia.org/wiki/Pontiac_Aztek">so</a> <a href="http://en.wikipedia.org/wiki/Dodge_Neon">much</a> <a href="http://en.wikipedia.org/wiki/Oldsmobile">crap</a>.  The chronic problem for manufacturers is that of  <a href="http://www.codinghorror.com/blog/archives/000321.html">least-common-deonminator, good-enough, penny-pinching engineering</a>.</p>
 
 <p>Though I'm a little bit behind the ball, Chevy <a href="http://www.autoblog.com/2006/10/06/chevy-introduces-hhr-panel/">announced</a> that they would be making a panel-van version of their retro-styled <a href="http://en.wikipedia.org/wiki/Chevrolet_HHR">HHR</a> mini-SUV; this is the first good idea to come out of the C-shop in a long time.  Small businesses have needs to transfer things just like larger ones.  Plumbers and contractors have a reason to have a <a href="http://en.wikipedia.org/wiki/Ford_Econoline">full-size van</a>, since they want to carry around a lot of tools and spare parts.  If you're not into construction, however, that's a bit much.  Beyond being more vehicle than you want to buy and getting terrible gas mileage, it's difficult to park and maneuver.  Sure, you can get a minivan for your small business but that leaves you little area to put logos and it's also too low, down below the windows.  Furthermore, a minivan is still often more space than is necessary.  So you could look at small hatchbacks such as the <a href="">Mazda 3</a> or <a href="http://en.wikipedia.org/wiki/Honda_Accord">Honda Accord</a> which are nice, but a little bit too small and still offer little space for advertising on the outside.</p>
 
 <p>The HHR is just the right size; it's Goldilocks' preferred size, providing enough room to care somewhat bulky items (flowers, small catering gear, computers), a few cubbys for tools and some good space for plastering a logo on the outside.  I really think this is perfect for small business like florists, computer support and even someone like Charm City Cakes, who are often on Food Network transporting a wedding cake in a huge Econoline van.</p>
 
-    <h2><a href="/blog/2007/08/09/interfacial-fracture-of-oreo-cookie-filling/">Interfacial Fracture of Oreo Cookie Filling</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/09/interfacial-fracture-of-oreo-cookie-filling/">Interfacial Fracture of Oreo Cookie Filling</a></h1>
     <div class="article-title-date">Aug  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>While reading the <a href="http://en.wikipedia.org">Wikipeidia</a> page on <a href="http://en.wikipedia.org/wiki/Adhesive">adhesive</a> I came across this nugget of wisdom on food decomposition:</p>
 
 <blockquote>Another example is when someone tries to pull apart Oreo cookies and all the filling remains on one side. The goal in this case is an adhesive failure, rather than a cohesive failure.</blockquote>
@@ -213,24 +203,23 @@ Overall, this took 10.022404 seconds.
 
 <p>Though I'd say the perfect ratio of filling to cookie is somewhere between 2 and 3 to one, I often make quad-stuf monsters.</p>
 
-    <h2><a href="/blog/2007/08/08/changing-default-paper-size-in-ubuntu/">Changing default paper size in Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/08/changing-default-paper-size-in-ubuntu/">Changing default paper size in Ubuntu</a></h1>
     <div class="article-title-date">Aug  8, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Ubuntu's default paper size is the very international <a href="http://en.wikipedia.org/wiki/A4_paper_size">A4</a>.   Unfortunately, here in the United States the standard size of paper is Letter (8½ inches by 11 inches).  When trying to print, Ubuntu will tell printers to use A4 paper unless you select 'Letter' in the print dialog each time.  To change this default, simply run the following command which will set the value in <code>/etc/papersize</code>:</p>
 
 <p><code>
 sudo dpkg-reconfigure libpaper1
 </code></p>
 
-    <h2><a href="/blog/2007/08/07/cell-phone-premonitions/">Cell Phone Premonitions</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/08/07/cell-phone-premonitions/">Cell Phone Premonitions</a></h1>
     <div class="article-title-date">Aug  7, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://www.freakonomics.com/blog/">The Freakonomics Blog</a> mentioned <a href="http://www.chicagotribune.com/services/newspaper/premium/printedition/Sunday/chi-cell_bdaug05,0,3857748.story?coll=chi-newslocalchicago-hed">a story</a> about mobile phone providers knowing that something was happening near the I-35 bridge in Minneapolis due to hugely increased call volumes.  Later in the article there is also a mention of T-Mobile tracking the change in commuting patterns by the movement of cell phones.</p>
 
 <p>Cell phone activity, just like any <a href="http://en.wikipedia.org/wiki/Side_channel_attack">side-channel attack</a>, can be exploited to learn a lot about a population.  There are certainly legal and privacy implications to such data being made public, but it would be amazing to look at from a research point of view.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/16/">Next page</a></p>

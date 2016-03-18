@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/7/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2008/06/12/subversion-diff-with-vimdiff/">Subversion diff with vimdiff</a></h2>
+    <h1 class="article-title"><a href="/blog/2008/06/12/subversion-diff-with-vimdiff/">Subversion diff with vimdiff</a></h1>
     <div class="article-title-date">Jun 12, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Side by side diffs are much more legible and useful than those in <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified format</a> or any other linear diff.  By default, the <code>svn diff</code> command presents output in the unified format, though it has an option, <code>--diff-cmd</code>, which allows you to specify the program that will perform the diff.  Passing <code>vimdiff</code> as the diff command doesn't work as the options passed by <code>svn diff</code> are a bit complicated:</p>
 
 <pre>
@@ -57,10 +54,9 @@ vimdiff "$@"
 alias svndiffvim='svn diff --diff-cmd ~/bin/svnvimdiff'
 </pre>
 
-    <h2><a href="/blog/2008/06/09/keeping-your-home-directory-in-subversion/">Keeping Your Home Directory in Subversion</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/06/09/keeping-your-home-directory-in-subversion/">Keeping Your Home Directory in Subversion</a></h1>
     <div class="article-title-date">Jun  9, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I've heard of doing this for a long time, but always figured it'd be a huge jump to put my home directory into a revision control system.  For years I've scp'd files to a new machine when I moved in and when I made changes to my vimrc or ssh config, it was hell to propagate the changes to my other machines.  No more is this an issue, since I've commited my home directory.  The process is really quite trivial.</p>
 
 <p>I first created a subversion repository on my Linux server.  A special machine isn't required, nor is root access; you just need somewhere that can be accessed with SSH from the intertubes.</p>
@@ -112,10 +108,9 @@ Updated to revision 1.
 
 <p>Bam.  I've now got the exact same files on both machines.  If I'm at the office and find some flash vim option that I want to use, I simply add it to my <code>.vimrc</code>, check it in with <code>svn ci .vimrc</code> and when I <code>svn up</code> from the other machines, they'll get the new changes.  In reality, I keep a bunch of stuff in my homedir subversion repository: <code>.bashrc</code>, <code>.screenrc</code>, <code>bin</code> directory and many others.  Subversion helps me keep all of my config files in sync across a number of different machines that I use on a daily basis; if you use more than one system with any frequency, I highly suggest checking in your home directory.</p>
 
-    <h2><a href="/blog/2008/05/24/here-documents-in-perl/">here-documents in Perl</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/05/24/here-documents-in-perl/">here-documents in Perl</a></h1>
     <div class="article-title-date">May 24, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn't know their proper name.  In Python, you define a here document with three single or double quotes:</p>
 
 <pre class="brush: python;">foo = """
@@ -136,37 +131,33 @@ mollit anim id est laborum.
 EOF</pre>
 <p>Note the use of quotes for the string-terminating sentinel (EOF, in this case, though it can be anything), which affects how the sting is interpreted.  Just like with other strings in Perl, double-quotes mean that variables and escapes will be interpreted whereas they are ignored in single-quoted strings.</p>
 
-    <h2><a href="/blog/2008/05/21/gas-v-diesel-and-energy-content/">Gas v. Diesel and Energy Content</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/05/21/gas-v-diesel-and-energy-content/">Gas v. Diesel and Energy Content</a></h1>
     <div class="article-title-date">May 21, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Anyone who pays attention to the car world from an efficiency perspective has no doubt heard of the popularity that diesel engines have in Europe, but lack in the United States.  Diesels post significantly better distance per volume of fuel (miles per gallon, <a href="http://en.wikipedia.org/wiki/Furlong">furlongs</a> per <a href="http://en.wikipedia.org/wiki/Peck">peck</a>) than their gasoline counterparts.  I've always wondered how much of this disparity can be accounted for by diesel fuel's higher energy content.  A quick search turned up <a href="http://cta.ornl.gov/data/appendix_b.shtml">some statistics</a> (See table B-4) produced by <a href="http://en.wikipedia.org/wiki/Oak_Ridge_National_Laboratory">Oak Ridge National Laboratory</a>'s <a href="http://cta.ornl.gov/cta/">Center for Transportation Analysis</a> which lists a gallon of diesel as containing 38.6 <a href="http://en.wikipedia.org/wiki/Joule">MJ</a> per liter and gasoline as posesing 34.8 MJ/L.  Not that big of a difference; gasoline has 90% the energy content of diesel.</p>
 
 <p>How is this reflected in the mileage of a real car?  Well, let's look at a Volkswagen Jetta which, until recently in the US, could be had with a 1.8 liter gasoline engine or a 1.9 liter diesel.  The gas engine gives 19 MPG city, 27 MPG highway for an EPA combined cycle of 22 MPG (<a href="http://www.fueleconomy.gov/feg/noframes/20810.shtml">VW Jetta 1.8L gas</a>).  The diesel gets 28 MPG city, 39 MPG highway and 32 MPG combined (<a href="http://www.fueleconomy.gov/feg/noframes/20812.shtml">VW Jetta 1.9L diesel</a>).  Working from the combined numbers, the diesel powerplant achieves 45% better mileage with fuel that contains just over 11% more energy content.  Not a bad deal at all.</p>
 
 <p>The next question is how this all works out for the environment.  Historically, diesels have produced much more environmentally destructive exhaust containing more <a href="http://en.wikipedia.org/wiki/Nitrogen_oxide">NOx</a> and particulates.  Recently, however, diesel fuel in the United States has been switched to an <a href="http://en.wikipedia.org/wiki/Ultra-low_sulfur_diesel">ultra-low sulfur variety</a> which, in turn, allows for particulate emission control technologies to be employed, reducing the airborne matter released by diesel engines.  Do the changes mean significantly cleaner emissions?  I'm not sure, because the stats are difficult to find.  Perhaps I'll find them later.</p>
 
-    <h2><a href="/blog/2008/05/16/a-failure-of-logistics/">A Failure of Logistics</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/05/16/a-failure-of-logistics/">A Failure of Logistics</a></h1>
     <div class="article-title-date">May 16, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>[caption id="attachment_326" align="alignleft" width="300" caption="Wiper blades from Amazon"]<a href="http://dinomite.net/wp-content/uploads/2008/09/wiper-blades.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/wiper-blades-300x225.jpg" alt="Wiper blades from Amazon" title="wiper-blades" width="300" height="225" class="size-medium wp-image-326" /></a>[/caption]
 My roommate ordered some wiper blades that Amazon had on sale.  He did a single order and yet the blades came in two boxes, each easily large enough to fit both blades, even though the boxes shipped from the same warehouse.</p>
 
-    <h2><a href="/blog/2008/05/13/inventions/">Inventions</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/05/13/inventions/">Inventions</a></h1>
     <div class="article-title-date">May 13, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If I had this kind of cash, I would be of the same opinion:</p>
 
 <blockquote>Myhrvoldâ€™s friends, like Myhrvold, seemed to be of the opinion that there is no downside to having a CAT scanner, especially if you can get it for twenty-nine hundred dollars.</blockquote>
 
 <p>The New Yorker has a <a href="http://www.newyorker.com/reporting/2008/05/12/080512fa_fact_gladwell?currentPage=all">very interesting article</a> by Malcolm Gladwell, author of <em><a href="http://en.wikipedia.org/wiki/The_Tipping_Point_%28book%29">The Tipping Point</a></em> about <a href="http://en.wikipedia.org/wiki/Intellectual_Ventures">Intellectual Ventures</a>, a company that does nothing but think up inventions.  They occasionally call sessions to which smart people are invited to talk and come up with patentable ideas, hand them to lawyers and then sell the patents.</p>
 
-    <h2><a href="/blog/2008/05/06/installing-proggy-fonts-in-ubuntu/">Installing Proggy Fonts in Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/05/06/installing-proggy-fonts-in-ubuntu/">Installing Proggy Fonts in Ubuntu</a></h1>
     <div class="article-title-date">May  6, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I don't recall how I came across the free <a href="http://www.proggyfonts.com/">Proggy font family</a> but I wanted to try them out on my Ubuntu workstation for use in Eclipse.  After some searching, I figured out how to install TrueType (.ttf) fonts and the process is pretty straightforward.  I downloaded and unpacked the fonts into <code>~/.fonts</code>, created a fonts.dir metadata file, added them to the font cache and when I restarted Eclipse, they were available.</p>
 
 <pre class="brush: bash;">
@@ -182,10 +173,9 @@ mall.ttf.zip
 ~/.fonts$ fc-cache -f -v
 </pre>
 
-    <h2><a href="/blog/2008/04/24/off-the-hook-23-april-2008/">Off The Hook - 23 April 2008</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/04/24/off-the-hook-23-april-2008/">Off The Hook - 23 April 2008</a></h1>
     <div class="article-title-date">Apr 24, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0408.html">23 April 2008</a>.  The show runs live on <a href="http://www.wbai.org">WBAI</a> at 7pm on Wednesdays.  Call in at 212.209.2900 or send letters to <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#111;&#116;&#104;&#064;&#050;&#054;&#048;&#048;&#046;&#099;&#111;&#109;">&#111;&#116;&#104;&#064;&#050;&#054;&#048;&#048;&#046;&#099;&#111;&#109;</a>.  The show is also available as a <a href="http://www.2600.com/news/view/article/2509">high-quality podcast</a>.</p>
 
 <p>In the studio: Emmanuel, Mike, Redbird, Redhackt, Not Kevin, Lexicon, Mojo from California, Al &amp; Zach from North Carolina<br />
@@ -211,10 +201,9 @@ On the phone: Bernie S in Philadelphia</p>
 
 <p>Lexicon talks of the Not Our Concern Network Operations Center that will be in place at <a href="http://www.thelasthope.org/">The Last Hope</a> which he summarizes as a coat check for servers.  Just reserve a spot and you can hook your box up to a <a href="http://youtube.com/watch?v=f99PcP0aFNE">big tube</a> for the duration of the con.  The con will also host a <a href="http://wiki.hope.net/index.php/HOPE_RADIO">radio station</a> for its entire duration.  Named <a href="http://radio.hope.net/">Radio Statler</a> after the previous name of the hotel, the radio station is seeking people to help run it during the con weekend.  If you want to help out with the con, or know about it, check out <a href="http://hope.net">HOPE.net</a>.</p>
 
-    <h2><a href="/blog/2008/04/21/auto-remove-old-items-from-the-trash-in-mac-os-x/">Auto-remove Old Items from The Trash in Mac OS X</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/04/21/auto-remove-old-items-from-the-trash-in-mac-os-x/">Auto-remove Old Items from The Trash in Mac OS X</a></h1>
     <div class="article-title-date">Apr 21, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Having a purgatory for files that are on their way to deletion, such as the trash can in Mac OS or the recycle bin in Windows, is a great idea, for even the most careful users occasionally delete something only to find that they later need it.  Unfortunately, the two aforementioned implementations, as well as those in Gnome and KDE, only allow you to empty the trash all at once.  Much more useful is to have a timeout where files that are sent to the trash are automatically removed after a period of time.  I finally got around to implementing this myself in Mac OS by putting the following in my <a href="http://www.oreilly.com/pub/a/mac/2001/12/14/terminal_one.html">crontab</a>:</p>
 
 <pre>
@@ -226,10 +215,9 @@ Every day at 0500 any item more than 14 days old is delete from the trash can.  
 <strong>Edit:</strong> In the comments, Matt mentioned [Compost](http://www.fastforwardsw.com/compost/), a preference pane for OS X that provides the functionality I describe, but also the ability to limit the trash based upon size, and also manage the Trash on other volumes.  Neat!  It's $20, but definitely makes this process easier and understandable if you aren't a Unix person. 
 </username></pre>
 
-    <h2><a href="/blog/2008/04/18/multiple-variable-assignments-with-perls-binding-operator/">Multiple Variable Assignments with Perl's Binding Operator</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/04/18/multiple-variable-assignments-with-perls-binding-operator/">Multiple Variable Assignments with Perl's Binding Operator</a></h1>
     <div class="article-title-date">Apr 18, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I learned something new in the world of Perl regular expressions today when I came across this line:</p>
 
 <pre class="brush: perl;">
@@ -249,6 +237,7 @@ my ($foo, $bar, $baz) = ($1, $2, $3);
 my $count = $string =~ m/\./g;
 </pre>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/9/">Next page</a></p>

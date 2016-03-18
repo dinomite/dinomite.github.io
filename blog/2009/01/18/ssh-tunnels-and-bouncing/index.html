@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>SSH Tunnels and Bouncing « Dinomite.net</title>
+  <title>SSH Tunnels and Bouncing « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,17 +23,19 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>I have a workstation at my office, drewble, that has a non-routable IP address.  Our network is setup such that, even from the VPN, I can't access that machine directly â€” I have to go through one of our dev servers to get to it.  Obviously, having to hop from one machine to another is a bit cumbersome, but as with many thing, this can be alleviated with some simple Unix magic.  A simple alias in my <code>.bashrc</code> makes the bouncing simple:</p>
+  <div class="main-content">
+    <h1 class="article-title">SSH Tunnels and Bouncing</h1>
+    <div class="article-title-date">Jan 18, 2009</div>
+    <p>I have a workstation at my office, drewble, that has a non-routable IP address.  Our network is setup such that, even from the VPN, I can't access that machine directly â€” I have to go through one of our dev servers to get to it.  Obviously, having to hop from one machine to another is a bit cumbersome, but as with many thing, this can be alleviated with some simple Unix magic.  A simple alias in my <code>.bashrc</code> makes the bouncing simple:</p>
 <pre>
 alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 9999 drew@localhost"
 </pre>
 
 <p>The first SSH command in this alias goes to the dev server, <code>dev1</code>, setting up a forward of the local port <code>9999</code> to the SSH port, <code>22</code>, on my workstation, <code>drewble</code>, found via its zeroconf hostname.  The <code>-f</code> options causes SSH to background after logging in and <code>-N</code> means that SSH won't run any commands after loggging in; I only care about forwarding ports.  The second command utilizes the tunnel setup on port 9999 to get me to the workstation, setting up a dynamic tunnel on port 7070 which can be used as a SOCKS proxy by things like my web browser.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -129,11 +131,11 @@ alias drewble="ssh -f -N dev1 -L 9999:drewble.genius.local:22; ssh -D7070 -p 999
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

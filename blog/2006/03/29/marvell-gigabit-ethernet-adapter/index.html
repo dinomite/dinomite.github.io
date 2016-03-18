@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Marvell Gigabit ethernet adapter « Dinomite.net</title>
+  <title>Marvell Gigabit ethernet adapter « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>I bought a Shuttle SB86i a few months ago, which is an Intel based small form factor system (<a href="http://www.silentpcreview.com/article230-page1.html">reviewed by Silent PC Review</a>) which came with an on-board gigabit ethernet adapter.  This piece is referred to by <code>lspci</code> as a "Marvell Technology Groupl Ltd. 88E8053 Gigabit Ethernet Controller (rev 15)" and by <code>dmesg</code> as a "Yukon Gigabit Ethernet 10/100/1000Base-T Adapter".  Either way, the chipset is made by SysKonnect and the driver in the kernel tree (sk98lin) just plain doesn't work.  A quick search  (via Google, what else?) turned up <a href="http://www.grad.name/blog/2006/01/28/marvell-gigabit-on-linux/">this post</a> which referenced <a href="http://www.skd.de/e_en/support/driver.html">SysKonnect's driver page</a>.  Fromt the driver page (I chose the 'SK-9E21D 10/100/1000Base-T Adapter' under 'PCI Express Desktop Adapter') I was able to get their very simple package to build the kernel module on my Ubuntu system, all you need are the compiled kernel sources for the kernel you're running.  If you don't know anything about your kernel and you're running Ubuntu (Dapper Drake, probably others), run this command as root to get and compile the kernel sources:</p>
+  <div class="main-content">
+    <h1 class="article-title">Marvell Gigabit ethernet adapter</h1>
+    <div class="article-title-date">Mar 29, 2006</div>
+    <p>I bought a Shuttle SB86i a few months ago, which is an Intel based small form factor system (<a href="http://www.silentpcreview.com/article230-page1.html">reviewed by Silent PC Review</a>) which came with an on-board gigabit ethernet adapter.  This piece is referred to by <code>lspci</code> as a "Marvell Technology Groupl Ltd. 88E8053 Gigabit Ethernet Controller (rev 15)" and by <code>dmesg</code> as a "Yukon Gigabit Ethernet 10/100/1000Base-T Adapter".  Either way, the chipset is made by SysKonnect and the driver in the kernel tree (sk98lin) just plain doesn't work.  A quick search  (via Google, what else?) turned up <a href="http://www.grad.name/blog/2006/01/28/marvell-gigabit-on-linux/">this post</a> which referenced <a href="http://www.skd.de/e_en/support/driver.html">SysKonnect's driver page</a>.  Fromt the driver page (I chose the 'SK-9E21D 10/100/1000Base-T Adapter' under 'PCI Express Desktop Adapter') I was able to get their very simple package to build the kernel module on my Ubuntu system, all you need are the compiled kernel sources for the kernel you're running.  If you don't know anything about your kernel and you're running Ubuntu (Dapper Drake, probably others), run this command as root to get and compile the kernel sources:</p>
 
 <pre><code>
 ~# KERNEL_VERSION=`uname -r|grep -o "2\.[4|6]\.[1|2|][0-9]"` &amp;&amp;\
@@ -39,9 +41,9 @@
 <p>…and then install the driver from SysKonnect.  If you don't know what the above comman does, pick it apart and figure it out!  That's what Linux is all about.
 (cool regex, eh?)</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -137,11 +139,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

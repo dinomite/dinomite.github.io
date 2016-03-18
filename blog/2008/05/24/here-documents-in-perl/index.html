@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>here-documents in Perl « Dinomite.net</title>
+  <title>here-documents in Perl « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn't know their proper name.  In Python, you define a here document with three single or double quotes:</p>
+  <div class="main-content">
+    <h1 class="article-title">here-documents in Perl</h1>
+    <div class="article-title-date">May 24, 2008</div>
+    <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn't know their proper name.  In Python, you define a here document with three single or double quotes:</p>
 
 <pre class="brush: python;">foo = """
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
@@ -44,9 +46,9 @@ mollit anim id est laborum.
 EOF</pre>
 <p>Note the use of quotes for the string-terminating sentinel (EOF, in this case, though it can be anything), which affects how the sting is interpreted.  Just like with other strings in Perl, double-quotes mean that variables and escapes will be interpreted whereas they are ignored in single-quoted strings.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -142,11 +144,11 @@ EOF</pre>
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

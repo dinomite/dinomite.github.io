@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/16/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/06/25/oracle-repository-gpg-slash-pgp-key/">Oracle Repository GPG/PGP Key</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/06/25/oracle-repository-gpg-slash-pgp-key/">Oracle Repository GPG/PGP Key</a></h1>
     <div class="article-title-date">Jun 25, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you're using the Oracle apt repository (<code>deb http://oss.oracle.com/debian/ unstable main non-free</code>) with Ubuntu or a recent version of Debian and don't have their GPG key, you'll get the following error when running <code>apt-get update</code>:</p>
 
 <p><code>&lt;pre&gt;
@@ -46,24 +43,21 @@ W: You may want to run apt-get update to correct these problems
 sudo wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle -O- | sudo apt-key add -
 &lt;/pre&gt;</code></p>
 
-    <h2><a href="/blog/2007/06/24/ubuntu-it-just-gets-better/">Ubuntu: It Just Gets Better</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/24/ubuntu-it-just-gets-better/">Ubuntu: It Just Gets Better</a></h1>
     <div class="article-title-date">Jun 24, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Everyone has used Windows and at some point in time has tried to open up a file for which they didn't have a reader installed and got that dialog that offers to find a suitable program to view the file.  This dialog is worthless and has never lead anyone to finding the program that they need.</p>
 
 <p>I created a spreadsheet on my office using Gnumeric the other day and brought it home to look at.  When I went to open it on my Feisty machine at home, I was greeted by the "Add/Remove Applications" application which offered to install Gnumeric Spreadsheet in order to open the file.  Very automatic, easy and very cool.  These are the sorts of things that really make Linux a great option for desktop users.</p>
 
-    <h2><a href="/blog/2007/06/20/fast-downloads-with-metalink/">Fast Downloads with Metalink</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/20/fast-downloads-with-metalink/">Fast Downloads with Metalink</a></h1>
     <div class="article-title-date">Jun 20, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Reading the <a href="http://bsd.slashdot.org/article.pl?sid=07/06/19/1847206">Slashdot thread</a> about <a href="http://en.wikipedia.org/wiki/PC-BSD">PC-BSD</a> someone mentioned that there was a VMWare image pre-installed for playing around with it.  On the <a href="http://www.pcbsd.org/?p=download#vmware">download page</a>, in addition to being able to select mirrors, as one expects with a large file, there was a <a href="http://en.wikipedia.org/wiki/Metalink">Metalink</a>.  Not to be confused with Oracle's worthless support website, Metalinks are files that describe methods for obtaining a file, in this case, HTTP and FTP locations where it is available and hashes for pieces of the file.  After first trying a couple of mirrors and only getting ~60Kb/s I grabbed the Metalink file and installed <a href="http://aria2.sourceforge.net/">Aria2</a>, a command-line Metalink downloader.  I simply pointed aria2 to the Metalink file (it can also take the URL of the Metalink) and it started downloading from 15 of the servers in the list simultaneously.  Needless to say, this resulted in a <em>much</em> faster download.  More information about Metalinks, including projects that employ them, can be found at the <a href="http://metalinker.org/">Metalink website</a>.</p>
 
-    <h2><a href="/blog/2007/06/17/caps-lock-to-control-on-ubuntu/">Caps Lock to Control on Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/17/caps-lock-to-control-on-ubuntu/">Caps Lock to Control on Ubuntu</a></h1>
     <div class="article-title-date">Jun 17, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you've ever used a Sun workstation, you know the joys of having a control key where most keyboards position the caps lock key.  If you're an experienced user of the Interweb, you know that there is nary an occasion that calls for the caps lock.  The fact that you have to hold down the shift key is a good moment to reconsider any yelling.  Though I don't use the console often, it is endlessly annoying to find that I don't have a <em>properly</em> positioned control key when I do.  I went searching for the right way to change the keyboard's layout, since I hadn't ever bothered to do it previously.  I found <a href="http://www.vollink.com/gary/deb_ctrlcaps.html">this</a> how-to by Gary Vollink which describes how to replace the worthless caps lock with the useful control key in all operating systems anyone ever uses.</p>
 
 <p>For Ubuntu's console, it's a simple change in <code>/etc/console-setup/boottime.kmap.gz</code>, which can be edited directly with <code>vi</code>; no need to un-gzip it first.  Keycode 29 is the left control key and #58 is the caps lock.  If you want another control, just copy the contents of 29 to 58 and if, for some reason (lots of SQL?) you care to swap the two rather than be rid of caps lock entirely, simply swap the values after the equals signs.</p>
@@ -74,10 +68,9 @@ sudo wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle -O- | sudo apt-key add -
 Option		"XkbOptions"	"lv3:ralt_switch, ctrl:nocaps"
 </code></pre>
 
-    <h2><a href="/blog/2007/06/15/malted-milk-ice-cream/">Malted Milk Ice Cream</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/15/malted-milk-ice-cream/">Malted Milk Ice Cream</a></h1>
     <div class="article-title-date">Jun 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>A Google search for 'malted milk ice cream' only turns up a single recipe, that from <a href="http://www.amazon.com/Perfect-Scoop-Sorbets-Granitas-Accompaniments/dp/1580088082/ref=pd_bbs_sr_1/103-8039568-6832620?ie=UTF8&amp;s=books&amp;qid=1181954898&amp;sr=8-1">A Perfect Scoop</a>.  I used that as the basis for my ice cream but only very loosely.  I've been cooking long enough what changes can be made to a recipe without screwing it up completely and so took the liberty of omitting the eggs.  I usually make ice cream without eggs mainly because I'm lazy and if you use eggs you have heat your mixture to cook them.  Also, without eggs ice cream is considerably healthier, containing much less fat and cholesterol.  Finally, ice cream made with eggs is technically a custard.  That final stipulation is the one I pull out when I don't want people to think I'm lazy.  My recipe is as follows:</p>
 
 <pre>
@@ -91,10 +84,9 @@ Option		"XkbOptions"	"lv3:ralt_switch, ctrl:nocaps"
 
 <p>I use more vanilla and malted milk because I really like those flavors.  The amount of vanilla is perfect, but if you're not into the malt as much, you should first ask yourself why you are making malted milk ice cream and then only use 1/2 or 2/3 of a cup.  I used whole milk and half &amp; half in the quantities specified because I wanted 3 cups of liquid total and that's how much half &amp; half I had that needed to be used up.  The original recipe calls for cream, as many ice cream recipes do; this will certainly make a more luscious ice cream, but I've found whole milk + half &amp; half to do a fine job.  My normal ratio is 1 cup half &amp; half and 2 cups milk, which makes a very good ice cream with much less fat than cream-based ice cream.  I guess I really am making ice milk, but no matter, it's good stuff.</p>
 
-    <h2><a href="/blog/2007/06/13/creating-encrypted-backups-with-gpg/">Creating Encrypted Backups with GPG</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/13/creating-encrypted-backups-with-gpg/">Creating Encrypted Backups with GPG</a></h1>
     <div class="article-title-date">Jun 13, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>With large hard drives becoming cheap and external enclosures easy to find, many people are finally beginning to perform backups of their data.  While an external drive is a good step that will mitigate the risk of the main drive's failure or an accidental deletion, it doesn't protect from the worse, albeit more rare risks of fire and theft.  I say this and now I'm about to delve into some Linux jazz that doesn't apply to normal users.  Oh well.</p>
 
 <p>I keep regular backups (I'm actually lucky enough to have an offsite location to put them) but want to keep my most important data in another place as well and to do so, I occasionally burn a DVD with said data.  My only concern with this is that if I, say, leave it in my car now my potentially private data is even more susceptible to theft.  In order to make this a non-issue, I use the following command to create encrypted and gzipped tar archives:</p>
@@ -105,16 +97,14 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
 
 <p>Quite simple, really.</p>
 
-    <h2><a href="/blog/2007/06/02/smoking/">Smoking</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/02/smoking/">Smoking</a></h1>
     <div class="article-title-date">Jun  2, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Smoking food is great; the only downside is that if you want it ready for an afternoon barbecue, you have to get up early to put the meat to the heat.  Alton Brown's recipe for <a href="http://www.foodnetwork.com/food/recipes/recipe/0,1977,FOOD_9936_23019,00.html">pulled pork</a> is what I use; it simply consists of brining a pork shoulder overnight and then smoking with a simple rub.  If you've got the smoker running, you might as well toss on <a href="http://www.aolfoodblog.com/2007/05/30/smokin-cherry/">other</a> <a href="http://www.recipegoldmine.com/smoke/smoke22.html">stuff</a> as well.</p>
 
-    <h2><a href="/blog/2007/06/01/installing-vmware-workstation-on-ubuntu-feisty-7-dot-04/">Installing VMware Workstation on Ubuntu Feisty (7.04)</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/06/01/installing-vmware-workstation-on-ubuntu-feisty-7-dot-04/">Installing VMware Workstation on Ubuntu Feisty (7.04)</a></h1>
     <div class="article-title-date">Jun  1, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I found a new, easy process for installing VMware on Ubuntu, having updated the kernel on my Feisty machine since the last time I used the virtual machine.  Whenever the kernel changes, VMware needs to rebuild it's kernel module to suit, via the script <code>vmware-config.pl</code>.  This involves a few steps such that VMware can correctly build it's module against the kernel you're running.  First, you need to grab the headers for your running kernel and set them up to support building:</p>
 
 <pre>
@@ -140,20 +130,18 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
 
 <p>Follow the directions provided by the VMware configuration script (the defaults are safe, but read the information) and you're done.</p>
 
-    <h2><a href="/blog/2007/05/22/why-oil-companies-support-carbon-caps/">Why Oil Companies Support Carbon Caps</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/05/22/why-oil-companies-support-carbon-caps/">Why Oil Companies Support Carbon Caps</a></h1>
     <div class="article-title-date">May 22, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Amongst all of the recent news about climate change, I started hearing about large corporations, even oil and car companies, who were backing legislation such as carbon caps.  The most notable of these groups is the <a href="http://en.wikipedia.org/wiki/U.S._Climate_Action_Partnership">US Climate Action Partnership</a> which includes companies like BP America and PG&amp;E that are throughly tied to fossil fuels.  Why are these companies supportive of legislation that will create wholesale changes in the manner in which their industries operate?</p>
 
 <p>First and foremost, these companies aren't stupid and realize that, given the current political climate where human-induced global warming has become accepted as truth, their best move is to mitigate the effects of legislation that changes the way their businesses operate.  The best way to run any business is to simply keep on trucking; if you can sell the same product or service without having to change what you deliver or the manner in which you create it, your operating costs will be very low.  A cap-and-trade system would certainly change the way any carbon-producing industry must operate, but it probably wouldn't require as much change in facilities and production methods as more specifically defined legislation.  Cap-and-trade simply states, "Either release less carbon or buy the right to pollute more from someone else."  This gives companies a lot of options.</p>
 
 <p>The more sinister reason that carbon producers support cap-and-trade legislation is that they know the world is changing.  Alternative fuels are gaining momentum as gas prices soar and hatred of pollution and high prices adds to the animosity towards carbon-based fuels.  Tempering this hatred with pseudo-green initiatives like supporting carbon-control legislation may help fossil-fuel dependent companies stand up to other energy sources.  This also has the side effect of possibly convincing some rainy-day environmentalists that oil companies aren't so bad after all.</p>
 
-    <h2><a href="/blog/2007/05/17/setting-izpacks-default-target-directory/">Setting IzPack's Default Target Directory</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/05/17/setting-izpacks-default-target-directory/">Setting IzPack's Default Target Directory</a></h1>
     <div class="article-title-date">May 17, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://www.izpack.org">IzPack</a> is a great installer written in Java and configured with XML files, though the documentation can be a little bit lacking.  This OK because the variables are all named well so one can easily look to an existing installer (such as that for IzPack itself or 7-zip) and copy needed bits of code.  One thing that I found elusive was how to set the default install directory to something other than "C:\Program Files\&lt;product name&gt;".  The &lt;info&gt; element provides an &lt;appsubpath&gt; element that allows you to specify something other than &lt;product name&gt;, but you're still limited to something within the default Windows installation directory.  Alas, mailing lists to the rescue!  <a href="https://lists.berlios.de/pipermail/izpack-users/2006-November/002928.html">This post</a> describes declaring a resource in the install.xml and after a bit of fiddling I came up with the following.</p>
 
 <p>First, create a file TargetDir.txt with nothing more than the path you want to install at, for me that file simply contained "C:\foo".  Next, point to the resource in the install.xml:</p>
@@ -167,6 +155,7 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
 
 <p>Rebuild the installer and you're set.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/18/">Next page</a></p>

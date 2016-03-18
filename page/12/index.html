@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,18 +28,15 @@
     <p><a href="/page/11/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2008/01/03/dictatorial-leadership-is-sometimes-the-best/">Dictatorial Leadership is Sometimes the Best</a></h2>
+    <h1 class="article-title"><a href="/blog/2008/01/03/dictatorial-leadership-is-sometimes-the-best/">Dictatorial Leadership is Sometimes the Best</a></h1>
     <div class="article-title-date">Jan  3, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>While writing some Python code today I came to a point where a <a href="http://en.wikipedia.org/wiki/Switch_statement">switch</a> might have been appropriate.  Knowing that switch statements, like any control structure, differ amongst languages I ran a quick search and came up with this  <a href="http://www.python.org/dev/peps/pep-3103/">Python Enhancement Proposal</a>.  The first paragraph of that page is a rejection notice which states, quite simply, "A quick poll during my keynote presentation at PyCon 2007 shows this proposal has no popular support. I therefore reject it."  Wow, that's quite a unilateral decision; I looked at the author, '''guido at python.org''' and thought, "that's certainly his prerogative," for, if you recall analogies from the SAT, Guido van Rossum : Python :: Linus Torvalds : the Linux kernel.</p>
 
 <p>As I pondered Python's lack of this control statement I began to think, well, this probably is the best way for something like Python to be run.  Python is a language that has many passionate follows, many of whom would jump at the chance to make their mark by extending the language.  If the development model allowed anyone to add to it without due process, the language would quickly become cluttered and useless.  No project would ever be run this way, but there are many that employ a loose committee to make such decisions.  Even in that case, however, the committee would certainly waste much time hemming and hawing over the best way to implement the switch and other minutia.  Having a single person in charge makes such project control simple.  Guido, who we can assume is an experience programmer with a good handle on the craft, hence the fact that he created Python and is affectionately known as the <a href="http://en.wikipedia.org/wiki/Benevolent_Dictator_for_Life">Benevolent Dictator for Life</a>.  He simply explored the possible options, asked around to see whether this really was a lacking feature of Python and then decided.  End of story.</p>
 
-    <h2><a href="/blog/2008/01/02/first-impressions-from-campaign-websites/">First Impressions from Campaign Websites</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/01/02/first-impressions-from-campaign-websites/">First Impressions from Campaign Websites</a></h1>
     <div class="article-title-date">Jan  2, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Ron Paul is an internet celebrity in the realm of campaign fund raising and for good reason: his campaign has garnered $19.5 million in donations in the fourth quarter, $6 million of that on the December 16th anniversary of the <a href="http://en.wikipedia.org/wiki/Boston_Tea_Party">Boston Tea Party</a>.  The news media never fails to mention his internet popularity and the fact that the majority of his donations stem from the tubes that run the new world.  When I went to check out Ron Paul's website and that of some other candidates, I was intrigued.  Users who go to the <a href="http://www.ronpaul2008.com">Super Libertarian's internet presence</a> are presented with a clean and informative site:</p>
 
 <p><a href="http://dinomite.net/wp-content/uploads/2008/01/ron_paul1.png" title="Ron Paul campaign web page"><img src="http://dinomite.net/wp-content/uploads/2008/01/ron_paul1.png" alt="Ron Paul campaign web page" height="350" width="522" /></a></p>
@@ -53,10 +49,9 @@
 
 <p>When you visit the websites for <a href="http://www.hillaryclinton.com">HIllary Clinton</a> or <a href="http://www.barackobama.com">Barack Obama</a> you are asked for contact information before seeing anything substantive.  You have to fill out the form or click through to get to the candidate's website.  Thankfully, their websites send cookies; subsequent visits forgo the information garnering forms whether or not you put in anything.  But why put up this stumbling block?  Ron Paul's site is much more elegant; the form for signing up to get campaign information is still easy to get to, but it's not intrusive.</p>
 
-    <h2><a href="/blog/2008/01/01/perl-5-dot-10-dot-0/">Perl 5.10.0</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/01/01/perl-5-dot-10-dot-0/">Perl 5.10.0</a></h1>
     <div class="article-title-date">Jan  1, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Sure, it's already slathered across every news site known to man but just like everyone else I have different reasons for being excited about Perl 5.10.0.</p>
 
 <p>Like many others, I often choose Perl for its seamless regex support so the faster regex engine in this new release is definitely welcome.  This version also fixes an erroneous piece of missing syntax for subscript slices. I was always confused why the interpreter forced me to use <code>-&gt;</code> instead of the non-arrowed form.  The big one, not because it was hugely lacking but simply a seemingly odd oversight, is the switch statement, which is called <code>given/when</code> in Perl:</p>
@@ -72,10 +67,9 @@ given ($foo) {
 
 <p>Sure, switch statements don't really do anything special, but they are often quite a bit cleaner than if/elif chains and the fact that Perl's implementation can handle regex is awesome.</p>
 
-    <h2><a href="/blog/2007/12/19/web-browsing-with-python/">Web Browsing With Python</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/19/web-browsing-with-python/">Web Browsing With Python</a></h1>
     <div class="article-title-date">Dec 19, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Python provides a stateful web browsing module called <a href="http://wwwsearch.sourceforge.net/mechanize/"><code>mechanize</code></a>, named after Perl's mature and featureful <a href="http://search.cpan.org/author/PETDANCE/WWW-Mechanize-1.34/lib/WWW/Mechanize.pm"><code>WWW::Mechanize</code></a>.  Though it isn't as powerful as the Perl version, <code>mechanize</code> provides an easy-to-use framework for browsing web pages including interacting with forms and accessing SSL content.  The documentation for <code>mechanize</code> on the web is sparse, but viewing the source file (<code>/usr/lib/python2.5/site-packages/mechanize/_mechanize.py</code> on my Ubuntu machine) provides some needed insight.  Here's a quick overview of the operation of <code>mechanize</code>:</p>
 
 <pre class="brush: python;">
@@ -114,10 +108,9 @@ print content
 
 <p>That's a pretty straightforward and simple usage.  The <code>get_data()</code> method gives you the HTML content of the pages, which I often find suitable to run a <code>.split('\n')</code> and then do some regex on line by line.</p>
 
-    <h2><a href="/blog/2007/12/11/random-futurama/">Random Futurama</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/11/random-futurama/">Random Futurama</a></h1>
     <div class="article-title-date">Dec 11, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I like <a href="http://en.wikipedia.org/wiki/Futurama">Futurama</a>.  All of it.  Though I occasionally have a hankering for a specific episode, I often just want /any/ episode, so I wrote a quick Perl script to play one at random.  I have a directory filled with all of Futurama, so this is an easy proposition:</p>
 
 <pre class="brush: perl;">
@@ -132,10 +125,9 @@ my $num = rand(scalar(@files));
 system "mplayer "$files[$num]"";
 </pre>
 
-    <h2><a href="/blog/2007/12/07/custom-weather-radar-images/">Custom Weather Radar Images</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/07/custom-weather-radar-images/">Custom Weather Radar Images</a></h1>
     <div class="article-title-date">Dec  7, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" title="NWS base reflectivity for LWX" class="right"><img src="http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg" alt="NWS base reflectivity for LWX" /></a>
 If you know the slightest bit about weather and the geography of the area which you are observing, you can, in the short term, forecast more accurately than what a weather website provides.  I often want to be able to bring a radar image up quickly and clicking around websites takes time.  Sure I could bookmark the weather page directly, but this was an interesting exercise and will prove useful when I get an iPhone.</p>
 
@@ -158,24 +150,21 @@ composite -compose atop LWX_N0R_Legend_0.gif base_reflectivity.jpg base_reflecti
 
 <p>I want the counties, highways and legend to show up on top of the weather data which itself is pasted atop the topographical map.  To achieve this, I first toss the radar data onto the topographical image creating a new image, <code>base_reflectivity.jpg</code>.  Then, I add each of the other layers to the <code>base_reflectivity.jpg</code> image in sequence.</p>
 
-    <h2><a href="/blog/2007/12/04/connecting-to-oracle-without-a-password-on-windows/">Connecting to Oracle Without a Password on Windows</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/04/connecting-to-oracle-without-a-password-on-windows/">Connecting to Oracle Without a Password on Windows</a></h1>
     <div class="article-title-date">Dec  4, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>If you have forgotten, were never given or otherwise don't have the password to an Oracle database, never fear, there is a method to accessing the database.  From the local machine you must be a user in the group "ora_dba".  Run "sqlplus" (the command line version) with the option "/nolog", which tells SQL*Plus not to login.  At the "SQL&gt;" prompt, type "connect / as sysdba" which ought to log you in.  At that point, you can change the password for any account (<code>sys</code> would be a good one to change, since apparently you don't know it) using the command <code>alter user &lt;username&gt; identified by "&lt;password&gt;";</code>.  Make sure to <code>commit;</code> after doing that.</p>
 
-    <h2><a href="/blog/2007/12/02/disconnecting-corrupted-mac-on-input/">Disconnecting: Corrupted MAC on input.</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/02/disconnecting-corrupted-mac-on-input/">Disconnecting: Corrupted MAC on input.</a></h1>
     <div class="article-title-date">Dec  2, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I woke up to find the entitled error in the <code>rsnapshot</code> logs on one of my machines, which occurred as it was trying to remotely backup, via SSH, another.  A quick search and reading through a number of threads revealed <a href="http://monkey.org/openbsd/archive/misc/0207/msg02592.html">this message</a> stating that this problem was encountered with a Linksys router involved.  Lo and behold, my home network was just switched to a Linksys BEFSR41 when the problem began.</p>
 
 <p>I think the router may also be the culprit for the occasional "error establishing encrypted connection code -12192" that Firefox has been giving me since the switch.</p>
 
-    <h2><a href="/blog/2007/12/01/perl/">Perl, Python and Ruby</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/12/01/perl/">Perl, Python and Ruby</a></h1>
     <div class="article-title-date">Dec  1, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it's older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
 
 <pre>
@@ -275,10 +264,9 @@ sys     0m0.012s
 It's very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don't take these benchmarks as having any significant meaning.  Really, don't take them to mean much of anything, unless all you do is write lots of simple recursive code.
 </stdio.h></pre>
 
-    <h2><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent/">Quick Tip: Python's noop Equivalent</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent/">Quick Tip: Python's noop Equivalent</a></h1>
     <div class="article-title-date">Nov 30, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Python can't deal with empty code blocks, which may arise if you want to stub out a block but leave the implementation for later.  If you have one in your code, the interpreter will give the following error:</p>
 
 <pre class="brush: python;">
@@ -297,6 +285,7 @@ else:
     print "nothing to do!"
 </pre>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/13/">Next page</a></p>

@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Changing a Shortname on Mac OS X « Dinomite.net</title>
+  <title>Changing a Shortname on Mac OS X « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>When you install Mac OS X, it asks you for your full name, which is what it will use for what it calls the username.  Despite calling it the username, it is not actually field 1 in <code>/etc/passwd</code>, which is what Unix users would call the username.  Mac OS X refers to the first field of <code>/etc/passwd</code> as a user's "short name," normally a concatenated and lowercased version of your full name.  As one would expect, your Unix username, what you would use to login at a console or via SSH, is actually the short name; your files are stored in /Users/<shortname> and are owned by <shortname>.</shortname></shortname></p>
+  <div class="main-content">
+    <h1 class="article-title">Changing a Shortname on Mac OS X</h1>
+    <div class="article-title-date">Feb 19, 2008</div>
+    <p>When you install Mac OS X, it asks you for your full name, which is what it will use for what it calls the username.  Despite calling it the username, it is not actually field 1 in <code>/etc/passwd</code>, which is what Unix users would call the username.  Mac OS X refers to the first field of <code>/etc/passwd</code> as a user's "short name," normally a concatenated and lowercased version of your full name.  As one would expect, your Unix username, what you would use to login at a console or via SSH, is actually the short name; your files are stored in /Users/<shortname> and are owned by <shortname>.</shortname></shortname></p>
 
 <p>Like many Unix users, I have a username (dinomite) that is different from my real name (Drew Stephens) and I like it that way.  Having a username on one machine that doesn't match that on all of my others is a hassle, requiring me to specify a username whenever I SSH to or from said machine.  After having reinstalled OS X recently I wanted to change my short name on the system to rectify this problem.  Though some tutorials make it seem like an <a href="http://docs.info.apple.com/article.html?artnum=106824">involved process</a>, it's actually fairly straightforward if you have some Unix and OS X experience.  Here's how I did it in 10.5 (Leopard).</p>
 
@@ -34,9 +36,9 @@
 
 <p>Open a terminal (Applications &gt; Utilities &gt; Terminal) and change to /Users.  <code>ls</code> ought to show directories for both your current short name and the newly created one.  Now you just have to move your files from your old short name to the new one: <code>mv &lt;old short name&gt;/* &lt;old short name&gt;/.* &lt;new short name&gt;/</code>.  Once that completes, you need to change the ownership to the new short name: <code>chown -R &lt;new short name&gt; /Users/&lt;new short name&gt;</code>.  Since everything is now in the new users' domain, you can now delete your old username, log out of root and log in using your newly short named account.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -132,11 +134,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

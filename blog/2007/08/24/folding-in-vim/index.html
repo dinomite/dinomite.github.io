@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Folding in vim « Dinomite.net</title>
+  <title>Folding in vim « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>If you work with large files, in particular large markup documents vim's folding feature can make your day a whole lot better.  Just like the fancy folding that IDEs like Eclipse and Visual Studio provide, vim can reduce whole sections of text to a single line making it easy to skip around and keep your attention focused on what is important.  There are a number of different methods that vim can automatically figure out where to fold your file but I've found that <code>indent</code> does what I want most of the time.  To turn folding on and off easily, I wrote the following function in my <code>~/.vimrc</code></p>
+  <div class="main-content">
+    <h1 class="article-title">Folding in vim</h1>
+    <div class="article-title-date">Aug 24, 2007</div>
+    <p>If you work with large files, in particular large markup documents vim's folding feature can make your day a whole lot better.  Just like the fancy folding that IDEs like Eclipse and Visual Studio provide, vim can reduce whole sections of text to a single line making it easy to skip around and keep your attention focused on what is important.  There are a number of different methods that vim can automatically figure out where to fold your file but I've found that <code>indent</code> does what I want most of the time.  To turn folding on and off easily, I wrote the following function in my <code>~/.vimrc</code></p>
 
 <pre>
 set foldmethod=indent
@@ -47,9 +49,9 @@ nmap <silent> &#60;F3&#62; :call ToggleFolding()&#60;CR&#62;
 You can open and close folds using `zo` &amp; `zc` and jump between them with `zk` &amp; `zj`.
 </silent></pre>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -145,11 +147,11 @@ You can open and close folds using `zo` &amp; `zc` and jump between them with `z
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

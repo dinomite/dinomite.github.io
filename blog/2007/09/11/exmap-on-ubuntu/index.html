@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>EXMAP on Ubuntu « Dinomite.net</title>
+  <title>EXMAP on Ubuntu « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>EXMAP is a shared memory analysis utility that makes it easy to determine exactly how much memory a process is using.  Unlike <code>top</code>, which counts all memory shared amongst programs toward each of those programs, EXMAP gives three numbers most notable of which is "Effective Resident" memory usage.  This number is the amount of memory mapped directly by a process, plus a portion of any shared memory pools it is part of, that is, the program is only counted as using an equal portion of shared memory as all other processes that are sharing the same.</p>
+  <div class="main-content">
+    <h1 class="article-title">EXMAP on Ubuntu</h1>
+    <div class="article-title-date">Sep 11, 2007</div>
+    <p>EXMAP is a shared memory analysis utility that makes it easy to determine exactly how much memory a process is using.  Unlike <code>top</code>, which counts all memory shared amongst programs toward each of those programs, EXMAP gives three numbers most notable of which is "Effective Resident" memory usage.  This number is the amount of memory mapped directly by a process, plus a portion of any shared memory pools it is part of, that is, the program is only counted as using an equal portion of shared memory as all other processes that are sharing the same.</p>
 
 <p>On my system, both Gaim (Pidgin my foot) and Evolution are using aspell.  In top, they are both responsible for libaspell.so in its entirety, contributing 672K to each of their displayed memory usage.  EXMAP puts 338K towards Gaim and 334K to Evolution, a much more accurate tally, since only a single instance of libaspell is actually in memory, shared by the two other processes.  From my quick testing, it seems that subsequent users of shared memory take the larger share, 4K more in Gaim's case, since I started it after Evolution.  If I close Gaim, Evolution is then credited with the entire 632K of memory that libaspell occupies.</p>
 
@@ -51,9 +53,9 @@ echo exmap &gt;&gt; /etc/modules
 
 <p><code>module-assistant</code> automatically compiles and installs the module against the kernel headers that <code>aptitude</code> installed in the previous block and <code>depmod</code> calculates the dependencies amongst all modules, including the new EXMAP one.  <code>modprobe</code> installs the new module into the kernel and adding its name to <code>/etc/modules</code> ensures that it will be ready next time your system restarts as well.  Once all that is done, you can run <code>gexmap</code>.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -149,11 +151,11 @@ echo exmap &gt;&gt; /etc/modules
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

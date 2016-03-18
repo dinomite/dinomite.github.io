@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from/">mdadm Isn't Someone You Want to Hear From</a></h2>
+    <h1 class="article-title"><a href="/blog/2007/11/28/mdadm-isnt-someone-you-want-to-hear-from/">mdadm Isn't Someone You Want to Hear From</a></h1>
     <div class="article-title-date">Nov 28, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning</p>
 <pre>
 from:		mdadm monitoring &lt;root@dinomite.net&gt;
@@ -170,10 +167,9 @@ Working Devices : 2
 
 <p>Though a failed RAID device isn't the best way to start your morning, managing them in Linux is a fairly straightforward operation.  If the device actually had been bad, I would simply have to shut down the machine, replace the bad drive, partition it like the other one (<code>fdisk -l</code> helps) and then add it to the array as shown above.  In most cases, this wouldn't be much harder than what I had to do, though my case the server is a few hundred miles away, so that'd be quite a hike.</p>
 
-    <h2><a href="/blog/2007/11/26/tab-history-add-on-for-firefox/">Tab History Add-on for Firefox</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/26/tab-history-add-on-for-firefox/">Tab History Add-on for Firefox</a></h1>
     <div class="article-title-date">Nov 26, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>There are literally hundreds of lists of the best Firefox extensions yet <a href="http://db.rambleschmack.net/pc_tips/best_firefox_extensions">few</a> mention what I deem to be the most important: <a href="https://addons.mozilla.org/en-US/firefox/addon/1859">Tab History</a>.  A feature that I first became addicted to in <a href="http://galeon.sourceforge.net">Galeon</a>, Tab History causes newly created tabs created by middle-clicking a link or clicking "Open Link in New Tab" to inherit the history of their parent.</p>
 
 <p>That is, I can run a search, open a whole bunch of the windows in tabs and then close the windows with reckless abandon once I decide one of the tabs fulfills my needs.  Later, if I find that the tab I'm reading doesn't have the information I was searching for, I don't need to ctrl+shift+t and sift through the tabs that I had prematurely closed searching for the web search that I had run.  Instead, because the tab in question was spawned from said search, I simply hit 'back' and head right back to the original page.</p>
@@ -182,17 +178,15 @@ Working Devices : 2
 
 <p>Tab History really is the most important Firefox extension to me.</p>
 
-    <h2><a href="/blog/2007/11/19/amazons-kindle-comparable-to-a-hardcover/">Amazon's Kindle Comparable to a Hardcover?</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/19/amazons-kindle-comparable-to-a-hardcover/">Amazon's Kindle Comparable to a Hardcover?</a></h1>
     <div class="article-title-date">Nov 19, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a class="left" title="Bezos loves Kindle" href="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg"><img src="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg" alt="Bezos loves Kindle" /></a>
 Morgan Webb made a comparison between Amazon's new <a href="http://amazon.com/gp/product/B000FI73MA/sr=53-1/qid=1195527445/ref=tr_359161">Kindle</a> eBook reader and a hardcover book.  Though she was simply trying to liken the Kindle to the nearest priced physical book product, this is a false comparison.  Someone buying a hardcover book is looking for something more than just the words and content of the story; they enjoy the physical representation of a fine work.  A more accurate comparison for the Kindle is a regular old paperback, whose purchaser is simply looking for the cheapest representation of the book's content.  At less than $15 for the average paperback, the Kindle doesn't look like such a good deal, since they charge $10 per book for the $400 device.</p>
 
-    <h2><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h1>
     <div class="article-title-date">Nov 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Since Apple's recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I've seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple's <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I've been doing incremental backups for years but, unlike all of the recent articles in question, I didn't roll my own solution: I use 'rsnapshot' to do all of the hard work for me.</p>
 
 <p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you're using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
@@ -226,24 +220,21 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
 
 <p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I'm on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
 
-    <h2><a href="/blog/2007/11/09/parkour-on-espn/">Parkour on ESPN</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/09/parkour-on-espn/">Parkour on ESPN</a></h1>
     <div class="article-title-date">Nov  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>ESPN had a spot on Parkour this past week; sounds like the sport is actually gaining some traction.  Time to gather up my cold weather gear and get back out there.</p>
 <object width="440" height="361"><param name="movie" value="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" /><param name="wmode" value="transparent" /><param name="allowScriptAccess" value="always" /><embed src="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" type="application/x-shockwave-flash" wmode="transparent" width="440" height="361" allowscriptaccess="always" /></object>
 
-    <h2><a href="/blog/2007/11/02/programming-is-impressive/">Programming is Impressive</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/02/programming-is-impressive/">Programming is Impressive</a></h1>
     <div class="article-title-date">Nov  2, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>When you program you tend to have an impressive (or confusing, take your pick) looking screen, particularly if you consider vim an IDE:
 <a href="http://dinomite.net/wp-content/uploads/2007/11/screen.png" title="Writing code"><img src="http://dinomite.net/wp-content/uploads/2007/11/screen-thumb.png" alt="Writing code (thumbnail)" /></a></p>
 
-    <h2><a href="/blog/2007/10/29/dulce-de-leche-ice-cream/">Dulce de Leche Ice Cream</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/29/dulce-de-leche-ice-cream/">Dulce de Leche Ice Cream</a></h1>
     <div class="article-title-date">Oct 29, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>My dad made up a bunch of <a href="http://en.wikipedia.org/wiki/Dulce_de_leche">dulce de leche</a> a while back; if you're going to boil one can, you might as well fill the pot.  For those who don't know, the easiest way to make dulce de leche, a caramelized milk product popular in South and Central America, is to boil a can of <em>sweetened</em> <a href="http://en.wikipedia.org/wiki/Condensed_milk">condensed milk</a> for two to three hours.  At the shorter end of that range, you'll end up with viscosity similar to a caramel syrup; longer and it turns into a thick, spreadable paste, not unlike Nutella.</p>
 
 <p>I have seen numerous references on the internet of people not wanting to boil a can for fear of it exploding, but this trepidation is unfounded - boiling is a normal part of the <a href="http://en.wikipedia.org/wiki/Canning">canning</a> process.  The contents of the can are put in, the can is sealed and then it is brought to 100°C or even hotter to sterilize the elements within.  Leaving a can in boiling water on the stove is perfectly safe, assuming the pan doesn't run dry, the water will keep the system, can included, from breaking the boiling point.  That's just basic <a href="http://en.wikipedia.org/wiki/Thermodynamics">thermodynamics</a>.  As mentioned previously, it's worthwhile to boil a few cans at once, since the energy expenditure of keeping a pot simmering on the stove is nearly identical.</p>
@@ -260,10 +251,9 @@ Vanilla to taste (1-3 teaspoons)
 
 <p>I used thick (3 hour) dulce de leche, which lends a very strong flavor and skim milk, because it was in the fridge.  To get everything to combine, I had to stir it on the stove for about 10 minutes.  Don't just let milk sit on the stove unstirred, however; it grows a nasty skin quite quickly.  If you don't have another can of sweetened condensed milk, it can be replaced by another cup of cream, a half cup of milk and a cup of sugar.</p>
 
-    <h2><a href="/blog/2007/10/26/code-golf/">Code Golf</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/26/code-golf/">Code Golf</a></h1>
     <div class="article-title-date">Oct 26, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I stumbled across a <a href="http://golf.shinh.org">code golf</a> earlier this week that offers numerous problems.  The specific challenge I came across was the <a href="http://en.wikipedia.org/wiki/Bizz_buzz">fizz buzz</a> problem that I had been introduced to a few weeks ago.</p>
 
 <p>My initial attempt in Perl was this:</p>
@@ -338,16 +328,14 @@ print+($_%3?"":Fizz).($_%5?"":Buzz)||$_,$/for(1..100)
 
 <p><a href="http://en.wikipedia.org/wiki/Q.E.D.">Q.E.D.</a></p>
 
-    <h2><a href="/blog/2007/10/25/what-are-you-worth-to-facebook/">What Are You Worth to Facebook?</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/25/what-are-you-worth-to-facebook/">What Are You Worth to Facebook?</a></h1>
     <div class="article-title-date">Oct 25, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>It was <a href="http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top">widely</a> <a href="http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story">reported</a>  <a href="http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508">yesterday</a> that Microsoft bought a 1.6% stake in <a href="http://facebook.com">Facebook</a> for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook's 42 million accounts.  <a href="http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/">Marketplace's coverage</a> put that number at $300 dollars, which takes into account Facebook's projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn't necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus <a href="https://dinomite.net/index.php?tag=atheism">isn't actually my friend</a>.  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don't want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?</p>
 
-    <h2><a href="/blog/2007/10/16/data-dumper/">Data::Dumper</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/16/data-dumper/">Data::Dumper</a></h1>
     <div class="article-title-date">Oct 16, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://perldoc.perl.org/Data/Dumper.html">Data::Dumper</a> is one of the most useful Perl modules when developing code, providing quick and easy access to the contents of data structures.  Are you unsure whether you're setting the values of a hash correctly?  Don't understand how someone has organized an object that you're 'use'ing?  Data::Dumper to the rescue.</p>
 
 <pre>
@@ -389,6 +377,7 @@ $VAR6 = 'This is qux';
 
 <p>Which doesn't make it clear that 'foo' is a hash.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/14/">Next page</a></p>

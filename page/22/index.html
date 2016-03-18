@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,36 +28,30 @@
     <p><a href="/page/21/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2006/11/11/piracy-is-good/">Piracy is good?</a></h2>
+    <h1 class="article-title"><a href="/blog/2006/11/11/piracy-is-good/">Piracy is good?</a></h1>
     <div class="article-title-date">Nov 11, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Though about a year and a half old, <a href="http://www.mindjack.com/feature/piracy051305.html">this is a very good article</a> (and presentation; scroll down) about the positive effect that piracy can have.  Written by <a href="http://en.wikipedia.org/wiki/Mark_Pesce">Mark Pesce</a>, this is a case study of how <i>Battlestar Galactica</i>'s distribution via BitTorrent changed the viewership of that show; bringing it to Americans before the scheduled release and to Australia where it wasn't set to be available at all.  Further, he goes on to explore the ways that advertisers can still profit from this model that cuts out television networks who normally marry shows with advertisements.</p>
 
 <p>We now live in a time where many people (myself included) don't know or care when the shows they want to watch are broadcast or what channel they are one.  If you simply get your TV from the internet, the channel and time simply don't matter. Nor do the advertisements, which are normally snipped from interweb-released shows.  Are we soon to see TV funded by product placement, layover placards and bugs?</p>
 
-    <h2><a href="/blog/2006/11/08/borat/">Borat</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/11/08/borat/">Borat</a></h1>
     <div class="article-title-date">Nov  8, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I saw Borat this weekend and though I would say it was good, it feels like a stretch to make the character's exploits into a full-length film.  I think I'll see <a href="http://www.imdb.com/name/nm0056187/">Sacha Baron Cohen's</a> next movie when it comes out on DVD.  Also, see this <a href="http://www.slate.com/id/2152789/?nav=ais">interesting piece</a> on how Borat's portrayal of Kazakhstan compares to the real nation.</p>
 
-    <h2><a href="/blog/2006/07/13/senator-leghorn/">Senator Leghorn</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/07/13/senator-leghorn/">Senator Leghorn</a></h1>
     <div class="article-title-date">Jul 13, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I was just watching a <a href="http://www.youtube.com/watch?v=kv4vj_vlIOw">Daily Show clip</a> featuring <a href="http://en.wikipedia.org/wiki/Robert_Byrd">Senator Robert Byrd</a>, who just recently surpassed <a href="http://en.wikipedia.org/wiki/Strom_Thurmond">Strom Thurmond</a> as the longest serving senator in history.  Aside from his avowed obsession with <a href="http://en.wikipedia.org/wiki/Pork_barrel">pork</a>, he is quite the screwball and reminds me a lot of <a href="http://en.wikipedia.org/wiki/Foghorn_Leghorn">Foghorn Leghorn</a>.  Foghorn is, incidentally, named after the character <a href="http://en.wikipedia.org/wiki/Senator_Claghorn">Senator Claghorn</a>.</p>
 
-    <h2><a href="/blog/2006/07/12/mumbai/">Mumbai, formerly known as Bombay</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/07/12/mumbai/">Mumbai, formerly known as Bombay</a></h1>
     <div class="article-title-date">Jul 12, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Bombay changed it's name to <a href="http://en.wikipedia.org/wiki/Mumbai">Mumbai</a> more than 10 years ago yet news stories concerning the city on the Western coast of India usually still reference the name under British rule.  Surely this most populous city in the country and one of the largest in the world has enough cachet that we can all recognize it's name without being prompted by the past.  The Indians are already well on their way to being an econmic powerhouse after all and Mumbai is the center of this emerging market.</p>
 
-    <h2><a href="/blog/2006/05/21/installing-sun-java-on-ubuntu/">Installing Sun Java on Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/05/21/installing-sun-java-on-ubuntu/">Installing Sun Java on Ubuntu</a></h1>
     <div class="article-title-date">May 21, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I installed Azureus on my Ubuntu machine recently and found it to absolutely <em>peg</em> the CPU when downloading more than a few torrents at once.  I know that Bittorrent is a pretty CPU intensive protocol, but I had been running similar numbers of torrents on the same machine using <a href="http://packages.ubuntu.com/breezy/net/bittornado">bittornado</a> with much less ado.  By default, Ubuntu installs the <a href="http://packages.ubuntu.com/breezy/interpreters/java-gcj-compat">GCJ Java virtual machine</a>, which is a perfectly serviceable JVM, but I suspected it wasn't as good as Sun's own.  I'll shall not decree that Sun's JVM is better than GCJ, as I didn't actually run any tests, but Azureus runs faster now that I'm using the Sun machine.  Onward.</p>
 
 <p>Overall this is a pretty simple install. First, because of how Sun's JVM is licensed, you need to manually download it from <a href="http://java.sun.com/j2se/1.5.0/download.jsp">the Sun site</a>.  If you plan on compiling Java code, get the Java Development Kit (JDK); if you don't write software, you can just get the Java Runtime Environment (JRE).  Either way, make sure you get the vanilla package, not the RPM (RedHat package).</p>
@@ -82,40 +75,35 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe 
 
 <p><code>sudo update-java-alternatives --config java</code></p>
 
-    <h2><a href="/blog/2006/05/06/obfuscated-code/">Obfuscated code</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/05/06/obfuscated-code/">Obfuscated code</a></h1>
     <div class="article-title-date">May  6, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I'm doing a project on MD5 collisions for my parallel computing class and, like all cryptography, the code involves a lot of hex numbers (in standard notation, 0xf00d, 0xbeef, etc.) which naturaly makes parts of the code difficult to read.  That's simply the nature of <a href="http://en.wikipedia.org/wiki/MD5#Algorithm">the algorithm</a>.  Some programmers (often just mathematicians) insist on making the code even more illedgible with things like this:</p>
 
 <p><code>while (counter &lt; (1 &lt;&lt; 9))</code></p>
 
 <p>The bigger problem is that when I see something like that I'm confused; I am both impressed by their cleverness (that loops while counter is less than 512) but also annoyed by their needless obfuscation.  I guess one could argue that a left shift is more ledgible, because if it were a number larger than 10 or so, people wouldn't know the significance.  Who really knows of the top of their head that 262144 is 2^18?  So, in the end, it's not necessarily just obfuscation but really, most programmers will recognize at least up to 2^10 and those who know the internets should know 2^16 as well.</p>
 
-    <h2><a href="/blog/2006/05/01/random-number-generators/">Random number generators</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/05/01/random-number-generators/">Random number generators</a></h1>
     <div class="article-title-date">May  1, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>As I read more about cryptography (I'm currently making my way through the great tome, <a href="http://www.amazon.com/gp/product/0471117099/sr=8-1/qid=1145849010/ref=pd_bbs_1/102-6924799-8398511?%5Fencoding=UTF8">Applied Cryptography</a>) I've been thinking more about random number generators.  Whenever you read about cryptography or how they build slot machines (Kevin Mitnick covers this in <a href="http://www.amazon.com/gp/product/0764569597/sr=8-1/qid=1145849136/ref=pd_bbs_1/102-6924799-8398511?%5Fencoding=UTF8">The Art of Intrusion</a>) there is talk of how bad computer random number generators are, particularly the standard functions that are part of Java, libc or .NET.  Even if you take the time to seed them, the pseudo-randomness is of quite low quality.  I just found an article on some <a href="http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation">random number generators you can implement yourself</a>.  Cool.</p>
 
-    <h2><a href="/blog/2006/04/28/internet-routing-from-airplanes/">Internet routing from airplanes</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/04/28/internet-routing-from-airplanes/">Internet routing from airplanes</a></h1>
     <div class="article-title-date">Apr 28, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>News to me: you can use The Internet from planes now; I knew that this was in the works, but I didn't think it had actually been implemented yet.  Apparently Lufthansa (others?) has WiFi planes that communicate with the outside world via satellite links.  As is thoroughly explained in <a href="http://www.renesys.com/blog/2006/04/tracking_plane_flight_on_inter.shtml">this post</a>, the plane connects to a geostationary satellite and has it's own /24 network.  The planes intelligently decide which satellite to use based upon which will produce shorter routing at the ground station and are able to dynamically change this throughout the flight.  As the Renesys blogger shows, the planes announce their route changes thus allowing graceful switches amongst the satellites.  Cool.</p>
 
 <p><a href="http://www.nanog.org/mtg-0405/abarbanel.html">This presentation</a> explains the system that Boeing developed.</p>
 
-    <h2><a href="/blog/2006/04/23/ambulance-chains/">Ambulance chains</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/04/23/ambulance-chains/">Ambulance chains</a></h1>
     <div class="article-title-date">Apr 23, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Ever drive behind an ambulance and notice the chains hanging from the rear axel?  I've always wondered what those were for and today listening to CarTalk they suggested to a guy who was complaining about being shocked by his car to use a ground strap or chains that would drag on the ground to…ground the car.  For ambulances, I would bet that being at ground potential is importand for their instruments (EKG?) or perhaps they just don't want to shock people.  Interesting.</p>
 
-    <h2><a href="/blog/2006/04/22/on-the-bmw-m3/">On the BMW M3</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2006/04/22/on-the-bmw-m3/">On the BMW M3</a></h1>
     <div class="article-title-date">Apr 22, 2006</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><em>I drove a friends auto once and a cop pulled me over and gave me a ticket for improper equipment when he saw it was an auto.</em>
 -Aldo</p>
 
@@ -124,6 +112,7 @@ deb-src http://us.archive.ubuntu.com/ubuntu/ dapper main restricted <b>universe 
 
 <p><a href="http://forums.bimmerforums.com">Bimmerforums</a></p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/23/">Next page</a></p>

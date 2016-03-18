@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Connecting to Oracle Without a Password on Windows « Dinomite.net</title>
+  <title>Connecting to Oracle Without a Password on Windows « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,12 +23,14 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>If you have forgotten, were never given or otherwise don't have the password to an Oracle database, never fear, there is a method to accessing the database.  From the local machine you must be a user in the group "ora_dba".  Run "sqlplus" (the command line version) with the option "/nolog", which tells SQL*Plus not to login.  At the "SQL&gt;" prompt, type "connect / as sysdba" which ought to log you in.  At that point, you can change the password for any account (<code>sys</code> would be a good one to change, since apparently you don't know it) using the command <code>alter user &lt;username&gt; identified by "&lt;password&gt;";</code>.  Make sure to <code>commit;</code> after doing that.</p>
+  <div class="main-content">
+    <h1 class="article-title">Connecting to Oracle Without a Password on Windows</h1>
+    <div class="article-title-date">Dec  4, 2007</div>
+    <p>If you have forgotten, were never given or otherwise don't have the password to an Oracle database, never fear, there is a method to accessing the database.  From the local machine you must be a user in the group "ora_dba".  Run "sqlplus" (the command line version) with the option "/nolog", which tells SQL*Plus not to login.  At the "SQL&gt;" prompt, type "connect / as sysdba" which ought to log you in.  At that point, you can change the password for any account (<code>sys</code> would be a good one to change, since apparently you don't know it) using the command <code>alter user &lt;username&gt; identified by "&lt;password&gt;";</code>.  Make sure to <code>commit;</code> after doing that.</p>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -124,11 +126,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

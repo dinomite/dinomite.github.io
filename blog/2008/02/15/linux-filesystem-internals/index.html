@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Linux Filesystem Internals « Dinomite.net</title>
+  <title>Linux Filesystem Internals « Dinomite.net</title>
 
-    <link href="/stylesheets/all.css" rel="stylesheet" />
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
-  </head>
-  <body>
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
+</head>
 
-    <div id="main" role="main">
-      <nav>
+<body>
+<div id="main" role="main">
+  <nav>
   <ul>
     <li>
       <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
@@ -23,8 +23,10 @@
 </nav>
 
 
-      <div class="main-content">
-        <p>Someone asked me questions about filesystems recently and, though I used to have a good handle on them, my knowledge has waned over the years.  I figured writing about filesystem internals was a good way to brush up on that knowledge.</p>
+  <div class="main-content">
+    <h1 class="article-title">Linux Filesystem Internals</h1>
+    <div class="article-title-date">Feb 15, 2008</div>
+    <p>Someone asked me questions about filesystems recently and, though I used to have a good handle on them, my knowledge has waned over the years.  I figured writing about filesystem internals was a good way to brush up on that knowledge.</p>
 
 <p>This information applies generally to <a href="http://en.wikipedia.org/wiki/Unix_File_System">UFS</a>, FFS, <a href="http://en.wikipedia.org/wiki/Ext2">ext2</a>/<a href="http://en.wikipedia.org/wiki/Ext3">3</a> and XFS.  <a href="http://en.wikipedia.org/wiki/ReiserFS">ReiserFS</a> and <a href="http://en.wikipedia.org/wiki/Hierarchical_File_System">HFS</a>(<a href="http://en.wikipedia.org/wiki/HFS_Plus">+</a>) employ B-trees for organization of file metadata rather than inode lists, so they are somewhat different.  <a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a> is the tits and all of its shenanigans are handled differently.</p>
 
@@ -47,9 +49,9 @@
 <li><a href="http://uranus.chrysocome.net/explore2fs/es2fs.htm">John's ext2 spec</a> - John Newbigin</li>
 </ul>
 
-      </div>
+  </div>
 
-      <sidebar class="sidebar">
+  <sidebar class="sidebar">
   <ul>
     <li><h5 class="heading">See Also</h5></li>
     <li>
@@ -145,11 +147,11 @@
   </ul>
 </sidebar>
 
-    </div>
+</div>
 
-    <footer>
+<footer>
   Copyright 2005–2016 Drew Stephens
 </footer>
 
-  </body>
+</body>
 </html>

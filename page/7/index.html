@@ -11,7 +11,6 @@
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/atom.xml" />
   </head>
   <body>
-
     <div id="main" role="main">
       <nav>
   <ul>
@@ -29,10 +28,8 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
-    <h2><a href="/blog/2008/09/21/code-golf-saving-time/">Code Golf: Saving Time</a></h2>
+    <h1 class="article-title"><a href="/blog/2008/09/21/code-golf-saving-time/">Code Golf: Saving Time</a></h1>
     <div class="article-title-date">Sep 21, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>After a new challenge, <a href="http://codegolf.com/saving-time">Saving Time</a> was posted a few weeks ago, I'm finally getting to another round of <a href="http://codegolf.com/">Code Golf</a>.  As usual, my preferred language is Perl; don't read below if you don't want hints!</p>
 
 <p>My first draft grabs the hour and minutes using capturing in a regex, then turns them both into positions on a twelve hour clockface.  The clock location is passed to the function <code>symbol</code> which, through use of some nasty nested ternaries, what should be printed at the passed position on the clock face. (470 characters):</p>
@@ -136,10 +133,9 @@ sub sy{$_=shift;$H==$_?$H==$M?'x':'h':$M==$_?'m':'o'}
 print ' 'x8 .sy(0).$/.li(4,11,7,1).$/.li(1,10,13,2).$/.li(0,9,15,3).$/.li(1,8,13,4).$/.li(4,7,7,5).' 'x8 .sy(6)
 </pre>
 
-    <h2><a href="/blog/2008/09/16/united-states-federal-lands/">United States Federal Lands</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/09/16/united-states-federal-lands/">United States Federal Lands</a></h1>
     <div class="article-title-date">Sep 16, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <hr />
 <p><a href="http://flickr.com/photos/zsafwan/2238940368/"><img src="http://farm3.static.flickr.com/2199/2238940368_6ed860e04d.jpg" class="image-right" /></a></p>
 
@@ -194,10 +190,9 @@ Beginning with the creation of <a href="http://en.wikipedia.org/wiki/Yellowstone
 <p><a href="http://www2.law.cornell.edu/uscode/uscode16/usc_sup_01_16_10_1.html">16 USC - Conservation</a><br />
 <a href="http://www.law.cornell.edu/uscode/html/uscode43/usc_sup_01_43.html">43 USC - Public Lands</a></p>
 
-    <h2><a href="/blog/2008/09/11/rick-ross-financial-success/">Rick Ross' Financial Success</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/09/11/rick-ross-financial-success/">Rick Ross' Financial Success</a></h1>
     <div class="article-title-date">Sep 11, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Since he was <a href="">mentioned on The Daily Show</a> a few weeks ago, <a href="http://en.wikipedia.org/wiki/Rick_Ross_(rapper)">Rick Ross</a> has quickly become my favorite rapper.  The king of repetition, Ross hails from Miami and makes much of his activities trafficking drugs despite <a href="http://www.thesmokinggun.com/archive/years/2008/0721081rickross1.html">allegations that he worked for the man</a> during part of his life.  Like many rappers, Rick Ross talks a lot about his expensive cars and I noticed a trend in the vehicles of which he spoke.</p>
 
 <p><a href="http://dinomite.net/wp-content/uploads/2008/09/7series.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/7series-300x172.jpg" alt="" title="BMW 7 Series" width="300" height="172" class="alignright size-medium wp-image-341" /></a>
@@ -227,10 +222,9 @@ Keep the 760 double parked in the wrong spot.
 
 <p>The cover of the album also features the rapper in the back seat of a <a href="http://en.wikipedia.org/wiki/Maybach_57_and_62">Maybach</a>, the sole car from the eponymous ultra-luxury brand owned by <a href="http://en.wikipedia.org/wiki/Mercedes">Mercedes</a>.  The album also includes a song <em>Maybach Music</em>, Ross says that he has 20 whips, one of which is a <a href="http://en.wikipedia.org/wiki/Maserati">Maserati</a>.</p>
 
-    <h2><a href="/blog/2008/09/09/shell-command-substitution/">Shell Command Substitution</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/09/09/shell-command-substitution/">Shell Command Substitution</a></h1>
     <div class="article-title-date">Sep  9, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; "there must be a better way," I thought.</p>
 
 <p>Enter command substitution, a process by which you use the output from an executed command as the input to another.  Many people have used this in a simple manner such as <code>ls /usr/src/linux-`uname -r`</code>which takes the output of <code>uname -r</code>, namely the kernel release you're running, and uses that to flesh out the <code>ls</code> command.  There is a more complicated form, however, that I use for diffing remote files.  In the aforementioned example, I used the following command to diff the files:</p>
@@ -241,10 +235,9 @@ vimdiff &lt;(ssh stg1 cat /etc/rc.d/init.d/httpd) &lt;(ssh stg2 cat /etc/rc.d/in
 
 <p>Much like a subselect in MySQL, the <code>cat</code> commands are executed on the remote machine and then piped to <code>vimdiff</code> allowing for single command, no-file-copying diffs.</p>
 
-    <h2><a href="/blog/2008/09/05/speeding-up-ssh-logins-in-ubuntu/">Speeding up SSH Logins in Ubuntu</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/09/05/speeding-up-ssh-logins-in-ubuntu/">Speeding up SSH Logins in Ubuntu</a></h1>
     <div class="article-title-date">Sep  5, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>After getting access to some new machines, I noticed that SSHing too them was excruciatingly slow, taking 5-10 seconds to ask for a password and no faster using keys.  I pulled open the global SSH config file, <code>/etc/ssh/ssh_config</code> on my Ubuntu machine and found a couple of <a href="http://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface">GSSAPI</a> things that were enabled by default:</p>
 
 <pre>
@@ -254,24 +247,21 @@ GSSAPIDelegateCredentials yes
 
 <p>The machines I was SSHing to don't do GSSAPI, so every time I tried to connect my client had to wait a short timeout before trying other authentication methods.  Since I don't care about GSSAPI (few people use it), I simply set those options to <code>no</code> and now my SSH sessions start much more quickly.</p>
 
-    <h2><a href="/blog/2008/09/03/no-tech-hacking/">No-Tech Hacking</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/09/03/no-tech-hacking/">No-Tech Hacking</a></h1>
     <div class="article-title-date">Sep  3, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>While looking through the <a href="http://www.thelasthope.org/talks.html">audio</a> from <a href="http://www.thelasthope.org">the last hope</a>, I stumbled across <a href="http://johnny.ihackstuff.com/">Johnny Long</a>'s talk entitle <a href="http://video.google.com/videoplay?docid=-2160824376898701015">No-Tech Hacking</a>.  I saw this talk a couple of years ago at <a href="http://shmoocon.org/">ShmooCon</a> and re-watched it via the above Google Video link and it's just as good as the first time.  Anyone interested in any sort of security should watch this talk because it's very interesting and very funny.</p>
 
-    <h2><a href="/blog/2008/08/29/popular-im-networks/">Popular IM Networks</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/08/29/popular-im-networks/">Popular IM Networks</a></h1>
     <div class="article-title-date">Aug 29, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p><a href="http://billionsconnected.com/blog/2008/08/global-im-market-share-im-usage/">A blog post</a> by one of <a href="http://www.eqo.com">EQO</a>'s founders, Jeff LaPorte, claims to have insight into the market share of the instant messaging services throughout the world.  The <a href="http://billionsconnected.com/blog/wp-content/uploads/2008/08/global_im_market_share_stats_july_08.pdf">graphic</a> (PDF) shows the strength of competing IM services in different markets throughout the world.  I immediately questioned the data because it showed AOL Instant Messenger with a narrow lead over MSN and Yahoo!, who share a close second.  Personally, I've never used either of those services, nor do I know anyone who regularly does; is that because I'm a curmudgeon or the EQO data is inaccurate?  I must side with the latter.</p>
 
 <p>The crux of the issue is that EQO is an instant messaging application for mobile phones running Windows CE, so the data they have is for that subset of the IM user market, not representative of the market as a whole.  So what can we glean from this data?  People who have Windows-based smartphones prefer MSN worldwide, save for AIM's slight edge in the United States.  What can't we learn from the data?  The state of the instant message market as a whole.  EQO's usage data ignores other smartphone users, most notably the iPhone and users who don't have smartphones or aren't interested in IMing from their phones.</p>
 
-    <h2><a href="/blog/2008/08/09/defcon-16-eff-panel/">DEFCON 16 EFF Panel</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/08/09/defcon-16-eff-panel/">DEFCON 16 EFF Panel</a></h1>
     <div class="article-title-date">Aug  9, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Much of the <a href="http://www.eff.org">Electronic Frontier Foundation</a>'s talk at DEFCON 16 concerned the temporary injunction that prevented <a href="http://www.defcon.org/html/defcon-16/dc-16-speakers.html#Anderson">MIT students</a> from giving a talk on vulnerabilities of the <a href="http://www.mbta.com">MBTA</a> farecard system.  The injunction seems to say taht the only people prevented from disseminating the information about the system are the MIT students themselves and any cohorts in their research.  One question that I head was which other systems may be vulnerable to the same RFID card attack and here's the list from their slides:</p>
 
 <ul>
@@ -290,10 +280,9 @@ GSSAPIDelegateCredentials yes
 
 <p>More information is provided in <a href="http://dinomite.net/wp-content/uploads/defcon-16-anderson-ryan-cheisa.pdf">their slides</a>.</p>
 
-    <h2><a href="/blog/2008/07/25/installing-mechwarrior-2-in-dosbox-under-mac-os-x/">Installing Mechwarrior 2 in DOSBox Under Mac OS X</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/07/25/installing-mechwarrior-2-in-dosbox-under-mac-os-x/">Installing Mechwarrior 2 in DOSBox Under Mac OS X</a></h1>
     <div class="article-title-date">Jul 25, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>Put the Mechwarrior 2 CD into your Mac's CD drive; it will show up as two mounted discs, one for the audio and one for the game data.  The disc I have is for Mechwarrior 2 v1.1, so the game data is mounted as <code>/Volumes/MECH2_V1_1</code>; if you have a different version, the mount point will be slightly different and subsequent commands should be adjusted to match.  To access the disc in DOSBox, you must mount it.  Start DOSBox and type:</p>
 <pre>mount d /Volumes/MECH2_V1_1 -t cdrom -usecd 0</pre>
 <p>You will also need a place to act as a fake <code>C</code> drive, where the game will be installed.  I created a directory <code>dosprog</code> in my home directory and mounted it in DOSBox like so:</p>
@@ -311,10 +300,9 @@ MECH2.EXE
 </pre>
 <p>See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a></p>
 
-    <h2><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h2>
+    <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h1>
     <div class="article-title-date">Jun 25, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
     <p>I'm doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:</p>
 
 <pre>
@@ -329,6 +317,7 @@ MECH2.EXE
 
 <p>That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then <code>ipcrm</code>'s those semaphores.</p>
 
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/8/">Next page</a></p>
