@@ -5,29 +5,10 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2016-03-17T20:00:00-04:00</updated>
+  <updated>2016-03-06T19:00:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
-  <entry>
-    <title>Better Rails.cache Invalidation with Quick Queries</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/"/>
-    <id>http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/</id>
-    <published>2016-03-17T20:00:00-04:00</published>
-    <updated>2016-03-18T13:50:35-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;Foobar&lt;/p&gt;
-&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_cool_method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;message&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-</content>
-  </entry>
   <entry>
     <title>Winter Tech Forum is The Finest</title>
     <link rel="alternate" href="http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
@@ -160,6 +141,167 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
 &lt;p&gt;The intended arrangement is to clip a leash into both attachments and use it like a horse&amp;rsquo;s reins—tug on the front one when the dog pulls to correct the behavior.  This is effective, but it does halve the length of your leash.&lt;/p&gt;
 
 &lt;p&gt;[^1]: The Illusion collar is named after his estranged wife Ilusión&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>GORUCK Challenge</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2013/06/27/goruck-challenge-preparation/"/>
+    <id>http://blog.url.com/blog/2013/06/27/goruck-challenge-preparation/</id>
+    <published>2013-06-26T20:00:00-04:00</published>
+    <updated>2016-03-18T13:38:08-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9157378869/"&gt;&lt;img src="https://farm4.staticflickr.com/3713/9157378869_d05b4078ef_z.jpg"/&gt;&lt;/a&gt;
+Photo credit: &lt;a href="http://www.facebook.com/troyangrignon"&gt;Troy Angrignon&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I did the &lt;a href="https://www.goruck.com/events/Challenge"&gt;GORUCK Challenge&lt;/a&gt; last
+weekend.  The GORUCK Challenge is a 12 hour guided tour of a city, led by
+special forces guys known as the Cadre.  Every challenge, even in the same city,
+is a different experience, tailored by the Cadre based upon their desires, the
+folks on the team, and what the city has to offer.&lt;/p&gt;
+
+&lt;h2&gt;Class 662 Summary&lt;/h2&gt;
+
+&lt;p&gt;A team of 34 people, each with a 45-55 pound rucksack hiked &amp;amp; ran 20 miles
+around San Francisco over the course of 12 hours.  We were accompanied by two 30
+pound bags of quarters, a ~100 pound log, and, for about half of the time,
+a ~300 pound couch adorned with a 210-230 pound person. In the last few hours,
+we swapped the couch for a pair of 250 pound logs.&lt;/p&gt;
+
+&lt;h2&gt;Difficulty&lt;/h2&gt;
+
+&lt;p&gt;Overall the event was a &lt;em&gt;ton&lt;/em&gt; of fun.  Having read numerous things in the weeks
+leading up to this, my first challenge, I had gotten a bit worried.  The number
+of people who listed this as the hardest thing they&amp;rsquo;d ever done and hinted
+at the misery they endured made it sound like a rough, &amp;ldquo;Well, I&amp;rsquo;m glad I did
+that. Once.&amp;rdquo; sort of thing.  Nothing could be further from the truth.  If
+you&amp;rsquo;re physically capable, you&amp;rsquo;ll have a good time until the end.&lt;/p&gt;
+
+&lt;p&gt;What do I mean by capable?  I don&amp;rsquo;t think a single test other than the Challenge
+itself (or perhaps doing a Light and saying it was easy) could make it clear,
+but I can put it in CrossFit terms.  CrossFit + weight lifting is my main
+regimen, 3-4 days a week at &lt;a href="http://www.patriotcrossfit.com/blog/"&gt;Patriot CrossFit&lt;/a&gt;
+in Arlington if you want to get an idea of the programming.  I&amp;rsquo;m certainly no
+firebreather, but I manage to do a majority of the workouts as prescribed and
+in fairly good time.  If you can follow the &lt;a href="http://www.crossfit.com/"&gt;main site&lt;/a&gt;,
+doing half of the workouts as prescribed without being horribly slow, you&amp;rsquo;ll be
+fine.  You need not be &lt;a href="http://www.youtube.com/watch?v=xJ27XzR3HJc"&gt;Jason Kaplan&lt;/a&gt;
+to be in good enough shape—my 7 minute Fran is enough to make the Challenge a
+non-killer event.&lt;/p&gt;
+
+&lt;h1&gt;Notes on Preparation&lt;/h1&gt;
+
+&lt;h2&gt;Hydration&lt;/h2&gt;
+
+&lt;p&gt;I say hydration here because I think something more than water is important.
+I used a &lt;a href="https://www.goruck.com/Gear/Details/low-profile-hydration-bladder"&gt;low-profile SOURCE bladder&lt;/a&gt;
+which fit well in the main compartment between my bricks and the main flap.
+I filled it with water and 6 &lt;a href="https://www.amazon.com/dp/B001QW1L72/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B001QW1L72&amp;amp;adid=16NHVNWNJT4379CHRA7K&amp;amp;"&gt;Nuun tablets&lt;/a&gt;
+initially, and tossed in a few more tablets when I refilled at around 0300.  We
+didn&amp;rsquo;t stop for water again and I was out near the end of the challenge, along
+with most of the team.  If my next Challenge is anywhere warmer, I&amp;rsquo;ll find a way
+to have a second bladder or even a couple of Nalgenes.&lt;/p&gt;
+
+&lt;h2&gt;Food&lt;/h2&gt;
+
+&lt;p&gt;I often deride cyclists for their obsession with fast carbs, thinking that
+without sucking down maltodextrin every 20 minutes they might just go from being
+a world-class überathelete on their Yellow Polkadot Single Baller Edition
+Cervélo to a prole riding a Mongoose.  But it is to cyclists whom I turned when
+gathering supplies for this challenge.  In the end, I downed seven gels and two
+packs of chewie jobbies throughout the 12 hours.  Are those absolutely
+necessary?  Not at all, I could have gotten through without any of that and
+gone strict paleo with some bananas or some such.  But it would have sucked.
+Having good blood sugar support after glycogen stores are depleted increases
+your ability to perform for sure; more importantly, the carbohydrate combined
+with caffeine improves mood, keeping the event from being a gruelling death
+march.&lt;/p&gt;
+
+&lt;p&gt;So hit up your local bike shop and get some of those goofy fast acting
+carbohydrate sources.  I had a couple of &lt;a href="https://www.amazon.com/dp/B0010TADUW/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B0010TADUW&amp;amp;adid=01XQGWDWXR3T3TSYGRMM&amp;amp;"&gt;Honey Stingers&lt;/a&gt;
+(which are mostly honey) but most of what I brought were caffeinated (35mg or
+70mg depending on the flavor) &lt;a href="https://www.amazon.com/dp/B007I6NLFU/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B007I6NLFU&amp;amp;adid=0YDREPJX49416514ZN73&amp;amp;"&gt;Gu Roctane&lt;/a&gt;
+energy gels.  I drink tea regularly, so I think the regular-strength (35mg) ones
+were best for me.  Next time I&amp;rsquo;ll probably bring 10 gels along with a bunch of
+the &lt;a href="https://www.amazon.com/dp/B0041HKO3G/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B0041HKO3G&amp;amp;adid=1KMX5P2VRMECJ8Q9Q0NJ&amp;amp;"&gt;chewie versions&lt;/a&gt;.
+The chewies are amazingly delightful after you&amp;rsquo;ve speed marched across the city.
+If you&amp;rsquo;re the prepared sort, it&amp;rsquo;d be good to bring some extra.  Even amongst
+such a rarefied group there are knuckleheads who bring little to no food.  If
+someone&amp;rsquo;s performance falls off, a caffeinated gel is a great way to bring them
+back.&lt;/p&gt;
+
+&lt;p&gt;I also brought a few bars (Luna or UberFood, I think) but only ate one.  It&amp;rsquo;s
+nice to have something different during a long break (5 minutes).&lt;/p&gt;
+
+&lt;h2&gt;Clothing&lt;/h2&gt;
+
+&lt;p&gt;This challenge was during June in San Francisco.  For those who don&amp;rsquo;t know,
+that&amp;rsquo;s winter.  Paradoxically, it wasn&amp;rsquo;t windy &lt;em&gt;or&lt;/em&gt; foggy that night, but it was
+a bit cold.&lt;/p&gt;
+
+&lt;p&gt;I wore Under Armour leggings, some Champion workout shorts, &lt;a href="http://www.drymaxsocks.com/running_hyper_thin.php"&gt;Drymax socks&lt;/a&gt;,
+a &lt;a href="https://www.amazon.com/dp/B00275Q8ZW/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B00275Q8ZW&amp;amp;adid=0JWP8VED4W44F2TK8VZ7&amp;amp;"&gt;padded football shirt&lt;/a&gt;,
+a long-sleeve Under Armour Cold Gear top, and a workout shirt over that.&lt;/p&gt;
+
+&lt;p&gt;Unsure of my shoe choice up until the day of The Challenge, I settled on Inov8
+F-Lite 195s.  I&amp;rsquo;ve been wearing minimalist shoes (Merrel Trail Gloves are my
+favorites) exclusively for a few years now, but I was concerned that the extra
+weight on my back would lead to a Bad Time for my feet &amp;amp; knees.  I had bought
+some F-Lite 230s which were what I had planed on until the day of, but I settled
+on the 195s because my feet feel better in them.  They were just fine, despite
+the weight and surfaces we were walking on.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.fieggen.com/shoelace/surgeonknot.htm"&gt;&lt;img src="http://www.fieggen.com/Dont_Link/FinishedSurgeonKnot1.jpg"/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The other thing you need to do is &lt;a href="http://www.fieggen.com/shoelace/surgeonknot.htm"&gt;tie your shoes properly&lt;/a&gt;.
+If you can slip your shoes off without untying them, they aren&amp;rsquo;t tied properly.
+We had to stop multiple times during our first time hack in which we needed to
+cover 3.5 miles in 35 minutes due to shoes that came untied or got flat tired.
+Properly tying your shoes completely prevents both of these and will keep your
+teammates from thinking you&amp;rsquo;re incompetent from the beginning.&lt;/p&gt;
+
+&lt;p&gt;Pockets.  You want pockets.  Movements are often an hour or more, during which
+time you don&amp;rsquo;t have opportunity to dig around your pack for the aforementioned
+sugary delights.  Every time you stop, ensure your pockets have a gel or two in
+them.  Pockets are also where you&amp;rsquo;ll shove the trash after you down one of those
+as cadre are strict about littering, rightly so.&lt;/p&gt;
+
+&lt;h2&gt;Your Ruck&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9159389132/"&gt;&lt;img src="https://farm6.staticflickr.com/5540/9159389132_4c88fea201_c.jpg"/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/9159343672/"&gt;&lt;img class=right src="https://farm4.staticflickr.com/3667/9159343672_fa6d911781.jpg"/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Do something to your ruck so that you can differentiate it from everyone elses.
+All cadre are different, but you&amp;rsquo;ll end up taking your ruck off and passing it
+to teammates at some point in the night, and if they all look the same, it&amp;rsquo;s
+impossible to find your own.  I had a light-colored War Stories &amp;amp; Free Beer
+patch so that I could identify my GR1 from the back; the loops of cord that I
+use to hold my hydration tube makes it notable from the front.&lt;/p&gt;
+
+&lt;p&gt;Having a black Omega carabiner clipped through three MOLLE sure does look cool,
+but it&amp;rsquo;s not particularly funcitonal.  I have one on my ruck and it&amp;rsquo;s nice for
+briefly attaching a water bottle or my bike helmet, but it&amp;rsquo;s really difficult
+to remove for other uses.  When your ruck is jammed full of bricks, water, and
+yoga blocks, you can&amp;rsquo;t manipulate the fabric enough to remove the &amp;lsquo;biner
+easily, so save yourself the hassle and have it only clipped through two loops
+so that it&amp;rsquo;s faster to get at.&lt;/p&gt;
+
+&lt;h2&gt;Other Junk&lt;/h2&gt;
+
+&lt;p&gt;Minimize it, but don&amp;rsquo;t go crazy.  There are endless words written to the effect
+of &amp;ldquo;if you&amp;rsquo;re not sure, don&amp;rsquo;t bring it&amp;rdquo;.  I largely subscribe to this mentality,
+as you most likely aren&amp;rsquo;t going to need things, but there&amp;rsquo;s a dose of realism
+that is needed here.  Between the 30 pounds of bricks and the 10 pounds of
+water and misc that are the minimum weight, you aren&amp;rsquo;t going to notice a few
+extra food bars, gels, or a windbreaker, so don&amp;rsquo;t sweat it.  If the weather is
+on the edge of being cold, bring the windbreaker.  I always carry a Sharpie &amp;amp;
+a pen in my ruck day to day and was sad that I didn&amp;rsquo;t have them when we needed
+to write things down.&lt;/p&gt;
+
+&lt;p&gt;Things to certainly not bring are those that will absorb water.  Carrying around
+a small portion of your local body of water is a bad time.&lt;/p&gt;
 </content>
   </entry>
 </feed>

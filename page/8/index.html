@@ -28,23 +28,6 @@
     <p><a href="/page/7/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h1>
-    <div class="article-title-date">Jun 25, 2008</div>
-    <p>I&rsquo;m doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:</p>
-
-<pre>
-[Wed Jun 25 18:57:11 2008] [emerg] (28)No space left on device: Couldn't create accept lock
-</pre>
-
-<p>After being confused because there certainly is enough disk space, I Googled for other possibilities and it turns out I had hit another limit, that of active semaphores.  When some of my processes were killed, they died uncleanly and didn&rsquo;t clean up their open semaphores, filling the maximum number available to my user.  It&rsquo;s easy to tell that this is the root of the issue; running <code>ipcs -s</code> showed a list of 95 open semaphores.  Clearing them up is just as easy:</p>
-
-<pre>
-~$ for id in \`ipcs -s |awk '/USERNAME/ {print $2}'\`; do ipcrm -s $id; done
-</pre>
-
-<p>That prints the list of semaphores, grabs the ID ({print $2}) for lines containing USERNAME (your own or that which the webserver runs under) and then <code>ipcrm</code>&rsquo;s those semaphores. </p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/06/12/subversion-diff-with-vimdiff/">Subversion diff with vimdiff</a></h1>
     <div class="article-title-date">Jun 12, 2008</div>
     <p>Side by side diffs are much more legible and useful than those in <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified format</a> or any other linear diff.  By default, the <code>svn diff</code> command presents output in the unified format, though it has an option, <code>--diff-cmd</code>, which allows you to specify the program that will perform the diff.  Passing <code>vimdiff</code> as the diff command doesn&rsquo;t work as the options passed by <code>svn diff</code> are a bit complicated:</p>
@@ -232,6 +215,28 @@ On the phone: Bernie S in Philadelphia</p>
 <p><strong>Edit:</strong> In the comments, Matt mentioned <a href="http://www.fastforwardsw.com/compost/">Compost</a>, a preference pane for OS X that provides the functionality I describe, but also the ability to limit the trash based upon size, and also manage the Trash on other volumes.  Neat!  It&rsquo;s $20, but definitely makes this process easier and understandable if you aren&rsquo;t a Unix person. </p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/04/18/multiple-variable-assignments-with-perls-binding-operator/">Multiple Variable Assignments with Perl's Binding Operator</a></h1>
+    <div class="article-title-date">Apr 18, 2008</div>
+    <p>I learned something new in the world of Perl regular expressions today when I came across this line:</p>
+
+<pre class="brush: perl;">
+ my ($foo, $bar, $baz) = $string =~ /(.oo)(.*?r)(.*?z)/;
+</pre>
+
+<p>The operative side of the line, <code>$string =~ /(.oo)(.*?r)(.*?z)/</code> is a normal Perl regex binding statement - apply the regular expression <code>/(.oo)(.*?r)(.*?z)/</code> to <code>$string</code>.  What&rsquo;s interesting is that the binding operator returns the things matched within the capturing parenthesis as an array, allowing you to assign them all at once, as demonstrated by the left hand side of that <code>=</code> expression.  The above statement does the same as the more verbose:</p>
+
+<pre class="brush: perl;">
+$string =~ /(.oo)(.*?r)(.*?z)/;
+my ($foo, $bar, $baz) = ($1, $2, $3);
+</pre>
+
+<p>Used in a scalar context along with the <code>/g</code> modifier, this is an easy way to count count occurences:</p>
+
+<pre class="brush: perl;">
+my $count = $string =~ m/\./g;
+</pre>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/9/">Next page</a></p>
@@ -257,10 +262,6 @@ On the phone: Bernie S in Philadelphia</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
-              <div class="article-link-date">Mar 18, 2016</div>
-            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -297,6 +298,10 @@ On the phone: Bernie S in Philadelphia</p>
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -312,8 +317,7 @@ On the phone: Bernie S in Philadelphia</p>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>

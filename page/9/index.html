@@ -28,28 +28,6 @@
     <p><a href="/page/8/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2008/04/18/multiple-variable-assignments-with-perls-binding-operator/">Multiple Variable Assignments with Perl's Binding Operator</a></h1>
-    <div class="article-title-date">Apr 18, 2008</div>
-    <p>I learned something new in the world of Perl regular expressions today when I came across this line:</p>
-
-<pre class="brush: perl;">
- my ($foo, $bar, $baz) = $string =~ /(.oo)(.*?r)(.*?z)/;
-</pre>
-
-<p>The operative side of the line, <code>$string =~ /(.oo)(.*?r)(.*?z)/</code> is a normal Perl regex binding statement - apply the regular expression <code>/(.oo)(.*?r)(.*?z)/</code> to <code>$string</code>.  What&rsquo;s interesting is that the binding operator returns the things matched within the capturing parenthesis as an array, allowing you to assign them all at once, as demonstrated by the left hand side of that <code>=</code> expression.  The above statement does the same as the more verbose:</p>
-
-<pre class="brush: perl;">
-$string =~ /(.oo)(.*?r)(.*?z)/;
-my ($foo, $bar, $baz) = ($1, $2, $3);
-</pre>
-
-<p>Used in a scalar context along with the <code>/g</code> modifier, this is an easy way to count count occurences:</p>
-
-<pre class="brush: perl;">
-my $count = $string =~ m/\./g;
-</pre>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/04/17/taqueria-pancho-villa/">Taqueria Pancho Villa</a></h1>
     <div class="article-title-date">Apr 17, 2008</div>
     <p><a href='http://dinomite.net/wp-content/uploads/pancho-villa.jpg' title='Taqueria Pancho Villa'><img src='http://dinomite.net/wp-content/uploads/pancho-villa.jpg' alt='Taqueria Pancho Villa' class='right'/></a></p>
@@ -209,6 +187,13 @@ Emmanuel says that a number of people have visited Jim and it has been well appr
 <p>By far the ones that I use the most are those for Google and Wikipedia searching but having ultra-quick access to a thesaurus and dictionary greatly heightens my writing skill.  Smart bookmarks are something where, once you start using them, you&rsquo;ll wonder how others ever get stuff done while they waste time reaching for the mouse.</p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/03/08/richard-dawkins-on-atheism-at-ted-talks/">Richard Dawkins on Atheism at TED Talks</a></h1>
+    <div class="article-title-date">Mar  8, 2008</div>
+    <p><a href="http://www.ted.com/talks/view/id/113">Richard Dawkins&rsquo;</a> talk from the 2002 <a href="http://www.ted.com">TED Talks</a> was recently posted on the web (ok, it was a year ago, but I just saw it) and it&rsquo;s a very good summary of his views militant atheism.  Now, Dawkins isn&rsquo;t advocating violence in support of atheism, unlike that done by <a href="http://en.wikipedia.org/wiki/Eden_Natan-Zada">so</a> <a href="http://en.wikipedia.org/wiki/Palestine_Liberation_Organization">many</a> <a href="http://en.wikipedia.org/wiki/Christian_terrorism">religious</a> <a href="http://en.wikipedia.org/wiki/Militant_Islam">groups</a>, but rather supporting of <a href="http://en.wikipedia.org/wiki/Weak_and_strong_atheism">strong atheism</a> and an end to religion.</p>
+
+<blockquote>In my view, not only is science is corrosive to religion and religion is corrosive to science.  It teaches people to be satisfied with trivial, supernatural non-explanations and blinds them to the wonderful real explanations we have within our grasp.  It teaches them to accept authority, revelation and faith instead of always insisting on evidence.</blockquote>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/10/">Next page</a></p>
@@ -234,10 +219,6 @@ Emmanuel says that a number of people have visited Jim and it has been well appr
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
-              <div class="article-link-date">Mar 18, 2016</div>
-            </li>
             <li>
               <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
               <div class="article-link-date">Mar  7, 2016</div>
@@ -274,6 +255,10 @@ Emmanuel says that a number of people have visited Jim and it has been well appr
               <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
               <div class="article-link-date">Aug 12, 2012</div>
             </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -289,8 +274,7 @@ Emmanuel says that a number of people have visited Jim and it has been well appr
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>
