@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Signal Handling in Perl « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>Perl signal handling is easy.  Simply create a subroutine to handle a signal and register it as handler in the <a href="http://perldoc.perl.org/perlvar.html#%25SIG">%SIG</a> hash:</p>
+
+<pre class="brush: perl">
+#!/usr/bin/env perl
+$SIG{'INT'} = \&sigIntHandler;
+
+sleep 100;
+
+sub sigIntHandler {
+    print "INT caught!\n";
+    exit;
+}
+</pre>
+
+<p>While this is better than nothing, its fairly limited.  Your program is yanked out of its scope, making it difficult to clean up.  Without any state information, how are you supposed to know what to do when you get the signal?  The easiest thing to do is note that you have received a signal in the handler, then check and deal with that fact within any parts of your program that need to do things when signals occur.</p>
+
+<pre class="brush: perl">
+#!/usr/bin/env perl
+$SIG{'INT'} = \&sigIntHandler;
+
+# Flags for signals that have been caught
+my %caught;
+
+while (1) {
+    print "Sleeping 5\n";
+    sleep 5;
+    print "More sleeping\n";
+    sleep 5;
+
+    # If we got SIGINT (2), exit
+    exit if ($caught{'INT'} == 1);
+}
+
+# When we get a signal, set a flag in %caught
+sub sigIntHandler {
+    print "INT caught!\n";
+    $caught{'INT'} = 1;
+}
+</pre>
+
+<p>In this setup, all the signal handler does it set a flag in the <a href="http://www.effectiveperlprogramming.com/blog/630">package global</a> <tt>%caught</tt> that the program received a signal.  The main loop checks each time through to see if a signal has been issued and does what is appropriate; in this case, simply exiting.  Play around with this simple program and notice that when the signal happens, the statement that was being executed is interrupted and Perl starts back up with the next statement once the signal handler returns.</p>
+
+<p>In a real-world example makes things much clearer, demonstrating how you can actually use signals for program management.  At <a href="http://eng.genius.com">Genius.com</a> we have a daemon that starts worker children to perform tasks.  The main loop for each of these children looks something like this:</p>
+
+<pre class="brush: perl">
+# Worker class for daemon
+package ExampleDaemon::Worker;
+use Moose;
+
+# Declare the global
+our $SIG_CAUGHT = 0;
+
+# Explicit constructor in Moose
+sub BUILD {
+    $SIG{'INT'} = \&sigHandler;
+    $SIG{'TERM'} = \&sigHandler;
+}
+
+# Main loop
+sub doWork {
+    my ($self) = @_;
+    my $widgetsMade = 0;
+
+    while (1) {
+        # Make a widget
+
+        # Check for signals each time through
+        last if $SIG_CAUGHT
+    }
+
+    return $widgetsMade;
+}
+
+sub sigHandler {
+    my ($sigName) = @_;
+
+    $SIG_CAUGHT = 1;
+
+    return 1;
+}
+</pre>
+
+<p>Under normal circumstances the parent creates a child and invokes the <tt>doWork()</tt> subroutine.  This subroutine does some work and returns the number of widgets it created.  If the child receives a signal while building widgets, the handler logs and sets a flag.  The main loop checks for this and halts work, returning if a signal has been caught.  Why, you may ask, would a child receive a signal?  Surely <a href="http://www.theregister.co.uk/odds/bofh/">no one</a> will go around kill(1)ing children, right?  I think it's a reasonable assumption.  The real thing I made child signal handlers for is allowing the parent to relay signals, cleanly shutting down the daemon.</p>
+
+<pre class="brush: perl">
+# Main class for daemon
+package ExampleDaemon::Main;
+use Moose;
+
+# Package global so that the signal handlers have access
+our @children;
+
+# Explicit constructor in Moose
+sub BUILD {
+    $SIG{'INT'} = \&cleanupAndShutdown;
+    $SIG{'TERM'} = \&cleanupAndShutdown;
+    $SIG{'HUP'} = \&restartChildren;
+}
+
+sub run {
+    my ($self) = @_;
+
+    my $pfm = Parallel::ForkManager-&gt;new($self-&gt;numChildren);
+    while (1) {
+        my $pid = $pfm-&gt;start;
+
+        if ($pid != 0) {
+            # Parent process
+            push @children, $pid;
+
+            # Start children judiciously
+            sleep 1;
+            next;
+        }
+
+        # Child process; do some work
+        $self-&gt;startWorker();
+
+        # Worker finished, clean up the $pfm instance
+        $pfm-&gt;finish();
+    }
+
+    # Parent waits here for children to run
+    $pfm-&gt;wait_all_children();
+
+    return $widgetsMade;
+}
+
+sub startWorker {
+    my ($self) = @_;
+ 
+    my $worker = ExampleDaemon::Worker-&gt;new();
+    return $worker-&gt;doWork();
+}
+
+# Send TERM to children when we get INT or TERM
+sub cleanupAndShutdown {
+    my ($sigName) = @_;
+
+    kill 15, @children;
+
+    exit;    
+}
+
+# Kill the children, which will respawn, and re-read the logging config file
+sub restartChildren {
+    my ($sigName) = @_;
+
+    kill 15, @children;
+    @children = [];
+
+    my $loggingConfigFile = '/etc/daemonLogging.conf';
+    Log::Log4perl-&gt;init($loggingConfigFile);
+
+    return 1;
+}
+</pre>
+
+<p>The parent process utilizes <a href="http://search.cpan.org/perldoc/Parallel::ForkManager">Parallel::ForkManager</a> to spin off children.  We store the PIDs of these children in a package global, <tt>@children</tt>, because the signal handler gets no state information (i.e. it isn't given <tt>$self</tt>), so it can only access things that are global to the package.  As before, we register signal handlers, which do whatever is required.  In the case of <tt>cleanupAndShutdown()</tt> (which handles INT and TERM), we kill all of the children and then <tt>exit</tt> in the parent process.  If the parent process receives a HUP instead, we kill the children and then simply <tt>return</tt> from the signal handler, which returns to the main loop of the parent which will respawn the children.</p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

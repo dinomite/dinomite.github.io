@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Perl and Dubstep « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
+
+<p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it–<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
+
+<p>Net::Twitter::Queue is a simple Perl module that employs <a href="https://metacpan.org/module/Net::Twitter">Net::Twitter</a> to do the heavy lifting.  To use it, I have a queue of tweets in a file, <code>tweets.yaml</code>:</p>
+
+<pre class="brush: bash">
+- Caspa - Where's My Money? http://www.youtube.com/watch?v=myZU2DZoD9w
+- Skrillex - First Of The Year http://www.youtube.com/watch?v=2cXDgFwE13g
+- Rusko - Everyday http://www.youtube.com/watch?v=xDAX2aVWAag
+</pre>
+
+<p>When run, Net::Twitter::Queue will remove the top item from that YAML file and post it to Twitter using the account information specified in <code>config.yaml</code>:</p>
+
+<pre class="brush: bash">
+consumer_key: [consumer_key]
+consumer_secret: [consumer_secret]
+access_token: [access_token]
+access_token_secret: [access_token_secret]
+</pre>
+
+<p>Where do those values come from?  Two places: the consumer information is on the page for your application at <a href="https://dev.twitter.com">dev.twitter.com</a> (go ahead, make one!) and the access tokens are specific to the account you want to post as.  To generate them, I used <a href="https://github.com/marcel/twurl">Twurl</a>.  With the consumer key &amp; secret in hand, simply run Twurl:</p>
+
+<pre class="brush: bash">
+Titus:~/$ twurl authorize --consumer-key [consumer_key] \
+--consumer-secret [consumer_secret]
+</pre>
+
+<p>Twurl will respond with a URL that you can visit in a web browser, login to Twitter with the account you want to post as, and get a PIN back.  Give the PIN to Twurl and it will complete the authentication process, saving the access token &amp; associated secret in your <code>~/.twurlrc</code>.  Grab those two, toss them into <code>config.yaml</code> and run Net::Twitter::Queue from the directory that has <code>config.yaml</code> &amp; <code>tweets.yaml</code> in it:</p>
+
+<pre class="brush: bash">
+caligula:~/twitter/dailywub$ ls
+config.yaml  tweets.yaml
+caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
+'$q=Net::Twitter::Queue-&gt;new-&gt;tweet'
+</pre>
+
+<p>Easy as that–the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter.</p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

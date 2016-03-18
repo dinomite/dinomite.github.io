@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>mdadm Isn't Someone You Want to Hear From « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>A server of mine, Claudius, sent me a very polite, though unpleasant email early this morning</p>
+<pre>
+from:		mdadm monitoring &lt;root@dinomite.net&gt;
+to:			root@dinomite.net,
+date:		Nov 28, 2007 6:25 AM
+subject:	Fail event on /dev/md0:claudius
+
+This is an automatically generated mail message from mdadm
+running on claudius
+
+A Fail event had been detected on md device /dev/md0.
+
+Faithfully yours, etc.
+</pre>
+
+<p>Ugh; that means one of the drives in RAID set on Claudius has failed.  I only run <a href="http://en.wikipedia.org/wiki/RAID#Standard_levels">RAID0</a> on the machine, so data loss isn't any issue unless the second drive gives up, too.  I try not to actively administer machines; I just get them setup in a solid state and then make use of them, no reason to waste time fiddling around.  I hadn't done anything of note with the machine in question in some time, so I wasn't even sure what the drive setup was, though <code>df</code> clears that up:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/md0              5.5G  1.7G  3.6G  32% /
+varrun                506M  116K  506M   1% /var/run
+varlock               506M  4.0K  506M   1% /var/lock
+udev                  506M   88K  506M   1% /dev
+devshm                506M     0  506M   0% /dev/shm
+/dev/md1               68G   13G   54G  19% /home
+/dev/hdd1              19G   13G  5.1G  72% /backup
+tmpfs                 506M   18M  488M   4% /lib/modules/2.6.15-29-k7/volatile
+</pre>
+
+<p>So, md0 is the root (/) filesystem and Claudius also has a second RAID device, md1, which supports the <code>/home</code> filesystem.  I used <code>mdadm --detail</code> to get some more information about <code>md0</code>:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md0
+/dev/md0:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:00 2006
+     Raid Level : raid1
+     Array Size : 5855552 (5.58 GiB 6.00 GB)
+    Device Size : 5855552 (5.58 GiB 6.00 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 0
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 11:35:45 2007
+          State : clean, degraded
+ Active Devices : 1
+Working Devices : 1
+ Failed Devices : 1
+  Spare Devices : 0
+
+           UUID : 16c480c4:6bbc2b89:189b2529:3af755b2
+         Events : 0.16665869
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        -      removed
+       1       3       65        1      active sync   /dev/hdb1
+
+       2       3        1        -      faulty   /dev/hda1
+</pre>
+
+<p>So it thinks there's a problem with <code>/dev/hda1</code>, one of the two partitions that makes up this RAID device.  At this point, I recall that Claudius has three disks in it, a 20G (/backup) and two 80G, the latter two support both of the systems RAID devices, <code>md0</code> and <code>md1</code>.  The notice that mdadm sent me was only concerning <code>md0</code> which is odd, because <code>md1</code> spans both of those physical disks as well:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md1
+/dev/md1:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:07 2006
+     Raid Level : raid1
+     Array Size : 71778304 (68.45 GiB 73.50 GB)
+    Device Size : 71778304 (68.45 GiB 73.50 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 1
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 11:38:25 2007
+          State : clean
+ Active Devices : 2
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 0
+
+           UUID : 41d43030:23b3662d:c1c06634:4132ebc3
+         Events : 0.2117050
+
+    Number   Major   Minor   RaidDevice State
+       0       3        2        0      active sync   /dev/hda2
+       1       3       66        1      active sync   /dev/hdb2
+</pre>
+
+<p>and it doesn't show any problems.  What does this mean?  Well, I'm not exactly sure, but it does mean that the disk <code>/dev/hda</code> which holds the failed partition (<code>hda1</code>) of <code>md0</code> isn't completely bad; it's still spinning away and working.  That probably means that the filesystem on <code>hda1</code> somehow got muddled up or that there's a physical error on the portion of the disk support <code>hda1</code>.  Either way, the first step for me is to simly rebuild the array as it was before.  This is as simple as removing the faulty partition and adding it back to the array:</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm /dev/md0 -r /dev/hda1
+mdadm: hot removed /dev/hda1
+claudius:/home/dinomite/public_html# mdadm /dev/md0 -a /dev/hda1
+mdadm: hot added /dev/hda1
+</pre>
+
+<p>The RAID device will automatically begin rebuilding this partition and keep you informed of the status.</p>
+
+<pre>
+claudius:/home/dinomite/public_html# mdadm --detail /dev/md0
+/dev/md0:
+        Version : 00.90.03
+  Creation Time : Sat Aug 26 11:50:00 2006
+     Raid Level : raid1
+     Array Size : 5855552 (5.58 GiB 6.00 GB)
+    Device Size : 5855552 (5.58 GiB 6.00 GB)
+   Raid Devices : 2
+  Total Devices : 2
+Preferred Minor : 0
+    Persistence : Superblock is persistent
+
+    Update Time : Wed Nov 28 12:03:36 2007
+          State : clean, degraded, recovering
+ Active Devices : 1
+Working Devices : 2
+ Failed Devices : 0
+  Spare Devices : 1
+
+ Rebuild Status : 3% complete
+
+           UUID : 16c480c4:6bbc2b89:189b2529:3af755b2
+         Events : 0.16666531
+
+    Number   Major   Minor   RaidDevice State
+       0       0        0        -      removed
+       1       3       65        1      active sync   /dev/hdb1
+
+       2       3        1        0      spare rebuilding   /dev/hda1
+</pre>
+
+<p>Though a failed RAID device isn't the best way to start your morning, managing them in Linux is a fairly straightforward operation.  If the device actually had been bad, I would simply have to shut down the machine, replace the bad drive, partition it like the other one (<code>fdisk -l</code> helps) and then add it to the array as shown above.  In most cases, this wouldn't be much harder than what I had to do, though my case the server is a few hundred miles away, so that'd be quite a hike.</p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

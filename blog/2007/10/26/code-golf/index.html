@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Code Golf « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>I stumbled across a <a href="http://golf.shinh.org">code golf</a> earlier this week that offers numerous problems.  The specific challenge I came across was the <a href="http://en.wikipedia.org/wiki/Bizz_buzz">fizz buzz</a> problem that I had been introduced to a few weeks ago.</p>
+
+<p>My initial attempt in Perl was this:</p>
+<pre>
+for (1..100) {
+    $a = "";
+    $a = "Fizz" if !($_ % 3);
+
+    if (!($_ % 5)) {
+        $a .= "Buzz"
+    } elsif ($_ % 3) {
+        $a = $_
+    }
+
+    print "$a\n"
+}
+</pre>
+
+<p>Nothing special at all, just some fairly tight, clean code.  Aside from the broken apart <code>if</code> block and the use of bad variable names (<code>$a</code>, <code>$_</code>) it wouldn't look out of place in a normal program.  After exhausting my knowledge of esoteric Perl, I whittled it down to this:</p>
+<pre>
+for (1..100) {
+    $a = ($_ % 3) ? "" : "Fizz";
+    $a .= "Buzz" if !($_ % 5);
+
+    $a ||= $_;
+
+    print "$a\n"
+}
+</pre>
+
+<p>With a bit of digging, I found that I could use the <code>+</code> and <code>,</code> operators as part of <code>print</code> to get rid of that <code>$a</code> assignment:</p>
+<pre>
+for (1..100) {
+    $a = ($_ % 3) ? "" : "Fizz";
+    $a .= "Buzz" if !($_ % 5);
+
+    print + $a || $_, "\n"
+}
+</pre>
+
+<p>But you certainly don't need most of the parenthesis, and Perl deals with barewords just fine:</p>
+<pre>
+for (1..100) {
+    $a = $_ % 3 ? "" : Fizz;
+    $a .= Buzz if !($_ % 5);
+
+    print + $a || $_, "\n"
+}
+</pre>
+
+<p>Finally, after reading through <a href="http://perldoc.perl.org/perlvar.html"><code>perlvar</code></a> I found that the input record separator, which defaults to "\n", can take the place of that four-character newline:</p>
+<pre>
+for (1..100) {
+    $a = $_ % 3 ? "" : Fizz;
+    $a .= Buzz if !($_ % 5);
+
+    print + $a || $_, $/
+}
+</pre>
+
+<p>101 characters, but you can go a step further, drop the $a assignment and condense those statements down below:</p>
+<pre>
+for (1..100) {
+    print + ($_ % 3 ? "" : Fizz) . ($_ % 5 ? "" : Buzz) || $_, $/
+}
+</pre>
+
+<p>Finally, since this is now a single Perl statement, the curly braces can be eliminated by placing the loop control at the end (thanks to Fotios for that tip).  After you beat the whitespace out, you end up with 56 characters:</p>
+<pre>
+print+($_%3?"":Fizz).($_%5?"":Buzz)||$_,$/for(1..100)
+</pre>
+
+<p><a href="http://en.wikipedia.org/wiki/Q.E.D.">Q.E.D.</a></p>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

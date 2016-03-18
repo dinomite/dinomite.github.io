@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Using The Shell Right « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>The most powerful part of Unix/Linux/BSD is the command line.  In stock trim, the Unix shells are all very effective, but your time can be more effective by customizing the shell.  I use <code>bash</code>, so I know that these things work in that shell, but they ought to be easily transferred to others as well.</p>
+
+<h2 id="aliases">Aliases</h2>
+
+<p>A good friend of mine, <a href="http://semicomplete.com">Jordan Sissel</a>, once said that if you do something more than once, you're doing it wrong.  His conjecture applies as much to your shell as it does to your <a href="http://dinomite.net/2008/smart-bookmarks">browser</a>â€”computers are great at repetitive tasks, so you shouldn't bore yourself with such things.  Therein lies the most important thing you can do with your shell: make common tasks easier with aliases.</p>
+
+<p>First things first, I use <code>ls</code> a whole lot, and, despite it's simple makeup, I often mistype the command.  I don't care about being able to easily run <a href="http://www.freebsdsoftware.org/games/sl.html">Steam Locomotive</a>, and there's no <code>s</code> or <code>l</code> command, so I replace those all with <code>ls</code>:</p>
+<pre class="brush: bash; gutter: false">alias sl="ls"
+alias l="ls"
+alias s="ls"
+alias ll="ls -l"
+alias lh="ls -lh"
+alias la="ls -la"</pre>
+<p>Another thing I do all the time is descend into directories, which means I need to get out of them, too:</p>
+<pre class="brush: bash; gutter: false">
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+</pre>
+
+<p>I always want extended regular expressions, and there are tons of things I don't want to search when I grep (though I use <a href="http://betterthangrep.com">ack</a> these days):</p>
+
+<pre class="brush: bash; gutter: false">
+alias grep="egrep"
+alias G="grep -n --color=always --binary-file=without-match --exclude=tags \
+--exclude=*-min.js --exclude-dir='.[a-zA-Z]*' --exclude-dir='external' \
+--exclude-dir='blib'"
+</pre>
+
+<p>Furthermore, I often want to do recursive greps of a entire codebase, sometimes case insensitive, and like everything else, I mistype it:</p>
+<pre class="brush: bash; gutter: false">
+alias GR="G -r"
+alias RG="GR"
+alias GRI="G -r -i"
+alias GIR="GRI"
+alias IGR="GRI"
+alias IRG="GRI"
+</pre>
+
+<p>If you do any sort of system administration, you need to grep the process list; make that easy:</p>
+<pre class="brush: bash; gutter: false">
+alias paux="ps aux|grep -i"
+</pre>
+
+<p>Is someone shoulder surfing?</p>
+<pre class="brush: bash; gutter: false">
+alias c="clear"
+alias logout="clear; logout"
+</pre>
+
+<p><a href="http://asktherelic.com">Matt Behrens</a> tipped me off to this oneâ€”<code>type -a</code> tells you a lot more than the standard <code>which</code>:</p>
+<pre class="brush: bash; gutter: false">
+alias which='type -a'
+</pre>
+
+<p>When I'm writing in a language that requires compilation, I use cowsay to break up the output of each run, so that errors are easy to distinguish between this run and the previous one:</p>
+<pre class="brush: bash; gutter: false">
+alias gcc='cowsay "Hello"; gcc'
+alias g++='cowsay "Hello"; g++'
+alias make='cowsay "Hello"; nice -n 10 make'
+alias javac='cowsay "Hello"; javac'
+</pre>
+
+<p>Machines that I SSH to often get their names as aliases; I've got a bunch more of these:</p>
+<pre class="brush: bash; gutter: false">
+alias claudius="ssh -Y dinomite@dinomite.net"
+alias caligula="ssh -Y dinomite@caligula.dinomite.net"
+</pre>
+
+<h2 id="prompt">Prompt</h2>
+
+<p>There are numerous articles about pimping out your shell's prompt, many include previous command exit codes, the time, the current energy of the LHC, and the price of the S&amp;P 500.  I have a web browser, so I don't need all that informationâ€”I only put in my prompt things that are pertinent to the task at hand.  The things that make up my prompt are a bit complicated, so I build it in stages.  First, since I work on a lot of different machines, I always have the hostname in my prompt.  To make it easy to tell which machine I'm on, I assign colors to the systems that I use most often:</p>
+
+<pre class="brush: bash; gutter: false">
+HOSTNAME=`hostname|sed -e 's/\..*$//'`
+if [ $HOSTNAME = 'Caligula' ] || [ $HOSTNAME = 'Caligula.local' ]; then
+    export HOST_COLOR="\[\033[1;35m\]"
+fi
+if [ $HOSTNAME = 'claudius' ]; then
+    export HOST_COLOR="\[\033[1;36m\]"
+fi
+if [ $HOSTNAME = 'dev1' ]; then
+    export HOST_COLOR="\[\033[1;34m\]"
+fi
+if [ $HOSTNAME = 'svr-dev-rw1' ]; then
+    export HOST_COLOR="\[\033[1;31m\]"
+fi
+if [ $HOSTNAME = 'drewfus' ]; then
+    export HOST_COLOR="\[\033[1;30m\]"
+fi
+</pre>
+
+<p>Next, I capitalize the hostname and make the colon separating it from the path red if I'm currently acting as root via <code>sudo -s</code>.  This makes it very hard to forget that the consequences of actions are great at the current time:</p>
+
+<pre class="brush: bash; gutter: false">
+COLON_COLOR='0m'
+if [ ${UID} -eq 0 ]; then
+    COLON_COLOR='1;31m'
+fi
+if [ ${UID} -eq 0 ]; then
+    HOSTNAME="`echo $HOSTNAME|tr '[a-z]' '[A-Z]'`"
+fi
+</pre>
+
+<p>Finally, build the actual prompt:</p>
+
+<pre class="brush: bash; gutter: false">
+PS1=`echo -ne "$HOST_COLOR$HOSTNAME\[\033[00m\]\[\e[$COLON_COLOR\]:\[\033[33m\]\
+w\[\033[00m\]\\[\033[01;33m\]\$\[\033[00m\] "`
+</pre>
+
+<p>What does this look like?<br />
+<span style="color: #00ccff;">claudius</span>:<span style="color: #339966;">/usr/local$</span><br />
+And when root:<br />
+<span style="color: #00ccff;">CLAUDIUS</span><span style="color: #ff0000;">:</span><span style="color: #339966;">/usr/local$</span></p>
+
+<h2 id="history">History</h2>
+
+<p>There are a lot of complicated commands that I only use occasionally; having a big history means if I've used it once, I can easily search and find the command later.  The <code>histappend</code> options tells bash to append rather than overwrite the history file and <code>cmdhist</code> combines multi-line history commands into a single entry.  It's often useful to run the same command repeatedly, and I find myself typing <code>ls</code> whenever I stop to think; setting <code>HISTCONTROL</code> and <code>HISTIGNORE</code> keeps those actions from filling up my history.</p>
+
+<pre class="brush: bash; gutter: false">
+#"I know I've used that command before, but I can't remember the syntax"
+export HISTSIZE=50000
+shopt -s histappend
+shopt -s cmdhist
+HISTCONTROL=ignoredups
+export HISTIGNORE="&amp;:ls:ll:la:lh:sl"
+export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
+</pre>
+
+<h2 id="environment-variables">Environment Variables</h2>
+
+<p>A lot of linuxes come with lackluster program defaults (emacs, more, etc.); you can get better ones by setting environment variables:</p>
+
+<pre class="brush: bash; gutter: false">
+export PAGER=/usr/bin/less
+export EDITOR='vim -X'
+export BROWSER='firefox'
+export CC=/usr/bin/gcc
+</pre>
+
+<p>Since we are in the 21st century, I use Unicode:</p>
+
+<pre class="brush: bash; gutter: false">
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+</pre>
+
+<h2 id="functions">Functions</h2>
+
+<p>I use Perl a lot, and have to deal with keeping modules the same across different systems; this function makes getting the installed version of a module easy:</p>
+
+<pre class="brush: bash; gutter: false">
+function perlmodver {
+    perl -M$1 -e 'print "Version " . $ARGV[0]-&gt;VERSION . " of " . $ARGV[0] . " is installed.\n"' $1
+}
+</pre>
+
+<p>The thing I use <code>awk</code> for most often is '{print $n}', so I wrote <a href="http://dinomite.net/2009/fawk/"><code>fawk</code></a> which you give a number and it des just that:</p>
+<pre class="brush: bash; gutter: false">
+function fawk {
+    first="awk '{print "
+    last="}'"
+    cmd="${first}\$${1}${last}"
+    eval $cmd
+}
+</pre>
+
+<p><code>awk</code> also does math:</p>
+<pre class="brush: bash; gutter: false">
+function calc {
+    awk "BEGIN{ print $* }";
+}
+</pre>
+
+<h2 id="tying-it-all-together">Tying It All Together</h2>
+
+<p>To keep things organized, I separate the above mentioned things into a few different files, so my <code>.bashrc</code> brings them all together.  Additionally, I check for a <code>.bash_local</code> file, which isn't <a href="http://dinomite.net/2008/keeping-your-home-directory-in-subversion/">checked into subversion</a>, so that I can have machine-specific alterations to my shell environment.</p>
+
+<pre class="brush: bash; gutter: false">
+# .bashrc
+source ~/.bash_global
+source ~/.bash_aliases
+source ~/.bash_functions
+if [ -f ~/.bash_local ]
+then
+    source ~/.bash_local
+fi
+</pre>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>

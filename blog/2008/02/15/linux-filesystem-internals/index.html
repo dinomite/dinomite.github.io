@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Linux Filesystem Internals « Dinomite.net</title>
+
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body>
+
+    <div id="main" role="main">
+      <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+      <div class="main-content">
+        <p>Someone asked me questions about filesystems recently and, though I used to have a good handle on them, my knowledge has waned over the years.  I figured writing about filesystem internals was a good way to brush up on that knowledge.</p>
+
+<p>This information applies generally to <a href="http://en.wikipedia.org/wiki/Unix_File_System">UFS</a>, FFS, <a href="http://en.wikipedia.org/wiki/Ext2">ext2</a>/<a href="http://en.wikipedia.org/wiki/Ext3">3</a> and XFS.  <a href="http://en.wikipedia.org/wiki/ReiserFS">ReiserFS</a> and <a href="http://en.wikipedia.org/wiki/Hierarchical_File_System">HFS</a>(<a href="http://en.wikipedia.org/wiki/HFS_Plus">+</a>) employ B-trees for organization of file metadata rather than inode lists, so they are somewhat different.  <a href="http://en.wikipedia.org/wiki/ZFS">ZFS</a> is the tits and all of its shenanigans are handled differently.</p>
+
+<p>At a low level, Unix filesystems are made up of three main pieces on the disk: a superblock, inodes and data blocks.  The superblock contains information about the filesystem: a magic number to identify the type, the size of the filesystem, free data blocks and other gross information.  After the superblock comes a list of inodes, each of which contains metadata about a file including the permissions, the number of links to the file, the file type (symlink, directory, etc.) and the datablocks that hold the actual file data.   Note the conspicuous lack of a filename in the inode; more on this later. The balance of the space on a partition is made up of those data blocks which hold the actual file data.</p>
+
+<p>As mentioned previously, inodes only store metadata; the actual data is stored in one or more data blocks, the inode merely keeps a list of the blocks that contain the data for the file.  In ext2/3, each inode has 15 blocks that can each refer to a single data block, each of which is usually 1 kilobyte meaning that the maximum filesize on ext2 is 15 kilobytes…but that's certainly not true.  The 15 data-referencing blocks are actually allocated more intelligently than that.  The first 12 (0..11) are direct blocks, pointing to the first 12 blocks (kilobytes) of a file.  The 12th block is the indirect block; instead of pointing to data blocks that contain data, it points to a data block that contains a list of up to 2060 addresses of blocks that contain data.  Since a maximum filesize of (2060+12) 2072 kilobytes isn't sufficient for most peoples needs, the 13th block is doubly-indirect and the 14th is triply-indirect.  With all that indirection, the maximum filesize on ext2/3 is about 35 gigabytes, which ought to be enough for anyone.</p>
+
+<p>So, when you want to read a file, the operating system first checks the metadata in the inode to ensure you have permission to access said file.  Assuming you do, data is pulled from the data blocks listed in the inode, with appropriate indirection depending upon the size of the file.</p>
+
+<p>I mentioned previously that filenames are not part of the inode, which seems odd as the filename seems to be a type of file metadata.  The rub is that in POSIX systems a file can have multiple names; my home directory can be referred to as <code>/home/dinomite</code>, <code>/home/dinomite/.</code>, <code>/home/dinomite/bin/..</code> or a number of other names.  How is this handled and where are filenames actually put?  In directories.  A directory boils down to nothing more than a list of names and their associated inode numbers, which we refer to has a link, giving name to the system call <code>unlink</code> which most people refer to as delete.  When you refer to a file by name, the operating system starts at the root node (<code>/</code>), which is always inode number 2.  Beginning with the root directory listing, it matches filenames to inode numbers, cascading this lookup until it has found the file that you referenced.</p>
+
+<p>The important thing mentioned in the previous paragraph is that filenames in a directory list are links to a file; each of those links is noted in the file's inode as the link count.  Whenever a file is given a name (either by being created or a hard link via <code>ln</code>), the link count is incremented; when a link is deleted, the link count is decremented.  When the link count reaches zero, the kernel releases those data block, unless the file is currently open.  In the latter case, the data blocks are freed when the file is closed.  This also lends insight into how undelete programs work and what computer people mean when they say deleting something doesn't actually get rid of the data on the disk.  When you delete a file, more properly known as unlinking it, the only thing that actually goes away is the data in the inode.  Until they are overwritten, the data blocks still contain the data prior to being deleted.  <code>fsck</code> works in a similar manner, searching for inodes that have positive link counts, but no references in directories.</p>
+
+<p>Finally, there are symbolic links.  With a symlink, an inode is allocated and has its symlink bit set.  If the file pointed to by the symlink is 60 bytes or less, it is stored directly in the inode.  If its longer, the pointed-to file is stored in data blocks and they are pointed to by the inode in the normal fashion.  Note that symbolic links to not affect an inode's link count, hence broken links.</p>
+
+<p>References</p>
+<ul>
+<li><a href="http://perl.plover.com/classes/ext2fs/">Internals of the ext2 Filesystem</a> - M. J. Dominus</li>
+<li><a href="http://perl.plover.com/classes/files/">What's a file?</a> - M. J. Dominus</li>
+<li><a href="http://uranus.chrysocome.net/explore2fs/es2fs.htm">John's ext2 spec</a> - John Newbigin</li>
+</ul>
+
+      </div>
+
+      <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
+              <div class="article-link-date">Sep 11, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
+              <div class="article-link-date">Aug 12, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
+              <div class="article-link-date">Mar 19, 2012</div>
+            </li>
+            <li>
+              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
+              <div class="article-link-date">Oct 26, 2011</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+</sidebar>
+
+    </div>
+
+    <footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+  </body>
+</html>
