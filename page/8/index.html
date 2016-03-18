@@ -29,6 +29,34 @@
     <p><a href="/page/7/">Previous page</a></p>
 
 <ul>
+    <h2><a href="/blog/2008/06/12/subversion-diff-with-vimdiff/">Subversion diff with vimdiff</a></h2>
+    <div class="article-title-date">Jun 12, 2008</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>Side by side diffs are much more legible and useful than those in <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified format</a> or any other linear diff.  By default, the <code>svn diff</code> command presents output in the unified format, though it has an option, <code>--diff-cmd</code>, which allows you to specify the program that will perform the diff.  Passing <code>vimdiff</code> as the diff command doesn't work as the options passed by <code>svn diff</code> are a bit complicated:</p>
+
+<pre>
+~/code/perllib/MG$ cat foo.sh
+\#!/bin/bash
+echo $*
+~/code/perllib/MG$ svn diff --diff-cmd foo.sh Proxy.pm
+Index: Proxy.pm
+-u -L Proxy.pm (revision 21095) -L Proxy.pm (working copy) .svn/text-base/Proxy.pm.svn-base /tmp/svndiff.tmp
+</pre>
+
+<p>Subversion is telling diff to output context (<code>-u</code>), show pretty names for the files (<code>-L</code>) and then the two files to diff.  To make this work with <code>vim</code>, we simply need to cut out the extra options.  To do so, I wrote a simple script:</p>
+
+<pre class="brush: bash;">
+\#!/bin/bash
+shift 5
+vimdiff "$@"
+</pre>
+
+<p>I put that in <code>~/bin/svnvimdiff</code> and now I can do <code>svn diff --diff-cmd ~/bin/svnvimdiff Proxy.pm</code> and view the diff in <code>vimdiff</code>.  Since this is a command I use often, I aliased it in my <code>.bashrc</code>:</p>
+<pre class="brush: bash;">
+alias svndiffvim='svn diff --diff-cmd ~/bin/svnvimdiff'
+</pre>
+
     <h2><a href="/blog/2008/06/09/keeping-your-home-directory-in-subversion/">Keeping Your Home Directory in Subversion</a></h2>
     <div class="article-title-date">Jun  9, 2008</div>
     <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -221,19 +249,6 @@ my ($foo, $bar, $baz) = ($1, $2, $3);
 my $count = $string =~ m/\./g;
 </pre>
 
-    <h2><a href="/blog/2008/04/17/taqueria-pancho-villa/">Taqueria Pancho Villa</a></h2>
-    <div class="article-title-date">Apr 17, 2008</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
-    <p><a href="http://dinomite.net/wp-content/uploads/pancho-villa.jpg" title="Taqueria Pancho Villa"><img src="http://dinomite.net/wp-content/uploads/pancho-villa.jpg" alt="Taqueria Pancho Villa" class="right" /></a></p>
-
-<p>There's a small chain of <a href="http://en.wikipedia.org/wiki/Taquer%C3%ADa">taquerÃ­as</a> in the <a href="http://en.wikipedia.org/wiki/San_Francisco_Bay_Area">Bay Area</a> called TaquerÃ­a Pancho Villa.  At the <a href="http://en.wikipedia.org/wiki/San_Mateo,_California">San Mateo</a> location this evening I noticed a plaque commemorating the <a href="http://en.wikipedia.org/wiki/Pancho_Villa">revolutionary general</a>.  I took picture of it and <a href="http://google.com/translate">translated</a> it when I got home:</p>
-
-<p>In tribute to Pancho Villa (Doroteo Arango [ArÃ¡mbula, his full name])
-To 119 years of his birth (San Juan River, Durango)
-And 74 years of his death (Parral, Chihuaua)
-San Mate, California 1997</p>
-
 </ul>
 
     <p><a href="/page/9/">Next page</a></p>
@@ -259,6 +274,10 @@ San Mate, California 1997</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
             <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
@@ -295,10 +314,6 @@ San Mate, California 1997</p>
               <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
               <div class="article-link-date">Mar 19, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
-              <div class="article-link-date">Oct 26, 2011</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -314,6 +329,7 @@ San Mate, California 1997</p>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>

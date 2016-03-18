@@ -29,6 +29,23 @@
     <p><a href="/page/13/">Previous page</a></p>
 
 <ul>
+    <h2><a href="/blog/2007/10/11/homemade-carbonator/">Homemade Carbonator</a></h2>
+    <div class="article-title-date">Oct 11, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p><a href="http://dinomite.net/wp-content/uploads/2007/10/carbonator.jpg" title="Carbonator" class="right"><img src="http://dinomite.net/wp-content/uploads/2007/10/carbonator-thumb.jpg" alt="Carbonator thumbnail" /></a>
+After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS">this instructable</a> I was very excited because I've recently started drinking a lot of seltzer water and I felt silly paying for something so simple.  I collected parts from eBay and some online distributors as follows:</p>
+
+<ul>
+  <li>15lbs. CO2 tank (eBay, $80 shipped)</li>
+  <li>Regulator (<a href="http://www.beveragefactory.com">BeverageFactory.com</a>, $45)</li>
+  <li>Carbonator cap (<a href="http://www.morebeer.com">MoreBeer.com</a>, $15)</li>
+  <li>Tubing and adapters (hardware store, $5)</li>
+  <li>Filled CO2 tank (Robert's Oxygen, $25)</li>
+</ul>
+
+<p>It's a pretty simple arrangement, in the end.  Just hook the regulator up to the tank along with the tubing to the carbonator cap, adjust the pressure to 50PSI and then fizzy up a bottle of cold water.</p>
+
     <h2><a href="/blog/2007/10/08/perceptions-are-not-reality/">Perceptions Are Not Reality</a></h2>
     <div class="article-title-date">Oct  8, 2007</div>
     <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -156,23 +173,6 @@ echo exmap &gt;&gt; /etc/modules
 
 <p><code>module-assistant</code> automatically compiles and installs the module against the kernel headers that <code>aptitude</code> installed in the previous block and <code>depmod</code> calculates the dependencies amongst all modules, including the new EXMAP one.  <code>modprobe</code> installs the new module into the kernel and adding its name to <code>/etc/modules</code> ensures that it will be ready next time your system restarts as well.  Once all that is done, you can run <code>gexmap</code>.</p>
 
-    <h2><a href="/blog/2007/09/09/ssh-tunnels-for-quick/">SSH Tunnels for Quick, Secure Net Access</a></h2>
-    <div class="article-title-date">Sep  9, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
-    <p>An SSH tunnel is a great way to quickly setup a secure method for browsing the web from an unsecure location, such as a public wireless network.  All you need is a machine running an SSH server.  I setup a tunnel from my Mac OS X laptop using the following command:</p>
-
-<pre>
-ssh -C -D 7070 dinomite.net
-</pre>
-
-<p>This sets up a tunnel, locally accessible on the laptop on port 7070 (<code>-D 7070</code>), that sends any traffic through the encrypted and compressed (<code>-C</code>) SSH stream to the server, where it is spit out onto the net as normal.  To use this tunnel, I simply instruct Firefox to connect via a SOCKS proxy on port 7070:</p>
-
-<p><a href="http://dinomite.net/wp-content/uploads/2007/09/settings.png" title="Firefox 2 Advanced Settings Window"><img src="http://dinomite.net/wp-content/uploads/2007/09/settings.png" alt="Firefox 2 Advanced Settings Window" /></a>
-<a href="http://dinomite.net/wp-content/uploads/2007/09/proxy.png" title="Firefox 2 Proxy Settings"><img src="http://dinomite.net/wp-content/uploads/2007/09/proxy.png" alt="Firefox 2 Proxy Settings" /></a></p>
-
-<p>Many other applications, such as Adium, support SOCKS proxies and can be set up in a similar way to send their traffic to port 7070 and take advantage of an SSH tunnel.</p>
-
 </ul>
 
     <p><a href="/page/15/">Next page</a></p>
@@ -198,6 +198,10 @@ ssh -C -D 7070 dinomite.net
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
             <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
@@ -234,10 +238,6 @@ ssh -C -D 7070 dinomite.net
               <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
               <div class="article-link-date">Mar 19, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
-              <div class="article-link-date">Oct 26, 2011</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -253,6 +253,7 @@ ssh -C -D 7070 dinomite.net
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -29,6 +29,49 @@
     <p><a href="/">Previous page</a></p>
 
 <ul>
+    <h2><a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a></h2>
+    <div class="article-title-date">Oct 26, 2011</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>In the past year, I have come to quite like <a href="http://en.wikipedia.org/wiki/Dubstep">dubstep</a>, a burgeoning electronic music genre.  Perhaps <a href="http://www.youtube.com/watch?v=LXO-jKksQkM">this</a> is a more interesting introduction than an article.  Dubstep's current phase reminds me of generalized techno (mostly house &amp; dance) during the mid-90's–a huge variety of styles, many small artists, much of it distributed through non-traditional channels.  In the late 90's the distribution was via early filesharing networks, most notably Napster.  For Dubstep, <a href="http://www.youtube.com/results?search_type=&amp;search_query=dubstep%20remix&amp;aq=f">YouTube</a>, <a href="http://www.mixcloud.com/dubstep/">Mixcloud</a>, and <a href="http://www.mixcloud.com/dubstep/">Soundcloud</a> seem to be the preferred ways of getting new tracks out.</p>
+
+<p>To chronicle and share this growth of a genre, I started <a href="https://twitter.com/dailywub">@DailyWub</a>, a Twitter account that posts a new dubstep track every day.  Being an engineer, I found the idea of manually keeping a queue and posting a track every day to be a dreadful task.  For some time, the account has been powered by <a href="www.bufferapp.com">Buffer</a>, a simple webapp that allows you to create a queue of tweets that are metered out at a schedule of your choosing.  Buffer is ok, but they limit the queue to 10 tweets, and at some point started shortening URLs even when not needed, which breaks the YouTube thumbnails in many Twitter clients.  Having a queue that is regularly plucked from and emitted to Twitter is a fairly simple operation, so I wrote my own program to do it–<a href="https://metacpan.org/module/Net::Twitter::Queue">Net::Twitter::Queue</a>.</p>
+
+<p>Net::Twitter::Queue is a simple Perl module that employs <a href="https://metacpan.org/module/Net::Twitter">Net::Twitter</a> to do the heavy lifting.  To use it, I have a queue of tweets in a file, <code>tweets.yaml</code>:</p>
+
+<pre class="brush: bash">
+- Caspa - Where's My Money? http://www.youtube.com/watch?v=myZU2DZoD9w
+- Skrillex - First Of The Year http://www.youtube.com/watch?v=2cXDgFwE13g
+- Rusko - Everyday http://www.youtube.com/watch?v=xDAX2aVWAag
+</pre>
+
+<p>When run, Net::Twitter::Queue will remove the top item from that YAML file and post it to Twitter using the account information specified in <code>config.yaml</code>:</p>
+
+<pre class="brush: bash">
+consumer_key: [consumer_key]
+consumer_secret: [consumer_secret]
+access_token: [access_token]
+access_token_secret: [access_token_secret]
+</pre>
+
+<p>Where do those values come from?  Two places: the consumer information is on the page for your application at <a href="https://dev.twitter.com">dev.twitter.com</a> (go ahead, make one!) and the access tokens are specific to the account you want to post as.  To generate them, I used <a href="https://github.com/marcel/twurl">Twurl</a>.  With the consumer key &amp; secret in hand, simply run Twurl:</p>
+
+<pre class="brush: bash">
+Titus:~/$ twurl authorize --consumer-key [consumer_key] \
+--consumer-secret [consumer_secret]
+</pre>
+
+<p>Twurl will respond with a URL that you can visit in a web browser, login to Twitter with the account you want to post as, and get a PIN back.  Give the PIN to Twurl and it will complete the authentication process, saving the access token &amp; associated secret in your <code>~/.twurlrc</code>.  Grab those two, toss them into <code>config.yaml</code> and run Net::Twitter::Queue from the directory that has <code>config.yaml</code> &amp; <code>tweets.yaml</code> in it:</p>
+
+<pre class="brush: bash">
+caligula:~/twitter/dailywub$ ls
+config.yaml  tweets.yaml
+caligula:~/twitter/dailywub$ perl -MNet::Twitter::Queue -e \
+'$q=Net::Twitter::Queue-&gt;new-&gt;tweet'
+</pre>
+
+<p>Easy as that–the top entry in <code>tweets.yaml</code> has been popped and posted to Twitter.</p>
+
     <h2><a href="/blog/2011/10/22/creating-a-perl-module-in-modern-style/">Creating a Perl Module in Modern Style</a></h2>
     <div class="article-title-date">Oct 22, 2011</div>
     <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -490,40 +533,6 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
 
 <p>Photos by <a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/">Marshall Pierce</a>.</p>
 
-    <h2><a href="/blog/2010/12/10/e36-m3-fuel-mileage/">E36 M3 Fuel Mileage</a></h2>
-    <div class="article-title-date">Dec 10, 2010</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
-    <p>Since I have access to a Closed Course and a Professional Driver, I recently did a study of my M3's gas mileage at different speeds.  Since all cars are geared differently and exhibit vastly different aerodynamics, this won't hold much water (gas?) for any other vehicle.</p>
-
-<table>
-    <tr>
-        <td> Average speed </td>
-        <td> Miles per Gallon </td>
-    </tr>
-    <tr>
-        <td>&gt;city&lt;</td>
-        <td>22</td>
-    </tr>
-    <tr>
-        <td>55 MPH</td>
-        <td>32</td>
-    </tr>
-    <tr>
-        <td>75 MPH</td>
-        <td>26</td>
-    </tr>
-    <tr>
-        <td>90 MPH</td>
-        <td>24</td>
-    </tr>
-    <tr>
-        <td>105 MPH</td>
-        <td>22</td>
-    </tr>
-</table>
-
-
 </ul>
 
     <p><a href="/page/3/">Next page</a></p>
@@ -549,6 +558,10 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
             <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
@@ -585,10 +598,6 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
               <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
               <div class="article-link-date">Mar 19, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
-              <div class="article-link-date">Oct 26, 2011</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -604,6 +613,7 @@ The first time you go to a 24 Hours of LeMons event, you'll find at least three 
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>

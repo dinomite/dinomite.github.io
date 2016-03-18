@@ -29,6 +29,18 @@
     <p><a href="/page/18/">Previous page</a></p>
 
 <ul>
+    <h2><a href="/blog/2007/03/15/perl-just-like-sed/">Perl Just Like sed</a></h2>
+    <div class="article-title-date">Mar 15, 2007</div>
+    <!-- use article.summary(250) if you have Nokogiri available to show just
+         the first 250 characters -->
+    <p>I came across a post today in which someone mentioned that they used Perl for text replacement and, despite the simplicity of the solution, I hadn't ever thought of it.  By simply using three options with the <code>perl</code> command, you can run a quick script to do regex replacement in a file.  The <code>-p</code> option tells Perl to treat your script as a loop, reading in from the diamond (<code>&lt;&gt;</code>) operator.  <code>-i</code> makes it do in-place editing of files and <code>-e</code> allows you to script from the command line.  For example:</p>
+
+<p><code>&lt;pre&gt;
+~$ perl -p -i -e "s/foo/bar/g" baz.txt
+</code>&lt;/pre&gt;</p>
+
+<p>The above command will replace 'foo' with 'bar' throughout the file 'baz.txt'</p>
+
     <h2><a href="/blog/2007/03/13/writing-your-own-perl-modules/">Writing your own Perl modules</a></h2>
     <div class="article-title-date">Mar 13, 2007</div>
     <!-- use article.summary(250) if you have Nokogiri available to show just
@@ -140,18 +152,6 @@ $ htmldoc --webpage -f foo.pdf foo/*.html
 
 <p>To setup a shortcut, you simply navigat to the menu option you want as a shortcut, in this case Settings &gt; Connection &gt; Bluetooth Link &gt; Setup &gt; Power.  Then, highlight 'on' and hold down the menu key (top middle button) until a popup asks you if you want to assign a shortcut.  Say yes, and then assign it the key '1', the default.  Do the same for 'off' in the bluetooth power menu, assigning it the key '2'.  Now, you can simply press the menu button and then 1 or 2 to turn bluetooth on or off.  Shortcuts can be altered from the Settings &gt; Tools &gt; Shortcuts menu.  I'm very happy that Motorola included the shortcuts feature, in particular because the Razr's interface is so blindingly slow.</p>
 
-    <h2><a href="/blog/2007/02/15/senator-blackburn-on-the-war-in-iraq/">Senator Blackburn on The War in Iraq</a></h2>
-    <div class="article-title-date">Feb 15, 2007</div>
-    <!-- use article.summary(250) if you have Nokogiri available to show just
-         the first 250 characters -->
-    <p><a href="http://en.wikipedia.org/wiki/Marsha_Blackburn">Representative Marsha Blackburn </a> (R, TN) made the most blatant invocation of patriotism as a scare tactic that I've ever heard in the debate over the non-binding resolution to condemn President Bush's troop surge.</p>
-
-<blockquote>
-Rep. Blackburn: I think the question we have to ask is who's side are you on?  Who's side are you on?  Are you on the side of freedom?  Are you on the side of allowing the terrorists to get an upper hand?
-</blockquote>
-
-<p>Wow, could you be more of a fear monger?  Remember, if you don't support a war in which thousands of American soldiers have died, countless more (really, find the statistics) have been maimed and costs us billions each year, then you're on the side of the terrorists.</p>
-
 </ul>
 
     <p><a href="/page/20/">Next page</a></p>
@@ -177,6 +177,10 @@ Rep. Blackburn: I think the question we have to ask is who's side are you on?  W
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
             <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
@@ -213,10 +217,6 @@ Rep. Blackburn: I think the question we have to ask is who's side are you on?  W
               <a href="/blog/2012/03/19/replacing-an-e36-window-motor/">Replacing an E36 Window Motor</a>
               <div class="article-link-date">Mar 19, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2011/10/26/perl-and-dubstep/">Perl and Dubstep</a>
-              <div class="article-link-date">Oct 26, 2011</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -232,6 +232,7 @@ Rep. Blackburn: I think the question we have to ask is who's side are you on?  W
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (1)</a></li>
       </ol>
     </li>
   </ul>

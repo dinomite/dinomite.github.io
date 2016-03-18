@@ -5,10 +5,49 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-04-03T20:00:00-04:00</updated>
+  <updated>2016-03-06T19:00:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Winter Tech Forum is The Finest</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
+    <id>http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/</id>
+    <published>2016-03-06T19:00:00-05:00</published>
+    <updated>2016-03-18T10:53:06-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
+
+&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps' writeup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id="open-spaces"&gt;Open Spaces&lt;/h1&gt;
+&lt;p&gt;The participation of everyone present, combined with the way discussions, happen is what makes WTF special.
+Open Spaces sessions are led by…whoever shows up. The person or people who had the idea might give a very brief introduction of their ideas on the topic or questions they are trying to explore, but from there the discussion can go anywhere. This leads to hugely informative sharing of experiences, be they technical, organizational, or otherwise. Recall illuminating conversations you’ve had with smart colleagues or friends in the tech industry and you’ve got a good idea of what the entire week at WTF is like.&lt;/p&gt;
+
+&lt;h1 id="people"&gt;People&lt;/h1&gt;
+&lt;p&gt;The conference itself is only a small part of WTF. Crested Butte is a delightfully small town (1,500 people, 0.7 square miles) and most of the attendees stay within a few minutes walk of each other. Proximity is used to great effect during the progressive dinner, where each of the big houses cooks something and the whole conference ambles from one location to the next every half-hour. The traveling party makes for wonderful discussions, as you are encourage by the whirlwind of movement to meet and talk to new people.
+WTF is also small, this year about 35 people, meaning you can, and should, meet everyone at the conference. Though some companies are &lt;a href="https://www.netflix.com/"&gt;overrepresented&lt;/a&gt; (which speaks well of their &lt;a href="http://www.slideshare.net/reed2001/culture-1798664"&gt;culture&lt;/a&gt;), the diversity of experience makes every interaction informative.&lt;/p&gt;
+
+&lt;h1 id="lightning-talks"&gt;Lightning Talks&lt;/h1&gt;
+&lt;p&gt;Lightning talks are one of many highlights of WTF. The talks are five minutes, you can have whatever slides or props you want, and the topics are unconstrained. You would expect those on Kubernetes or Kotlin, but probably not the just-as-interesting ones on ski mountaineering, knitting, and Asperger syndrome. These quick introductions to a topic foster ideas that lead to later scheduled discussions, or just informative conversations with others.&lt;/p&gt;
+
+&lt;h1 id="technology"&gt;Technology&lt;/h1&gt;
+&lt;p&gt;Technology-wise, JVM languages are popular amongst attendees, but even there the gamut from Java to Scala (with Kotlin somewhere in between) means ideas come from all angles. Open mindedness is a key tenet of everyone, so despite the very practical inclinations, languages like &lt;a href="https://www.rust-lang.org/"&gt;Rust&lt;/a&gt; and &lt;a href="http://www.ponylang.org/"&gt;Pony&lt;/a&gt; are exercised during the hack day.
+Discussions of deployment and infrastructure (where to draw the line between the two), testing strategies, and artificial intelligence round out the technical side of discussions&lt;/p&gt;
+
+&lt;h1 id="organizations"&gt;Organizations&lt;/h1&gt;
+&lt;p&gt;How we work together is the other big focus of WTF. Creating a company that trusts its employees (&lt;a href="http://www.mindviewinc.com/"&gt;Bruce’s&lt;/a&gt; &lt;a href="http://www.reinventing-business.com/"&gt;Trust Organization&lt;/a&gt; or Teal) is a popular discussion topic. The best way to interview &amp;amp; hire for a high-functioning company was a standout session with markedly different viewpoints (particularly on coding tests) that were very informative.&lt;/p&gt;
+
+&lt;h1 id="activities"&gt;Activities&lt;/h1&gt;
+&lt;p&gt;The daily schedule is organized to take advantage of the beautiful surrounds of Crested Butte. Most afternoons will have a group snowshoeing or cross-country skiing around the town or on the many trails through the alpine valleys. If you like downhill skiing, the &lt;a href="http://www.skicb.com/"&gt;Crested Butte ski area&lt;/a&gt; is a short bus ride away. Some folks don’t care for the evils of nature and just hang out in one of the great rental houses—folks are very open to sharing their space, food, and quaffables.&lt;/p&gt;
+
+&lt;h1 id="should-you-go"&gt;Should you go?&lt;/h1&gt;
+&lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
+The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Wunderground with the LaCrosse C84612</title>
     <link rel="alternate" href="http://blog.url.com/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/"/>
@@ -258,25 +297,6 @@ to write things down.&lt;/p&gt;
 
 &lt;p&gt;Things to certainly not bring are those that will absorb water.  Carrying around
 a small portion of your local body of water is a bad time.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Packing Bricks for the GORUCK Challenge</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/"/>
-    <id>http://blog.url.com/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/</id>
-    <published>2012-12-02T19:00:00-05:00</published>
-    <updated>2016-03-17T20:12:56-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;a href="http://www.flickr.com/photos/dinomite/8248913885/in/photostream/"&gt;&lt;img class="image-right" src="http://farm9.staticflickr.com/8486/8248913885_8828ee2a54.jpg" alt="GORUCK GR Echo with 4 bricks &amp;amp; yoga block" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I have finally signed up for a &lt;a href="https://www.goruckchallenge.com/"&gt;GORUCK Challenge&lt;/a&gt;.  The event is 6 months off, but thanks to Jason posting &lt;a href="http://www.gorucknews.com/challenge/wrapping-bricks-explained/"&gt;Wrapping Bricks Explained&lt;/a&gt; I've been playing around with packing bricks in my rucks.&lt;/p&gt;
-
-&lt;p&gt;I followed the instructions on the above mentioned post for wrapping the bricks in pairs and took Asha Wagner's &lt;a href="http://nuffsaid6.blogspot.com/2011/11/goruck-tough-sf-class-086.html"&gt;advice for securing the bricks&lt;/a&gt; in a GORUCK pack using &lt;a href="https://www.amazon.com/dp/B007A2XFYE/ref=as_li_ss_til?tag=dinomitenet-20&amp;amp;camp=0&amp;amp;creative=0&amp;amp;linkCode=as4&amp;amp;creativeASIN=B007A2XFYE&amp;amp;adid=14454BYTXX0X67M3EC7K&amp;amp;"&gt;Sea to Summit 3/4" straps&lt;/a&gt; to secure them on the ruck's internal &lt;a href="http://en.wikipedia.org/wiki/Pouch_Attachment_Ladder_System"&gt;PALS webbing&lt;/a&gt;.  To the right are two pairs of bricks (4 total) in a GR Echo.&lt;/p&gt;
-
-&lt;p&gt;I'm pretty light, just under 150 most days, so 4 bricks is the prescription.  A yoga block is the perfect thing to fill the extra space—dense but soft and about the size of two bricks.  One note is that you can indeed fit 6 bricks into a GR Echo, with just a bit of room to spare.  The third package of bricks takes the place of the yoga block, with a bit of space on either side.  Unfortunately, there isn't nearly enough space for a hydration bladder along with them.  If you're taking 6 bricks to the Challenge, get a GR1 or Radio Ruck.&lt;/p&gt;
-
 </content>
   </entry>
 </feed>
