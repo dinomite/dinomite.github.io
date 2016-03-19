@@ -28,6 +28,116 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/12/01/perl/">Perl, Python and Ruby</a></h1>
+    <div class="article-title-date">Dec  1, 2007</div>
+    <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it&rsquo;s older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
+
+<pre>
+Python:
+real    0m43.415s
+user    0m41.455s
+sys     0m0.132s
+
+Ruby:
+real    0m35.379s
+user    0m33.722s
+sys     0m0.112s
+</pre>
+
+<p>I threw together some quick Perl:</p>
+
+<pre class="brush: ruby;">
+sub fib {
+    my $n = shift;
+
+    if ( $n == 0 or $n == 1 ) {
+        return $n;
+    } else {
+        return fib($n - 1) + fib($n - 2);
+    }
+}
+
+for (0..35) {
+    print "n=$_ => " . fib($_) . "\n";
+}
+</pre>
+
+<p>and ran it:</p>
+
+<pre>
+Perl:
+real    1m15.329s
+user    1m9.188s
+sys     0m0.364s
+</pre>
+
+<p>That&rsquo;s impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:</p>
+
+<p>C code:
+<pre class="brush: cpp;"></p>
+
+<h1>include <stdio.h></h1>
+
+<p>int fib(int n) {
+    if ( (n == 0) || (n == 1) )
+        return n;
+    else
+        return (fib(n-1) + fib(n-2));
+} //fib</p>
+
+<p>int main() {
+    int x;
+    for (x = 0; x &lt; 36; x++) {
+        printf( &quot;n = %d =&gt; %d\n&quot;, x, fib(x) );
+    } //for</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>return 0;
+</pre></td></tr></tbody></table>
+</div>
+
+<p>}
+</pre></p>
+
+<p>C timing:
+<pre>
+real    0m0.605s
+user    0m0.564s
+sys     0m0.000s
+</pre></p>
+
+<p>Java code:
+<pre class="brush: java;">
+class Fib {
+    static int fib(int n) {
+        if ( (n == 0) || (n == 1) )
+            return n;
+        else
+            return (fib(n-1) + fib(n-2));
+    } //fib</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre>public static void main(String args[]) {
+    for (int x = 0; x &lt; 36; x++) {
+        System.out.println( "n = " + x + " =&gt; " + fib(x) );
+    } //for
+} //main
+</pre></td></tr></tbody></table>
+</div>
+
+<p>} //Fib
+</pre></p>
+
+<p>Java timing:
+<pre>
+real    0m0.455s
+user    0m0.412s
+sys     0m0.012s
+</pre></p>
+
+<p>It&rsquo;s very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don&rsquo;t take these benchmarks as having any significant meaning.  Really, don&rsquo;t take them to mean much of anything, unless all you do is write lots of simple recursive code.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/30/quick-tip-pythons-noop-equivalent/">Quick Tip: Python's noop Equivalent</a></h1>
     <div class="article-title-date">Nov 30, 2007</div>
     <p>Python can&rsquo;t deal with empty code blocks, which may arise if you want to stub out a block but leave the implementation for later.  If you have one in your code, the interpreter will give the following error:</p>
@@ -368,11 +478,6 @@ print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
 <p><a href="http://en.wikipedia.org/wiki/Q.E.D.">Q.E.D.</a></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/10/25/what-are-you-worth-to-facebook/">What Are You Worth to Facebook?</a></h1>
-    <div class="article-title-date">Oct 25, 2007</div>
-    <p>It was <a href="http://online.wsj.com/public/article/SB119323518308669856-taIGTD5mNZR6XBXowkbFgXcyGx0_20071123.html?mod=tff_main_tff_top">widely</a> <a href="http://www.businessweek.com/technology/content/oct2007/tc20071024_654439.htm?chan=top+news_top+news+index_top+story">reported</a>  <a href="http://money.cnn.com/2007/10/24/magazines/fortune/fastforward_microsoft_facebook.fortune/?postversion=2007102508">yesterday</a> that Microsoft bought a 1.6% stake in <a href="http://facebook.com">Facebook</a> for $240 million, thereby valuing the company at $15 billion.  Sure getting in on such a huge cache of advertising-ready eyeballs and consumer data is worth a lot, but the bid puts a price of $357 on each of Facebook&rsquo;s 42 million accounts.  <a href="http://marketplace.publicradio.org/display/web/2007/10/24/web_2_q/">Marketplace&rsquo;s coverage</a> put that number at $300 dollars, which takes into account Facebook&rsquo;s projection of 50 million accounts by the end of the year.  Beyond that, however, is the fact that an account doesn&rsquo;t necessarily mean a user; nothing stopped me from creating a Facebook page for the Pope and I know that Jesus <a href="https://dinomite.net/index.php?tag=atheism">isn&rsquo;t actually my friend</a>.  Furthermore, not all registered users regularly use the site.  I would bet that more than a quarter of my friends use facebook less than once a month, and even then only for a handful of page views (no, I don&rsquo;t want to be your super-best-buddy).  If we take my brash generalization at face value, leaving 30 million active users, they are each worth $500.  Do you really think you see $500 worth of ads on Facebook?</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/14/">Next page</a></p>
@@ -407,6 +512,10 @@ print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
               <div class="article-link-date">Mar  7, 2016</div>
             </li>
             <li>
+              <a href="/blog/2014/12/30/serene-night-biking/">Serene night biking</a>
+              <div class="article-link-date">Dec 30, 2014</div>
+            </li>
+            <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
@@ -434,10 +543,6 @@ print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
               <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
               <div class="article-link-date">Sep 11, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
-              <div class="article-link-date">Aug 12, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -453,6 +558,7 @@ print+($<em>%3?&quot;&quot;:Fizz).($</em>%5?&quot;&quot;:Buzz)||$_,$/for(1..100)
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (2)</a></li>
             <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>

@@ -28,6 +28,25 @@
     <p><a href="/page/11/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/01/19/off-the-hook-16-january-2008/">Off The Hook - 16 January 2008</a></h1>
+    <div class="article-title-date">Jan 19, 2008</div>
+    <p><a href="http://www.2600.com/oth/">The Off The Hook site</a> takes a while to post synopsis of the episodes and once they are posted, the overviews aren&rsquo;t very detailed.  I&rsquo;m going to start taking some notes as I listen to the show and putting them here, for the good of all internet denizens who may find this via Google.</p>
+
+<p>Emmanuel noted that the theme was missing, so he was playing it from a recording of the show that he downloaded last week.  Mitch Altman, who was returning from the <a href="http://www.ccc.de">Chaos Communication Congress</a> and is the creator of the <a href="http://www.tvbgone.com">TV-B-Gone</a>, was on again; he and Emmanuel discussed <a href="http://gizmodo.com/343348/confessions-the-meanest-thing-gizmodo-did-at-ces">Gizmodo&rsquo;s use of the device at CES</a>.</p>
+
+<p>Emmanuel noted a new program in California that will allow utilities to control home thermostats via radio signals as a method for reducing peak energy usage so as to mitigate rolling blackouts.  Not Kevin wonders how long it will take until someone finds a way to control the temperature of their neighbor&rsquo;s house.</p>
+
+<p>A kid in <a href="http://en.wikipedia.org/wiki/%C5%81%C3%B3d%C5%BA">Lodz, Poland</a> created a <a href="http://www.theregister.co.uk/2008/01/11/tram_hack/">remote control to control the trams</a> in the town.  Not Kevin and Mitch discuss whether the remote that the kid created was really like a TV remote employing infrared as was reported.  Emmanuel compares it to a <a href="http://en.wikipedia.org/wiki/Mobile_Infrared_Transmitter">chrome box</a> and Bernie points out that infrared isn&rsquo;t a very robust method, susceptible to weather conditions that could hamper its operation.</p>
+
+<p>Wisconsin contracted out a mailing to <a href="http://en.wikipedia.org/wiki/Electronic_Data_Systems">EDS</a> who printed <a href="http://consumerist.com/345585/social-security-numbers-visible-on-envelopes-mailed-by-wisconsin-again">social security numbers on the outside of envelopes</a>.  Bernie notes that the government officials always preach their concern for citizen&rsquo;s privacy and guesses correctly that all those affected will receive a free year of credit monitoring, only to be automatically enrolled in such a service for a significant charge at the end of said year.</p>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Transportation_Security_Administration">TSA</a> took down a horribly insecure website intended to allow people to remove themselves from the no-fly list.  The contract for the site was awarded to <a href="http://desyne.com">Desyne Web Services</a> by a TSA employee who previously worked for the firm.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Boeing">Boeing</a>&rsquo;s new <a href="http://en.wikipedia.org/wiki/Boeing_787">787</a> aircraft, which will have internet access available, is going to be thoroughly check to ensure that the internet link is in no way connected to the plane&rsquo;s avionics.  Bernie mentions Boeing&rsquo;s ill-fated <a href="http://en.wikipedia.org/wiki/Connexion_by_Boeing">Connexion</a> service.</p>
+
+<p>Bernie talks about a new hacker space, <a href="http://www.thehacktory.org">The Hacktory</a>, which he is helping to put together as an extension of the <a href="http://makephilly.org">Philadelphia Make group</a>.  Mitch talks about visiting <a href="http://bootlab.org">Bootlab</a> in Berlin, <a href="http://www.tmplabs.com">TMP LABS</a> in Paris and <a href="http://c-base.org">c-base</a> as well as <a href="http://dc401.org">DC401</a> in Providence and <a href="https://www.noisebridge.net">NoiseBridge</a>.  Emmanuel brings up past hacker spaces <a href="http://en.wikipedia.org/wiki/L0pht">L0pht</a> and New Hack City that eventually failed and questions whether these new ones will last.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/01/15/code-golf-grid-computing/">Code Golf: Grid Computing</a></h1>
     <div class="article-title-date">Jan 15, 2008</div>
     <p><a href="http://codegolf.com/grid-computing">A new puzzle</a> went up on <a href="http://codegolf.com">Code Golf</a> a few weeks ago and I finally got some time to sit down and hack on it, so here&rsquo;s another annotated instalment of my pruning process.  I haven&rsquo;t gotten anywhere near the smallest solutions which are half of my 109 characters.  See the action below, but don&rsquo;t look if you don&rsquo;t want hints! </p>
@@ -236,116 +255,6 @@ composite -compose atop LWX</em>N0R<em>Legend</em>0.gif base<em>reflectivity.jpg
 <p>I think the router may also be the culprit for the occasional &ldquo;error establishing encrypted connection code -12192&rdquo; that Firefox has been giving me since the switch.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/12/01/perl/">Perl, Python and Ruby</a></h1>
-    <div class="article-title-date">Dec  1, 2007</div>
-    <p>After reading <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/">this article</a> comparing the new Ruby 1.9 to it&rsquo;s older version and Python, I thought it would be interesting to see how my preferred language, Perl, compares.  First, because my hardware is certainly different from the author of that post, I re-ran the Python and Ruby 1.9 tests:</p>
-
-<pre>
-Python:
-real    0m43.415s
-user    0m41.455s
-sys     0m0.132s
-
-Ruby:
-real    0m35.379s
-user    0m33.722s
-sys     0m0.112s
-</pre>
-
-<p>I threw together some quick Perl:</p>
-
-<pre class="brush: ruby;">
-sub fib {
-    my $n = shift;
-
-    if ( $n == 0 or $n == 1 ) {
-        return $n;
-    } else {
-        return fib($n - 1) + fib($n - 2);
-    }
-}
-
-for (0..35) {
-    print "n=$_ => " . fib($_) . "\n";
-}
-</pre>
-
-<p>and ran it:</p>
-
-<pre>
-Perl:
-real    1m15.329s
-user    1m9.188s
-sys     0m0.364s
-</pre>
-
-<p>That&rsquo;s impressive; Perl sucks at this recursive implementation of computing Fibonacci numbers.  Since I had the makings of a little suite of benchmarks, I implemented this test in C and Java:</p>
-
-<p>C code:
-<pre class="brush: cpp;"></p>
-
-<h1>include <stdio.h></h1>
-
-<p>int fib(int n) {
-    if ( (n == 0) || (n == 1) )
-        return n;
-    else
-        return (fib(n-1) + fib(n-2));
-} //fib</p>
-
-<p>int main() {
-    int x;
-    for (x = 0; x &lt; 36; x++) {
-        printf( &quot;n = %d =&gt; %d\n&quot;, x, fib(x) );
-    } //for</p>
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>return 0;
-</pre></td></tr></tbody></table>
-</div>
-
-<p>}
-</pre></p>
-
-<p>C timing:
-<pre>
-real    0m0.605s
-user    0m0.564s
-sys     0m0.000s
-</pre></p>
-
-<p>Java code:
-<pre class="brush: java;">
-class Fib {
-    static int fib(int n) {
-        if ( (n == 0) || (n == 1) )
-            return n;
-        else
-            return (fib(n-1) + fib(n-2));
-    } //fib</p>
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5</pre></td><td class="code"><pre>public static void main(String args[]) {
-    for (int x = 0; x &lt; 36; x++) {
-        System.out.println( "n = " + x + " =&gt; " + fib(x) );
-    } //for
-} //main
-</pre></td></tr></tbody></table>
-</div>
-
-<p>} //Fib
-</pre></p>
-
-<p>Java timing:
-<pre>
-real    0m0.455s
-user    0m0.412s
-sys     0m0.012s
-</pre></p>
-
-<p>It&rsquo;s very interesting to see the huge speed disparities in these languages, but remember, this was a single, very limited test; don&rsquo;t take these benchmarks as having any significant meaning.  Really, don&rsquo;t take them to mean much of anything, unless all you do is write lots of simple recursive code.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/13/">Next page</a></p>
@@ -380,6 +289,10 @@ sys     0m0.012s
               <div class="article-link-date">Mar  7, 2016</div>
             </li>
             <li>
+              <a href="/blog/2014/12/30/serene-night-biking/">Serene night biking</a>
+              <div class="article-link-date">Dec 30, 2014</div>
+            </li>
+            <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
@@ -407,10 +320,6 @@ sys     0m0.012s
               <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
               <div class="article-link-date">Sep 11, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
-              <div class="article-link-date">Aug 12, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -426,6 +335,7 @@ sys     0m0.012s
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (2)</a></li>
             <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>

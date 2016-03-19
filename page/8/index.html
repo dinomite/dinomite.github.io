@@ -28,6 +28,26 @@
     <p><a href="/page/7/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/07/25/installing-mechwarrior-2-in-dosbox-under-mac-os-x/">Installing Mechwarrior 2 in DOSBox Under Mac OS X</a></h1>
+    <div class="article-title-date">Jul 25, 2008</div>
+    <p>Put the Mechwarrior 2 CD into your Mac&rsquo;s CD drive; it will show up as two mounted discs, one for the audio and one for the game data.  The disc I have is for Mechwarrior 2 v1.1, so the game data is mounted as <code>/Volumes/MECH2_V1_1</code>; if you have a different version, the mount point will be slightly different and subsequent commands should be adjusted to match.  To access the disc in DOSBox, you must mount it.  Start DOSBox and type:
+<pre>mount d /Volumes/MECH2<em>V1</em>1 -t cdrom -usecd 0</pre>
+You will also need a place to act as a fake <code>C</code> drive, where the game will be installed.  I created a directory <code>dosprog</code> in my home directory and mounted it in DOSBox like so:
+<pre>mount c ~/dosprog</pre>
+To install the game simply go to the mounted CD and run the setup:
+<pre>
+d:
+INSTALL.EXE
+</pre>
+Follow the installation program, clicking happy things like &ldquo;yes&rdquo;, &ldquo;continue&rdquo; and &ldquo;full install&rdquo;.  Choose the top-most audio devices in the list.  Next, download the NOCD crack <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">from here</a>, unzip it in Mac OS and use the files from the crack to replace those in your <code>dosprog/mech2</code> folder.  Now, back in DOSBox, go to the c:\MECH2 directory and play:
+<pre>
+c:
+cd c:\MECH2
+MECH2.EXE
+</pre>
+See also: <a href="http://vogons.zetafleet.com/viewtopic.php?t=4454">Vogons</a></p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/06/25/apache-wont-start-no-space-left-on-device/">Apache Won't Start: No space left on device</a></h1>
     <div class="article-title-date">Jun 25, 2008</div>
     <p>I&rsquo;m doing some development involving Apache handlers which involves lots of restarting it and occasionally Apache shutting down uncleanly.  After numerous restarts, the webserver refused to start printing the following in the error log:</p>
@@ -219,19 +239,6 @@ On the phone: Bernie S in Philadelphia</p>
 <p>Lexicon talks of the Not Our Concern Network Operations Center that will be in place at <a href="http://www.thelasthope.org/">The Last Hope</a> which he summarizes as a coat check for servers.  Just reserve a spot and you can hook your box up to a <a href="http://youtube.com/watch?v=f99PcP0aFNE">big tube</a> for the duration of the con.  The con will also host a <a href="http://wiki.hope.net/index.php/HOPE_RADIO">radio station</a> for its entire duration.  Named <a href="http://radio.hope.net/">Radio Statler</a> after the previous name of the hotel, the radio station is seeking people to help run it during the con weekend.  If you want to help out with the con, or know about it, check out <a href="http://hope.net">HOPE.net</a>.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/04/21/auto-remove-old-items-from-the-trash-in-mac-os-x/">Auto-remove Old Items from The Trash in Mac OS X</a></h1>
-    <div class="article-title-date">Apr 21, 2008</div>
-    <p>Having a purgatory for files that are on their way to deletion, such as the trash can in Mac OS or the recycle bin in Windows, is a great idea, for even the most careful users occasionally delete something only to find that they later need it.  Unfortunately, the two aforementioned implementations, as well as those in Gnome and KDE, only allow you to empty the trash all at once.  Much more useful is to have a timeout where files that are sent to the trash are automatically removed after a period of time.  I finally got around to implementing this myself in Mac OS by putting the following in my <a href="http://www.oreilly.com/pub/a/mac/2001/12/14/terminal_one.html">crontab</a>:</p>
-
-<pre>
-0 5 * * * /usr/bin/find /Users/<username>/.Trash -mindepth 1 -maxdepth 1 -mtime +14 -exec rm -rf {} \;
-</pre>
-
-<p>Every day at 0500 any item more than 14 days old is delete from the trash can.  To install it, read the linked article above or, if you know the command line, open a terminal, type <code>crontab -e</code>, paste the above (substituting your username) and save the file.</p>
-
-<p><strong>Edit:</strong> In the comments, Matt mentioned <a href="http://www.fastforwardsw.com/compost/">Compost</a>, a preference pane for OS X that provides the functionality I describe, but also the ability to limit the trash based upon size, and also manage the Trash on other volumes.  Neat!  It&rsquo;s $20, but definitely makes this process easier and understandable if you aren&rsquo;t a Unix person. </p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/9/">Next page</a></p>
@@ -266,6 +273,10 @@ On the phone: Bernie S in Philadelphia</p>
               <div class="article-link-date">Mar  7, 2016</div>
             </li>
             <li>
+              <a href="/blog/2014/12/30/serene-night-biking/">Serene night biking</a>
+              <div class="article-link-date">Dec 30, 2014</div>
+            </li>
+            <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
@@ -293,10 +304,6 @@ On the phone: Bernie S in Philadelphia</p>
               <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
               <div class="article-link-date">Sep 11, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
-              <div class="article-link-date">Aug 12, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -312,6 +319,7 @@ On the phone: Bernie S in Philadelphia</p>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (2)</a></li>
             <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>

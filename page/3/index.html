@@ -28,6 +28,43 @@
     <p><a href="/page/2/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2011/02/20/altering-many-directories-at-once-with-cmddirs/">Altering many directories at once with CmdDirs</a></h1>
+    <div class="article-title-date">Feb 20, 2011</div>
+    <p>On any machine I use I create a directory, sandbox, at the root of my home directory to hold checkouts of source code I&rsquo;m working on.  This directory often contains code from many different repositories, dozens of projects that I intermittently work on.  Many of these repositories depend on others, in particular Java submodules for <a href="http://clearspring.com/">Clearspring</a>, and I want to be able to easily update all of them at once.  With Subversion this is easy: the <code>svn</code> command allows you to act upon a checkout without being in the directory that contains it.  Simply issuing <code>svn up *</code> from <code>~/sandbox</code> ensures that I have the latest code revision in each of my checkouts and <code>svn st *</code> allows me to see if I have any uncommited changes.</p>
+
+<p>While I love Git, it does not make such actions this simple.  Git requires you to be in the repository directory (or set a number of environment variables) to work wit that repo.  While the <a href="http://superuser.com/questions/235455/bash-script-to-perform-an-action-on-each-subdirectory-in-a-directory"><code>-exec</code> option of <code>find(1)</code></a> allows me to descend into each directory and perform an action, I wanted to make this easy, because such all-checkout-actions are something that I want to do a number of times each day.  Like most problems, this one is (best?) solved with Perl.  Enter <a href="https://github.com/dinomite/CmdDirs">App::CmdDirs</a>.</p>
+
+<p><a href="https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs">CmdDirs</a> is a fairly simple Perl app that I have written to do what I describe above&ndash;descend into any number of directories and perform a command in each one.</p>
+
+<pre>titus:~/sandbox$ ls
+CmdAll                 mac-itunes             genius-os
+scoreboard             GAE                    hf
+uaParser               WebService-LOC-CongRec iTunes-Sync
+titus:~/sandbox$ cmddirs "git st"
+Performing `git st` in &lt;cmdall&gt;
+## master
+?? App-CmdDirs-1.00.tar.gz
+
+Performing `git st` in &lt;itunes-sync&gt;
+## master
+
+Performing `git st` in &lt;uaparser&gt;
+## master
+ M uaParser/test/test_user_agent.py
+
+Performing `git st` in &lt;webservice-loc-congrec&gt;
+## master
+</pre>
+
+<p>See the numerous directories? Note that there are 9 directories in my <code>sandbox</code> but <code>git st</code> was only performed in a few of them, those which are Git repositories.  CmdDirs has a modicum of intelligence: if it knows what your command is, the command will only be performed in applicable directories.  This can be overridden with <code>-all</code>, <code>-git</code>, or <code>-svn</code> doing what you expect.  Git and Subversion are the only two things supported right now, because that&rsquo;s all I have a need for. Writing new <a href="https://github.com/dinomite/CmdDirs/tree/master/lib/App/CmdDirs/Traverser">Traversers</a> is simple&ndash;just copy the form of git.pm or svn.pm.  You can probably Achieve at this endeavor even without knowing Perl.</p>
+
+<p>Here&rsquo;s a one-liner for installing <code>cmddirs</code>:</p>
+
+<pre>
+curl https://github.com/dinomite/CmdDirs/raw/master/bin/cmddirs > ~/bin/cmddirs && chmod a+x ~/bin/cmddirs
+</pre> 
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2010/12/16/crapcan-racing-tips/">Crapcan Racing Tips</a></h1>
     <div class="article-title-date">Dec 16, 2010</div>
     <p><a href="http://mpierce.org/gallery/v/motorsport/2010-12-lemons/2010-12-lemons-00012.jpg.html"><img alt="The Jaywatch car" src="http://mpierce.org/gallery/d/4339-2/2010-12-lemons-00012.jpg" width="400" height="267" class="mt-image-left" /></a>
@@ -504,50 +541,6 @@ Since getting the <a href="http://www.theoildrum.com/node/6560">lower marine ris
 <p>If you have ever thought about doing the 24 Hours of LeMons or had the desire to race at all, get a team together and do it.  It&rsquo;s a bit of work, but entirely doable and an incredible amount of fun. </p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2010/05/11/bvd-skidmarks-first-24-hours-of-lemons/">BVD Skidmark's First 24 Hours of LeMons</a></h1>
-    <div class="article-title-date">May 11, 2010</div>
-    <p>This past weekend, <a href="http://twitter.com/bvdskidmark">Team BVD Skidmark</a> participated in its first 24 Hours of LeMons, the 2010 <a href="http://www.24hoursoflemons.com/reno10/">Goin&rsquo; For Broken</a> at <a href="http://www.trackpedia.com/wiki/Thunderhill_Park_Raceway">Thunderhill Raceway</a> outside Willows, CA.  The team consisted of myself, two folks from <a href="http://genius.com">Genius.com</a>, and three guys that were part of <a href="http://www.csh.rit.edu">CSH</a>.  In the end, only 5 of us drove the car at the race, because one of our team was quite sick in the lead up to the race.</p>
-
-<h1>Getting There</h1>
-
-<p><a href="http://www.flickr.com/photos/dinomite/4585093337/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4027/4585093337_820fe9ec11.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
-We loaded up Cheesy Gordita Crunch, named after a shopping list found in the glove box, on Thursday night before the race, along with all of our tools in the van.  Matt &amp; his wife Lynn drove the van, Bill, Tristan, Quynh, and I were in the RV that we had rented, along with a weekend&rsquo;s worth of food from Costco.  The drive up to WIllows is pretty boring, and not much fun when you&rsquo;re driving an RV and a van with a trailer.  All was going well until about 10 that night when one of the inside rear tires on the RV <a href="http://www.flickr.com/photos/dinomite/4586161585/">de-laminated</a> with a loud thud, followed by a thumping from the flail that was left on the tire.  The latter sound was reminiscent of the sound that Cheesy&rsquo;s original tires made when we bought the car.</p>
-
-<p>Luckily, we were only a mile from a gas station, and only a few miles from Willows itself.  We pulled into the gas station for the night, parking behind it.  At 6 the next morning, I got up and called the RV rental roadside assistance line; they said that a tow truck could be there to swap the wheel within an hour.  We sent the van &amp; car ahead to claim a good pit spot while the rest of us waited for the RV to get fixed.  The wheel replacement didn&rsquo;t take long and the team was reunited in the paddock by 8 AM.  We unloaded the tools, pulled the car off the trailer, and signed up for the Friday practice session ($200 + $50 per driver).</p>
-
-<h1>Friday</h1>
-
-<p><a href="http://www.flickr.com/photos/dinomite/4597256843/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4067/4597256843_ccbb7f1520.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
-The pre-race practice session was supremely usefulâ€”all of our drivers got a chance to hot lap on the track and get a feel for the car that hadn&rsquo;t been driven since we brought it across The Bay months before.  Everything felt good and Cheesy did great all of Friday.  I had been on the fence about doing the track day because I thought we might be using up what little life the car had.  Getting out on Friday turned out to be a perfectly good thing, however, because it bolstered everyone&rsquo;s confidence in their own abilities, and our confidence in the car.</p>
-
-<p>We did tech inspection with a few issues: tape the rear lights, tape the positive battery breakout in the engine compartment, and wire the clips for the harness.  Bullshit inspection was pretty easy for us, given that we had a bone stock car and are pretty clueless.  Having an <a href="http://en.wikipedia.org/wiki/BMW_3_Series_%28E30%29">e30</a> brings immediate scorn from the judges, but the fact that ours is the efficiency model and has an automatic helps.  The Starbucks cards that Matt bribed the judges with helped, too; it also didn&rsquo;t hurt that our engine&rsquo;s intake is green from moss that was growing on it.  In the end, they only gave us 5 penalty laps, mostly for having a crappy themeâ€”really, we just had a car seat bolted to the roof and some huge Firefox stickers on the car.</p>
-
-<p>At the end of the day, we swapped tires from the hard as anything, 55 series on 14&quot; e30 wheels to the set of fairly low-profile tires on 16&quot; wheels that had come with Cheesy.  We cooked some burgers and headed out for a track walk at the end of the day.</p>
-
-<h1>Saturday</h1>
-
-<p><a href="http://www.flickr.com/photos/dinomite/4597885916/"><img alt="Cheesy Gordita Crunch" src="http://farm4.static.flickr.com/3361/4597885916_fd5c7d86a9.jpg" width="379" height="500" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
-I got up at 6:30, grabbed a shower (luxurious Thunderhill!) and roused the team.  I made some eggs, we gave the car a quick check, and headed off to the driver&rsquo;s meeting at 8.  The meeting was as expectedâ€”a rundown on flags, an admonition to not drive crappily, and some quick words about logistics for the day.  With that, we headed back to the paddock and I suited up for the first stint.</p>
-
-<p>I got out just before 9 and circulated a couple of laps with the handful of cars out there, until the green flag dropped.  On the third lap, I managed to <a href="http://www.youtube.com/watch?v=7XCAIb8AP0U">spin in turn 9</a>.  I could blame the different tires on the car, but that really just adds to the fact that should have been taking things more slowly 3 laps in at the beginning of my stint.  I had gotten overzealous.  We were penalized to re-theme the car, and we quickly applied spray paint to implement the original &ldquo;skidmark&rdquo; theme that we had originally thrown around months ago.  I headed back out for a little more driving, and set the fast lap for the team that stood for the day.</p>
-
-<p>After my stint, Tristan went out and spun in 11.  Back into the penalty box, we made an abbreviated walk of shame thanks to the Judgemobile&rsquo;s music dying.  Bill took Tristan&rsquo;s place and was out for a while before also spinning in 11.  We saw the judges again and were ordered to get the very first Cone of Shame in the race.  Since they were pretty unimpressed with a team getting 3 black flags before Noon, we found the biggest cone in the entire paddock, and returned to attach it to our car.  With a tow strap and some zip ties, we had the cone on and the car was back out there.  Matt did a stint and then Josh got in the car.</p>
-
-<p><a href="http://www.flickr.com/photos/dinomite/4591665777/"><img alt="Cheesy Gordita Crunch" src="http://farm5.static.flickr.com/4011/4591665777_26b946ea7b.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
-Josh came in after about half an hour, and one of the cooking thermometers was wailing: it had hit the target temperature of 200 degrees fahrenheit.  The roast wasn&rsquo;t doneâ€”the engine was hot.  He shut it down and upon opening the hood and the missing water pump belt was pretty obvious.  As the chief mechanic, I proceeded to bark some orders to the team and jumped under the car to fix the problem.  After a brief struggle getting the forward-opening hood off, and dealing with the alternator with a broken belt-tensioning belt, the engine was back the way it should be.  With the hood reattached, I went out for a stint.</p>
-
-<p>We had a bunch more uneventful, but terribly fun driving the rest of Saturday and that evening, talked with a bunch of the other competitors.  We ended up selling our extra rear brake pads to the Ninja team (all black e30 with a HUGE sprint car wing) and got tons of advice out of the trade.  We talked with a bunch of judges and learned about the <a href="http://jalopnik.com/5165999/the-penalties-of-the-gator+o+rama-24-hours-of-lemons">Bob Ross</a> penalty that they applied to any car with a good expanse of paintable sheet metal.</p>
-
-<h1>Sunday</h1>
-
-<p><a href="http://www.flickr.com/photos/dinomite/4597929298/"><img alt="Cheesy Gordita Crunch" src="http://farm4.static.flickr.com/3388/4597929298_c58a8f3f6e.jpg" width="500" height="375" class="mt-image-right" style="float: right; margin: 0 0 20px 20px;" /></a>
-The second day of the race started with unintended excitement.  Matt started the car just before the driver&rsquo;s meeting and it spewed automatic transmission fluidâ€”the adapters of our hacked-in ATF cooler had failed.  Thankfully, we had thought ahead a bit and left all of the stock hookups unmolested.  With some quick Vice-grip work, we managed to hook the ATF lines back up to the stock cooler and get out onto the track from the beginning of the day.  Josh &amp; Matt did morning stints and then I headed out.  At Matt&rsquo;s suggestion, I started shifting the car, rather than just leaving it in drive the whole time; this lead to a <a href="http://www.youtube.com/watch?v=ziyXtDNlr0E">new fast lap for the team of 2:37</a>.  Much better than Saturday&rsquo;s 2:46, but a far cry from the leaders who were running <a href="http://forums.24hoursoflemons.com/viewtopic.php?pid=46151#p46151">better than 2:20</a>.  Even though we weren&rsquo;t super fast, the added power out of turns allowed us to <a href="http://www.youtube.com/watch?v=XNdPKLJOjU8">pass a number of other cars</a>.</p>
-
-<p>At the end of the day, we were in 65th place out of 108 runnersâ€”pretty damn good for a completely new team with a stock, automatic racecar.  After this experience, the entire team is pumped to do more LeMons races.  While track days and HPDEs are awesome, those can&rsquo;t hold a candle to wheel to wheel racing, especially when you&rsquo;re in a car that is cheap and you&rsquo;re OK with driving like you stole it.</p>
-
-<p>24 Hours of LeMons: highly recommended.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/4/">Next page</a></p>
@@ -582,6 +575,10 @@ The second day of the race started with unintended excitement.  Matt started the
               <div class="article-link-date">Mar  7, 2016</div>
             </li>
             <li>
+              <a href="/blog/2014/12/30/serene-night-biking/">Serene night biking</a>
+              <div class="article-link-date">Dec 30, 2014</div>
+            </li>
+            <li>
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
@@ -609,10 +606,6 @@ The second day of the race started with unintended excitement.  Matt started the
               <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
               <div class="article-link-date">Sep 11, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/08/12/crumpler-haven-with-canon-40d/">Crumpler Haven With Canon 40D</a>
-              <div class="article-link-date">Aug 12, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -628,6 +621,7 @@ The second day of the race started with unintended excitement.  Matt started the
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (2)</a></li>
             <li><a href="/blog/tags/rails/">Rails (1)</a></li>
       </ol>
