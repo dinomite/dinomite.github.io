@@ -28,6 +28,11 @@
     <p><a href="/page/14/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/09/15/vpn-disconnects-due-to-altered-routing-table/">VPN Disconnects due to Altered Routing Table</a></h1>
+    <div class="article-title-date">Sep 15, 2007</div>
+    <p>I was having trouble with my Nortel Contivity VPN client disconnecting giving an error message, &ldquo;The routing table cannot be altered after the Contivity VPN Connection has been established. The Contivity VPN Connection has been Closed.&rdquo;  This would happen after 10-20 minutes of being connected and would cause all of my SSH sessions to drop, which made it hard to get work done.  After some searching, I found the solution to my problem, a simple registry addition.  I added the DWORD named &ldquo;PerformRouterDiscovery&rdquo; with the value 0 to the key <code>&quot;HKEY_LOCAL_MACHINE_SYSTEM\CurrentControlSet\Services\Tcpip\Parameters&quot;</code>.  After rebooting, the VPN works without the random disconnects.  Download <a href="http://dinomite.net/wp-content/uploads/2007/09/performrouterdiscovery.reg">this .reg file</a> and run it to add the aforementioned key.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/09/13/changing-the-physical-interface-for-a-vmware-bridged-interface/">Changing the Physical Interface for a VMware Bridged Interface</a></h1>
     <div class="article-title-date">Sep 13, 2007</div>
     <p>I use VMware to run a virtual Windows machine for my company&rsquo;s VPN and the occasional game of Starcraft.  When I moved and switch from a wired network to wireless, the device with which I connect to the internet changed from good old <code>eth0</code> to the new-fangled <code>ath0</code>.  VMware was setup to tie its virtual interface for bridged networking to <code>eth0</code>.  Since <code>eth0</code> no longer has a network connection, the virtual machine lost the internet as well.  To fix this, I had to open <code>/etc/vmware/locations</code> and change the reference to <code>eth0</code> to <code>ath0</code>.  The virtual interface that I use is <code>vmnet0</code> so the line in the file referenced <code>VNET_0_INTERFACE</code>.  Simply changing that line and restarting the VMware backend (<code>/etc/init.d/vmware restart</code>) fixed everything.</p>
@@ -223,21 +228,6 @@ Overall, this took 10.022404 seconds.
 <p>The HHR is just the right size; it&rsquo;s Goldilocks&rsquo; preferred size, providing enough room to care somewhat bulky items (flowers, small catering gear, computers), a few cubbys for tools and some good space for plastering a logo on the outside.  I really think this is perfect for small business like florists, computer support and even someone like Charm City Cakes, who are often on Food Network transporting a wedding cake in a huge Econoline van.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/08/09/interfacial-fracture-of-oreo-cookie-filling/">Interfacial Fracture of Oreo Cookie Filling</a></h1>
-    <div class="article-title-date">Aug  9, 2007</div>
-    <p>While reading the <a href="http://en.wikipedia.org">Wikipeidia</a> page on <a href="http://en.wikipedia.org/wiki/Adhesive">adhesive</a> I came across this nugget of wisdom on food decomposition:</p>
-
-<blockquote>Another example is when someone tries to pull apart Oreo cookies and all the filling remains on one side. The goal in this case is an adhesive failure, rather than a cohesive failure.</blockquote>
-
-<p>Apparently, when you&rsquo;re trying to break apart an <a href="http://en.wikipedia.org/wiki/Oreo">Oreo</a> and get all the filling to stay on one side, say, to make a quad-stuf (yep, <a href="http://en.wikipedia.org/wiki/Oreo#Varieties">only one &lsquo;f&rsquo;</a>) Oreo, you are hoping for an adhesive or interfacial failure, that is, a failure of the adhesive (white, corn-syrupy goodness) where it meets the adherent (black cookie piece).</p>
-
-<p>Also, for another barely-related angle is <a href="http://massmma.net/readMore.php?id=245">this page</a> from a UFC forum discussing the caloric content of foods someone mentions their method of making Oreos less bad for you:</p>
-
-<blockquote>i just want everyone to know this lil diet trick i use to cut calories out of my double stuff oreos, if you take 2 of them apart and make 1 quad stuff oreo you eliminate 2 of the chocholat cookies there for cutting out calories while you enjoy a nice diet quad stuff oreo</blockquote>
-
-<p>Though I&rsquo;d say the perfect ratio of filling to cookie is somewhere between 2 and 3 to one, I often make quad-stuf monsters.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/16/">Next page</a></p>
@@ -263,6 +253,10 @@ Overall, this took 10.022404 seconds.
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -299,10 +293,6 @@ Overall, this took 10.022404 seconds.
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -319,8 +309,8 @@ Overall, this took 10.022404 seconds.
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>

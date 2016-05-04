@@ -28,6 +28,17 @@
     <p><a href="/page/16/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/07/13/day-1-picking-up-the-car/">Day 1: Picking Up the Car</a></h1>
+    <div class="article-title-date">Jul 13, 2007</div>
+    <p>After my mom had decided that her new car would be a BMW 535i, I proposed to my parents that they might like to check out BMW&rsquo;s European Delivery program.  Through ED, you work with a US dealer to buy the car and get a 7% price break having to do with taxes and legal mumbo jumbo; it works out to be a good way to subsidize a vacation to Europe.  My parents asked if I&rsquo;d be interested in coming along and so we planned a trip centered, in my mind, around the Formula 1 race in Magny-Cours and visiting the Nurburgring.</p>
+
+<p>We arrived in Munich in the morning and went outside to get a taxi to the BMW European Delivery center.  Outside was a lineup of cream-colored cars, mostly Mercedes E-class wagons and R-class MPVs.  A 220d E-class pulled up, we loaded our bags and proceeded towards Munich.  The drive along the motorway was fun because, in addition to reaching upwards of 160 Km/h, I saw numerous cars that I had previously only heard about on <em>Top Gear</em>.  At the European Delivery center, we were told that the car would take about 45 minutes to prepare.  We walked upstairs to the cafe and had some coffee and German snacks.  This will be the only time that the word &ldquo;snacks&rdquo; will be what Americans understand to be a small or partial meal; throughout the rest of the trip, it seemed that what Germans call a snack most others would call a good lunch.  Also, in Germany, what looks to be a croissant probably has eggs and ham inside.  These items are tasty.</p>
+
+<p>After waiting a spell, we walked around the lot outside checking out the numerous diesel and 1-series cars that never make it to the US.  We headed back inside to wait a bit more and after about an hour and a half someone approached with the papers to sign over the car.  He explained to us the insurance that came with it (which is all the coverage you need, it seems) and go over other paperwork.  We then headed to the garage to get a quick rundown of the car&rsquo;s features.  After hearing about how many horsepowers [sic] the car has, we loaded our luggage into the 5er&rsquo;s trunk, which is significantly larger than that of either of my parents&rsquo; current cars, a Volvo S80 and Acura TL.  Once loaded, we bid &ldquo;auf wiedersehen&rdquo; to the friendly Germans and my dad makes his way through the unnecessarily small garage door and we are on our way to driving the car, which had only 1 mile on the odometer, through Europe.</p>
+
+<p>We headed towards the Bavarian Alps where we would spend our first night in a small town named Ettal, home to a magnificent monastery which, of course, brews the local beer.  After sitting down for a late lunch with a half-liter of the aforementioned beer we walked to the far end of town, which took all of 5 minutes.  We hopped back into the car at that point and took a short drive to neighboring towns to explore a few churches and pick up some bottled water.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/07/09/peanut-butter-ice-cream/">Peanut Butter Ice Cream</a></h1>
     <div class="article-title-date">Jul  9, 2007</div>
     <p>I got an <a href="http://www.cuisinart.com/catalog/product.php?product_id=313&amp;item_id=422&amp;cat_id=10">automatic ice cream machine</a> as a graduation gift recently and, because it&rsquo;s so easy, I&rsquo;ve been making tons of the stuff.  All thats involved is whipping together a mix, tossing it into the bucket and turning the dial; no need to fool with ice and because it&rsquo;s compressor-driven, you can create one batch right after the other without needing multiple frozen cores.  This allows me to easily create a number of slightly different mixes in order to find the best possible recipe for a superb ice cream.  Everyone loved a peanut butter flavored masterpiece I made a few weeks ago, so I figured that&rsquo;d be a good thing to start with.</p>
@@ -158,34 +169,6 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
     <p>Smoking food is great; the only downside is that if you want it ready for an afternoon barbecue, you have to get up early to put the meat to the heat.  Alton Brown&rsquo;s recipe for <a href="http://www.foodnetwork.com/food/recipes/recipe/0,1977,FOOD_9936_23019,00.html">pulled pork</a> is what I use; it simply consists of brining a pork shoulder overnight and then smoking with a simple rub.  If you&rsquo;ve got the smoker running, you might as well toss on <a href="http://www.aolfoodblog.com/2007/05/30/smokin-cherry/">other</a> <a href="http://www.recipegoldmine.com/smoke/smoke22.html">stuff</a> as well.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/06/01/installing-vmware-workstation-on-ubuntu-feisty-7-dot-04/">Installing VMware Workstation on Ubuntu Feisty (7.04)</a></h1>
-    <div class="article-title-date">Jun  1, 2007</div>
-    <p>I found a new, easy process for installing VMware on Ubuntu, having updated the kernel on my Feisty machine since the last time I used the virtual machine.  Whenever the kernel changes, VMware needs to rebuild it&rsquo;s kernel module to suit, via the script <code>vmware-config.pl</code>.  This involves a few steps such that VMware can correctly build it&rsquo;s module against the kernel you&rsquo;re running.  First, you need to grab the headers for your running kernel and set them up to support building:</p>
-
-<pre>
-~$ sudo -i
-~# aptitude install linux-headers-`uname -r`
-~# cd /usr/src/
-/usr/src# ln -s linux-headers-2.6.20-16-`uname -r` linux
-/usr/src# cd linux
-/usr/src/linux# cp /boot/config-`uname -r` .config
-/usr/src/linux# make oldconfig && make prepare0 && make scripts
-</pre>
-
-<p>The above installs the kernel headers for your current kernel (<code>uname -r&#39; gives the running kernel&#39;s version), gets the</code>.config<code>for said kernel and preps the headers per the</code>.config`.  Now, on to the VMware part of things.</p>
-
-<p>Installing VMware is really easy, thanks to <a href="http://ftp.cvut.cz/vmware/vmware-any-any-update109.tar.gz">this patch</a>.  You simply need to get the patch, untar and run it; the script included invokes the VMware configurator automatically.</p>
-
-<pre>
-/usr/src# wget http://ftp.cvut.cz/vmware/vmware-any-any-update109.tar.gz
-/usr/src# tar zxf vmware-any-any-update109.tar.gz
-/usr/src# cd vmware-any-any-update109
-/usr/src/vmware-any-any-update109# ./runme.pl
-</pre>
-
-<p>Follow the directions provided by the VMware configuration script (the defaults are safe, but read the information) and you&rsquo;re done.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/18/">Next page</a></p>
@@ -211,6 +194,10 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -247,10 +234,6 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -267,8 +250,8 @@ tar -chf - foo/ | gzip - | gpg -e -r Drew &gt; foo.tar.gz.gpg
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>

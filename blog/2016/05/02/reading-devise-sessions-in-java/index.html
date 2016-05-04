@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Reading Devise sessions in Java « Dinomite.net</title>
+
+  <link href="/stylesheets/all.css" rel="stylesheet" />
+  <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/atom.xml" />
+</head>
+
+<body>
+<div id="main" role="main">
+  <nav>
+  <ul>
+    <li>
+      <span class="blog-title"><a class="blog-title" href="/">Dinomite.net</a></span>
+      <span class="blog-subtitle">the blog of Drew Stephens</span>
+    </li>
+  </ul>
+</nav>
+
+
+  <div class="main-content">
+    <h1 class="article-title">Reading Devise sessions in Java</h1>
+    <div class="article-title-date">May  2, 2016</div>
+    <p>I have a Ruby on Rails app that uses <a href="https://github.com/plataformatec/devise">Devise</a> for authentication and session management, the latter is really done by <a href="https://github.com/hassox/warden">Warden</a>.  We are making a server-side companion for Ruby written in <a href="https://kotlinlang.org/">Kotlin</a> &amp; Java and want to be able to share sessions between the two runtimes.</p>
+
+<p><a href="http://jruby.org/">JRuby</a> makes this easy, allowing you to run Ruby on the JVM.  While JRuby supports running entire Ruby applications, for reading sessions we simply want to embed a bit of Ruby within our Java application.  This is accomplished by using <a href="https://github.com/jruby/jruby/wiki/RedBridge">JRuby Embed (AKA Red Bridge)</a>.</p>
+
+<p>First, let&rsquo;s look at the Ruby required to read <a href="http://stackoverflow.com/a/23683925/17339">Warden sessions</a>.  Our app stores sessions in a local databae, so we don&rsquo;t have to deal with encryption or encoding.  If your sessions are stored in cookies, they will be encrypted—<a href="http://nipperlabs.com/rails-secretkeybase">this article</a> should give you what you need to decrypt the session.</p>
+<div class="highlight ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">s</span> <span class="o">=</span> <span class="no">Marshal</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="n">csrfToken</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'_csrf_token'</span><span class="p">]</span>
+<span class="n">userId</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'warden.user.user.key'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">authenticatableSalt</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'warden.user.user.key'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The operative part of this is really just one call, <code>Marshal.load(session)</code>.  That invokes Ruby&rsquo;s built-in serializer, <code>Marshal</code>, to deserialize the session string.  The subsequent lines just assign variables to make extracting the desired data in Java easier.  Here is that script used in context to pull the information into Java:</p>
+<div class="highlight java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kd">public</span> <span class="n">Session</span> <span class="nf">getSession</span><span class="p">(</span><span class="n">String</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">container</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"session"</span><span class="o">,</span> <span class="n">session</span><span class="o">);</span>
+    <span class="n">container</span><span class="o">.</span><span class="na">runScriptlet</span><span class="o">(</span><span class="n">rubyScript</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="n">userId</span> <span class="o">=</span> <span class="o">((</span><span class="n">Long</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"userId"</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">authenticatableSalt</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"authenticatableSalt"</span><span class="o">));</span>
+    <span class="n">String</span> <span class="n">csrfToken</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"csrfToken"</span><span class="o">));</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Session</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">authenticatableSalt</span><span class="o">,</span> <span class="n">csrfToken</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The entire Java class looks like this:</p>
+<div class="highlight java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">org.jruby.embed.LocalContextScope</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jruby.embed.LocalVariableBehavior</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jruby.embed.ScriptingContainer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SessionReader</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">ScriptingContainer</span> <span class="n">container</span> <span class="o">=</span>
+        <span class="k">new</span> <span class="n">ScriptingContainer</span><span class="o">(</span><span class="n">LocalContextScope</span><span class="o">.</span><span class="na">CONCURRENT</span><span class="o">,</span>
+                               <span class="n">LocalVariableBehavior</span><span class="o">.</span><span class="na">PERSISTENT</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">script</span> <span class="o">=</span> <span class="s">"s = Marshal.load(session);"</span> <span class="o">+</span>
+                                  <span class="s">"csrfToken = s['_csrf_token'];"</span> <span class="o">+</span>
+                                  <span class="s">"userId = s['warden.user.user.key'][0][0];"</span> <span class="o">+</span>
+                                  <span class="s">"authSalt = s['warden.user.user.key'][1];"</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Session</span> <span class="n">getSession</span><span class="o">(</span><span class="n">String</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">container</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"session"</span><span class="o">,</span> <span class="n">session</span><span class="o">);</span>
+        <span class="n">container</span><span class="o">.</span><span class="na">runScriptlet</span><span class="o">(</span><span class="n">script</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">userId</span> <span class="o">=</span> <span class="o">((</span><span class="n">Long</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"userId"</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">authSalt</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"authSalt"</span><span class="o">));</span>
+        <span class="n">String</span> <span class="n">csrfToken</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"csrfToken"</span><span class="o">));</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Session</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">authSalt</span><span class="o">,</span> <span class="n">csrfToken</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Session</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">authenticatableSalt</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">csrfToken</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Session</span><span class="o">(</span><span class="kt">int</span> <span class="n">userId</span><span class="o">,</span> <span class="n">String</span> <span class="n">authenticatableSalt</span><span class="o">,</span> <span class="n">String</span> <span class="n">csrfToken</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userId</span> <span class="o">=</span> <span class="n">userId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">authenticatableSalt</span> <span class="o">=</span> <span class="n">authenticatableSalt</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">csrfToken</span> <span class="o">=</span> <span class="n">csrfToken</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Using <code>LocalContextScope.CONCURRENT</code> allows this class to be threadsafe.  JRuby creates a single runtime and shared variables for the <code>ScriptingContainer</code>, but separate variable mappings for each thread.  The other modifier, <code>LocalVariableBehavior.PERSISTENT</code>, keeps the local variables around after we call <code>runScriptlet()</code> allowing for their retrieval back in Java land.</p>
+
+<p>See the <a href="https://github.com/jruby/jruby/wiki/RedBridgeExamples">Red Bridge Examples</a> for more information on using Ruby within Java.</p>
+
+  </div>
+
+  <sidebar class="sidebar">
+  <ul>
+    <li><h5 class="heading">See Also</h5></li>
+    <li>
+      <ol>
+        <li><a href="https://twitter.com/dinomite">Twitter</a></li>
+        <li><a href="https://github.com/dinomite">GitHub</a></li>
+        <li><a href="https://www.flickr.com/photos/dinomite">Flickr</a></li>
+        <li><a href="http://pinboard.in/u:dinomite">Pinboard</a></li>
+        <li><a href="http://www.last.fm/user/dinomite">Last.fm</a></li>
+        <li><a href="http://search.cpan.org/~dinomite/">CPAN</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Recent Articles</h5></li>
+    <li>
+      <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
+            <li>
+              <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
+              <div class="article-link-date">Mar 18, 2016</div>
+            </li>
+            <li>
+              <a href="/blog/2016/03/07/winter-tech-forum-is-the-finest/">Winter Tech Forum is The Finest</a>
+              <div class="article-link-date">Mar  7, 2016</div>
+            </li>
+            <li>
+              <a href="/blog/2014/12/30/serene-night-biking/">Serene night biking</a>
+              <div class="article-link-date">Dec 30, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
+              <div class="article-link-date">Apr  4, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
+              <div class="article-link-date">Jan 25, 2014</div>
+            </li>
+            <li>
+              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
+              <div class="article-link-date">Jun 27, 2013</div>
+            </li>
+            <li>
+              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
+              <div class="article-link-date">Dec  3, 2012</div>
+            </li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Tags</h5></li>
+    <li>
+      <ol>
+            <li><a href="/blog/tags/computers/">Computers (3)</a></li>
+            <li><a href="/blog/tags/linux/">Linux (3)</a></li>
+            <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
+            <li><a href="/blog/tags/networking/">Networking (1)</a></li>
+            <li><a href="/blog/tags/cars/">Cars (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/politics/">Politics (2)</a></li>
+            <li><a href="/blog/tags/biking/">biking (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
+      </ol>
+    </li>
+  </ul>
+
+  <ul>
+    <li><h5 class="heading">Posts by Year</h5></li>
+        <li><a href="/blog/2005">2005</a></li>
+        <li><a href="/blog/2006">2006</a></li>
+        <li><a href="/blog/2007">2007</a></li>
+        <li><a href="/blog/2008">2008</a></li>
+        <li><a href="/blog/2009">2009</a></li>
+        <li><a href="/blog/2010">2010</a></li>
+        <li><a href="/blog/2011">2011</a></li>
+        <li><a href="/blog/2012">2012</a></li>
+        <li><a href="/blog/2013">2013</a></li>
+        <li><a href="/blog/2014">2014</a></li>
+        <li><a href="/blog/2015">2015</a></li>
+        <li><a href="/blog/2016">2016</a></li>
+  </ul>
+</sidebar>
+
+</div>
+
+<footer>
+  Copyright 2005–2016 Drew Stephens
+</footer>
+
+</body>
+</html>

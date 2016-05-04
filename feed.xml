@@ -5,10 +5,135 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2016-03-17T20:00:00-04:00</updated>
+  <updated>2016-05-01T20:00:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Reading Devise sessions in Java</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/05/02/reading-devise-sessions-in-java/"/>
+    <id>http://blog.url.com/blog/2016/05/02/reading-devise-sessions-in-java/</id>
+    <published>2016-05-01T20:00:00-04:00</published>
+    <updated>2016-05-03T10:22:37-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I have a Ruby on Rails app that uses &lt;a href="https://github.com/plataformatec/devise"&gt;Devise&lt;/a&gt; for authentication and session management, the latter is really done by &lt;a href="https://github.com/hassox/warden"&gt;Warden&lt;/a&gt;.  We are making a server-side companion for Ruby written in &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt; &amp;amp; Java and want to be able to share sessions between the two runtimes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://jruby.org/"&gt;JRuby&lt;/a&gt; makes this easy, allowing you to run Ruby on the JVM.  While JRuby supports running entire Ruby applications, for reading sessions we simply want to embed a bit of Ruby within our Java application.  This is accomplished by using &lt;a href="https://github.com/jruby/jruby/wiki/RedBridge"&gt;JRuby Embed (AKA Red Bridge)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, let&amp;rsquo;s look at the Ruby required to read &lt;a href="http://stackoverflow.com/a/23683925/17339"&gt;Warden sessions&lt;/a&gt;.  Our app stores sessions in a local databae, so we don&amp;rsquo;t have to deal with encryption or encoding.  If your sessions are stored in cookies, they will be encrypted—&lt;a href="http://nipperlabs.com/rails-secretkeybase"&gt;this article&lt;/a&gt; should give you what you need to decrypt the session.&lt;/p&gt;
+&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Marshal&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'_csrf_token'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'warden.user.user.key'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'warden.user.user.key'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The operative part of this is really just one call, &lt;code&gt;Marshal.load(session)&lt;/code&gt;.  That invokes Ruby&amp;rsquo;s built-in serializer, &lt;code&gt;Marshal&lt;/code&gt;, to deserialize the session string.  The subsequent lines just assign variables to make extracting the desired data in Java easier.  Here is that script used in context to pull the information into Java:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt; &lt;span class="nf"&gt;getSession&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;put&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"session"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runScriptlet&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rubyScript&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"userId"&lt;/span&gt;&lt;span class="o"&gt;)).&lt;/span&gt;&lt;span class="na"&gt;intValue&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"authenticatableSalt"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"csrfToken"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The entire Java class looks like this:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.LocalContextScope&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.LocalVariableBehavior&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.ScriptingContainer&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SessionReader&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;ScriptingContainer&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+        &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ScriptingContainer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LocalContextScope&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;CONCURRENT&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                               &lt;span class="n"&gt;LocalVariableBehavior&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;PERSISTENT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"s = Marshal.load(session);"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"csrfToken = s['_csrf_token'];"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"userId = s['warden.user.user.key'][0][0];"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"authSalt = s['warden.user.user.key'][1];"&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt; &lt;span class="n"&gt;getSession&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;put&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"session"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runScriptlet&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"userId"&lt;/span&gt;&lt;span class="o"&gt;)).&lt;/span&gt;&lt;span class="na"&gt;intValue&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"authSalt"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"csrfToken"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;authSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Session&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using &lt;code&gt;LocalContextScope.CONCURRENT&lt;/code&gt; allows this class to be threadsafe.  JRuby creates a single runtime and shared variables for the &lt;code&gt;ScriptingContainer&lt;/code&gt;, but separate variable mappings for each thread.  The other modifier, &lt;code&gt;LocalVariableBehavior.PERSISTENT&lt;/code&gt;, keeps the local variables around after we call &lt;code&gt;runScriptlet()&lt;/code&gt; allowing for their retrieval back in Java land.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href="https://github.com/jruby/jruby/wiki/RedBridgeExamples"&gt;Red Bridge Examples&lt;/a&gt; for more information on using Ruby within Java.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Better Rails.cache Invalidation with Quick Queries</title>
     <link rel="alternate" href="http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/"/>
@@ -209,20 +334,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
 &lt;p&gt;Download this an add it to your Lightroom video presets.  On Mac, this is located at &lt;code&gt;~/Library/Application Support/Adobe/Lightroom/Export Presets/Video/&lt;/code&gt;.  For Windows, &lt;a href="http://store.apple.com/us"&gt;see here&lt;/a&gt;[^1].&lt;/p&gt;
 
 &lt;p&gt;[^1]: Seriously not trying to be a dick, I just don&amp;rsquo;t fucking know and give zero shits&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>at(1) on Mac OS X</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/02/03/at-1-on-mac-os-x/"/>
-    <id>http://blog.url.com/blog/2014/02/03/at-1-on-mac-os-x/</id>
-    <published>2014-02-02T19:00:00-05:00</published>
-    <updated>2016-03-14T10:41:27-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;at(1) is a standard command in &lt;a href="http://www.freebsd.org/cgi/man.cgi?query=at&amp;amp;sektion=1"&gt;every&lt;/a&gt; &lt;a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?at"&gt;Unix-like&lt;/a&gt; &lt;a href="http://www.openbsd.org/cgi-bin/man.cgi?query=at&amp;amp;apropos=0&amp;amp;sektion=0&amp;amp;manpath=OpenBSD+Current&amp;amp;arch=i386&amp;amp;format=html"&gt;operating&lt;/a&gt; &lt;a href="http://www.shrubbery.net/solaris9ab/SUNWaman/hman1/at.1.html"&gt;system&lt;/a&gt; &lt;a href="http://illumos.org/man/1/at"&gt;that&lt;/a&gt; &lt;a href="http://www.unix.com/man-page/opensolaris/1/at/"&gt;I&lt;/a&gt; &lt;a href="http://plan9.bell-labs.com/magic/man2html?man=at&amp;amp;sect=1"&gt;know&lt;/a&gt; &lt;a href="http://netbsd.gw.com/cgi-bin/man-cgi?at++NetBSD-current"&gt;of&lt;/a&gt;, including &lt;a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/at.1.html"&gt;Mac OS&lt;/a&gt;, for scheduling tasks to be run at a later time.  Unfortunately, OS X doesn&amp;rsquo;t run (or even seem to have) atd(8), the daemon responsible for running at(1)-scheduled tasks.  Complicating matters is the fact that at(1) is a very difficult to search for, because search engines strip such common words, so figuring out such issues can&amp;rsquo;t really be done with even the best searching.  So here I&amp;rsquo;ll list other things that one might search for: atq, atrm, and batch, which are all part of the at(1) suite of tools.&lt;/p&gt;
-
-&lt;p&gt;My (likely vain) hope is that this post will spread a bit of knowledge and maybe catch searches, if someone&amp;rsquo;s searches match my description.&lt;/p&gt;
 </content>
   </entry>
 </feed>

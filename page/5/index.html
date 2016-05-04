@@ -28,6 +28,25 @@
     <p><a href="/page/4/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2009/05/03/ebay-sucks-at-domains/">eBay Sucks at Domains</a></h1>
+    <div class="article-title-date">May  3, 2009</div>
+    <p>If you go to <a href="http://ebay.com">http://ebay.com</a> you will briefly see a naked text page with the following text, broken sentence structure and all:</p>
+
+<pre>
+The page you are looking for has been moved. If this page does not redirect you in 10 Secs,lease click here.
+</pre>
+
+<p>It will only be visible for a fleeting moment, because your browser will be redirected to <a href="http://www.ebay.com">www.ebay.com</a>.  The world&rsquo;s flea market fails the <a href="http://no-www.org/faq.php">no-www</a> test in the worst way - if you try to go to their website without a www subdomain, your are sent to said subdomain.  eBay fails in a special way; rather than simply using an Apache RewriteRule:</p>
+
+<pre class="brush: bash;">
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^example.com$ [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]
+</pre>
+
+<p>they send a web page containing an HTML <a href="http://en.wikipedia.org/wiki/Meta_refresh">meta refresh</a> to send you to <a href="http://www.ebay.com">www.ebay.com</a>.  This is a clumsy and slow way to perform a redirect, particularly for the front-page of your website.  If you are a website administrator or webmaster, please, don&rsquo;t be as hackish as eBay - embrace <a href="http://no-www.org/faq.php">Class A no-www compliance</a> or at least redirect using <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection">HTTP status codes</a> rather than browser redirection.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2009/04/19/zombie-defense-station/">Zombie Defense Station</a></h1>
     <div class="article-title-date">Apr 19, 2009</div>
     <p><a class="tt-flickr tt-flickr-Medium" href="http://www.flickr.com/photos/dinomite/3455135080/in/set-72157616252174270/"><img class="alignright" src="http://farm4.static.flickr.com/3319/3455135080_1a853a6011.jpg" alt="Completed Zombie Defense Station" width="500" height="233" /></a></p>
@@ -187,57 +206,6 @@ And the function:
 }</pre></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2009/02/05/caps-lock-to-control-in-ubuntu-intrepid-ibex-8-dot-10/">Caps Lock to Control in Ubuntu Intrepid Ibex (8.10)</a></h1>
-    <div class="article-title-date">Feb  5, 2009</div>
-    <p>I&rsquo;ve <a href="http://dinomite.net/2007/caps-lock-to-control-on-ubuntu/">written this post before</a>, but things have changed since the 7.04 Feisty Fawn release, so it&rsquo;s worth an update.  In recent releases of Ubuntu the Gnome Control Center has made it easy to simply click away the unneeded caps lock key, turning it into whatever you want.  I wanted to try KDE 4.2 a few days ago and found no way to turn off the caps lock key.  From my previous post, I knew that it&rsquo;s easy to add a line to the <code>xorg.conf</code>which will turn the caps lock into another control, but when I opened the file on my Ubuntu 8.10 machine, I was surprised to find very little in it:
-<pre class="brush: bash;">
-Section &quot;Files&quot;
-EndSection</p>
-
-<p>Section &quot;Module&quot;
-    Load  &quot;glx&quot;
-EndSection</p>
-
-<p>Section &quot;Monitor&quot;
-    Identifier   &quot;Configured Monitor&quot;
-EndSection</p>
-
-<p>Section &quot;Device&quot;
-    Identifier  &quot;Configured Video Device&quot;
-    Driver      &quot;fglrx&quot;
-EndSection</p>
-
-<p>Section &quot;Screen&quot;
-    Identifier &quot;Default Screen&quot;
-    Device     &quot;Configured Video Device&quot;
-    Monitor    &quot;Configured Monitor&quot;
-    DefaultDepth     24
-    SubSection &quot;Display&quot;
-        Virtual   1680 1050
-    EndSubSection
-EndSection
-</pre></p>
-
-<p>If you come from a long line of Linux use, this is a very odd X config indeed since it lists no input devices, but such is the magic of <a href="http://en.wikipedia.org/wiki/HAL_(software)">HAL</a> which takes care of all that for you.  The option to turn you caps-lock key into a control is set in the keyboard&rsquo;s <code>InputDevice</code> section.  The above-listed stock Ubuntu 8.10 xorg config doesn&rsquo;t have an <code>InputDevice</code> section, nor does it have the associated <code>ServerLayout</code> block.  The following can be appended to your <code>/etc/X11/xorg.conf</code>:</p>
-
-<pre class="brush: bash;">
-Section "InputDevice"
-    Identifier  "keyboard"
-    Driver      "keyboard"
-    Option      "CoreKeyboard"
-    Option      "XkbOptions"    "ctrl:nocaps"
-EndSection
-
-Section "ServerLayout"
-    Identifier  "Default Layout"
-    Screen      "Default Screen"
-    InputDevice "keyboard"
-EndSection
-</pre>
-
-<p>With that, you will now have a caps lock key no matter what window manager or desktop system you use.  I love the caps lock as a control because I use vi extensively and make use of ^f &amp; ^b, which move up and down pages, and ^e &amp; ^y that move the buffer&rsquo;s view up and down without moving the cursor.  I&rsquo;m sure emacs users will appreciate this change as well, since they use control alongside 6 or 7 other keys whenever they want to do something.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/6/">Next page</a></p>
@@ -263,6 +231,10 @@ EndSection
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -299,10 +271,6 @@ EndSection
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -319,8 +287,8 @@ EndSection
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>

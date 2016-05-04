@@ -28,6 +28,64 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/10/02/word-frequency-in-the-vice-presidential-debate/">Word Frequency in the Vice Presidential Debate</a></h1>
+    <div class="article-title-date">Oct  2, 2008</div>
+    <p>It&rsquo;s always interesting to see what keywords debaters drop to get their points across.  To analyze tonight&rsquo;s debate between Biden &amp; Palin, I grabbed a <a href="http://edition.cnn.com/2008/POLITICS/10/02/debate.transcript/?iref=mpstoryview">transcript from CNN</a> that was posted shortly after.  The transcript listed each speaker&rsquo;s name (Biden, Ifill or Palin), followed by their first sentence in that statement, with subsequent statements on new lines.  To make it easily <code>grep</code>able,  wrote a quick Perl script to join each speaker&rsquo;s full passages into a single line, beginning with their name.  With that done, it&rsquo;s trivial to search for words the candidates spoke.  <a href="http://dinomite.net/~dinomite/vpdebate.txt">The transcript is here</a>.</p>
+
+<p>First up, &ldquo;change&rdquo; and &ldquo;hope&rdquo;, adages of the Obama campaign that McCain and Palin have picked up in recent weeks:<br>
+* <span style="color: #0000ff;">Biden (change|hope): 17</span><br>
+* <span style="color: #ff0000;">Palin (change|hope): 25</span></p>
+
+<p>Which presidential candidate got more mentions?<br>
+* <span style="color: #0000ff;">Biden (John|McCain): 72</span><br>
+* <span style="color: #0000ff;">Biden (Barack|Obama): 45</span><br>
+* <span style="color: #ff0000;">Palin (John|McCain): 42</span><br>
+* <span style="color: #ff0000;">Palin (Barack|Obama): 24</span></p>
+
+<p>Palin&rsquo;s state makes a lot of energy and high prices are on the mind of voters:<br>
+* <span style="color: #0000ff;">Biden (energy): 9</span><br>
+* <span style="color: #ff0000;">Palin (energy): 29</span></p>
+
+<p>Both talked a lot about the war:<br>
+* <span style="color: #0000ff;">Biden (war|iraq|afghanistan): 51</span><br>
+* <span style="color: #ff0000;">Palin (war|iraq|afghanistan): 58</span></p>
+
+<p>Palin cares about her family:<br>
+* <span style="color: #0000ff;">Biden (family|child): 8</span><br>
+* <span style="color: #ff0000;">Palin (family|child): 15</span></p>
+
+<p>Biden said &ldquo;clean coal&rdquo; a couple of times to Palin&rsquo;s one; they both mentioned &ldquo;coal&rdquo; in general more than that:<br>
+* <span style="color: #0000ff;">Biden (coal): 7</span><br>
+* <span style="color: #ff0000;">Palin (coal): 2</span></p>
+
+<p>The economy was a talking point:<br>
+* <span style="color: #0000ff;">Biden (economy): 4</span><br>
+* <span style="color: #ff0000;">Palin (economy): 13</span></p>
+
+<p>Only one of the candidates knows about deregulation of Wall Street in recent years:<br>
+* <span style="color: #0000ff;">Biden (deregulation): 7</span><br>
+* <span style="color: #ff0000;">Palin (deregulation): 0</span></p>
+
+<p>Wall Street or Main Street?<br>
+* <span style="color: #0000ff;">Biden (wall street): 3</span><br>
+* <span style="color: #0000ff;">Biden (main street): 1</span><br>
+* <span style="color: #ff0000;">Palin (wall street): 5</span><br>
+* <span style="color: #ff0000;">Palin (main street): 2</span></p>
+
+<p>Any suggestions?</p>
+
+<h3>See also:</h3>
+
+<ul>
+<li><a href="http://www.spudart.org/blogs/randomthoughts_comments/4758_0_3_0_C/">Most popular words</a></li>
+<li><a href="http://languagelog.ldc.upenn.edu/nll/?p=663">Language Log</a></li>
+<li><a href="http://services.alphaworks.ibm.com/manyeyes/create/SLinXQsOtha62M1yDo9kQ2~">Palin visualizations</a></li>
+<li><a href="http://services.alphaworks.ibm.com/manyeyes/create/SLinXQsOtha60M1y4l9kQ2~">Biden visualizations</a></li>
+</ul>
+
+<p>edit: added link from Karl; added IBM links</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/10/01/old-techno-album-reviews-dune-expedicion/">Old Techno Album Reviews: Dune - Expedicion</a></h1>
     <div class="article-title-date">Oct  1, 2008</div>
     <p>Best known for their eponymous debut album, <a href="http://en.wikipedia.org/wiki/Dune_(German_band)">Dune</a> is a mid-90&rsquo;s techno outfit whose music incorporates many of the styles endemic to <a href="http://en.wikipedia.org/wiki/House_music">House</a> and <a href="http://en.wikipedia.org/wiki/Electronic_dance_music">Dance</a> at the time.  <strong>Expedicion</strong> is a good exploration of the style, featuring lots of fast beats throughout, a bit singing vocals and even some good-old meaningless talking throughout some tracks.  The entire album is also sprinkled with radio recordings including the classic NASA piece, &ldquo;we&rsquo;re go for auto-sequence start&rdquo; on the opening track <em>Rising</em>.</p>
@@ -303,27 +361,6 @@ GSSAPIDelegateCredentials yes
 <p>The crux of the issue is that EQO is an instant messaging application for mobile phones running Windows CE, so the data they have is for that subset of the IM user market, not representative of the market as a whole.  So what can we glean from this data?  People who have Windows-based smartphones prefer MSN worldwide, save for AIM&rsquo;s slight edge in the United States.  What can&rsquo;t we learn from the data?  The state of the instant message market as a whole.  EQO&rsquo;s usage data ignores other smartphone users, most notably the iPhone and users who don&rsquo;t have smartphones or aren&rsquo;t interested in IMing from their phones.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/08/09/defcon-16-eff-panel/">DEFCON 16 EFF Panel</a></h1>
-    <div class="article-title-date">Aug  9, 2008</div>
-    <p>Much of the <a href="http://www.eff.org">Electronic Frontier Foundation</a>&rsquo;s talk at DEFCON 16 concerned the temporary injunction that prevented <a href="http://www.defcon.org/html/defcon-16/dc-16-speakers.html#Anderson">MIT students</a> from giving a talk on vulnerabilities of the <a href="http://www.mbta.com">MBTA</a> farecard system.  The injunction seems to say taht the only people prevented from disseminating the information about the system are the MIT students themselves and any cohorts in their research.  One question that I head was which other systems may be vulnerable to the same RFID card attack and here&rsquo;s the list from their slides:</p>
-
-<ul>
-<li>Boston</li>
-<li>London</li>
-<li>Netherlands</li>
-<li>Minneapolis</li>
-<li>South Korea</li>
-<li>Hong Kong</li>
-<li>Beijing</li>
-<li>Madrid</li>
-<li>Rio de Janeiro</li>
-<li>New Dehli</li>
-<li>Bangkok</li>
-</ul>
-
-<p>More information is provided in <a href="http://dinomite.net/wp-content/uploads/defcon-16-anderson-ryan-cheisa.pdf">their slides</a>.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/8/">Next page</a></p>
@@ -349,6 +386,10 @@ GSSAPIDelegateCredentials yes
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -385,10 +426,6 @@ GSSAPIDelegateCredentials yes
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -405,8 +442,8 @@ GSSAPIDelegateCredentials yes
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>

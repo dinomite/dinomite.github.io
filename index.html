@@ -27,6 +27,124 @@
 
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a></h1>
+    <div class="article-title-date">May  2, 2016</div>
+    <p>I have a Ruby on Rails app that uses <a href="https://github.com/plataformatec/devise">Devise</a> for authentication and session management, the latter is really done by <a href="https://github.com/hassox/warden">Warden</a>.  We are making a server-side companion for Ruby written in <a href="https://kotlinlang.org/">Kotlin</a> &amp; Java and want to be able to share sessions between the two runtimes.</p>
+
+<p><a href="http://jruby.org/">JRuby</a> makes this easy, allowing you to run Ruby on the JVM.  While JRuby supports running entire Ruby applications, for reading sessions we simply want to embed a bit of Ruby within our Java application.  This is accomplished by using <a href="https://github.com/jruby/jruby/wiki/RedBridge">JRuby Embed (AKA Red Bridge)</a>.</p>
+
+<p>First, let&rsquo;s look at the Ruby required to read <a href="http://stackoverflow.com/a/23683925/17339">Warden sessions</a>.  Our app stores sessions in a local databae, so we don&rsquo;t have to deal with encryption or encoding.  If your sessions are stored in cookies, they will be encrypted—<a href="http://nipperlabs.com/rails-secretkeybase">this article</a> should give you what you need to decrypt the session.</p>
+<div class="highlight ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">s</span> <span class="o">=</span> <span class="no">Marshal</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="n">csrfToken</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'_csrf_token'</span><span class="p">]</span>
+<span class="n">userId</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'warden.user.user.key'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">authenticatableSalt</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="s1">'warden.user.user.key'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The operative part of this is really just one call, <code>Marshal.load(session)</code>.  That invokes Ruby&rsquo;s built-in serializer, <code>Marshal</code>, to deserialize the session string.  The subsequent lines just assign variables to make extracting the desired data in Java easier.  Here is that script used in context to pull the information into Java:</p>
+<div class="highlight java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="kd">public</span> <span class="n">Session</span> <span class="nf">getSession</span><span class="p">(</span><span class="n">String</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">container</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"session"</span><span class="o">,</span> <span class="n">session</span><span class="o">);</span>
+    <span class="n">container</span><span class="o">.</span><span class="na">runScriptlet</span><span class="o">(</span><span class="n">rubyScript</span><span class="o">);</span>
+
+    <span class="kt">int</span> <span class="n">userId</span> <span class="o">=</span> <span class="o">((</span><span class="n">Long</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"userId"</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">authenticatableSalt</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"authenticatableSalt"</span><span class="o">));</span>
+    <span class="n">String</span> <span class="n">csrfToken</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"csrfToken"</span><span class="o">));</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Session</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">authenticatableSalt</span><span class="o">,</span> <span class="n">csrfToken</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>The entire Java class looks like this:</p>
+<div class="highlight java"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></td><td class="code"><pre><span class="kn">import</span> <span class="nn">org.jruby.embed.LocalContextScope</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jruby.embed.LocalVariableBehavior</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.jruby.embed.ScriptingContainer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SessionReader</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">ScriptingContainer</span> <span class="n">container</span> <span class="o">=</span>
+        <span class="k">new</span> <span class="n">ScriptingContainer</span><span class="o">(</span><span class="n">LocalContextScope</span><span class="o">.</span><span class="na">CONCURRENT</span><span class="o">,</span>
+                               <span class="n">LocalVariableBehavior</span><span class="o">.</span><span class="na">PERSISTENT</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">script</span> <span class="o">=</span> <span class="s">"s = Marshal.load(session);"</span> <span class="o">+</span>
+                                  <span class="s">"csrfToken = s['_csrf_token'];"</span> <span class="o">+</span>
+                                  <span class="s">"userId = s['warden.user.user.key'][0][0];"</span> <span class="o">+</span>
+                                  <span class="s">"authSalt = s['warden.user.user.key'][1];"</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Session</span> <span class="n">getSession</span><span class="o">(</span><span class="n">String</span> <span class="n">session</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">container</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"session"</span><span class="o">,</span> <span class="n">session</span><span class="o">);</span>
+        <span class="n">container</span><span class="o">.</span><span class="na">runScriptlet</span><span class="o">(</span><span class="n">script</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">userId</span> <span class="o">=</span> <span class="o">((</span><span class="n">Long</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"userId"</span><span class="o">)).</span><span class="na">intValue</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">authSalt</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"authSalt"</span><span class="o">));</span>
+        <span class="n">String</span> <span class="n">csrfToken</span> <span class="o">=</span> <span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">container</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"csrfToken"</span><span class="o">));</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Session</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">authSalt</span><span class="o">,</span> <span class="n">csrfToken</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Session</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">authenticatableSalt</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">csrfToken</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Session</span><span class="o">(</span><span class="kt">int</span> <span class="n">userId</span><span class="o">,</span> <span class="n">String</span> <span class="n">authenticatableSalt</span><span class="o">,</span> <span class="n">String</span> <span class="n">csrfToken</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userId</span> <span class="o">=</span> <span class="n">userId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">authenticatableSalt</span> <span class="o">=</span> <span class="n">authenticatableSalt</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">csrfToken</span> <span class="o">=</span> <span class="n">csrfToken</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table>
+</div>
+
+<p>Using <code>LocalContextScope.CONCURRENT</code> allows this class to be threadsafe.  JRuby creates a single runtime and shared variables for the <code>ScriptingContainer</code>, but separate variable mappings for each thread.  The other modifier, <code>LocalVariableBehavior.PERSISTENT</code>, keeps the local variables around after we call <code>runScriptlet()</code> allowing for their retrieval back in Java land.</p>
+
+<p>See the <a href="https://github.com/jruby/jruby/wiki/RedBridgeExamples">Red Bridge Examples</a> for more information on using Ruby within Java.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a></h1>
     <div class="article-title-date">Mar 18, 2016</div>
     <p>Rails <a href="http://guides.rubyonrails.org/caching_with_rails.html">provides a caching framework</a>, built-in.  Just set <code>config.cache_store</code> in your <code>application.rb</code>.  The easiest way to use caching is using time-base invalidation—you compute something expensive and store it in the cache with an expiration time.  The first time you try to retrieve it after the expiration, recompute &amp; cache the new value.</p>
@@ -393,46 +511,6 @@ a small portion of your local body of water is a bad time.</p>
 <p>I&rsquo;m pretty light, just under 150 most days, so 4 bricks is the prescription.  A yoga block is the perfect thing to fill the extra space—dense but soft and about the size of two bricks.  One note is that you can indeed fit 6 bricks into a GR Echo, with just a bit of room to spare.  The third package of bricks takes the place of the yoga block, with a bit of space on either side.  Unfortunately, there isn&rsquo;t nearly enough space for a hydration bladder along with them.  If you&rsquo;re taking 6 bricks to the Challenge, get a GR1 or Radio Ruck.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a></h1>
-    <div class="article-title-date">Sep 11, 2012</div>
-    <p>After not doing Tough Mudder <a href="http://dinomite.net/blog/2010/tough-mudder-norcal-2010/">since 2010</a>,
-I signed up for the Mid-Atlantic event this year.  Here&rsquo;s my advice for folks
-looking for tips before running.</p>
-
-<p>Over the past few years I&rsquo;ve exercised almost exclusively in <a href="http://www.vibramfivefingers.com/index.htm">Vibram
-FiveFingers</a> mainly because I feel
-so much more stable when running &amp; jumping.  Since switching to minimalist
-street shoes for everyday wear (<a href="http://www.merrell.com/US/en-us/Product.mvc.aspx/22875M/50390/Mens/Barefoot-Run-Trail-Glove">Merrell Trail Gloves</a>
-and <a href="http://www.amazon.com/dp/B004KZP5AG/ref=as_li_ss_til?tag=dinomitenet-20&amp;camp=0&amp;creative=0&amp;linkCode=as4&amp;creativeASIN=B004KZP5AG&amp;adid=05E13DHZT6EMTB01FEFZ">New Balance Minimus</a>)
-my knees, hips, and back seem happier.  Last time I did Tough Mudder, I wore
-some old cross-trainer style tennis shoes, but by this point I&rsquo;ve gotten rid of
-all the thick-soled tennis shoes I once had.  I ended up wearing my New Balance
-MT20s for the run and they worked very well.  Clearning them after the race was
-just a few minutes of hosing them off outside and then tossing them in the
-washing machine.</p>
-
-<p>I wore some Mechanix gloves (the basic velcro cuff model) the first time I did
-Tough Mudder.  This time I brought some along but chose not to wear them. There
-are only a couple of obstacles for which you might want them, and I don&rsquo;t think
-those are sufficiently abrasive or splintery to extra mudweight you carry in
-gloves.  Focus on wearing as little clothing as possible—the first time you hit
-a mud pit your shirt &amp; shorts carry a lot of it with you.</p>
-
-<p>Training is another big question that people have.  Mine is pretty much the same
-as previously: I do CrossFit 2-3 times a week and 1-2 days a week of Olympic
-lifting.  In the 6 months prior to doing Tough Mudder I went on a couple of ~3.5
-mile runs.  The only other running I did was the occasional CrossFit WOD that
-involved a 400 or 800 meter run.  I think that pretty well drives home my
-admonition that you don&rsquo;t need to run a lot to be a competent runner and perform
-well in endurance running events.</p>
-
-<p>Having said that, this Tough Mudder was the same as last—85% of the people walk
-the majority of the event; another 10% run between half of the obstacles.
-Running the whole way easily puts you in the top 5% of participants.  Aside from
-being well prepared physically and highly self motivated, the best way to run
-the whole way is to do it with a group of friends.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/2/">Next page</a></p>
@@ -458,6 +536,10 @@ the whole way is to do it with a group of friends.</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -494,10 +576,6 @@ the whole way is to do it with a group of friends.</p>
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -514,8 +592,8 @@ the whole way is to do it with a group of friends.</p>
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>

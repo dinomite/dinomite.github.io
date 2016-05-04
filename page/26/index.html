@@ -28,6 +28,17 @@
     <p><a href="/page/25/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2006/01/21/crypt-3/">crypt(3)</a></h1>
+    <div class="article-title-date">Jan 21, 2006</div>
+    <p>Anyone who has used Unix or a derivative for long enough should know of crypt(3), the basic Unix hashing function.  Back In The Day, unices used crypt(3) for hashing passwords and It Was Good; computers were once slow enough that DES was an acceptable encryption algorithm even with a limit of 8 characters.  Since about the turn of the century (the latest one), any Unix worth it&rsquo;s salt (heh, crypto pun) offers other options for password encryption, most often MD5.  Furthermore, everything I&rsquo;ve run into, until today, used MD5 passwords by default, though Debian Potato still offered to use crypt(3) and non-shadowed passwords (knowing that came in useful in a cracking competition my freshman year).</p>
+
+<p>Getting to the point, I logged into a Solaris machine that I set up recently and typed the password wrong, but it let me in.  At first I was&hellip;quite scared.  I logged in again, carefully typing the root password and was granted access.  I recalled the crypt(3) function&hellip;I logged in, typing the first 8 characters carefully and garbage for the rest.  I got in.  Long story short, Solaris 10 (SunOS 5.10) still uses crypt(3) as the default password encryption.  It&rsquo;s a simple fix, you just change a line in <code>/etc/security/policy.conf</code>, but still sort of apalling none the less.</p>
+
+<ul>
+<li><a href="http://www.vmunix.com/mark/blog/archives/2005/10/31/changing-default-password-encryption-in-solaris/">How-to  change Solaris&rsquo; default password encryption</a></li>
+</ul>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/01/20/pictures-from-breckenridge/">Pictures from Breckenridge</a></h1>
     <div class="article-title-date">Jan 20, 2006</div>
     <p>I went skiing in Breckenridge, Colorado over winter break and while there I climbed above all of the lifts to the summit of Peak 8, 13,000 feet up.  I just added the <a href="http://gallery.dinomite.net/gallery/v/Skiing/Breckenridge+2006">pictures</a> to my gallery.  Here&rsquo;s a picture of the Baldy (that may just be the local name), though it&rsquo;s hard to convey just how high up the peaks are.
@@ -138,11 +149,6 @@
 </blockquote>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2006/01/14/gallery-back-up/">Gallery back up</a></h1>
-    <div class="article-title-date">Jan 14, 2006</div>
-    <p>With the help of prayer and fasting, my gallery is back up at <a href="http://gallery.dinomite.net">gallery.dinomite.net</a>.  I really&hellip;don&rsquo;t understand how it&rsquo;s working; it required me including an alias in my Apache config that is used in the normal gallery configuration to make http://yoursite.com/gallery point to your gallery.  For my site, I have a seperate hostname, gallery.dinomite.net, for the gallery and as such, I want the root of it to be the gallery.  I don&rsquo;t really follow what&rsquo;s going on, but the voodoo was successful.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/27/">Next page</a></p>
@@ -168,6 +174,10 @@
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise sessions in Java</a>
+              <div class="article-link-date">May  2, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/">Better Rails.cache Invalidation with Quick Queries</a>
               <div class="article-link-date">Mar 18, 2016</div>
@@ -204,10 +214,6 @@
               <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
               <div class="article-link-date">Dec  3, 2012</div>
             </li>
-            <li>
-              <a href="/blog/2012/09/11/tough-mudder-mid-atlantic-2013/">Tough Mudder Mid-Atlantic 2012</a>
-              <div class="article-link-date">Sep 11, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -224,8 +230,8 @@
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (2)</a></li>
-            <li><a href="/blog/tags/rails/">Rails (1)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/rails/">Rails (2)</a></li>
       </ol>
     </li>
   </ul>
