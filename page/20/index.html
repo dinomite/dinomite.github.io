@@ -23,11 +23,18 @@
 
 
       <div class="main-content">
-          <p>Page 20 of 27</p>
+          <p>Page 20 of 28</p>
 
     <p><a href="/page/19/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/02/24/using-sed/">Using sed</a></h1>
+    <div class="article-title-date">Feb 24, 2007</div>
+    <p>Many people don&rsquo;t have a clue how to use old-school Unix commands such as <code>sed</code> and I can say that I was in that camp until recently.  Previously, I would be more inclined to write a script in Perl or open up vi to perform complex and repetitive replacement tasks across multiple files.  I&rsquo;m comfortable with both Perl and vi, most importantly their regular expressions which allow for quick and easy manipulation of text.  I was pushed to learn <code>sed</code> when I had a number of different files that all needed a very similar modification to each of their thousands of lines.  Sure I could write a Perl script to do it, but it was a good opportunity to learn the stream editor and I&rsquo;m glad I did.</p>
+
+<p>The most useful thing <code>sed</code> can do is regex-based alterations to files just like vi, except you can apply a <code>sed</code> command to multiple files from the command line with a simple glob.  The syntax for <code>sed</code> regex is much like that for <code>vi</code> or Perl; the big difference that I encountered as compared to Perl is that capturing with parenthesis is done using backslash-escaped parenthesis and the later references with backslash-escaped numbers.  If you run <code>sed</code> without any options, it takes a regex and any number of input files; the output will be to standard out, so <code>sed &#39;s/foo/bar/&#39; *.txt</code> will replace &lsquo;foo&rsquo; with &#39;bar&rsquo; in all text files in the current directory, showing you the results on <code>STDOUT</code>. This is great to test and make sure the right changes are going to be made, but to actually make the changes, the best method is to use <code>sed</code>&rsquo;s in-place editing option, <code>-i</code>.  Now, if you run <code>sed -i &#39;s/foo/bar/&#39; *.txt</code>, <code>sed</code> will replace &#39;foo&rsquo; with &#39;bar&rsquo; in all files in the current directory, altering each of the files.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/02/21/perl-mo-equals-lint/">perl -MO=Lint</a></h1>
     <div class="article-title-date">Feb 21, 2007</div>
     <p>It is generally accepted that when developing Perl, you should be using warnings (<code>use warnings</code>) and recommended that you go a step further with <code>use strict</code>, which forces the declaration of variables with <code>my</code> before they are used, among other things.  Beyond these two, however, is the <a href="http://search.cpan.org/~nwclark/perl-5.8.8/ext/B/B/Lint.pm"><code>B::Lint</code></a> module that performs <a href="http://www.perl.com/doc/manual/html/lib/B/Lint.html">further checks on your code</a>.  Using it couldn&rsquo;t be simpler; simply pass the option <code>-MO=Lint,all</code> to the Perl command when invoking your program.  The <code>-M</code> option tells Perl that you want to use the module specified, and &rsquo;<code>,all</code>&rsquo; is an option passed to the Lint module, telling it to perform all checks, which is probably what you want.  If you have some bad habit, or want it to specifically skip some checks, you can add that on to the argument list, prepending the option listed in <a href="http://search.cpan.org/~nwclark/perl-5.8.8/ext/B/B/Lint.pm">the documentation</a> with &lsquo;no-&rsquo;.</p>
@@ -150,26 +157,6 @@ make scripts
     <p>My local NPR station, <a href="http://www.wamu.org">WAMU</a> has been running an advertisement for IBM federal services and they mention the URL, which is spoken as &ldquo;ibm.com backslash foo backslash bar,&rdquo; which won&rsquo;t work if you type it into your interweb browser.  Really, no one uses the Windows command line for anything real, who still thinks with backslashes?</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/02/04/the-bible-does-math/">The Bible Does Math</a></h1>
-    <div class="article-title-date">Feb  4, 2007</div>
-    <p>I just finish reading Sam Harris&rsquo; <em>Letter to a Christian Nation</em>, which is a very good book.  At one point he notes that the bible stipulates <a href="http://en.wikipedia.org/wiki/Pi">Pi</a> is exactly 3.  I wondered how such a book would lay out mathematical constants, but it&rsquo;s pretty straightforward:</p>
-
-<blockquote>
-The sea was then cast; it was made with a circular rim, and measured ten cubits across, five in height, and thirty in circumference.
-Under the brim, gourds encircled it, ten to the cubit all the way around; the gourds were in two rows and were cast in one mold with the sea.
-</blockquote>
-
-<p>Kings 7:23-24</p>
-
-<blockquote>
-He also made the molten sea. It was perfectly round, ten cubits in diameter, five in depth, and thirty in circumference
-</blockquote>
-
-<p>II Chronicles 4:2</p>
-
-<p>I must say that it&rsquo;s a weak argument, because they could be simply approximations by an observer, but it&rsquo;s funny nonetheless.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/21/">Next page</a></p>
@@ -195,6 +182,10 @@ He also made the molten sea. It was perfectly round, ten cubits in diameter, fiv
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
+              <div class="article-link-date">May 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise Sessions in Java</a>
               <div class="article-link-date">May  2, 2016</div>
@@ -231,10 +222,6 @@ He also made the molten sea. It was perfectly round, ten cubits in diameter, fiv
               <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
               <div class="article-link-date">Jun 27, 2013</div>
             </li>
-            <li>
-              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
-              <div class="article-link-date">Dec  3, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -251,8 +238,11 @@ He also made the molten sea. It was perfectly round, ten cubits in diameter, fiv
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
+            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
+            <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -23,11 +23,20 @@
 
 
       <div class="main-content">
-          <p>Page 10 of 27</p>
+          <p>Page 10 of 28</p>
 
     <p><a href="/page/9/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/03/23/driving-across-the-united-states-day-1/">Driving Across the United States day 1</a></h1>
+    <div class="article-title-date">Mar 23, 2008</div>
+    <p>I&rsquo;m moving from <a href="http://en.wikipedia.org/wiki/Arlington,_Virginia">The Commonwealth of Virginia</a> to <a href="http://en.wikipedia.org/wiki/Silicon_Valley">The California Republic</a>.  As an adventure, and a means to get my car to the West Coast, I&rsquo;m driving across the country with my dad in my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a>.  Because of the nature of the car, we&rsquo;re avoiding the snowy highways through the middle of the country and following a generally southern route.</p>
+
+<p>The first day took us through southwestern Virginia and into Tennessee, ending at Jackson, TN, about 100 miles from Memphis.  There isn&rsquo;t much to speak of in this are, save the fairly constant expanse of <a href="http://en.wikipedia.org/wiki/Appalachia">Appalachia</a> that I&rsquo;m used too.  Lots of <a href="http://en.wikipedia.org/wiki/Deciduous">deciduous</a> trees, rolling hills and <a href="http://en.wikipedia.org/wiki/Blue_Ridge_Mountains">blue mountains</a>.</p>
+
+<p>One good part of the day was stopping at a <a href="http://www.hogheavenbbq.com/">barbecue shack</a> near <a href="http://en.wikipedia.org/wiki/Vanderbilt_University">Vanderbilt University</a> in Nashville.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/03/13/off-the-hook-12-march-2008/">Off The Hook - 12 March 2008</a></h1>
     <div class="article-title-date">Mar 13, 2008</div>
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0308.html">12 March 2008</a>.  The show runs live on <a href="http://www.wbai.org">WBAI</a> at 7pm on Wednesdays.  Call in at 212.209.2900 or send letters to <a href="mailto:oth@2600.com">oth@2600.com</a>.  The show is also available as a <a href="http://www.2600.com/news/view/article/2509">high-quality podcast</a>.</p>
@@ -270,49 +279,6 @@ On the phone: Bernie S from Philadelphia, <a href="http://en.wikipedia.org/wiki/
 <p>Emmanuel mentions the real-world protests of <a href="http://xenu.net">Scientology</a> by &ldquo;Anonymous&rdquo;; in New York, <a href="http://gothamist.com/2008/02/11/nyc_scientology.php">more than 200 people were present</a>.  Another demonstration will take place on the 15th of March at Scientology sites throughout the world.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/02/11/python-switch-statements-part-2/">Python Switch Statements - part 2</a></h1>
-    <div class="article-title-date">Feb 11, 2008</div>
-    <p>My friend Lex read my post on <a href="http://dinomite.net/archives/dictatorial-leadership-is-sometimes-the-best">Python&rsquo;s lack of switch statements</a> and sent me a note that the normal method for implementing something along the lines of a <code>switch</code> in Python is to use a dictionary.  First, let&rsquo;s define some functions:</p>
-
-<pre class="brush: python;">
-def fooFunc():
-    print 'Got foo?'
-def barFunc():
-    print 'Not foo.'
-def nomatch():
-    print 'No function to speak of!'
-
-string = 'foo'
-</pre>
-
-<p>Now we can create a dictionary and just lookup the variable you want to switch upon:</p>
-
-<pre class="brush: python;">
-# Make a dictionary and call it switch
-switch = {
-    'foo': fooFunc,
-    'bar': barFunc
-    }
-
-# Find the string in the dictionary, thereby calling the function
-switch[string]()
-switch['bar']()
-
-# Another way to do the dictionary lookup
-switch.get(string, nomatch)()
-switch.get('bar', nomatch)()
-</pre>
-
-<p>Which will call the function in the switch dictionary, or call <code>nomatch</code> if none of the dictionary entries match.  Or create an anonymous dictionary and do it all at once, more like a traditional <code>switch</code>:</p>
-
-<pre class="brush: python;">
-{
-    'foo' : fooFunc,
-    'bar' : barFunc
-}[string]()
-</pre>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/11/">Next page</a></p>
@@ -338,6 +304,10 @@ switch.get('bar', nomatch)()
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
+              <div class="article-link-date">May 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise Sessions in Java</a>
               <div class="article-link-date">May  2, 2016</div>
@@ -374,10 +344,6 @@ switch.get('bar', nomatch)()
               <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
               <div class="article-link-date">Jun 27, 2013</div>
             </li>
-            <li>
-              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
-              <div class="article-link-date">Dec  3, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -394,8 +360,11 @@ switch.get('bar', nomatch)()
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
+            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
+            <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
       </ol>
     </li>
   </ul>

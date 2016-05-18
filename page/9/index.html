@@ -23,11 +23,29 @@
 
 
       <div class="main-content">
-          <p>Page 9 of 27</p>
+          <p>Page 9 of 28</p>
 
     <p><a href="/page/8/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/05/06/installing-proggy-fonts-in-ubuntu/">Installing Proggy Fonts in Ubuntu</a></h1>
+    <div class="article-title-date">May  6, 2008</div>
+    <p>I don&rsquo;t recall how I came across the free <a href="http://www.proggyfonts.com/">Proggy font family</a> but I wanted to try them out on my Ubuntu workstation for use in Eclipse.  After some searching, I figured out how to install TrueType (.ttf) fonts and the process is pretty straightforward.  I downloaded and unpacked the fonts into <code>~/.fonts</code>, created a fonts.dir metadata file, added them to the font cache and when I restarted Eclipse, they were available.</p>
+
+<pre class="brush: bash;">
+~$ mkdir .fonts
+~$ cd .fonts
+~/.fonts$ wget http://www.proggyfonts.com/download/download_bridge.php?get=ProggyCl
+ean.ttf.zip
+~/.fonts$ wget http://www.proggyfonts.com/download/download_bridge.php?get=ProggySq
+uare.ttf.zip
+~/.fonts$ wget http://www.proggyfonts.com/download/download_bridge.php?get=ProggyS
+mall.ttf.zip
+~/.fonts$ ttmkfdir -o fonts.dir
+~/.fonts$ fc-cache -f -v
+</pre>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/04/24/off-the-hook-23-april-2008/">Off The Hook - 23 April 2008</a></h1>
     <div class="article-title-date">Apr 24, 2008</div>
     <p>This is the synopsis of <a href="http://www.2600.com/offthehook">Off The Hook</a> that aired on <a href="http://www.2600.com/offthehook/2008/0408.html">23 April 2008</a>.  The show runs live on <a href="http://www.wbai.org">WBAI</a> at 7pm on Wednesdays.  Call in at 212.209.2900 or send letters to <a href="mailto:oth@2600.com">oth@2600.com</a>.  The show is also available as a <a href="http://www.2600.com/news/view/article/2509">high-quality podcast</a>.</p>
@@ -165,15 +183,6 @@ cpan&gt; o conf urllist commit
 <p>In Arkansas, the terrain more or less continued getting a bit flatter as we moved on.  Little Rock isn&rsquo;t very big and the sparsely populated terrain continues all the way to Dallas except for the border town of <a href="http://en.wikipedia.org/wiki/Smokey_and_the_Bandit">Texarkana</a>.  <a href="http://en.wikipedia.org/wiki/Dallas/Fort_Worth_Metroplex">Dallas-Fort Worth</a> is as huge as one would expect, but we were on our way to <a href="http://en.wikipedia.org/wiki/Abilene,_Texas">Abilene, TX</a> which held another pleasant gastronomic surprise.  In Abilene we had dinner at the <a href="http://www.lytlelandandcattle.com/">Lytle Land and Cattle Co.</a> which served undoubtedly the finest steak I have ever had.  I wouldn&rsquo;t have believed prior to this that a steak could be so good and it&rsquo;s surely due mostly to the quality of the local beef.  Texas is, unsurprisingly, a great place to get a steak and I am now inclined to try <a href="http://www.omahasteaks.com">Omaha Steaks</a> that you can get by mail.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/03/23/driving-across-the-united-states-day-1/">Driving Across the United States day 1</a></h1>
-    <div class="article-title-date">Mar 23, 2008</div>
-    <p>I&rsquo;m moving from <a href="http://en.wikipedia.org/wiki/Arlington,_Virginia">The Commonwealth of Virginia</a> to <a href="http://en.wikipedia.org/wiki/Silicon_Valley">The California Republic</a>.  As an adventure, and a means to get my car to the West Coast, I&rsquo;m driving across the country with my dad in my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a>.  Because of the nature of the car, we&rsquo;re avoiding the snowy highways through the middle of the country and following a generally southern route.</p>
-
-<p>The first day took us through southwestern Virginia and into Tennessee, ending at Jackson, TN, about 100 miles from Memphis.  There isn&rsquo;t much to speak of in this are, save the fairly constant expanse of <a href="http://en.wikipedia.org/wiki/Appalachia">Appalachia</a> that I&rsquo;m used too.  Lots of <a href="http://en.wikipedia.org/wiki/Deciduous">deciduous</a> trees, rolling hills and <a href="http://en.wikipedia.org/wiki/Blue_Ridge_Mountains">blue mountains</a>.</p>
-
-<p>One good part of the day was stopping at a <a href="http://www.hogheavenbbq.com/">barbecue shack</a> near <a href="http://en.wikipedia.org/wiki/Vanderbilt_University">Vanderbilt University</a> in Nashville.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/10/">Next page</a></p>
@@ -199,6 +208,10 @@ cpan&gt; o conf urllist commit
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
+              <div class="article-link-date">May 18, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/02/reading-devise-sessions-in-java/">Reading Devise Sessions in Java</a>
               <div class="article-link-date">May  2, 2016</div>
@@ -235,10 +248,6 @@ cpan&gt; o conf urllist commit
               <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
               <div class="article-link-date">Jun 27, 2013</div>
             </li>
-            <li>
-              <a href="/blog/2012/12/03/packing-bricks-for-the-goruck-challenge/">Packing Bricks for the GORUCK Challenge</a>
-              <div class="article-link-date">Dec  3, 2012</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -255,8 +264,11 @@ cpan&gt; o conf urllist commit
             <li><a href="/blog/tags/programming/">Programming (1)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
-            <li><a href="/blog/tags/tech/">Tech (3)</a></li>
+            <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
+            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
+            <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
       </ol>
     </li>
   </ul>

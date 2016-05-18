@@ -5,10 +5,219 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2016-05-01T20:00:00-04:00</updated>
+  <updated>2016-05-17T20:00:00-04:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Optional Authentication with Dropwizard</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/05/18/optional-authentication-with-dropwizard/"/>
+    <id>http://blog.url.com/blog/2016/05/18/optional-authentication-with-dropwizard/</id>
+    <published>2016-05-17T20:00:00-04:00</published>
+    <updated>2016-05-18T09:46:36-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="http://dropwizard.io"&gt;Dropwizard&lt;/a&gt; provides a great framework for authentication &amp;amp; authorization.  &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authenticator.html"&gt;&lt;code&gt;Authenticator&lt;/code&gt;&lt;/a&gt;s do what their name implies, returning a &lt;a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true"&gt;&lt;code&gt;Principal&lt;/code&gt;&lt;/a&gt; (probably your &lt;code&gt;User&lt;/code&gt; object) that servlets can use for building responses.  The &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authorizer.html"&gt;&lt;code&gt;Authorizer&lt;/code&gt;&lt;/a&gt; interface has a single methoed, &lt;code&gt;authorize()&lt;/code&gt;, which takes a &lt;code&gt;Principal&lt;/code&gt; and a string role to authorize access for.  These get wrapped in an &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/AuthFilter.html"&gt;&lt;code&gt;AuthFilter&lt;/code&gt;&lt;/a&gt; which extracts credentials from the requst and passed on to the &lt;code&gt;Authenticator&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;With the authen &amp;amp; authz classes in place protecting resources is easy: you simply annotate them with one of &lt;code&gt;@PermitAll&lt;/code&gt;, &lt;code&gt;@RolesAllowed&lt;/code&gt;, or &lt;code&gt;@DenyAll&lt;/code&gt;.  The last one does exactly what it says on the tin.  A specific role or set of roles can be permitted access with the &lt;code&gt;@RolesAllowed&lt;/code&gt; annotation, to which you pass a &lt;code&gt;String&lt;/code&gt; or &lt;code&gt;String[]&lt;/code&gt; of roles.  &lt;code&gt;@PermitAll&lt;/code&gt; allows any &lt;em&gt;authenticated&lt;/em&gt; user to access the resource.  What is missing here is an annotation to allow optionally authenticated resources—allowing you to customize a response for a known user but deliver a generic response to anonymous visitors.&lt;/p&gt;
+
+&lt;h1&gt;Optionally protected resources&lt;/h1&gt;
+
+&lt;p&gt;The Dropwizard manual gives a &lt;a href="http://www.dropwizard.io/0.9.2/docs/manual/auth.html#protecting-resources"&gt;cursory explanation&lt;/a&gt; of how to implement optional authentication:&lt;/p&gt;
+
+&lt;p&gt;&lt;tt&gt;
+If you have a resource which is optionally protected (e.g., you want to display a logged-in user’s name but not require login), you need to implement a custom filter which injects a security context containing the principal if it exists, without performing authentication.
+&lt;/tt&gt;&lt;/p&gt;
+
+&lt;p&gt;The process for optional resources involves two &lt;code&gt;AuthFilter&lt;/code&gt;s: one to check &amp;amp; process credentials for a logged-in user and a second that provides a default user.  These can be hit in turn with a &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/chained/ChainedAuthFilter.html"&gt;&lt;code&gt;ChainedAuthFilter&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll show the important parts of how I accomplished this with code examples written in a mix of Java and &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Wiring&lt;/h1&gt;
+
+&lt;p&gt;Setting up Dropwizard&amp;rsquo;s authentication involves creating an &lt;code&gt;AuthFilter&lt;/code&gt; to which you pass the &lt;code&gt;Authenticator&lt;/code&gt; and &lt;code&gt;Authorizer&lt;/code&gt; that it will use.  Creating a &lt;code&gt;ChainedAuthFilter&lt;/code&gt; is easy, just pass a &lt;code&gt;List&amp;lt;AuthFilter&amp;gt;&lt;/code&gt; with the filters in the order they should be executed.  Dropwizard tries each of the &lt;code&gt;AuthFilter&lt;/code&gt;s in turn until one returns successfully.&lt;/p&gt;
+
+&lt;p&gt;In the application&amp;rsquo;s &lt;code&gt;run()&lt;/code&gt; method:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Application.java&lt;/span&gt;
+&lt;span class="n"&gt;ApiKeyAuthFilter&lt;/span&gt; &lt;span class="n"&gt;apiKey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ApiKeyAuthFilter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Builder&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthenticator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apiKeyAuthenticator&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthorizer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;authorizer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setPrefix&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"API key"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildAuthFilter&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="n"&gt;DefaultAuthFilter&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;DefaultAuthFilter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Builder&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthenticator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defaultAuthenticator&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthorizer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;authorizer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setPrefix&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"default"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildAuthFilter&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+
+&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AuthFilter&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;filterList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Lists&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;newArrayList&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apiKey&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ChainedAuthFilter&lt;/span&gt; &lt;span class="n"&gt;chainedAuthFilter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ChainedAuthFilter&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class="n"&gt;filterList&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jersey&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;register&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;AuthDynamicFeature&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chainedAuthFilter&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jersey&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;register&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RolesAllowedDynamicFeature&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;AuthFilter&lt;/code&gt;s and their respective &lt;code&gt;Authenticator&lt;/code&gt;s are described below.&lt;/p&gt;
+
+&lt;h1&gt;API key authentication&lt;/h1&gt;
+
+&lt;p&gt;As mentioned, my user authentication is done with an API key that is passed in the Authorization HTTP header.  The filter extracts the value and passes it to the &lt;code&gt;authenticate()&lt;/code&gt; method of &lt;code&gt;ApiKeyAuthenticator&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// ApiKeyAuthFilter.kt&lt;/span&gt;
+&lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;requestContext:&lt;/span&gt; &lt;span class="n"&gt;ContainerRequestContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;credentials&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getFirst&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HttpHeaders&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;AUTHORIZATION&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!&lt;/span&gt;&lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;credentials&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;API_KEY_AUTH&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;WebApplicationException&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unauthHandler&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;realm&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The API key authenticator checks the databse to see if the given API key exists.  If the key is found, the matching &lt;code&gt;User&lt;/code&gt; is returned; if not found, an empty &lt;code&gt;Optional&lt;/code&gt; is returned instead.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// ApiKeyAuthenticator.kt&lt;/span&gt;
+&lt;span class="nd"&gt;@Throws&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;AuthenticationException:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;credentials:&lt;/span&gt; &lt;span class="n"&gt;ApiKey&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apiKeyDao&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUserIdForAccessToken&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;credentials&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;accessToken&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;userDao&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;empty&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Default authentication&lt;/h1&gt;
+
+&lt;p&gt;If API key authentication fails, either because the user provided invalid credentials or no credentials at all, then the next &lt;code&gt;AuthFilter&lt;/code&gt; configured in the &lt;code&gt;ChainedAuthFilter&lt;/code&gt; is invoked.  Authentication for the default user doesn&amp;rsquo;t actually check anything, so &lt;code&gt;Unit&lt;/code&gt; is passed instead of credentials:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// DefaultAuthFilter.kt&lt;/span&gt;
+&lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;requestContext:&lt;/span&gt; &lt;span class="n"&gt;ContainerRequestContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!&lt;/span&gt;&lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"DEFAULT"&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;WebApplicationException&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unauthHandler&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;realm&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As the last authenticator to run in the chain, the DefaultAuthenticator never fails, it simply returns a default-constructed &lt;code&gt;User&lt;/code&gt; object.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// DefaultAuthenticator.kt&lt;/span&gt;
+&lt;span class="nd"&gt;@Throws&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;AuthenticationException:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;credentials:&lt;/span&gt; &lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Using default auth"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Usage in servlets&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;User&lt;/code&gt; object looks like this:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// User.kt&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nf"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="nl"&gt;id:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;roles:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Principal&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;emptyList&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt;
+
+    &lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mutableListOf&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;roles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;toList&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;hasRole&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;role:&lt;/span&gt; &lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Boolean&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;roles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;contains&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;role&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Which allows me to check whether valid authentication was provided within a servlet:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// SomeResource.kt&lt;/span&gt;
+&lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;optionallyAuthenticatedResource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nd"&gt;@Context&lt;/span&gt; &lt;span class="nl"&gt;context:&lt;/span&gt; &lt;span class="n"&gt;SecurityContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUserPrincipal&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hasRole&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// Do something for authenticated users&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Do other stuff for all users&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+</content>
+  </entry>
   <entry>
     <title>Reading Devise Sessions in Java</title>
     <link rel="alternate" href="http://blog.url.com/blog/2016/05/02/reading-devise-sessions-in-java/"/>
@@ -318,22 +527,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
 &lt;p&gt;I stumbled across a &lt;a href="http://www.wxforum.net/index.php?topic=14299.0"&gt;thread on WXForum&lt;/a&gt; of folks discussing the GW1000U, which is the gateway that is part of the C84612 weather station.  If you read through there, you&amp;rsquo;ll see that &lt;a href="http://www.wxforum.net/index.php?action=profile;u=11566"&gt;skydvrz&lt;/a&gt; has put in a ton of effort and reverse engineer the communication.  He has written a Windows program that takes the place of the La Crosse Alerts server, collecting data from the gateway and storing it in MySQL.  Create an account on the forum and ask skydvrz for the latest code.&lt;/p&gt;
 
 &lt;p&gt;The best part about this replacement server is that it sends dtaa to Weather Underground, which has a &lt;a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KVAARLIN28"&gt;much better interface for weather stations&lt;/a&gt;, providing history &amp;amp; graphs that are far superior to La Crosse&amp;rsquo;s site.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Making 1080p Timelapses with Lightroom</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/02/13/making-1080p-timelapses-with-lightroom/"/>
-    <id>http://blog.url.com/blog/2014/02/13/making-1080p-timelapses-with-lightroom/</id>
-    <published>2014-02-12T19:00:00-05:00</published>
-    <updated>2016-03-14T10:41:27-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;There are &lt;a href="http://photographyforrealestate.net/2012/09/09/how-to-use-lightroom-4-to-create-a-time-lapse-video/"&gt;a bunch&lt;/a&gt; of &lt;a href="http://lightroom-blog.com/2013/09/17/timelapse-again-in-lightroom-5-2/"&gt;tutorials&lt;/a&gt; for creating time-lapse videos in Lightroom.  All of the ones I found only provide a preset for making 1280x720 (720p) videos.  I took one of those presets and updated it to be make a &lt;a href="/assets/JPEG 82 (1080p).lrtemplate"&gt;1920x1080 (1080p) video from stills&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Download this an add it to your Lightroom video presets.  On Mac, this is located at &lt;code&gt;~/Library/Application Support/Adobe/Lightroom/Export Presets/Video/&lt;/code&gt;.  For Windows, &lt;a href="http://store.apple.com/us"&gt;see here&lt;/a&gt;[^1].&lt;/p&gt;
-
-&lt;p&gt;[^1]: Seriously not trying to be a dick, I just don&amp;rsquo;t fucking know and give zero shits&lt;/p&gt;
 </content>
   </entry>
 </feed>
