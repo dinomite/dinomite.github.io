@@ -28,6 +28,31 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/12/07/custom-weather-radar-images/">Custom Weather Radar Images</a></h1>
+    <div class="article-title-date">Dec  7, 2007</div>
+    <p><a href='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' title='NWS base reflectivity for LWX' class='right'><img src='http://dinomite.net/wp-content/uploads/2007/12/base_reflectivity.jpg' alt='NWS base reflectivity for LWX' /></a>
+If you know the slightest bit about weather and the geography of the area which you are observing, you can, in the short term, forecast more accurately than what a weather website provides.  I often want to be able to bring a radar image up quickly and clicking around websites takes time.  Sure I could bookmark the weather page directly, but this was an interesting exercise and will prove useful when I get an iPhone.</p>
+
+<p>The <a href="http://nws.noaa.gov">National Weather Service</a> doesn&rsquo;t have a simple image of the weather on their <a href="http://radar.weather.gov/radar.php?rid=lwx&amp;product=N0R&amp;overlay=11101111&amp;loop=no">radar page</a>, rather, it is an image that is dynamically generated from a set of standard overlays using Javascript.  This allows them to more efficiently distribute radar images, since the terrain and maps that are the background never change.  The organization they use is <a href="http://www.srh.noaa.gov/srh/jetstream/doppler/ridge_download.htm">well documented</a>, making it easy to find the overlays for you local radar.  In my case, I wanted the topographical map, counties and highways in the image.    I found the URL for each of these components using the aforementioned documentation and grabbed the appropriate images with <code>wget</code>.
+<pre>
+wget http://radar.weather.gov/ridge/Legend/N0R/LWX<em>N0R</em>Legend<em>0.gif\
+http://radar.weather.gov/ridge/Overlays/County/Short/LWX</em>County<em>Short.gif\
+http://radar.weather.gov/ridge/Overlays/Highways/Short/LWX</em>Highways<em>Short.gif\
+http://radar.weather.gov/ridge/Overlays/Topo/Short/LWX</em>Topo<em>Short.jpg\
+http://radar.weather.gov/ridge/RadarImg/N0R/LWX</em>N0R_0.gif
+</pre></p>
+
+<p>The only layer that will change will be the last one, the actual radar data, so in my script that is the only one that will be <code>wget</code>d on subsequent runs.  To build the image, I used the <code>composite</code> program that is part of the ImageMagick package:
+<pre>
+composite -compose atop LWX<em>N0R</em>0.gif LWX<em>Topo</em>Short.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>Highways<em>Short.gif base</em>reflectivity.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>County<em>Short.gif base</em>reflectivity.jpg base<em>reflectivity.jpg
+composite -compose atop LWX</em>N0R<em>Legend</em>0.gif base<em>reflectivity.jpg base</em>reflectivity.jpg
+</pre></p>
+
+<p>I want the counties, highways and legend to show up on top of the weather data which itself is pasted atop the topographical map.  To achieve this, I first toss the radar data onto the topographical image creating a new image, <code>base_reflectivity.jpg</code>.  Then, I add each of the other layers to the <code>base_reflectivity.jpg</code> image in sequence.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/12/04/connecting-to-oracle-without-a-password-on-windows/">Connecting to Oracle Without a Password on Windows</a></h1>
     <div class="article-title-date">Dec  4, 2007</div>
     <p>If you have forgotten, were never given or otherwise don&rsquo;t have the password to an Oracle database, never fear, there is a method to accessing the database.  From the local machine you must be a user in the group &ldquo;ora_dba&rdquo;.  Run &ldquo;sqlplus&rdquo; (the command line version) with the option &ldquo;/nolog&rdquo;, which tells SQL*Plus not to login.  At the &ldquo;SQL&gt;&rdquo; prompt, type &ldquo;connect / as sysdba&rdquo; which ought to log you in.  At that point, you can change the password for any account (<code>sys</code> would be a good one to change, since apparently you don&rsquo;t know it) using the command <code>alter user &lt;username&gt; identified by &quot;&lt;password&gt;&quot;;</code>.  Make sure to <code>commit;</code> after doing that.</p>
@@ -370,12 +395,6 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
 <object width="440" height="361"><param name="movie" value="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213"/><param name="wmode" value="transparent"/><param name="allowScriptAccess" value="always"/><embed src="http://sports.espn.go.com/broadband/player.swf?mediaId=3097213" type="application/x-shockwave-flash" wmode="transparent" width="440" height="361" allowScriptAccess="always"></embed></object></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/11/02/programming-is-impressive/">Programming is Impressive</a></h1>
-    <div class="article-title-date">Nov  2, 2007</div>
-    <p>When you program you tend to have an impressive (or confusing, take your pick) looking screen, particularly if you consider vim an IDE:
-<a href='http://dinomite.net/wp-content/uploads/2007/11/screen.png' title='Writing code'><img src='http://dinomite.net/wp-content/uploads/2007/11/screen-thumb.png' alt='Writing code (thumbnail)' /></a></p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/14/">Next page</a></p>
@@ -401,6 +420,10 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -437,10 +460,6 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -462,6 +481,8 @@ backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -28,6 +28,40 @@
     <p><a href="/page/2/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2011/04/21/building-an-olympic-lifting-platform/">Building an Olympic Lifting Platform</a></h1>
+    <div class="article-title-date">Apr 21, 2011</div>
+    <p><a href="http://www.flickr.com/photos/dinomite/5510688763/in/set-72157626102609509/"><img alt="Finished platform" src="http://farm6.static.flickr.com/5174/5510688763_2a99df1c6d.jpg" width="500" height="333" class="mt-image-right" /></a>
+CrossFit got me started on Olympic lifting and it is now one of my favorite things that I do in the exercise realm.  The tools needed for CrossFit are few and generally inexpensive, but Oly lifting does require some significant outlay if you plan on doing it at home.  One of the things you need is a platform upon which to perform lifts&ndash;it&rsquo;s important to have a stable, flat surface to stand on, and have the ability to drop weights.  Before going through with building a platform I dumped a light bar on my brick patio and the back yard, both of which left marks.  It was time for me to build a platform.</p>
+
+<p>The basic arrangement of a platform is simple: a sufficiently wide patch of wood to stand on flanked by rubber to absorb dropped weights.  There are a <a href="http://straighttothebar.com/articles/2009/03/diy_how_to_build_an_olympic_we/index.html">handful</a> of <a href="http://board.crossfit.com/showthread.php?t=20752">notes</a> on building platforms online, most of which suggest two base layers made from full sheets of &frac34;&quot; plywood topped with a third half-sheet of &frac34;&quot; plywood with horestall mats on either side.  Simple enough, but these instructions also usually state that the resulting device cannot be lifted by on person alone.  I wanted to have the ability to at least flip my platform on end by myself to get it out of the way, so I took a different route.  To keep the weight more reasonable, I used 3/8&quot; (11/32&quot; at your local lumber yard) plywood and reduced the fore to aft dimension from 8 feet to 6, making for an 8 foot wide by 6 foot long platform.  In practice, this is plenty of space to perform lifts, even if you&rsquo;re doing some real speed as part of a <a href="http://crossfit.com">CrossFit</a> workout.</p>
+
+<p>Materials:</p>
+
+<ul>
+<li>Two 6x8 foot sheets of cheap 11/32 plywood</li>
+<li>Two 4x6 foot sheets of cheap 11/32 plywood</li>
+<li>One 4x6 foot sheet of nice 11/32 plywood</li>
+<li>Construction adhesive</li>
+<li>150 &frac34; inch wood screws</li>
+</ul>
+
+<p>Assembly is a very simple affair:</p>
+
+<ol>
+<li> Lay the 6x8 sheets with their long edges side by side (<a href="http://www.flickr.com/photos/dinomite/5510660609/in/set-72157626102609509/">photo</a>)</li>
+<li> Apply construction adhesive to half of 6x8 sheet pair and top with one of the 4x6 sheets</li>
+<li> Drill &amp; screw edges every 6 to 10 inches, and put screws all over the interior as well&ndash;it&rsquo;s OK to put screws anywhere, as you won&rsquo;t be standing on this portion</li>
+<li> Top with weights to ensure layers bond evenly  (<a href="http://www.flickr.com/photos/dinomite/5510661483/in/set-72157626102609509/">photo</a>)</li>
+<li> Apply adhesive to <a href="http://www.flickr.com/photos/dinomite/5511260930/in/set-72157626102609509/">other half</a>, top with remaining 4x6 sheet, and repeat screwing process</li>
+<li> Test fit 4x6 piece of nice plywood in the center of the previously assembled parts and mark edges</li>
+<li> Apply adhesive to the platform between marks, lay nice plywood down and secure with screws along front &amp; back (4 foot) edges only</li>
+<li> Put a <a href="http://www.flickr.com/photos/dinomite/5510663107/in/set-72157626102609509/">crapton of weights</a> on top to ensure your platform comes out flat</li>
+<li> Once everything is dry, give it a coat of deck sealant to make it waterproof</li>
+</ol>
+
+<p>The end result is a platform that can (just barely) be dragged by one person.  If I were doing this whole thing again, I&rsquo;d take one more foot off of each dimension, making for a 5 by 7 foot platform and saving significant weight in the process.  I think this would sill leave enough room for any sort of lifting. </p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/04/09/watching-ipad-applications/">Watching iPad Applications</a></h1>
     <div class="article-title-date">Apr  9, 2011</div>
     <p>Shortly after the release of <a href="http://www.thedaily.com">The Daily</a>, <a href="http://waxy.org">Andy Baio</a> created <a href="http://thedailyindexed.tumblr.com">The Daily: Indexed</a> and, more importantly, described how he created that index in <a href="http://waxy.org/2011/02/how_i_indexed_the_daily/">a blog post</a>.  The crux of his reverse engineering of The Daily app was <a href="http://www.charlesproxy.com">Charles</a>, which he describes how to use in the aforementioned blog post.  Since reading that post, I&rsquo;ve wanted to explore a number of applications on my iPad and iPhone to see what they&rsquo;re really doing when they cause the network indicator to spin.</p>
@@ -339,169 +373,6 @@ As they say at the start line, this isn&rsquo;t your average trail run, mud run,
 </ul>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2010/09/27/signal-handling-in-perl/">Signal Handling in Perl</a></h1>
-    <div class="article-title-date">Sep 27, 2010</div>
-    <p>Perl signal handling is easy.  Simply create a subroutine to handle a signal and register it as handler in the <a href="http://perldoc.perl.org/perlvar.html#%25SIG">%SIG</a> hash:</p>
-
-<pre class="brush: perl">
-#!/usr/bin/env perl
-$SIG{'INT'} = \&sigIntHandler;
-
-sleep 100;
-
-sub sigIntHandler {
-    print "INT caught!\n";
-    exit;
-}
-</pre>
-
-<p>While this is better than nothing, its fairly limited.  Your program is yanked out of its scope, making it difficult to clean up.  Without any state information, how are you supposed to know what to do when you get the signal?  The easiest thing to do is note that you have received a signal in the handler, then check and deal with that fact within any parts of your program that need to do things when signals occur.</p>
-
-<pre class="brush: perl">
-#!/usr/bin/env perl
-$SIG{'INT'} = \&sigIntHandler;
-
-# Flags for signals that have been caught
-my %caught;
-
-while (1) {
-    print "Sleeping 5\n";
-    sleep 5;
-    print "More sleeping\n";
-    sleep 5;
-
-    # If we got SIGINT (2), exit
-    exit if ($caught{'INT'} == 1);
-}
-
-# When we get a signal, set a flag in %caught
-sub sigIntHandler {
-    print "INT caught!\n";
-    $caught{'INT'} = 1;
-}
-</pre>
-
-<p>In this setup, all the signal handler does it set a flag in the <a href="http://www.effectiveperlprogramming.com/blog/630">package global</a> <tt>%caught</tt> that the program received a signal.  The main loop checks each time through to see if a signal has been issued and does what is appropriate; in this case, simply exiting.  Play around with this simple program and notice that when the signal happens, the statement that was being executed is interrupted and Perl starts back up with the next statement once the signal handler returns.</p>
-
-<p>In a real-world example makes things much clearer, demonstrating how you can actually use signals for program management.  At <a href="http://eng.genius.com">Genius.com</a> we have a daemon that starts worker children to perform tasks.  The main loop for each of these children looks something like this:</p>
-
-<pre class="brush: perl">
-# Worker class for daemon
-package ExampleDaemon::Worker;
-use Moose;
-
-# Declare the global
-our $SIG_CAUGHT = 0;
-
-# Explicit constructor in Moose
-sub BUILD {
-    $SIG{'INT'} = \&sigHandler;
-    $SIG{'TERM'} = \&sigHandler;
-}
-
-# Main loop
-sub doWork {
-    my ($self) = @_;
-    my $widgetsMade = 0;
-
-    while (1) {
-        # Make a widget
-
-        # Check for signals each time through
-        last if $SIG_CAUGHT
-    }
-
-    return $widgetsMade;
-}
-
-sub sigHandler {
-    my ($sigName) = @_;
-
-    $SIG_CAUGHT = 1;
-
-    return 1;
-}
-</pre>
-
-<p>Under normal circumstances the parent creates a child and invokes the <tt>doWork()</tt> subroutine.  This subroutine does some work and returns the number of widgets it created.  If the child receives a signal while building widgets, the handler logs and sets a flag.  The main loop checks for this and halts work, returning if a signal has been caught.  Why, you may ask, would a child receive a signal?  Surely <a href="http://www.theregister.co.uk/odds/bofh/">no one</a> will go around kill(1)ing children, right?  I think it&rsquo;s a reasonable assumption.  The real thing I made child signal handlers for is allowing the parent to relay signals, cleanly shutting down the daemon.</p>
-
-<pre class="brush: perl">
-# Main class for daemon
-package ExampleDaemon::Main;
-use Moose;
-
-# Package global so that the signal handlers have access
-our @children;
-
-# Explicit constructor in Moose
-sub BUILD {
-    $SIG{'INT'} = \&cleanupAndShutdown;
-    $SIG{'TERM'} = \&cleanupAndShutdown;
-    $SIG{'HUP'} = \&restartChildren;
-}
-
-sub run {
-    my ($self) = @_;
-
-    my $pfm = Parallel::ForkManager->new($self->numChildren);
-    while (1) {
-        my $pid = $pfm->start;
-
-        if ($pid != 0) {
-            # Parent process
-            push @children, $pid;
-
-            # Start children judiciously
-            sleep 1;
-            next;
-        }
-
-        # Child process; do some work
-        $self->startWorker();
-
-        # Worker finished, clean up the $pfm instance
-        $pfm->finish();
-    }
-
-    # Parent waits here for children to run
-    $pfm->wait_all_children();
-
-    return $widgetsMade;
-}
-
-sub startWorker {
-    my ($self) = @_;
- 
-    my $worker = ExampleDaemon::Worker->new();
-    return $worker->doWork();
-}
-
-# Send TERM to children when we get INT or TERM
-sub cleanupAndShutdown {
-    my ($sigName) = @_;
-
-    kill 15, @children;
-
-    exit;    
-}
-
-# Kill the children, which will respawn, and re-read the logging config file
-sub restartChildren {
-    my ($sigName) = @_;
-
-    kill 15, @children;
-    @children = [];
-
-    my $loggingConfigFile = '/etc/daemonLogging.conf';
-    Log::Log4perl->init($loggingConfigFile);
-
-    return 1;
-}
-</pre>
-
-<p>The parent process utilizes <a href="http://search.cpan.org/perldoc/Parallel::ForkManager">Parallel::ForkManager</a> to spin off children.  We store the PIDs of these children in a package global, <tt>@children</tt>, because the signal handler gets no state information (i.e. it isn&rsquo;t given <tt>$self</tt>), so it can only access things that are global to the package.  As before, we register signal handlers, which do whatever is required.  In the case of <tt>cleanupAndShutdown()</tt> (which handles INT and TERM), we kill all of the children and then <tt>exit</tt> in the parent process.  If the parent process receives a HUP instead, we kill the children and then simply <tt>return</tt> from the signal handler, which returns to the main loop of the parent which will respawn the children. </p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/4/">Next page</a></p>
@@ -527,6 +398,10 @@ sub restartChildren {
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -563,10 +438,6 @@ sub restartChildren {
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -588,6 +459,8 @@ sub restartChildren {
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

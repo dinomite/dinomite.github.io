@@ -28,6 +28,23 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/11/03/voting-systems/">Voting Systems</a></h1>
+    <div class="article-title-date">Nov  3, 2008</div>
+    <p>On the eve of the election, I am thinking about <a href="http://en.wikipedia.org/wiki/Voting_system">voting systems</a> better than that which is currently employed in United States <a href="http://en.wikipedia.org/wiki/General_election">general elections</a>.</p>
+
+<p>Among <a href="http://en.wikipedia.org/wiki/Single-winner_voting_system">single-winner voting systems</a>, the most common is <a href="http://en.wikipedia.org/wiki/Instant-runoff_voting">instant-runoff voting</a> and the simplest, making it the most reasonable choice as a replacement for the single-vote system that we currently use.  In an instant-runoff election, you fill out a ballot showing the order of preference for the candidates available.  When votes are tallied, your number one candidate is used to tally votes; if that candidate did not achieve a majority, then he is eliminated from the election and your second choice is taken.  This continues until a candidate has achieved a majority, thereby winning the election.</p>
+
+<p>IRV allows for voters to cast a ballot for a candidate whom they truly believe in without feeling that they are throwing their vote away.  This solves the Ralph Nader problem from the 2000 election.  Nader was the prime choice for many Americans but his status as a third-party candidate meant that he had no chance of winning the election.  Many who might have wanted to vote for Nader instead voted for one of the two major-party candidates, because their vote would otherwise be wasted.  The few who did vote for Nader, were then blamed for Al Gore&rsquo;s loss of the election, since they most likely would have voted for the Democratic candidate were it not for the Green Party&rsquo;s presence.  Instant-runoff voting keeps third-party candidates from &ldquo;stealing&rdquo; votes from the major parties and makes third-parties viable, since voters can feel confident in voting for such candidates.</p>
+
+<p>Another area of voting that is lacking in the United States is the security and integrity of the voting system.  There are endless reports of electronic voting machines losing votes, miscounting votes or being tampered with.  Creating a system that is both secure and verifiable while at the same time anonymous is not a trivial task but there is a group of people who deal with such odd logic puzzles: cryptographers.  After the fiasco of electronic voting machines in the 2004 election, many people spent time thinking about methods for secure, verifiable voting.  One of those was <a href="http://en.wikipedia.org/wiki/Ron_Rivest">Ron Rivest</a>, the R in RSA, who came up with the <a href="http://en.wikipedia.org/wiki/ThreeBallot">ThreeBallot</a> voting protocol.</p>
+
+<p>The entire protocol is <a href="http://theory.csail.mit.edu/~rivest/Rivest-TheThreeBallotVotingSystem.pdf">detailed in Rivest&rsquo;s paper</a>, but the gist of the system is that the voter fills out three ballots which are identical, save for a unique number identifying each.  Through some cryptographic logic magic, the ballots are marked such that any single ballot of the triplet does not divulge whom the voter cast their ballot for; because the ballot is unique, however, the voter is given a copy of one of the three to take home.  This receipt can later be checked against the ballots that are published so that the voter can verify that their choice was indeed counted.  Again, this publishing doesn&rsquo;t divulge information about whom they voted for, despite the fact that all of the information of the election is published, allowing anyone to perform a recount.</p>
+
+<p>See also:
+<a href="http://www.punchscan.org/">Punchscan</a>
+<a href="http://en.wikipedia.org/wiki/End-to-end_auditable_voting_systems">End-to-end auditable voting systems</a></p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/10/06/a-good-day-for-rum/">A Good Day for Rum</a></h1>
     <div class="article-title-date">Oct  6, 2008</div>
     <p>The passage of the <a href="http://en.wikipedia.org/wiki/Emergency_Economic_Stabilization_Act_of_2008">Emergency Economic Stabilization Act of 2008</a> (<a href="http://en.wikipedia.org/wiki/H.R._1424">H.R. 1424</a>) was a good thing for rum lovers:</p>
@@ -367,11 +384,6 @@ GSSAPIDelegateCredentials yes
 <p>The machines I was SSHing to don&rsquo;t do GSSAPI, so every time I tried to connect my client had to wait a short timeout before trying other authentication methods.  Since I don&rsquo;t care about GSSAPI (few people use it), I simply set those options to <code>no</code> and now my SSH sessions start much more quickly.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/09/03/no-tech-hacking/">No-Tech Hacking</a></h1>
-    <div class="article-title-date">Sep  3, 2008</div>
-    <p>While looking through the <a href="http://www.thelasthope.org/talks.html">audio</a> from <a href="http://www.thelasthope.org">the last hope</a>, I stumbled across <a href="http://johnny.ihackstuff.com/">Johnny Long</a>&rsquo;s talk entitle <a href="http://video.google.com/videoplay?docid=-2160824376898701015">No-Tech Hacking</a>.  I saw this talk a couple of years ago at <a href="http://shmoocon.org/">ShmooCon</a> and re-watched it via the above Google Video link and it&rsquo;s just as good as the first time.  Anyone interested in any sort of security should watch this talk because it&rsquo;s very interesting and very funny.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/8/">Next page</a></p>
@@ -397,6 +409,10 @@ GSSAPIDelegateCredentials yes
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -433,10 +449,6 @@ GSSAPIDelegateCredentials yes
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -458,6 +470,8 @@ GSSAPIDelegateCredentials yes
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

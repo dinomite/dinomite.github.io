@@ -28,6 +28,18 @@
     <p><a href="/page/15/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/08/15/perls-taint-mode/">Perl's Taint Mode</a></h1>
+    <div class="article-title-date">Aug 15, 2007</div>
+    <p>Perl is a great language for web programming and one of the features that makes it well suited is <em>Taint Mode</em>.  Perl&rsquo;s Taint Mode, quite simply, restricts what the programmer can do with variables that are acquired from user input.  If a programs relies on the user to specify something, it&rsquo;s a bad assumption to treat those values as safe for use in operations that may affect the outside world, such as opening files and using tainted values in <code>system()</code> calls.  Perl wont restrict you from using tainted values in innocuous things such as print statements but it does pass taintedness on to other variables that a tainted value touches.  Furthermore, modules such as DBI support recognizing taintedness of variable for safety.</p>
+
+<p>To learn more, check out these articles:</p>
+
+<ul>
+<li><a href="http://www.oreillynet.com/onlamp/blog/2006/11/perls_taint_mode_to_the_rescue.html">Perl&rsquo;s Taint Mode to the Rescue</a></li>
+<li><a href="http://www.webreference.com/programming/perl/taint/">Introduction to Perl&rsquo;s Taint Mode</a></li>
+</ul>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/08/11/chevrolet-hhr-panel/">Chevrolet HHR Panel</a></h1>
     <div class="article-title-date">Aug 11, 2007</div>
     <p>It&rsquo;s not often that I praise any of the American auto manufacturers, least of all Chevrolet.  This isn&rsquo;t because I&rsquo;m a European car fanboy or otherwise prejudiced against American cars but simply because they <a href="http://en.wikipedia.org/wiki/Ford_Five_Hundred">churn</a> <a href="http://en.wikipedia.org/wiki/Chevrolet_Impala">out</a> <a href="http://en.wikipedia.org/wiki/Pontiac_Aztek">so</a> <a href="http://en.wikipedia.org/wiki/Dodge_Neon">much</a> <a href="http://en.wikipedia.org/wiki/Oldsmobile">crap</a>.  The chronic problem for manufacturers is that of  <a href="http://www.codinghorror.com/blog/archives/000321.html">least-common-deonminator, good-enough, penny-pinching engineering</a>.</p>
@@ -105,47 +117,6 @@ sudo dpkg-reconfigure libpaper1
     <p>Vim can show you non-printing characters simply by issuing the command <code>:set invlist</code> which works just like the old <strong>reveal codes</strong>  in WordPerfect or Word&rsquo;s <strong>show &#xB6;</strong>.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/07/16/cooking-with-ska-part-2/">Cooking With Ska Part 2</a></h1>
-    <div class="article-title-date">Jul 16, 2007</div>
-    <p>Five Iron Frenzy has a very good song entitled <em>Rhubarb Pie</em>, though it fails to give a recipe for the desert.</p>
-
-<pre>
-Well lately I've been thinkin'
-about some good home cookin',
-just like that I haven't eaten'
-in the longest time.
-Now I like potato chips,
-please don't get me wrong.
-But I haven't tasted mama's rhubarb pie in so very long.
-
-Rhubarb pie, in the summer.
-Rhubarb pie, made by my mother.
-Nothing better in the winter,
-than rhurbarb pie after dinner.
-
-Twinkes may be better,
-than a hole in the sweater,
-and a hole in the sweater,
-beats a poke in the eye.
-If I had my choice,
-I'd leave this gas station store.
-And then I'd travel back in time,
-and I'd sit down and have some more.
-
-Rhubarb pie, in the summer.
-Rhubarb pie, made by my mother.
-Nothing better in the winter,
-than rhurbarb pie after dinner.
-
-Looking at the picture,
-in the Sunday paper,
-of the politician, he's talkn' to the press.
-He looks like he's been eating lemons all his life.
-Well I think mama's rhubarb pie
-could save solve more problems overnight.
-</pre>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/17/">Next page</a></p>
@@ -171,6 +142,10 @@ could save solve more problems overnight.
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -207,10 +182,6 @@ could save solve more problems overnight.
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -232,6 +203,8 @@ could save solve more problems overnight.
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

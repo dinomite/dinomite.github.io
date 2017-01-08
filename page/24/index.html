@@ -28,6 +28,24 @@
     <p><a href="/page/23/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2006/03/29/marvell-gigabit-ethernet-adapter/">Marvell Gigabit ethernet adapter</a></h1>
+    <div class="article-title-date">Mar 29, 2006</div>
+    <p>I bought a Shuttle SB86i a few months ago, which is an Intel based small form factor system (<a href="http://www.silentpcreview.com/article230-page1.html">reviewed by Silent PC Review</a>) which came with an on-board gigabit ethernet adapter.  This piece is referred to by <code>lspci</code> as a &ldquo;Marvell Technology Groupl Ltd. 88E8053 Gigabit Ethernet Controller (rev 15)&rdquo; and by <code>dmesg</code> as a &ldquo;Yukon Gigabit Ethernet 10/100/1000Base-T Adapter&rdquo;.  Either way, the chipset is made by SysKonnect and the driver in the kernel tree (sk98lin) just plain doesn&rsquo;t work.  A quick search  (via Google, what else?) turned up <a href="http://www.grad.name/blog/2006/01/28/marvell-gigabit-on-linux/">this post</a> which referenced <a href="http://www.skd.de/e_en/support/driver.html">SysKonnect&rsquo;s driver page</a>.  Fromt the driver page (I chose the &lsquo;SK-9E21D 10/100/1000Base-T Adapter&rsquo; under &#39;PCI Express Desktop Adapter&rsquo;) I was able to get their very simple package to build the kernel module on my Ubuntu system, all you need are the compiled kernel sources for the kernel you&rsquo;re running.  If you don&rsquo;t know anything about your kernel and you&rsquo;re running Ubuntu (Dapper Drake, probably others), run this command as root to get and compile the kernel sources:</p>
+
+<pre><code>
+~# KERNEL_VERSION=`uname -r|grep -o "2\.[4|6]\.[1|2|][0-9]"` &&\
+ apt-get install linux-source-$KERNEL_VERSION &&\
+ cd /usr/src && /bin/tar jxf linux-source-$KERNEL_VERSION.tar.bz2 &&\
+ ln -s linux-source-$KERNEL_VERSION linux &&\
+ cd linux-source-$KERNEL_VERSION &&\
+ cp /boot/config-$KERNEL_VERSION-* .config &&\
+ make oldconfig && make
+</code></pre>
+
+<p>&hellip;and then install the driver from SysKonnect.  If you don&rsquo;t know what the above comman does, pick it apart and figure it out!  That&rsquo;s what Linux is all about.
+(cool regex, eh?)</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/03/26/loss-prevention-and-you/">Loss Prevention and You</a></h1>
     <div class="article-title-date">Mar 26, 2006</div>
     <p>I just read <a href="http://www.die.net/musings/bestbuy/">some</a> <a href="http://episteme.arstechnica.com/eve/ubb.x?a=tpc&amp;s=50009562&amp;f=34709834&amp;m=888000162">interesting</a> <a href="http://crimedoctor.com/loss_prevention_3.htm">stories</a> about those &ldquo;exit bag checks&rdquo; that many stores have implemented in the past few years, namely, Best Buy.  Unsurprisingly showing your receipt to the goon at the door and letting him inspect your purchase is entirely optional, from a legal standpoint.  The store&rsquo;s only powers to detain you are if they suspect you of shoplifting which requires that they:</p>
@@ -128,11 +146,6 @@ Big D and the Kids Table: 347</pre>
     <p>Do you administer or use unix systems remotely?  Ones that log you out if you&rsquo;re idle for long enough?  <a href="http://www.laffeycomputer.com/spinner.html">Spinner</a> is a program that runs in the background and periodically sends characters to keep your session from going idle.  Cool.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2006/02/24/list-of-songs-with-titles-that-do-not-appear-in-the-lyrics/">List of songs with titles that do not appear in the lyrics</a></h1>
-    <div class="article-title-date">Feb 24, 2006</div>
-    <p>I was browsing around <a href="http://en.wikipedia.org">my favorite interwebsite</a> and I noticed <a href="http://en.wikipedia.org/wiki/List_of_songs_with_titles_that_don't_appear_in_the_lyrics">this page</a> .  Ok, so maybe not everything on Wikipedia is useful&hellip;</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/25/">Next page</a></p>
@@ -158,6 +171,10 @@ Big D and the Kids Table: 347</pre>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -194,10 +211,6 @@ Big D and the Kids Table: 347</pre>
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -219,6 +232,8 @@ Big D and the Kids Table: 347</pre>
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

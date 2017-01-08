@@ -28,6 +28,169 @@
     <p><a href="/page/3/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2010/09/27/signal-handling-in-perl/">Signal Handling in Perl</a></h1>
+    <div class="article-title-date">Sep 27, 2010</div>
+    <p>Perl signal handling is easy.  Simply create a subroutine to handle a signal and register it as handler in the <a href="http://perldoc.perl.org/perlvar.html#%25SIG">%SIG</a> hash:</p>
+
+<pre class="brush: perl">
+#!/usr/bin/env perl
+$SIG{'INT'} = \&sigIntHandler;
+
+sleep 100;
+
+sub sigIntHandler {
+    print "INT caught!\n";
+    exit;
+}
+</pre>
+
+<p>While this is better than nothing, its fairly limited.  Your program is yanked out of its scope, making it difficult to clean up.  Without any state information, how are you supposed to know what to do when you get the signal?  The easiest thing to do is note that you have received a signal in the handler, then check and deal with that fact within any parts of your program that need to do things when signals occur.</p>
+
+<pre class="brush: perl">
+#!/usr/bin/env perl
+$SIG{'INT'} = \&sigIntHandler;
+
+# Flags for signals that have been caught
+my %caught;
+
+while (1) {
+    print "Sleeping 5\n";
+    sleep 5;
+    print "More sleeping\n";
+    sleep 5;
+
+    # If we got SIGINT (2), exit
+    exit if ($caught{'INT'} == 1);
+}
+
+# When we get a signal, set a flag in %caught
+sub sigIntHandler {
+    print "INT caught!\n";
+    $caught{'INT'} = 1;
+}
+</pre>
+
+<p>In this setup, all the signal handler does it set a flag in the <a href="http://www.effectiveperlprogramming.com/blog/630">package global</a> <tt>%caught</tt> that the program received a signal.  The main loop checks each time through to see if a signal has been issued and does what is appropriate; in this case, simply exiting.  Play around with this simple program and notice that when the signal happens, the statement that was being executed is interrupted and Perl starts back up with the next statement once the signal handler returns.</p>
+
+<p>In a real-world example makes things much clearer, demonstrating how you can actually use signals for program management.  At <a href="http://eng.genius.com">Genius.com</a> we have a daemon that starts worker children to perform tasks.  The main loop for each of these children looks something like this:</p>
+
+<pre class="brush: perl">
+# Worker class for daemon
+package ExampleDaemon::Worker;
+use Moose;
+
+# Declare the global
+our $SIG_CAUGHT = 0;
+
+# Explicit constructor in Moose
+sub BUILD {
+    $SIG{'INT'} = \&sigHandler;
+    $SIG{'TERM'} = \&sigHandler;
+}
+
+# Main loop
+sub doWork {
+    my ($self) = @_;
+    my $widgetsMade = 0;
+
+    while (1) {
+        # Make a widget
+
+        # Check for signals each time through
+        last if $SIG_CAUGHT
+    }
+
+    return $widgetsMade;
+}
+
+sub sigHandler {
+    my ($sigName) = @_;
+
+    $SIG_CAUGHT = 1;
+
+    return 1;
+}
+</pre>
+
+<p>Under normal circumstances the parent creates a child and invokes the <tt>doWork()</tt> subroutine.  This subroutine does some work and returns the number of widgets it created.  If the child receives a signal while building widgets, the handler logs and sets a flag.  The main loop checks for this and halts work, returning if a signal has been caught.  Why, you may ask, would a child receive a signal?  Surely <a href="http://www.theregister.co.uk/odds/bofh/">no one</a> will go around kill(1)ing children, right?  I think it&rsquo;s a reasonable assumption.  The real thing I made child signal handlers for is allowing the parent to relay signals, cleanly shutting down the daemon.</p>
+
+<pre class="brush: perl">
+# Main class for daemon
+package ExampleDaemon::Main;
+use Moose;
+
+# Package global so that the signal handlers have access
+our @children;
+
+# Explicit constructor in Moose
+sub BUILD {
+    $SIG{'INT'} = \&cleanupAndShutdown;
+    $SIG{'TERM'} = \&cleanupAndShutdown;
+    $SIG{'HUP'} = \&restartChildren;
+}
+
+sub run {
+    my ($self) = @_;
+
+    my $pfm = Parallel::ForkManager->new($self->numChildren);
+    while (1) {
+        my $pid = $pfm->start;
+
+        if ($pid != 0) {
+            # Parent process
+            push @children, $pid;
+
+            # Start children judiciously
+            sleep 1;
+            next;
+        }
+
+        # Child process; do some work
+        $self->startWorker();
+
+        # Worker finished, clean up the $pfm instance
+        $pfm->finish();
+    }
+
+    # Parent waits here for children to run
+    $pfm->wait_all_children();
+
+    return $widgetsMade;
+}
+
+sub startWorker {
+    my ($self) = @_;
+ 
+    my $worker = ExampleDaemon::Worker->new();
+    return $worker->doWork();
+}
+
+# Send TERM to children when we get INT or TERM
+sub cleanupAndShutdown {
+    my ($sigName) = @_;
+
+    kill 15, @children;
+
+    exit;    
+}
+
+# Kill the children, which will respawn, and re-read the logging config file
+sub restartChildren {
+    my ($sigName) = @_;
+
+    kill 15, @children;
+    @children = [];
+
+    my $loggingConfigFile = '/etc/daemonLogging.conf';
+    Log::Log4perl->init($loggingConfigFile);
+
+    return 1;
+}
+</pre>
+
+<p>The parent process utilizes <a href="http://search.cpan.org/perldoc/Parallel::ForkManager">Parallel::ForkManager</a> to spin off children.  We store the PIDs of these children in a package global, <tt>@children</tt>, because the signal handler gets no state information (i.e. it isn&rsquo;t given <tt>$self</tt>), so it can only access things that are global to the package.  As before, we register signal handlers, which do whatever is required.  In the case of <tt>cleanupAndShutdown()</tt> (which handles INT and TERM), we kill all of the children and then <tt>exit</tt> in the parent process.  If the parent process receives a HUP instead, we kill the children and then simply <tt>return</tt> from the signal handler, which returns to the main loop of the parent which will respawn the children. </p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2010/07/09/wasted-energy/">Wasted Energy</a></h1>
     <div class="article-title-date">Jul  9, 2010</div>
     <p>The leaking <a href="http://en.wikipedia.org/wiki/Macondo_Prospect">MC252</a> oil well is releasing an incredible amount of hydrocarbonsâ€”estimates have moved upwards from BP&rsquo;s ludicrously low 5,000 barrels per day all the way up to 100,000 bbl/day.  Beyond environmental effects of this released material, the amount of potential energy held in the hydrocarbons that are going uncaptured is staggering.</p>
@@ -457,48 +620,6 @@ select 0
 <p><img src="http://dinomite.net/2009/10/BruceSchneierPlugin-600x419.png" alt="BruceSchneierPlugin" title="BruceSchneierPlugin" width="600" height="419" class="aligncenter size-medium wp-image-928" /></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2009/09/28/skittles-vodka/">Skittles Vodka</a></h1>
-    <div class="article-title-date">Sep 28, 2009</div>
-    <p>When walking through Ikea one day, I spotted the perfect bottles in which to make Skittles vodka.  Starting with these, here is the process for making this infusion.
-<a href="http://www.flickr.com/photos/dinomite/3964554487/" class="tt-flickr tt-flickr-Small" title="Skittles vodka materials"><img class="alignright" src="http://farm3.static.flickr.com/2465/3964554487_50b848e127_m.jpg" alt="Skittles vodka materials" width="240" height="122" /></a> 
-<h3>Materials</h3>
-<ul>
-    <li>1300 grams of Skittles [$18 at Costco]</li>
-    <li>4 liters of vodka [$60 at Costco]</li>
-    <li>Five 1 liter bottles [$25 at Ikea]</li>
-</ul>
-<h3>Tools</h3>
-<ul>
-    <li>Paper towels</li>
-    <li>Colander</li>
-    <li>Funnel</li>
-    <li>1 liter bowl</li>
-    <li>5 bowls</li>
-</ul>
-<h2>Sorting</h2>
-<a href="http://www.flickr.com/photos/dinomite/3964553495/" class="tt-flickr tt-flickr-Small" title="Sorting Skittles"><img class="alignleft" src="http://farm3.static.flickr.com/2585/3964553495_544ab42731_m.jpg" alt="Sorting Skittles" width="240" height="158" /></a>
-The first tedious part of this process is sorting the Skittles into their various colors (ostensibly, flavors).  I sat down in front of the <a href="http://en.wikipedia.org/wiki/2009_Singapore_Grand_Prix">Singapore Grand Prix</a> with six plates: one for each of the five Skittles colors and an extra on which to dump packages for sorting.  I bough a box of 36 normal-size (61 gram) packages of Skittles from Costco and ended up using 22 of the packs.  To sort them, I poured a few packages onto one of the plates and separated the candies onto the five others.</p>
-
-<p>After consulting <a href="http://www.instructables.com/id/Shoot-the-Rainbow-Skittles-Vodka/">other</a> who had <a href="http://mixthatdrink.com/skittles-vodka-tutorial/">made Skittles vodka</a>, I settled on needing 240 Skittles per liter of vodka.</p>
-
-<p><br>
-<h2>Assembly</h2>
-Now comes the easy part.  To get the Skittles into my narrow-mouthed bottles, I made a simple paper funnel and carefully poured the candies in.  Easy.  Then, I just used my liquid funnel to fill each bottle with vodka.</p>
-
-<p><a href="http://www.flickr.com/photos/dinomite/3964551461/" class="tt-flickr tt-flickr-Small" title="The assembled Skittles vodka team"><img class="alignright" src="http://farm3.static.flickr.com/2536/3964551461_2316f38122_m.jpg" alt="The assembled Skittles vodka team" width="240" height="172" /></a> </p>
-
-<h2>Shake and Wait</h2>
-
-<p>After each of the containers was filled, I gave them a quick shake; within a few hours, much of the candies had dissolved.  I left them overnight, and by the next day all that was left was a small bed of white pebbles in the bottom of each bottle.</p>
-
-<h2>Filter</h2>
-
-<p>Finally, the filtration.  This step is the most difficult, because it requires a lot of patience even though you&rsquo;re almost done!</p>
-
-<p><a href="http://www.flickr.com/photos/dinomite/3964546733/" class="tt-flickr tt-flickr-Small" title="Completed Skittles vodka"><img class="alignleft" src="http://farm3.static.flickr.com/2473/3964546733_0ab8c7a1db_m.jpg" alt="Completed Skittles vodka" width="240" height="128" /></a>
-<p>A lot of the mass of Skittles is binderâ€”corn starch and the like.  It leaves a significant amount of scum onthe top of your Skittles vodka mix.  To strain it off, I started by using standard office coffee filters, but those clogged very quickly.  I switched to normal paper towels, which made filtering take about 5 minutes per bottle.  After filtering, re-bottle and enjoy your super-sweet vodka rainbow!</p></p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/5/">Next page</a></p>
@@ -524,6 +645,10 @@ Now comes the easy part.  To get the Skittles into my narrow-mouthed bottles, I 
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -560,10 +685,6 @@ Now comes the easy part.  To get the Skittles into my narrow-mouthed bottles, I 
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -585,6 +706,8 @@ Now comes the easy part.  To get the Skittles into my narrow-mouthed bottles, I 
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

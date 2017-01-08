@@ -28,6 +28,15 @@
     <p><a href="/page/22/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2006/05/06/obfuscated-code/">Obfuscated code</a></h1>
+    <div class="article-title-date">May  6, 2006</div>
+    <p>I&rsquo;m doing a project on MD5 collisions for my parallel computing class and, like all cryptography, the code involves a lot of hex numbers (in standard notation, 0xf00d, 0xbeef, etc.) which naturaly makes parts of the code difficult to read.  That&rsquo;s simply the nature of <a href="http://en.wikipedia.org/wiki/MD5#Algorithm">the algorithm</a>.  Some programmers (often just mathematicians) insist on making the code even more illedgible with things like this:</p>
+
+<p><code>while (counter &lt; (1 &lt;&lt; 9))</code></p>
+
+<p>The bigger problem is that when I see something like that I&rsquo;m confused; I am both impressed by their cleverness (that loops while counter is less than 512) but also annoyed by their needless obfuscation.  I guess one could argue that a left shift is more ledgible, because if it were a number larger than 10 or so, people wouldn&rsquo;t know the significance.  Who really knows of the top of their head that 262144 is 2^18?  So, in the end, it&rsquo;s not necessarily just obfuscation but really, most programmers will recognize at least up to 2^10 and those who know the internets should know 2^16 as well.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2006/05/01/random-number-generators/">Random number generators</a></h1>
     <div class="article-title-date">May  1, 2006</div>
     <p>As I read more about cryptography (I&rsquo;m currently making my way through the great tome, <a href="http://www.amazon.com/gp/product/0471117099/sr=8-1/qid=1145849010/ref=pd_bbs_1/102-6924799-8398511?%5Fencoding=UTF8">Applied Cryptography</a>) I&rsquo;ve been thinking more about random number generators.  Whenever you read about cryptography or how they build slot machines (Kevin Mitnick covers this in <a href="http://www.amazon.com/gp/product/0764569597/sr=8-1/qid=1145849136/ref=pd_bbs_1/102-6924799-8398511?%5Fencoding=UTF8">The Art of Intrusion</a>) there is talk of how bad computer random number generators are, particularly the standard functions that are part of Java, libc or .NET.  Even if you take the time to seed them, the pseudo-randomness is of quite low quality.  I just found an article on some <a href="http://www.qbrundage.com/michaelb/pubs/essays/random_number_generation">random number generators you can implement yourself</a>.  Cool.</p>
@@ -129,24 +138,6 @@ $mech->follow_link(
 </pre>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2006/03/29/marvell-gigabit-ethernet-adapter/">Marvell Gigabit ethernet adapter</a></h1>
-    <div class="article-title-date">Mar 29, 2006</div>
-    <p>I bought a Shuttle SB86i a few months ago, which is an Intel based small form factor system (<a href="http://www.silentpcreview.com/article230-page1.html">reviewed by Silent PC Review</a>) which came with an on-board gigabit ethernet adapter.  This piece is referred to by <code>lspci</code> as a &ldquo;Marvell Technology Groupl Ltd. 88E8053 Gigabit Ethernet Controller (rev 15)&rdquo; and by <code>dmesg</code> as a &ldquo;Yukon Gigabit Ethernet 10/100/1000Base-T Adapter&rdquo;.  Either way, the chipset is made by SysKonnect and the driver in the kernel tree (sk98lin) just plain doesn&rsquo;t work.  A quick search  (via Google, what else?) turned up <a href="http://www.grad.name/blog/2006/01/28/marvell-gigabit-on-linux/">this post</a> which referenced <a href="http://www.skd.de/e_en/support/driver.html">SysKonnect&rsquo;s driver page</a>.  Fromt the driver page (I chose the &lsquo;SK-9E21D 10/100/1000Base-T Adapter&rsquo; under &#39;PCI Express Desktop Adapter&rsquo;) I was able to get their very simple package to build the kernel module on my Ubuntu system, all you need are the compiled kernel sources for the kernel you&rsquo;re running.  If you don&rsquo;t know anything about your kernel and you&rsquo;re running Ubuntu (Dapper Drake, probably others), run this command as root to get and compile the kernel sources:</p>
-
-<pre><code>
-~# KERNEL_VERSION=`uname -r|grep -o "2\.[4|6]\.[1|2|][0-9]"` &&\
- apt-get install linux-source-$KERNEL_VERSION &&\
- cd /usr/src && /bin/tar jxf linux-source-$KERNEL_VERSION.tar.bz2 &&\
- ln -s linux-source-$KERNEL_VERSION linux &&\
- cd linux-source-$KERNEL_VERSION &&\
- cp /boot/config-$KERNEL_VERSION-* .config &&\
- make oldconfig && make
-</code></pre>
-
-<p>&hellip;and then install the driver from SysKonnect.  If you don&rsquo;t know what the above comman does, pick it apart and figure it out!  That&rsquo;s what Linux is all about.
-(cool regex, eh?)</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/24/">Next page</a></p>
@@ -172,6 +163,10 @@ $mech->follow_link(
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
+              <div class="article-link-date">Sep 23, 2016</div>
+            </li>
             <li>
               <a href="/blog/2016/05/18/optional-authentication-with-dropwizard/">Optional Authentication with Dropwizard</a>
               <div class="article-link-date">May 18, 2016</div>
@@ -208,10 +203,6 @@ $mech->follow_link(
               <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
               <div class="article-link-date">Jan 25, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2013/06/27/goruck-challenge-preparation/">GORUCK Challenge</a>
-              <div class="article-link-date">Jun 27, 2013</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -233,6 +224,8 @@ $mech->follow_link(
             <li><a href="/blog/tags/java/">Java (1)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
+            <li><a href="/blog/tags/diy/">DIY (1)</a></li>
+            <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
       </ol>
     </li>
   </ul>

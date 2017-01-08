@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/blog</id>
+  <link href="http://blog.url.com/blog"/>
+  <link href="http://blog.url.com/atom.xml" rel="self"/>
+  <updated>2016-09-22T20:00:00-04:00</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/"/>
+    <id>http://blog.url.com/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/</id>
+    <published>2016-09-22T20:00:00-04:00</published>
+    <updated>2016-09-20T18:08:47-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;The &lt;a href="https://www.amazon.com/Ruffwear-Roamer-Leash-Large-Obsidian/dp/B00HE4Y4RK/ref=as_li_ss_il?ie=UTF8&amp;amp;qid=1473815307&amp;amp;sr=8-1&amp;amp;keywords=ruffwear+roamer&amp;amp;linkCode=li2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=fc8e0acc8fe28c14d2fcfcbb638bf137"&gt;Ruffwear® Roamer™&lt;/a&gt; leash is wonderful for running and great for anytime when you have an enthusiastic dog who pulls or lurches after prey.  The leash is made of tubular webbing with elastic down the center that keeps the length manageable while also softening the blows from your leash partner.  Unfortunately, it isn&amp;rsquo;t very durable and the tension of the elastic is insufficient for strong dogs.  My beagle-terrier-thing is only 30 pounds but is very strong and easily exceeded the Roamer™&amp;rsquo;s elastic, defeting much of the leash&amp;rsquo;s purpose.  I figured I could do better.&lt;/p&gt;
+
+&lt;h1&gt;Materials&lt;/h1&gt;
+
+&lt;p&gt;In order to make a 7.5–8.5 inch leash, depending upon whether you&amp;rsquo;re wearing it as a belt or not, I started with a 10 foot length of &lt;a href="https://www.amazon.com/BlueWater-Ropes-Climb-Spec%C2%AE-Webbing-Black/dp/B004AGOHT0/ref=as_li_ss_il?ie=UTF8&amp;amp;qid=1473815452&amp;amp;sr=8-1&amp;amp;keywords=tubular+webbing&amp;amp;linkCode=li2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=89ba46ef5b0db13cedc54214709d81ab"&gt;one inch wide tubular webbing&lt;/a&gt;.  I used &lt;a href="https://www.amazon.com/TheraBand-Professional-Resistance-Exercise-Conditioning/dp/B00066D654/ref=as_li_ss_il?ie=UTF8&amp;amp;qid=1473815413&amp;amp;sr=8-1&amp;amp;keywords=thera-band+tubing+special+heavy&amp;amp;linkCode=li2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=4bbc12c473e8108df5d3fa6c7b50524a"&gt;Thera-Band surgical tubing&lt;/a&gt; in the black &amp;ldquo;Special Heavy&amp;rdquo; strength, which provides ample resistance for very strong medium dogs and fits well down the center of one inch webbing.  Use 40% as much surgical tubing as the stretch portion of your leash—in my case the stretch portion is 6½ feet (78 inches) so the lease has 32 inches of tubular webbing.&lt;/p&gt;
+
+&lt;p&gt;For the handle, a &lt;a href="https://www.amazon.com/10-Adjustable-Release-Plastic-Buckles/dp/B00DCZRLZW/ref=as_li_ss_tl?ie=UTF8&amp;amp;qid=1473815767&amp;amp;sr=8-3&amp;amp;keywords=1+inch+side+release+buckle&amp;amp;linkCode=ll1&amp;amp;tag=dinomitenet-20&amp;amp;linkId=131e0096cc6f7c63b13d116703446a45"&gt;side-release buckle&lt;/a&gt; allows you to use the leash both with a normal handle and as a belt.  If you don&amp;rsquo;t care about being able to belt the leash, you could omit this and simply make a loop handle.  I&amp;rsquo;ve had too many clips that open when the dog charges into a bush, so I use an &lt;a href="https://www.amazon.com/Camp-5118103-Orbit-Twist-Carabiner/dp/B00372AVQ6/ref=as_li_ss_tl?ie=UTF8&amp;amp;qid=1473815910&amp;amp;sr=8-4&amp;amp;keywords=locking+carabiner+automatic&amp;amp;linkCode=ll1&amp;amp;tag=dinomitenet-20&amp;amp;linkId=c1772c822ed001e688afa5703ffcff25"&gt;automatic locking carabiner&lt;/a&gt; for the dog end of the leash.&lt;/p&gt;
+
+&lt;h1&gt;Tools&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.com/COATS-CLARK-Heavy-Thread-125-Yard/dp/B001MUFKNE/ref=as_li_ss_tl?ie=UTF8&amp;amp;qid=1473816090&amp;amp;sr=8-1&amp;amp;keywords=heavy+duty+thread&amp;amp;linkCode=ll1&amp;amp;tag=dinomitenet-20&amp;amp;linkId=51227a186ffe12d2493a05738ef348dd"&gt;Heavy duty thread&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.amazon.com/Singer-Assorted-Hand-Needles-45-Count/dp/B002PI751C/ref=as_li_ss_tl?ie=UTF8&amp;amp;qid=1473816125&amp;amp;sr=8-1&amp;amp;keywords=sewing+needles&amp;amp;linkCode=ll1&amp;amp;tag=dinomitenet-20&amp;amp;linkId=2f4964461ba833be8c916f1499a3619f"&gt;Sewing needle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Scissors&lt;/li&gt;
+&lt;li&gt;Lighter or matches&lt;/li&gt;
+&lt;li&gt;&amp;frac14; inch by 2-3 foot long metal rod&lt;/li&gt;
+&lt;li&gt;Binder clips&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Construction&lt;/h1&gt;
+
+&lt;p&gt;Getting the slack surgical tubing threaded through the webbing, with 2.5 times as much webbing bunched up along its length, was the most difficult part conceptually, but after some trial and error I came up with a very easy solution.  I found a ¼&amp;quot; metal rod that fit very tightly into the surgical tubing&amp;rsquo;s center.  Forcing an inch worth of the tubing down over the rod makes for enough friction that you can apply quite a lot of force and stretch the surgical tubing wihtout it coming free.&lt;/p&gt;
+
+&lt;p&gt;With this odd arrangment setup, begin by threading the dog-end of the tubular webbing over the metal rod, and keep threading until it meets up with the open end of the surgical tubing.  When those ends are lined up, secure the elastic inside of the webbing with a binder clip.  Then, it&amp;rsquo;s just a process of stretching the surgical tubing and feeding more webbing over the rod and onto the tubing with it taught.  I fed 6½ feet of webbing onto my 32 inches of webbing, leaving the remaining 3½ feet of webbing for constructing the handle.&lt;/p&gt;
+
+&lt;p&gt;Once you have all of the webbing you want bunched up on the surgical tubing, grip the tubing through the webbing near where the rod is attached to the surgical tubing very tightly and pull the rod straight out of the surgical tubing.  Now it&amp;rsquo;s time to sew.&lt;/p&gt;
+
+&lt;p&gt;Sewing is the other important technique of this project.  The surgical tubing, like most elastomers, doesn&amp;rsquo;t respond well to being cut or punctured, so it is important to avoid sending the needle through it whilst sewing.  In order to keep the surgical tubing in place the technique I have settled on is crimping it tightly.  Fold over the last inch of surgical tubing, and the webbing it is within, back onto itself.  Secure the fold with a binder clip and then sew either side of the webbing tightly together about ¼ inch from the end of the tubing.  Follow this with some stiches across the webbing.  Remove hte binder clip and repeat near the folded end of the joint.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Optional Authentication with Dropwizard</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/05/18/optional-authentication-with-dropwizard/"/>
+    <id>http://blog.url.com/blog/2016/05/18/optional-authentication-with-dropwizard/</id>
+    <published>2016-05-17T20:00:00-04:00</published>
+    <updated>2016-05-18T09:46:36-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="http://dropwizard.io"&gt;Dropwizard&lt;/a&gt; provides a great framework for authentication &amp;amp; authorization.  &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authenticator.html"&gt;&lt;code&gt;Authenticator&lt;/code&gt;&lt;/a&gt;s do what their name implies, returning a &lt;a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true"&gt;&lt;code&gt;Principal&lt;/code&gt;&lt;/a&gt; (probably your &lt;code&gt;User&lt;/code&gt; object) that servlets can use for building responses.  The &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authorizer.html"&gt;&lt;code&gt;Authorizer&lt;/code&gt;&lt;/a&gt; interface has a single methoed, &lt;code&gt;authorize()&lt;/code&gt;, which takes a &lt;code&gt;Principal&lt;/code&gt; and a string role to authorize access for.  These get wrapped in an &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/AuthFilter.html"&gt;&lt;code&gt;AuthFilter&lt;/code&gt;&lt;/a&gt; which extracts credentials from the requst and passed on to the &lt;code&gt;Authenticator&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;With the authen &amp;amp; authz classes in place protecting resources is easy: you simply annotate them with one of &lt;code&gt;@PermitAll&lt;/code&gt;, &lt;code&gt;@RolesAllowed&lt;/code&gt;, or &lt;code&gt;@DenyAll&lt;/code&gt;.  The last one does exactly what it says on the tin.  A specific role or set of roles can be permitted access with the &lt;code&gt;@RolesAllowed&lt;/code&gt; annotation, to which you pass a &lt;code&gt;String&lt;/code&gt; or &lt;code&gt;String[]&lt;/code&gt; of roles.  &lt;code&gt;@PermitAll&lt;/code&gt; allows any &lt;em&gt;authenticated&lt;/em&gt; user to access the resource.  What is missing here is an annotation to allow optionally authenticated resources—allowing you to customize a response for a known user but deliver a generic response to anonymous visitors.&lt;/p&gt;
+
+&lt;h1&gt;Optionally protected resources&lt;/h1&gt;
+
+&lt;p&gt;The Dropwizard manual gives a &lt;a href="http://www.dropwizard.io/0.9.2/docs/manual/auth.html#protecting-resources"&gt;cursory explanation&lt;/a&gt; of how to implement optional authentication:&lt;/p&gt;
+
+&lt;p&gt;&lt;tt&gt;
+If you have a resource which is optionally protected (e.g., you want to display a logged-in user’s name but not require login), you need to implement a custom filter which injects a security context containing the principal if it exists, without performing authentication.
+&lt;/tt&gt;&lt;/p&gt;
+
+&lt;p&gt;The process for optional resources involves two &lt;code&gt;AuthFilter&lt;/code&gt;s: one to check &amp;amp; process credentials for a logged-in user and a second that provides a default user.  These can be hit in turn with a &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/chained/ChainedAuthFilter.html"&gt;&lt;code&gt;ChainedAuthFilter&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll show the important parts of how I accomplished this with code examples written in a mix of Java and &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Wiring&lt;/h1&gt;
+
+&lt;p&gt;Setting up Dropwizard&amp;rsquo;s authentication involves creating an &lt;code&gt;AuthFilter&lt;/code&gt; to which you pass the &lt;code&gt;Authenticator&lt;/code&gt; and &lt;code&gt;Authorizer&lt;/code&gt; that it will use.  Creating a &lt;code&gt;ChainedAuthFilter&lt;/code&gt; is easy, just pass a &lt;code&gt;List&amp;lt;AuthFilter&amp;gt;&lt;/code&gt; with the filters in the order they should be executed.  Dropwizard tries each of the &lt;code&gt;AuthFilter&lt;/code&gt;s in turn until one returns successfully.&lt;/p&gt;
+
+&lt;p&gt;In the application&amp;rsquo;s &lt;code&gt;run()&lt;/code&gt; method:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// Application.java&lt;/span&gt;
+&lt;span class="n"&gt;ApiKeyAuthFilter&lt;/span&gt; &lt;span class="n"&gt;apiKey&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ApiKeyAuthFilter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Builder&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthenticator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apiKeyAuthenticator&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthorizer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;authorizer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setPrefix&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"API key"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildAuthFilter&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="n"&gt;DefaultAuthFilter&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;DefaultAuthFilter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Builder&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthenticator&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;defaultAuthenticator&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setAuthorizer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;authorizer&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setPrefix&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"default"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildAuthFilter&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+
+&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AuthFilter&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;filterList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Lists&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;newArrayList&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apiKey&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;ChainedAuthFilter&lt;/span&gt; &lt;span class="n"&gt;chainedAuthFilter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ChainedAuthFilter&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class="n"&gt;filterList&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jersey&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;register&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;AuthDynamicFeature&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chainedAuthFilter&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jersey&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;register&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RolesAllowedDynamicFeature&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;AuthFilter&lt;/code&gt;s and their respective &lt;code&gt;Authenticator&lt;/code&gt;s are described below.&lt;/p&gt;
+
+&lt;h1&gt;API key authentication&lt;/h1&gt;
+
+&lt;p&gt;As mentioned, my user authentication is done with an API key that is passed in the Authorization HTTP header.  The filter extracts the value and passes it to the &lt;code&gt;authenticate()&lt;/code&gt; method of &lt;code&gt;ApiKeyAuthenticator&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// ApiKeyAuthFilter.kt&lt;/span&gt;
+&lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;requestContext:&lt;/span&gt; &lt;span class="n"&gt;ContainerRequestContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;credentials&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getFirst&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HttpHeaders&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;AUTHORIZATION&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!&lt;/span&gt;&lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;credentials&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;API_KEY_AUTH&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;WebApplicationException&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unauthHandler&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;realm&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The API key authenticator checks the databse to see if the given API key exists.  If the key is found, the matching &lt;code&gt;User&lt;/code&gt; is returned; if not found, an empty &lt;code&gt;Optional&lt;/code&gt; is returned instead.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// ApiKeyAuthenticator.kt&lt;/span&gt;
+&lt;span class="nd"&gt;@Throws&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;AuthenticationException:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;credentials:&lt;/span&gt; &lt;span class="n"&gt;ApiKey&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;apiKeyDao&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUserIdForAccessToken&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;credentials&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;accessToken&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;userDao&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;empty&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Default authentication&lt;/h1&gt;
+
+&lt;p&gt;If API key authentication fails, either because the user provided invalid credentials or no credentials at all, then the next &lt;code&gt;AuthFilter&lt;/code&gt; configured in the &lt;code&gt;ChainedAuthFilter&lt;/code&gt; is invoked.  Authentication for the default user doesn&amp;rsquo;t actually check anything, so &lt;code&gt;Unit&lt;/code&gt; is passed instead of credentials:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// DefaultAuthFilter.kt&lt;/span&gt;
+&lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;requestContext:&lt;/span&gt; &lt;span class="n"&gt;ContainerRequestContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(!&lt;/span&gt;&lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;requestContext&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"DEFAULT"&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="n"&gt;WebApplicationException&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unauthHandler&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;buildResponse&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;realm&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As the last authenticator to run in the chain, the DefaultAuthenticator never fails, it simply returns a default-constructed &lt;code&gt;User&lt;/code&gt; object.&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// DefaultAuthenticator.kt&lt;/span&gt;
+&lt;span class="nd"&gt;@Throws&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;AuthenticationException:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;authenticate&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;credentials:&lt;/span&gt; &lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Using default auth"&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Usage in servlets&lt;/h1&gt;
+
+&lt;p&gt;The &lt;code&gt;User&lt;/code&gt; object looks like this:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// User.kt&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nf"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="nl"&gt;id:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;roles:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Principal&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;constructor&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;emptyList&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt;
+
+    &lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mutableListOf&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;add&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;roles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;theRoles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;toList&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;hasRole&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;role:&lt;/span&gt; &lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;Boolean&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;roles&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;contains&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;role&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Which allows me to check whether valid authentication was provided within a servlet:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="c1"&gt;// SomeResource.kt&lt;/span&gt;
+&lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="nf"&gt;optionallyAuthenticatedResource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nd"&gt;@Context&lt;/span&gt; &lt;span class="nl"&gt;context:&lt;/span&gt; &lt;span class="n"&gt;SecurityContext&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getUserPrincipal&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;hasRole&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Role&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="c1"&gt;// Do something for authenticated users&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// Do other stuff for all users&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Reading Devise Sessions in Java</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/05/02/reading-devise-sessions-in-java/"/>
+    <id>http://blog.url.com/blog/2016/05/02/reading-devise-sessions-in-java/</id>
+    <published>2016-05-01T20:00:00-04:00</published>
+    <updated>2016-05-04T09:45:44-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I have a Ruby on Rails app that uses &lt;a href="https://github.com/plataformatec/devise"&gt;Devise&lt;/a&gt; for authentication and session management, the latter is really done by &lt;a href="https://github.com/hassox/warden"&gt;Warden&lt;/a&gt;.  We are making a server-side companion for Ruby written in &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt; &amp;amp; Java and want to be able to share sessions between the two runtimes.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://jruby.org/"&gt;JRuby&lt;/a&gt; makes this easy, allowing you to run Ruby on the JVM.  While JRuby supports running entire Ruby applications, for reading sessions we simply want to embed a bit of Ruby within our Java application.  This is accomplished by using &lt;a href="https://github.com/jruby/jruby/wiki/RedBridge"&gt;JRuby Embed (AKA Red Bridge)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, let&amp;rsquo;s look at the Ruby required to read &lt;a href="http://stackoverflow.com/a/23683925/17339"&gt;Warden sessions&lt;/a&gt;.  Our app stores sessions in a local databae, so we don&amp;rsquo;t have to deal with encryption or encoding.  If your sessions are stored in cookies, they will be encrypted—&lt;a href="http://nipperlabs.com/rails-secretkeybase"&gt;this article&lt;/a&gt; should give you what you need to decrypt the session.&lt;/p&gt;
+&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Marshal&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'_csrf_token'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'warden.user.user.key'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'warden.user.user.key'&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The operative part of this is really just one call, &lt;code&gt;Marshal.load(session)&lt;/code&gt;.  That invokes Ruby&amp;rsquo;s built-in serializer, &lt;code&gt;Marshal&lt;/code&gt;, to deserialize the session string.  The subsequent lines just assign variables to make extracting the desired data in Java easier.  Here is that script used in context to pull the information into Java:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt; &lt;span class="nf"&gt;getSession&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;put&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"session"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runScriptlet&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rubyScript&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"userId"&lt;/span&gt;&lt;span class="o"&gt;)).&lt;/span&gt;&lt;span class="na"&gt;intValue&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"authenticatableSalt"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"csrfToken"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The entire Java class looks like this:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.LocalContextScope&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.LocalVariableBehavior&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;org.jruby.embed.ScriptingContainer&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SessionReader&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;ScriptingContainer&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+        &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ScriptingContainer&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LocalContextScope&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;CONCURRENT&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                               &lt;span class="n"&gt;LocalVariableBehavior&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;PERSISTENT&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"s = Marshal.load(session);"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"csrfToken = s['_csrf_token'];"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"userId = s['warden.user.user.key'][0][0];"&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+                                  &lt;span class="s"&gt;"authSalt = s['warden.user.user.key'][1];"&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt; &lt;span class="n"&gt;getSession&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;put&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"session"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runScriptlet&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
+        &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;Long&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"userId"&lt;/span&gt;&lt;span class="o"&gt;)).&lt;/span&gt;&lt;span class="na"&gt;intValue&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+        &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"authSalt"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="n"&gt;container&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"csrfToken"&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;authSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Session&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;userId&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;userId&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;authenticatableSalt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;authenticatableSalt&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;csrfToken&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csrfToken&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using &lt;code&gt;LocalContextScope.CONCURRENT&lt;/code&gt; allows this class to be threadsafe.  JRuby creates a single runtime and shared variables for the &lt;code&gt;ScriptingContainer&lt;/code&gt;, but separate variable mappings for each thread.  The other modifier, &lt;code&gt;LocalVariableBehavior.PERSISTENT&lt;/code&gt;, keeps the local variables around after we call &lt;code&gt;runScriptlet()&lt;/code&gt; allowing for their retrieval back in Java land.&lt;/p&gt;
+
+&lt;p&gt;See the &lt;a href="https://github.com/jruby/jruby/wiki/RedBridgeExamples"&gt;Red Bridge Examples&lt;/a&gt; for more information on using Ruby within Java.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Better Rails.cache Invalidation with Quick Queries</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/"/>
+    <id>http://blog.url.com/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/</id>
+    <published>2016-03-17T20:00:00-04:00</published>
+    <updated>2016-03-18T17:06:01-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Rails &lt;a href="http://guides.rubyonrails.org/caching_with_rails.html"&gt;provides a caching framework&lt;/a&gt;, built-in.  Just set &lt;code&gt;config.cache_store&lt;/code&gt; in your &lt;code&gt;application.rb&lt;/code&gt;.  The easiest way to use caching is using time-base invalidation—you compute something expensive and store it in the cache with an expiration time.  The first time you try to retrieve it after the expiration, recompute &amp;amp; cache the new value.&lt;/p&gt;
+&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Product&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Base&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;expensive_operation&lt;/span&gt;
+    &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;fetch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"product/expensive_operation"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;expires_in: &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;hours&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+      &lt;span class="no"&gt;LVMH&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;API&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;do_it&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Many things in the world don&amp;rsquo;t respond well to only being updated on a wallclock schedule.  User profiles are viewed much more often than they are updated, meaning time-based cache expiration will cause needless regeneration of unchanged values.  Furthermore, when a user does update their profile, not seeing that reflected immediately is confusing.&lt;/p&gt;
+
+&lt;p&gt;The first problem can be ameliorated by using very long expirations and the latter by force-expiring related cache entries when issuing updates.  That last bit leaves a huge potential pitfall: forgetting to invalidate the cache when updating the value.  Another approach for keeping your cache fresh is to use a quickly-retrieved value that indicates whether the cache needs to be regenerated.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href="http://www.forumforall.net"&gt;our&lt;/a&gt; application, user profiles show friend relationships and use that information to pull in recent comments from those friends, an expensive operation spanning many tables.  One key bit that informs how much searching we need to do is those friend relationships.  If the user has new friends we need to look at all of those new friend&amp;rsquo;s recent comments and build them for display.  While checking the entire friends list is expensive, checking the latest change for a single user is quick.&lt;/p&gt;
+&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FriendsAPI&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_friends&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;key_prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"friends_api:get_friends:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;id&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+    &lt;span class="n"&gt;timestamp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;most_recent_friends_time&lt;/span&gt;
+
+    &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;fetch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;key_prefix&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;expires_in: &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;week&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+      &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;delete_matched&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;key_prefix&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:*"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+      &lt;span class="n"&gt;inflated_friends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+      &lt;span class="n"&gt;friends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;get_all_friends&lt;/span&gt;
+      &lt;span class="n"&gt;friends&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;friend&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+        &lt;span class="n"&gt;inflated_friends&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;InflatedFriend&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;friend&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="k"&gt;end&lt;/span&gt;
+
+      &lt;span class="n"&gt;inflated_friends&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The key here is that &lt;code&gt;user.most_recent_friends_time&lt;/code&gt; is a fast query.  The cache key is a compound of the calling-specific values (the user and the requested status) and the timestamp for the most recent friend change time.  When the method is executed, &lt;code&gt;Rails.cache.fetch()&lt;/code&gt; attempts to retrieve an entry for the last friend change time.  If the user hasn&amp;rsquo;t created any new friendships since the last time the method ran (and it&amp;rsquo;s been less than &lt;a href="https://www.youtube.com/watch?v=fC_q9KPczAg"&gt;one week&lt;/a&gt;), it&amp;rsquo;ll be in the cache.  If the user has made more friends, then the cache will miss.  On a miss, the first thing to do is remove any prior entries, then just do the expensive bit and return it.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Winter Tech Forum is The Finest</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
+    <id>http://blog.url.com/blog/2016/03/07/winter-tech-forum-is-the-finest/</id>
+    <published>2016-03-06T19:00:00-05:00</published>
+    <updated>2016-03-18T12:10:37-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img alt="Snowshoeing" src="https://farm2.staticflickr.com/1621/25017324783_93c29cc2ed_z_d.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
+
+&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps&amp;rsquo; writeup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Open Spaces&lt;/h1&gt;
+
+&lt;p&gt;The participation of everyone present, combined with the way discussions, happen is what makes WTF special.
+Open Spaces sessions are led by…whoever shows up. The person or people who had the idea might give a very brief introduction of their ideas on the topic or questions they are trying to explore, but from there the discussion can go anywhere. This leads to hugely informative sharing of experiences, be they technical, organizational, or otherwise. Recall illuminating conversations you’ve had with smart colleagues or friends in the tech industry and you’ve got a good idea of what the entire week at WTF is like.&lt;/p&gt;
+
+&lt;h1&gt;People&lt;/h1&gt;
+
+&lt;p&gt;The conference itself is only a small part of WTF. Crested Butte is a delightfully small town (1,500 people, 0.7 square miles) and most of the attendees stay within a few minutes walk of each other. Proximity is used to great effect during the progressive dinner, where each of the big houses cooks something and the whole conference ambles from one location to the next every half-hour. The traveling party makes for wonderful discussions, as you are encourage by the whirlwind of movement to meet and talk to new people.
+WTF is also small, this year about 35 people, meaning you can, and should, meet everyone at the conference. Though some companies are &lt;a href="https://www.netflix.com/"&gt;overrepresented&lt;/a&gt; (which speaks well of their &lt;a href="http://www.slideshare.net/reed2001/culture-1798664"&gt;culture&lt;/a&gt;), the diversity of experience makes every interaction informative.&lt;/p&gt;
+
+&lt;h1&gt;Lightning Talks&lt;/h1&gt;
+
+&lt;p&gt;Lightning talks are one of many highlights of WTF. The talks are five minutes, you can have whatever slides or props you want, and the topics are unconstrained. You would expect those on Kubernetes or Kotlin, but probably not the just-as-interesting ones on ski mountaineering, knitting, and Asperger syndrome. These quick introductions to a topic foster ideas that lead to later scheduled discussions, or just informative conversations with others.&lt;/p&gt;
+
+&lt;h1&gt;Technology&lt;/h1&gt;
+
+&lt;p&gt;Technology-wise, JVM languages are popular amongst attendees, but even there the gamut from Java to Scala (with Kotlin somewhere in between) means ideas come from all angles. Open mindedness is a key tenet of everyone, so despite the very practical inclinations, languages like &lt;a href="https://www.rust-lang.org/"&gt;Rust&lt;/a&gt; and &lt;a href="http://www.ponylang.org/"&gt;Pony&lt;/a&gt; are exercised during the hack day.
+Discussions of deployment and infrastructure (where to draw the line between the two), testing strategies, and artificial intelligence round out the technical side of discussions&lt;/p&gt;
+
+&lt;h1&gt;Organizations&lt;/h1&gt;
+
+&lt;p&gt;How we work together is the other big focus of WTF. Creating a company that trusts its employees (&lt;a href="http://www.mindviewinc.com/"&gt;Bruce’s&lt;/a&gt; &lt;a href="http://www.reinventing-business.com/"&gt;Trust Organization&lt;/a&gt; or Teal) is a popular discussion topic. The best way to interview &amp;amp; hire for a high-functioning company was a standout session with markedly different viewpoints (particularly on coding tests) that were very informative.&lt;/p&gt;
+
+&lt;h1&gt;Activities&lt;/h1&gt;
+
+&lt;p&gt;The daily schedule is organized to take advantage of the beautiful surrounds of Crested Butte. Most afternoons will have a group snowshoeing or cross-country skiing around the town or on the many trails through the alpine valleys. If you like downhill skiing, the &lt;a href="http://www.skicb.com/"&gt;Crested Butte ski area&lt;/a&gt; is a short bus ride away. Some folks don’t care for the evils of nature and just hang out in one of the great rental houses—folks are very open to sharing their space, food, and quaffables.&lt;/p&gt;
+
+&lt;h1&gt;Should you go?&lt;/h1&gt;
+
+&lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
+The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Serene night biking</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2014/12/30/serene-night-biking/"/>
+    <id>http://blog.url.com/blog/2014/12/30/serene-night-biking/</id>
+    <published>2014-12-29T19:00:00-05:00</published>
+    <updated>2016-03-19T12:37:53-04:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I have achieved my &lt;a href="http://knowyourmeme.com/memes/this-isnt-even-my-final-form"&gt;final form&lt;/a&gt; for nighttime biking. In short, it is to &lt;a href="https://twitter.com/dinomite/status/516737212621537281"&gt;emulate a firetruck&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Road biking&lt;/h2&gt;
+
+&lt;p&gt;Bicycling on roads is dangerous.  Cars are a lot bigger than bikes, have a lot less to lose from any sort of interation, and it shows.  A lot of drivers are distracted, many are completely absent from the task at hand, and a small number are actively hostile to having anything else on the roads that are built exclusively for them.  That&amp;rsquo;s just during the daytime.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://usd.knog.com.au/beetle.html"&gt;&lt;img src="http://usd.knog.com.au/media/catalog/product/cache/5/image/590x344/9df78eab33525d08d6e5fb8d27136e95/i/m/images-lights-beetle-beetle-lifestyle-2.jpg" alt="Knog Beetle: delightful, but grossly inadequate bike lights"&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Night biking can be quite a lot more risky, but the tables are turned.  If you bike at night without lights or with &lt;a href="http://www.sigmasport.com/us/produkte/beleuchtung/safety_lights/micro_wr_2010/"&gt;inadequate&lt;/a&gt; &lt;a href="http://www.amazon.com/gp/product/B006CFTIBE?ref_=sr_1_1&amp;amp;qid=1413590346&amp;amp;sr=8-1&amp;amp;keywords=small%20bike%20lights&amp;amp;pldnSite=1"&gt;lights&lt;/a&gt;, then you have no one else to blame.  There is a reason cars are required to have numerous lights and reflectors at night.  The speeds at which vehicles (both bikes and cars) move on the road only work safely at night when they are well lit.&lt;/p&gt;
+
+&lt;h2&gt;Basic lights&lt;/h2&gt;
+
+&lt;p&gt;You need 4 lights on your bike: a pair front &amp;amp; rear, all of which are bright (i.e. made in the past 2-3 years).  If your lights were made before 2010, they&amp;rsquo;re likely just not bright enough to compete with all of the other light sources in even a semi-urban area.  &lt;a href="http://thesweethome.com/reviews/best-commuter-bike-lights/"&gt;The Sweethome&lt;/a&gt; has a great simple recommendation, a Cygolite pair consisting of a 350 lumen headlight and a 2 watt tail.  While this setup is perfectly adequate for relatively safe night biking to get to the level of serenity you need a second light on each end.&lt;/p&gt;
+
+&lt;p&gt;Up front, get one of the brighter Cygolite models (&lt;a href="http://www.amazon.com/gp/product/B00E1NQ3DU/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00E1NQ3DU&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=2J63O4N66TZY3RBP"&gt;500&lt;/a&gt; or &lt;a href="http://www.amazon.com/gp/product/B00LXTORC4/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00LXTORC4&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=HMLN4OUT5VJFCHY6"&gt;550&lt;/a&gt; lumens) and for the rear a &lt;a href="http://www.amazon.com/gp/product/B008ZTLSJA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008ZTLSJA&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=Y337F2M2FXUMDIGI"&gt;NiteRider Solas 2W&lt;/a&gt;.  The idea here is to have a steady-burn light (the Cygoligte 500 up front and the Cygolite Hotshot in rear) to make you visually easy to track and a flashing light (the Cygolite 350 and NiteRider Solas) to attract attention whether cars are coming from front or behind.&lt;/p&gt;
+
+&lt;h2&gt;Helmet lights&lt;/h2&gt;
+
+&lt;p&gt;In addition to two pairs of lights on the bike, I also have a pair on my helmet.  I use a &lt;a href="http://www.amazon.com/gp/product/B008QVXQ1K/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008QVXQ1K&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=B4SR7ASNHOV63F3S"&gt;CatEye Omni 5&lt;/a&gt; on the back, though a &lt;a href="http://www.amazon.com/gp/product/B005CSZXBQ/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B005CSZXBQ&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=OUDGFKSPQKLFOKYA"&gt;CatEye Rapid 5&lt;/a&gt; or other moderately bright, lightweight light would be good in this role.  For the front, I have a &lt;a href="http://www.amazon.com/gp/product/B008JEHNGS/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008JEHNGS&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=UBKRDN4T5Y6JHC7Z"&gt;NiteRider MiNewt USB&lt;/a&gt; but any lightweight, 350 lumen or greater helmet-mountable light will work.  Having a light on your head is phenomenally useful for getting notice from inattentive drivers, particularly those at cross streets looking to turn.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;edit:&lt;/em&gt; &lt;a href="http://www.dansdata.com/"&gt;M&amp;#39;verygoodfriend&lt;/a&gt; &lt;a href="http://twitter.com/runswithbricks"&gt;Marshall&lt;/a&gt; pointed out that &lt;a href="http://www.amazon.com/gp/product/B00FRN0LTA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00FRN0LTA&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=MI2V7B7WOQKTVBSV"&gt;NiteRider Lumina Flare&lt;/a&gt; fills both of the helmet light roles very well.&lt;/p&gt;
+
+&lt;h2&gt;Daytime use&lt;/h2&gt;
+
+&lt;p&gt;Having bright-ass lights also makes biking during the day a more pleasurable experiene.  Just run all of your brightest lights on flash mode (in this case, just one on each end of the bike) to get drivers attention.  Since adopting this practice, particularly with the very bright NiteRider Solas rear, I now have cars that will dutifully slow down behind me and wait for a safe place to overtake.&lt;/p&gt;
+
+&lt;h2&gt;RevoLights&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://revolights.com/"&gt;RevoLights&lt;/a&gt; aren&amp;rsquo;t that bright—I&amp;rsquo;d guess they put out less than 100 lumens each—but they&amp;rsquo;re apparent size make them novel and eye catching.  They&amp;rsquo;re expensive at &lt;a href="http://www.amazon.com/gp/product/B00O50TUSE/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00O50TUSE&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=23O3VACNN75BUUXB"&gt;$200 a set&lt;/a&gt; but if you ride a lot at night in urban areas, or just want to look very flash, then they&amp;rsquo;re a good addition to your night biking setup.&lt;/p&gt;
+
+&lt;h2&gt;More info&lt;/h2&gt;
+
+&lt;p&gt;If you want to know more or explore all of the bike light options, check out &lt;a href="http://nathanhinkle.com/"&gt;Nathan Hinkle&lt;/a&gt;&amp;rsquo;s &lt;a href="http://www.bikelightdatabase.com/"&gt;Bike Light Database&lt;/a&gt;.  These reviews started with the detailed &lt;a href="http://bicycles.blogoverflow.com/2013/09/the-2013-headlights-review/"&gt;headlight&lt;/a&gt; and &lt;a href="http://bicycles.blogoverflow.com/2013/09/best-bike-tail-lights-review/"&gt;taillight&lt;/a&gt; reviews from the &lt;a href="http://bicycles.stackexchange.com/"&gt;Bicycles StackExchange&lt;/a&gt; &lt;a href="http://bicycles.blogoverflow.com/"&gt;blog&lt;/a&gt; which give a lot of information on his methodology and the vast array of options in the bike light world.&lt;/p&gt;
+</content>
+  </entry>
+</feed>
