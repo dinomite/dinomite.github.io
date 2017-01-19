@@ -28,6 +28,50 @@
     <p><a href="/page/20/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/02/06/setting-up-ubuntu-for-building-kernel-modules/">Setting Up Ubuntu for Building Kernel Modules</a></h1>
+    <div class="article-title-date">Feb  6, 2007</div>
+    <p>When you build kernel modules or other programs that depend upon the kernel you need to have the kernel source configured per the currently running kernel.  To see what kernel your machine is running, simply run <code>uname -a</code>.  To setup your machine to allow things to build against the kernel, you first need the source for your currently running kernel:</p>
+
+<pre class="brush: bash;">
+export KERNEL_VERSION=`uname -r|cut -d '-' -f 1`
+sudo aptitude install linux-source-$KERNEL_VERSION
+cd /usr/src/
+sudo tar jxf linux-source-$KERNEL_VERSION.tar.bz2
+sudo ln -s linux-source-$KERNEL_VERSION linux
+ln -s /usr/src/linux /lib/modules/`uname -r`/build
+</pre>
+
+<p>First, in order to get things to build against the kernel you have to alter a single file to match the kernel you&rsquo;re running.  Run <code>uname -r</code> and note everything following the first three decimal-separated numbers:</p>
+
+<pre class="brush: bash;">
+$ uname -r
+2.6.17-10-386
+</pre>
+
+<p>Just use a text editor (vi!) and edit <code>/usr/src/linux/Makefile</code>, changing the <code>EXTRAVERSION</code> variable to match yours from above:</p>
+
+<pre class="brush: bash;">
+VERSION = 2
+PATCHLEVEL = 6
+SUBLEVEL = 17
+#EXTRAVERSION = .14-ubuntu1
+EXTRAVERSION = -10-386
+NAME=Crazed Snow-Weasel
+</pre>
+
+<p>Next, you need to get the .config for the running kernel and setup the kernel source:</p>
+
+<pre class="brush: bash;">
+sudo cp /boot/config-`uname -r` /usr/src/linux/.config
+cd /usr/src/linux
+make oldconfig
+make prepare0
+make scripts
+</pre>
+
+<p>That&rsquo;s it.  Now you should be able to build things, like kernel modules, against the kernel source.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/02/05/who-uses-backslashes/">Who Uses Backslashes?</a></h1>
     <div class="article-title-date">Feb  5, 2007</div>
     <p>My local NPR station, <a href="http://www.wamu.org">WAMU</a> has been running an advertisement for IBM federal services and they mention the URL, which is spoken as &ldquo;ibm.com backslash foo backslash bar,&rdquo; which won&rsquo;t work if you type it into your interweb browser.  Really, no one uses the Windows command line for anything real, who still thinks with backslashes?</p>
@@ -110,13 +154,6 @@ If you watched the speech in high-def (wider and more detailed coverage!) then t
 <p>One of the authors of Freaknomics, Stephen Dubner, recently <a href="http://www.freakonomics.com/blog/2007/01/10/will-the-high-price-of-oil-make-americans-skinnier/">mentioned in his blog</a> that these increase in corn prices stem from the high price of oil, which bolsters demand for ethanol.  Anyone who has read <em>The Omnivore&rsquo;s Dillema</em> knows that corn is the basis for nearly all industrially produced food in the United States.  Could Dubner be right that this oil prices could lead to less obese Americans through a convoluted chain of corn?</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2006/12/24/gq-style-guy-archives/">GQ Style Guy archives</a></h1>
-    <div class="article-title-date">Dec 24, 2006</div>
-    <p>I found the archives of the <a href="http://men.style.com/gq/fashion/styleguy">GQ Style Guy</a> today, which has answered numerous style questions I had.  It&rsquo;s also peppered with some serious wit:</p>
-
-<blockquote>The only people doomed to pulling off pills [from a sweater] one by one are those in hell who, while they were alive, washed my cashmere socks in hot water and then put them in the dryer.</blockquote>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/22/">Next page</a></p>
@@ -142,6 +179,10 @@ If you watched the speech in high-def (wider and more detailed coverage!) then t
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
+              <div class="article-link-date">Jan 19, 2017</div>
+            </li>
             <li>
               <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
               <div class="article-link-date">Sep 23, 2016</div>
@@ -178,10 +219,6 @@ If you watched the speech in high-def (wider and more detailed coverage!) then t
               <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
               <div class="article-link-date">Feb  3, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
-              <div class="article-link-date">Jan 25, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -195,12 +232,12 @@ If you watched the speech in high-def (wider and more detailed coverage!) then t
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

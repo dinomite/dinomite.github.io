@@ -5,10 +5,272 @@
   <id>http://blog.url.com/blog</id>
   <link href="http://blog.url.com/blog"/>
   <link href="http://blog.url.com/atom.xml" rel="self"/>
-  <updated>2016-09-22T20:00:00-04:00</updated>
+  <updated>2017-01-19T08:03:00-05:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>JDBI Tips</title>
+    <link rel="alternate" href="http://blog.url.com/blog/2017/01/19/jdbi-tips/"/>
+    <id>http://blog.url.com/blog/2017/01/19/jdbi-tips/</id>
+    <published>2017-01-19T08:03:00-05:00</published>
+    <updated>2017-01-19T11:08:44-05:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://jdbi.org/"&gt;JDBI&lt;/a&gt; in Java &amp;amp; &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt; projects recently and have come across a few things that aren&amp;rsquo;t entirely intuitive.  If you&amp;rsquo;re having trouble with JDBI, be sure to check &lt;a href="http://jdbi.org/archive.html"&gt;the docs&lt;/a&gt;; if you don&amp;rsquo;t find an answer there, the &lt;a href="https://github.com/jdbi/jdbi/issues"&gt;issues on GitHub&lt;/a&gt; is a great place to look for more esoteric uses of the library.&lt;/p&gt;
+
+&lt;h1&gt;Guice&lt;/h1&gt;
+
+&lt;p&gt;I have a Dropwizard app that I use with Guice via &lt;a href="https://github.com/xvik/dropwizard-guicey"&gt;dropwizard-guicey&lt;/a&gt;.  While the &lt;a href="http://www.dropwizard.io/1.0.0/docs/manual/jdbi.html"&gt;Dropwizard docs&lt;/a&gt; cover using JDBI, constructing instances is a bit different with dropwizard-guicey.  My (Kotlin) module for registering DAOs looks like this:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DaoModule&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DropwizardAwareModule&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AppConfiguration&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;configure&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;factory&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AppDBIFactory&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;dataSourceFactory&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;dataSourceFactory&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;jdbi&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;factory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="o"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;dataSourceFactory&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s"&gt;"postgresql"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;jdbi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;registerArgumentFactory&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PgIntegerArrayArgFactory&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt;
+        &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;DBI:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;java&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;&lt;span class="na"&gt;toInstance&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;jdbi&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="n"&gt;apiKeyDao&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;jdbi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;onDemand&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;ApiKeyDao:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;java&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;ApiKeyDao:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;java&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;&lt;span class="na"&gt;toInstance&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;apiKeyDao&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AppDBIFactory&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DBIFactory&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;override&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;databaseTimeZone&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;TimeZone&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;?&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;Optional&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;of&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TimeZone&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getTimeZone&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"UTC"&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;More on the &lt;code&gt;PgIntegerArrayArgFactory&lt;/code&gt; below.&lt;/p&gt;
+
+&lt;h1&gt;Querying Enums&lt;/h1&gt;
+
+&lt;p&gt;JDBI&amp;rsquo;s default binding of &lt;code&gt;enum&lt;/code&gt; arguments &lt;a href="https://github.com/jdbi/jdbi/blob/292b089cfd4e6a6f5f41c9bd320bade1f66926da/src/main/java/org/skife/jdbi/v2/EnumArgument.java#L37"&gt;calls &lt;code&gt;.name()&lt;/code&gt;&lt;/a&gt; on the enum object.  I have enums that instead use the ordinal value in a numeric database column, so I need the binding to call &lt;code&gt;.ordinal()&lt;/code&gt; instead.  To accomplish this, I create a special binding factory, which looks a bit nasty, but it&amp;rsquo;s actual action is quite straighforward:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@BindingAnnotation&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BindStatus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;StatusBinderFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@Retention&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RetentionPolicy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;RUNTIME&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@Target&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="n"&gt;ElementType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;PARAMETER&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="nd"&gt;@interface&lt;/span&gt; &lt;span class="n"&gt;BindWidgetStatus&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;StatusBinderFactory&lt;/span&gt; &lt;span class="kd"&gt;implements&lt;/span&gt; &lt;span class="n"&gt;BinderFactory&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Binder&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Annotation&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Binder&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;BindStatus&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SQLStatement&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BindStatus&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                    &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"status"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ordinal&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+                &lt;span class="o"&gt;}&lt;/span&gt;
+            &lt;span class="o"&gt;};&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The operative part is down in the deepest indentation—bind the ordinal value of the enum to whatever you will use as the placeholder string in the query.  Then, in the DAO:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@RegisterMapper&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;WidgetMapper:&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kd"&gt;class&lt;/span&gt;&lt;span class="err"&gt;)&lt;/span&gt;
+&lt;span class="nc"&gt;interface&lt;/span&gt; &lt;span class="n"&gt;WidgetDao&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="nd"&gt;@SqlQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"SELECT * FROM widgets WHERE status = :status "&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;getWidgets&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nd"&gt;@BindWidgetStatus&lt;/span&gt; &lt;span class="nl"&gt;status:&lt;/span&gt; &lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;):&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Be sure to use the same placeholder string as in the &lt;code&gt;BinderFactory&lt;/code&gt; above (in this case &lt;code&gt;status&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h1&gt;Array arguments&lt;/h1&gt;
+
+&lt;p&gt;Sometimes I want to be able to select widgets in any &lt;code&gt;Status&lt;/code&gt;.  In SQL, I would use an &lt;code&gt;IN&lt;/code&gt; clause: &amp;ldquo;&lt;code&gt;...WHERE status IN (0, 1, 2)&lt;/code&gt;&amp;rdquo; and, with a bit more setup JDBI can do the same.  First, the enum in question:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nf"&gt;Widget&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="nl"&gt;id:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="nl"&gt;status:&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;enum&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Status&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;UNREAD&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;READ&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+        &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;queryValue&lt;/span&gt;&lt;span class="o"&gt;():&lt;/span&gt; &lt;span class="n"&gt;Array&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;ALL&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;arrayOf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UNREAD&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ordinal&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;READ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ordinal&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+            &lt;span class="o"&gt;}&lt;/span&gt;
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;arrayOf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;ordinal&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And change the &lt;code&gt;Binder&lt;/code&gt; to use the &lt;code&gt;queryValue()&lt;/code&gt; method:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@BindingAnnotation&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BindStatus&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;StatusBinderFactory&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@Retention&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;RetentionPolicy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;RUNTIME&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@Target&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="n"&gt;ElementType&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;PARAMETER&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="nd"&gt;@interface&lt;/span&gt; &lt;span class="n"&gt;BindWidgetStatus&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;StatusBinderFactory&lt;/span&gt; &lt;span class="kd"&gt;implements&lt;/span&gt; &lt;span class="n"&gt;BinderFactory&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Binder&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Annotation&lt;/span&gt; &lt;span class="n"&gt;annotation&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Binder&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;BindStatus&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SQLStatement&lt;/span&gt; &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BindStatus&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Status&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+                    &lt;span class="n"&gt;q&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"status"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;arrayOf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;queryValue&lt;/span&gt;&lt;span class="o"&gt;()));&lt;/span&gt;
+                &lt;span class="o"&gt;}&lt;/span&gt;
+            &lt;span class="o"&gt;};&lt;/span&gt;
+        &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That &lt;code&gt;SqlArray&lt;/code&gt; is a just a POJO for holding the things to be bound:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kd"&gt;private&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Collection&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;elements&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Iterables&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;toArray&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@SafeVarargs&lt;/span&gt;
+    &lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;arrayOf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;asList&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;Object&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;getElements&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;elements&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;getType&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, also in Java, an &lt;code&gt;ArgumentFactory&lt;/code&gt; to bind the SqlArray values:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PgIntegerArrayArgFactory&lt;/span&gt; &lt;span class="kd"&gt;implements&lt;/span&gt; &lt;span class="n"&gt;ArgumentFactory&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="n"&gt;accepts&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Object&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;StatementContext&lt;/span&gt; &lt;span class="n"&gt;ctx&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="k"&gt;instanceof&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;
+            &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;&lt;span class="na"&gt;getType&lt;/span&gt;&lt;span class="o"&gt;().&lt;/span&gt;&lt;span class="na"&gt;isAssignableFrom&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+
+    &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;Argument&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Class&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                          &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="n"&gt;SqlArray&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+                          &lt;span class="n"&gt;StatementContext&lt;/span&gt; &lt;span class="n"&gt;ctx&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ctx1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;ary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ctx1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getConnection&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+                            &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;createArrayOf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"integer"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getElements&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+            &lt;span class="n"&gt;statement&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setArray&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;position&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ary&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;};&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is described more thoroughly on &lt;a href="http://skife.org/jdbi/java/2011/12/21/jdbi_in_clauses.html"&gt;Brian McCallister&amp;rsquo;s blog&lt;/a&gt;.  Note that he calls the above &lt;code&gt;ArgumentFactory&lt;/code&gt; a toy, since it only binds one type (Integers).  Since I only use integer array arguments so far, I&amp;rsquo;ve left it as such.&lt;/p&gt;
+
+&lt;h1&gt;Optional arguments&lt;/h1&gt;
+
+&lt;p&gt;Sometimes you want to have optional arguments in a DAO method, like an ID to start selecting records at. JDBI supports this, but in a non-intuitive way—you simply write the &lt;code&gt;@SqlQuery&lt;/code&gt; to expect a possibly null value:&lt;/p&gt;
+&lt;div class="highlight java"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;    &lt;span class="nd"&gt;@SqlQuery&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"SELECT * FROM widgets "&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;
+              &lt;span class="s"&gt;"WHERE (cast(:start_id AS INT) IS NULL OR c1.id &amp;lt;= :start_id)"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;fun&lt;/span&gt; &lt;span class="n"&gt;widgets&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nd"&gt;@Bind&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"start_id"&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nl"&gt;startId:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;?):&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Widget&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since this is written in Kotlin, you can see that startId is nullable.  If it is null the SQL query will ignore it (the &lt;code&gt;where&lt;/code&gt; clause is always true).  More details &lt;a href="https://github.com/jdbi/jdbi/issues/381"&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</title>
     <link rel="alternate" href="http://blog.url.com/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/"/>
@@ -508,50 +770,6 @@ Discussions of deployment and infrastructure (where to draw the line between the
 
 &lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
 The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Serene night biking</title>
-    <link rel="alternate" href="http://blog.url.com/blog/2014/12/30/serene-night-biking/"/>
-    <id>http://blog.url.com/blog/2014/12/30/serene-night-biking/</id>
-    <published>2014-12-29T19:00:00-05:00</published>
-    <updated>2016-03-19T12:37:53-04:00</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">&lt;p&gt;I have achieved my &lt;a href="http://knowyourmeme.com/memes/this-isnt-even-my-final-form"&gt;final form&lt;/a&gt; for nighttime biking. In short, it is to &lt;a href="https://twitter.com/dinomite/status/516737212621537281"&gt;emulate a firetruck&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Road biking&lt;/h2&gt;
-
-&lt;p&gt;Bicycling on roads is dangerous.  Cars are a lot bigger than bikes, have a lot less to lose from any sort of interation, and it shows.  A lot of drivers are distracted, many are completely absent from the task at hand, and a small number are actively hostile to having anything else on the roads that are built exclusively for them.  That&amp;rsquo;s just during the daytime.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://usd.knog.com.au/beetle.html"&gt;&lt;img src="http://usd.knog.com.au/media/catalog/product/cache/5/image/590x344/9df78eab33525d08d6e5fb8d27136e95/i/m/images-lights-beetle-beetle-lifestyle-2.jpg" alt="Knog Beetle: delightful, but grossly inadequate bike lights"&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Night biking can be quite a lot more risky, but the tables are turned.  If you bike at night without lights or with &lt;a href="http://www.sigmasport.com/us/produkte/beleuchtung/safety_lights/micro_wr_2010/"&gt;inadequate&lt;/a&gt; &lt;a href="http://www.amazon.com/gp/product/B006CFTIBE?ref_=sr_1_1&amp;amp;qid=1413590346&amp;amp;sr=8-1&amp;amp;keywords=small%20bike%20lights&amp;amp;pldnSite=1"&gt;lights&lt;/a&gt;, then you have no one else to blame.  There is a reason cars are required to have numerous lights and reflectors at night.  The speeds at which vehicles (both bikes and cars) move on the road only work safely at night when they are well lit.&lt;/p&gt;
-
-&lt;h2&gt;Basic lights&lt;/h2&gt;
-
-&lt;p&gt;You need 4 lights on your bike: a pair front &amp;amp; rear, all of which are bright (i.e. made in the past 2-3 years).  If your lights were made before 2010, they&amp;rsquo;re likely just not bright enough to compete with all of the other light sources in even a semi-urban area.  &lt;a href="http://thesweethome.com/reviews/best-commuter-bike-lights/"&gt;The Sweethome&lt;/a&gt; has a great simple recommendation, a Cygolite pair consisting of a 350 lumen headlight and a 2 watt tail.  While this setup is perfectly adequate for relatively safe night biking to get to the level of serenity you need a second light on each end.&lt;/p&gt;
-
-&lt;p&gt;Up front, get one of the brighter Cygolite models (&lt;a href="http://www.amazon.com/gp/product/B00E1NQ3DU/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00E1NQ3DU&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=2J63O4N66TZY3RBP"&gt;500&lt;/a&gt; or &lt;a href="http://www.amazon.com/gp/product/B00LXTORC4/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00LXTORC4&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=HMLN4OUT5VJFCHY6"&gt;550&lt;/a&gt; lumens) and for the rear a &lt;a href="http://www.amazon.com/gp/product/B008ZTLSJA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008ZTLSJA&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=Y337F2M2FXUMDIGI"&gt;NiteRider Solas 2W&lt;/a&gt;.  The idea here is to have a steady-burn light (the Cygoligte 500 up front and the Cygolite Hotshot in rear) to make you visually easy to track and a flashing light (the Cygolite 350 and NiteRider Solas) to attract attention whether cars are coming from front or behind.&lt;/p&gt;
-
-&lt;h2&gt;Helmet lights&lt;/h2&gt;
-
-&lt;p&gt;In addition to two pairs of lights on the bike, I also have a pair on my helmet.  I use a &lt;a href="http://www.amazon.com/gp/product/B008QVXQ1K/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008QVXQ1K&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=B4SR7ASNHOV63F3S"&gt;CatEye Omni 5&lt;/a&gt; on the back, though a &lt;a href="http://www.amazon.com/gp/product/B005CSZXBQ/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B005CSZXBQ&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=OUDGFKSPQKLFOKYA"&gt;CatEye Rapid 5&lt;/a&gt; or other moderately bright, lightweight light would be good in this role.  For the front, I have a &lt;a href="http://www.amazon.com/gp/product/B008JEHNGS/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B008JEHNGS&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=UBKRDN4T5Y6JHC7Z"&gt;NiteRider MiNewt USB&lt;/a&gt; but any lightweight, 350 lumen or greater helmet-mountable light will work.  Having a light on your head is phenomenally useful for getting notice from inattentive drivers, particularly those at cross streets looking to turn.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;edit:&lt;/em&gt; &lt;a href="http://www.dansdata.com/"&gt;M&amp;#39;verygoodfriend&lt;/a&gt; &lt;a href="http://twitter.com/runswithbricks"&gt;Marshall&lt;/a&gt; pointed out that &lt;a href="http://www.amazon.com/gp/product/B00FRN0LTA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00FRN0LTA&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=MI2V7B7WOQKTVBSV"&gt;NiteRider Lumina Flare&lt;/a&gt; fills both of the helmet light roles very well.&lt;/p&gt;
-
-&lt;h2&gt;Daytime use&lt;/h2&gt;
-
-&lt;p&gt;Having bright-ass lights also makes biking during the day a more pleasurable experiene.  Just run all of your brightest lights on flash mode (in this case, just one on each end of the bike) to get drivers attention.  Since adopting this practice, particularly with the very bright NiteRider Solas rear, I now have cars that will dutifully slow down behind me and wait for a safe place to overtake.&lt;/p&gt;
-
-&lt;h2&gt;RevoLights&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href="http://revolights.com/"&gt;RevoLights&lt;/a&gt; aren&amp;rsquo;t that bright—I&amp;rsquo;d guess they put out less than 100 lumens each—but they&amp;rsquo;re apparent size make them novel and eye catching.  They&amp;rsquo;re expensive at &lt;a href="http://www.amazon.com/gp/product/B00O50TUSE/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=9325&amp;amp;creativeASIN=B00O50TUSE&amp;amp;linkCode=as2&amp;amp;tag=dinomitenet-20&amp;amp;linkId=23O3VACNN75BUUXB"&gt;$200 a set&lt;/a&gt; but if you ride a lot at night in urban areas, or just want to look very flash, then they&amp;rsquo;re a good addition to your night biking setup.&lt;/p&gt;
-
-&lt;h2&gt;More info&lt;/h2&gt;
-
-&lt;p&gt;If you want to know more or explore all of the bike light options, check out &lt;a href="http://nathanhinkle.com/"&gt;Nathan Hinkle&lt;/a&gt;&amp;rsquo;s &lt;a href="http://www.bikelightdatabase.com/"&gt;Bike Light Database&lt;/a&gt;.  These reviews started with the detailed &lt;a href="http://bicycles.blogoverflow.com/2013/09/the-2013-headlights-review/"&gt;headlight&lt;/a&gt; and &lt;a href="http://bicycles.blogoverflow.com/2013/09/best-bike-tail-lights-review/"&gt;taillight&lt;/a&gt; reviews from the &lt;a href="http://bicycles.stackexchange.com/"&gt;Bicycles StackExchange&lt;/a&gt; &lt;a href="http://bicycles.blogoverflow.com/"&gt;blog&lt;/a&gt; which give a lot of information on his methodology and the vast array of options in the bike light world.&lt;/p&gt;
 </content>
   </entry>
 </feed>

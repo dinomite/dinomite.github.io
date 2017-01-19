@@ -28,6 +28,16 @@
     <p><a href="/page/14/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/09/29/youre-tuned-into-perfecto-radio/">You're tuned into Perfecto Radio, New York City, Miami, Los Angeles</a></h1>
+    <div class="article-title-date">Sep 29, 2007</div>
+    <p>One of the rotating taglines in the subtitle of this website is the line that is the title of this post:
+&ldquo;You&rsquo;re tuned into Perfecto Radio, New York City, Miami, Los Angeles&rdquo;
+<img src='http://dinomite.net/wp-content/uploads/2007/10/perfecto.JPG' class='alignright' alt='Perfecto Records' />
+A few weeks ago, I receive and email from someone wondering which <a href="http://en.wikipedia.org/wiki/Paul_Oakenfold">Paul Oakenfold</a> record it comes from, because my link simply pointed to the Wikipedia page for <a href="http://en.wikipedia.org/wiki/Perfecto_Records">Perfecto Records</a>; apparently my site is the <a href="http://www.google.com/search?hl=en&amp;safe=off&amp;q=%22you%27re+tuned+into+perfecto+radio%2C+new+york+city%2C+miami%2C+los+angeles%22&amp;btnG=Search">only hit on Google</a> when you search for that phrase.  For the life of me, I couldn&rsquo;t remember, nor was I able to find it in a cursory search of my Oakenfold albums, which I informed the questioner.  I recently got a response and it turns out the line is at the beginning of the Chilled Eskimo&rsquo;s <em>Take Me Away</em> on Oakenfold&rsquo;s <strong>Perfecto Presents Another World</strong>.  Now this answer is forever recorded on the internet for all to know.</p>
+
+<p>Just listening to this album again and at the end of Tatoine&rsquo;s <em>Music</em> a similar phrase is said, &ldquo;You&rsquo;re tuned into Perfecto Radio, Chicago, Detroit, Seattle.&rdquo;</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/09/21/bad-input-handling-on-the-web/">Bad Input Handling on The Web</a></h1>
     <div class="article-title-date">Sep 21, 2007</div>
     <p>I came across this on the Verizon billing page today when entering my account number:
@@ -203,30 +213,6 @@ Overall, this took 10.022404 seconds.
 <p>Easy and quick.  Next time, Devel::DProf.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/08/16/more-sed/">More sed</a></h1>
-    <div class="article-title-date">Aug 16, 2007</div>
-    <p>So, if you come from the world of Perl, like I do, you&rsquo;re probably very familiar with the usage of regular expressions to match (m/(foo)bar(baz)/) and replace (s/foo(bar)/baz$1/) strings.  <code>sed</code> acts upon lines and often you want to delete a range of lines.  For the following regex, I had a document something like this:</p>
-
-<p><code> </code>
-<pre>&lt;Recording modeType=&quot;foo&quot;&gt;
-    &lt;foo&gt;bar&lt;/foo&gt;
-    &lt;baz&gt;qux&lt;/baz&gt;
-&lt;/Recording&gt;
-&lt;Recording modeType=&quot;fp&quot;&gt;
-    &lt;foo&gt;bar&lt;/foo&gt;
-    &lt;baz&gt;qux&lt;/baz&gt;
-&lt;/Recording&gt;
-&lt;Recording modeType=&quot;bar&quot;&gt;
-    &lt;foo&gt;bar&lt;/foo&gt;
-    &lt;baz&gt;qux&lt;/baz&gt;
-&lt;/Recording&gt;</pre>
-&hellip;and I wanted to remove any of the blocks of <code>modeType</code> &lsquo;fp&rsquo;.  To do so, I tell <code>sed</code> to find lines with the <code>modeType</code> of &#39;fp&rsquo;, and a subsequent line with a closing &#39;Recording&rsquo; tag and then &rsquo;d&#39;elete them all:</p>
-
-<p><code>sed -i -e &#39;/modeType=&quot;fp&quot;/,/Recording&amp;gt;/d&#39;</code></p>
-
-<p>Simple.  The more you get to know it, the more awesome <code>sed</code> is.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/16/">Next page</a></p>
@@ -252,6 +238,10 @@ Overall, this took 10.022404 seconds.
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
+              <div class="article-link-date">Jan 19, 2017</div>
+            </li>
             <li>
               <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
               <div class="article-link-date">Sep 23, 2016</div>
@@ -288,10 +278,6 @@ Overall, this took 10.022404 seconds.
               <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
               <div class="article-link-date">Feb  3, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
-              <div class="article-link-date">Jan 25, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -305,12 +291,12 @@ Overall, this took 10.022404 seconds.
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

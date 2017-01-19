@@ -28,6 +28,12 @@
     <p><a href="/page/11/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/01/27/rit-winter-sports/">RIT Winter Sports</a></h1>
+    <div class="article-title-date">Jan 27, 2008</div>
+    <p>I have finally put a video on YouTube.  This is people having fun in G and H lots during winter at RIT.  Keith did the filming, I did the editing and the drivers are anonymous.
+<object width="425" height="350"> <param name="movie" value="http://www.youtube.com/v/9HwZ7DwiISM"> </param> <embed src="http://www.youtube.com/v/9HwZ7DwiISM" type="application/x-shockwave-flash" width="425" height="350"> </embed> </object></p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/01/26/off-the-hook-23-january-2008/">Off The Hook - 23 January 2008</a></h1>
     <div class="article-title-date">Jan 26, 2008</div>
     <p>The Data Loss of the Week award goes to <a href="http://www.gemoney.com">GE Money</a>, the credit card processing company used by <a href="http://www.jcpenny.com">JC Penny</a> department stores, who lost information on 650,000 customers including social security numbers for 150,000 of those.  The information was on a backup tape that was stored in a warehouse of <a href="http://www.ironmountain.com/index.asp">Iron Mountain</a> and went missing last October.  Of course, the company reported that there was no reason to suspect the data was stolen nor used fraudulently.  Mike mentions that, like most lost data incidents, a year of free credit monitoring will probably be given to the victims.  Emmanuel wonders whether those given the credit monitoring service will be automatically billed for it after the year is up.  Bernie S. uses a service after <a href="http://seattletimes.nwsource.com/html/businesstechnology/2004100554_btdatabreaches31.html">TD Ameritrade lost his information</a> 3 months ago.  He said that they did not take any billing information, so wouldn&rsquo;t be able to charge him without his knowledge and likens it to the <a href="http://en.wikipedia.org/wiki/United_States_National_Do_Not_Call_Registry">Do Not Call List</a>, which is often abused by unscrupulous telemarketers.  The <a href="http://www.idtheftcenter.org/">Identity Theft Resource Center</a> says that there was a 6 fold increase in the number of compromised records last year, a total of 125 million in 2007.</p>
@@ -271,23 +277,6 @@ print content
 <p>That&rsquo;s a pretty straightforward and simple usage.  The <code>get_data()</code> method gives you the HTML content of the pages, which I often find suitable to run a <code>.split(&#39;\n&#39;)</code> and then do some regex on line by line.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/12/11/random-futurama/">Random Futurama</a></h1>
-    <div class="article-title-date">Dec 11, 2007</div>
-    <p>I like <a href="http://en.wikipedia.org/wiki/Futurama">Futurama</a>.  All of it.  Though I occasionally have a hankering for a specific episode, I often just want /any/ episode, so I wrote a quick Perl script to play one at random.  I have a directory filled with all of Futurama, so this is an easy proposition:</p>
-
-<pre class="brush: perl;">
-#!/usr/bin/perl
-use strict;
-use warnings;
-
-my @files = split /\n/, `ls *avi`;
-
-my $num = rand(scalar(@files));
-
-system "mplayer "$files[$num]"";
-</pre>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/13/">Next page</a></p>
@@ -313,6 +302,10 @@ system "mplayer "$files[$num]"";
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
+              <div class="article-link-date">Jan 19, 2017</div>
+            </li>
             <li>
               <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
               <div class="article-link-date">Sep 23, 2016</div>
@@ -349,10 +342,6 @@ system "mplayer "$files[$num]"";
               <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
               <div class="article-link-date">Feb  3, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
-              <div class="article-link-date">Jan 25, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -366,12 +355,12 @@ system "mplayer "$files[$num]"";
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

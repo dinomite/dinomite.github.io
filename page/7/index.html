@@ -28,6 +28,14 @@
     <p><a href="/page/6/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/12/13/very-old-parkour/">Very old Parkour</a></h1>
+    <div class="article-title-date">Dec 13, 2008</div>
+    <p>This video clip from a 1977 film <a href="http://www.imdb.com/title/tt0074573/">Gizmo!</a> shows a 1930s newsreel clip of a man doing Parkour moves, well before such a thing had a name or community.  It&rsquo;s incredible to see exactly the same movements being performed 75 years before I had ever imaged doing them.  About 20 seconds in he does a wall-run top-out in the exact same fashion I&rsquo;ve seen numerous people do on the high box at <a href="http://www.primal-fitness.com/">Primal</a>.  Neat.
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/3p2shHkRrtk&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/3p2shHkRrtk&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></p>
+
+<p>Discussed previously on the <a href="http://www.americanparkour.com/smf/index.php">APK Forums</a> <a href="http://www.americanparkour.com/smf/index.php?topic=3253.0">here</a>.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/11/03/voting-systems/">Voting Systems</a></h1>
     <div class="article-title-date">Nov  3, 2008</div>
     <p>On the eve of the election, I am thinking about <a href="http://en.wikipedia.org/wiki/Voting_system">voting systems</a> better than that which is currently employed in United States <a href="http://en.wikipedia.org/wiki/General_election">general elections</a>.</p>
@@ -372,18 +380,6 @@ vimdiff <(ssh stg1 cat /etc/rc.d/init.d/httpd) <(ssh stg2 cat /etc/rc.d/init.d/h
 <p>Much like a subselect in MySQL, the <code>cat</code> commands are executed on the remote machine and then piped to <code>vimdiff</code> allowing for single command, no-file-copying diffs.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/09/05/speeding-up-ssh-logins-in-ubuntu/">Speeding up SSH Logins in Ubuntu</a></h1>
-    <div class="article-title-date">Sep  5, 2008</div>
-    <p>After getting access to some new machines, I noticed that SSHing too them was excruciatingly slow, taking 5-10 seconds to ask for a password and no faster using keys.  I pulled open the global SSH config file, <code>/etc/ssh/ssh_config</code> on my Ubuntu machine and found a couple of <a href="http://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface">GSSAPI</a> things that were enabled by default:</p>
-
-<pre>
-GSSAPIAuthentication yes
-GSSAPIDelegateCredentials yes
-</pre>
-
-<p>The machines I was SSHing to don&rsquo;t do GSSAPI, so every time I tried to connect my client had to wait a short timeout before trying other authentication methods.  Since I don&rsquo;t care about GSSAPI (few people use it), I simply set those options to <code>no</code> and now my SSH sessions start much more quickly.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/8/">Next page</a></p>
@@ -409,6 +405,10 @@ GSSAPIDelegateCredentials yes
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
+              <div class="article-link-date">Jan 19, 2017</div>
+            </li>
             <li>
               <a href="/blog/2016/09/23/diy-stretch-webbing-leash-a-la-ruffwear-roamer/">DIY Stretch Webbing Leash (à la Ruffwear® Roamer™)</a>
               <div class="article-link-date">Sep 23, 2016</div>
@@ -445,10 +445,6 @@ GSSAPIDelegateCredentials yes
               <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
               <div class="article-link-date">Feb  3, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a>
-              <div class="article-link-date">Jan 25, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -462,12 +458,12 @@ GSSAPIDelegateCredentials yes
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (1)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (1)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
