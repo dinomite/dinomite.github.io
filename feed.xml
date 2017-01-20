@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Dinomite.net</title>
-  <subtitle>Dew Stephens</subtitle>
+  <subtitle>Drew Stephens</subtitle>
   <id>http://dinomite.net/blog</id>
   <link href="http://dinomite.net/blog"/>
   <link href="http://dinomite.net/feed.xml" rel="self"/>
@@ -16,7 +16,7 @@
     <published>2017-01-18T19:00:00-05:00</published>
     <updated>2017-01-19T11:20:17-05:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;I&amp;rsquo;ve been using &lt;a href="http://jdbi.org/"&gt;JDBI&lt;/a&gt; in Java &amp;amp; &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt; projects recently and have come across a few things that aren&amp;rsquo;t entirely intuitive.  If you&amp;rsquo;re having trouble with JDBI, be sure to check &lt;a href="http://jdbi.org/archive.html"&gt;the docs&lt;/a&gt;; if you don&amp;rsquo;t find an answer there, the &lt;a href="https://github.com/jdbi/jdbi/issues"&gt;issues on GitHub&lt;/a&gt; is a great place to look for more esoteric uses of the library.&lt;/p&gt;
 
@@ -278,7 +278,7 @@
     <published>2016-09-22T20:00:00-04:00</published>
     <updated>2017-01-08T13:00:44-05:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;&lt;a href="https://www.flickr.com/photos/dinomite/29049432104/in/album-72157675204681913/"&gt;&lt;img alt="Materials" src="https://farm9.staticflickr.com/8301/29049432104_dcfa623b0b_z_d.jpg" /&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -325,7 +325,7 @@
     <published>2016-05-17T20:00:00-04:00</published>
     <updated>2016-05-18T09:46:36-04:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;&lt;a href="http://dropwizard.io"&gt;Dropwizard&lt;/a&gt; provides a great framework for authentication &amp;amp; authorization.  &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authenticator.html"&gt;&lt;code&gt;Authenticator&lt;/code&gt;&lt;/a&gt;s do what their name implies, returning a &lt;a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true"&gt;&lt;code&gt;Principal&lt;/code&gt;&lt;/a&gt; (probably your &lt;code&gt;User&lt;/code&gt; object) that servlets can use for building responses.  The &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/Authorizer.html"&gt;&lt;code&gt;Authorizer&lt;/code&gt;&lt;/a&gt; interface has a single methoed, &lt;code&gt;authorize()&lt;/code&gt;, which takes a &lt;code&gt;Principal&lt;/code&gt; and a string role to authorize access for.  These get wrapped in an &lt;a href="http://www.dropwizard.io/0.9.2/dropwizard-auth/apidocs/io/dropwizard/auth/AuthFilter.html"&gt;&lt;code&gt;AuthFilter&lt;/code&gt;&lt;/a&gt; which extracts credentials from the requst and passed on to the &lt;code&gt;Authenticator&lt;/code&gt;.&lt;/p&gt;
 
@@ -534,7 +534,7 @@ If you have a resource which is optionally protected (e.g., you want to display 
     <published>2016-05-01T20:00:00-04:00</published>
     <updated>2016-05-04T09:45:44-04:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;I have a Ruby on Rails app that uses &lt;a href="https://github.com/plataformatec/devise"&gt;Devise&lt;/a&gt; for authentication and session management, the latter is really done by &lt;a href="https://github.com/hassox/warden"&gt;Warden&lt;/a&gt;.  We are making a server-side companion for Ruby written in &lt;a href="https://kotlinlang.org/"&gt;Kotlin&lt;/a&gt; &amp;amp; Java and want to be able to share sessions between the two runtimes.&lt;/p&gt;
 
@@ -659,7 +659,7 @@ If you have a resource which is optionally protected (e.g., you want to display 
     <published>2016-03-17T20:00:00-04:00</published>
     <updated>2016-03-18T17:06:01-04:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;Rails &lt;a href="http://guides.rubyonrails.org/caching_with_rails.html"&gt;provides a caching framework&lt;/a&gt;, built-in.  Just set &lt;code&gt;config.cache_store&lt;/code&gt; in your &lt;code&gt;application.rb&lt;/code&gt;.  The easiest way to use caching is using time-base invalidation—you compute something expensive and store it in the cache with an expiration time.  The first time you try to retrieve it after the expiration, recompute &amp;amp; cache the new value.&lt;/p&gt;
 &lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
@@ -731,7 +731,7 @@ If you have a resource which is optionally protected (e.g., you want to display 
     <published>2016-03-06T19:00:00-05:00</published>
     <updated>2016-03-18T12:10:37-04:00</updated>
     <author>
-      <name>Dree Stephenst</name>
+      <name>Drew Stephens</name>
     </author>
     <content type="html">&lt;p&gt;&lt;img alt="Snowshoeing" src="https://farm2.staticflickr.com/1621/25017324783_93c29cc2ed_z_d.jpg" /&gt;&lt;/p&gt;
 
