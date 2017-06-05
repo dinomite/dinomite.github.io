@@ -28,47 +28,6 @@
     <p><a href="/page/12/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2007/12/19/web-browsing-with-python/">Web Browsing With Python</a></h1>
-    <div class="article-title-date">Dec 19, 2007</div>
-    <p>Python provides a stateful web browsing module called <a href="http://wwwsearch.sourceforge.net/mechanize/"><code>mechanize</code></a>, named after Perl&rsquo;s mature and featureful <a href="http://search.cpan.org/author/PETDANCE/WWW-Mechanize-1.34/lib/WWW/Mechanize.pm"><code>WWW::Mechanize</code></a>.  Though it isn&rsquo;t as powerful as the Perl version, <code>mechanize</code> provides an easy-to-use framework for browsing web pages including interacting with forms and accessing SSL content.  The documentation for <code>mechanize</code> on the web is sparse, but viewing the source file (<code>/usr/lib/python2.5/site-packages/mechanize/_mechanize.py</code> on my Ubuntu machine) provides some needed insight.  Here&rsquo;s a quick overview of the operation of <code>mechanize</code>:</p>
-
-<pre class="brush: python;">
-#!/usr/bin/python
-import re
-from mechanize import Browser
-br = Browser()
-
-# Ignore robots.txt
-br.set_handle_robots( False )
-# Google demands a user-agent that isn't a robot
-br.addheaders = [('User-agent', 'Firefox')]
-
-# Retrieve the Google home page, saving the response
-br.open( "http://google.com" )
-
-# Select the search box and search for 'foo'
-br.select_form( 'f' )
-br.form[ 'q' ] = 'foo'
-
-# Get the search results
-br.submit()
-
-# Find the link to foofighters.com; why did we run a search?
-resp = None
-for link in br.links():
-    siteMatch = re.compile( 'www.foofighters.com' ).search( link.url )
-    if siteMatch:
-        resp = br.follow_link( link )
-        break
-
-# Print the site
-content = resp.get_data()
-print content
-</pre>
-
-<p>That&rsquo;s a pretty straightforward and simple usage.  The <code>get_data()</code> method gives you the HTML content of the pages, which I often find suitable to run a <code>.split(&#39;\n&#39;)</code> and then do some regex on line by line.</p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/12/11/random-futurama/">Random Futurama</a></h1>
     <div class="article-title-date">Dec 11, 2007</div>
     <p>I like <a href="http://en.wikipedia.org/wiki/Futurama">Futurama</a>.  All of it.  Though I occasionally have a hankering for a specific episode, I often just want /any/ episode, so I wrote a quick Perl script to play one at random.  I have a directory filled with all of Futurama, so this is an easy proposition:</p>
@@ -411,6 +370,42 @@ Working Devices : 2
 Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.com/gp/product/B000FI73MA/sr=53-1/qid=1195527445/ref=tr_359161">Kindle</a> eBook reader and a hardcover book.  Though she was simply trying to liken the Kindle to the nearest priced physical book product, this is a false comparison.  Someone buying a hardcover book is looking for something more than just the words and content of the story; they enjoy the physical representation of a fine work.  A more accurate comparison for the Kindle is a regular old paperback, whose purchaser is simply looking for the cheapest representation of the book&rsquo;s content.  At less than $15 for the average paperback, the Kindle doesn&rsquo;t look like such a good deal, since they charge $10 per book for the $400 device.</p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h1>
+    <div class="article-title-date">Nov 15, 2007</div>
+    <p>Since Apple&rsquo;s recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I&rsquo;ve seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple&rsquo;s <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I&rsquo;ve been doing incremental backups for years but, unlike all of the recent articles in question, I didn&rsquo;t roll my own solution: I use &lsquo;rsnapshot&rsquo; to do all of the hard work for me.</p>
+
+<p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you&rsquo;re using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
+
+<pre>
+~$ sudo aptitude install rsnapshot
+</pre>
+
+<p>Next, you must edit the <code>rsnapshot.conf</code> file which, in most Linux distributions, resides in <code>/etc</code>.  Note that the key/value pairs in this file must be <b>tab</b> delimited.  The file is well commented; the major things that need to be changed are:</p>
+
+<ul>
+<li><code>snapshot_root</code> - where the backups will be stored</li>
+<li>backup intervals - how many of each interval to keep around (I do 7 dailys, 4 weeklys and 3 monthlys)</li>
+<li>backup points - what to backup</li>
+</ul>
+
+<p>The last point requires some elaboration, as this is what <code>rsnapshot</code> will be backing up.  for a server that is only backing up it&rsquo;s own stuff this can be fairly simple:</p>
+
+<pre>
+backup    /etc/            servername/
+backup    /var/lib/svn/    servername/
+backup    /home/           servername/
+</pre>
+
+<p>Which tells <code>rsnapshot</code> to backup <code>/etc</code>, <code>/home</code> and the subversion repository and place them in the directory <code>servername</code> under the <code>snapshot_root</code> directory.  <code>rsnapshot</code> is also capable of backup up remote hosts via ssh:</p>
+
+<pre>
+backup    root@remote:/etc/     remote/     +rsync_long_args=--bwlimit=120
+backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
+</pre>
+
+<p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I&rsquo;m on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/14/">Next page</a></p>
@@ -436,10 +431,6 @@ Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/02/26/why-you-should-start-using-kotlin/">Why You Should Start Using Kotlin</a>
-              <div class="article-link-date">Feb 26, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -476,6 +467,10 @@ Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -489,12 +484,12 @@ Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (3)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

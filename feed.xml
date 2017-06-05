@@ -5,26 +5,10 @@
   <id>http://dinomite.net/blog</id>
   <link href="http://dinomite.net/blog"/>
   <link href="http://dinomite.net/feed.xml" rel="self"/>
-  <updated>2017-02-25T19:00:00-05:00</updated>
+  <updated>2017-01-18T19:00:00-05:00</updated>
   <author>
     <name>Drew Stephens</name>
   </author>
-  <entry>
-    <title>Why You Should Start Using Kotlin</title>
-    <link rel="alternate" href="http://dinomite.net/blog/2017/02/26/why-you-should-start-using-kotlin/"/>
-    <id>http://dinomite.net/blog/2017/02/26/why-you-should-start-using-kotlin/</id>
-    <published>2017-02-25T19:00:00-05:00</published>
-    <updated>2017-02-26T12:51:26-05:00</updated>
-    <author>
-      <name>Drew Stephens</name>
-    </author>
-    <content type="html">&lt;h1&gt;Syntax&lt;/h1&gt;
-
-&lt;p&gt;Kotlin&amp;rsquo;s syntax is very easy to pickup for any Java developer.  Expect a week or two of stumbling over things like how to define constructors, create class fields, or using extension functions.  For me, the minor frustrations were outweighed by the delightfully cleaner syntax.&lt;/p&gt;
-
-&lt;p&gt;I see no reason not to use Kotlin in any projects.&lt;/p&gt;
-</content>
-  </entry>
   <entry>
     <title>JDBI Tips</title>
     <link rel="alternate" href="http://dinomite.net/blog/2017/01/19/jdbi-tips/"/>
@@ -738,6 +722,54 @@ If you have a resource which is optionally protected (e.g., you want to display 
 &lt;/div&gt;
 
 &lt;p&gt;The key here is that &lt;code&gt;user.most_recent_friends_time&lt;/code&gt; is a fast query.  The cache key is a compound of the calling-specific values (the user and the requested status) and the timestamp for the most recent friend change time.  When the method is executed, &lt;code&gt;Rails.cache.fetch()&lt;/code&gt; attempts to retrieve an entry for the last friend change time.  If the user hasn&amp;rsquo;t created any new friendships since the last time the method ran (and it&amp;rsquo;s been less than &lt;a href="https://www.youtube.com/watch?v=fC_q9KPczAg"&gt;one week&lt;/a&gt;), it&amp;rsquo;ll be in the cache.  If the user has made more friends, then the cache will miss.  On a miss, the first thing to do is remove any prior entries, then just do the expensive bit and return it.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Winter Tech Forum is The Finest</title>
+    <link rel="alternate" href="http://dinomite.net/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
+    <id>http://dinomite.net/blog/2016/03/07/winter-tech-forum-is-the-finest/</id>
+    <published>2016-03-06T19:00:00-05:00</published>
+    <updated>2016-03-18T12:10:37-04:00</updated>
+    <author>
+      <name>Drew Stephens</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img alt="Snowshoeing" src="https://farm2.staticflickr.com/1621/25017324783_93c29cc2ed_z_d.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
+
+&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps&amp;rsquo; writeup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Open Spaces&lt;/h1&gt;
+
+&lt;p&gt;The participation of everyone present, combined with the way discussions, happen is what makes WTF special.
+Open Spaces sessions are led by…whoever shows up. The person or people who had the idea might give a very brief introduction of their ideas on the topic or questions they are trying to explore, but from there the discussion can go anywhere. This leads to hugely informative sharing of experiences, be they technical, organizational, or otherwise. Recall illuminating conversations you’ve had with smart colleagues or friends in the tech industry and you’ve got a good idea of what the entire week at WTF is like.&lt;/p&gt;
+
+&lt;h1&gt;People&lt;/h1&gt;
+
+&lt;p&gt;The conference itself is only a small part of WTF. Crested Butte is a delightfully small town (1,500 people, 0.7 square miles) and most of the attendees stay within a few minutes walk of each other. Proximity is used to great effect during the progressive dinner, where each of the big houses cooks something and the whole conference ambles from one location to the next every half-hour. The traveling party makes for wonderful discussions, as you are encourage by the whirlwind of movement to meet and talk to new people.
+WTF is also small, this year about 35 people, meaning you can, and should, meet everyone at the conference. Though some companies are &lt;a href="https://www.netflix.com/"&gt;overrepresented&lt;/a&gt; (which speaks well of their &lt;a href="http://www.slideshare.net/reed2001/culture-1798664"&gt;culture&lt;/a&gt;), the diversity of experience makes every interaction informative.&lt;/p&gt;
+
+&lt;h1&gt;Lightning Talks&lt;/h1&gt;
+
+&lt;p&gt;Lightning talks are one of many highlights of WTF. The talks are five minutes, you can have whatever slides or props you want, and the topics are unconstrained. You would expect those on Kubernetes or Kotlin, but probably not the just-as-interesting ones on ski mountaineering, knitting, and Asperger syndrome. These quick introductions to a topic foster ideas that lead to later scheduled discussions, or just informative conversations with others.&lt;/p&gt;
+
+&lt;h1&gt;Technology&lt;/h1&gt;
+
+&lt;p&gt;Technology-wise, JVM languages are popular amongst attendees, but even there the gamut from Java to Scala (with Kotlin somewhere in between) means ideas come from all angles. Open mindedness is a key tenet of everyone, so despite the very practical inclinations, languages like &lt;a href="https://www.rust-lang.org/"&gt;Rust&lt;/a&gt; and &lt;a href="http://www.ponylang.org/"&gt;Pony&lt;/a&gt; are exercised during the hack day.
+Discussions of deployment and infrastructure (where to draw the line between the two), testing strategies, and artificial intelligence round out the technical side of discussions&lt;/p&gt;
+
+&lt;h1&gt;Organizations&lt;/h1&gt;
+
+&lt;p&gt;How we work together is the other big focus of WTF. Creating a company that trusts its employees (&lt;a href="http://www.mindviewinc.com/"&gt;Bruce’s&lt;/a&gt; &lt;a href="http://www.reinventing-business.com/"&gt;Trust Organization&lt;/a&gt; or Teal) is a popular discussion topic. The best way to interview &amp;amp; hire for a high-functioning company was a standout session with markedly different viewpoints (particularly on coding tests) that were very informative.&lt;/p&gt;
+
+&lt;h1&gt;Activities&lt;/h1&gt;
+
+&lt;p&gt;The daily schedule is organized to take advantage of the beautiful surrounds of Crested Butte. Most afternoons will have a group snowshoeing or cross-country skiing around the town or on the many trails through the alpine valleys. If you like downhill skiing, the &lt;a href="http://www.skicb.com/"&gt;Crested Butte ski area&lt;/a&gt; is a short bus ride away. Some folks don’t care for the evils of nature and just hang out in one of the great rental houses—folks are very open to sharing their space, food, and quaffables.&lt;/p&gt;
+
+&lt;h1&gt;Should you go?&lt;/h1&gt;
+
+&lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
+The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
 </content>
   </entry>
 </feed>

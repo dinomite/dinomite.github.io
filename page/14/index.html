@@ -28,42 +28,6 @@
     <p><a href="/page/13/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h1>
-    <div class="article-title-date">Nov 15, 2007</div>
-    <p>Since Apple&rsquo;s recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I&rsquo;ve seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple&rsquo;s <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I&rsquo;ve been doing incremental backups for years but, unlike all of the recent articles in question, I didn&rsquo;t roll my own solution: I use &lsquo;rsnapshot&rsquo; to do all of the hard work for me.</p>
-
-<p>There are a <a href="http://www.debian-administration.org/articles/217">number</a> of <a href="www.mikerubel.org/computers/rsync_snapshots/">tutorials</a> for setting up <code>rsnapshot</code> and the process is really quite simple.  First, install <code>rsnapshot</code>; if you&rsquo;re using a system with a <a href="http://www.debian.org">good</a> <a href="http://www.ubuntu.org">package</a> <a href="http://www.freebsd.org">manager</a>, then this is a trivial operation:</p>
-
-<pre>
-~$ sudo aptitude install rsnapshot
-</pre>
-
-<p>Next, you must edit the <code>rsnapshot.conf</code> file which, in most Linux distributions, resides in <code>/etc</code>.  Note that the key/value pairs in this file must be <b>tab</b> delimited.  The file is well commented; the major things that need to be changed are:</p>
-
-<ul>
-<li><code>snapshot_root</code> - where the backups will be stored</li>
-<li>backup intervals - how many of each interval to keep around (I do 7 dailys, 4 weeklys and 3 monthlys)</li>
-<li>backup points - what to backup</li>
-</ul>
-
-<p>The last point requires some elaboration, as this is what <code>rsnapshot</code> will be backing up.  for a server that is only backing up it&rsquo;s own stuff this can be fairly simple:</p>
-
-<pre>
-backup    /etc/            servername/
-backup    /var/lib/svn/    servername/
-backup    /home/           servername/
-</pre>
-
-<p>Which tells <code>rsnapshot</code> to backup <code>/etc</code>, <code>/home</code> and the subversion repository and place them in the directory <code>servername</code> under the <code>snapshot_root</code> directory.  <code>rsnapshot</code> is also capable of backup up remote hosts via ssh:</p>
-
-<pre>
-backup    root@remote:/etc/     remote/     +rsync_long_args=--bwlimit=120
-backup    root@remote:/home/    remote/     +rsync_long_args=--bwlimit=120
-</pre>
-
-<p>As above, this will backup the contents of the specified directories under the <code>remote_host</code> directory in your <code>snapshot_root</code> directory.  This also gives an example of passing arguments to <code>rsync</code> for that host.  I use this to backup my home machine to my server; since I&rsquo;m on a residential internet link, I tell <code>rsync</code> to limit its bandwidth usage to 120 kilobytes per second when it is backing up this host to keep from saturating the pipe.</p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/09/parkour-on-espn/">Parkour on ESPN</a></h1>
     <div class="article-title-date">Nov  9, 2007</div>
     <p>ESPN had a spot on Parkour this past week; sounds like the sport is actually gaining some traction.  Time to gather up my cold weather gear and get back out there.
@@ -291,6 +255,18 @@ done
 </pre>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/01/netbank-failure/">NetBank Failure</a></h1>
+    <div class="article-title-date">Oct  1, 2007</div>
+    <p><img src='http://dinomite.net/wp-content/uploads/2007/10/netbank-logo.gif' class='right' alt='NetBank logo' />
+It&rsquo;s not every day that you hear about a bank failure.  Prior to <a href="http://www.fdic.gov/bank/individual/failed/NetBank.html">NetBank&rsquo;s failure</a> on Friday, the last was in February and that was the first in <a href="http://www.fdic.gov/bank/individual/failed/banklist.html">two and a half years</a>.  Thanks to the <a href="http://en.wikipedia.org/wiki/Federal_Deposit_Insurance_Corporation">Federal Deposit Insurance Corporation</a> (not to be confused with <a href="http://en.wikipedia.org/wiki/United_States_Federal_Reserve">The Fed</a>), the impact of a bank&rsquo;s dissolution doesn&rsquo;t have much effect on its customers.  As detailed in the above-linked FDIC page on the NetBank failure, ING Direct will take over the accounts of NetBank and anyone with deposits less than the <a href="http://www.mymoneyblog.com/archives/2007/05/fdic-insurance-what-if-my-bank-fails-make-sure-your-money-is-covered.html">FDIC insurance limit</a> won&rsquo;t suffer any loss at all.  Those with uninsured deposits (the amount exceeding $100,000) can only expect to see half of that amount:</p>
+
+<blockquote>
+ Due to the projected sale of assets of the former bank, the FDIC is in the position to provide each uninsured depositor with an dividend equal to 50% of your uninsured amount. These funds will be deposited directly into your account net of your uninsured portion.
+</blockquote>
+
+<p>The lesson?  This isn&rsquo;t the depression, but bank failures still happen.  If you keep your deposits under the FDIC limit then it&rsquo;s very much a non-issue; if you exceed those limits, you could sustain significant losses.  When Metrobank failed last February those with more than $100k at the bank got lucky because the FDIC was able to cover the relatively small amount of exceeding assets fully.  In the case of NetBank, the amount of uninsured assets are great enough that the FDIC isn&rsquo;t doing that again.</p>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/15/">Next page</a></p>
@@ -316,10 +292,6 @@ done
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/02/26/why-you-should-start-using-kotlin/">Why You Should Start Using Kotlin</a>
-              <div class="article-link-date">Feb 26, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -356,6 +328,10 @@ done
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -369,12 +345,12 @@ done
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (3)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

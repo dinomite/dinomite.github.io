@@ -28,33 +28,6 @@
     <p><a href="/page/4/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2009/11/17/screen-presets/">Screen Presets</a></h1>
-    <div class="article-title-date">Nov 17, 2009</div>
-    <p>Ubuntu&rsquo;s <a href="https://wiki.ubuntu.com/ScreenProfiles">Screen Profiles</a> package taught a lot of folks about how GNU Screen can be so much more than a fancy replacement for <a href="http://en.wikipedia.org/wiki/Nohup">nohup(1)</a>.  Since GNU Screen&rsquo;s name is difficult enough to search for, they have thankfully renamed the package to <a href="https://launchpad.net/byobu">Byobu</a>.  Byobu provides users with a whole bunch of pre-defined aliases to make working within Screen easier, and make more sense by defining a useful status line.  There&rsquo;s more that can be done with screen, the most notable in my view is creating predefined working environments that make getting yourself up and running when logging into a system easy.</p>
-
-<p>I&rsquo;ve got a number of different things that I commonly do where I want a number of different screen windows: running the deamons on our development server, connecting to the DB servers in each of the different environments, and developing an experimental project.  For each of these applications, I have created a screenrc that I keep in my <code>.screen/</code> directory; the basic format is this:</p>
-
-<pre class="brush: bash;">
-source $HOME/.screenrc
-
-sessionname daemons
-chdir /code/htdocs/dstephens/trunk/webroot/daemons
-
-screen -t 'CONTROL' bash
-screen -t 'aggregator' bash
-screen -t 'autoEventWatcher' bash
-screen -t 'emailReady' bash
-screen -t 'sfUpload' bash
-screen -t 'jmsCommandExecutor' bash
-screen -t 'bouncedEmail' bash
-select 0
-</pre>
-
-<p>First, I source my global <code>.screenrc</code>, which includes setting a statusline, larger scrollback buffer, multiuser and utf8.  Next, giving the session a name makes it easier for me to figure out which one to reattach to later. Finally, I create and name all of the windows that I want to have in my session, in this case, one for each of the daemons that I want to be able to run.</p>
-
-<p>To run a specific preset, just invoke screen with the <code>-c</code> option: <code>screen -c ~/.screen/daemons</code>.  Easy.</p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2009/10/28/bruce-schneier-plugin-for-hudson/">Bruce Schneier plugin for Hudson</a></h1>
     <div class="article-title-date">Oct 28, 2009</div>
     <p>With the help of <a href="http://mrooney.blogspot.com/">Mike Rooney</a>, I created a plugin for <a href="http://hudson-ci.org/">Hudson</a> that shows quotes from <a href="http://www.schneierfacts.com/">Bruce Schneier Facts</a>: the <a href="http://wiki.hudson-ci.org/display/HUDSON/BruceSchneier+Plugin">BruceSchneier plugin</a>.</p>
@@ -219,6 +192,17 @@ What he&rsquo;s saying that CrossFit athletes may not have the same ultimate per
 <p>I have also taken to naming each of the disks attached to a machine after a land mass somehow connected to the Emperor it is named after.  My main desktop is <a href="http://en.wikipedia.org/wiki/Caligula">Caligula</a> with the disks <a href="http://en.wikipedia.org/wiki/Capri">Capri</a>, where Caligula lived under the care of <a href="http://en.wikipedia.org/wiki/Tiberius">Tiberius</a>, <a href="http://en.wikipedia.org/wiki/Mauretania">Mauretania</a>, which Tiberius annexed, and <a href="http://en.wikipedia.org/wiki/Germania">Germania</a>, where Caligula accompanied his father on military campaigns as a young child.  When I got a USB drive for keeping off-site backups, I needed to name it and though ships of the <a href="http://en.wikipedia.org/wiki/Roman_Navy">Roman Navy</a> would be appropriate.  What a pleasant surprise to find that Caligula had built a ship to transport the obelisk in <a href="http://en.wikipedia.org/wiki/Saint_Peter%27s_Square">St. Peter&rsquo;s Square</a> which when it was found in the 1950&rsquo;s was named <a href="http://en.wikipedia.org/wiki/Caligula%27s_Giant_Ship">Caligula&rsquo;s &ldquo;Giant Ship&rdquo;</a>.</p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2009/03/15/diy-r-strap/">DIY R-Strap</a></h1>
+    <div class="article-title-date">Mar 15, 2009</div>
+    <p>After seeing the <a href="http://www.blackrapid.com/">BlackRapid R-Strap</a> mentioned on <a href="http://photojojo.com/content/buy-this/diy-camera-r-strap/">Photojojo</a> I knew that I wanted one for greater convenience when walking about with my camera.  I hate neck straps because they get in the way when you aren&rsquo;t using them and make you look like a fat tourist when you are.  I might as well break out the khaki shorts and Hawaiian shirt.  Aside from the not-exactly-cheap $50 price tag, I figured that and R-Strap was something I should DIY.</p>
+
+<p>My version of the R-Strap is a simple affair, consisting of the plate off my Manfrotto ballhead and some gear from the climbing section of REI.  To begin with, I got myself a <a href="http://www.rei.com/product/722354">2 foot long, 18mm runner</a> which I wear like a bandolier.  To this, I attach a simple <a href="http://www.rei.com/product/782255">locking carabiner</a> - I just chose the smallest and cheapest one.  I thought about using chintzy keychain carabiners, but then realized I&rsquo;ll be hangning thousands of dollars of gear off of it and went with the slightly more expensive real thing.</p>
+
+<p>Finally, I tied a small loop of <a href="http://www.rei.com/product/784296">nylon cord</a> to the D-ring on my tripod plate, to which I clip the carabiner.  If your tripod plate has a large enough ring, you could clip directly to it.</p>
+
+<p><a href="http://www.flickr.com/photos/dinomite/3355077177/"><img src="http://farm4.static.flickr.com/3474/3355077177_bbc6355987.jpg?v=0" alt="2 foot 18mm Black Diamond sling" class="alignright" /></a></p>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/6/">Next page</a></p>
@@ -244,10 +228,6 @@ What he&rsquo;s saying that CrossFit athletes may not have the same ultimate per
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/02/26/why-you-should-start-using-kotlin/">Why You Should Start Using Kotlin</a>
-              <div class="article-link-date">Feb 26, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -284,6 +264,10 @@ What he&rsquo;s saying that CrossFit athletes may not have the same ultimate per
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -297,12 +281,12 @@ What he&rsquo;s saying that CrossFit athletes may not have the same ultimate per
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (3)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>

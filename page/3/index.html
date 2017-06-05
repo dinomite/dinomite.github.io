@@ -28,113 +28,6 @@
     <p><a href="/page/2/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2011/05/17/parallel-processing-in-php/">Parallel Processing in PHP</a></h1>
-    <div class="article-title-date">May 17, 2011</div>
-    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power&ndash;network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
-
-<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn&rsquo;t a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.  </p>
-
-<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project&ndash;you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos&rsquo;</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
-
-<p>Using the library is simple&ndash;extend gosUtility<em>Parallel and override the <code>doWorkChildImpl()</code> method:
-<pre class="brush: php">
-// Include the Genius config file
-require</em>once dirname(dirname(<strong>FILE</strong>)) .&#39;/Core/testConfig.inc.php&#39;;</p>
-
-<p>class Minimal extends gosUtility<em>Parallel {
-    protected function doWorkChildImpl() {
-        gosUtility</em>Parallel::$logger-&gt;debug($this-&gt;workerID . &quot; started&quot;);
-        usleep(2000000);</p>
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7</pre></td><td class="code"><pre>    gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
-    usleep(2000000);
-
-    gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
-    exit(1);
-    return;
-}
-</pre></td></tr></tbody></table>
-</div>
-
-<p>}
-</pre></p>
-
-<p>This class creates simple workers that print a couple of debug messages with some sleeping in between, and then announce that they are done working.  Now you can instantiate the class with a single argument: the number of children to run.  gosUtility_Parallel will take care of all the details.</p>
-
-<pre class="bursh: php">
-// Make with the go
-$minimal = new Minimal(2);
-$minimal->go();
-</pre>
-
-<p>If children <code>exit</code> with a non-zero status, the parent will spin up a replacement.  The parent will continue to run until all children have exited normally, or it gets <code>INT</code> (say, ctrl+c) or <code>TERM</code> (the default signal sent by kill(1)), in which case it will pass that signal on to the children, ensure they shut down, and then end itself.  gosUtility_Parallel provides ample logging information; running the above produces the following output:</p>
-
-<pre>
-INFO - Started worker 0 (pid 42093)
-DEBUG - 0 started
-INFO - Started worker 1 (pid 42094)
-DEBUG - 1 started
-DEBUG - 0 doing work
-DEBUG - Checking worker 0 (pid 42093)
-DEBUG - Checking worker 1 (pid 42094)
-DEBUG - 1 doing work
-INFO - 0 finishing
-INFO - 1 finishing
-DEBUG - Checking worker 0 (pid 42093)
-INFO - Worker 0 (pid 42093) exited normally
-DEBUG - Checking worker 1 (pid 42094)
-INFO - Worker 1 (pid 42094) exited normally
-</pre>
-
-<p>gosUtility_Parallel provides a number of overrideable methods whose names explain their purpose: <code>parentSetup()</code>, <code>parentCleanup()</code>, and <code>childCleanup()</code>.  Children can also get their <code>$workerID</code> and the <code>$maxWorkers</code> number making processing based upon modular division trivial.  The <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/parallel.php">example parallel class</a> in the distribution demonstrates some of these features:</p>
-
-<pre class="brush: php">
-// Include the Genius config file
-require_once dirname(dirname(__FILE__)) .'/Core/testConfig.inc.php';
-
-class Par extends gosUtility_Parallel {
-    public function __construct($maxWorkers) {
-        parent::__construct($maxWorkers);
-
-        // Redefine the logger
-        gosUtility_Parallel::$logger = Log5PHP_Manager::getLogger('gosParallel.Par');
-    }
-
-    protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger->debug($this->workerID . " started");
-
-        // Run until told not to
-        global $run;
-        while ($run) {
-            gosUtility_Parallel::$logger->debug($this->workerID . " doing work.");
-            usleep(2000000);
-            if ($this->workerID == 0 && rand(0,10) == 7) {
-                gosUtility_Parallel::$logger->info($this->workerID . " returning");
-                return;
-            }
-        }
-    }
-
-    protected function parentCleanup() {
-        gosUtility_Parallel::$logger->debug("Parent cleaning up");
-    }
-
-    protected function childCleanup() {
-        gosUtility_Parallel::$logger->debug($this->workerID . " cleaning up");
-    }
-}
-</pre>
-
-<p>The example above runs out-of-the-box (provided your PHP was built with <a href="http://us.php.net/pcntl"><code>--enable-pcntl</code></a>, so I encourage you to <a href="https://launchpad.net/genius">download the source</a> and take it for a test drive.</p>
-
-<p>Incidently, if you&rsquo;re in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way. </p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2011/05/02/learning-about-nutrition/">Learning About Nutrition</a></h1>
     <div class="article-title-date">May  2, 2011</div>
     <p><a href="http://www.fitbomb.com/p/why-i-eat-paleo.html">{% img right http://dinomite.net/images/posts/gopaleo.jpg 400 400 &ldquo;Go Paleo&rdquo; %}</a>
@@ -504,6 +397,23 @@ occasional autocross.</p>
 <p>On the track, the Hawk Blue is an awesome pad.  Being a true track pad it takes some heat before they really work, as described above.  Just like you need to get your tires and brain up to temperature, with a track pad you need some heat in the brakes before they will do what you expect.  You should be driving judiciously on your out lap anyway, so this ought not be a problem.  The wear on these is much better than any of the aforementioned pads&ndash;a day at Laguna Seca burned less than one quarter.  If you have been going to the track for a while, or if you&rsquo;ve gotten fast enough to begin feeling fade in your existing brake setup, get some track pads. </p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2010/10/26/synchronizing-an-itunes-library-between-two-computers/">Synchronizing an iTunes Library Between Two Computers</a></h1>
+    <div class="article-title-date">Oct 26, 2010</div>
+    <p>Like many folks, I have a desktop that I use for most of my computing, and a laptop that I use while travelling, at a coffee shop, or perhaps while <a href="http://www.suntimes.com/technology/ihnatko/2745228,ihnatko-multitasking-twitter-internet-092510.article">watching tv</a>.  The other thing I have is a lot of music, all nicely rated and organized in iTunes. The problem is that new music I get goes onto my desktop, but I would like to have the exact same stuff on my laptop.  Enter <a href="http://github.com/dinomite/iTunes-Sync">iTunes-Sync</a>, a simple script that I wrote to synchronize the iTunes library file and all of the content (music, etc.) that it depends upon between the two machines.  </p>
+
+<p>Using iTunes-Sync is simple:</p>
+
+<pre lang="bash">
+laptop:~/$ perl itunes_sync.pl dinomite 192.168.1.100
+</pre>
+
+<p>That&rsquo;s all there is to it.  The script copies the <code>iTunes Library</code> file wholesale, and uses <code>rsync(1)</code> to pull over the album art, mobile applications, and music directories.</p>
+
+<p>I only care about getting everything from my desktop to the laptop&ndash;if you want to go both ways, or perhaps preserve metadata changes made on the laptop the process will be a bit more involved.  Before you use your laptop, close iTunes on both machines, and then run iTunes-Sync from the laptop.  Go out and have fun.  When you get back, close iTunes on both machines and run iTunes-Sync from the desktop.</p>
+
+<p>You can get iTunes-Sync on <a href="http://github.com/dinomite/iTunes-Sync">GitHub</a>; the only thing you need is the <a href="http://github.com/dinomite/iTunes-Sync/raw/master/itunes_sync.pl">itunes_sync.pl</a> file itself. </p>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/4/">Next page</a></p>
@@ -529,10 +439,6 @@ occasional autocross.</p>
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/02/26/why-you-should-start-using-kotlin/">Why You Should Start Using Kotlin</a>
-              <div class="article-link-date">Feb 26, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -569,6 +475,10 @@ occasional autocross.</p>
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
+              <div class="article-link-date">Feb  3, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -582,12 +492,12 @@ occasional autocross.</p>
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (3)</a></li>
+            <li><a href="/blog/tags/java/">Java (2)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
