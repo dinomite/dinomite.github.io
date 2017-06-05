@@ -28,6 +28,11 @@
     <p><a href="/page/19/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/03/03/malfunction-junction/">Malfunction Junction</a></h1>
+    <div class="article-title-date">Mar  3, 2007</div>
+    <p>Wikipedia has an amazingly large and varied database of information, including numerous lists, such as a <a href="http://en.wikipedia.org/wiki/Malfunction_Junction">list of ridiculous highway intersections</a>.  There are some really screwed up intersections shown on that page most notably <a href="http://maps.google.com/maps?q=Knoxville+TN&amp;ll=35.968559,-83.928831&amp;spn=0.007086,0.017231&amp;t=h">I-40 meeting I-295 in Knoxville</a>,    <a href="http://maps.google.com/maps?q=Detroit+MI&amp;ll=42.378733,-83.216962&amp;spn=0.003448,0.007328&amp;t=h">I-96 with highway 39 in Detroit</a>,  and the local-to-me <a href="http://maps.google.com/maps?ie=UTF8&amp;lr=lang_en&amp;om=1&amp;z=15&amp;ll=38.784197,-77.172303&amp;spn=0.027632,0.066133&amp;t=h">Springfield Mixing Bowl</a>.  None of these intersections, however, can shake a stick at Swindon&rsquo;s <a href="http://en.wikipedia.org/wiki/Magic_Roundabout_%28Swindon%29">Magic Roundabout</a> which is a single large central roundabout with 5 feeder roundabouts.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/02/27/using-gmail-as-an-information-store/">Using Gmail as an information store</a></h1>
     <div class="article-title-date">Feb 27, 2007</div>
     <p><a href="http://www.micropersuasion.com">This guy</a> has a <a href="http://www.micropersuasion.com/2007/02/transform_gmail.html">very good tip</a> on how to use Gmail to store arbitrary information.  I&rsquo;m sure everyone has at sometime used some web-based email as a method of either moving data or otherwise storing something, by simply sending a message to yourself.  Well, he goes a step further and setup a way to automatically take emails sent to a specific sub address (<code>yourname+something@gmail.com</code>) and archive them away.  Simply setup a filter to take anything sent to <code>yourname+database@gmail.com</code>, apply the label &lsquo;database&rsquo; and archive it.  When you come across something interesting on the internets, simply email it to <code>yourname+database@gmail.com</code> and it will skip your inbox but be held forevermore in Gmail&rsquo;s coffers.  To recall it later, just run a search for <code>label:database keywords</code> and google will search through your database.</p>
@@ -106,20 +111,6 @@ bash: /bin/cp: Argument list too long
     <p>It&rsquo;s been a while since I&rsquo;ve seen evidence of a <a href="http://en.wikipedia.org/wiki/Y2K">Year 2000 problem</a>, but Amazon insists on <a href="http://amazon.com/s/ref=nb_ss_gw/104-9106441-1564711?url=search-alias%3Daps&amp;field-keywords=professional+xml&amp;Go.x=0&amp;Go.y=0&amp;Go=Go">this search page</a> that an XML book was published in 1901.<img id="image100" src="http://dinomite.net/wp-content/uploads/2007/02/1901.jpg" alt="XML book published in 1901" /></p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/02/07/tar-over-ssh/">tar Over SSH</a></h1>
-    <div class="article-title-date">Feb  7, 2007</div>
-    <p><code>scp</code> is great for ease of use, but if you&rsquo;re transferring numerous files, small ones in particular, it isn&rsquo;t the fastest method.  <code>tar</code>, however, is very well suited to gathering small files into a single unit, but <code>tar</code>ing the files, <code>scp</code>ing the tarball and then un-<code>tar</code>ing on the other end is inefficient; we have pipes in unix for a reason.  Like all good command line utilities, tar can dish out and accept input from a pipe, so this is really quite straightforward:</p>
-
-<p><code>
-tar cf - sourcedir/ | ssh user@dest_host tar xf - -C /destination/path
-</code></p>
-
-<p>Make note of those naked dashes - they are the secret to this whole operation.  First we call the <code>tar</code> command with the options to <b>c</b>reate a tarball and that the <b>f</b>ilename to output immediately follows the options; in this case, we tell it to pipe the output to <code>stdout</code>.  Finally, we give the first <code>tar</code> command the list of files (a directory in this example) that we want sent.  The output of that tar command (the tarball itself, since we directed output to <code>stdout</code>) gets piped to <code>ssh</code> which is invoked like you normally would, except with a command to run tacked on the end.  As soon as <code>ssh</code> connects to the destination host, it simply runs <code>tar</code>, which listens for an input file coming from <code>stdin</code> that it will unpack into the directory given by <code>-C</code>.</p>
-
-<p><addendum>
-I noticed that a lot of people Google for &ldquo;tar over scp&rdquo;, which might be your first thought if you&rsquo;ve never done this before.  This note is just to help those people out, because this is most likely the solution they are in search of.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/21/">Next page</a></p>
@@ -145,6 +136,10 @@ I noticed that a lot of people Google for &ldquo;tar over scp&rdquo;, which migh
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/02/26/why-you-should-start-using-kotlin/">Why You Should Start Using Kotlin</a>
+              <div class="article-link-date">Feb 26, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -181,10 +176,6 @@ I noticed that a lot of people Google for &ldquo;tar over scp&rdquo;, which migh
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
-              <div class="article-link-date">Feb  3, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -198,12 +189,12 @@ I noticed that a lot of people Google for &ldquo;tar over scp&rdquo;, which migh
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
-            <li><a href="/blog/tags/java/">Java (2)</a></li>
+            <li><a href="/blog/tags/java/">Java (3)</a></li>
             <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
