@@ -28,6 +28,13 @@
     <p><a href="/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a></h1>
+    <div class="article-title-date">Feb  3, 2014</div>
+    <p>at(1) is a standard command in <a href="http://www.freebsd.org/cgi/man.cgi?query=at&amp;sektion=1">every</a> <a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?at">Unix-like</a> <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=at&amp;apropos=0&amp;sektion=0&amp;manpath=OpenBSD+Current&amp;arch=i386&amp;format=html">operating</a> <a href="http://www.shrubbery.net/solaris9ab/SUNWaman/hman1/at.1.html">system</a> <a href="http://illumos.org/man/1/at">that</a> <a href="http://www.unix.com/man-page/opensolaris/1/at/">I</a> <a href="http://plan9.bell-labs.com/magic/man2html?man=at&amp;sect=1">know</a> <a href="http://netbsd.gw.com/cgi-bin/man-cgi?at++NetBSD-current">of</a>, including <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/at.1.html">Mac OS</a>, for scheduling tasks to be run at a later time.  Unfortunately, OS X doesn&rsquo;t run (or even seem to have) atd(8), the daemon responsible for running at(1)-scheduled tasks.  Complicating matters is the fact that at(1) is a very difficult to search for, because search engines strip such common words, so figuring out such issues can&rsquo;t really be done with even the best searching.  So here I&rsquo;ll list other things that one might search for: atq, atrm, and batch, which are all part of the at(1) suite of tools.</p>
+
+<p>My (likely vain) hope is that this post will spread a bit of knowledge and maybe catch searches, if someone&rsquo;s searches match my description.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2014/01/25/anti-pull-dog-harnesses/">Anti-pull dog harnesses</a></h1>
     <div class="article-title-date">Jan 25, 2014</div>
     <p><a href="https://www.youtube.com/watch?v=zH64dlgyydM">I like dogs</a> and recently got a beaglish one of my own from the <a href="http://www.lostdogrescue.org/">Lost Dog Foundation</a>.  While wonderful, he has the affliction of walking excitement common to hunting hounds—appropriate to his name, Scout wants to lead the way and suss out any squirrels to be found.  At only 25 pounds, he won&rsquo;t drag you down the street, but the constant tugging on the leash is tiring.  I&rsquo;ve tried a number of collars &amp; harnesses to try to combat this problem, and what follows are my opinions on them.</p>
@@ -546,113 +553,6 @@ The only prep beyond cutting the wood is drilling the holes for the bar in the l
 <p>With the supports bolted in place, I slipped the bar itself through the holes and quickly discovered the need for something more.  The bar itself is 48 inches long, and the space between my rafters is also 48 inches.  Since I put the supports inside a pair of rafters, the bar was nicely flush with the outside of the supports, but this also meant it would only take a couple of inches of lateral movement for it to fall out.  The solution is to cap fashion caps using some more 2x6 and secure it with wood screws. </p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2011/05/17/parallel-processing-in-php/">Parallel Processing in PHP</a></h1>
-    <div class="article-title-date">May 17, 2011</div>
-    <p>Though not a first choice for long-running processes, many web shops end up writing daemons or batch processing scripts in PHP.  As business grows, the need to process records more quickly to deal with traffic becomes an issue.  Often times, the processing is limited by something other than raw processing power&ndash;network latency and database query times being the usual slowdowns.  When this is the case, the easiest way to increase throughput is with multiprocessing: multiple children that spread the time waiting so as the fully utilize the processing power available.</p>
-
-<p>To this end, I have created a simple framework for managing child/worker multiprocessing in PHP.  Like other high-level interpreted languages, the most straightforward way to spin things up is using <code>fork(2)</code> to create new processes.  While not as Hardcore and Awesome as the lightweight threads that other languages provide, OS-level process creation isn&rsquo;t a huge hindrance if you code for it: make the child processes long running so as to mitigate the startup cost.  </p>
-
-<p>The framework is part of the <a href="https://launchpad.net/genius">Team Lazer Beez Open Source</a> project&ndash;you can find it in the <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/">utility</a> package.  The entire thing is simple enough to fit in a single class, <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/lib/gosUtility/Parallel.cls.php">gosUtility_Parallel</a>, the basics of which can be credited to <a href="http://stackoverflow.com/users/47529/chaos">chaos&rsquo;</a> <a href="http://stackoverflow.com/questions/752214/php-daemon-worker-environment/752255#752255">post on Stack Overflow</a>.</p>
-
-<p>Using the library is simple&ndash;extend gosUtility<em>Parallel and override the <code>doWorkChildImpl()</code> method:
-<pre class="brush: php">
-// Include the Genius config file
-require</em>once dirname(dirname(<strong>FILE</strong>)) .&#39;/Core/testConfig.inc.php&#39;;</p>
-
-<p>class Minimal extends gosUtility<em>Parallel {
-    protected function doWorkChildImpl() {
-        gosUtility</em>Parallel::$logger-&gt;debug($this-&gt;workerID . &quot; started&quot;);
-        usleep(2000000);</p>
-<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3
-4
-5
-6
-7</pre></td><td class="code"><pre>    gosUtility_Parallel::$logger-&gt;debug($this-&gt;workerID . " doing work");
-    usleep(2000000);
-
-    gosUtility_Parallel::$logger-&gt;info($this-&gt;workerID . " finishing");
-    exit(1);
-    return;
-}
-</pre></td></tr></tbody></table>
-</div>
-
-<p>}
-</pre></p>
-
-<p>This class creates simple workers that print a couple of debug messages with some sleeping in between, and then announce that they are done working.  Now you can instantiate the class with a single argument: the number of children to run.  gosUtility_Parallel will take care of all the details.</p>
-
-<pre class="bursh: php">
-// Make with the go
-$minimal = new Minimal(2);
-$minimal->go();
-</pre>
-
-<p>If children <code>exit</code> with a non-zero status, the parent will spin up a replacement.  The parent will continue to run until all children have exited normally, or it gets <code>INT</code> (say, ctrl+c) or <code>TERM</code> (the default signal sent by kill(1)), in which case it will pass that signal on to the children, ensure they shut down, and then end itself.  gosUtility_Parallel provides ample logging information; running the above produces the following output:</p>
-
-<pre>
-INFO - Started worker 0 (pid 42093)
-DEBUG - 0 started
-INFO - Started worker 1 (pid 42094)
-DEBUG - 1 started
-DEBUG - 0 doing work
-DEBUG - Checking worker 0 (pid 42093)
-DEBUG - Checking worker 1 (pid 42094)
-DEBUG - 1 doing work
-INFO - 0 finishing
-INFO - 1 finishing
-DEBUG - Checking worker 0 (pid 42093)
-INFO - Worker 0 (pid 42093) exited normally
-DEBUG - Checking worker 1 (pid 42094)
-INFO - Worker 1 (pid 42094) exited normally
-</pre>
-
-<p>gosUtility_Parallel provides a number of overrideable methods whose names explain their purpose: <code>parentSetup()</code>, <code>parentCleanup()</code>, and <code>childCleanup()</code>.  Children can also get their <code>$workerID</code> and the <code>$maxWorkers</code> number making processing based upon modular division trivial.  The <a href="http://bazaar.launchpad.net/~genius.com/genius/trunk/view/head:/php/Utility/parallel.php">example parallel class</a> in the distribution demonstrates some of these features:</p>
-
-<pre class="brush: php">
-// Include the Genius config file
-require_once dirname(dirname(__FILE__)) .'/Core/testConfig.inc.php';
-
-class Par extends gosUtility_Parallel {
-    public function __construct($maxWorkers) {
-        parent::__construct($maxWorkers);
-
-        // Redefine the logger
-        gosUtility_Parallel::$logger = Log5PHP_Manager::getLogger('gosParallel.Par');
-    }
-
-    protected function doWorkChildImpl() {
-        gosUtility_Parallel::$logger->debug($this->workerID . " started");
-
-        // Run until told not to
-        global $run;
-        while ($run) {
-            gosUtility_Parallel::$logger->debug($this->workerID . " doing work.");
-            usleep(2000000);
-            if ($this->workerID == 0 && rand(0,10) == 7) {
-                gosUtility_Parallel::$logger->info($this->workerID . " returning");
-                return;
-            }
-        }
-    }
-
-    protected function parentCleanup() {
-        gosUtility_Parallel::$logger->debug("Parent cleaning up");
-    }
-
-    protected function childCleanup() {
-        gosUtility_Parallel::$logger->debug($this->workerID . " cleaning up");
-    }
-}
-</pre>
-
-<p>The example above runs out-of-the-box (provided your PHP was built with <a href="http://us.php.net/pcntl"><code>--enable-pcntl</code></a>, so I encourage you to <a href="https://launchpad.net/genius">download the source</a> and take it for a test drive.</p>
-
-<p>Incidently, if you&rsquo;re in the Perl world you can just use <a href="http://search.cpan.org/dist/Parallel-ForkManager/lib/Parallel/ForkManager.pm">Parallel::ForkManager</a> and be on your way. </p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/3/">Next page</a></p>
@@ -678,6 +578,10 @@ class Par extends gosUtility_Parallel {
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
+              <div class="article-link-date">Jul 12, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -714,10 +618,6 @@ class Par extends gosUtility_Parallel {
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
-              <div class="article-link-date">Feb  3, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -731,7 +631,7 @@ class Par extends gosUtility_Parallel {
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -741,6 +641,7 @@ class Par extends gosUtility_Parallel {
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
       </ol>
     </li>
   </ul>

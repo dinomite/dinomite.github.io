@@ -5,10 +5,84 @@
   <id>http://dinomite.net/blog</id>
   <link href="http://dinomite.net/blog"/>
   <link href="http://dinomite.net/feed.xml" rel="self"/>
-  <updated>2017-01-18T19:00:00-05:00</updated>
+  <updated>2017-07-12T08:17:00-04:00</updated>
   <author>
     <name>Drew Stephens</name>
   </author>
+  <entry>
+    <title>Coding Tests</title>
+    <link rel="alternate" href="http://dinomite.net/blog/2017/07/12/coding-tests/"/>
+    <id>http://dinomite.net/blog/2017/07/12/coding-tests/</id>
+    <published>2017-07-12T08:17:00-04:00</published>
+    <updated>2017-07-12T12:28:59-04:00</updated>
+    <author>
+      <name>Drew Stephens</name>
+    </author>
+    <content type="html">&lt;p&gt;Hiring for developers is tricky business for many reasons, but one of the most contentious is assessing technical ability.  Anyone who has done hiring, in particular for junior developers, has come across &lt;a href="https://blog.codinghorror.com/why-cant-programmers-program/"&gt;candidates that couldn&amp;rsquo;t write the simplest of programs&lt;/a&gt;.  Thus we find ourselves in a world where technical interviews often involve whiteboard coding or coding tests.&lt;/p&gt;
+
+&lt;h1&gt;Whiteboard Coding&lt;/h1&gt;
+
+&lt;p&gt;The short summary: whiteboard coding is almost always a bad idea—it doesn&amp;rsquo;t really assess what you&amp;rsquo;re looking for.&lt;/p&gt;
+
+&lt;p&gt;Many interviewers, who either haven&amp;rsquo;t ever experienced whiteboard coding or who themselves possess exceptional social fortitude, think that whiteboard coding is a great way to assess a candidate&amp;rsquo;s programming ability and see how they think.  Unfortunately, the unnaturalness of writing code in a stressful situation, by hand, with an audience, without being able to test it leaves many developers in a flustered state unable to think.&lt;/p&gt;
+
+&lt;p&gt;A year after college I was working at a job I slid into by way of prior internships.  I hadn&amp;rsquo;t ever actually interviewed for a technical job.  I wanted something more challenging and interesting than that position, so I applied to Google.  After phone screens they invited me on site.  The second interview was with a pair of programmers who wanted me to do something simple, akin to &lt;a href="http://wiki.c2.com/?FizzBuzzTest"&gt;FizzBuzz&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I was incredibly flustered—I knew modular division was what was required but that wasn&amp;rsquo;t something I had done since CS1 (note: I have more fingers than times I&amp;rsquo;ve employed modular division now, in 10 years of professional software engineering).  Even though it&amp;rsquo;s a trivial problem, even with very little experience, my initial surprise completely subverted my ability to even start thinking about the program critically.  I started just writing things on the board and eventually stumbled through the exercise but it was clear that was the last interview.&lt;/p&gt;
+
+&lt;h1&gt;Live Coding&lt;/h1&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;em&gt;Ah-ha!&lt;/em&gt;&amp;rdquo;, you think, &amp;ldquo;&lt;em&gt;I&amp;rsquo;ll give them a great setup to eliminate the unnatural situation of coding by hand on a whiteboard!  We&amp;rsquo;ll have an interviewee laptop that they can use with the best IDE!&lt;/em&gt;&amp;rdquo;.  That&amp;rsquo;s a great step, but doesn&amp;rsquo;t solve the biggest problem: the audience.  Programming is a largely solitary activity, especially for more junior engineers.  I definitely think that collaboration and things like pair programming are important, but to pretend that such a lopsided, I&amp;rsquo;m-evaluating-you-right-now arrangement is at all like pair programming is to &lt;a href="https://www.youtube.com/watch?v=dYBjVTMUQY0"&gt;completely misunderstand what the paradigm is about&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Beyond that, know that the technical environment you are providing is invariably unnatural as well.  Developers may only have experience on Windows and you provide them with a Mac.  They might work in an IDE like WebStorm or Eclipse and your setup is Sublime with a terminal.  Those problems are significant enough to leave even the best developer in a state of confusion, which begets sheer terror in the interview context, but we haven&amp;rsquo;t even gotten to the biggest problem.&lt;/p&gt;
+
+&lt;p&gt;If you expect a developer to be able to write code in such a stressful situation the only way they will be successful and not look completely daft to even a casual observer is to allow them to write in a language that they currently use.  That doesn&amp;rsquo;t mean anything from their resume, or what your company is hiring them to write, that means a language that they have actively used in the past week or two.  Working in multiple languages involves a switching period to bring the correct syntax to mind—that can be a few minutes if you&amp;rsquo;ve only been out of it for a week, but can easily be tens of minutes filled with repeated web searches for the most trivial language constructs (&lt;code&gt;else if&lt;/code&gt; or &lt;code&gt;elsif&lt;/code&gt;? how do I for-each?).  Realize that forcing a developer to ask such basic questions both poisons your opinion of them (shouldn&amp;rsquo;t you at least know &lt;em&gt;that&lt;/em&gt;?) and puts them in a dreadful state of mind (I couldn&amp;rsquo;t even remember &lt;em&gt;that&lt;/em&gt;!).&lt;/p&gt;
+
+&lt;p&gt;Finally, as we&amp;rsquo;ll get to later, any sort of coding test requires significant up-front effort on the company&amp;rsquo;s part.&lt;/p&gt;
+
+&lt;h1&gt;Take-home coding tests&lt;/h1&gt;
+
+&lt;p&gt;A take-home coding test solves all of the aforementioned problems.  Candidates get to use an devlopment environment of their preference, aren&amp;rsquo;t under live scrutiny, and get to work in the manner that is best for them.  For all of these reasons, I quite like take-home coding tests, but they rightly get a lot of hate from other developers for a few reasons.&lt;/p&gt;
+
+&lt;h2&gt;Time&lt;/h2&gt;
+
+&lt;p&gt;The exercise needs to be time limited and of a reasonable scope, &lt;strong&gt;3-5 hours at most&lt;/strong&gt;.  That doesn&amp;rsquo;t mean saying &amp;ldquo;don&amp;rsquo;t spend more than 3-5 hours on this&amp;rdquo; in your description.  I&amp;rsquo;ve seen many coding tests that stipulate a time limit, but also mention that applicants will be graded on tests, error handling, dealing with unexpected input, and documentation.  Even when applied to a very small project, those tasks alone can comprise 3-5 hours of work.  It is not reasonable to ask a developer applying to your company to spend more than 2-3 hours, with a very maximum cap of five, working on your test.  If nothing else, you&amp;rsquo;re going to lose nearly all of them to companies without such onerous requirements.&lt;/p&gt;
+
+&lt;h2&gt;Expectations&lt;/h2&gt;
+
+&lt;p&gt;Having realistic and flexible expectations is paramount.  No matter the developer&amp;rsquo;s level of experience, how you&amp;rsquo;re querying them, or how thorough your explanation, without the ability to ask questions in real-time &lt;strong&gt;your test will be misunderstood&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;em&gt;But we&amp;rsquo;re a consulting shop! Our developers have to build precisely what the customer needs from a spec all the time!&lt;/em&gt;&amp;rdquo; you protest.  Doesn&amp;rsquo;t matter—the candidate isn&amp;rsquo;t part of your work environment, hasn&amp;rsquo;t met the customer, and is working on a contrived project of highly limited scope.  A coding test isn&amp;rsquo;t a good way to thoroughly test developer&amp;rsquo;s abilities to understand and implement specs.&lt;/p&gt;
+
+&lt;p&gt;Some will implement a totally working solution that misses the point.  Others will have a great implementation but only a single simple test.  For an otherwise good candidate, neither of these should be deal breakers and you absolutely shouldn&amp;rsquo;t decline them without talking to them.  &lt;strong&gt;Schedule a call and talk to them about how they approached the problem&lt;/strong&gt;, their interpretation of it, and what steps they took in building their solution.&lt;/p&gt;
+
+&lt;h1&gt;Doing it right&lt;/h1&gt;
+
+&lt;h2&gt;Take-home coding tests&lt;/h2&gt;
+
+&lt;p&gt;For junior developers, your coding test should be at the very least a full project setup: in Java land that means a &lt;code&gt;pom.xml&lt;/code&gt; or &lt;code&gt;build.gradle&lt;/code&gt; already stubbed out and a main method ready to receive the candidate&amp;rsquo;s code.  In Ruby you might stub out the main script with calls to a class that the candidate is to write, along with a &lt;code&gt;Gemfile&lt;/code&gt; if they&amp;rsquo;re expected to use any Gems.  There are many great junior developers who haven&amp;rsquo;t ever started a new project.&lt;/p&gt;
+
+&lt;p&gt;Better than that, though, is to write out the entirety of the app, save for a couple of unimplemented methods or a stubbed class which the candidate is to complete.  You might provide a suite of failing test cases in the framework but if not you should go ahead and create the files &amp;amp; classes required.  See &lt;a href="https://github.com/adhocteam/homework/tree/master/fetch"&gt;this example&lt;/a&gt; from &lt;a href="https://adhocteam.us"&gt;Ad Hoc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more senior developers, it is ok to leave things much more open ended—it shouldn&amp;rsquo;t be beyond a senior developer&amp;rsquo;s skill to choose &amp;amp; create the layout of their project.  Because it is more open ended, however, there is a much more significant burden on the company to ensure that the description of the test is comprehensive and clear.  You need to provide the candidate with test input &amp;amp; output (more than just one parcel) that they can understand what you&amp;rsquo;re looking for.  Being senior doesn&amp;rsquo;t mean they can read your mind.&lt;/p&gt;
+
+&lt;p&gt;How do you know if you&amp;rsquo;ve met the above?  &lt;strong&gt;Have one of your engineers who wasn&amp;rsquo;t involved at all in the creation take the test&lt;/strong&gt; and see how they do, both on time and how their peers evaluate the result.  Needless to say, this should be on the clock—this person is your employee, not a candidate.&lt;/p&gt;
+
+&lt;h2&gt;Live coding&lt;/h2&gt;
+
+&lt;p&gt;For live coding, regardless of level, the arrangement should be the most fleshed-out description for junior developers above: &lt;strong&gt;a fully written app with a few unimplemented methods or classes that the candidate is to fill in&lt;/strong&gt;.  If they&amp;rsquo;re going to need helper methods (to parse input or some such) provide them.  Again, for junior developers provide at least some tests; ask them what others they would add.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s where the real burden comes in: you need this framework for a language that the candidate is accustomed to, even if it&amp;rsquo;s not the language you&amp;rsquo;re hiring for.  Most companies hire developers even if they don&amp;rsquo;t regularly program in the language used at the company and a developer can only be exptected to work effectively in a language that they use regularly.  You should have frameworks prepared for common languages—Java, Ruby, Python, and JavaScript is a good start for a webdev shop.  If you&amp;rsquo;re more backend focused, C &amp;amp; Go probably replace JS.  More frontend, add in Swift or Objective-C.&lt;/p&gt;
+
+&lt;p&gt;Know that this is still a risky proposition and you need to be understanding enough not fail a candidate just because they seem to have trouble, especially right when you start.  Even with a fleshed out framework in their language of choice, remember that they&amp;rsquo;re not using a computer they&amp;rsquo;re used to and that they&amp;rsquo;re massively on display in what is normally an endeavor done alone or with someone you already know well.&lt;/p&gt;
+
+&lt;h2&gt;Whiteboard coding&lt;/h2&gt;
+
+&lt;p&gt;Whiteboard coding isn&amp;rsquo;t a good idea, especially for junior developers.  A whiteboard coding session is more likely to select for confidence in demanding social situations than those with programming aptitude.&lt;/p&gt;
+
+&lt;p&gt;For senior developers, however, whiteboarding at a higher level (architecture) is a great interview tool.  Describe to the candidate some real problem that your team had and ask them how they would solve it.  Be prepared to give copious hints and don&amp;rsquo;t mark down candidates who need that help—it is very easy for a stressed-out candidate to misinterpret your quetion, even just the complexity level you&amp;rsquo;re going for, and be completely caught off guard.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>JDBI Tips</title>
     <link rel="alternate" href="http://dinomite.net/blog/2017/01/19/jdbi-tips/"/>
@@ -722,54 +796,6 @@ If you have a resource which is optionally protected (e.g., you want to display 
 &lt;/div&gt;
 
 &lt;p&gt;The key here is that &lt;code&gt;user.most_recent_friends_time&lt;/code&gt; is a fast query.  The cache key is a compound of the calling-specific values (the user and the requested status) and the timestamp for the most recent friend change time.  When the method is executed, &lt;code&gt;Rails.cache.fetch()&lt;/code&gt; attempts to retrieve an entry for the last friend change time.  If the user hasn&amp;rsquo;t created any new friendships since the last time the method ran (and it&amp;rsquo;s been less than &lt;a href="https://www.youtube.com/watch?v=fC_q9KPczAg"&gt;one week&lt;/a&gt;), it&amp;rsquo;ll be in the cache.  If the user has made more friends, then the cache will miss.  On a miss, the first thing to do is remove any prior entries, then just do the expensive bit and return it.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Winter Tech Forum is The Finest</title>
-    <link rel="alternate" href="http://dinomite.net/blog/2016/03/07/winter-tech-forum-is-the-finest/"/>
-    <id>http://dinomite.net/blog/2016/03/07/winter-tech-forum-is-the-finest/</id>
-    <published>2016-03-06T19:00:00-05:00</published>
-    <updated>2016-03-18T12:10:37-04:00</updated>
-    <author>
-      <name>Drew Stephens</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;img alt="Snowshoeing" src="https://farm2.staticflickr.com/1621/25017324783_93c29cc2ed_z_d.jpg" /&gt;&lt;/p&gt;
-
-&lt;p&gt;This past week I was in &lt;a href="https://en.wikipedia.org/wiki/Crested_Butte,_Colorado"&gt;Crested Butte, Colorado&lt;/a&gt; at the second annual &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;. WTF is an &lt;a href="http://www.mindviewinc.com/Conferences/OpenSpaces.html"&gt;Open Spaces conference&lt;/a&gt;, where there is no pre-planning, aside from organizing a place for the conference to happen. Attendees begin coming up with the schedule of discussions on the first day of the conference, and continue throughout as ideas flow.&lt;/p&gt;
-
-&lt;p&gt;See also: &lt;a href="http://diannemarsh.com/conference-summary-winter-tech-forum-2016/"&gt;Dianne Marsh’s much more comprehensive summary&lt;/a&gt; and &lt;a href="http://chrisphelps.github.io/conferences/2016/03/13/Winter-Tech-Forum/"&gt;Chris Phelps&amp;rsquo; writeup&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h1&gt;Open Spaces&lt;/h1&gt;
-
-&lt;p&gt;The participation of everyone present, combined with the way discussions, happen is what makes WTF special.
-Open Spaces sessions are led by…whoever shows up. The person or people who had the idea might give a very brief introduction of their ideas on the topic or questions they are trying to explore, but from there the discussion can go anywhere. This leads to hugely informative sharing of experiences, be they technical, organizational, or otherwise. Recall illuminating conversations you’ve had with smart colleagues or friends in the tech industry and you’ve got a good idea of what the entire week at WTF is like.&lt;/p&gt;
-
-&lt;h1&gt;People&lt;/h1&gt;
-
-&lt;p&gt;The conference itself is only a small part of WTF. Crested Butte is a delightfully small town (1,500 people, 0.7 square miles) and most of the attendees stay within a few minutes walk of each other. Proximity is used to great effect during the progressive dinner, where each of the big houses cooks something and the whole conference ambles from one location to the next every half-hour. The traveling party makes for wonderful discussions, as you are encourage by the whirlwind of movement to meet and talk to new people.
-WTF is also small, this year about 35 people, meaning you can, and should, meet everyone at the conference. Though some companies are &lt;a href="https://www.netflix.com/"&gt;overrepresented&lt;/a&gt; (which speaks well of their &lt;a href="http://www.slideshare.net/reed2001/culture-1798664"&gt;culture&lt;/a&gt;), the diversity of experience makes every interaction informative.&lt;/p&gt;
-
-&lt;h1&gt;Lightning Talks&lt;/h1&gt;
-
-&lt;p&gt;Lightning talks are one of many highlights of WTF. The talks are five minutes, you can have whatever slides or props you want, and the topics are unconstrained. You would expect those on Kubernetes or Kotlin, but probably not the just-as-interesting ones on ski mountaineering, knitting, and Asperger syndrome. These quick introductions to a topic foster ideas that lead to later scheduled discussions, or just informative conversations with others.&lt;/p&gt;
-
-&lt;h1&gt;Technology&lt;/h1&gt;
-
-&lt;p&gt;Technology-wise, JVM languages are popular amongst attendees, but even there the gamut from Java to Scala (with Kotlin somewhere in between) means ideas come from all angles. Open mindedness is a key tenet of everyone, so despite the very practical inclinations, languages like &lt;a href="https://www.rust-lang.org/"&gt;Rust&lt;/a&gt; and &lt;a href="http://www.ponylang.org/"&gt;Pony&lt;/a&gt; are exercised during the hack day.
-Discussions of deployment and infrastructure (where to draw the line between the two), testing strategies, and artificial intelligence round out the technical side of discussions&lt;/p&gt;
-
-&lt;h1&gt;Organizations&lt;/h1&gt;
-
-&lt;p&gt;How we work together is the other big focus of WTF. Creating a company that trusts its employees (&lt;a href="http://www.mindviewinc.com/"&gt;Bruce’s&lt;/a&gt; &lt;a href="http://www.reinventing-business.com/"&gt;Trust Organization&lt;/a&gt; or Teal) is a popular discussion topic. The best way to interview &amp;amp; hire for a high-functioning company was a standout session with markedly different viewpoints (particularly on coding tests) that were very informative.&lt;/p&gt;
-
-&lt;h1&gt;Activities&lt;/h1&gt;
-
-&lt;p&gt;The daily schedule is organized to take advantage of the beautiful surrounds of Crested Butte. Most afternoons will have a group snowshoeing or cross-country skiing around the town or on the many trails through the alpine valleys. If you like downhill skiing, the &lt;a href="http://www.skicb.com/"&gt;Crested Butte ski area&lt;/a&gt; is a short bus ride away. Some folks don’t care for the evils of nature and just hang out in one of the great rental houses—folks are very open to sharing their space, food, and quaffables.&lt;/p&gt;
-
-&lt;h1&gt;Should you go?&lt;/h1&gt;
-
-&lt;p&gt;If you are open minded and greatly enjoy discussions with smart people, more than being spoken to or addressing a crowd, then Winter Tech Forum is for you. &lt;a href="https://twitter.com/dmarsh"&gt;Dianne Marsh&lt;/a&gt; of Netflix wrote a &lt;a href="http://diannemarsh.com/winter-tech-forum-2016-kind-conference/"&gt;good overview of the conference&lt;/a&gt;, Bruce &lt;a href="http://bruceeckel.github.io/2015/01/09/the-winter-tech-forum/"&gt;wrote about last year&lt;/a&gt;, and you can find a bit more on the &lt;a href="http://www.mindviewinc.com/Conferences/JavaPosseRoundup/"&gt;Winter Tech Forum&lt;/a&gt;.
-The best way to figure out if WTF is for you, though, is to talk to those who have been there before. Their description will do a far better job of selling it than anything written. If you are interested in learning from the experiences of others, humble, and open minded, you’ll have a great time at WTF!&lt;/p&gt;
 </content>
   </entry>
 </feed>

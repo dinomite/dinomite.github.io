@@ -28,6 +28,13 @@
     <p><a href="/page/11/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/01/29/drum-major-institute-on-the-2008-state-of-the-union/">Drum Major Institute on the 2008 State of The Union</a></h1>
+    <div class="article-title-date">Jan 29, 2008</div>
+    <p>Searching for some numbers to go along with Bush&rsquo;s final State of The Union address, I stumbled across <a href="http://www.drummajorinstitute.org/library/article.php?ID=6675">this piece</a> by the oddly-named <a href="http://www.drummajorinstitute.org/library/article.php?ID=6675">Drum Major Institute</a>.  Their rebuttal covers the main points that were made presented with quotes from the speech alongside the DMI&rsquo;s official riposte sound byte.  Furthermore, the institute provides more in depth dissection of their position with (select) numbers to back up their retort.  Being a biased response, the commentary doesn&rsquo;t fully explore each issue, but that&rsquo;s not to say it&rsquo;s anything like <a href="http://www.fair.org/index.php?page=1067">Fox News biased</a>.</p>
+
+<p>The specific statistic I was searching for after hearing <a href="http://www.npr.org/templates/story/story.php?storyId=2101185">Robert Siegel</a> or <a href="http://www.npr.org/templates/story/story.php?storyId=1934700">David Welna</a> (I&rsquo;m so old-school I listened to it on the radio) mention that Bush&rsquo;s $18b cut of so-called useless programs from the federal budget was really a small change.  Indeed it is, as the proposed federal budget is $2.9 trillion for 2008, making Bush vaunted cuts a mere .6%.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/01/27/rit-winter-sports/">RIT Winter Sports</a></h1>
     <div class="article-title-date">Jan 27, 2008</div>
     <p>I have finally put a video on YouTube.  This is people having fun in G and H lots during winter at RIT.  Keith did the filming, I did the editing and the drivers are anonymous.
@@ -236,47 +243,6 @@ given ($foo) {
 <p>Sure, switch statements don&rsquo;t really do anything special, but they are often quite a bit cleaner than if/elif chains and the fact that Perl&rsquo;s implementation can handle regex is awesome.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/12/19/web-browsing-with-python/">Web Browsing With Python</a></h1>
-    <div class="article-title-date">Dec 19, 2007</div>
-    <p>Python provides a stateful web browsing module called <a href="http://wwwsearch.sourceforge.net/mechanize/"><code>mechanize</code></a>, named after Perl&rsquo;s mature and featureful <a href="http://search.cpan.org/author/PETDANCE/WWW-Mechanize-1.34/lib/WWW/Mechanize.pm"><code>WWW::Mechanize</code></a>.  Though it isn&rsquo;t as powerful as the Perl version, <code>mechanize</code> provides an easy-to-use framework for browsing web pages including interacting with forms and accessing SSL content.  The documentation for <code>mechanize</code> on the web is sparse, but viewing the source file (<code>/usr/lib/python2.5/site-packages/mechanize/_mechanize.py</code> on my Ubuntu machine) provides some needed insight.  Here&rsquo;s a quick overview of the operation of <code>mechanize</code>:</p>
-
-<pre class="brush: python;">
-#!/usr/bin/python
-import re
-from mechanize import Browser
-br = Browser()
-
-# Ignore robots.txt
-br.set_handle_robots( False )
-# Google demands a user-agent that isn't a robot
-br.addheaders = [('User-agent', 'Firefox')]
-
-# Retrieve the Google home page, saving the response
-br.open( "http://google.com" )
-
-# Select the search box and search for 'foo'
-br.select_form( 'f' )
-br.form[ 'q' ] = 'foo'
-
-# Get the search results
-br.submit()
-
-# Find the link to foofighters.com; why did we run a search?
-resp = None
-for link in br.links():
-    siteMatch = re.compile( 'www.foofighters.com' ).search( link.url )
-    if siteMatch:
-        resp = br.follow_link( link )
-        break
-
-# Print the site
-content = resp.get_data()
-print content
-</pre>
-
-<p>That&rsquo;s a pretty straightforward and simple usage.  The <code>get_data()</code> method gives you the HTML content of the pages, which I often find suitable to run a <code>.split(&#39;\n&#39;)</code> and then do some regex on line by line.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/13/">Next page</a></p>
@@ -302,6 +268,10 @@ print content
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
+              <div class="article-link-date">Jul 12, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -338,10 +308,6 @@ print content
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
-              <div class="article-link-date">Feb  3, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -355,7 +321,7 @@ print content
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -365,6 +331,7 @@ print content
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
       </ol>
     </li>
   </ul>

@@ -27,6 +27,73 @@
 
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2017/07/12/coding-tests/">Coding Tests</a></h1>
+    <div class="article-title-date">Jul 12, 2017</div>
+    <p>Hiring for developers is tricky business for many reasons, but one of the most contentious is assessing technical ability.  Anyone who has done hiring, in particular for junior developers, has come across <a href="https://blog.codinghorror.com/why-cant-programmers-program/">candidates that couldn&rsquo;t write the simplest of programs</a>.  Thus we find ourselves in a world where technical interviews often involve whiteboard coding or coding tests.</p>
+
+<h1>Whiteboard Coding</h1>
+
+<p>The short summary: whiteboard coding is almost always a bad idea—it doesn&rsquo;t really assess what you&rsquo;re looking for.</p>
+
+<p>Many interviewers, who either haven&rsquo;t ever experienced whiteboard coding or who themselves possess exceptional social fortitude, think that whiteboard coding is a great way to assess a candidate&rsquo;s programming ability and see how they think.  Unfortunately, the unnaturalness of writing code in a stressful situation, by hand, with an audience, without being able to test it leaves many developers in a flustered state unable to think.</p>
+
+<p>A year after college I was working at a job I slid into by way of prior internships.  I hadn&rsquo;t ever actually interviewed for a technical job.  I wanted something more challenging and interesting than that position, so I applied to Google.  After phone screens they invited me on site.  The second interview was with a pair of programmers who wanted me to do something simple, akin to <a href="http://wiki.c2.com/?FizzBuzzTest">FizzBuzz</a>.</p>
+
+<p>I was incredibly flustered—I knew modular division was what was required but that wasn&rsquo;t something I had done since CS1 (note: I have more fingers than times I&rsquo;ve employed modular division now, in 10 years of professional software engineering).  Even though it&rsquo;s a trivial problem, even with very little experience, my initial surprise completely subverted my ability to even start thinking about the program critically.  I started just writing things on the board and eventually stumbled through the exercise but it was clear that was the last interview.</p>
+
+<h1>Live Coding</h1>
+
+<p>&ldquo;<em>Ah-ha!</em>&rdquo;, you think, &ldquo;<em>I&rsquo;ll give them a great setup to eliminate the unnatural situation of coding by hand on a whiteboard!  We&rsquo;ll have an interviewee laptop that they can use with the best IDE!</em>&rdquo;.  That&rsquo;s a great step, but doesn&rsquo;t solve the biggest problem: the audience.  Programming is a largely solitary activity, especially for more junior engineers.  I definitely think that collaboration and things like pair programming are important, but to pretend that such a lopsided, I&rsquo;m-evaluating-you-right-now arrangement is at all like pair programming is to <a href="https://www.youtube.com/watch?v=dYBjVTMUQY0">completely misunderstand what the paradigm is about</a>.</p>
+
+<p>Beyond that, know that the technical environment you are providing is invariably unnatural as well.  Developers may only have experience on Windows and you provide them with a Mac.  They might work in an IDE like WebStorm or Eclipse and your setup is Sublime with a terminal.  Those problems are significant enough to leave even the best developer in a state of confusion, which begets sheer terror in the interview context, but we haven&rsquo;t even gotten to the biggest problem.</p>
+
+<p>If you expect a developer to be able to write code in such a stressful situation the only way they will be successful and not look completely daft to even a casual observer is to allow them to write in a language that they currently use.  That doesn&rsquo;t mean anything from their resume, or what your company is hiring them to write, that means a language that they have actively used in the past week or two.  Working in multiple languages involves a switching period to bring the correct syntax to mind—that can be a few minutes if you&rsquo;ve only been out of it for a week, but can easily be tens of minutes filled with repeated web searches for the most trivial language constructs (<code>else if</code> or <code>elsif</code>? how do I for-each?).  Realize that forcing a developer to ask such basic questions both poisons your opinion of them (shouldn&rsquo;t you at least know <em>that</em>?) and puts them in a dreadful state of mind (I couldn&rsquo;t even remember <em>that</em>!).</p>
+
+<p>Finally, as we&rsquo;ll get to later, any sort of coding test requires significant up-front effort on the company&rsquo;s part.</p>
+
+<h1>Take-home coding tests</h1>
+
+<p>A take-home coding test solves all of the aforementioned problems.  Candidates get to use an devlopment environment of their preference, aren&rsquo;t under live scrutiny, and get to work in the manner that is best for them.  For all of these reasons, I quite like take-home coding tests, but they rightly get a lot of hate from other developers for a few reasons.</p>
+
+<h2>Time</h2>
+
+<p>The exercise needs to be time limited and of a reasonable scope, <strong>3-5 hours at most</strong>.  That doesn&rsquo;t mean saying &ldquo;don&rsquo;t spend more than 3-5 hours on this&rdquo; in your description.  I&rsquo;ve seen many coding tests that stipulate a time limit, but also mention that applicants will be graded on tests, error handling, dealing with unexpected input, and documentation.  Even when applied to a very small project, those tasks alone can comprise 3-5 hours of work.  It is not reasonable to ask a developer applying to your company to spend more than 2-3 hours, with a very maximum cap of five, working on your test.  If nothing else, you&rsquo;re going to lose nearly all of them to companies without such onerous requirements.</p>
+
+<h2>Expectations</h2>
+
+<p>Having realistic and flexible expectations is paramount.  No matter the developer&rsquo;s level of experience, how you&rsquo;re querying them, or how thorough your explanation, without the ability to ask questions in real-time <strong>your test will be misunderstood</strong>.</p>
+
+<p>&ldquo;<em>But we&rsquo;re a consulting shop! Our developers have to build precisely what the customer needs from a spec all the time!</em>&rdquo; you protest.  Doesn&rsquo;t matter—the candidate isn&rsquo;t part of your work environment, hasn&rsquo;t met the customer, and is working on a contrived project of highly limited scope.  A coding test isn&rsquo;t a good way to thoroughly test developer&rsquo;s abilities to understand and implement specs.</p>
+
+<p>Some will implement a totally working solution that misses the point.  Others will have a great implementation but only a single simple test.  For an otherwise good candidate, neither of these should be deal breakers and you absolutely shouldn&rsquo;t decline them without talking to them.  <strong>Schedule a call and talk to them about how they approached the problem</strong>, their interpretation of it, and what steps they took in building their solution.</p>
+
+<h1>Doing it right</h1>
+
+<h2>Take-home coding tests</h2>
+
+<p>For junior developers, your coding test should be at the very least a full project setup: in Java land that means a <code>pom.xml</code> or <code>build.gradle</code> already stubbed out and a main method ready to receive the candidate&rsquo;s code.  In Ruby you might stub out the main script with calls to a class that the candidate is to write, along with a <code>Gemfile</code> if they&rsquo;re expected to use any Gems.  There are many great junior developers who haven&rsquo;t ever started a new project.</p>
+
+<p>Better than that, though, is to write out the entirety of the app, save for a couple of unimplemented methods or a stubbed class which the candidate is to complete.  You might provide a suite of failing test cases in the framework but if not you should go ahead and create the files &amp; classes required.  See <a href="https://github.com/adhocteam/homework/tree/master/fetch">this example</a> from <a href="https://adhocteam.us">Ad Hoc</a>.</p>
+
+<p>For more senior developers, it is ok to leave things much more open ended—it shouldn&rsquo;t be beyond a senior developer&rsquo;s skill to choose &amp; create the layout of their project.  Because it is more open ended, however, there is a much more significant burden on the company to ensure that the description of the test is comprehensive and clear.  You need to provide the candidate with test input &amp; output (more than just one parcel) that they can understand what you&rsquo;re looking for.  Being senior doesn&rsquo;t mean they can read your mind.</p>
+
+<p>How do you know if you&rsquo;ve met the above?  <strong>Have one of your engineers who wasn&rsquo;t involved at all in the creation take the test</strong> and see how they do, both on time and how their peers evaluate the result.  Needless to say, this should be on the clock—this person is your employee, not a candidate.</p>
+
+<h2>Live coding</h2>
+
+<p>For live coding, regardless of level, the arrangement should be the most fleshed-out description for junior developers above: <strong>a fully written app with a few unimplemented methods or classes that the candidate is to fill in</strong>.  If they&rsquo;re going to need helper methods (to parse input or some such) provide them.  Again, for junior developers provide at least some tests; ask them what others they would add.</p>
+
+<p>Here&rsquo;s where the real burden comes in: you need this framework for a language that the candidate is accustomed to, even if it&rsquo;s not the language you&rsquo;re hiring for.  Most companies hire developers even if they don&rsquo;t regularly program in the language used at the company and a developer can only be exptected to work effectively in a language that they use regularly.  You should have frameworks prepared for common languages—Java, Ruby, Python, and JavaScript is a good start for a webdev shop.  If you&rsquo;re more backend focused, C &amp; Go probably replace JS.  More frontend, add in Swift or Objective-C.</p>
+
+<p>Know that this is still a risky proposition and you need to be understanding enough not fail a candidate just because they seem to have trouble, especially right when you start.  Even with a fleshed out framework in their language of choice, remember that they&rsquo;re not using a computer they&rsquo;re used to and that they&rsquo;re massively on display in what is normally an endeavor done alone or with someone you already know well.</p>
+
+<h2>Whiteboard coding</h2>
+
+<p>Whiteboard coding isn&rsquo;t a good idea, especially for junior developers.  A whiteboard coding session is more likely to select for confidence in demanding social situations than those with programming aptitude.</p>
+
+<p>For senior developers, however, whiteboarding at a higher level (architecture) is a great interview tool.  Describe to the candidate some real problem that your team had and ask them how they would solve it.  Be prepared to give copious hints and don&rsquo;t mark down candidates who need that help—it is very easy for a stressed-out candidate to misinterpret your quetion, even just the complexity level you&rsquo;re going for, and be completely caught off guard.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a></h1>
     <div class="article-title-date">Jan 19, 2017</div>
     <p>I&rsquo;ve been using <a href="http://jdbi.org/">JDBI</a> in Java &amp; <a href="https://kotlinlang.org/">Kotlin</a> projects recently and have come across a few things that aren&rsquo;t entirely intuitive.  If you&rsquo;re having trouble with JDBI, be sure to check <a href="http://jdbi.org/archive.html">the docs</a>; if you don&rsquo;t find an answer there, the <a href="https://github.com/jdbi/jdbi/issues">issues on GitHub</a> is a great place to look for more esoteric uses of the library.</p>
@@ -809,13 +876,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
 <p>[^1]: Seriously not trying to be a dick, I just don&rsquo;t fucking know and give zero shits</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a></h1>
-    <div class="article-title-date">Feb  3, 2014</div>
-    <p>at(1) is a standard command in <a href="http://www.freebsd.org/cgi/man.cgi?query=at&amp;sektion=1">every</a> <a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?at">Unix-like</a> <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=at&amp;apropos=0&amp;sektion=0&amp;manpath=OpenBSD+Current&amp;arch=i386&amp;format=html">operating</a> <a href="http://www.shrubbery.net/solaris9ab/SUNWaman/hman1/at.1.html">system</a> <a href="http://illumos.org/man/1/at">that</a> <a href="http://www.unix.com/man-page/opensolaris/1/at/">I</a> <a href="http://plan9.bell-labs.com/magic/man2html?man=at&amp;sect=1">know</a> <a href="http://netbsd.gw.com/cgi-bin/man-cgi?at++NetBSD-current">of</a>, including <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/at.1.html">Mac OS</a>, for scheduling tasks to be run at a later time.  Unfortunately, OS X doesn&rsquo;t run (or even seem to have) atd(8), the daemon responsible for running at(1)-scheduled tasks.  Complicating matters is the fact that at(1) is a very difficult to search for, because search engines strip such common words, so figuring out such issues can&rsquo;t really be done with even the best searching.  So here I&rsquo;ll list other things that one might search for: atq, atrm, and batch, which are all part of the at(1) suite of tools.</p>
-
-<p>My (likely vain) hope is that this post will spread a bit of knowledge and maybe catch searches, if someone&rsquo;s searches match my description.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/2/">Next page</a></p>
@@ -841,6 +901,10 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
+              <div class="article-link-date">Jul 12, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/01/19/jdbi-tips/">JDBI Tips</a>
               <div class="article-link-date">Jan 19, 2017</div>
@@ -877,10 +941,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
               <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
               <div class="article-link-date">Feb 13, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/03/at-1-on-mac-os-x/">at(1) on Mac OS X</a>
-              <div class="article-link-date">Feb  3, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -894,7 +954,7 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (2)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -904,6 +964,7 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
       </ol>
     </li>
   </ul>
