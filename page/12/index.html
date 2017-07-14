@@ -28,13 +28,6 @@
     <p><a href="/page/11/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2008/01/30/ignoring-florida-and-michigan-voters/">Ignoring Florida and Michigan Voters</a></h1>
-    <div class="article-title-date">Jan 30, 2008</div>
-    <p>Though I think the DNC&rsquo;s goal of halting the ever-earlier progression of primaries is a righteous one, their execution of it is royally stupid.  By stripping Florida and Michigan of their delegates, thereby marginalizing the voters in those states the DNC has made campaigning in the states during primary season worth very little.  Indeed the democratic front runners all signed a pledge not to campaign in Florida in order to further shun the state for <a href="http://www.msnbc.msn.com/id/18783378/">moving it&rsquo;s primary election earlier</a>.  The candidates are missing a vital opportunity to court Florida voters and bring them to the democratic party.  Sure, the nominee isn&rsquo;t decided yet, but we know who the possibilities are; shouldn&rsquo;t they be allowed to endear voters toward themselves?</p>
-
-<p>As I said above, I do agree with the DNC goal of ceasing the one-up-manship that states are participating in, each trying to get their primary to be the first.  Super Tuesday this year is during the first week in February, the same week that <a href="http://en.wikipedia.org/wiki/New_Hampshire_primary#Winners_and_runners-up">the New Hampshire primary</a> was held in 2000.  Primary season will be all but complete in 2008 at the time it was just beginning only 2 elections ago.</p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/01/29/drum-major-institute-on-the-2008-state-of-the-union/">Drum Major Institute on the 2008 State of The Union</a></h1>
     <div class="article-title-date">Jan 29, 2008</div>
     <p>Searching for some numbers to go along with Bush&rsquo;s final State of The Union address, I stumbled across <a href="http://www.drummajorinstitute.org/library/article.php?ID=6675">this piece</a> by the oddly-named <a href="http://www.drummajorinstitute.org/library/article.php?ID=6675">Drum Major Institute</a>.  Their rebuttal covers the main points that were made presented with quotes from the speech alongside the DMI&rsquo;s official riposte sound byte.  Furthermore, the institute provides more in depth dissection of their position with (select) numbers to back up their retort.  Being a biased response, the commentary doesn&rsquo;t fully explore each issue, but that&rsquo;s not to say it&rsquo;s anything like <a href="http://www.fair.org/index.php?page=1067">Fox News biased</a>.</p>
@@ -232,6 +225,24 @@ for(&lt;&gt;){
 <p>When you visit the websites for <a href="http://www.hillaryclinton.com">HIllary Clinton</a> or <a href="http://www.barackobama.com">Barack Obama</a> you are asked for contact information before seeing anything substantive.  You have to fill out the form or click through to get to the candidate&rsquo;s website.  Thankfully, their websites send cookies; subsequent visits forgo the information garnering forms whether or not you put in anything.  But why put up this stumbling block?  Ron Paul&rsquo;s site is much more elegant; the form for signing up to get campaign information is still easy to get to, but it&rsquo;s not intrusive. </p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2008/01/01/perl-5-dot-10-dot-0/">Perl 5.10.0</a></h1>
+    <div class="article-title-date">Jan  1, 2008</div>
+    <p>Sure, it&rsquo;s already slathered across every news site known to man but just like everyone else I have different reasons for being excited about Perl 5.10.0.</p>
+
+<p>Like many others, I often choose Perl for its seamless regex support so the faster regex engine in this new release is definitely welcome.  This version also fixes an erroneous piece of missing syntax for subscript slices. I was always confused why the interpreter forced me to use <code>-&gt;</code> instead of the non-arrowed form.  The big one, not because it was hugely lacking but simply a seemingly odd oversight, is the switch statement, which is called <code>given/when</code> in Perl:</p>
+
+<pre class="brush: perl;">
+given ($foo) {
+    when (/^abc/) { $abc = 1; }
+    when (/^def/) { $def = 1; }
+    when (/^xyz/) { $xyz = 1; }
+    default { $nothing = 1; }
+}
+</pre>
+
+<p>Sure, switch statements don&rsquo;t really do anything special, but they are often quite a bit cleaner than if/elif chains and the fact that Perl&rsquo;s implementation can handle regex is awesome.</p>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/13/">Next page</a></p>
@@ -257,10 +268,6 @@ for(&lt;&gt;){
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/07/14/null-safety/">If You Like Types, You're Going to Love Null Safety</a>
-              <div class="article-link-date">Jul 14, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -297,6 +304,10 @@ for(&lt;&gt;){
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -310,7 +321,7 @@ for(&lt;&gt;){
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -320,7 +331,7 @@ for(&lt;&gt;){
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
-            <li><a href="/blog/tags/hiring/">Hiring (2)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
       </ol>
     </li>
   </ul>
