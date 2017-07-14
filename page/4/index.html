@@ -28,6 +28,41 @@
     <p><a href="/page/3/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2010/11/20/brake-pads-for-the-e36-m3/">Brake Pads for the E36 M3</a></h1>
+    <div class="article-title-date">Nov 20, 2010</div>
+    <p>I&rsquo;ve been doing autocross and track days with my 1997 BMW M3 for long
+enough that I can offer some insight into the brake pads available for
+E36 M cars.  What follows are the brake pads that I have driven, in
+order of heat handling. If you only drive on the street, the top of
+the list is where you want to be. If you have a race car, the bottom
+is your domain.</p>
+
+<h2>EBC Greenstuff</h2>
+
+<p>An awesome street pad, thanks to producing much less dust than stock.  I drove these pads at my very first HPDE with the <a href="http://www.nccbmwcca.org">National Capital Chapter</a> of the <a href="http://bmwcca.org">BMW CCA</a>; the track is not their forte. By the end of the second day, I had burned through &frac34; of the pads, and the car was putting out clouds of smoke braking into turn 1 on Summit Point&rsquo;s main circuit. Unsurprisingly, this was accompanied by significant fade.</p>
+
+<p>Like stock pads, these will work for your first track experience if you are conservative, but I wouldn&rsquo;t recommend it. Thanks to their low dust, EBC Green Stuff work great for street pads and even the
+occasional autocross.</p>
+
+<h2>Hawk High Performance Street (HPS)</h2>
+
+<p>The HPS are biled as a stock-replacement pad and I would agree with that.  They dust a bit less than BMW OEM pads, and provide a little bit more fade resistance.  For track use, the HPS is much like stock or the EBC Greenstuff mentioned above&ndash;they&rsquo;ll work if you&rsquo;re new &amp; conservative or slow.</p>
+
+<h2>Axxis Ultimate (ULT)</h2>
+
+<p>These are quite similar to the HPS&ndash;less dust than stock, good feel even when stone cold, and a bit more heat handling capability than stock.  They work great for street driving and autocrossing, but are only good for limited (read: slower) track use.</p>
+
+<h2>Hawk High Performance Plus (HP+)</h2>
+
+<p>The HP+ are a good compromise between track and street pads.  I recently used them for a fade-free weekend at Thunderhill with ambient temperature of 70-80F.  Unlike a full-on track pad that is downright scary on the street, the HP+ is decidedly OK on the street.  The first stop of a drive (or after not using them on the highway for a few minutes) will be a bit longer than stock pads, but not the Flintstones feeling of track pads.</p>
+
+<h2>Hawk Blue</h2>
+
+<p>I am lazy, so I put my pads on at home before driving to the track, so I got to experience these on the street.  To begin with, the first stop from neighborhood speeds takes about twice the distance you expect, and the initial bit is nonexistent.  After a couple more low speed stops, the brakes have enough heat to work just fine, but they still squeal as though you are murdering cats with each brake application.</p>
+
+<p>On the track, the Hawk Blue is an awesome pad.  Being a true track pad it takes some heat before they really work, as described above.  Just like you need to get your tires and brain up to temperature, with a track pad you need some heat in the brakes before they will do what you expect.  You should be driving judiciously on your out lap anyway, so this ought not be a problem.  The wear on these is much better than any of the aforementioned pads&ndash;a day at Laguna Seca burned less than one quarter.  If you have been going to the track for a while, or if you&rsquo;ve gotten fast enough to begin feeling fade in your existing brake setup, get some track pads. </p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2010/10/26/synchronizing-an-itunes-library-between-two-computers/">Synchronizing an iTunes Library Between Two Computers</a></h1>
     <div class="article-title-date">Oct 26, 2010</div>
     <p>Like many folks, I have a desktop that I use for most of my computing, and a laptop that I use while travelling, at a coffee shop, or perhaps while <a href="http://www.suntimes.com/technology/ihnatko/2745228,ihnatko-multitasking-twitter-internet-092510.article">watching tv</a>.  The other thing I have is a lot of music, all nicely rated and organized in iTunes. The problem is that new music I get goes onto my desktop, but I would like to have the exact same stuff on my laptop.  Enter <a href="http://github.com/dinomite/iTunes-Sync">iTunes-Sync</a>, a simple script that I wrote to synchronize the iTunes library file and all of the content (music, etc.) that it depends upon between the two machines.  </p>
@@ -440,202 +475,6 @@ out</a>.</p>
 <p>I&rsquo;ve put the slides for my talk up on <a href="http://www.slideshare.net/dinomite/learning-moose-lightning">SlideShare</a>.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2009/12/25/using-the-shell-right/">Using The Shell Right</a></h1>
-    <div class="article-title-date">Dec 25, 2009</div>
-    <p>The most powerful part of Unix/Linux/BSD is the command line.  In stock trim, the Unix shells are all very effective, but your time can be more effective by customizing the shell.  I use <code>bash</code>, so I know that these things work in that shell, but they ought to be easily transferred to others as well.</p>
-
-<h2>Aliases</h2>
-
-<p>A good friend of mine, <a href="http://semicomplete.com">Jordan Sissel</a>, once said that if you do something more than once, you&rsquo;re doing it wrong.  His conjecture applies as much to your shell as it does to your <a href="http://dinomite.net/2008/smart-bookmarks">browser</a>â€”computers are great at repetitive tasks, so you shouldn&rsquo;t bore yourself with such things.  Therein lies the most important thing you can do with your shell: make common tasks easier with aliases.</p>
-
-<p>First things first, I use <code>ls</code> a whole lot, and, despite it&rsquo;s simple makeup, I often mistype the command.  I don&rsquo;t care about being able to easily run <a href="http://www.freebsdsoftware.org/games/sl.html">Steam Locomotive</a>, and there&rsquo;s no <code>s</code> or <code>l</code> command, so I replace those all with <code>ls</code>:
-<pre class="brush: bash; gutter: false">alias sl=&quot;ls&quot;
-alias l=&quot;ls&quot;
-alias s=&quot;ls&quot;
-alias ll=&quot;ls -l&quot;
-alias lh=&quot;ls -lh&quot;
-alias la=&quot;ls -la&quot;</pre>
-Another thing I do all the time is descend into directories, which means I need to get out of them, too:
-<pre class="brush: bash; gutter: false">
-alias ..=&quot;cd ..&quot;
-alias ...=&quot;cd ../..&quot;
-alias ....=&quot;cd ../../..&quot;
-alias .....=&quot;cd ../../../..&quot;
-alias ......=&quot;cd ../../../../..&quot;
-alias .......=&quot;cd ../../../../../..&quot;
-</pre></p>
-
-<p>I always want extended regular expressions, and there are tons of things I don&rsquo;t want to search when I grep (though I use <a href="http://betterthangrep.com">ack</a> these days):</p>
-
-<pre class="brush: bash; gutter: false">
-alias grep="egrep"
-alias G="grep -n --color=always --binary-file=without-match --exclude=tags \
---exclude=*-min.js --exclude-dir='.[a-zA-Z]*' --exclude-dir='external' \
---exclude-dir='blib'"
-</pre>
-
-<p>Furthermore, I often want to do recursive greps of a entire codebase, sometimes case insensitive, and like everything else, I mistype it:
-<pre class="brush: bash; gutter: false">
-alias GR=&quot;G -r&quot;
-alias RG=&quot;GR&quot;
-alias GRI=&quot;G -r -i&quot;
-alias GIR=&quot;GRI&quot;
-alias IGR=&quot;GRI&quot;
-alias IRG=&quot;GRI&quot;
-</pre></p>
-
-<p>If you do any sort of system administration, you need to grep the process list; make that easy:
-<pre class="brush: bash; gutter: false">
-alias paux=&quot;ps aux|grep -i&quot;
-</pre></p>
-
-<p>Is someone shoulder surfing?
-<pre class="brush: bash; gutter: false">
-alias c=&quot;clear&quot;
-alias logout=&quot;clear; logout&quot;
-</pre></p>
-
-<p><a href="http://asktherelic.com">Matt Behrens</a> tipped me off to this oneâ€”<code>type -a</code> tells you a lot more than the standard <code>which</code>:
-<pre class="brush: bash; gutter: false">
-alias which=&#39;type -a&#39;
-</pre></p>
-
-<p>When I&rsquo;m writing in a language that requires compilation, I use cowsay to break up the output of each run, so that errors are easy to distinguish between this run and the previous one:
-<pre class="brush: bash; gutter: false">
-alias gcc=&#39;cowsay &quot;Hello&quot;; gcc&#39;
-alias g++=&#39;cowsay &quot;Hello&quot;; g++&#39;
-alias make=&#39;cowsay &quot;Hello&quot;; nice -n 10 make&#39;
-alias javac=&#39;cowsay &quot;Hello&quot;; javac&#39;
-</pre></p>
-
-<p>Machines that I SSH to often get their names as aliases; I&rsquo;ve got a bunch more of these:
-<pre class="brush: bash; gutter: false">
-alias claudius=&quot;ssh -Y dinomite@dinomite.net&quot;
-alias caligula=&quot;ssh -Y dinomite@caligula.dinomite.net&quot;
-</pre></p>
-
-<h2>Prompt</h2>
-
-<p>There are numerous articles about pimping out your shell&rsquo;s prompt, many include previous command exit codes, the time, the current energy of the LHC, and the price of the S&amp;P 500.  I have a web browser, so I don&rsquo;t need all that informationâ€”I only put in my prompt things that are pertinent to the task at hand.  The things that make up my prompt are a bit complicated, so I build it in stages.  First, since I work on a lot of different machines, I always have the hostname in my prompt.  To make it easy to tell which machine I&rsquo;m on, I assign colors to the systems that I use most often:</p>
-
-<pre class="brush: bash; gutter: false">
-HOSTNAME=`hostname|sed -e 's/\..*$//'`
-if [ $HOSTNAME = 'Caligula' ] || [ $HOSTNAME = 'Caligula.local' ]; then
-    export HOST_COLOR="\[\033[1;35m\]"
-fi
-if [ $HOSTNAME = 'claudius' ]; then
-    export HOST_COLOR="\[\033[1;36m\]"
-fi
-if [ $HOSTNAME = 'dev1' ]; then
-    export HOST_COLOR="\[\033[1;34m\]"
-fi
-if [ $HOSTNAME = 'svr-dev-rw1' ]; then
-    export HOST_COLOR="\[\033[1;31m\]"
-fi
-if [ $HOSTNAME = 'drewfus' ]; then
-    export HOST_COLOR="\[\033[1;30m\]"
-fi
-</pre>
-
-<p>Next, I capitalize the hostname and make the colon separating it from the path red if I&rsquo;m currently acting as root via <code>sudo -s</code>.  This makes it very hard to forget that the consequences of actions are great at the current time:</p>
-
-<pre class="brush: bash; gutter: false">
-COLON_COLOR='0m'
-if [ ${UID} -eq 0 ]; then
-    COLON_COLOR='1;31m'
-fi
-if [ ${UID} -eq 0 ]; then
-    HOSTNAME="`echo $HOSTNAME|tr '[a-z]' '[A-Z]'`"
-fi
-</pre>
-
-<p>Finally, build the actual prompt:</p>
-
-<pre class="brush: bash; gutter: false">
-PS1=`echo -ne "$HOST_COLOR$HOSTNAME\[\033[00m\]\[\e[$COLON_COLOR\]:\[\033[33m\]\
-w\[\033[00m\]\\[\033[01;33m\]\$\[\033[00m\] "`
-</pre>
-
-<p>What does this look like?<br>
-<span style="color: #00ccff;">claudius</span>:<span style="color: #339966;">/usr/local$</span><br>
-And when root:<br>
-<span style="color: #00ccff;">CLAUDIUS</span><span style="color: #ff0000;">:</span><span style="color: #339966;">/usr/local$</span></p>
-
-<h2>History</h2>
-
-<p>There are a lot of complicated commands that I only use occasionally; having a big history means if I&rsquo;ve used it once, I can easily search and find the command later.  The <code>histappend</code> options tells bash to append rather than overwrite the history file and <code>cmdhist</code> combines multi-line history commands into a single entry.  It&rsquo;s often useful to run the same command repeatedly, and I find myself typing <code>ls</code> whenever I stop to think; setting <code>HISTCONTROL</code> and <code>HISTIGNORE</code> keeps those actions from filling up my history.</p>
-
-<pre class="brush: bash; gutter: false">
-#"I know I've used that command before, but I can't remember the syntax"
-export HISTSIZE=50000
-shopt -s histappend
-shopt -s cmdhist
-HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:ll:la:lh:sl"
-export HISTTIMEFORMAT='%Y-%m-%d %H:%M:%S - '
-</pre>
-
-<h2>Environment Variables</h2>
-
-<p>A lot of linuxes come with lackluster program defaults (emacs, more, etc.); you can get better ones by setting environment variables:</p>
-
-<pre class="brush: bash; gutter: false">
-export PAGER=/usr/bin/less
-export EDITOR='vim -X'
-export BROWSER='firefox'
-export CC=/usr/bin/gcc
-</pre>
-
-<p>Since we are in the 21st century, I use Unicode:</p>
-
-<pre class="brush: bash; gutter: false">
-export LC_ALL="en_US.UTF-8"
-export LANGUAGE="en_US.UTF-8"
-</pre>
-
-<h2>Functions</h2>
-
-<p>I use Perl a lot, and have to deal with keeping modules the same across different systems; this function makes getting the installed version of a module easy:</p>
-
-<pre class="brush: bash; gutter: false">
-function perlmodver {
-    perl -M$1 -e 'print "Version " . $ARGV[0]->VERSION . " of " . $ARGV[0] . " is installed.\n"' $1
-}
-</pre>
-
-<p>The thing I use <code>awk</code> for most often is &rsquo;{print $n}&rsquo;, so I wrote <a href="http://dinomite.net/2009/fawk/"><code>fawk</code></a> which you give a number and it des just that:
-<pre class="brush: bash; gutter: false">
-function fawk {
-    first=&quot;awk &#39;{print &quot;
-    last=&quot;}&#39;&quot;
-    cmd=&quot;${first}\$${1}${last}&quot;
-    eval $cmd
-}
-</pre></p>
-
-<p><code>awk</code> also does math:
-<pre class="brush: bash; gutter: false">
-function calc {
-    awk &quot;BEGIN{ print $* }&quot;;
-}
-</pre></p>
-
-<h2>Tying It All Together</h2>
-
-<p>To keep things organized, I separate the above mentioned things into a few different files, so my <code>.bashrc</code> brings them all together.  Additionally, I check for a <code>.bash_local</code> file, which isn&rsquo;t <a href="http://dinomite.net/2008/keeping-your-home-directory-in-subversion/">checked into subversion</a>, so that I can have machine-specific alterations to my shell environment.</p>
-
-<pre class="brush: bash; gutter: false">
-# .bashrc
-source ~/.bash_global
-source ~/.bash_aliases
-source ~/.bash_functions
-if [ -f ~/.bash_local ]
-then
-    source ~/.bash_local
-fi
-</pre>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/5/">Next page</a></p>
@@ -661,6 +500,10 @@ fi
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/14/null-safety/">If You Like Types, You're Going to Love Null Safety</a>
+              <div class="article-link-date">Jul 14, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -697,10 +540,6 @@ fi
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
-              <div class="article-link-date">Feb 13, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -714,7 +553,7 @@ fi
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -724,7 +563,7 @@ fi
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
-            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (2)</a></li>
       </ol>
     </li>
   </ul>

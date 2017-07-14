@@ -27,6 +27,37 @@
 
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2017/07/14/null-safety/">If You Like Types, You're Going to Love Null Safety</a></h1>
+    <div class="article-title-date">Jul 14, 2017</div>
+    <p>\?.let
+…As Cedric Beust notes (http://beust.com/weblog/2016/01/14/a-close-look-at-kotlins-let/) this is a questionable construct to use</p>
+
+<p>It is useful like this:</p>
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre>fun getSummary(id: Int): String? {
+    val cacheKey = "cache:pagechat:$id:page_summary"
+
+    val context = gets.time()
+    jedisPool.resource.use { jedis -&gt;
+        jedis.get(cacheKey)?.let { return it }
+
+        // No cached value, do the work
+        return work
+    }
+}
+</pre></td></tr></tbody></table>
+</div>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2017/07/12/coding-tests/">Coding Tests</a></h1>
     <div class="article-title-date">Jul 12, 2017</div>
     <p>Hiring for developers is tricky business for many reasons, but one of the most contentious is assessing technical ability.  Anyone who has done hiring, in particular for junior developers, has come across <a href="https://blog.codinghorror.com/why-cant-programmers-program/">candidates that couldn&rsquo;t write the simplest of programs</a>.  Thus we find ourselves in a world where technical interviews often involve whiteboard coding or coding tests.</p>
@@ -867,15 +898,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
 <p>The best part about this replacement server is that it sends dtaa to Weather Underground, which has a <a href="http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KVAARLIN28">much better interface for weather stations</a>, providing history &amp; graphs that are far superior to La Crosse&rsquo;s site.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a></h1>
-    <div class="article-title-date">Feb 13, 2014</div>
-    <p>There are <a href="http://photographyforrealestate.net/2012/09/09/how-to-use-lightroom-4-to-create-a-time-lapse-video/">a bunch</a> of <a href="http://lightroom-blog.com/2013/09/17/timelapse-again-in-lightroom-5-2/">tutorials</a> for creating time-lapse videos in Lightroom.  All of the ones I found only provide a preset for making 1280x720 (720p) videos.  I took one of those presets and updated it to be make a <a href="/assets/JPEG 82 (1080p).lrtemplate">1920x1080 (1080p) video from stills</a>.</p>
-
-<p>Download this an add it to your Lightroom video presets.  On Mac, this is located at <code>~/Library/Application Support/Adobe/Lightroom/Export Presets/Video/</code>.  For Windows, <a href="http://store.apple.com/us">see here</a>[^1].</p>
-
-<p>[^1]: Seriously not trying to be a dick, I just don&rsquo;t fucking know and give zero shits</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/2/">Next page</a></p>
@@ -901,6 +923,10 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/14/null-safety/">If You Like Types, You're Going to Love Null Safety</a>
+              <div class="article-link-date">Jul 14, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -937,10 +963,6 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
-              <div class="article-link-date">Feb 13, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -954,7 +976,7 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
@@ -964,7 +986,7 @@ The best way to figure out if WTF is for you, though, is to talk to those who ha
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
-            <li><a href="/blog/tags/hiring/">Hiring (1)</a></li>
+            <li><a href="/blog/tags/hiring/">Hiring (2)</a></li>
       </ol>
     </li>
   </ul>
