@@ -5,10 +5,56 @@
   <id>http://dinomite.net/blog</id>
   <link href="http://dinomite.net/blog"/>
   <link href="http://dinomite.net/feed.xml" rel="self"/>
-  <updated>2017-07-12T08:17:00-04:00</updated>
+  <updated>2017-07-14T16:05:00-04:00</updated>
   <author>
     <name>Drew Stephens</name>
   </author>
+  <entry>
+    <title>Kotlin's let()</title>
+    <link rel="alternate" href="http://dinomite.net/blog/2017/07/14/kotlin-s-let/"/>
+    <id>http://dinomite.net/blog/2017/07/14/kotlin-s-let/</id>
+    <published>2017-07-14T16:05:00-04:00</published>
+    <updated>2017-07-14T16:03:49-04:00</updated>
+    <author>
+      <name>Drew Stephens</name>
+    </author>
+    <content type="html">&lt;p&gt;Kotlin&amp;rsquo;s standard library is a &lt;a href="http://beust.com/weblog/2015/10/30/exploring-the-kotlin-standard-library/"&gt;small collection&lt;/a&gt; of syntax sugar methods that are part of why the language is &lt;a href="https://medium.com/@magnus.chatt/why-you-should-totally-switch-to-kotlin-c7bbde9e10d5"&gt;a better Java&lt;/a&gt;.  The &lt;code&gt;let()&lt;/code&gt; function creates a block within which the receiver is scoped, either as Kotlin&amp;rsquo;s default &lt;code&gt;it&lt;/code&gt; or a named variable you provide.  Combined with Kotlin&amp;rsquo;s &lt;a href="https://kotlinlang.org/docs/reference/null-safety.html#safe-calls"&gt;safe call operator&lt;/a&gt;, only executing a block when you have a non-null value is concise:&lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;    dao.user(id)?.let {
+        // Do something with the user
+    }
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Cédric Beust has a &lt;a href="http://beust.com/weblog/2016/01/14/a-close-look-at-kotlins-let/"&gt;follow-up post on &lt;code&gt;let()&lt;/code&gt;&lt;/a&gt; in which he says that he is moving away from this usage of &lt;code&gt;?.let()&lt;/code&gt; in favor of regular old &lt;code&gt;if-else&lt;/code&gt; blocks because they make it more obvious what happens on the failing side of the &lt;code&gt;if&lt;/code&gt;, when the result of the receiver is null.  I agree, but have one style of function for which I still quite like &lt;code&gt;?.let()&lt;/code&gt;—cache retrieval:&lt;/p&gt;
+&lt;div class="highlight plaintext"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;    fun getSomethingExpensive(id: Int): String? {
+        val cacheKey = "cache:$id"
+
+        jedis.get(cacheKey)?.let { return it }
+
+        // No cached value, do the work
+        val result = someExpensiveWorkFunction()
+        jedis.setex(cacheKey, result)
+
+        return result
+    }
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I like the flow of this style; you pause to check the cache, but move on to computing the value immediately below without the extra visual complexity of assigning the result of the cache query to variable and separately checking that variable for being null.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Coding Tests</title>
     <link rel="alternate" href="http://dinomite.net/blog/2017/07/12/coding-tests/"/>
@@ -724,78 +770,6 @@ If you have a resource which is optionally protected (e.g., you want to display 
 &lt;p&gt;Using &lt;code&gt;LocalContextScope.CONCURRENT&lt;/code&gt; allows this class to be threadsafe.  JRuby creates a single runtime and shared variables for the &lt;code&gt;ScriptingContainer&lt;/code&gt;, but separate variable mappings for each thread.  The other modifier, &lt;code&gt;LocalVariableBehavior.PERSISTENT&lt;/code&gt;, keeps the local variables around after we call &lt;code&gt;runScriptlet()&lt;/code&gt; allowing for their retrieval back in Java land.&lt;/p&gt;
 
 &lt;p&gt;See the &lt;a href="https://github.com/jruby/jruby/wiki/RedBridgeExamples"&gt;Red Bridge Examples&lt;/a&gt; for more information on using Ruby within Java.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Better Rails.cache Invalidation with Quick Queries</title>
-    <link rel="alternate" href="http://dinomite.net/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/"/>
-    <id>http://dinomite.net/blog/2016/03/18/better-rails.cache-invalidation-with-quick-queries/</id>
-    <published>2016-03-17T20:00:00-04:00</published>
-    <updated>2016-03-18T17:06:01-04:00</updated>
-    <author>
-      <name>Drew Stephens</name>
-    </author>
-    <content type="html">&lt;p&gt;Rails &lt;a href="http://guides.rubyonrails.org/caching_with_rails.html"&gt;provides a caching framework&lt;/a&gt;, built-in.  Just set &lt;code&gt;config.cache_store&lt;/code&gt; in your &lt;code&gt;application.rb&lt;/code&gt;.  The easiest way to use caching is using time-base invalidation—you compute something expensive and store it in the cache with an expiration time.  The first time you try to retrieve it after the expiration, recompute &amp;amp; cache the new value.&lt;/p&gt;
-&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Product&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ActiveRecord&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Base&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;expensive_operation&lt;/span&gt;
-    &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;fetch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"product/expensive_operation"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;expires_in: &lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;hours&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
-      &lt;span class="no"&gt;LVMH&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;API&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;do_it&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="k"&gt;end&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Many things in the world don&amp;rsquo;t respond well to only being updated on a wallclock schedule.  User profiles are viewed much more often than they are updated, meaning time-based cache expiration will cause needless regeneration of unchanged values.  Furthermore, when a user does update their profile, not seeing that reflected immediately is confusing.&lt;/p&gt;
-
-&lt;p&gt;The first problem can be ameliorated by using very long expirations and the latter by force-expiring related cache entries when issuing updates.  That last bit leaves a huge potential pitfall: forgetting to invalidate the cache when updating the value.  Another approach for keeping your cache fresh is to use a quickly-retrieved value that indicates whether the cache needs to be regenerated.&lt;/p&gt;
-
-&lt;p&gt;In &lt;a href="http://www.forumforall.net"&gt;our&lt;/a&gt; application, user profiles show friend relationships and use that information to pull in recent comments from those friends, an expensive operation spanning many tables.  One key bit that informs how much searching we need to do is those friend relationships.  If the user has new friends we need to look at all of those new friend&amp;rsquo;s recent comments and build them for display.  While checking the entire friends list is expensive, checking the latest change for a single user is quick.&lt;/p&gt;
-&lt;div class="highlight ruby"&gt;&lt;table style="border-spacing: 0"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl" style="text-align: right"&gt;&lt;pre class="lineno"&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18&lt;/pre&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;FriendsAPI&lt;/span&gt;
-  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_friends&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;key_prefix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"friends_api:get_friends:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;id&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
-    &lt;span class="n"&gt;timestamp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;most_recent_friends_time&lt;/span&gt;
-
-    &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;fetch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;key_prefix&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;expires_in: &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;week&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
-      &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;cache&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;delete_matched&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;key_prefix&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:*"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-      &lt;span class="n"&gt;inflated_friends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
-      &lt;span class="n"&gt;friends&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;get_all_friends&lt;/span&gt;
-      &lt;span class="n"&gt;friends&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;friend&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
-        &lt;span class="n"&gt;inflated_friends&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;InflatedFriend&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;friend&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="k"&gt;end&lt;/span&gt;
-
-      &lt;span class="n"&gt;inflated_friends&lt;/span&gt;
-    &lt;span class="k"&gt;end&lt;/span&gt;
-  &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The key here is that &lt;code&gt;user.most_recent_friends_time&lt;/code&gt; is a fast query.  The cache key is a compound of the calling-specific values (the user and the requested status) and the timestamp for the most recent friend change time.  When the method is executed, &lt;code&gt;Rails.cache.fetch()&lt;/code&gt; attempts to retrieve an entry for the last friend change time.  If the user hasn&amp;rsquo;t created any new friendships since the last time the method ran (and it&amp;rsquo;s been less than &lt;a href="https://www.youtube.com/watch?v=fC_q9KPczAg"&gt;one week&lt;/a&gt;), it&amp;rsquo;ll be in the cache.  If the user has made more friends, then the cache will miss.  On a miss, the first thing to do is remove any prior entries, then just do the expensive bit and return it.&lt;/p&gt;
 </content>
   </entry>
 </feed>
