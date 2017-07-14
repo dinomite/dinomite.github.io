@@ -28,12 +28,6 @@
     <p><a href="/page/13/">Previous page</a></p>
 
 <ul>
-    <h1 class="article-title"><a href="/blog/2007/11/19/amazons-kindle-comparable-to-a-hardcover/">Amazon's Kindle Comparable to a Hardcover?</a></h1>
-    <div class="article-title-date">Nov 19, 2007</div>
-    <p><a class="left" title="Bezos loves Kindle" href="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg"><img src="http://dinomite.net/wp-content/uploads/2007/11/bezos-loves-kindle.jpg" alt="Bezos loves Kindle" /></a>
-Morgan Webb made a comparison between Amazon&rsquo;s new <a href="http://amazon.com/gp/product/B000FI73MA/sr=53-1/qid=1195527445/ref=tr_359161">Kindle</a> eBook reader and a hardcover book.  Though she was simply trying to liken the Kindle to the nearest priced physical book product, this is a false comparison.  Someone buying a hardcover book is looking for something more than just the words and content of the story; they enjoy the physical representation of a fine work.  A more accurate comparison for the Kindle is a regular old paperback, whose purchaser is simply looking for the cheapest representation of the book&rsquo;s content.  At less than $15 for the average paperback, the Kindle doesn&rsquo;t look like such a good deal, since they charge $10 per book for the $400 device.</p>
-
-    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/11/15/time-machine-for-linux/">Time Machine for Linux</a></h1>
     <div class="article-title-date">Nov 15, 2007</div>
     <p>Since Apple&rsquo;s recent release of Leopard, which comes with the wonderful backup solution <em>Time Machine</em>, I&rsquo;ve seen more than a few articles explaining how those with Linux/Unix machines can create there own incremental backups using <code>rsync</code>.  This is great and, short of hard-linked directories, exactly like Apple&rsquo;s <em>Time Machine</em> backend.  Furthermore, this has always been possible on systems with <code>rsync</code> available and filesystems that support hardlinks.  I&rsquo;ve been doing incremental backups for years but, unlike all of the recent articles in question, I didn&rsquo;t roll my own solution: I use &lsquo;rsnapshot&rsquo; to do all of the hard work for me.</p>
@@ -266,6 +260,37 @@ After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS
     <p>I watched some music videos on <a href="http://en.wikipedia.org/wiki/YouTube">YouTube</a> today and found that <a href="http://en.wikipedia.org/wiki/Ska-P">Ska-P</a> <a href="http://youtube.com/watch?v=Q-Iv7JqlTjw">do</a> <a href="http://youtube.com/watch?v=cZhl8HU2WQI">not</a> <a href="http://youtube.com/watch?v=o8EZXKp9gWg">look</a> at all as I imagined them.  Yum!Yum!ORANGE, however, <a href="http://youtube.com/watch?v=0HJTa_ZPiw0">look</a> <a href="http://youtube.com/watch?v=pSJdx95F_3U">exactly</a> <a href="http://youtube.com/watch?v=92-w7P2aicM">like</a> <a href="http://youtube.com/watch?v=M2uVcKZB3RM">my</a> <a href="http://youtube.com/watch?v=-pRyO2Ywx_M">mind</a> <a href="http://youtube.com/watch?v=YCJuqLO_a4g">pictured</a>.</p>
 
     <div class="article-footer"></div>
+    <h1 class="article-title"><a href="/blog/2007/10/03/automated-encrypted-backups-via-ssh/">Automated Encrypted Backups via SSH</a></h1>
+    <div class="article-title-date">Oct  3, 2007</div>
+    <p>This is a hack of the script <code>rsnaptar</code> included with the rsnapshot distribution.  In short, it takes a  few rsnapshot directories, runs them through <code>tar</code>, <code>gzip</code> and <code>gpg</code> finally depositing the results on another machine.  I wrote this so that I could grab the backups from a server at work and routinely toss them onto a DVD that I take home with me.  It&rsquo;s a bad idea to be walking around with all of the company&rsquo;s source code, hence the GPG.  The magic all happens on one line which runs <code>tar</code>, piping the output to <code>ssh</code> which runs <code>gzip</code> reading from stdin on the remote machine then on to <code>gpg</code> dumping its output wherever you want.</p>
+
+<pre>
+#!/bin/sh
+SNAPSHOT_DIR="/data/backups/tarback"
+DEST_LOCATION="/home/stephensdg/Desktop/backups"
+
+USER=stephensdg
+HOST=10.32.193.100
+ID_FILE=/home/stephensdg/.ssh/id_dsa
+GPG_HOME=/home/stephensdg/.gnupg
+
+LS="/bin/ls"
+TAR="/bin/tar"
+CAT="/bin/cat"
+CHMOD="/bin/chmod"
+CHOWN="/bin/chown"
+MKDIR="/bin/mkdir"
+SSH="/usr/bin/ssh"
+
+cd ${SNAPSHOT_DIR}
+for BACKUP_POINT in `${LS} ${SNAPSHOT_DIR}`; do
+        ${TAR} -chf - ${BACKUP_POINT}/ | ${SSH} -i ${ID_FILE} ${USER}@${HOST} \
+        "gzip - | gpg --homedir ${GPG_HOME} -e -r Drew > \
+        ${DEST_LOCATION}/${BACKUP_POINT}.tar.gz.gpg"
+done
+</pre>
+
+    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/15/">Next page</a></p>
@@ -291,10 +316,6 @@ After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
-            <li>
-              <a href="/blog/2017/07/14/kotlin-s-let/">Kotlin's let()</a>
-              <div class="article-link-date">Jul 14, 2017</div>
-            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -331,6 +352,10 @@ After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
+            <li>
+              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
+              <div class="article-link-date">Feb 13, 2014</div>
+            </li>
       </ol>
     </li>
   </ul>
@@ -344,13 +369,13 @@ After reading <a href="http://www.instructables.com/id/EKWAN4FF44XY58J/?ALLSTEPS
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
             <li><a href="/blog/tags/java/">Java (2)</a></li>
-            <li><a href="/blog/tags/kotlin/">Kotlin (2)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
