@@ -28,6 +28,38 @@
     <p><a href="/page/7/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2008/09/11/rick-ross-financial-success/">Rick Ross' Financial Success</a></h1>
+    <div class="article-title-date">Sep 11, 2008</div>
+    <p>Since he was <a href="#">mentioned on The Daily Show</a> a few weeks ago, <a href="http://en.wikipedia.org/wiki/Rick_Ross_(rapper)">Rick Ross</a> has quickly become my favorite rapper.  The king of repetition, Ross hails from Miami and makes much of his activities trafficking drugs despite <a href="http://www.thesmokinggun.com/archive/years/2008/0721081rickross1.html">allegations that he worked for the man</a> during part of his life.  Like many rappers, Rick Ross talks a lot about his expensive cars and I noticed a trend in the vehicles of which he spoke.</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/09/7series.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/7series-300x172.jpg" alt="" title="BMW 7 Series" width="300" height="172" class="alignright size-medium wp-image-341" /></a>
+In his first album, Port of Miami, Ross&rsquo; makes a number of references to his white on white BMW 745i such as this line from the hit single <em>Hustlin&rsquo;</em>:</p>
+
+<blockquote>
+Who tha fuck you think ya fuckin with?  I&rsquo;m tha fuckin boss<br>
+745 white on white, thats fuckin Ross
+</blockquote>
+
+<p>To be sure, any BMW 7 series is a fine car, but the 745i is the base model of the line.  Is Rick Ross a poor rapper?  Not too fast, in the song <em>White House</em>, he mentions a Rolls Royce Phantom:</p>
+
+<blockquote>
+we in the white house<br>
+big phantom on the lawn getting wiped down
+</blockquote>
+
+<p>Is this song a fantasy about occupying the <a href="http://en.wikipedia.org/wiki/White_House">White House</a> proper, or is it simply hyperbole about his mansion, with a nod to cocaine usage and trade?  Given the previous mention of a 745i, I can only assume that the Phantom was but a fantasy for Rick Ross in 2006.</p>
+
+<p><a href="http://dinomite.net/wp-content/uploads/2008/09/maybach-116.jpg"><img src="http://dinomite.net/wp-content/uploads/2008/09/maybach-116-300x225.jpg" alt="" title="Maybach" width="300" height="225" class="alignright size-medium wp-image-347" /></a>
+Times change.  In 2008, Rick Ross released the album <em>Trilla</em> and it sounds like he&rsquo;s had a significant upgrade.  The song <em>Luxury Tax</em>, makes specific mention of a 760, the top of the line BMW 7 Series:</p>
+
+<blockquote>
+Got my whole arm rocked.<br>
+Keep the 760 double parked in the wrong spot.
+</blockquote>
+
+<p>The cover of the album also features the rapper in the back seat of a <a href="http://en.wikipedia.org/wiki/Maybach_57_and_62">Maybach</a>, the sole car from the eponymous ultra-luxury brand owned by <a href="http://en.wikipedia.org/wiki/Mercedes">Mercedes</a>.  The album also includes a song <em>Maybach Music</em>, Ross says that he has 20 whips, one of which is a <a href="http://en.wikipedia.org/wiki/Maserati">Maserati</a>.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2008/09/09/shell-command-substitution/">Shell Command Substitution</a></h1>
     <div class="article-title-date">Sep  9, 2008</div>
     <p>The other day I wanted to diff a pair of files on two different hosts, stg1 and stg2.  Normally, I would do so by copying on of the files to the other host, or grabbing them both onto my workstation with <code>scp</code>; &ldquo;there must be a better way,&rdquo; I thought.</p>
@@ -204,29 +236,6 @@ Updated to revision 1.
 <p>Bam.  I&rsquo;ve now got the exact same files on both machines.  If I&rsquo;m at the office and find some flash vim option that I want to use, I simply add it to my <code>.vimrc</code>, check it in with <code>svn ci .vimrc</code> and when I <code>svn up</code> from the other machines, they&rsquo;ll get the new changes.  In reality, I keep a bunch of stuff in my homedir subversion repository: <code>.bashrc</code>, <code>.screenrc</code>, <code>bin</code> directory and many others.  Subversion helps me keep all of my config files in sync across a number of different machines that I use on a daily basis; if you use more than one system with any frequency, I highly suggest checking in your home directory.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2008/05/24/here-documents-in-perl/">here-documents in Perl</a></h1>
-    <div class="article-title-date">May 24, 2008</div>
-    <p><a href="http://en.wikipedia.org/wiki/Here_document">Here-documents</a> are something that, once you know about them, you wonder how you ever got along without.  I first learned about here-docs in Python many years ago, but didn&rsquo;t know their proper name.  In Python, you define a here document with three single or double quotes:</p>
-
-<pre class="brush: python;">foo = """
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-mollit anim id est laborum.
-"""</pre>
-
-<p>One day, when I wanted to put some large blocks of text amongst code, I searched for a way to do this in Perl and found the syntax:
-<pre class="brush: perl;">my $foo =&lt;&lt; &quot;EOF&quot;;
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 
-dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-mollit anim id est laborum.
-EOF</pre>
-Note the use of quotes for the string-terminating sentinel (EOF, in this case, though it can be anything), which affects how the sting is interpreted.  Just like with other strings in Perl, double-quotes mean that variables and escapes will be interpreted whereas they are ignored in single-quoted strings.</p>
-
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/9/">Next page</a></p>
@@ -252,6 +261,10 @@ Note the use of quotes for the string-terminating sentinel (EOF, in this case, t
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/15/kotlin-s-let/">Kotlin's let()</a>
+              <div class="article-link-date">Jul 15, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -288,10 +301,6 @@ Note the use of quotes for the string-terminating sentinel (EOF, in this case, t
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
-              <div class="article-link-date">Feb 13, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -305,13 +314,13 @@ Note the use of quotes for the string-terminating sentinel (EOF, in this case, t
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
             <li><a href="/blog/tags/java/">Java (2)</a></li>
-            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (2)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>

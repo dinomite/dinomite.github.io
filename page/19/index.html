@@ -28,6 +28,17 @@
     <p><a href="/page/18/">Previous page</a></p>
 
 <ul>
+    <h1 class="article-title"><a href="/blog/2007/04/25/remote-oracle-connections/">Remote Oracle Connections</a></h1>
+    <div class="article-title-date">Apr 25, 2007</div>
+    <p>Like many &lsquo;enterprise solutions,&rsquo; Oracle is a despicable piece of software that has a tendency to eat copious amounts of memory and processor time.  Alas, ranting on my hatred of enterprise hardware and software is not the subject of this post.  A big part of enterprise applications is that they are usually accompanied by abundant amounts of documentation, sadly, much of it useless.  The tomes (physical or electronic) included often overlook the simplest of functions delving straight into the guts of the system and focusing on minutiae.  Despite the fact that everyone needs to perform these elementary tasks that are buried deep within the documentation, it&rsquo;s often difficult to find a solution by searching the internet.  My search for how to use <code>sqlplus</code> to connect to a remote database (I had previously only used it locally, on the server running Oracle) turned up a few results and led me to this solution:</p>
+
+<p><code>
+~$ sqlplus uname/pass@[//hostname[:port]/]sid
+</code></p>
+
+<p>Really, it&rsquo;s quite straightforward.</p>
+
+    <div class="article-footer"></div>
     <h1 class="article-title"><a href="/blog/2007/04/24/koni-yellows/">Koni Yellows</a></h1>
     <div class="article-title-date">Apr 24, 2007</div>
     <p>I installed Koni Adjustable Sport shocks on my <a href="http://gallery.dinomite.net/v/Cars/BMW_M3/">M3</a> a few months ago and before even driving the car I turned them to full stiff, like ya do.  Who want&rsquo;s anything but the most hardcore?  I finally got around to turning them down this past week (it&rsquo;s not like I go to the track all that often) and what a difference that makes!  Koni Yellows on full-soft are just like stock shocks and with a few turns under the hood, they become a good bit more go-kart like.</p>
@@ -238,18 +249,6 @@ export PERL5LIB=~/perl-modules
 <p>Another thing to keep in mind when writing modules is that you should load the <code>Carp</code> module and use the functions <code>carp</code> and <code>croak</code> rather than <code>warn</code> and <code>die</code> respectively.  <code>Carp</code>&rsquo;s functions produce errors that reference the proper context in the user&rsquo;s code when an error occurs, rather then saying there is a problem in your module.</p>
 
     <div class="article-footer"></div>
-    <h1 class="article-title"><a href="/blog/2007/03/05/chm-to-pdf-conversion/">CHM to PDF conversion</a></h1>
-    <div class="article-title-date">Mar  5, 2007</div>
-    <p>Have some CHMs that you&rsquo;d rather browse as PDFs?  Easy.  To convert, you&rsquo;ll need <code>libchm-bin</code> and <code>htmldoc</code> on Ubuntu, probably the same on Debian and similar on others.  Then, do the following:</p>
-
-<p><code><pre>
-$ extract_chmLib foo.chm foo/
-$ htmldoc --webpage -f foo.pdf foo/*.html
-</pre><code></p>
-
-<p>Done.</p>
- 
-    <div class="article-footer"></div>
 </ul>
 
     <p><a href="/page/20/">Next page</a></p>
@@ -275,6 +274,10 @@ $ htmldoc --webpage -f foo.pdf foo/*.html
     <li><h5 class="heading">Recent Articles</h5></li>
     <li>
       <ol>
+            <li>
+              <a href="/blog/2017/07/15/kotlin-s-let/">Kotlin's let()</a>
+              <div class="article-link-date">Jul 15, 2017</div>
+            </li>
             <li>
               <a href="/blog/2017/07/12/coding-tests/">Coding Tests</a>
               <div class="article-link-date">Jul 12, 2017</div>
@@ -311,10 +314,6 @@ $ htmldoc --webpage -f foo.pdf foo/*.html
               <a href="/blog/2014/04/04/wunderground-with-the-lacrosse-c84612/">Wunderground with the LaCrosse C84612</a>
               <div class="article-link-date">Apr  4, 2014</div>
             </li>
-            <li>
-              <a href="/blog/2014/02/13/making-1080p-timelapses-with-lightroom/">Making 1080p Timelapses with Lightroom</a>
-              <div class="article-link-date">Feb 13, 2014</div>
-            </li>
       </ol>
     </li>
   </ul>
@@ -328,13 +327,13 @@ $ htmldoc --webpage -f foo.pdf foo/*.html
             <li><a href="/blog/tags/uncategorized/">Uncategorized (5)</a></li>
             <li><a href="/blog/tags/networking/">Networking (1)</a></li>
             <li><a href="/blog/tags/cars/">Cars (3)</a></li>
-            <li><a href="/blog/tags/programming/">Programming (3)</a></li>
+            <li><a href="/blog/tags/programming/">Programming (4)</a></li>
             <li><a href="/blog/tags/politics/">Politics (2)</a></li>
             <li><a href="/blog/tags/biking/">biking (1)</a></li>
             <li><a href="/blog/tags/tech/">Tech (4)</a></li>
             <li><a href="/blog/tags/rails/">Rails (2)</a></li>
             <li><a href="/blog/tags/java/">Java (2)</a></li>
-            <li><a href="/blog/tags/kotlin/">Kotlin (1)</a></li>
+            <li><a href="/blog/tags/kotlin/">Kotlin (2)</a></li>
             <li><a href="/blog/tags/dropwizard/">Dropwizard (1)</a></li>
             <li><a href="/blog/tags/diy/">DIY (1)</a></li>
             <li><a href="/blog/tags/dogs/">Dogs (1)</a></li>
